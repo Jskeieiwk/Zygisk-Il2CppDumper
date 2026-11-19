@@ -16,9 +16,47 @@ export function createCameraEffects(context){
   const setLocal=native(0xa7a0548,'void',['pointer',vector,'pointer']);
   const linecast=native(0xa8261c8,'bool',[vector,vector,'pointer','int','int','pointer']);
   const hitPoint=native(0xa82b12c,vector,['pointer','pointer']);
+  // Third Person also shows the player's own body. All values below are from the 3.3 dump (script.json): PlayerController+0x30 is the
+  // CharacterLodGroup (the third-person body), +0x38 of it the SkinnedMeshRenderer; CharacterLodGroup.SetMeshRendererEnabled 0x6812F1C,
+  // SkinnedMeshLodGroup.get_RendererEnabled 0x3D53D04, Renderer.get_enabled 0xA744354, Component.get_gameObject 0xA77DD70,
+  // GameObject.get_layer 0xA7844F0 / get_activeInHierarchy 0xA784AC8, Camera.get_cullingMask 0xA725FB0 / set_cullingMask 0xA726124.
+  // NOT verified on a device: that the game hides the local body through this renderer switch (it may use the layer or an inactive
+  // object instead). The CLOUD:third-person-body line prints what was found so the next log shows which one it is.
+  const bodyEnabled=native(0x3d53d04,'bool',['pointer','pointer']),setBodyEnabled=native(0x6812f1c,'void',['pointer','bool','pointer']);
+  const meshEnabled=native(0xa744354,'bool',['pointer','pointer']),gameObjectOf=native(0xa77dd70,'pointer',['pointer','pointer']);
+  const layerOf=native(0xa7844f0,'int',['pointer','pointer']),activeOf=native(0xa784ac8,'bool',['pointer','pointer']);
+  const getMask=native(0xa725fb0,'int',['pointer','pointer']),setMask=native(0xa726124,'void',['pointer','int','pointer']);
   const hit=Memory.alloc(0x100),hooks=createHookSet(context.base,Interceptor);
-  let saved=null,failures=0;
+  let saved=null,failures=0,bodyLogs=0,lastBodyState='';
   function report(error){if(failures++<3)console.log('CLOUD:camera-mode-error '+error);}
+  function noteBody(state){
+    if(state===lastBodyState||bodyLogs>=12)return;
+    lastBodyState=state;bodyLogs++;console.log('CLOUD:third-person-body '+state);
+  }
+  // Switches the body renderer on for this render and makes sure the camera's culling mask contains the body's layer. The original
+  // renderer state and mask are kept in `record.body` before anything is changed, so restore() can always undo it.
+  function showBody(camera,player,record){
+    if(!player||player.isNull()){noteBody('no-local-player');return;}
+    const group=player.add(0x30).readPointer();
+    if(group.isNull()||!engine.live(group)){noteBody('no-body-group');return;}
+    const entry={group:engine.hold(group),wasEnabled:true};
+    record.body=entry;
+    entry.wasEnabled=!!bodyEnabled(group,ptr(0));
+    setBodyEnabled(group,true,ptr(0));
+    const mesh=group.add(0x38).readPointer();
+    let layer=-1,active=null,meshOn=null,mask=null,maskHasLayer=null;
+    if(!mesh.isNull()&&engine.live(mesh)){
+      meshOn=!!meshEnabled(mesh,ptr(0));
+      const object=gameObjectOf(mesh,ptr(0));
+      if(!object.isNull()){layer=layerOf(object,ptr(0));active=!!activeOf(object,ptr(0));}
+    }
+    if(layer>=0&&layer<32){
+      mask=getMask(camera,ptr(0));maskHasLayer=(mask&(1<<layer))!==0;
+      if(!maskHasLayer){entry.camera=camera;entry.mask=mask;setMask(camera,mask|(1<<layer),ptr(0));}
+    }
+    noteBody('wasEnabled='+entry.wasEnabled+' mesh='+(mesh.isNull()?'null':'set')+' meshEnabled='+meshOn+' active='+active+' layer='+layer+
+      ' cullingMask=0x'+(mask===null?'?':(mask>>>0).toString(16))+' cameraSawLayer='+maskHasLayer);
+  }
   function restore(){
     const previous=saved;saved=null;if(!previous)return;
     try{if(engine.live(previous.transform)){
@@ -26,7 +64,17 @@ export function createCameraEffects(context){
     }}catch(error){report(error);}
     try{if(previous.arms&&engine.live(previous.arms))setLocal(previous.arms,previous.armsPosition,ptr(0));}
     catch(error){report(error);}
-    finally{engine.release(previous.transform);if(previous.arms)engine.release(previous.arms);}
+    try{
+      const body=previous.body;
+      if(body){
+        if(engine.live(body.group))setBodyEnabled(body.group,body.wasEnabled,ptr(0));
+        if(body.camera&&engine.live(body.camera))setMask(body.camera,body.mask,ptr(0));
+      }
+    }catch(error){report(error);}
+    finally{
+      engine.release(previous.transform);if(previous.arms)engine.release(previous.arms);
+      if(previous.body)engine.release(previous.body.group);
+    }
   }
   function apply(camera){
     if(!(settings['Back Camera']||settings['Third Person']||settings.Viewmodel)||!context.canRun()){restore();return;}
@@ -50,6 +98,7 @@ export function createCameraEffects(context){
           }
           setPosition(current,destination,ptr(0));
         }
+        try{showBody(camera,context.getLocalPlayer(),saved);}catch(error){noteBody('error '+error);}
       }
       if(settings['Back Camera'])setEuler(current,[euler[0],euler[1]+180,euler[2]],ptr(0));
       if(settings.Viewmodel){
