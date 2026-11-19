@@ -1,0 +1,37 @@
+// Namespace: 
+private sealed class WeaponDropManager.GADBADBDDDHGACF : IEnumerator<object>, IEnumerator, IDisposable // TypeDefIndex: 7859
+{
+	// Fields
+	private int <>1__state; // 0x10
+	private object <>2__current; // 0x18
+	public WeaponParameters[] weapons; // 0x20
+
+	// Properties
+	private object System.Collections.Generic.IEnumerator<System.Object>.Current { get; }
+	private object System.Collections.IEnumerator.Current { get; }
+
+	// Methods
+
+	[DebuggerHidden]
+	// RVA: 0x592AB90 Offset: 0x5926B90 VA: 0x592AB90
+	public void .ctor(int <>1__state) { }
+
+	[DebuggerHidden]
+	// RVA: 0x592ABB8 Offset: 0x5926BB8 VA: 0x592ABB8 Slot: 5
+	private void System.IDisposable.Dispose() { }
+
+	// RVA: 0x592ABBC Offset: 0x5926BBC VA: 0x592ABBC Slot: 6
+	private bool MoveNext() { }
+
+	[DebuggerHidden]
+	// RVA: 0x592AE8C Offset: 0x5926E8C VA: 0x592AE8C Slot: 4
+	private object System.Collections.Generic.IEnumerator<System.Object>.get_Current() { }
+
+	[DebuggerHidden]
+	// RVA: 0x592AE94 Offset: 0x5926E94 VA: 0x592AE94 Slot: 8
+	private void System.Collections.IEnumerator.Reset() { }
+
+	[DebuggerHidden]
+	// RVA: 0x592AEFC Offset: 0x5926EFC VA: 0x592AEFC Slot: 7
+	private object System.Collections.IEnumerator.get_Current() { }
+}

@@ -1,0 +1,9 @@
+// Namespace: UnityEngine.Rendering.PostProcessing
+internal static class PostProcessEffectRendererExtensions // TypeDefIndex: 21152
+{
+	// Methods
+
+	[Extension]
+	// RVA: 0xA57EE1C Offset: 0xA57AE1C VA: 0xA57EE1C
+	public static Exception RenderOrLog(PostProcessEffectRenderer self, PostProcessRenderContext context) { }
+}

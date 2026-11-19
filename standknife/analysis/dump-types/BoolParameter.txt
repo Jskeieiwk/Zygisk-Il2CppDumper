@@ -1,0 +1,8 @@
+// Namespace: UnityEngine.Rendering.PostProcessing
+public sealed class BoolParameter : ParameterOverride<bool> // TypeDefIndex: 21108
+{
+	// Methods
+
+	// RVA: 0xA573948 Offset: 0xA56F948 VA: 0xA573948
+	public void .ctor() { }
+}

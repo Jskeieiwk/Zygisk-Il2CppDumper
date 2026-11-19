@@ -1,0 +1,101 @@
+// Namespace: Axlebolt.Standoff.Cam
+public class OutlinePostProcess : MonoBehaviour // TypeDefIndex: 5319
+{
+	// Fields
+	private PostProcessProfile EAAACDEAAGDDBEB; // 0x20
+	private PostProcessLayer HADHCEEFHEBGBCC; // 0x28
+	private PostProcessVolume BFHAFGCCGAFDCHE; // 0x30
+	private bool BFEHHADDGFHBGDF; // 0x38
+
+	// Methods
+
+	// RVA: 0x45F2380 Offset: 0x45EE380 VA: 0x45F2380
+	private void AHHGGHBCCEHGFBB() { }
+
+	// RVA: 0x45F27A8 Offset: 0x45EE7A8 VA: 0x45F27A8
+	public void FEFEFBFHCFBGHGC(bool ECGDDHCCCABCEFH) { }
+
+	// RVA: 0x45F27E4 Offset: 0x45EE7E4 VA: 0x45F27E4
+	private void GAAFGHBBEDGGBBF() { }
+
+	// RVA: 0x45F2C04 Offset: 0x45EEC04 VA: 0x45F2C04
+	private void HAHBGEDBFADFBEH() { }
+
+	// RVA: 0x45F3024 Offset: 0x45EF024 VA: 0x45F3024
+	private void DGHDDBAEHDEEHDG() { }
+
+	// RVA: 0x45F344C Offset: 0x45EF44C VA: 0x45F344C
+	private void FFBBHAFGFFFBDDB() { }
+
+	// RVA: 0x45F3870 Offset: 0x45EF870 VA: 0x45F3870
+	private void HHEDDFHBHBDDFCE() { }
+
+	// RVA: 0x45F3C8C Offset: 0x45EFC8C VA: 0x45F3C8C
+	public void FDFFAGDHBGACHDB(bool ECGDDHCCCABCEFH) { }
+
+	// RVA: 0x45F3CC8 Offset: 0x45EFCC8 VA: 0x45F3CC8
+	public void BAGACFFGAAABEDH(bool ECGDDHCCCABCEFH) { }
+
+	// RVA: 0x45F3D04 Offset: 0x45EFD04 VA: 0x45F3D04
+	private void EHEDEEAABFDHGAG() { }
+
+	// RVA: 0x45F4124 Offset: 0x45F0124 VA: 0x45F4124
+	private void EHCDDHBACBBCFEA() { }
+
+	// RVA: 0x45F4548 Offset: 0x45F0548 VA: 0x45F4548
+	public void CBHBDCDBFAHFBBH(bool ECGDDHCCCABCEFH) { }
+
+	// RVA: 0x45F4584 Offset: 0x45F0584 VA: 0x45F4584
+	private void HEBACFHDECHBHFE() { }
+
+	// RVA: 0x45F49A4 Offset: 0x45F09A4 VA: 0x45F49A4
+	private void Awake() { }
+
+	// RVA: 0x45F4DCC Offset: 0x45F0DCC VA: 0x45F4DCC
+	private void BEGHDCGGBFBAGCB() { }
+
+	// RVA: 0x45F51E8 Offset: 0x45F11E8 VA: 0x45F51E8
+	public void EBEEGDHADFCCDAB(bool ECGDDHCCCABCEFH) { }
+
+	// RVA: 0x45F5224 Offset: 0x45F1224 VA: 0x45F5224
+	private void BBBDHHGCEFBFECC() { }
+
+	// RVA: 0x45F564C Offset: 0x45F164C VA: 0x45F564C
+	private void FGFBBAHBABHCDEE() { }
+
+	// RVA: 0x45F5A70 Offset: 0x45F1A70 VA: 0x45F5A70
+	public void AHBEDDDAAGCFEHH(bool ECGDDHCCCABCEFH) { }
+
+	// RVA: 0x45F5AAC Offset: 0x45F1AAC VA: 0x45F5AAC
+	private void FGHAEAEABBCGBCG() { }
+
+	// RVA: 0x45F5ED4 Offset: 0x45F1ED4 VA: 0x45F5ED4
+	public void .ctor() { }
+
+	// RVA: 0x45F5EDC Offset: 0x45F1EDC VA: 0x45F5EDC
+	private void BCFHGGHCBGDFFEC() { }
+
+	// RVA: 0x45F6300 Offset: 0x45F2300 VA: 0x45F6300
+	public void BFBDDCAHCABFFCB(bool ECGDDHCCCABCEFH) { }
+
+	// RVA: 0x45F633C Offset: 0x45F233C VA: 0x45F633C
+	public void DCGHDFGAGDAGCHD(bool ECGDDHCCCABCEFH) { }
+
+	// RVA: 0x45F6378 Offset: 0x45F2378 VA: 0x45F6378
+	public void SetOutlineEnabled(bool ECGDDHCCCABCEFH) { }
+
+	// RVA: 0x45F63B4 Offset: 0x45F23B4 VA: 0x45F63B4
+	public void DCDDFDCCHCFHEFA(bool ECGDDHCCCABCEFH) { }
+
+	// RVA: 0x45F63F0 Offset: 0x45F23F0 VA: 0x45F63F0
+	private void FGDBEFGDECHCAAC() { }
+
+	// RVA: 0x45F6818 Offset: 0x45F2818 VA: 0x45F6818
+	public void DBGBGDGHACHHEAE(bool ECGDDHCCCABCEFH) { }
+
+	// RVA: 0x45F6854 Offset: 0x45F2854 VA: 0x45F6854
+	private void FHBFCFBCDBHGEHH() { }
+
+	// RVA: 0x45F6C70 Offset: 0x45F2C70 VA: 0x45F6C70
+	private void CEBEECFHEBGEGAD() { }
+}

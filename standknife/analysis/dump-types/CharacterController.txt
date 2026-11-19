@@ -1,0 +1,61 @@
+// Namespace: UnityEngine
+public class CharacterController : Collider // TypeDefIndex: 22573
+{
+	// Properties
+	public Vector3 velocity { get; }
+	public bool isGrounded { get; }
+	public float radius { get; set; }
+	public float height { get; set; }
+	public Vector3 center { get; set; }
+
+	// Methods
+
+	// RVA: 0xA82FF14 Offset: 0xA82BF14 VA: 0xA82FF14
+	public bool SimpleMove(Vector3 speed) { }
+
+	// RVA: 0xA8300D4 Offset: 0xA82C0D4 VA: 0xA8300D4
+	public CollisionFlags Move(Vector3 motion) { }
+
+	// RVA: 0xA830284 Offset: 0xA82C284 VA: 0xA830284
+	public Vector3 get_velocity() { }
+
+	[NativeName("IsGrounded")]
+	// RVA: 0xA83044C Offset: 0xA82C44C VA: 0xA83044C
+	public bool get_isGrounded() { }
+
+	// RVA: 0xA8305BC Offset: 0xA82C5BC VA: 0xA8305BC
+	public float get_radius() { }
+
+	// RVA: 0xA83073C Offset: 0xA82C73C VA: 0xA83073C
+	public void set_radius(float value) { }
+
+	// RVA: 0xA8308C8 Offset: 0xA82C8C8 VA: 0xA8308C8
+	public float get_height() { }
+
+	// RVA: 0xA830A48 Offset: 0xA82CA48 VA: 0xA830A48
+	public void set_height(float value) { }
+
+	// RVA: 0xA830BD4 Offset: 0xA82CBD4 VA: 0xA830BD4
+	public Vector3 get_center() { }
+
+	// RVA: 0xA830D90 Offset: 0xA82CD90 VA: 0xA830D90
+	public void set_center(Vector3 value) { }
+
+	// RVA: 0xA830F48 Offset: 0xA82CF48 VA: 0xA830F48
+	public void .ctor() { }
+
+	// RVA: 0xA82FF3C Offset: 0xA82BF3C VA: 0xA82FF3C
+	private bool SimpleMove_Injected(ref Vector3 speed) { }
+
+	// RVA: 0xA8300F8 Offset: 0xA82C0F8 VA: 0xA8300F8
+	private CollisionFlags Move_Injected(ref Vector3 motion) { }
+
+	// RVA: 0xA8302B0 Offset: 0xA82C2B0 VA: 0xA8302B0
+	private void get_velocity_Injected(out Vector3 ret) { }
+
+	// RVA: 0xA830C00 Offset: 0xA82CC00 VA: 0xA830C00
+	private void get_center_Injected(out Vector3 ret) { }
+
+	// RVA: 0xA830DB4 Offset: 0xA82CDB4 VA: 0xA830DB4
+	private void set_center_Injected(ref Vector3 value) { }
+}

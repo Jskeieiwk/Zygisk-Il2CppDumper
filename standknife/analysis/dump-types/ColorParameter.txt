@@ -1,0 +1,10 @@
+public sealed class ColorParameter : ParameterOverride<Color> // TypeDefIndex: 21109
+{
+	// Methods
+
+	// RVA: 0xA5739D8 Offset: 0xA56F9D8 VA: 0xA5739D8 Slot: 9
+	public override void Interp(Color from, Color to, float t) { }
+
+	// RVA: 0xA573A08 Offset: 0xA56FA08 VA: 0xA573A08
+	public void .ctor() { }
+}

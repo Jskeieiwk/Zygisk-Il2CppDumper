@@ -1,0 +1,8 @@
+// Namespace: Axlebolt.Standoff.Game.AimTraining
+public class DummyMovementControllerDepricated : MonoBehaviour // TypeDefIndex: 1855
+{
+	// Methods
+
+	// RVA: 0x66099E4 Offset: 0x66059E4 VA: 0x66099E4
+	public void .ctor() { }
+}

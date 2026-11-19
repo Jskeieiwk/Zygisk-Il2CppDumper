@@ -1,0 +1,167 @@
+// Namespace: Axlebolt.Standoff.Player
+public class PlayerMainCamera : MonoBehaviour // TypeDefIndex: 4037
+{
+	// Fields
+	private static PlayerMainCamera ABGGFFACFEHCBDG; // 0x0
+	private Camera BHDAHEBFCDFABHA; // 0x20
+	private CameraScopeZoomer BECCHABDDHHDFGE; // 0x28
+	private CameraAnimationController CCBHFABEFHHCFEH; // 0x30
+	private Transform DBGBCECAAFCHEBA; // 0x38
+	private MainCamera GFGGAECECDFGCEH; // 0x40
+	private static bool CGBCDCHEBHEDCEB; // 0x8
+	[CompilerGenerated]
+	private PlayerController <FFBCAACGDGBEHGB>k__BackingField; // 0x48
+
+	// Properties
+	public static PlayerMainCamera CGEDAFHDACEBAEB { get; }
+	public static bool DCDGGBDBCHHCFBA { get; }
+	public bool DDAAHADDHGBFCEF { get; }
+	public Transform BCAFDDGADHHDCDE { get; }
+	public Camera GADEGBADAGHAHBC { get; }
+	public PlayerController CDEBDAAHBAHDECB { get; set; }
+
+	// Methods
+
+	// RVA: 0x3DA1F70 Offset: 0x3D9DF70 VA: 0x3DA1F70
+	public void DetachFromPlayer() { }
+
+	// RVA: 0x3DA2074 Offset: 0x3D9E074 VA: 0x3DA2074
+	public void DAFGCAGFFGHDFGH() { }
+
+	// RVA: 0x3DA2140 Offset: 0x3D9E140 VA: 0x3DA2140
+	public void FCACDFHHHGFAGEE(HBGFCDHDDCFBGAE HBCBFBDDEBAEBFD) { }
+
+	// RVA: 0x3DA22E0 Offset: 0x3D9E2E0 VA: 0x3DA22E0
+	public BHEABBBDBHEECCH GAFDGBHDDDBEEGC(PlayerController GDBGAGDBBCDHFEG) { }
+
+	// RVA: 0x3DA2418 Offset: 0x3D9E418 VA: 0x3DA2418
+	public bool CHGGFDBDCHDGFBD(Vector3 BEAFEDEABADDAAB, float FHADAGDCDBHFEDD) { }
+
+	// RVA: 0x3DA2530 Offset: 0x3D9E530 VA: 0x3DA2530
+	public void PlayGrenadeShake() { }
+
+	// RVA: 0x3DA25FC Offset: 0x3D9E5FC VA: 0x3DA25FC
+	public PlayerController HFFABHBFBGFHDEG() { }
+
+	// RVA: 0x3DA2604 Offset: 0x3D9E604 VA: 0x3DA2604
+	public void PlayHitShake(HBGFCDHDDCFBGAE HBCBFBDDEBAEBFD) { }
+
+	// RVA: 0x3DA27A4 Offset: 0x3D9E7A4 VA: 0x3DA27A4
+	public void FAGADAFEAHBDGGB() { }
+
+	// RVA: 0x3DA2870 Offset: 0x3D9E870 VA: 0x3DA2870
+	public bool FHHHFBCEADDDCDD(Vector3 BEAFEDEABADDAAB, float FHADAGDCDBHFEDD) { }
+
+	// RVA: 0x3DA28C4 Offset: 0x3D9E8C4 VA: 0x3DA28C4
+	public PlayerController AHFDBAAEFDHCBEH() { }
+
+	// RVA: 0x3DA28CC Offset: 0x3D9E8CC VA: 0x3DA28CC
+	public bool DBHAADFDGBCFCHB(int HFFBGEGBGHCEDEA) { }
+
+	// RVA: 0x3DA29B8 Offset: 0x3D9E9B8 VA: 0x3DA29B8
+	public void EBCACBFBCBABHCH(PlayerController AHGEEFHFCCGCHHF, Transform GAHFDAEGBFBBGAH) { }
+
+	// RVA: 0x3DA2C00 Offset: 0x3D9EC00 VA: 0x3DA2C00
+	public BHEABBBDBHEECCH GetTeammateIndex(GDDEBEFGEGAECCG GDBGAGDBBCDHFEG) { }
+
+	// RVA: 0x3DA2D24 Offset: 0x3D9ED24 VA: 0x3DA2D24
+	public bool IsNearToPosition(Vector3 BEAFEDEABADDAAB, float FHADAGDCDBHFEDD) { }
+
+	// RVA: 0x3DA2D78 Offset: 0x3D9ED78 VA: 0x3DA2D78
+	private void OnDestroy() { }
+
+	// RVA: 0x3DA2E30 Offset: 0x3D9EE30 VA: 0x3DA2E30
+	public Camera get_Camera() { }
+
+	// RVA: 0x3DA2E38 Offset: 0x3D9EE38 VA: 0x3DA2E38
+	public void ABHGFGCGAGBHEED() { }
+
+	[CompilerGenerated]
+	// RVA: 0x3DA2F3C Offset: 0x3D9EF3C VA: 0x3DA2F3C
+	private void CHGHHBCBHGACFFA(PlayerController BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x3DA2F44 Offset: 0x3D9EF44 VA: 0x3DA2F44
+	private void FEFAHEFAFEADGCE() { }
+
+	// RVA: 0x3DA3000 Offset: 0x3D9F000 VA: 0x3DA3000
+	public void PlayExplosionShake() { }
+
+	// RVA: 0x3DA30CC Offset: 0x3D9F0CC VA: 0x3DA30CC
+	public bool BDDACACBAGCGAFA(Vector3 BEAFEDEABADDAAB) { }
+
+	// RVA: 0x3DA31D4 Offset: 0x3D9F1D4 VA: 0x3DA31D4
+	private void CBHDHAFAHBBCGCD(PlayerController BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x3DA31DC Offset: 0x3D9F1DC VA: 0x3DA31DC
+	public BHEABBBDBHEECCH DGFABDAFHBBCHHA(GDDEBEFGEGAECCG GDBGAGDBBCDHFEG) { }
+
+	// RVA: 0x3DA3300 Offset: 0x3D9F300 VA: 0x3DA3300
+	public static bool get_Initialized() { }
+
+	// RVA: 0x3DA339C Offset: 0x3D9F39C VA: 0x3DA339C
+	private void AHHGGHBCCEHGFBB() { }
+
+	// RVA: 0x3DA35D4 Offset: 0x3D9F5D4 VA: 0x3DA35D4
+	public void AttachToPlayer(PlayerController AHGEEFHFCCGCHHF, Transform GAHFDAEGBFBBGAH) { }
+
+	// RVA: 0x3DA381C Offset: 0x3D9F81C VA: 0x3DA381C
+	public bool FABECEBCGAAGHFG() { }
+
+	// RVA: 0x3DA38C4 Offset: 0x3D9F8C4 VA: 0x3DA38C4
+	private void DHFAFCBFGHEEAHD(PlayerController BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x3DA38CC Offset: 0x3D9F8CC VA: 0x3DA38CC
+	private void DCBBGDFBAFEBHFB() { }
+
+	// RVA: 0x3DA2910 Offset: 0x3D9E910 VA: 0x3DA2910
+	public bool get_IsAttached() { }
+
+	[CompilerGenerated]
+	// RVA: 0x3DA3988 Offset: 0x3D9F988 VA: 0x3DA3988
+	public PlayerController get_PlayerController() { }
+
+	// RVA: 0x3DA3990 Offset: 0x3D9F990 VA: 0x3DA3990
+	public void FGBGCDHGAGFDHCC() { }
+
+	// RVA: 0x3DA3A5C Offset: 0x3D9FA5C VA: 0x3DA3A5C
+	public bool EHCHHABBCFABAFD(int HFFBGEGBGHCEDEA) { }
+
+	// RVA: 0x3DA3AA0 Offset: 0x3D9FAA0 VA: 0x3DA3AA0
+	public bool EGHFEHHACCCGCBB() { }
+
+	// RVA: 0x3DA3B48 Offset: 0x3D9FB48 VA: 0x3DA3B48
+	public static PlayerMainCamera get_Instance() { }
+
+	// RVA: 0x3DA3D7C Offset: 0x3D9FD7C VA: 0x3DA3D7C
+	public BHEABBBDBHEECCH GetTeammateIndex(PlayerController GDBGAGDBBCDHFEG) { }
+
+	// RVA: 0x3DA3EB4 Offset: 0x3D9FEB4 VA: 0x3DA3EB4
+	public static PlayerMainCamera FGECBHFAFAFDEFB() { }
+
+	// RVA: 0x3DA40E4 Offset: 0x3DA00E4 VA: 0x3DA40E4
+	public void .ctor() { }
+
+	// RVA: 0x3DA40EC Offset: 0x3DA00EC VA: 0x3DA40EC
+	public bool CanHeardSoundEventByPosition(Vector3 BEAFEDEABADDAAB) { }
+
+	// RVA: 0x3DA41F4 Offset: 0x3DA01F4 VA: 0x3DA41F4
+	public PlayerController CDDCGHABBBHHDAB() { }
+
+	// RVA: 0x3DA41FC Offset: 0x3DA01FC VA: 0x3DA41FC
+	public BHEABBBDBHEECCH EEHHDEGHDDCACHC(GDDEBEFGEGAECCG GDBGAGDBBCDHFEG) { }
+
+	// RVA: 0x3DA4320 Offset: 0x3DA0320 VA: 0x3DA4320
+	public bool IsAttachedTo(int HFFBGEGBGHCEDEA) { }
+
+	// RVA: 0x3DA4364 Offset: 0x3DA0364 VA: 0x3DA4364
+	private void Awake() { }
+
+	// RVA: 0x3DA45A0 Offset: 0x3DA05A0 VA: 0x3DA45A0
+	public bool GCGBBDFADFDCGFB(int HFFBGEGBGHCEDEA) { }
+
+	// RVA: 0x3DA45E4 Offset: 0x3DA05E4 VA: 0x3DA45E4
+	public bool DADCECCCFHFFGGF(Vector3 BEAFEDEABADDAAB) { }
+
+	// RVA: 0x3DA246C Offset: 0x3D9E46C VA: 0x3DA246C
+	public Transform get_Transform() { }
+}

@@ -1,0 +1,18 @@
+// Namespace: 
+public class PostProcessDebugLayer.OverlaySettings // TypeDefIndex: 21118
+{
+	// Fields
+	public bool linearDepth; // 0x10
+	[Range(0, 16)]
+	public float motionColorIntensity; // 0x14
+	[Range(4, 128)]
+	public int motionGridSize; // 0x18
+	public ColorBlindnessType colorBlindnessType; // 0x1C
+	[Range(0, 1)]
+	public float colorBlindnessStrength; // 0x20
+
+	// Methods
+
+	// RVA: 0xA577CE8 Offset: 0xA573CE8 VA: 0xA577CE8
+	public void .ctor() { }
+}

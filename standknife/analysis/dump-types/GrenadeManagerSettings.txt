@@ -1,0 +1,138 @@
+// Namespace: Axlebolt.Standoff.Inventory.Grenade
+public class GrenadeManagerSettings : ScriptableObject // TypeDefIndex: 5170
+{
+	// Fields
+	[SerializeField]
+	private int _poolSize; // 0x18
+	[SerializeField]
+	private RuntimeAnimatorController _animatorController; // 0x20
+	[SerializeField]
+	private GameObject _prefab; // 0x28
+	[SerializeField]
+	private DecalsParameters _decalsParameters; // 0x30
+	[SerializeField]
+	private EventReference _earRingingEventRef; // 0x38
+	[SerializeField]
+	private EventReference _durableEarRingingEventRef; // 0x48
+	[SerializeField]
+	private DecalsDrawer _decalsDrawer; // 0x58
+
+	// Properties
+	public int PoolSize { get; }
+	public RuntimeAnimatorController AnimatorController { get; }
+	public GameObject Prefab { get; }
+	public DecalsParameters DecalsParameters { get; }
+	public GUID EarRingingEvent { get; }
+	public GUID DurableEarRingingEvent { get; }
+	public DecalsDrawer DecalsDrawer { get; }
+
+	// Methods
+
+	// RVA: 0x4499244 Offset: 0x4495244 VA: 0x4499244
+	public DecalsDrawer get_DecalsDrawer() { }
+
+	// RVA: 0x449924C Offset: 0x449524C VA: 0x449924C
+	public GUID BDEFCFDEDEGHEHC() { }
+
+	// RVA: 0x4499258 Offset: 0x4495258 VA: 0x4499258
+	public GameObject BFCBDEGDFGACCAC() { }
+
+	// RVA: 0x4499260 Offset: 0x4495260 VA: 0x4499260
+	public GameObject EADHHDBECFHHAAD() { }
+
+	// RVA: 0x4499268 Offset: 0x4495268 VA: 0x4499268
+	public RuntimeAnimatorController GDCCAAFDAFDFFEG() { }
+
+	// RVA: 0x4499270 Offset: 0x4495270 VA: 0x4499270
+	public DecalsParameters DGHCGGFFBAHEDHF() { }
+
+	// RVA: 0x4499278 Offset: 0x4495278 VA: 0x4499278
+	public GUID DEHBCHDAFAEEFCF() { }
+
+	// RVA: 0x4499284 Offset: 0x4495284 VA: 0x4499284
+	public int HGCAGACAFFCBAGC() { }
+
+	// RVA: 0x449928C Offset: 0x449528C VA: 0x449928C
+	public GUID get_DurableEarRingingEvent() { }
+
+	// RVA: 0x4499298 Offset: 0x4495298 VA: 0x4499298
+	public GameObject BHEFDCAGHGFFAEH() { }
+
+	// RVA: 0x44992A0 Offset: 0x44952A0 VA: 0x44992A0
+	public GameObject GBEHCEBDFCEHACG() { }
+
+	// RVA: 0x44992A8 Offset: 0x44952A8 VA: 0x44992A8
+	public GUID FCCGDBCDHDBAGBA() { }
+
+	// RVA: 0x44992B4 Offset: 0x44952B4 VA: 0x44992B4
+	public DecalsDrawer AGCDFCCFEFDAHFG() { }
+
+	// RVA: 0x44992BC Offset: 0x44952BC VA: 0x44992BC
+	public void .ctor() { }
+
+	// RVA: 0x44992CC Offset: 0x44952CC VA: 0x44992CC
+	public GUID HEFDGAEHGCGFAAA() { }
+
+	// RVA: 0x44992D8 Offset: 0x44952D8 VA: 0x44992D8
+	public GameObject AABHFCDHBEAFFGC() { }
+
+	// RVA: 0x44992E0 Offset: 0x44952E0 VA: 0x44992E0
+	public GameObject HFECDHAEGBECCFA() { }
+
+	// RVA: 0x44992E8 Offset: 0x44952E8 VA: 0x44992E8
+	public GUID ABBACHAHHFHCEHF() { }
+
+	// RVA: 0x44992F4 Offset: 0x44952F4 VA: 0x44992F4
+	public DecalsDrawer CCHDEDBCFFAGGCH() { }
+
+	// RVA: 0x44992FC Offset: 0x44952FC VA: 0x44992FC
+	public GUID AGHBHBHCFAEHEFH() { }
+
+	// RVA: 0x4499308 Offset: 0x4495308 VA: 0x4499308
+	public int get_PoolSize() { }
+
+	// RVA: 0x4499310 Offset: 0x4495310 VA: 0x4499310
+	public RuntimeAnimatorController EBEHEFBADGBGCDD() { }
+
+	// RVA: 0x4499318 Offset: 0x4495318 VA: 0x4499318
+	public GUID AADHDEBAABCHBBA() { }
+
+	// RVA: 0x4499324 Offset: 0x4495324 VA: 0x4499324
+	public DecalsDrawer HFAFEHBEGFDGHEG() { }
+
+	// RVA: 0x449932C Offset: 0x449532C VA: 0x449932C
+	public GameObject get_Prefab() { }
+
+	// RVA: 0x4499334 Offset: 0x4495334 VA: 0x4499334
+	public DecalsParameters HFADCHAEADAFEBB() { }
+
+	// RVA: 0x449933C Offset: 0x449533C VA: 0x449933C
+	public GameObject BCAFCHDHFHAFGAC() { }
+
+	// RVA: 0x4499344 Offset: 0x4495344 VA: 0x4499344
+	public DecalsParameters DFEFEAFACAHGHHA() { }
+
+	// RVA: 0x449934C Offset: 0x449534C VA: 0x449934C
+	public RuntimeAnimatorController ABGGEHFEEGEFCFE() { }
+
+	// RVA: 0x4499354 Offset: 0x4495354 VA: 0x4499354
+	public GUID FADDCCHDGDDAEGD() { }
+
+	// RVA: 0x4499360 Offset: 0x4495360 VA: 0x4499360
+	public GUID AGCGCEBBBFADFGG() { }
+
+	// RVA: 0x449936C Offset: 0x449536C VA: 0x449936C
+	public GUID get_EarRingingEvent() { }
+
+	// RVA: 0x4499378 Offset: 0x4495378 VA: 0x4499378
+	public GameObject AGDECEBEGDCGDBB() { }
+
+	// RVA: 0x4499380 Offset: 0x4495380 VA: 0x4499380
+	public int AFBFHFGBFCABCCD() { }
+
+	// RVA: 0x4499388 Offset: 0x4495388 VA: 0x4499388
+	public RuntimeAnimatorController get_AnimatorController() { }
+
+	// RVA: 0x4499390 Offset: 0x4495390 VA: 0x4499390
+	public DecalsParameters get_DecalsParameters() { }
+}

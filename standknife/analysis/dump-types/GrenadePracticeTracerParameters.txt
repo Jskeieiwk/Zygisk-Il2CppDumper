@@ -1,0 +1,211 @@
+// Namespace: Axlebolt.Ballistics.GrenadePractice.SO
+public class GrenadePracticeTracerParameters : ScriptableObject // TypeDefIndex: 22823
+{
+	// Fields
+	public const int MaxTickCount = 500;
+	[SerializeField]
+	private GrenadePracticeTracerLineRendererView _practiceTracerLineRendererView; // 0x18
+	[SerializeField]
+	private GrenadePracticeTracerFinalPointView _grenadePracticeTracerFinalPointView; // 0x20
+	[SerializeField]
+	private float _tracerWidth; // 0x28
+	[SerializeField]
+	private float _tracerWidthGrenadePracticeCamera; // 0x2C
+	[Header("Update")]
+	[SerializeField]
+	private float _angleThreshold; // 0x30
+	[SerializeField]
+	private float _reDrawDelay; // 0x34
+	[SerializeField]
+	private int _minTicksToShow; // 0x38
+	[SerializeField]
+	private int _operationPointsForOneFixedTick; // 0x3C
+	[SerializeField]
+	private bool _isShowFullPathOnly; // 0x40
+	[SerializeField]
+	private bool _isUseGrenadeFloorHitMinSpeed; // 0x41
+	[SerializeField]
+	private bool _onlyDefaultCalculation; // 0x42
+	[Header("Camera layers")]
+	[SerializeField]
+	private int _tracerObjectsLayer; // 0x44
+	[SerializeField]
+	private int _grenadePracticeCameraObjectsLayer; // 0x48
+	[SerializeField]
+	private LayerMask _grenadePracticeCameraMask; // 0x4C
+	[SerializeField]
+	[Range(1, 512)]
+	private int _cameraRenderTextureSizeX; // 0x50
+	[SerializeField]
+	[Range(1, 512)]
+	private int _cameraRenderTextureSizeY; // 0x54
+	[SerializeField]
+	private float _cameraZoneOffset; // 0x58
+	[SerializeField]
+	private float _cameraZoneBottomOffset; // 0x5C
+	[Header("PathEndCamera")]
+	[SerializeField]
+	private float _pathEndCameraLerp; // 0x60
+	[SerializeField]
+	private float _pathEndCameraRotationLerp; // 0x64
+	[SerializeField]
+	private Vector2 _pathEndCameraOffset; // 0x68
+	[Header("FollowCamera")]
+	[SerializeField]
+	private int _grenadeFollowTickDelay; // 0x70
+	[SerializeField]
+	private float _grenadeFollowMinDistance; // 0x74
+	[SerializeField]
+	private float _followCameraLerp; // 0x78
+	[SerializeField]
+	private float _followCameraRotationLerp; // 0x7C
+	[SerializeField]
+	private LayerMask _followCameraRaycastLayerMask; // 0x80
+	[SerializeField]
+	private float _followCameraHeightCoef; // 0x84
+	[SerializeField]
+	private float _cameraAfterDetonationDelay; // 0x88
+	[SerializeField]
+	private int _finalPointCircleSegments; // 0x8C
+	[SerializeField]
+	private float _finalPointR1; // 0x90
+	[SerializeField]
+	private float _finalPointR2; // 0x94
+	[SerializeField]
+	private float _finalPointR2Width; // 0x98
+
+	// Properties
+	public GrenadePracticeTracerLineRendererView PracticeTracerLineRendererView { get; }
+	public float TracerWidth { get; }
+	public float AngleThreshold { get; }
+	public float ReDrawDelay { get; }
+	public int MinTicksToShow { get; }
+	public int OperationPointsForOneFixedTick { get; }
+	public bool IsShowFullPathOnly { get; }
+	public bool IsUseGrenadeFloorHitMinSpeed { get; }
+	public bool OnlyDefaultCalculation { get; }
+	public float PathEndCameraLerp { get; }
+	public int GrenadeFollowTickDelay { get; }
+	public float GrenadeFollowMinDistance { get; }
+	public float FollowCameraLerp { get; }
+	public float CameraAfterDetonationDelay { get; }
+	public int FollowCameraRaycastLayerMask { get; }
+	public float FollowCameraHeightCoef { get; }
+	public float FinalPointR1 { get; }
+	public float FinalPointR2 { get; }
+	public float FinalPointR2Width { get; }
+	public int FinalPointCircleSegments { get; }
+	public float PathEndCameraRotationLerp { get; }
+	public float FollowCameraRotationLerp { get; }
+	public Vector2 PathEndCameraOffset { get; }
+	public GrenadePracticeTracerFinalPointView PracticeTracerFinalPointView { get; }
+	public int TracerObjectsLayer { get; }
+	public LayerMask GrenadePracticeCameraMask { get; }
+	public float TracerWidthGrenadePracticeCamera { get; }
+	public int GrenadePracticeCameraObjectsLayer { get; }
+	public int CameraRenderTextureSizeX { get; }
+	public int CameraRenderTextureSizeY { get; }
+	public float CameraZoneOffset { get; }
+	public float CameraZoneBottomOffset { get; }
+
+	// Methods
+
+	// RVA: 0x6BA8B18 Offset: 0x6BA4B18 VA: 0x6BA8B18
+	public GrenadePracticeTracerLineRendererView get_PracticeTracerLineRendererView() { }
+
+	// RVA: 0x6BA8B20 Offset: 0x6BA4B20 VA: 0x6BA8B20
+	public float get_TracerWidth() { }
+
+	// RVA: 0x6BA8B28 Offset: 0x6BA4B28 VA: 0x6BA8B28
+	public float get_AngleThreshold() { }
+
+	// RVA: 0x6BA8B30 Offset: 0x6BA4B30 VA: 0x6BA8B30
+	public float get_ReDrawDelay() { }
+
+	// RVA: 0x6BA8B38 Offset: 0x6BA4B38 VA: 0x6BA8B38
+	public int get_MinTicksToShow() { }
+
+	// RVA: 0x6BA8B40 Offset: 0x6BA4B40 VA: 0x6BA8B40
+	public int get_OperationPointsForOneFixedTick() { }
+
+	// RVA: 0x6BA8B48 Offset: 0x6BA4B48 VA: 0x6BA8B48
+	public bool get_IsShowFullPathOnly() { }
+
+	// RVA: 0x6BA8B50 Offset: 0x6BA4B50 VA: 0x6BA8B50
+	public bool get_IsUseGrenadeFloorHitMinSpeed() { }
+
+	// RVA: 0x6BA8B58 Offset: 0x6BA4B58 VA: 0x6BA8B58
+	public bool get_OnlyDefaultCalculation() { }
+
+	// RVA: 0x6BA8B60 Offset: 0x6BA4B60 VA: 0x6BA8B60
+	public float get_PathEndCameraLerp() { }
+
+	// RVA: 0x6BA8B68 Offset: 0x6BA4B68 VA: 0x6BA8B68
+	public int get_GrenadeFollowTickDelay() { }
+
+	// RVA: 0x6BA8B70 Offset: 0x6BA4B70 VA: 0x6BA8B70
+	public float get_GrenadeFollowMinDistance() { }
+
+	// RVA: 0x6BA8B78 Offset: 0x6BA4B78 VA: 0x6BA8B78
+	public float get_FollowCameraLerp() { }
+
+	// RVA: 0x6BA8B80 Offset: 0x6BA4B80 VA: 0x6BA8B80
+	public float get_CameraAfterDetonationDelay() { }
+
+	// RVA: 0x6BA8B88 Offset: 0x6BA4B88 VA: 0x6BA8B88
+	public int get_FollowCameraRaycastLayerMask() { }
+
+	// RVA: 0x6BA8B94 Offset: 0x6BA4B94 VA: 0x6BA8B94
+	public float get_FollowCameraHeightCoef() { }
+
+	// RVA: 0x6BA8B9C Offset: 0x6BA4B9C VA: 0x6BA8B9C
+	public float get_FinalPointR1() { }
+
+	// RVA: 0x6BA8BA4 Offset: 0x6BA4BA4 VA: 0x6BA8BA4
+	public float get_FinalPointR2() { }
+
+	// RVA: 0x6BA8BAC Offset: 0x6BA4BAC VA: 0x6BA8BAC
+	public float get_FinalPointR2Width() { }
+
+	// RVA: 0x6BA8BB4 Offset: 0x6BA4BB4 VA: 0x6BA8BB4
+	public int get_FinalPointCircleSegments() { }
+
+	// RVA: 0x6BA8BBC Offset: 0x6BA4BBC VA: 0x6BA8BBC
+	public float get_PathEndCameraRotationLerp() { }
+
+	// RVA: 0x6BA8BC4 Offset: 0x6BA4BC4 VA: 0x6BA8BC4
+	public float get_FollowCameraRotationLerp() { }
+
+	// RVA: 0x6BA8BCC Offset: 0x6BA4BCC VA: 0x6BA8BCC
+	public Vector2 get_PathEndCameraOffset() { }
+
+	// RVA: 0x6BA8BD4 Offset: 0x6BA4BD4 VA: 0x6BA8BD4
+	public GrenadePracticeTracerFinalPointView get_PracticeTracerFinalPointView() { }
+
+	// RVA: 0x6BA8BDC Offset: 0x6BA4BDC VA: 0x6BA8BDC
+	public int get_TracerObjectsLayer() { }
+
+	// RVA: 0x6BA8BE4 Offset: 0x6BA4BE4 VA: 0x6BA8BE4
+	public LayerMask get_GrenadePracticeCameraMask() { }
+
+	// RVA: 0x6BA8BEC Offset: 0x6BA4BEC VA: 0x6BA8BEC
+	public float get_TracerWidthGrenadePracticeCamera() { }
+
+	// RVA: 0x6BA8BF4 Offset: 0x6BA4BF4 VA: 0x6BA8BF4
+	public int get_GrenadePracticeCameraObjectsLayer() { }
+
+	// RVA: 0x6BA8BFC Offset: 0x6BA4BFC VA: 0x6BA8BFC
+	public int get_CameraRenderTextureSizeX() { }
+
+	// RVA: 0x6BA8C04 Offset: 0x6BA4C04 VA: 0x6BA8C04
+	public int get_CameraRenderTextureSizeY() { }
+
+	// RVA: 0x6BA8C0C Offset: 0x6BA4C0C VA: 0x6BA8C0C
+	public float get_CameraZoneOffset() { }
+
+	// RVA: 0x6BA8C14 Offset: 0x6BA4C14 VA: 0x6BA8C14
+	public float get_CameraZoneBottomOffset() { }
+
+	// RVA: 0x6BA8C1C Offset: 0x6BA4C1C VA: 0x6BA8C1C
+	public void .ctor() { }
+}

@@ -1,0 +1,97 @@
+// Namespace: Axlebolt.Standoff.Inventory.Grenade.Ballistics.Practice
+public class GrenadePracticeHud : MonoBehaviour, IGrenadePracticeView // TypeDefIndex: 1704
+{
+	// Fields
+	[SerializeField]
+	private Canvas _canvas; // 0x20
+	[SerializeField]
+	private GrenadePracticeViewPlacement _grenadePracticeViewPlacement; // 0x28
+	[SerializeField]
+	private RawImage _rawImage; // 0x30
+
+	// Methods
+
+	// RVA: 0x64B6810 Offset: 0x64B2810 VA: 0x64B6810 Slot: 5
+	public void DGHHDACDFHEGEBB(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x64B6850 Offset: 0x64B2850 VA: 0x64B6850
+	public void GDACFDGEEEFAEHE(RenderTexture BHBFEGHBGBDHCBB) { }
+
+	// RVA: 0x64B686C Offset: 0x64B286C VA: 0x64B686C Slot: 6
+	public void CBFDCADFDCFDEAB(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x64B68AC Offset: 0x64B28AC VA: 0x64B68AC Slot: 7
+	public void GDBHAAFCECFGBDF(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x64B68EC Offset: 0x64B28EC VA: 0x64B68EC Slot: 8
+	public void BGGBEFFAHFBDEHD(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x64B692C Offset: 0x64B292C VA: 0x64B692C
+	public void SetRenderTexture(RenderTexture BHBFEGHBGBDHCBB) { }
+
+	// RVA: 0x64B6948 Offset: 0x64B2948 VA: 0x64B6948
+	public void BCCFADEBCAEFHEF(RenderTexture BHBFEGHBGBDHCBB) { }
+
+	// RVA: 0x64B6964 Offset: 0x64B2964 VA: 0x64B6964 Slot: 9
+	public void ABADDAFCHCAEGFH(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x64B69A4 Offset: 0x64B29A4 VA: 0x64B69A4
+	public void ABEHDDAAFFGEGBF(RenderTexture BHBFEGHBGBDHCBB) { }
+
+	// RVA: 0x64B69C0 Offset: 0x64B29C0 VA: 0x64B69C0 Slot: 10
+	public void ACHDEDCHHGHDGFE(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x64B6A00 Offset: 0x64B2A00 VA: 0x64B6A00 Slot: 11
+	public void FFBEDAEDDEAAGBF(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x64B6A40 Offset: 0x64B2A40 VA: 0x64B6A40
+	public void FGCBAEEBDFFECCB(RenderTexture BHBFEGHBGBDHCBB) { }
+
+	// RVA: 0x64B6A5C Offset: 0x64B2A5C VA: 0x64B6A5C Slot: 12
+	public void CDHACDGHBBFFAAB(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x64B6A9C Offset: 0x64B2A9C VA: 0x64B6A9C Slot: 13
+	public void FGDFCBCAHFCGFDD(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x64B6ADC Offset: 0x64B2ADC VA: 0x64B6ADC
+	public void .ctor() { }
+
+	// RVA: 0x64B6AE4 Offset: 0x64B2AE4 VA: 0x64B6AE4 Slot: 4
+	public void SetActive(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x64B6B24 Offset: 0x64B2B24 VA: 0x64B6B24
+	public void EDEFHCEAAGADEFG(RenderTexture BHBFEGHBGBDHCBB) { }
+
+	// RVA: 0x64B6B40 Offset: 0x64B2B40 VA: 0x64B6B40 Slot: 14
+	public void GDECBFAHHABBGCA(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x64B6B80 Offset: 0x64B2B80 VA: 0x64B6B80 Slot: 15
+	public void HFGBHDFGGBEADBB(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x64B6BC0 Offset: 0x64B2BC0 VA: 0x64B6BC0
+	public void GCCAFDCACADAAED(RenderTexture BHBFEGHBGBDHCBB) { }
+
+	// RVA: 0x64B6BDC Offset: 0x64B2BDC VA: 0x64B6BDC
+	public void BDCBBCHAHHFHGDB(RenderTexture BHBFEGHBGBDHCBB) { }
+
+	// RVA: 0x64B6BF8 Offset: 0x64B2BF8 VA: 0x64B6BF8 Slot: 16
+	public void FACECBBCDFBEGAD(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x64B6C38 Offset: 0x64B2C38 VA: 0x64B6C38
+	public void EDCHEGAEEAHEFFC(RenderTexture BHBFEGHBGBDHCBB) { }
+
+	// RVA: 0x64B6C54 Offset: 0x64B2C54 VA: 0x64B6C54 Slot: 17
+	public void DEGDDGAHFFFCABH(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x64B6C94 Offset: 0x64B2C94 VA: 0x64B6C94
+	public void HABDFBHDGACCDFC(RenderTexture BHBFEGHBGBDHCBB) { }
+
+	// RVA: 0x64B6CB0 Offset: 0x64B2CB0 VA: 0x64B6CB0
+	public void FGCCDEFAHHAAGGH(RenderTexture BHBFEGHBGBDHCBB) { }
+
+	// RVA: 0x64B6CCC Offset: 0x64B2CCC VA: 0x64B6CCC Slot: 18
+	public void DDFAHFCHCCDHACG(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x64B6D0C Offset: 0x64B2D0C VA: 0x64B6D0C
+	public void BBHHCAEFGDEEFAC(RenderTexture BHBFEGHBGBDHCBB) { }
+}

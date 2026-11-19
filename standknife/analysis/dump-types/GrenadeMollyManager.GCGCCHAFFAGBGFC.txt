@@ -1,0 +1,38 @@
+// Namespace: 
+private sealed class GrenadeMollyManager.GCGCCHAFFAGBGFC : IEnumerator<object>, IEnumerator, IDisposable // TypeDefIndex: 5582
+{
+	// Fields
+	private int <>1__state; // 0x10
+	private object <>2__current; // 0x18
+	public GrenadeMollyManager <>4__this; // 0x20
+	public Vector3 smokePlacement; // 0x28
+
+	// Properties
+	private object System.Collections.Generic.IEnumerator<System.Object>.Current { get; }
+	private object System.Collections.IEnumerator.Current { get; }
+
+	// Methods
+
+	[DebuggerHidden]
+	// RVA: 0x4819B58 Offset: 0x4815B58 VA: 0x4819B58
+	public void .ctor(int <>1__state) { }
+
+	[DebuggerHidden]
+	// RVA: 0x4822214 Offset: 0x481E214 VA: 0x4822214 Slot: 5
+	private void System.IDisposable.Dispose() { }
+
+	// RVA: 0x4822218 Offset: 0x481E218 VA: 0x4822218 Slot: 6
+	private bool MoveNext() { }
+
+	[DebuggerHidden]
+	// RVA: 0x4822440 Offset: 0x481E440 VA: 0x4822440 Slot: 4
+	private object System.Collections.Generic.IEnumerator<System.Object>.get_Current() { }
+
+	[DebuggerHidden]
+	// RVA: 0x4822448 Offset: 0x481E448 VA: 0x4822448 Slot: 8
+	private void System.Collections.IEnumerator.Reset() { }
+
+	[DebuggerHidden]
+	// RVA: 0x48224B0 Offset: 0x481E4B0 VA: 0x48224B0 Slot: 7
+	private object System.Collections.IEnumerator.get_Current() { }
+}

@@ -1,0 +1,129 @@
+// Namespace: Axlebolt.Ballistics.Simulation.Tracer
+public sealed class GrenadeTracerParameters : ScriptableObject // TypeDefIndex: 22407
+{
+	// Fields
+	[SerializeField]
+	private GrenadeTracerLineRendererView _tracerLineRendererView; // 0x18
+	[SerializeField]
+	private GrenadeTracerHitObject _tracerHitObject; // 0x20
+	[Header("Tracer")]
+	[SerializeField]
+	private Vector3 _firstPointDrawOffset; // 0x28
+	[SerializeField]
+	private Vector2 _tracerWidth; // 0x34
+	[SerializeField]
+	private Vector2 _tracerLenghtOffsetMeters; // 0x3C
+	[Header("Reflection")]
+	[SerializeField]
+	private Color _reflectionCloseColor; // 0x44
+	[SerializeField]
+	private Color _reflectionFarColor; // 0x54
+	[SerializeField]
+	private Color _reflectionMidColor; // 0x64
+	[SerializeField]
+	private float _reflectionColorMaxDistance; // 0x74
+	[Header("Update")]
+	[SerializeField]
+	private float _angleThreshold; // 0x78
+	[SerializeField]
+	private float _reDrawDelay; // 0x7C
+	[SerializeField]
+	private int _minTicksToShow; // 0x80
+	[SerializeField]
+	private int _operationPointsForOneFixedTick; // 0x84
+	[SerializeField]
+	private bool _isShowFullPathOnly; // 0x88
+	[SerializeField]
+	private float _tracerLerpSpeed; // 0x8C
+	[SerializeField]
+	private float _reflectionLerpSpeed; // 0x90
+	[SerializeField]
+	[Range(0, 20)]
+	private int _reflectionPostEnableTicks; // 0x94
+	[SerializeField]
+	[Range(2, 86)]
+	private int _fakeLerpPointCount; // 0x98
+	[SerializeField]
+	private bool _isUseGrenadeFloorHitMinSpeed; // 0x9C
+	[SerializeField]
+	private bool _onlyDefaultCalculation; // 0x9D
+
+	// Properties
+	public GrenadeTracerLineRendererView TracerLineRendererView { get; }
+	public GrenadeTracerHitObject TracerHitObject { get; }
+	public Vector3 FirstPointDrawOffset { get; }
+	public Color ReflectionCloseColor { get; }
+	public Color ReflectionFarColor { get; }
+	public Color ReflectionMidColor { get; }
+	public float ReflectionColorMaxDistance { get; }
+	public Vector2 TracerWidth { get; }
+	public Vector2 TracerLenghtOffsetMeters { get; }
+	public float AngleThreshold { get; }
+	public float ReDrawDelay { get; }
+	public int MinTicksToShow { get; }
+	public int OperationPointsForOneFixedTick { get; }
+	public bool IsShowFullPathOnly { get; }
+	public float TracerLerpSpeed { get; }
+	public int FakeLerpPointCount { get; }
+	public float ReflectionLerpSpeed { get; }
+	public int ReflectionPostEnableTicks { get; }
+
+	// Methods
+
+	// RVA: 0x6BAD1F8 Offset: 0x6BA91F8 VA: 0x6BAD1F8
+	public GrenadeTracerLineRendererView get_TracerLineRendererView() { }
+
+	// RVA: 0x6BAD200 Offset: 0x6BA9200 VA: 0x6BAD200
+	public GrenadeTracerHitObject get_TracerHitObject() { }
+
+	// RVA: 0x6BAD208 Offset: 0x6BA9208 VA: 0x6BAD208
+	public Vector3 get_FirstPointDrawOffset() { }
+
+	// RVA: 0x6BAD214 Offset: 0x6BA9214 VA: 0x6BAD214
+	public Color get_ReflectionCloseColor() { }
+
+	// RVA: 0x6BAD220 Offset: 0x6BA9220 VA: 0x6BAD220
+	public Color get_ReflectionFarColor() { }
+
+	// RVA: 0x6BAD22C Offset: 0x6BA922C VA: 0x6BAD22C
+	public Color get_ReflectionMidColor() { }
+
+	// RVA: 0x6BAD238 Offset: 0x6BA9238 VA: 0x6BAD238
+	public float get_ReflectionColorMaxDistance() { }
+
+	// RVA: 0x6BAD240 Offset: 0x6BA9240 VA: 0x6BAD240
+	public Vector2 get_TracerWidth() { }
+
+	// RVA: 0x6BAD248 Offset: 0x6BA9248 VA: 0x6BAD248
+	public Vector2 get_TracerLenghtOffsetMeters() { }
+
+	// RVA: 0x6BAD250 Offset: 0x6BA9250 VA: 0x6BAD250
+	public float get_AngleThreshold() { }
+
+	// RVA: 0x6BAD258 Offset: 0x6BA9258 VA: 0x6BAD258
+	public float get_ReDrawDelay() { }
+
+	// RVA: 0x6BAD260 Offset: 0x6BA9260 VA: 0x6BAD260
+	public int get_MinTicksToShow() { }
+
+	// RVA: 0x6BAD268 Offset: 0x6BA9268 VA: 0x6BAD268
+	public int get_OperationPointsForOneFixedTick() { }
+
+	// RVA: 0x6BAD270 Offset: 0x6BA9270 VA: 0x6BAD270
+	public bool get_IsShowFullPathOnly() { }
+
+	// RVA: 0x6BAD278 Offset: 0x6BA9278 VA: 0x6BAD278
+	public float get_TracerLerpSpeed() { }
+
+	// RVA: 0x6BAD280 Offset: 0x6BA9280 VA: 0x6BAD280
+	public int get_FakeLerpPointCount() { }
+
+	// RVA: 0x6BAD288 Offset: 0x6BA9288 VA: 0x6BAD288
+	public float get_ReflectionLerpSpeed() { }
+
+	// RVA: 0x6BAD290 Offset: 0x6BA9290 VA: 0x6BAD290
+	public int get_ReflectionPostEnableTicks() { }
+
+	// RVA: 0x6BAD298 Offset: 0x6BA9298 VA: 0x6BAD298
+	public void .ctor() { }
+}

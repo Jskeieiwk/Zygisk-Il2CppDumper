@@ -1,0 +1,80 @@
+// Namespace: UnityEngine.Rendering.PostProcessing
+public sealed class PostProcessDebugLayer // TypeDefIndex: 21119
+{
+	// Fields
+	public LightMeterMonitor lightMeter; // 0x10
+	public HistogramMonitor histogram; // 0x18
+	public WaveformMonitor waveform; // 0x20
+	public VectorscopeMonitor vectorscope; // 0x28
+	private Dictionary<MonitorType, Monitor> m_Monitors; // 0x30
+	private int frameWidth; // 0x38
+	private int frameHeight; // 0x3C
+	[CompilerGenerated]
+	private RenderTexture <debugOverlayTarget>k__BackingField; // 0x40
+	[CompilerGenerated]
+	private bool <debugOverlayActive>k__BackingField; // 0x48
+	[CompilerGenerated]
+	private DebugOverlay <debugOverlay>k__BackingField; // 0x4C
+	public PostProcessDebugLayer.OverlaySettings overlaySettings; // 0x50
+
+	// Properties
+	public RenderTexture debugOverlayTarget { get; set; }
+	public bool debugOverlayActive { get; set; }
+	public DebugOverlay debugOverlay { get; set; }
+
+	// Methods
+
+	[CompilerGenerated]
+	// RVA: 0xA575CBC Offset: 0xA571CBC VA: 0xA575CBC
+	public RenderTexture get_debugOverlayTarget() { }
+
+	[CompilerGenerated]
+	// RVA: 0xA575CC4 Offset: 0xA571CC4 VA: 0xA575CC4
+	private void set_debugOverlayTarget(RenderTexture value) { }
+
+	[CompilerGenerated]
+	// RVA: 0xA575CCC Offset: 0xA571CCC VA: 0xA575CCC
+	public bool get_debugOverlayActive() { }
+
+	[CompilerGenerated]
+	// RVA: 0xA575CD4 Offset: 0xA571CD4 VA: 0xA575CD4
+	private void set_debugOverlayActive(bool value) { }
+
+	[CompilerGenerated]
+	// RVA: 0xA575CE0 Offset: 0xA571CE0 VA: 0xA575CE0
+	public DebugOverlay get_debugOverlay() { }
+
+	[CompilerGenerated]
+	// RVA: 0xA575CE8 Offset: 0xA571CE8 VA: 0xA575CE8
+	private void set_debugOverlay(DebugOverlay value) { }
+
+	// RVA: 0xA575CF0 Offset: 0xA571CF0 VA: 0xA575CF0
+	internal void OnEnable() { }
+
+	// RVA: 0xA5763DC Offset: 0xA5723DC VA: 0xA5763DC
+	internal void OnDisable() { }
+
+	// RVA: 0xA5767CC Offset: 0xA5727CC VA: 0xA5767CC
+	private void DestroyDebugOverlayTarget() { }
+
+	// RVA: 0xA576874 Offset: 0xA572874 VA: 0xA576874
+	internal void SetFrameSize(int width, int height) { }
+
+	// RVA: 0xA576880 Offset: 0xA572880 VA: 0xA576880
+	public void PushDebugOverlay(CommandBuffer cmd, RenderTargetIdentifier source, PropertySheet sheet, int pass) { }
+
+	// RVA: 0xA576E54 Offset: 0xA572E54 VA: 0xA576E54
+	internal DepthTextureMode GetCameraFlags() { }
+
+	// RVA: 0xA576E7C Offset: 0xA572E7C VA: 0xA576E7C
+	internal void RenderMonitors(PostProcessRenderContext context) { }
+
+	// RVA: 0xA5776A4 Offset: 0xA5736A4 VA: 0xA5776A4
+	internal void RenderSpecialOverlays(PostProcessRenderContext context) { }
+
+	// RVA: 0xA577A70 Offset: 0xA573A70 VA: 0xA577A70
+	internal void EndFrame() { }
+
+	// RVA: 0xA577CE0 Offset: 0xA573CE0 VA: 0xA577CE0
+	public void .ctor() { }
+}

@@ -1,0 +1,38 @@
+// Namespace: 
+private sealed class PlayerControls.ECHBADGFBDFAAHH : IEnumerator<object>, IEnumerator, IDisposable // TypeDefIndex: 3350
+{
+	// Fields
+	private int <>1__state; // 0x10
+	private object <>2__current; // 0x18
+	public string prefabName; // 0x20
+	public Transform canvasTransform; // 0x28
+
+	// Properties
+	private object System.Collections.Generic.IEnumerator<System.Object>.Current { get; }
+	private object System.Collections.IEnumerator.Current { get; }
+
+	// Methods
+
+	[DebuggerHidden]
+	// RVA: 0x3848AD4 Offset: 0x3844AD4 VA: 0x3848AD4
+	public void .ctor(int <>1__state) { }
+
+	[DebuggerHidden]
+	// RVA: 0x384C0E0 Offset: 0x38480E0 VA: 0x384C0E0 Slot: 5
+	private void System.IDisposable.Dispose() { }
+
+	// RVA: 0x384C0E4 Offset: 0x38480E4 VA: 0x384C0E4 Slot: 6
+	private bool MoveNext() { }
+
+	[DebuggerHidden]
+	// RVA: 0x384C678 Offset: 0x3848678 VA: 0x384C678 Slot: 4
+	private object System.Collections.Generic.IEnumerator<System.Object>.get_Current() { }
+
+	[DebuggerHidden]
+	// RVA: 0x384C680 Offset: 0x3848680 VA: 0x384C680 Slot: 8
+	private void System.Collections.IEnumerator.Reset() { }
+
+	[DebuggerHidden]
+	// RVA: 0x384C6E8 Offset: 0x38486E8 VA: 0x384C6E8 Slot: 7
+	private object System.Collections.IEnumerator.get_Current() { }
+}

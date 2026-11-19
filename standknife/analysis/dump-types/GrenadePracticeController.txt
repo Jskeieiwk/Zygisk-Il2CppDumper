@@ -1,0 +1,105 @@
+public sealed class GrenadePracticeController : IGrenadePracticeController, IFullTracerArcListener, IDetonationableGrenadeListener, IDisposable // TypeDefIndex: 22827
+{
+	// Fields
+	private const float IsToCloseToPlayerRadius = 2;
+	private const float IsToCloseToPlayerRadiusSqr = 4;
+	private const float TimeToDisableFollowCameraAfterLimit = 0.5;
+	private readonly MeshRenderer _lineMeshRenderer; // 0x10
+	private readonly MeshRenderer _finalPointMeshRenderer; // 0x18
+	private readonly Camera _camera; // 0x20
+	private readonly Transform _cameraTransform; // 0x28
+	private readonly TracerRuntimeSettings _tracerRuntimeSettings; // 0x30
+	private readonly GrenadePracticeTracerParameters _grenadePracticeTracerParameters; // 0x38
+	private readonly Vector3 _vector3Up; // 0x40
+	private readonly Vector3 _boundsSize; // 0x4C
+	private readonly Quaternion _downRotation; // 0x58
+	private readonly Queue<Vector3> _grenadeFollowingPath; // 0x68
+	private Transform _playerTransform; // 0x70
+	private IPracticableGrenade _practicableGrenade; // 0x78
+	private IDetonationableGrenade _detonationableGrenade; // 0x80
+	private IFullTracerArcSource _fullTracerArcSource; // 0x88
+	private bool _isGrenadeThrowed; // 0x90
+	private bool _isGrenadeDetonated; // 0x91
+	private float _grenadeDetonationTime; // 0x94
+	private Vector3 _detonationPosition; // 0x98
+	private GrenadePracticeController.State _state; // 0xA4
+	private Vector3 _lastPositionOnTracerEnd; // 0xA8
+	private Vector3 _lastFollowCameraPosition; // 0xB4
+	private bool _isFullPathDrawedInLastTick; // 0xC0
+	private List<Vector3> _tracerRawDrawPositions; // 0xC8
+	private Nullable<Vector3> _tracerFinalPosition; // 0xD0
+	private readonly IGrenadePracticeView _grenadePracticeView; // 0xE0
+	private readonly TracerMeshGenerator _tracerMeshGenerator; // 0xE8
+	private readonly CameraZoneLimits _cameraZoneLimits; // 0xF0
+	private readonly List<Vector2> _levelZonePoints; // 0xF8
+	private bool _isActive; // 0x100
+	private bool _isCameraViewEnabled; // 0x101
+	private GrenadePracticeTracerLineRendererView _grenadePracticeTracerLineRendererView; // 0x108
+	private GrenadePracticeTracerFinalPointView _grenadePracticeTracerFinalPointView; // 0x110
+	private bool _isCameraFinalPointFreeFromLimits; // 0x118
+	private bool _isFollowingCameraFindLimit; // 0x119
+	private float _followingCameraFindLimitTime; // 0x11C
+
+	// Methods
+
+	// RVA: 0x6BA97FC Offset: 0x6BA57FC VA: 0x6BA97FC
+	public void .ctor(Camera camera, IGrenadePracticeView grenadePracticeView, TracerRuntimeSettings tracerRuntimeSettings, GrenadePracticeTracerParameters grenadePracticeTracerParameters, TracerMeshGeneratorBuffer tracerMeshGeneratorBuffer) { }
+
+	// RVA: 0x6BA9DD4 Offset: 0x6BA5DD4 VA: 0x6BA9DD4 Slot: 10
+	public void Dispose() { }
+
+	// RVA: 0x6BA9FD8 Offset: 0x6BA5FD8 VA: 0x6BA9FD8 Slot: 4
+	public void SetPlayer(Transform transform) { }
+
+	// RVA: 0x6BA9FE0 Offset: 0x6BA5FE0 VA: 0x6BA9FE0 Slot: 5
+	public void SetPracticeGrenade(IPracticableGrenade practicableGrenade) { }
+
+	// RVA: 0x6BAA428 Offset: 0x6BA6428 VA: 0x6BAA428 Slot: 6
+	public void SetDetonationableGrenade(IDetonationableGrenade detonationableGrenade) { }
+
+	// RVA: 0x6BAA5A0 Offset: 0x6BA65A0 VA: 0x6BAA5A0 Slot: 7
+	public void SetCameraZones(List<Bounds> levelZones) { }
+
+	// RVA: 0x6BAADE8 Offset: 0x6BA6DE8 VA: 0x6BAADE8 Slot: 8
+	public void OnFullPathDrawed(Vector3 finalPosition, List<Vector3> drawPositions) { }
+
+	// RVA: 0x6BAAF8C Offset: 0x6BA6F8C VA: 0x6BAAF8C Slot: 9
+	public void OnDetonated() { }
+
+	// RVA: 0x6BAAFB0 Offset: 0x6BA6FB0 VA: 0x6BAAFB0
+	public void OnUpdate() { }
+
+	// RVA: 0x6BAB078 Offset: 0x6BA7078 VA: 0x6BAB078
+	private void Tick() { }
+
+	// RVA: 0x6BAB95C Offset: 0x6BA795C VA: 0x6BAB95C
+	private void OnFollowGrenadeState() { }
+
+	// RVA: 0x6BAB6BC Offset: 0x6BA76BC VA: 0x6BAB6BC
+	private void OnShowTracerEndPointState() { }
+
+	// RVA: 0x6BAB4E0 Offset: 0x6BA74E0 VA: 0x6BAB4E0
+	private void OnNoneState() { }
+
+	// RVA: 0x6BAC530 Offset: 0x6BA8530 VA: 0x6BAC530
+	private void SetCameraPositionOnTracerEnd(Vector3 position, bool lerp) { }
+
+	// RVA: 0x6BAB4C4 Offset: 0x6BA74C4 VA: 0x6BAB4C4
+	private void Clear() { }
+
+	// RVA: 0x6BAA32C Offset: 0x6BA632C VA: 0x6BAA32C
+	private void SetRawDrawPositions(IFullTracerArcSource fullTracerArcSource) { }
+
+	// RVA: 0x6BAC3A8 Offset: 0x6BA83A8 VA: 0x6BAC3A8
+	private void SetActiveVisual(bool isActive) { }
+
+	// RVA: 0x6BAC404 Offset: 0x6BA8404 VA: 0x6BAC404
+	private void EnableCameraView(bool isEnabled) { }
+
+	// RVA: 0x6BAB29C Offset: 0x6BA729C VA: 0x6BAB29C
+	private void Draw() { }
+
+	[CompilerGenerated]
+	// RVA: 0x6BAB4CC Offset: 0x6BA74CC VA: 0x6BAB4CC
+	private void <Tick>g__SetNoneState|48_0() { }
+}

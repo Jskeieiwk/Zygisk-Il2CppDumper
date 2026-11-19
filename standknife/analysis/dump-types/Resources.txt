@@ -1,0 +1,80 @@
+// Namespace: UnityEngine
+public sealed class Resources // TypeDefIndex: 17453
+{
+	// Methods
+
+	// RVA: -1 Offset: -1
+	internal static T[] ConvertObjects<T>(Object[] rawObjects) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x810C3C4 Offset: 0x81083C4 VA: 0x810C3C4
+	|-Resources.ConvertObjects<object>
+	*/
+
+	// RVA: 0xA7798E4 Offset: 0xA7758E4 VA: 0xA7798E4
+	public static Object[] FindObjectsOfTypeAll(Type type) { }
+
+	// RVA: -1 Offset: -1
+	public static T[] FindObjectsOfTypeAll<T>() { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x810C4D0 Offset: 0x81084D0 VA: 0x810C4D0
+	|-Resources.FindObjectsOfTypeAll<object>
+	*/
+
+	// RVA: 0xA779AE0 Offset: 0xA775AE0 VA: 0xA779AE0
+	public static Object Load(string path) { }
+
+	// RVA: -1 Offset: -1
+	public static T Load<T>(string path) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x810C694 Offset: 0x8108694 VA: 0x810C694
+	|-Resources.Load<object>
+	*/
+
+	// RVA: 0xA778944 Offset: 0xA774944 VA: 0xA778944
+	public static Object Load(string path, Type systemTypeInstance) { }
+
+	// RVA: -1 Offset: -1
+	public static ResourceRequest LoadAsync<T>(string path) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x810C868 Offset: 0x8108868 VA: 0x810C868
+	|-Resources.LoadAsync<object>
+	*/
+
+	// RVA: 0xA779BDC Offset: 0xA775BDC VA: 0xA779BDC
+	public static ResourceRequest LoadAsync(string path, Type type) { }
+
+	// RVA: 0xA779DE0 Offset: 0xA775DE0 VA: 0xA779DE0
+	public static Object[] LoadAll(string path, Type systemTypeInstance) { }
+
+	// RVA: -1 Offset: -1
+	public static T[] LoadAll<T>(string path) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x810C79C Offset: 0x810879C VA: 0x810C79C
+	|-Resources.LoadAll<object>
+	*/
+
+	[FreeFunction("GetScriptingBuiltinResource", ThrowsException = True)]
+	[TypeInferenceRule(0)]
+	// RVA: 0xA779FE4 Offset: 0xA775FE4 VA: 0xA779FE4
+	public static Object GetBuiltinResource(Type type, string path) { }
+
+	// RVA: -1 Offset: -1
+	public static T GetBuiltinResource<T>(string path) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x810C590 Offset: 0x8108590 VA: 0x810C590
+	|-Resources.GetBuiltinResource<object>
+	*/
+
+	// RVA: 0xA77A178 Offset: 0xA776178 VA: 0xA77A178
+	public static void UnloadAsset(Object assetToUnload) { }
+
+	[FreeFunction("Resources_Bindings::UnloadUnusedAssets")]
+	// RVA: 0xA77A374 Offset: 0xA776374 VA: 0xA77A374
+	public static AsyncOperation UnloadUnusedAssets() { }
+}

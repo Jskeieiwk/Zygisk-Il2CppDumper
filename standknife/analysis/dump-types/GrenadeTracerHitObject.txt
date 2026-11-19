@@ -1,0 +1,40 @@
+// Namespace: Axlebolt.Ballistics.Simulation.Tracer
+public sealed class GrenadeTracerHitObject : MonoBehaviour // TypeDefIndex: 22405
+{
+	// Fields
+	[SerializeField]
+	private MeshRenderer _innerSphereMeshRenderer; // 0x20
+	[SerializeField]
+	private MeshRenderer _outerSphereMeshRenderer; // 0x28
+	[SerializeField]
+	private int _sortingOrder; // 0x30
+	private Material _innerSphereMaterial; // 0x38
+	[CompilerGenerated]
+	private List<MeshRenderer> <Renderers>k__BackingField; // 0x40
+
+	// Properties
+	public Material InnerSphereMaterial { get; }
+	public List<MeshRenderer> Renderers { get; set; }
+
+	// Methods
+
+	// RVA: 0x6BACDAC Offset: 0x6BA8DAC VA: 0x6BACDAC
+	public Material get_InnerSphereMaterial() { }
+
+	[CompilerGenerated]
+	// RVA: 0x6BACDB4 Offset: 0x6BA8DB4 VA: 0x6BACDB4
+	public List<MeshRenderer> get_Renderers() { }
+
+	[CompilerGenerated]
+	// RVA: 0x6BACDBC Offset: 0x6BA8DBC VA: 0x6BACDBC
+	private void set_Renderers(List<MeshRenderer> value) { }
+
+	// RVA: 0x6BACDC4 Offset: 0x6BA8DC4 VA: 0x6BACDC4
+	private void Awake() { }
+
+	// RVA: 0x6BACF98 Offset: 0x6BA8F98 VA: 0x6BACF98
+	private void SetSortingOrder() { }
+
+	// RVA: 0x6BACFD0 Offset: 0x6BA8FD0 VA: 0x6BACFD0
+	public void .ctor() { }
+}

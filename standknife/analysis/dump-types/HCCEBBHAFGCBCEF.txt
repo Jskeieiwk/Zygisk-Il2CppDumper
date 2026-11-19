@@ -1,0 +1,153 @@
+// Namespace: 
+public class HCCEBBHAFGCBCEF : SerializableMessage // TypeDefIndex: 1109
+{
+	// Fields
+	private Vector3 EHCBBAECBBHBCFB; // 0x10
+	public float CGCHACEBBHECGCA; // 0x1C
+	public float GHAEHEHADAAFDEG; // 0x20
+	public bool HGAABCFHHBHCBGC; // 0x24
+	public bool FDAEDCAFGCFECFF; // 0x25
+
+	// Methods
+
+	// RVA: 0x602730C Offset: 0x602330C VA: 0x602730C
+	public bool GEBBDEHEHAGGDDB() { }
+
+	// RVA: 0x60273FC Offset: 0x60233FC VA: 0x60273FC
+	public bool EHBEHHGCECFGGHC() { }
+
+	// RVA: 0x60274EC Offset: 0x60234EC VA: 0x60274EC
+	public bool CDCADACBHHFGCAH() { }
+
+	// RVA: 0x60275DC Offset: 0x60235DC VA: 0x60275DC
+	public bool AECAGAEAFGDFFCB() { }
+
+	// RVA: 0x60276CC Offset: 0x60236CC VA: 0x60276CC
+	public bool BHFFDHBACBBHFCC() { }
+
+	// RVA: 0x60277BC Offset: 0x60237BC VA: 0x60277BC
+	public bool EEDHCBCGAAECGFH() { }
+
+	// RVA: 0x60278AC Offset: 0x60238AC VA: 0x60278AC
+	public bool GCFCCHAEDEDDCCD() { }
+
+	// RVA: 0x602799C Offset: 0x602399C VA: 0x602799C
+	public bool ADCFCCEBBFHDGDA() { }
+
+	// RVA: 0x6027A8C Offset: 0x6023A8C VA: 0x6027A8C
+	public bool BGGCDDCBFDEEDAB() { }
+
+	// RVA: 0x6027B7C Offset: 0x6023B7C VA: 0x6027B7C
+	public bool EFHEAFDABFCAHDF() { }
+
+	// RVA: 0x6027C1C Offset: 0x6023C1C VA: 0x6027C1C
+	public bool BHGAFGBDCDBDFFC() { }
+
+	// RVA: 0x6027D0C Offset: 0x6023D0C VA: 0x6027D0C
+	public bool DFCAEHBECFCEAFG() { }
+
+	// RVA: 0x6027DFC Offset: 0x6023DFC VA: 0x6027DFC
+	public bool ADDBDHDGGFHEFHC() { }
+
+	// RVA: 0x6027EEC Offset: 0x6023EEC VA: 0x6027EEC
+	public bool FEGEGAGCEEBHACH() { }
+
+	// RVA: 0x6027FDC Offset: 0x6023FDC VA: 0x6027FDC
+	public bool AHFBBBCHFCFFEGB() { }
+
+	// RVA: 0x60280CC Offset: 0x60240CC VA: 0x60280CC
+	public bool HFAHDHCDDGEAEEA() { }
+
+	// RVA: 0x60281BC Offset: 0x60241BC VA: 0x60281BC
+	public bool GDFDFEABCFBAACH() { }
+
+	// RVA: 0x60282AC Offset: 0x60242AC VA: 0x60282AC
+	public bool HGDCHHFHBBEDFGC() { }
+
+	// RVA: 0x602839C Offset: 0x602439C VA: 0x602839C
+	public bool CAAFCDHEABFCCDH() { }
+
+	// RVA: 0x602848C Offset: 0x602448C VA: 0x602848C
+	public bool DAHFCEDBHBDABAC() { }
+
+	// RVA: 0x602857C Offset: 0x602457C VA: 0x602857C
+	public bool ABDEEDACDCHBCDB() { }
+
+	// RVA: 0x602866C Offset: 0x602466C VA: 0x602866C
+	public bool HHFCHGDGDAHFBEB() { }
+
+	// RVA: 0x602875C Offset: 0x602475C VA: 0x602875C
+	public bool AAADBHFACCBHCCA() { }
+
+	// RVA: 0x602884C Offset: 0x602484C VA: 0x602884C
+	public bool FHDHDBEHDDEEGAE() { }
+
+	// RVA: 0x602893C Offset: 0x602493C VA: 0x602893C
+	public bool FBGBEEFEEFCBBDF() { }
+
+	// RVA: 0x6028A2C Offset: 0x6024A2C VA: 0x6028A2C
+	public bool FHDFCGEACGHCGDC() { }
+
+	// RVA: 0x6028B1C Offset: 0x6024B1C VA: 0x6028B1C
+	public bool EGEHHECHHAHAFGC() { }
+
+	// RVA: 0x6028C0C Offset: 0x6024C0C VA: 0x6028C0C
+	public bool AHHCAECFHGGFHEC() { }
+
+	// RVA: 0x6028CFC Offset: 0x6024CFC VA: 0x6028CFC
+	public bool GBBCBBCFBHAGBDF() { }
+
+	// RVA: 0x6028DEC Offset: 0x6024DEC VA: 0x6028DEC
+	public bool GEHDGGFBAECGGAG() { }
+
+	// RVA: 0x6028EDC Offset: 0x6024EDC VA: 0x6028EDC
+	public bool BABHBHDEHFABBCE() { }
+
+	// RVA: 0x6028FCC Offset: 0x6024FCC VA: 0x6028FCC
+	public void .ctor() { }
+
+	// RVA: 0x6028FD4 Offset: 0x6024FD4 VA: 0x6028FD4
+	public bool GCFHFAEDEADFBHC() { }
+
+	// RVA: 0x60290C4 Offset: 0x60250C4 VA: 0x60290C4
+	public bool FADDDDGCGHFAEHD() { }
+
+	// RVA: 0x60291B4 Offset: 0x60251B4 VA: 0x60291B4
+	public bool FEGEFCBCCDDGGAD() { }
+
+	// RVA: 0x60292A4 Offset: 0x60252A4 VA: 0x60292A4
+	public bool AHBHFGEBAAAHGEB() { }
+
+	// RVA: 0x6029394 Offset: 0x6025394 VA: 0x6029394
+	public bool DCGEHDAGCGDCBGB() { }
+
+	// RVA: 0x6029484 Offset: 0x6025484 VA: 0x6029484
+	public bool FGBHAFGHACCFCCB() { }
+
+	// RVA: 0x6029574 Offset: 0x6025574 VA: 0x6029574
+	public bool BFCAFBDEHFACCGD() { }
+
+	// RVA: 0x6029664 Offset: 0x6025664 VA: 0x6029664
+	public bool AAGGHFCHCBFHHBB() { }
+
+	// RVA: 0x6029754 Offset: 0x6025754 VA: 0x6029754 Slot: 4
+	public override void BAEFHHGHHDEDCED(BinaryStream BAEGHFAECEHHFAF) { }
+
+	// RVA: 0x60297C0 Offset: 0x60257C0 VA: 0x60297C0
+	public bool EGBEEBCCGAADDHF() { }
+
+	// RVA: 0x60298B0 Offset: 0x60258B0 VA: 0x60298B0 Slot: 5
+	public override void ABGECDCHGCHBHDE(BinaryStream EADACHFBDGEGAAF) { }
+
+	// RVA: 0x6029910 Offset: 0x6025910 VA: 0x6029910
+	public bool GDDCHCHGHBEGFGD() { }
+
+	// RVA: 0x6029A00 Offset: 0x6025A00 VA: 0x6029A00
+	public bool ADBGHDEHBGBAHFC() { }
+
+	// RVA: 0x6029AF0 Offset: 0x6025AF0 VA: 0x6029AF0
+	public bool DFCGBAFEDHBABHE() { }
+
+	// RVA: 0x6029BE0 Offset: 0x6025BE0 VA: 0x6029BE0
+	public bool HGAFDGHCDEBABHG() { }
+}

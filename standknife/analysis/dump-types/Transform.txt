@@ -1,0 +1,274 @@
+// Namespace: UnityEngine
+public class Transform : Component, IEnumerable // TypeDefIndex: 17554
+{
+	// Properties
+	public Vector3 position { get; set; }
+	public Vector3 localPosition { get; set; }
+	public Vector3 eulerAngles { get; set; }
+	public Vector3 localEulerAngles { get; set; }
+	public Vector3 right { get; }
+	public Vector3 up { get; }
+	public Vector3 forward { get; }
+	public Quaternion rotation { get; set; }
+	public Quaternion localRotation { get; set; }
+	public Vector3 localScale { get; set; }
+	public Transform parent { get; set; }
+	internal Transform parentInternal { get; set; }
+	public Matrix4x4 worldToLocalMatrix { get; }
+	public Matrix4x4 localToWorldMatrix { get; }
+	public Transform root { get; }
+	public int childCount { get; }
+	public Vector3 lossyScale { get; }
+	[NativeProperty("HasChangedDeprecated")]
+	public bool hasChanged { get; set; }
+
+	// Methods
+
+	// RVA: 0xA79FF78 Offset: 0xA79BF78 VA: 0xA79FF78
+	protected void .ctor() { }
+
+	// RVA: 0xA7A0030 Offset: 0xA79C030 VA: 0xA7A0030
+	public Vector3 get_position() { }
+
+	// RVA: 0xA7A01EC Offset: 0xA79C1EC VA: 0xA7A01EC
+	public void set_position(Vector3 value) { }
+
+	// RVA: 0xA7A0398 Offset: 0xA79C398 VA: 0xA7A0398
+	public Vector3 get_localPosition() { }
+
+	// RVA: 0xA7A0548 Offset: 0xA79C548 VA: 0xA7A0548
+	public void set_localPosition(Vector3 value) { }
+
+	// RVA: 0xA7A06F0 Offset: 0xA79C6F0 VA: 0xA7A06F0
+	public Vector3 get_eulerAngles() { }
+
+	// RVA: 0xA7A0764 Offset: 0xA79C764 VA: 0xA7A0764
+	public void set_eulerAngles(Vector3 value) { }
+
+	// RVA: 0xA7A07D0 Offset: 0xA79C7D0 VA: 0xA7A07D0
+	public Vector3 get_localEulerAngles() { }
+
+	// RVA: 0xA7A0844 Offset: 0xA79C844 VA: 0xA7A0844
+	public void set_localEulerAngles(Vector3 value) { }
+
+	// RVA: 0xA7A08B0 Offset: 0xA79C8B0 VA: 0xA7A08B0
+	public Vector3 get_right() { }
+
+	// RVA: 0xA7A0994 Offset: 0xA79C994 VA: 0xA7A0994
+	public Vector3 get_up() { }
+
+	// RVA: 0xA7A0A78 Offset: 0xA79CA78 VA: 0xA7A0A78
+	public Vector3 get_forward() { }
+
+	// RVA: 0xA7A073C Offset: 0xA79C73C VA: 0xA7A073C
+	public Quaternion get_rotation() { }
+
+	// RVA: 0xA7A07AC Offset: 0xA79C7AC VA: 0xA7A07AC
+	public void set_rotation(Quaternion value) { }
+
+	// RVA: 0xA7A081C Offset: 0xA79C81C VA: 0xA7A081C
+	public Quaternion get_localRotation() { }
+
+	// RVA: 0xA7A088C Offset: 0xA79C88C VA: 0xA7A088C
+	public void set_localRotation(Quaternion value) { }
+
+	// RVA: 0xA7A11AC Offset: 0xA79D1AC VA: 0xA7A11AC
+	public Vector3 get_localScale() { }
+
+	// RVA: 0xA7A1368 Offset: 0xA79D368 VA: 0xA7A1368
+	public void set_localScale(Vector3 value) { }
+
+	// RVA: 0xA79FF6C Offset: 0xA79BF6C VA: 0xA79FF6C
+	public Transform get_parent() { }
+
+	// RVA: 0xA7A1524 Offset: 0xA79D524 VA: 0xA7A1524
+	public void set_parent(Transform value) { }
+
+	// RVA: 0xA7A1520 Offset: 0xA79D520 VA: 0xA7A1520
+	internal Transform get_parentInternal() { }
+
+	// RVA: 0xA7A1688 Offset: 0xA79D688 VA: 0xA7A1688
+	internal void set_parentInternal(Transform value) { }
+
+	// RVA: 0xA7A1690 Offset: 0xA79D690 VA: 0xA7A1690
+	private Transform GetParent() { }
+
+	// RVA: 0xA7A1800 Offset: 0xA79D800 VA: 0xA7A1800
+	public void SetParent(Transform p) { }
+
+	[FreeFunction("SetParent", HasExplicitThis = True)]
+	// RVA: 0xA7A1808 Offset: 0xA79D808 VA: 0xA7A1808
+	public void SetParent(Transform parent, bool worldPositionStays) { }
+
+	// RVA: 0xA7A19AC Offset: 0xA79D9AC VA: 0xA7A19AC
+	public Matrix4x4 get_worldToLocalMatrix() { }
+
+	// RVA: 0xA79FAB4 Offset: 0xA79BAB4 VA: 0xA79FAB4
+	public Matrix4x4 get_localToWorldMatrix() { }
+
+	// RVA: 0xA7A1D24 Offset: 0xA79DD24 VA: 0xA7A1D24
+	public void SetPositionAndRotation(Vector3 position, Quaternion rotation) { }
+
+	// RVA: 0xA7A1F00 Offset: 0xA79DF00 VA: 0xA7A1F00
+	public void SetLocalPositionAndRotation(Vector3 localPosition, Quaternion localRotation) { }
+
+	// RVA: 0xA7A20DC Offset: 0xA79E0DC VA: 0xA7A20DC
+	public void Rotate(Vector3 eulers, Space relativeTo) { }
+
+	// RVA: 0xA7A23A8 Offset: 0xA79E3A8 VA: 0xA7A23A8
+	public void Rotate(Vector3 eulers) { }
+
+	// RVA: 0xA7A23B0 Offset: 0xA79E3B0 VA: 0xA7A23B0
+	public void Rotate(float xAngle, float yAngle, float zAngle, Space relativeTo) { }
+
+	// RVA: 0xA7A23B4 Offset: 0xA79E3B4 VA: 0xA7A23B4
+	public void LookAt(Transform target, Vector3 worldUp) { }
+
+	// RVA: 0xA7A2500 Offset: 0xA79E500 VA: 0xA7A2500
+	public void LookAt(Transform target) { }
+
+	// RVA: 0xA7A24D0 Offset: 0xA79E4D0 VA: 0xA7A24D0
+	public void LookAt(Vector3 worldPosition, Vector3 worldUp) { }
+
+	// RVA: 0xA7A26C4 Offset: 0xA79E6C4 VA: 0xA7A26C4
+	public void LookAt(Vector3 worldPosition) { }
+
+	[FreeFunction("Internal_LookAt", HasExplicitThis = True)]
+	// RVA: 0xA7A2694 Offset: 0xA79E694 VA: 0xA7A2694
+	private void Internal_LookAt(Vector3 worldPosition, Vector3 worldUp) { }
+
+	// RVA: 0xA7A2954 Offset: 0xA79E954 VA: 0xA7A2954
+	public Vector3 TransformDirection(Vector3 direction) { }
+
+	// RVA: 0xA7A2B2C Offset: 0xA79EB2C VA: 0xA7A2B2C
+	public Vector3 InverseTransformDirection(Vector3 direction) { }
+
+	// RVA: 0xA7A2D0C Offset: 0xA79ED0C VA: 0xA7A2D0C
+	public Vector3 TransformVector(Vector3 vector) { }
+
+	// RVA: 0xA7A2EF4 Offset: 0xA79EEF4 VA: 0xA7A2EF4
+	public Vector3 InverseTransformVector(Vector3 vector) { }
+
+	// RVA: 0xA7A30D0 Offset: 0xA79F0D0 VA: 0xA7A30D0
+	public Vector3 TransformPoint(Vector3 position) { }
+
+	// RVA: 0xA7A32AC Offset: 0xA79F2AC VA: 0xA7A32AC
+	public Vector3 InverseTransformPoint(Vector3 position) { }
+
+	// RVA: 0xA7A3484 Offset: 0xA79F484 VA: 0xA7A3484
+	public Transform get_root() { }
+
+	// RVA: 0xA7A3488 Offset: 0xA79F488 VA: 0xA7A3488
+	private Transform GetRoot() { }
+
+	[NativeMethod("GetChildrenCount")]
+	// RVA: 0xA7A35EC Offset: 0xA79F5EC VA: 0xA7A35EC
+	public int get_childCount() { }
+
+	// RVA: 0xA7A3758 Offset: 0xA79F758 VA: 0xA7A3758
+	public void SetAsFirstSibling() { }
+
+	// RVA: 0xA7A38D8 Offset: 0xA79F8D8 VA: 0xA7A38D8
+	public void SetAsLastSibling() { }
+
+	// RVA: 0xA7A3A4C Offset: 0xA79FA4C VA: 0xA7A3A4C
+	public void SetSiblingIndex(int index) { }
+
+	// RVA: 0xA7A3BD0 Offset: 0xA79FBD0 VA: 0xA7A3BD0
+	public int GetSiblingIndex() { }
+
+	[FreeFunction]
+	// RVA: 0xA7A3D44 Offset: 0xA79FD44 VA: 0xA7A3D44
+	private static Transform FindRelativeTransformWithPath(Transform transform, string path, bool isActiveOnly) { }
+
+	// RVA: 0xA7A3EF4 Offset: 0xA79FEF4 VA: 0xA7A3EF4
+	public Transform Find(string n) { }
+
+	[NativeMethod("GetWorldScaleLossy")]
+	// RVA: 0xA7A3F94 Offset: 0xA79FF94 VA: 0xA7A3F94
+	public Vector3 get_lossyScale() { }
+
+	[FreeFunction("Internal_IsChildOrSameTransform", HasExplicitThis = True)]
+	// RVA: 0xA7A4150 Offset: 0xA7A0150 VA: 0xA7A4150
+	public bool IsChildOf(Transform parent) { }
+
+	// RVA: 0xA7A42D0 Offset: 0xA7A02D0 VA: 0xA7A42D0
+	public bool get_hasChanged() { }
+
+	// RVA: 0xA7A4438 Offset: 0xA7A0438 VA: 0xA7A4438
+	public void set_hasChanged(bool value) { }
+
+	// RVA: 0xA7A45B4 Offset: 0xA7A05B4 VA: 0xA7A45B4 Slot: 4
+	public IEnumerator GetEnumerator() { }
+
+	[NativeThrows]
+	[FreeFunction("GetChild", HasExplicitThis = True)]
+	// RVA: 0xA7A4690 Offset: 0xA7A0690 VA: 0xA7A4690
+	public Transform GetChild(int index) { }
+
+	// RVA: 0xA7A005C Offset: 0xA79C05C VA: 0xA7A005C
+	private void get_position_Injected(out Vector3 ret) { }
+
+	// RVA: 0xA7A0210 Offset: 0xA79C210 VA: 0xA7A0210
+	private void set_position_Injected(ref Vector3 value) { }
+
+	// RVA: 0xA7A03C4 Offset: 0xA79C3C4 VA: 0xA7A03C4
+	private void get_localPosition_Injected(out Vector3 ret) { }
+
+	// RVA: 0xA7A056C Offset: 0xA79C56C VA: 0xA7A056C
+	private void set_localPosition_Injected(ref Vector3 value) { }
+
+	// RVA: 0xA7A0B5C Offset: 0xA79CB5C VA: 0xA7A0B5C
+	private void get_rotation_Injected(out Quaternion ret) { }
+
+	// RVA: 0xA7A0CE8 Offset: 0xA79CCE8 VA: 0xA7A0CE8
+	private void set_rotation_Injected(ref Quaternion value) { }
+
+	// RVA: 0xA7A0E7C Offset: 0xA79CE7C VA: 0xA7A0E7C
+	private void get_localRotation_Injected(out Quaternion ret) { }
+
+	// RVA: 0xA7A1018 Offset: 0xA79D018 VA: 0xA7A1018
+	private void set_localRotation_Injected(ref Quaternion value) { }
+
+	// RVA: 0xA7A11D8 Offset: 0xA79D1D8 VA: 0xA7A11D8
+	private void get_localScale_Injected(out Vector3 ret) { }
+
+	// RVA: 0xA7A138C Offset: 0xA79D38C VA: 0xA7A138C
+	private void set_localScale_Injected(ref Vector3 value) { }
+
+	// RVA: 0xA7A19E8 Offset: 0xA79D9E8 VA: 0xA7A19E8
+	private void get_worldToLocalMatrix_Injected(out Matrix4x4 ret) { }
+
+	// RVA: 0xA7A1B88 Offset: 0xA79DB88 VA: 0xA7A1B88
+	private void get_localToWorldMatrix_Injected(out Matrix4x4 ret) { }
+
+	// RVA: 0xA7A1D54 Offset: 0xA79DD54 VA: 0xA7A1D54
+	private void SetPositionAndRotation_Injected(ref Vector3 position, ref Quaternion rotation) { }
+
+	// RVA: 0xA7A1F30 Offset: 0xA79DF30 VA: 0xA7A1F30
+	private void SetLocalPositionAndRotation_Injected(ref Vector3 localPosition, ref Quaternion localRotation) { }
+
+	// RVA: 0xA7A27AC Offset: 0xA79E7AC VA: 0xA7A27AC
+	private void Internal_LookAt_Injected(ref Vector3 worldPosition, ref Vector3 worldUp) { }
+
+	// RVA: 0xA7A298C Offset: 0xA79E98C VA: 0xA7A298C
+	private void TransformDirection_Injected(ref Vector3 direction, out Vector3 ret) { }
+
+	// RVA: 0xA7A2B64 Offset: 0xA79EB64 VA: 0xA7A2B64
+	private void InverseTransformDirection_Injected(ref Vector3 direction, out Vector3 ret) { }
+
+	// RVA: 0xA7A2D44 Offset: 0xA79ED44 VA: 0xA7A2D44
+	private void TransformVector_Injected(ref Vector3 vector, out Vector3 ret) { }
+
+	// RVA: 0xA7A2F2C Offset: 0xA79EF2C VA: 0xA7A2F2C
+	private void InverseTransformVector_Injected(ref Vector3 vector, out Vector3 ret) { }
+
+	// RVA: 0xA7A3108 Offset: 0xA79F108 VA: 0xA7A3108
+	private void TransformPoint_Injected(ref Vector3 position, out Vector3 ret) { }
+
+	// RVA: 0xA7A32E4 Offset: 0xA79F2E4 VA: 0xA7A32E4
+	private void InverseTransformPoint_Injected(ref Vector3 position, out Vector3 ret) { }
+
+	// RVA: 0xA7A3FC0 Offset: 0xA79FFC0 VA: 0xA7A3FC0
+	private void get_lossyScale_Injected(out Vector3 ret) { }
+}

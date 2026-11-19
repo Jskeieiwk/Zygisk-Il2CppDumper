@@ -1,0 +1,18 @@
+// Namespace: 
+private sealed class BombEnvironmentContextManager.<>c // TypeDefIndex: 3213
+{
+	// Fields
+	public static readonly BombEnvironmentContextManager.<>c <>9; // 0x0
+	public static Func<GrenadeParameters, ACFBEBGADFDGEBG> <>9__4_0; // 0x8
+
+	// Methods
+
+	// RVA: 0x36EC1B4 Offset: 0x36E81B4 VA: 0x36EC1B4
+	public void .ctor() { }
+
+	// RVA: 0x36EC1BC Offset: 0x36E81BC VA: 0x36EC1BC
+	internal ACFBEBGADFDGEBG CGGDHAADFHAEGEC(GrenadeParameters x) { }
+
+	// RVA: 0x36EC1D4 Offset: 0x36E81D4 VA: 0x36EC1D4
+	private static void .cctor() { }
+}

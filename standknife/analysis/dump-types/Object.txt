@@ -1,0 +1,44 @@
+// Namespace: System
+public class Object // TypeDefIndex: 13121
+{
+	// Methods
+
+	// RVA: 0x9898190 Offset: 0x9894190 VA: 0x9898190 Slot: 0
+	public virtual bool Equals(object obj) { }
+
+	// RVA: 0x989819C Offset: 0x989419C VA: 0x989819C
+	public static bool Equals(object objA, object objB) { }
+
+	[ReliabilityContract(3, 1)]
+	// RVA: 0x9877E08 Offset: 0x9873E08 VA: 0x9877E08
+	public void .ctor() { }
+
+	[ReliabilityContract(3, 2)]
+	// RVA: 0x989834C Offset: 0x989434C VA: 0x989834C Slot: 1
+	protected virtual void Finalize() { }
+
+	// RVA: 0x9898350 Offset: 0x9894350 VA: 0x9898350 Slot: 2
+	public virtual int GetHashCode() { }
+
+	// RVA: 0x9878DF4 Offset: 0x9874DF4 VA: 0x9878DF4
+	public Type GetType() { }
+
+	// RVA: 0x988BBAC Offset: 0x9887BAC VA: 0x988BBAC
+	protected object MemberwiseClone() { }
+
+	// RVA: 0x9898358 Offset: 0x9894358 VA: 0x9898358 Slot: 3
+	public virtual string ToString() { }
+
+	[ReliabilityContract(3, 2)]
+	// RVA: 0x98984D4 Offset: 0x98944D4 VA: 0x98984D4
+	public static bool ReferenceEquals(object objA, object objB) { }
+
+	// RVA: 0x9898354 Offset: 0x9894354 VA: 0x9898354
+	internal static int InternalGetHashCode(object o) { }
+
+	// RVA: 0x98984E0 Offset: 0x98944E0 VA: 0x98984E0
+	private void FieldGetter(string typeName, string fieldName, ref object val) { }
+
+	// RVA: 0x98984E4 Offset: 0x98944E4 VA: 0x98984E4
+	private void FieldSetter(string typeName, string fieldName, object val) { }
+}

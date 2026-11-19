@@ -1,0 +1,12 @@
+// Namespace: SteamAudio
+public struct Material // TypeDefIndex: 21615
+{
+	// Fields
+	public float absorptionLow; // 0x0
+	public float absorptionMid; // 0x4
+	public float absorptionHigh; // 0x8
+	public float scattering; // 0xC
+	public float transmissionLow; // 0x10
+	public float transmissionMid; // 0x14
+	public float transmissionHigh; // 0x18
+}

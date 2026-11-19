@@ -1,0 +1,269 @@
+// Namespace: Axlebolt.Standoff.Inventory.Bomb
+public class PlantedBombController : MonoBehaviour // TypeDefIndex: 6789
+{
+	// Fields
+	private static ILogger GGFBEBEFCHEEADD; // 0x0
+	public const string GameObjectName = "Bomb";
+	private BombParameters ADFBFDFCDFGAAFA; // 0x20
+	private BombExtendedParameters HGFEADFGHCBFBCC; // 0x28
+	private ParticleSystem BDDDDHCCDBEHAHH; // 0x30
+	private Transform GFGGAECECDFGCEH; // 0x38
+	private BombIndicator DCCACDBEFGBFHCE; // 0x40
+	private float HACGAHCHADBFDEC; // 0x48
+	private int EEAHHABBDFDHDEE; // 0x4C
+	private Action BDDGFDEGHGCGGDC; // 0x50
+	private BombSoundParameters ECDBAFBHDAEEFHF; // 0x58
+	private PlantedBombController.DEDAHAGCHDCFFDE CBCGGBEHGBGFFAD; // 0x60
+	private PlantedBombController.BCFCDHGBHEGCAEC DHDHCGAEEGDAAEF; // 0x68
+	private PlantedBombController.BCFCDHGBHEGCAEC AAGEAAEHGCGHGGA; // 0x70
+	private PlantedBombController.BCFCDHGBHEGCAEC ADAHDGEEGEBHCCG; // 0x78
+	private PlantedBombController.BCFCDHGBHEGCAEC DBDABBEBHCCEEEC; // 0x80
+	private HHCCHBFBHFCEGHD<PlantedBombOcclusionController> ADDHHGEBEFACABD; // 0x88
+	private WeaponLodGroup AAGDHAADAEAAFEB; // 0x98
+	private GHDCBEDCHGHBDEC DEHACACGDBCCCBE; // 0xA0
+	private BHGCCBBABFFCDGA DFBHDEFDFHBCBBF; // 0xA8
+	[CompilerGenerated]
+	private bool <EDABEECHDAHFGGB>k__BackingField; // 0xB0
+	[CompilerGenerated]
+	private bool <FHHCCEADBCEGCEA>k__BackingField; // 0xB1
+	[CompilerGenerated]
+	private bool <CDBABAFDGAFGAEF>k__BackingField; // 0xB2
+	[CompilerGenerated]
+	private BHGCCBBABFFCDGA <AACEAEFBEDEBFGE>k__BackingField; // 0xB4
+	[CompilerGenerated]
+	private Transform <EAHGDFCCEBHCBDG>k__BackingField; // 0xC0
+
+	// Properties
+	private static ILogger FHFEDEGBFGDDCCB { get; }
+	public bool CBBGEGCDAFAAHEE { get; set; }
+	public bool BHFDFACEEBAHDAF { get; set; }
+	public bool CADFHBBEHCADAHC { get; set; }
+	public BHGCCBBABFFCDGA ADBDBDBCBHECGEB { get; set; }
+	public Transform BCAFDDGADHHDCDE { get; set; }
+	public WeaponLodGroup ECHAAAHHGCCGHCC { get; }
+	public HHCCHBFBHFCEGHD<PlantedBombOcclusionController> GGCADEGEHCBAHAH { get; }
+	public BombExtendedParameters ECDFFGDHBADGBCG { get; }
+	public BHGCCBBABFFCDGA EFHGFEHHHHBGGEH { set; }
+
+	// Methods
+
+	[CompilerGenerated]
+	// RVA: 0x5198290 Offset: 0x5194290 VA: 0x5198290
+	private void HDAEFFFACECBBAA(bool BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x519829C Offset: 0x519429C VA: 0x519829C
+	private void AABBAGBEFFADHEF(bool BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x51982A8 Offset: 0x51942A8 VA: 0x51982A8
+	public void set_DetonationDuration(BHGCCBBABFFCDGA BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x51982B0 Offset: 0x51942B0 VA: 0x51982B0
+	private void GHHCHBGDADFBGCB(BHGCCBBABFFCDGA BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x51982B8 Offset: 0x51942B8 VA: 0x51982B8
+	private float ADGEBDBDHFFCBCG(float ABEFGEFAFFAEGDH) { }
+
+	// RVA: 0x5198338 Offset: 0x5194338 VA: 0x5198338
+	public void Detonate() { }
+
+	// RVA: 0x5198488 Offset: 0x5194488 VA: 0x5198488
+	private static ILogger GEDACEHBCDFHAHA() { }
+
+	// RVA: 0x51985B4 Offset: 0x51945B4 VA: 0x51985B4
+	public void BAGAECBHGAAFFGA() { }
+
+	[CompilerGenerated]
+	// RVA: 0x5198A0C Offset: 0x5194A0C VA: 0x5198A0C
+	private void GCAFEAFBGDDCEHG(bool BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x5198A18 Offset: 0x5194A18 VA: 0x5198A18
+	public void BAAGEAHGDBAFFFA(BHGCCBBABFFCDGA BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x5198A20 Offset: 0x5194A20 VA: 0x5198A20
+	private void AHHGEFEEEBBBCHG() { }
+
+	// RVA: 0x5198B40 Offset: 0x5194B40 VA: 0x5198B40
+	private void OnDestroy() { }
+
+	// RVA: 0x5198BFC Offset: 0x5194BFC VA: 0x5198BFC
+	private float BGBBGDECCFEFGCE(float ABEFGEFAFFAEGDH) { }
+
+	[CompilerGenerated]
+	// RVA: 0x5198C84 Offset: 0x5194C84 VA: 0x5198C84
+	public bool get_IsDefused() { }
+
+	// RVA: 0x5198C8C Offset: 0x5194C8C VA: 0x5198C8C
+	public bool BHAFBBEFFDCEHDC() { }
+
+	// RVA: 0x5198C94 Offset: 0x5194C94 VA: 0x5198C94
+	public bool GEBCHCDCCBFGDGD() { }
+
+	// RVA: 0x5198C9C Offset: 0x5194C9C VA: 0x5198C9C
+	private float FGFCHBEAHGAFCEE(float ABEFGEFAFFAEGDH) { }
+
+	// RVA: 0x5198D48 Offset: 0x5194D48 VA: 0x5198D48
+	private void HDEBDBDCHDGDDAG(bool BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x5198D54 Offset: 0x5194D54 VA: 0x5198D54
+	public void Defused(GDDEBEFGEGAECCG CFCABCBGDCEACAG) { }
+
+	// RVA: 0x5198EB0 Offset: 0x5194EB0 VA: 0x5198EB0
+	public void ACDCEHCBHFDFEDD(BombParameters DFACEHGBCBAFFEH, BombSoundParameters FHDAADCGHACAGCD, BombExtendedParameters CGHFBGFFCDFFDAE) { }
+
+	// RVA: 0x5199AB4 Offset: 0x5195AB4 VA: 0x5199AB4
+	public bool CGAGAAGHBGCGDGH() { }
+
+	// RVA: 0x5199ABC Offset: 0x5195ABC VA: 0x5199ABC
+	public void GFBGGEBFEBFCEHH(BombParameters DFACEHGBCBAFFEH, BombSoundParameters FHDAADCGHACAGCD, BombExtendedParameters CGHFBGFFCDFFDAE) { }
+
+	// RVA: 0x519A460 Offset: 0x5196460 VA: 0x519A460
+	private void FBGGAFGFDFGCAAG() { }
+
+	// RVA: 0x519A5A4 Offset: 0x51965A4 VA: 0x519A5A4
+	public void PreInitialize(BombParameters DFACEHGBCBAFFEH, BombSoundParameters FHDAADCGHACAGCD, BombExtendedParameters CGHFBGFFCDFFDAE) { }
+
+	// RVA: 0x519AF48 Offset: 0x5196F48 VA: 0x519AF48
+	public void BEEDHBHHHABHAFH() { }
+
+	// RVA: 0x519B098 Offset: 0x5197098 VA: 0x519B098
+	public HHCCHBFBHFCEGHD<PlantedBombOcclusionController> get_OcclusionController() { }
+
+	// RVA: 0x519B0A4 Offset: 0x51970A4 VA: 0x519B0A4
+	public WeaponLodGroup DFBDFGGDHCAHFBH() { }
+
+	// RVA: 0x519B0AC Offset: 0x51970AC VA: 0x519B0AC
+	public void GAHBGAFEBDGEHAH() { }
+
+	[CompilerGenerated]
+	// RVA: 0x519B1D0 Offset: 0x51971D0 VA: 0x519B1D0
+	public bool get_IsDetonated() { }
+
+	// RVA: 0x519B1D8 Offset: 0x51971D8 VA: 0x519B1D8
+	private void AEFBHFAFEBAFCCH(bool BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x519B1E4 Offset: 0x51971E4 VA: 0x519B1E4
+	private void CEDDBAEHEDEDGHH(Transform BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x519B1EC Offset: 0x51971EC VA: 0x519B1EC
+	private void AHHCGHAFGABGGAE(bool BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x519B1F8 Offset: 0x51971F8 VA: 0x519B1F8
+	private void AAEFDBHFHFEBGHA(float HBBECHDEDBDCBCA) { }
+
+	// RVA: 0x519B318 Offset: 0x5197318 VA: 0x519B318
+	public void ACDDEADFACGDCGA() { }
+
+	// RVA: 0x519B728 Offset: 0x5197728 VA: 0x519B728
+	public void .ctor() { }
+
+	// RVA: 0x519B730 Offset: 0x5197730 VA: 0x519B730
+	public WeaponLodGroup get_WeaponLodGroup() { }
+
+	// RVA: 0x519B738 Offset: 0x5197738 VA: 0x519B738
+	private static ILogger AGHFGCCFAFBFBAH() { }
+
+	[CompilerGenerated]
+	// RVA: 0x519B864 Offset: 0x5197864 VA: 0x519B864
+	private void EBHBEHBFDCGGFAD(BHGCCBBABFFCDGA BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x519B86C Offset: 0x519786C VA: 0x519B86C
+	public Transform get_Transform() { }
+
+	// RVA: 0x519B874 Offset: 0x5197874 VA: 0x519B874
+	public void HHFHFEHHDDABHGC() { }
+
+	// RVA: 0x519BC58 Offset: 0x5197C58 VA: 0x519BC58
+	public void ECDECHDEGBDDFBC(GDDEBEFGEGAECCG CFCABCBGDCEACAG) { }
+
+	// RVA: 0x519BED8 Offset: 0x5197ED8 VA: 0x519BED8
+	private static ILogger FBDFEBGDFBEFHCE() { }
+
+	// RVA: 0x519C004 Offset: 0x5198004 VA: 0x519C004
+	private void DCGGDFBDFCGAACG() { }
+
+	// RVA: 0x519C0F4 Offset: 0x51980F4 VA: 0x519C0F4
+	public void GBDCFEFGEHAEBFB(BombParameters DFACEHGBCBAFFEH, BombSoundParameters FHDAADCGHACAGCD, BombExtendedParameters CGHFBGFFCDFFDAE) { }
+
+	// RVA: 0x519CA98 Offset: 0x5198A98 VA: 0x519CA98
+	public void OnReturnToPool() { }
+
+	// RVA: 0x519CE28 Offset: 0x5198E28 VA: 0x519CE28
+	public bool AFEHEEFEEGDCFDA() { }
+
+	// RVA: 0x519CE30 Offset: 0x5198E30 VA: 0x519CE30
+	public BombExtendedParameters get_ExtendedParameters() { }
+
+	// RVA: 0x519CE38 Offset: 0x5198E38 VA: 0x519CE38
+	public WeaponLodGroup AEDGGBHGDBECFEB() { }
+
+	// RVA: 0x519CE40 Offset: 0x5198E40 VA: 0x519CE40
+	private void AAACFFFAEEGHBHH(bool BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x519CE4C Offset: 0x5198E4C VA: 0x519CE4C
+	public BHGCCBBABFFCDGA BBEDFCGHFHEEDFG() { }
+
+	// RVA: 0x519CE54 Offset: 0x5198E54 VA: 0x519CE54
+	public void BCHFACEAEGFDCED() { }
+
+	// RVA: 0x519CF7C Offset: 0x5198F7C VA: 0x519CF7C
+	public void BBEGDCDDBCEDEHA() { }
+
+	// RVA: 0x519D320 Offset: 0x5199320 VA: 0x519D320
+	private void CCBBGAAHBHHAHEE(BHGCCBBABFFCDGA BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x519D328 Offset: 0x5199328 VA: 0x519D328
+	public bool DDFCGGCGGDFGACG() { }
+
+	// RVA: 0x519D330 Offset: 0x5199330 VA: 0x519D330
+	private float HBEHCHDABEHHAGH() { }
+
+	// RVA: 0x519D404 Offset: 0x5199404 VA: 0x519D404
+	public void AEDGAAACEFHBGAC(GDDEBEFGEGAECCG CFCABCBGDCEACAG) { }
+
+	[CompilerGenerated]
+	// RVA: 0x519D65C Offset: 0x519965C VA: 0x519D65C
+	public bool get_IsPlanted() { }
+
+	// RVA: 0x519D664 Offset: 0x5199664 VA: 0x519D664
+	public void CCGDDDGCCDAFCFE(GDDEBEFGEGAECCG CFCABCBGDCEACAG) { }
+
+	// RVA: 0x519D8A4 Offset: 0x51998A4 VA: 0x519D8A4
+	private void DHBHBACCCCFHCFG(float HBBECHDEDBDCBCA) { }
+
+	// RVA: 0x519D9C4 Offset: 0x51999C4 VA: 0x519D9C4
+	public BombExtendedParameters EGEACGBECCCEGCE() { }
+
+	// RVA: 0x519D9CC Offset: 0x51999CC VA: 0x519D9CC
+	public WeaponLodGroup BFBBFBACDBBHGAC() { }
+
+	// RVA: 0x519D9D4 Offset: 0x51999D4 VA: 0x519D9D4
+	public HHCCHBFBHFCEGHD<PlantedBombOcclusionController> DGFEFDECAAFCFBD() { }
+
+	[CompilerGenerated]
+	// RVA: 0x519D9E0 Offset: 0x51999E0 VA: 0x519D9E0
+	public BHGCCBBABFFCDGA get_PlantTime() { }
+
+	// RVA: 0x519D9E8 Offset: 0x51999E8 VA: 0x519D9E8
+	public void Plant(Vector3 BEAFEDEABADDAAB, float BGACADGFGAGAHHD, Action AHGECEECEEBECAH) { }
+
+	// RVA: 0x519E18C Offset: 0x519A18C VA: 0x519E18C
+	private void Awake() { }
+
+	// RVA: 0x519E1B0 Offset: 0x519A1B0 VA: 0x519E1B0
+	public void DHCBGHDAHAGCHDF(BombParameters DFACEHGBCBAFFEH, BombSoundParameters FHDAADCGHACAGCD, BombExtendedParameters CGHFBGFFCDFFDAE) { }
+
+	// RVA: 0x519EB54 Offset: 0x519AB54 VA: 0x519EB54
+	private void Update() { }
+
+	// RVA: 0x519ECA8 Offset: 0x519ACA8 VA: 0x519ECA8
+	private float GEEFABGAAECBHDD(float ABEFGEFAFFAEGDH) { }
+
+	// RVA: 0x519ED40 Offset: 0x519AD40 VA: 0x519ED40
+	private static ILogger CFDGEGBFCBACECA() { }
+
+	// RVA: 0x519EE6C Offset: 0x519AE6C VA: 0x519EE6C
+	public HHCCHBFBHFCEGHD<PlantedBombOcclusionController> BCBEBFFDFEADGCA() { }
+}

@@ -1,0 +1,186 @@
+// Namespace: UnityEngine
+public class Rigidbody : Component // TypeDefIndex: 22571
+{
+	// Properties
+	public Vector3 velocity { get; set; }
+	public Vector3 angularVelocity { get; set; }
+	public float drag { get; set; }
+	public float angularDrag { get; set; }
+	public float mass { get; set; }
+	public bool useGravity { get; set; }
+	public bool isKinematic { get; set; }
+	public RigidbodyConstraints constraints { set; }
+	public CollisionDetectionMode collisionDetectionMode { set; }
+	public Vector3 worldCenterOfMass { get; }
+	public Vector3 inertiaTensor { set; }
+	public bool detectCollisions { set; }
+	public Vector3 position { get; }
+	public Quaternion rotation { get; }
+	public RigidbodyInterpolation interpolation { get; set; }
+	public int solverIterations { set; }
+	public float maxAngularVelocity { set; }
+
+	// Methods
+
+	// RVA: 0xA82B4E4 Offset: 0xA8274E4 VA: 0xA82B4E4
+	public Vector3 get_velocity() { }
+
+	// RVA: 0xA82B6A0 Offset: 0xA8276A0 VA: 0xA82B6A0
+	public void set_velocity(Vector3 value) { }
+
+	// RVA: 0xA82B848 Offset: 0xA827848 VA: 0xA82B848
+	public Vector3 get_angularVelocity() { }
+
+	// RVA: 0xA82BA04 Offset: 0xA827A04 VA: 0xA82BA04
+	public void set_angularVelocity(Vector3 value) { }
+
+	// RVA: 0xA82BBB4 Offset: 0xA827BB4 VA: 0xA82BBB4
+	public float get_drag() { }
+
+	// RVA: 0xA82BD20 Offset: 0xA827D20 VA: 0xA82BD20
+	public void set_drag(float value) { }
+
+	// RVA: 0xA82BEB8 Offset: 0xA827EB8 VA: 0xA82BEB8
+	public float get_angularDrag() { }
+
+	// RVA: 0xA82C02C Offset: 0xA82802C VA: 0xA82C02C
+	public void set_angularDrag(float value) { }
+
+	// RVA: 0xA82C1B4 Offset: 0xA8281B4 VA: 0xA82C1B4
+	public float get_mass() { }
+
+	// RVA: 0xA82C318 Offset: 0xA828318 VA: 0xA82C318
+	public void set_mass(float value) { }
+
+	// RVA: 0xA82C4B4 Offset: 0xA8284B4 VA: 0xA82C4B4
+	public bool get_useGravity() { }
+
+	// RVA: 0xA82C624 Offset: 0xA828624 VA: 0xA82C624
+	public void set_useGravity(bool value) { }
+
+	// RVA: 0xA82C7A8 Offset: 0xA8287A8 VA: 0xA82C7A8
+	public bool get_isKinematic() { }
+
+	// RVA: 0xA82C928 Offset: 0xA828928 VA: 0xA82C928
+	public void set_isKinematic(bool value) { }
+
+	// RVA: 0xA82CAB8 Offset: 0xA828AB8 VA: 0xA82CAB8
+	public void set_constraints(RigidbodyConstraints value) { }
+
+	// RVA: 0xA82CC48 Offset: 0xA828C48 VA: 0xA82CC48
+	public void set_collisionDetectionMode(CollisionDetectionMode value) { }
+
+	// RVA: 0xA82CDE0 Offset: 0xA828DE0 VA: 0xA82CDE0
+	public Vector3 get_worldCenterOfMass() { }
+
+	// RVA: 0xA82CF9C Offset: 0xA828F9C VA: 0xA82CF9C
+	public void set_inertiaTensor(Vector3 value) { }
+
+	// RVA: 0xA82D148 Offset: 0xA829148 VA: 0xA82D148
+	public void set_detectCollisions(bool value) { }
+
+	// RVA: 0xA82D2D4 Offset: 0xA8292D4 VA: 0xA82D2D4
+	public Vector3 get_position() { }
+
+	// RVA: 0xA82D48C Offset: 0xA82948C VA: 0xA82D48C
+	public Quaternion get_rotation() { }
+
+	// RVA: 0xA82D644 Offset: 0xA829644 VA: 0xA82D644
+	public RigidbodyInterpolation get_interpolation() { }
+
+	// RVA: 0xA82D7C4 Offset: 0xA8297C4 VA: 0xA82D7C4
+	public void set_interpolation(RigidbodyInterpolation value) { }
+
+	// RVA: 0xA82D960 Offset: 0xA829960 VA: 0xA82D960
+	public void set_solverIterations(int value) { }
+
+	// RVA: 0xA82DAE4 Offset: 0xA829AE4 VA: 0xA82DAE4
+	public void set_maxAngularVelocity(float value) { }
+
+	// RVA: 0xA82DC78 Offset: 0xA829C78 VA: 0xA82DC78
+	public void MovePosition(Vector3 position) { }
+
+	// RVA: 0xA82DE24 Offset: 0xA829E24 VA: 0xA82DE24
+	public void MoveRotation(Quaternion rot) { }
+
+	// RVA: 0xA82DFD8 Offset: 0xA829FD8 VA: 0xA82DFD8
+	public bool IsSleeping() { }
+
+	// RVA: 0xA82E14C Offset: 0xA82A14C VA: 0xA82E14C
+	public void WakeUp() { }
+
+	// RVA: 0xA82E2A4 Offset: 0xA82A2A4 VA: 0xA82E2A4
+	public Vector3 GetPointVelocity(Vector3 worldPoint) { }
+
+	// RVA: 0xA82E488 Offset: 0xA82A488 VA: 0xA82E488
+	public void AddForce(Vector3 force, ForceMode mode) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA82E658 Offset: 0xA82A658 VA: 0xA82E658
+	public void AddForce(Vector3 force) { }
+
+	// RVA: 0xA82E680 Offset: 0xA82A680 VA: 0xA82E680
+	public void AddTorque(Vector3 torque, ForceMode mode) { }
+
+	// RVA: 0xA82E848 Offset: 0xA82A848 VA: 0xA82E848
+	public void AddForceAtPosition(Vector3 force, Vector3 position, ForceMode mode) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA82EA3C Offset: 0xA82AA3C VA: 0xA82EA3C
+	public void AddForceAtPosition(Vector3 force, Vector3 position) { }
+
+	// RVA: 0xA82EA70 Offset: 0xA82AA70 VA: 0xA82EA70
+	public void AddExplosionForce(float explosionForce, Vector3 explosionPosition, float explosionRadius, float upwardsModifier, ForceMode mode) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA82EC88 Offset: 0xA82AC88 VA: 0xA82EC88
+	public void AddExplosionForce(float explosionForce, Vector3 explosionPosition, float explosionRadius) { }
+
+	// RVA: 0xA82ECB8 Offset: 0xA82ACB8 VA: 0xA82ECB8
+	public void .ctor() { }
+
+	// RVA: 0xA82B510 Offset: 0xA827510 VA: 0xA82B510
+	private void get_velocity_Injected(out Vector3 ret) { }
+
+	// RVA: 0xA82B6C4 Offset: 0xA8276C4 VA: 0xA82B6C4
+	private void set_velocity_Injected(ref Vector3 value) { }
+
+	// RVA: 0xA82B874 Offset: 0xA827874 VA: 0xA82B874
+	private void get_angularVelocity_Injected(out Vector3 ret) { }
+
+	// RVA: 0xA82BA28 Offset: 0xA827A28 VA: 0xA82BA28
+	private void set_angularVelocity_Injected(ref Vector3 value) { }
+
+	// RVA: 0xA82CE0C Offset: 0xA828E0C VA: 0xA82CE0C
+	private void get_worldCenterOfMass_Injected(out Vector3 ret) { }
+
+	// RVA: 0xA82CFC0 Offset: 0xA828FC0 VA: 0xA82CFC0
+	private void set_inertiaTensor_Injected(ref Vector3 value) { }
+
+	// RVA: 0xA82D300 Offset: 0xA829300 VA: 0xA82D300
+	private void get_position_Injected(out Vector3 ret) { }
+
+	// RVA: 0xA82D4B4 Offset: 0xA8294B4 VA: 0xA82D4B4
+	private void get_rotation_Injected(out Quaternion ret) { }
+
+	// RVA: 0xA82DC9C Offset: 0xA829C9C VA: 0xA82DC9C
+	private void MovePosition_Injected(ref Vector3 position) { }
+
+	// RVA: 0xA82DE48 Offset: 0xA829E48 VA: 0xA82DE48
+	private void MoveRotation_Injected(ref Quaternion rot) { }
+
+	// RVA: 0xA82E2DC Offset: 0xA82A2DC VA: 0xA82E2DC
+	private void GetPointVelocity_Injected(ref Vector3 worldPoint, out Vector3 ret) { }
+
+	// RVA: 0xA82E4B0 Offset: 0xA82A4B0 VA: 0xA82E4B0
+	private void AddForce_Injected(ref Vector3 force, ForceMode mode) { }
+
+	// RVA: 0xA82E6A8 Offset: 0xA82A6A8 VA: 0xA82E6A8
+	private void AddTorque_Injected(ref Vector3 torque, ForceMode mode) { }
+
+	// RVA: 0xA82E87C Offset: 0xA82A87C VA: 0xA82E87C
+	private void AddForceAtPosition_Injected(ref Vector3 force, ref Vector3 position, ForceMode mode) { }
+
+	// RVA: 0xA82EAA0 Offset: 0xA82AAA0 VA: 0xA82EAA0
+	private void AddExplosionForce_Injected(float explosionForce, ref Vector3 explosionPosition, float explosionRadius, float upwardsModifier, ForceMode mode) { }
+}

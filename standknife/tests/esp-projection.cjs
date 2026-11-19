@@ -1,0 +1,12 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const context=vm.createContext({Number});
+vm.runInContext(fs.readFileSync('assets/esp-projection.js','utf8').replaceAll('export function','function')+'\nglobalThis.warpBones=warpBones;',context);
+const bones=[[10,100,10],[14,90,10],null,[7,70,10]];
+const warped=context.warpBones(bones,[10,100,10],[10,60,10],[110,120,12],[110,40,12]);
+assert.deepEqual(Array.from(warped[0]),[110,120,12]);
+assert.deepEqual(Array.from(warped[1]),[118,100,12]);
+assert.equal(warped[2],null);
+assert.deepEqual(Array.from(warped[3]),[104,60,12]);
+assert.equal(context.warpBones(bones,[10,100,10],[10,100,10],[110,120,12],[110,40,12]),null);
+assert.equal(context.warpBones(bones,[10,100,10],[10,60,10],[110,120,12],[110,-1000,12]),null);
+console.log('Skeleton anchor reprojection and invalid geometry fallback passed.');

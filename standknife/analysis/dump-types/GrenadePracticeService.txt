@@ -1,0 +1,173 @@
+// Namespace: Axlebolt.Standoff.Inventory.Grenade.Ballistics
+public class GrenadePracticeService : MonoBehaviour, ACAHDBDADBBAGCA, CEAECBABFEDDBFD, FFHGDBDEFAEFGCA // TypeDefIndex: 332
+{
+	// Fields
+	private IGrenadePracticeController BGBHCFEBFGHCGCF; // 0x20
+	private PlayerManager EFDGGBBEAAFDDAB; // 0x28
+	private GrenadeManager GHFABBECECFDCGH; // 0x30
+	private WeaponryController CBECEDAEGACEDAD; // 0x38
+
+	// Methods
+
+	// RVA: 0x32E512C Offset: 0x32E112C VA: 0x32E512C Slot: 10
+	public void CCBCCEDBCEACAFC(DroppedGrenadeController DFFBHCGFDCEHGCC, FHGFCFFHBHEAEEA FAAHHCGFHEHAHHA) { }
+
+	// RVA: 0x32E5334 Offset: 0x32E1334 VA: 0x32E5334 Slot: 11
+	public void CHGDABGBEBFBADH(DroppedGrenadeController DFFBHCGFDCEHGCC, FHGFCFFHBHEAEEA FAAHHCGFHEHAHHA) { }
+
+	// RVA: 0x32E553C Offset: 0x32E153C VA: 0x32E553C Slot: 12
+	public void CADGAEGBCDAGEAC(PlayerController DHCGCGCDGFHAHEB) { }
+
+	// RVA: 0x32E5540 Offset: 0x32E1540 VA: 0x32E5540 Slot: 6
+	public void OnPlayerSpawned(PlayerController DHCGCGCDGFHAHEB) { }
+
+	// RVA: 0x32E5938 Offset: 0x32E1938 VA: 0x32E5938 Slot: 13
+	public void GAGBDEGABCDDBFH(PlayerController DHCGCGCDGFHAHEB) { }
+
+	// RVA: 0x32E593C Offset: 0x32E193C VA: 0x32E593C Slot: 14
+	public void EDEBGBBAEHAEFFD(PlayerController AHGEEFHFCCGCHHF) { }
+
+	// RVA: 0x32E5A08 Offset: 0x32E1A08 VA: 0x32E5A08
+	public void BCDAADEBDHFDGBE(IGrenadePracticeController AHGCFAHDFHFBDEC) { }
+
+	// RVA: 0x32E5E38 Offset: 0x32E1E38 VA: 0x32E5E38 Slot: 15
+	public void DCABFCFAGBFHACF(PlayerController DHCGCGCDGFHAHEB) { }
+
+	// RVA: 0x32E6230 Offset: 0x32E2230 VA: 0x32E6230 Slot: 16
+	public void EFBAGAFCAGEHDHD(PlayerController AHGEEFHFCCGCHHF) { }
+
+	// RVA: 0x32E62FC Offset: 0x32E22FC VA: 0x32E62FC
+	private void AECCFGBHDBFBACF() { }
+
+	// RVA: 0x32E63A0 Offset: 0x32E23A0 VA: 0x32E63A0 Slot: 17
+	public void CDCBBEEFEFADFAH(PlayerController DHCGCGCDGFHAHEB) { }
+
+	// RVA: 0x32E65E8 Offset: 0x32E25E8 VA: 0x32E65E8 Slot: 18
+	public void GFDFEEHHAFEGDGB(PlayerController DHCGCGCDGFHAHEB) { }
+
+	// RVA: 0x32E65EC Offset: 0x32E25EC VA: 0x32E65EC Slot: 19
+	public void HGCCCBGCBCEEHAH(PlayerController AHGEEFHFCCGCHHF) { }
+
+	// RVA: 0x32E66B8 Offset: 0x32E26B8 VA: 0x32E66B8 Slot: 9
+	public void OnThrowGrenade(DroppedGrenadeController DFFBHCGFDCEHGCC, FHGFCFFHBHEAEEA FAAHHCGFHEHAHHA) { }
+
+	// RVA: 0x32E68C4 Offset: 0x32E28C4 VA: 0x32E68C4 Slot: 20
+	public void GDDBGDEDHFAGCHB(DroppedGrenadeController DFFBHCGFDCEHGCC, FHGFCFFHBHEAEEA FAAHHCGFHEHAHHA) { }
+
+	// RVA: 0x32E6AD0 Offset: 0x32E2AD0 VA: 0x32E6AD0 Slot: 21
+	public void GEDGCHHFGBHBEEH(PlayerController DHCGCGCDGFHAHEB) { }
+
+	// RVA: 0x32E6EC8 Offset: 0x32E2EC8 VA: 0x32E6EC8 Slot: 7
+	public void OnRemotePlayerDestroyed(PlayerController DHCGCGCDGFHAHEB) { }
+
+	// RVA: 0x32E6ECC Offset: 0x32E2ECC VA: 0x32E6ECC Slot: 22
+	public void HDBCGACDFEEGHBA(WeaponController DHDEFGDDFEDDHBG) { }
+
+	// RVA: 0x32E6ED0 Offset: 0x32E2ED0 VA: 0x32E6ED0
+	public void FBEDCEFHCGHDBFE(IGrenadePracticeController AHGCFAHDFHFBDEC) { }
+
+	// RVA: 0x32E72DC Offset: 0x32E32DC VA: 0x32E72DC Slot: 4
+	public void OnWeaponSet(WeaponController DHDEFGDDFEDDHBG) { }
+
+	// RVA: 0x32E72E0 Offset: 0x32E32E0 VA: 0x32E72E0 Slot: 23
+	public void CADDADBHDDBGGFE(DroppedGrenadeController DFFBHCGFDCEHGCC, FHGFCFFHBHEAEEA FAAHHCGFHEHAHHA) { }
+
+	// RVA: 0x32E74E8 Offset: 0x32E34E8 VA: 0x32E74E8
+	private void AGADEBEFHDFABCD() { }
+
+	// RVA: 0x32E758C Offset: 0x32E358C VA: 0x32E758C Slot: 24
+	public void HADABFFCAEECABB(PlayerController DHCGCGCDGFHAHEB) { }
+
+	// RVA: 0x32E7590 Offset: 0x32E3590 VA: 0x32E7590
+	private void CEDGDDDABHECBCA() { }
+
+	// RVA: 0x32E7634 Offset: 0x32E3634 VA: 0x32E7634
+	public void Init(IGrenadePracticeController AHGCFAHDFHFBDEC) { }
+
+	// RVA: 0x32E7A74 Offset: 0x32E3A74 VA: 0x32E7A74 Slot: 25
+	public void ADDFHAEBAFEBEBD(PlayerController DHCGCGCDGFHAHEB) { }
+
+	// RVA: 0x32E7CBC Offset: 0x32E3CBC VA: 0x32E7CBC
+	private void FGFCGEFEFGCDCFA() { }
+
+	// RVA: 0x32E7DC8 Offset: 0x32E3DC8 VA: 0x32E7DC8
+	public void .ctor() { }
+
+	// RVA: 0x32E7DD0 Offset: 0x32E3DD0 VA: 0x32E7DD0 Slot: 8
+	public void OnRemotePlayerSpawned(PlayerController DHCGCGCDGFHAHEB) { }
+
+	// RVA: 0x32E7DD4 Offset: 0x32E3DD4 VA: 0x32E7DD4 Slot: 26
+	public void HHAAEFFCCDHEBCD(PlayerController DHCGCGCDGFHAHEB) { }
+
+	// RVA: 0x32E5788 Offset: 0x32E1788 VA: 0x32E5788
+	private void GCBEFDABHCCECGF(WeaponController DHDEFGDDFEDDHBG) { }
+
+	// RVA: 0x32E6080 Offset: 0x32E2080 VA: 0x32E6080
+	private void FEHEECFAAAFCFEA(WeaponController DHDEFGDDFEDDHBG) { }
+
+	// RVA: 0x32E7DD8 Offset: 0x32E3DD8 VA: 0x32E7DD8
+	private void GEEBGFEGHGDGHBD() { }
+
+	// RVA: 0x32E7E7C Offset: 0x32E3E7C VA: 0x32E7E7C
+	private void AEGHACBFECCCDFH() { }
+
+	// RVA: 0x32E7F20 Offset: 0x32E3F20 VA: 0x32E7F20
+	private void Start() { }
+
+	// RVA: 0x32E7FC4 Offset: 0x32E3FC4 VA: 0x32E7FC4 Slot: 27
+	public void FAHCDCHHCHGHAFG(DroppedGrenadeController DFFBHCGFDCEHGCC, FHGFCFFHBHEAEEA FAAHHCGFHEHAHHA) { }
+
+	// RVA: 0x32E81D0 Offset: 0x32E41D0 VA: 0x32E81D0 Slot: 28
+	public void GGDGCHABGFAHFHC(DroppedGrenadeController DFFBHCGFDCEHGCC, FHGFCFFHBHEAEEA FAAHHCGFHEHAHHA) { }
+
+	// RVA: 0x32E83D8 Offset: 0x32E43D8 VA: 0x32E83D8 Slot: 29
+	public void BAHHAHGCHEEGBHG(PlayerController DHCGCGCDGFHAHEB) { }
+
+	// RVA: 0x32E8620 Offset: 0x32E4620 VA: 0x32E8620
+	private void ADACHDGEGCCGGCB() { }
+
+	// RVA: 0x32E872C Offset: 0x32E472C VA: 0x32E872C Slot: 30
+	public void FDBBEBEFAEEHBEH(WeaponController DHDEFGDDFEDDHBG) { }
+
+	// RVA: 0x32E8730 Offset: 0x32E4730 VA: 0x32E8730 Slot: 31
+	public void GGFCECEHAEHGCFD(PlayerController DHCGCGCDGFHAHEB) { }
+
+	// RVA: 0x32E8978 Offset: 0x32E4978 VA: 0x32E8978 Slot: 32
+	public void CACGAFEHCAFFCBB(PlayerController DHCGCGCDGFHAHEB) { }
+
+	// RVA: 0x32E897C Offset: 0x32E497C VA: 0x32E897C Slot: 33
+	public void DHFGBABDDFHEFHC(PlayerController DHCGCGCDGFHAHEB) { }
+
+	// RVA: 0x32E8980 Offset: 0x32E4980 VA: 0x32E8980 Slot: 34
+	public void FFDCADFFFBFHFHG(PlayerController DHCGCGCDGFHAHEB) { }
+
+	// RVA: 0x32E8984 Offset: 0x32E4984 VA: 0x32E8984 Slot: 35
+	public void AAGHHCDDAFGFHBD(DroppedGrenadeController DFFBHCGFDCEHGCC, FHGFCFFHBHEAEEA FAAHHCGFHEHAHHA) { }
+
+	// RVA: 0x32E8B90 Offset: 0x32E4B90 VA: 0x32E8B90 Slot: 36
+	public void DDCABBAFHGCFBBB(PlayerController DHCGCGCDGFHAHEB) { }
+
+	// RVA: 0x32E8B94 Offset: 0x32E4B94 VA: 0x32E8B94 Slot: 37
+	public void BCGCDDEDECDBDBH(PlayerController DHCGCGCDGFHAHEB) { }
+
+	// RVA: 0x32E8B98 Offset: 0x32E4B98 VA: 0x32E8B98 Slot: 38
+	public void CDAFGDGFFFEDHEC(DroppedGrenadeController DFFBHCGFDCEHGCC, FHGFCFFHBHEAEEA FAAHHCGFHEHAHHA) { }
+
+	// RVA: 0x32E8DA0 Offset: 0x32E4DA0 VA: 0x32E8DA0
+	private void OnDestroy() { }
+
+	// RVA: 0x32E6D18 Offset: 0x32E2D18 VA: 0x32E6D18
+	private void HEEAGBCDCDFBDED(WeaponController DHDEFGDDFEDDHBG) { }
+
+	// RVA: 0x32E8EAC Offset: 0x32E4EAC VA: 0x32E8EAC Slot: 39
+	public void FGAHFDDBGCDADCC(PlayerController AHGEEFHFCCGCHHF) { }
+
+	// RVA: 0x32E8F78 Offset: 0x32E4F78 VA: 0x32E8F78 Slot: 5
+	public void OnPlayerDestroyed(PlayerController AHGEEFHFCCGCHHF) { }
+
+	// RVA: 0x32E9044 Offset: 0x32E5044 VA: 0x32E9044
+	private void AGDEDFEABAAGAEC() { }
+
+	// RVA: 0x32E90E8 Offset: 0x32E50E8 VA: 0x32E90E8 Slot: 40
+	public void BFDDBADGFADBBGG(PlayerController DHCGCGCDGFHAHEB) { }
+}

@@ -1,0 +1,13 @@
+// Namespace: Axlebolt.Standoff.Game.AimTraining.Dummy
+public class DummyMovementPattern // TypeDefIndex: 7920
+{
+	// Fields
+	public float TargetSpeed; // 0x10
+	public float Duration; // 0x14
+	public AnimationCurve PatternsDistr; // 0x18
+
+	// Methods
+
+	// RVA: 0x59F5C90 Offset: 0x59F1C90 VA: 0x59F5C90
+	public void .ctor() { }
+}

@@ -1,0 +1,25 @@
+public class ControlsSettings // TypeDefIndex: 6364
+{
+	// Fields
+	public const float SensitivityMin = 0.1;
+	public const float SensitivityMax = 10;
+	public const float AimSmoothingMin = 0;
+	public const float AimSmoothingMax = 1;
+	public const float AccelerationMin = 0;
+	public const float AccelerationMax = 3;
+	public string LayoutKey; // 0x10
+	public float Sensitivity; // 0x18
+	public float ScopeSensitivity; // 0x1C
+	public float Acceleration; // 0x20
+	public float AimSmoothing; // 0x24
+	public CrosshairSettings CrosshairSettings; // 0x28
+	public GyroscopeSettings GyroscopeSettings; // 0x30
+	public KeySettingsEntry[] CustomKeySettings; // 0x38
+	public bool CopyScreenshotsEnabled; // 0x40
+	public DEEEAFCEFACDCFB CrouchButtonMode; // 0x44
+
+	// Methods
+
+	// RVA: 0x4E2593C Offset: 0x4E2193C VA: 0x4E2593C
+	public void .ctor() { }
+}

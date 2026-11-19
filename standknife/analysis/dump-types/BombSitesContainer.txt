@@ -1,0 +1,146 @@
+// Namespace: Axlebolt.Standoff.Level.Zones
+public class BombSitesContainer : MonoBehaviour // TypeDefIndex: 7376
+{
+	// Fields
+	[SerializeField]
+	private CCGBEGEAHGBGABG _bombSitesType; // 0x20
+	[CompilerGenerated]
+	private BombSite[] <EFCDHEGDGEEHDGH>k__BackingField; // 0x28
+
+	// Properties
+	public CCGBEGEAHGBGABG CCBBFBDAAFFDHCC { get; }
+	public BombSite[] DHCCAFDCCCFHFFD { get; set; }
+
+	// Methods
+
+	[CompilerGenerated]
+	// RVA: 0x55E5E2C Offset: 0x55E1E2C VA: 0x55E5E2C
+	private void ACAEBGCDDCGABEB(BombSite[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x55E5E34 Offset: 0x55E1E34 VA: 0x55E5E34
+	public CCGBEGEAHGBGABG BBEHADHDBFAHFHH() { }
+
+	// RVA: 0x55E5E3C Offset: 0x55E1E3C VA: 0x55E5E3C
+	private void FGDBEFGDECHCAAC() { }
+
+	// RVA: 0x55E5F00 Offset: 0x55E1F00 VA: 0x55E5F00
+	private void HHEDDFHBHBDDFCE() { }
+
+	// RVA: 0x55E5FC4 Offset: 0x55E1FC4 VA: 0x55E5FC4
+	public BombSite[] FCEECBDDCFDBDCH() { }
+
+	// RVA: 0x55E5FCC Offset: 0x55E1FCC VA: 0x55E5FCC
+	private void FGFFHFBBGBDFDFD() { }
+
+	// RVA: 0x55E60A0 Offset: 0x55E20A0 VA: 0x55E60A0
+	private void CGAAGHEFDBCHFCG(BombSite[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x55E60A8 Offset: 0x55E20A8 VA: 0x55E60A8
+	public CCGBEGEAHGBGABG CHGFCEEHAGFBHGC() { }
+
+	// RVA: 0x55E60B0 Offset: 0x55E20B0 VA: 0x55E60B0
+	public BombSite[] ADCFAFFFEEAFCGH() { }
+
+	// RVA: 0x55E60B8 Offset: 0x55E20B8 VA: 0x55E60B8
+	private void BFGHHCHEEAAAGBD(BombSite[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x55E60C0 Offset: 0x55E20C0 VA: 0x55E60C0
+	private void Awake() { }
+
+	// RVA: 0x55E6194 Offset: 0x55E2194 VA: 0x55E6194
+	public void .ctor() { }
+
+	// RVA: 0x55E619C Offset: 0x55E219C VA: 0x55E619C
+	public CCGBEGEAHGBGABG GBGADCHFECBHFCD() { }
+
+	// RVA: 0x55E61A4 Offset: 0x55E21A4 VA: 0x55E61A4
+	private void DHCFBEGCHGDDHGD() { }
+
+	[CompilerGenerated]
+	// RVA: 0x55E6268 Offset: 0x55E2268 VA: 0x55E6268
+	public BombSite[] get_BombSites() { }
+
+	// RVA: 0x55E6270 Offset: 0x55E2270 VA: 0x55E6270
+	public BombSite[] CHGDCBHEGBDCHHG() { }
+
+	// RVA: 0x55E6278 Offset: 0x55E2278 VA: 0x55E6278
+	public BombSite[] EAGFGADFDGEDEBE() { }
+
+	// RVA: 0x55E6280 Offset: 0x55E2280 VA: 0x55E6280
+	public CCGBEGEAHGBGABG EBFFCACFCGDHDFA() { }
+
+	// RVA: 0x55E6288 Offset: 0x55E2288 VA: 0x55E6288
+	private void EFGDCHBGHGDBEBE(BombSite[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x55E6290 Offset: 0x55E2290 VA: 0x55E6290
+	private void AGDEAGGHGFGHCAE(BombSite[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x55E6298 Offset: 0x55E2298 VA: 0x55E6298
+	private void BAAEAHBFCGEBCBE() { }
+
+	// RVA: 0x55E635C Offset: 0x55E235C VA: 0x55E635C
+	public BombSite[] FDHBBCHCBDCBGCD() { }
+
+	// RVA: 0x55E6364 Offset: 0x55E2364 VA: 0x55E6364
+	private void AHHGGHBCCEHGFBB() { }
+
+	// RVA: 0x55E6428 Offset: 0x55E2428 VA: 0x55E6428
+	private void BDCCFGFHFHEDCCH() { }
+
+	// RVA: 0x55E64FC Offset: 0x55E24FC VA: 0x55E64FC
+	private void GAAFGHBBEDGGBBF() { }
+
+	// RVA: 0x55E65D0 Offset: 0x55E25D0 VA: 0x55E65D0
+	private void HEBACFHDECHBHFE() { }
+
+	// RVA: 0x55E6694 Offset: 0x55E2694 VA: 0x55E6694
+	public CCGBEGEAHGBGABG get_BombSitesType() { }
+
+	// RVA: 0x55E669C Offset: 0x55E269C VA: 0x55E669C
+	public BombSite[] HAGEAFFDGEDABEB() { }
+
+	// RVA: 0x55E66A4 Offset: 0x55E26A4 VA: 0x55E66A4
+	private void HABGDDCGAEFEDDH() { }
+
+	// RVA: 0x55E6778 Offset: 0x55E2778 VA: 0x55E6778
+	public BombSite[] BHFHDBGEHGFDHAE() { }
+
+	// RVA: 0x55E6780 Offset: 0x55E2780 VA: 0x55E6780
+	public BombSite[] CEEGDAHEEGBCFDA() { }
+
+	// RVA: 0x55E6788 Offset: 0x55E2788 VA: 0x55E6788
+	public CCGBEGEAHGBGABG BFHDFGGAEEHCCEG() { }
+
+	// RVA: 0x55E6790 Offset: 0x55E2790 VA: 0x55E6790
+	public BombSite[] GHFDFGHECEGEAEC() { }
+
+	// RVA: 0x55E6798 Offset: 0x55E2798 VA: 0x55E6798
+	private void EHAHCFDGEFDEAEH(BombSite[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x55E67A0 Offset: 0x55E27A0 VA: 0x55E67A0
+	public CCGBEGEAHGBGABG HDHFDDFCEEEFABH() { }
+
+	// RVA: 0x55E67A8 Offset: 0x55E27A8 VA: 0x55E67A8
+	private void CCBAHGDHDDEBAEA(BombSite[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x55E67B0 Offset: 0x55E27B0 VA: 0x55E67B0
+	private void EHDGEDHFCEHEAEE(BombSite[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x55E67B8 Offset: 0x55E27B8 VA: 0x55E67B8
+	public CCGBEGEAHGBGABG ABGEBHAEDABADGH() { }
+
+	// RVA: 0x55E67C0 Offset: 0x55E27C0 VA: 0x55E67C0
+	public CCGBEGEAHGBGABG EBFAAACGHDDDEHG() { }
+
+	// RVA: 0x55E67C8 Offset: 0x55E27C8 VA: 0x55E67C8
+	private void ECAAFFEEGDACCBH(BombSite[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x55E67D0 Offset: 0x55E27D0 VA: 0x55E67D0
+	private void HCABECHGFEABHBE() { }
+
+	// RVA: 0x55E68A4 Offset: 0x55E28A4 VA: 0x55E68A4
+	public BombSite[] EADFDEHABBAHDGB() { }
+
+	// RVA: 0x55E68AC Offset: 0x55E28AC VA: 0x55E68AC
+	public CCGBEGEAHGBGABG ADGFEDHFECBEBBH() { }
+}

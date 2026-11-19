@@ -1,0 +1,151 @@
+public class InteractableButton : InteractableZone // TypeDefIndex: 7405
+{
+	// Fields
+	[CompilerGenerated]
+	private bool <FHHAFAAAGGGCHEA>k__BackingField; // 0x70
+	[CompilerGenerated]
+	private Action DCBGAGEFFGACECD; // 0x78
+	[CompilerGenerated]
+	private Action FGDEHBCFEHDCBHC; // 0x80
+	[CompilerGenerated]
+	private Action AAHFHHFEDCFDAGB; // 0x88
+
+	// Properties
+	public bool CBBACAEAEFCABGD { get; set; }
+
+	// Methods
+
+	[CompilerGenerated]
+	// RVA: 0x561C700 Offset: 0x5618700 VA: 0x561C700
+	private void FBBBCACDFDFHHED(bool BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x561C70C Offset: 0x561870C VA: 0x561C70C
+	public void GGGFCDEAEBAHEBG(Action BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x561C7F0 Offset: 0x56187F0 VA: 0x561C7F0
+	public void HFBBHDGGGAHHDHH(Action BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x561C8D4 Offset: 0x56188D4 VA: 0x561C8D4
+	public void GDCEHDFCBFHCDAG(Action BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x561C9B8 Offset: 0x56189B8 VA: 0x561C9B8
+	public void CHABEEEDECBGFFB(Action BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x561CA9C Offset: 0x5618A9C VA: 0x561CA9C
+	public void EAECDEHHBGHABFE(Action BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x561CB80 Offset: 0x5618B80 VA: 0x561CB80
+	public void AGBDBHHFGBCFBED(Action BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x561CC64 Offset: 0x5618C64 VA: 0x561CC64
+	public void DEABBAAHDHDFEFH(Action BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x561CD48 Offset: 0x5618D48 VA: 0x561CD48
+	private void HGFEAFADGGAGHEH(bool BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x561CD54 Offset: 0x5618D54 VA: 0x561CD54
+	public void EEGFBEGDEFHDEHG(Action BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x561CE38 Offset: 0x5618E38 VA: 0x561CE38 Slot: 15
+	public override void OnTouchEnd(DEACAAEDHEEDEEA FHCHDEFHCBDHEHD) { }
+
+	// RVA: 0x561CE60 Offset: 0x5618E60 VA: 0x561CE60 Slot: 20
+	public override void OnTouchDown(DEACAAEDHEEDEEA FHCHDEFHCBDHEHD) { }
+
+	// RVA: 0x561CE8C Offset: 0x5618E8C VA: 0x561CE8C
+	public void DAAAFHAFGEBEEFE(Action BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x561CF70 Offset: 0x5618F70 VA: 0x561CF70
+	public void HBBHGACBBBACFCA(Action BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x561D054 Offset: 0x5619054 VA: 0x561D054
+	public void GGHCAAEEBCEHGBC(Action BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x561D138 Offset: 0x5619138 VA: 0x561D138
+	public void CBACECDBHEFGEHF(Action BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x561D21C Offset: 0x561921C VA: 0x561D21C
+	public bool get_IsButtonPressed() { }
+
+	// RVA: 0x561D224 Offset: 0x5619224 VA: 0x561D224
+	public void GECDGCACAFGFBED(Action BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x561D308 Offset: 0x5619308 VA: 0x561D308
+	public void AECHAEFHGFCAABG(Action BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x561D3EC Offset: 0x56193EC VA: 0x561D3EC
+	private void ADCDCDGBAAGACED(bool BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x561D3F8 Offset: 0x56193F8 VA: 0x561D3F8
+	public bool HBFFBGEFFCBEFHB() { }
+
+	[CompilerGenerated]
+	// RVA: 0x561D400 Offset: 0x5619400 VA: 0x561D400
+	public void add_OnButtonDownEvent(Action BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x561D4E4 Offset: 0x56194E4 VA: 0x561D4E4
+	public bool CHBEFAEGFGCGECH() { }
+
+	// RVA: 0x561D4EC Offset: 0x56194EC VA: 0x561D4EC
+	public void ABECGBCEGEABAAC(Action BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x561D5D0 Offset: 0x56195D0 VA: 0x561D5D0
+	public void remove_OnButtonStayActiveEvent(Action BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x561D6B4 Offset: 0x56196B4 VA: 0x561D6B4
+	public void remove_OnButtonDownEvent(Action BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x561D798 Offset: 0x5619798 VA: 0x561D798
+	public void add_OnButtonUpEvent(Action BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x561D87C Offset: 0x561987C VA: 0x561D87C
+	public void DFCBCDBDDHHGBBG(Action BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x561D960 Offset: 0x5619960 VA: 0x561D960
+	public void AAGDEHFBADDGFEB(Action BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x561DA44 Offset: 0x5619A44 VA: 0x561DA44
+	public void GAECCECHEHDGBEH(Action BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x561DB28 Offset: 0x5619B28 VA: 0x561DB28
+	public void .ctor() { }
+
+	// RVA: 0x561DE78 Offset: 0x5619E78 VA: 0x561DE78
+	private void BEAEBAAEFGBHCFE(bool BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x561DE84 Offset: 0x5619E84 VA: 0x561DE84
+	public void add_OnButtonStayActiveEvent(Action BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x561DF68 Offset: 0x5619F68 VA: 0x561DF68
+	public void remove_OnButtonUpEvent(Action BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x561E04C Offset: 0x561A04C VA: 0x561E04C
+	public void CEHCEEHEBFCCEAC(Action BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x561E130 Offset: 0x561A130 VA: 0x561E130
+	public void EDCGGGDFAECDGFH(Action BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x561E214 Offset: 0x561A214 VA: 0x561E214
+	private void BDHAGHGAFADBEDE(bool BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x561E220 Offset: 0x561A220 VA: 0x561E220 Slot: 22
+	public override void OnTouchStayActive(DEACAAEDHEEDEEA FHCHDEFHCBDHEHD) { }
+
+	// RVA: 0x561E24C Offset: 0x561A24C VA: 0x561E24C
+	private void FHDCHCDFGBDGCFG(bool BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x561E258 Offset: 0x561A258 VA: 0x561E258
+	public void AHGGBADGBABDEHB(Action BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x561E33C Offset: 0x561A33C VA: 0x561E33C
+	public void DEGFAFFEGAHCEGB(Action BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x561E420 Offset: 0x561A420 VA: 0x561E420
+	public void BECAGGHBAHDFCCF(Action BDFHFCCDABCFGBD) { }
+}

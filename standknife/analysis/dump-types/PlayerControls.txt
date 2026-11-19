@@ -1,0 +1,245 @@
+// Namespace: Axlebolt.Standoff.Controls
+public class PlayerControls : MonoBehaviour, IDisposable // TypeDefIndex: 3351
+{
+	// Fields
+	public const float MinShiftingSpeedMult = 0.2;
+	public const float ShiftingSpeedMult = 0.4;
+	[SerializeField]
+	private PlayerControls.GABHAFEGGCECCAE _sourceType; // 0x20
+	private KeyboardMouseControl CFBFEDEHCAFBBDA; // 0x28
+	private PlayerController FAHEFDAEDDGCECB; // 0x30
+	private TouchController DAFDFAGGEEHGBHD; // 0x38
+	private RandomInputsSimulator BCCHEHBDAAEGCAG; // 0x40
+	private GyroscopeController FBEEBEHDEDACCBB; // 0x48
+	private FireCommandModificator CCADDCCEGDDEBHH; // 0x50
+	private ControlsSettingsManager ECCCEBADAFDCADE; // 0x58
+	private GameSettingsManager AFGEDGHGGGAEACB; // 0x60
+	private readonly HashSet<object> EAHEDGHHAAGFCAE; // 0x68
+	private readonly HashSet<object> ACAGDAHFFGDEEAA; // 0x70
+	private readonly HashSet<object> CECHGBGGFAEGFAG; // 0x78
+	private readonly HashSet<object> DBFFEGFGCGGBDHC; // 0x80
+	private readonly HashSet<object> EDHBBEHADDBEGGB; // 0x88
+	private readonly HashSet<object> HHFEDAFEBCDEEGE; // 0x90
+	private ControlsSettings ACDAHHEEGGGEFAB; // 0x98
+	private EGFDFGAHFHAFCCD EEAGHEDACFADCDD; // 0xA0
+	private bool GEEEHCCGGAAHDGD; // 0xA8
+	[CompilerGenerated]
+	private static PlayerControls <HCBEDAFCEBCEEBA>k__BackingField; // 0x0
+	[CompilerGenerated]
+	private HUDView <HAHGEHCFAFGFDCF>k__BackingField; // 0xB0
+	[CompilerGenerated]
+	private Action<EGFDFGAHFHAFCCD> <CGFDHEDHFBEGAHC>k__BackingField; // 0xB8
+
+	// Properties
+	public static PlayerControls CGEDAFHDACEBAEB { get; set; }
+	public HUDView GFDEAGADDGAAEDC { get; set; }
+	public AACFBGFBDGHAEEF GHFGEFBBHDBEHCC { get; }
+	public TouchController HGABCGBDFBGBDCC { get; }
+	public Action<EGFDFGAHFHAFCCD> GHHDBDGCFEAHDBB { get; set; }
+	public PlayerControls.GABHAFEGGCECCAE EGFCFEHDCHEBDHC { get; set; }
+	public PlayerController CDEBDAAHBAHDECB { get; set; }
+
+	// Methods
+
+	// RVA: 0x384874C Offset: 0x384474C VA: 0x384874C
+	public Action<EGFDFGAHFHAFCCD> GBACBCFCGAHBHAA() { }
+
+	// RVA: 0x3848754 Offset: 0x3844754 VA: 0x3848754
+	private static void BFDGDEFGCHBFECD(PlayerControls BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x38487FC Offset: 0x38447FC VA: 0x38487FC
+	public TouchController CCBGBGECFAFBDBC() { }
+
+	// RVA: 0x3848804 Offset: 0x3844804 VA: 0x3848804
+	public AACFBGFBDGHAEEF get_KeySettings() { }
+
+	// RVA: 0x3848820 Offset: 0x3844820 VA: 0x3848820
+	private void HHFAHHHEDFADAFF(GameSettings ABGHBHDAGCAABBG) { }
+
+	// RVA: 0x38488D0 Offset: 0x38448D0 VA: 0x38488D0
+	public void RequestDisable(object BFDHAHDBGFEDHEF) { }
+
+	// RVA: 0x3848978 Offset: 0x3844978 VA: 0x3848978
+	public void RequestDropEnable(object BFDHAHDBGFEDHEF) { }
+
+	// RVA: 0x3848A20 Offset: 0x3844A20 VA: 0x3848A20
+	public static IEnumerator BBDFBBEEEBACDCE(Transform BCFEBHEEDEADHBG, string FCEDCAAFECBBECE) { }
+
+	// RVA: 0x3848AFC Offset: 0x3844AFC VA: 0x3848AFC
+	public void set_PlayerController(PlayerController BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x3848D14 Offset: 0x3844D14 VA: 0x3848D14
+	public void RequestMovementDisable(object BFDHAHDBGFEDHEF) { }
+
+	// RVA: 0x3848DBC Offset: 0x3844DBC VA: 0x3848DBC
+	public EGFDFGAHFHAFCCD GetTouchInputs() { }
+
+	// RVA: 0x3848DD8 Offset: 0x3844DD8 VA: 0x3848DD8
+	public void EGFAGEACAEDEFDB(object BFDHAHDBGFEDHEF) { }
+
+	// RVA: 0x3848E80 Offset: 0x3844E80 VA: 0x3848E80
+	public PlayerController get_PlayerController() { }
+
+	// RVA: 0x3848E88 Offset: 0x3844E88 VA: 0x3848E88
+	public AACFBGFBDGHAEEF DDBAGEHBFFBFBDC() { }
+
+	// RVA: 0x3848EA4 Offset: 0x3844EA4 VA: 0x3848EA4
+	public void ABABFCFHAFEFCCC(object BFDHAHDBGFEDHEF) { }
+
+	// RVA: 0x3848F4C Offset: 0x3844F4C VA: 0x3848F4C Slot: 5
+	public void DAEAGGDHEFCAECG() { }
+
+	// RVA: 0x38493AC Offset: 0x38453AC VA: 0x38493AC
+	private bool BEEEBACFFFFDHDA() { }
+
+	[CompilerGenerated]
+	// RVA: 0x384944C Offset: 0x384544C VA: 0x384944C
+	private static void GHHACBBEAAFFCBD(PlayerControls BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x38494F4 Offset: 0x38454F4 VA: 0x38494F4
+	private void AADFGHDFEFGCFCC(EGFDFGAHFHAFCCD ABFFAADCFBGAHEA) { }
+
+	// RVA: 0x3849730 Offset: 0x3845730 VA: 0x3849730
+	public void set_SourceType(PlayerControls.GABHAFEGGCECCAE BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x38497E0 Offset: 0x38457E0 VA: 0x38497E0
+	public HUDView FBDHFCHEGGGBHHF() { }
+
+	// RVA: 0x38497E8 Offset: 0x38457E8 VA: 0x38497E8
+	private EGFDFGAHFHAFCCD BDGHCCFBBGGHEEE() { }
+
+	// RVA: 0x384A614 Offset: 0x3846614 VA: 0x384A614
+	private EGFDFGAHFHAFCCD EEHCFDGAEFDHEAG() { }
+
+	// RVA: 0x384A64C Offset: 0x384664C VA: 0x384A64C Slot: 4
+	public void Dispose() { }
+
+	// RVA: 0x3849C34 Offset: 0x3845C34 VA: 0x3849C34
+	private void GBBCHGHGAFDFAHD() { }
+
+	[CompilerGenerated]
+	// RVA: 0x384A65C Offset: 0x384665C VA: 0x384A65C
+	public void set_InputFilter(Action<EGFDFGAHFHAFCCD> BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x384A664 Offset: 0x3846664 VA: 0x384A664
+	public void RequestDropDisable(object BFDHAHDBGFEDHEF) { }
+
+	[CompilerGenerated]
+	// RVA: 0x384A70C Offset: 0x384670C VA: 0x384A70C
+	public Action<EGFDFGAHFHAFCCD> get_InputFilter() { }
+
+	[IteratorStateMachine(typeof(PlayerControls.ECHBADGFBDFAAHH))]
+	// RVA: 0x384A714 Offset: 0x3846714 VA: 0x384A714
+	public static IEnumerator CreateInstance(Transform BCFEBHEEDEADHBG, string FCEDCAAFECBBECE) { }
+
+	// RVA: 0x384A7C8 Offset: 0x38467C8 VA: 0x384A7C8
+	public void RequestPartialEnable(object BFDHAHDBGFEDHEF) { }
+
+	// RVA: 0x384A9F4 Offset: 0x38469F4 VA: 0x384A9F4
+	private void Update() { }
+
+	// RVA: 0x3848F5C Offset: 0x3844F5C VA: 0x3848F5C
+	private void GHCAEFHBDCGCHHG() { }
+
+	// RVA: 0x384AB6C Offset: 0x3846B6C VA: 0x384AB6C
+	public void ABHDABCDHEAGFCF(object BFDHAHDBGFEDHEF) { }
+
+	// RVA: 0x384ABA0 Offset: 0x3846BA0 VA: 0x384ABA0
+	private void DABBCBBBHDFADGD(LayoutControlsSettings EHGEGBDDEBFHABG) { }
+
+	// RVA: 0x384AC74 Offset: 0x3846C74 VA: 0x384AC74
+	public void GHEACAHBGDCECAH(object BFDHAHDBGFEDHEF) { }
+
+	// RVA: 0x384AD1C Offset: 0x3846D1C VA: 0x384AD1C
+	private void GBACCCBECGBEDEG(LayoutControlsSettings EHGEGBDDEBFHABG) { }
+
+	// RVA: 0x384ADF0 Offset: 0x3846DF0 VA: 0x384ADF0
+	private void DFEEDAFHGHFABBH() { }
+
+	// RVA: 0x384AE00 Offset: 0x3846E00 VA: 0x384AE00
+	public void RequestPartialDisable(object BFDHAHDBGFEDHEF) { }
+
+	// RVA: 0x384AF84 Offset: 0x3846F84 VA: 0x384AF84
+	private void FHEGDEBDEBCHDBA(GameSettings ABGHBHDAGCAABBG) { }
+
+	// RVA: 0x384B034 Offset: 0x3847034 VA: 0x384B034
+	public void HDCHBDAHBGBCAFH(object BFDHAHDBGFEDHEF) { }
+
+	// RVA: 0x384B0DC Offset: 0x38470DC VA: 0x384B0DC
+	public PlayerControls.GABHAFEGGCECCAE get_SourceType() { }
+
+	// RVA: 0x3849F10 Offset: 0x3845F10 VA: 0x3849F10
+	private FAEDFCCEEADCBGA EBGFECEFGHACEBB() { }
+
+	// RVA: 0x384B0E4 Offset: 0x38470E4 VA: 0x384B0E4
+	private void OnDestroy() { }
+
+	// RVA: 0x384AEDC Offset: 0x3846EDC VA: 0x384AEDC
+	public void RequestActionDisable(object BFDHAHDBGFEDHEF) { }
+
+	// RVA: 0x384B0F4 Offset: 0x38470F4 VA: 0x384B0F4
+	private void GGBBHEBCHFBFEBH(ControlsSettings GBFDGFFBAGDBBHE) { }
+
+	// RVA: 0x384B1F0 Offset: 0x38471F0 VA: 0x384B1F0
+	public void .ctor() { }
+
+	[CompilerGenerated]
+	// RVA: 0x384B364 Offset: 0x3847364 VA: 0x384B364
+	private void BCEADFFHCEEEHBH(HUDView BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x384B36C Offset: 0x384736C VA: 0x384B36C
+	public void GDDCGFEDCBCFFGB(object BFDHAHDBGFEDHEF) { }
+
+	// RVA: 0x384A7FC Offset: 0x38467FC VA: 0x384A7FC
+	public void RequestMovementEnable(object BFDHAHDBGFEDHEF) { }
+
+	// RVA: 0x384B414 Offset: 0x3847414 VA: 0x384B414
+	private static void EFCDADEDGAGEHBD(PlayerControls BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x384B4BC Offset: 0x38474BC VA: 0x384B4BC
+	public void RequestEnable(object BFDHAHDBGFEDHEF) { }
+
+	// RVA: 0x384B564 Offset: 0x3847564 VA: 0x384B564
+	public TouchController get_TouchController() { }
+
+	// RVA: 0x384B56C Offset: 0x384756C VA: 0x384B56C
+	private void CAGGCCACHDFCAEC(ControlsSettings GBFDGFFBAGDBBHE) { }
+
+	// RVA: 0x384B668 Offset: 0x3847668 VA: 0x384B668
+	public void HFCDHBBFFDCCBCF(PlayerControls.GABHAFEGGCECCAE BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x384B718 Offset: 0x3847718 VA: 0x384B718
+	private void CHCABGGADGCDCFE(ControlsSettings GBFDGFFBAGDBBHE) { }
+
+	// RVA: 0x384B814 Offset: 0x3847814 VA: 0x384B814
+	private void DCAGAGDAFAFGHFC(ControlsSettings GBFDGFFBAGDBBHE) { }
+
+	[CompilerGenerated]
+	// RVA: 0x384B910 Offset: 0x3847910 VA: 0x384B910
+	public static PlayerControls get_Instance() { }
+
+	// RVA: 0x384AE34 Offset: 0x3846E34 VA: 0x384AE34
+	public void RequestFiringDisable(object BFDHAHDBGFEDHEF) { }
+
+	// RVA: 0x384A8A4 Offset: 0x38468A4 VA: 0x384A8A4
+	public void RequestFiringEnable(object BFDHAHDBGFEDHEF) { }
+
+	[CompilerGenerated]
+	// RVA: 0x384B9AC Offset: 0x38479AC VA: 0x384B9AC
+	public HUDView get_HudView() { }
+
+	// RVA: 0x384B9B4 Offset: 0x38479B4 VA: 0x384B9B4
+	private void HCFEAFCFHGDAGEA() { }
+
+	// RVA: 0x3849D04 Offset: 0x3845D04 VA: 0x3849D04
+	private void EBEBCHHBGAFGCDA(EGFDFGAHFHAFCCD ABFFAADCFBGAHEA) { }
+
+	// RVA: 0x384BFF0 Offset: 0x3847FF0 VA: 0x384BFF0
+	private void CAECHAAFAEHGABA(LayoutControlsSettings EHGEGBDDEBFHABG) { }
+
+	// RVA: 0x384C0C4 Offset: 0x38480C4 VA: 0x384C0C4
+	public EGFDFGAHFHAFCCD GetKeyboardInputs() { }
+
+	// RVA: 0x384A94C Offset: 0x384694C VA: 0x384A94C
+	public void RequestActionEnable(object BFDHAHDBGFEDHEF) { }
+}

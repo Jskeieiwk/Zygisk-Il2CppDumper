@@ -1,0 +1,171 @@
+// Namespace: Axlebolt.Standoff.Inventory.Drop
+public class WeaponDropParameters : ScriptableObject // TypeDefIndex: 2323
+{
+	// Fields
+	[SerializeField]
+	private PhysicMaterial _material; // 0x18
+	[SerializeField]
+	private EventReference _dropCollisionEventRef; // 0x20
+	[SerializeField]
+	private EventReference _takeTeammateEventRef; // 0x30
+	[SerializeField]
+	private EventReference _takeEnemyEventRef; // 0x40
+
+	// Properties
+	public PhysicMaterial Material { get; }
+	public GUID DropCollisionEvent { get; }
+	public GUID TakeTeammateEvent { get; }
+	public GUID TakeEnemyEvent { get; }
+
+	// Methods
+
+	// RVA: 0x6A3C7F4 Offset: 0x6A387F4 VA: 0x6A3C7F4
+	public GUID CGHCHBBHDHCHBDC() { }
+
+	// RVA: 0x6A3C800 Offset: 0x6A38800 VA: 0x6A3C800
+	public GUID AFEBEAEFFGCDFAF() { }
+
+	// RVA: 0x6A3C80C Offset: 0x6A3880C VA: 0x6A3C80C
+	public GUID AADBCBHEBADDDDC() { }
+
+	// RVA: 0x6A3C818 Offset: 0x6A38818 VA: 0x6A3C818
+	public GUID GCFFEBHDGDEBACA() { }
+
+	// RVA: 0x6A3C824 Offset: 0x6A38824 VA: 0x6A3C824
+	public GUID ACCBGDEFCGGDBHF() { }
+
+	// RVA: 0x6A3C830 Offset: 0x6A38830 VA: 0x6A3C830
+	public PhysicMaterial EBGGECEACCGFEEC() { }
+
+	// RVA: 0x6A3C838 Offset: 0x6A38838 VA: 0x6A3C838
+	public GUID EBCAGGFFCDFDDGC() { }
+
+	// RVA: 0x6A3C844 Offset: 0x6A38844 VA: 0x6A3C844
+	public GUID CHBEBHEEBAABBFF() { }
+
+	// RVA: 0x6A3C850 Offset: 0x6A38850 VA: 0x6A3C850
+	public GUID HGEHHEDGDHFDBCD() { }
+
+	// RVA: 0x6A3C85C Offset: 0x6A3885C VA: 0x6A3C85C
+	public GUID BEFCFBHBGEAGCDC() { }
+
+	// RVA: 0x6A3C868 Offset: 0x6A38868 VA: 0x6A3C868
+	public GUID GDDDCGCCEHEEDFH() { }
+
+	// RVA: 0x6A3C874 Offset: 0x6A38874 VA: 0x6A3C874
+	public GUID BABCHCBEHGDBHHC() { }
+
+	// RVA: 0x6A3C880 Offset: 0x6A38880 VA: 0x6A3C880
+	public GUID FHGAGHFFEFDEGGD() { }
+
+	// RVA: 0x6A3C88C Offset: 0x6A3888C VA: 0x6A3C88C
+	public PhysicMaterial EHEGGHAGGDAFAHB() { }
+
+	// RVA: 0x6A3C894 Offset: 0x6A38894 VA: 0x6A3C894
+	public void .ctor() { }
+
+	// RVA: 0x6A3C89C Offset: 0x6A3889C VA: 0x6A3C89C
+	public GUID HBCHCFGDACCABAE() { }
+
+	// RVA: 0x6A3C8A8 Offset: 0x6A388A8 VA: 0x6A3C8A8
+	public GUID DCBCGAHFDHBFEFH() { }
+
+	// RVA: 0x6A3C8B4 Offset: 0x6A388B4 VA: 0x6A3C8B4
+	public GUID AFHDGHBAAHDAHFH() { }
+
+	// RVA: 0x6A3C8C0 Offset: 0x6A388C0 VA: 0x6A3C8C0
+	public PhysicMaterial HGACABEGCHFCHCB() { }
+
+	// RVA: 0x6A3C8C8 Offset: 0x6A388C8 VA: 0x6A3C8C8
+	public GUID EABADGFCDGGAHAD() { }
+
+	// RVA: 0x6A3C8D4 Offset: 0x6A388D4 VA: 0x6A3C8D4
+	public GUID get_TakeTeammateEvent() { }
+
+	// RVA: 0x6A3C8E0 Offset: 0x6A388E0 VA: 0x6A3C8E0
+	public GUID GDFCHHAEEHACADH() { }
+
+	// RVA: 0x6A3C8EC Offset: 0x6A388EC VA: 0x6A3C8EC
+	public GUID CFHDBBHHCBGFBEH() { }
+
+	// RVA: 0x6A3C8F8 Offset: 0x6A388F8 VA: 0x6A3C8F8
+	public GUID FEHABCCABDBFHFA() { }
+
+	// RVA: 0x6A3C904 Offset: 0x6A38904 VA: 0x6A3C904
+	public GUID AHAEHEAFEDCDFGB() { }
+
+	// RVA: 0x6A3C910 Offset: 0x6A38910 VA: 0x6A3C910
+	public GUID FDDHHFCCCHCCBEB() { }
+
+	// RVA: 0x6A3C91C Offset: 0x6A3891C VA: 0x6A3C91C
+	public PhysicMaterial FCAFCHADFBEDHGE() { }
+
+	// RVA: 0x6A3C924 Offset: 0x6A38924 VA: 0x6A3C924
+	public PhysicMaterial HBAEGBEBFFEBAHD() { }
+
+	// RVA: 0x6A3C92C Offset: 0x6A3892C VA: 0x6A3C92C
+	public GUID CEHCBBHAHEACAGA() { }
+
+	// RVA: 0x6A3C938 Offset: 0x6A38938 VA: 0x6A3C938
+	public GUID HCCFFGCBAEDGEDD() { }
+
+	// RVA: 0x6A3C944 Offset: 0x6A38944 VA: 0x6A3C944
+	public GUID HCDHBADDHEAHBDD() { }
+
+	// RVA: 0x6A3C950 Offset: 0x6A38950 VA: 0x6A3C950
+	public GUID get_DropCollisionEvent() { }
+
+	// RVA: 0x6A3C95C Offset: 0x6A3895C VA: 0x6A3C95C
+	public GUID AHECEEFAFCECDFD() { }
+
+	// RVA: 0x6A3C968 Offset: 0x6A38968 VA: 0x6A3C968
+	public GUID EEDAAFCBGADHCEB() { }
+
+	// RVA: 0x6A3C974 Offset: 0x6A38974 VA: 0x6A3C974
+	public GUID BEAFCFFBEGADHFG() { }
+
+	// RVA: 0x6A3C980 Offset: 0x6A38980 VA: 0x6A3C980
+	public GUID BHCCDGAHACHBBDC() { }
+
+	// RVA: 0x6A3C98C Offset: 0x6A3898C VA: 0x6A3C98C
+	public PhysicMaterial ADFCEDAFHAFBAGD() { }
+
+	// RVA: 0x6A3C994 Offset: 0x6A38994 VA: 0x6A3C994
+	public GUID GEFDCEGAAGGGHHH() { }
+
+	// RVA: 0x6A3C9A0 Offset: 0x6A389A0 VA: 0x6A3C9A0
+	public PhysicMaterial get_Material() { }
+
+	// RVA: 0x6A3C9A8 Offset: 0x6A389A8 VA: 0x6A3C9A8
+	public GUID BGEAFECGDGFHBCB() { }
+
+	// RVA: 0x6A3C9B4 Offset: 0x6A389B4 VA: 0x6A3C9B4
+	public PhysicMaterial BACBGDFBFBCDHDB() { }
+
+	// RVA: 0x6A3C9BC Offset: 0x6A389BC VA: 0x6A3C9BC
+	public GUID get_TakeEnemyEvent() { }
+
+	// RVA: 0x6A3C9C8 Offset: 0x6A389C8 VA: 0x6A3C9C8
+	public GUID EDGDFCFFABFFEDE() { }
+
+	// RVA: 0x6A3C9D4 Offset: 0x6A389D4 VA: 0x6A3C9D4
+	public GUID DBDECFGEEEABABD() { }
+
+	// RVA: 0x6A3C9E0 Offset: 0x6A389E0 VA: 0x6A3C9E0
+	public GUID DCFADGCAACADECC() { }
+
+	// RVA: 0x6A3C9EC Offset: 0x6A389EC VA: 0x6A3C9EC
+	public GUID AFFGEBEDCFFDDHA() { }
+
+	// RVA: 0x6A3C9F8 Offset: 0x6A389F8 VA: 0x6A3C9F8
+	public GUID EFGGEGEGEECGDCB() { }
+
+	// RVA: 0x6A3CA04 Offset: 0x6A38A04 VA: 0x6A3CA04
+	public PhysicMaterial BEFDDDHCGEBEHEH() { }
+
+	// RVA: 0x6A3CA0C Offset: 0x6A38A0C VA: 0x6A3CA0C
+	public PhysicMaterial BDHHGECDGFBHEGG() { }
+
+	// RVA: 0x6A3CA14 Offset: 0x6A38A14 VA: 0x6A3CA14
+	public GUID BDBEBAAEHHAFEGF() { }
+}

@@ -1,0 +1,236 @@
+// Namespace: Axlebolt.Standoff.Controls
+public class TouchController : MonoBehaviour // TypeDefIndex: 5743
+{
+	// Fields
+	[SerializeField]
+	private RectTransform _interactiveArea; // 0x20
+	[SerializeField]
+	private AimingArea _aimingArea; // 0x28
+	[SerializeField]
+	public ItemSelectArea WeaponSelectArea; // 0x30
+	[SerializeField]
+	public ItemSelectArea GrenadeSelectArea; // 0x38
+	[SerializeField]
+	public GraffitiSelectHoldArea GraffitiSelectHoldArea; // 0x40
+	[SerializeField]
+	private SafeAreaBlockTouch _safeAreaBlockTouch; // 0x48
+	[SerializeField]
+	private FloatingJoystick _joystick; // 0x50
+	[SerializeField]
+	private ShootArea _shootArea; // 0x58
+	[SerializeField]
+	private InteractableButton _shootButton; // 0x60
+	[SerializeField]
+	private InteractableButton _shootInShiftButton; // 0x68
+	[SerializeField]
+	private InteractableButton _jumpButton; // 0x70
+	[SerializeField]
+	private InteractableButton _aimButton; // 0x78
+	[SerializeField]
+	private InteractableButton _cancelAimButton; // 0x80
+	[SerializeField]
+	private InteractableButton _crouchButton; // 0x88
+	[SerializeField]
+	private InteractableButton _actionButton; // 0x90
+	[SerializeField]
+	private InteractableButton _usePowerButton; // 0x98
+	[SerializeField]
+	private InteractableButton _dropButton; // 0xA0
+	[SerializeField]
+	private InteractableButton _pickupButton; // 0xA8
+	[SerializeField]
+	private ClingingButton _crouchButtonClinger; // 0xB0
+	[SerializeField]
+	private DoubleTapArea _jumpDoubleTapArea; // 0xB8
+	private static ILogger GGFBEBEFCHEEADD; // 0x0
+	private EGFDFGAHFHAFCCD EFCGAGEGFADDGHH; // 0xC0
+	private bool HDHFDEHHABAECAG; // 0xC8
+	[CompilerGenerated]
+	private TouchHandler <FAEGCFBAAFCFFHG>k__BackingField; // 0xD0
+
+	// Properties
+	public InteractableButton AAFDCGDCCAHDBHB { get; set; }
+	public InteractableButton GFHCCEGHGDGHABH { get; }
+	public TouchHandler GDCAEGFGGGHHFEH { get; set; }
+	private static ILogger FHFEDEGBFGDDCCB { get; }
+	public InteractableButton AFGHCECBHCDFEHC { get; }
+	public InteractableButton AEDBCCEEBCGBFBH { get; }
+
+	// Methods
+
+	// RVA: 0x496AE9C Offset: 0x4966E9C VA: 0x496AE9C
+	public InteractableButton get_JumpButton() { }
+
+	// RVA: 0x496AEA4 Offset: 0x4966EA4 VA: 0x496AEA4
+	private void BEHDDCFFGHGHDHH() { }
+
+	// RVA: 0x496AEC4 Offset: 0x4966EC4 VA: 0x496AEC4
+	public InteractableButton HHEAHHDHEGCFACA() { }
+
+	// RVA: 0x496AECC Offset: 0x4966ECC VA: 0x496AECC
+	public void AAGEEGDGGAHDEDB(int FGBDEHBEHHEFHEB) { }
+
+	[CompilerGenerated]
+	// RVA: 0x496AED0 Offset: 0x4966ED0 VA: 0x496AED0
+	public TouchHandler get_TouchHandler() { }
+
+	// RVA: 0x496AED8 Offset: 0x4966ED8 VA: 0x496AED8
+	private void EDDFGHDBFBCADGE() { }
+
+	// RVA: 0x496B6D8 Offset: 0x49676D8 VA: 0x496B6D8
+	public InteractableButton get_ShootButton() { }
+
+	// RVA: 0x496B6E0 Offset: 0x49676E0 VA: 0x496B6E0
+	private void EDEGAGGDFHADADB(TouchHandler BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x496B6E8 Offset: 0x49676E8 VA: 0x496B6E8
+	public void WeaponSelected(int FGBDEHBEHHEFHEB) { }
+
+	// RVA: 0x496B6EC Offset: 0x49676EC VA: 0x496B6EC
+	private void CCGEAFACGAACCBA(TouchHandler BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x496B6F4 Offset: 0x49676F4 VA: 0x496B6F4
+	private void OnDestroy() { }
+
+	// RVA: 0x496BE7C Offset: 0x4967E7C VA: 0x496BE7C
+	public void RegisterInteractableZone(InteractableZone GFHFDECFGEBHAAB) { }
+
+	// RVA: 0x496BE98 Offset: 0x4967E98 VA: 0x496BE98
+	public void Initialize() { }
+
+	// RVA: 0x496CF60 Offset: 0x4968F60 VA: 0x496CF60
+	public void FEHGCDCAAAHFBHB(LayoutControlsSettings EHGEGBDDEBFHABG) { }
+
+	// RVA: 0x496D6A4 Offset: 0x49696A4 VA: 0x496D6A4
+	public void CHDGCFCABHBGEEC(LayoutControlsSettings EHGEGBDDEBFHABG) { }
+
+	// RVA: 0x496DA38 Offset: 0x4969A38 VA: 0x496DA38
+	private void CECBEHDDDHHDFDE(int FGBDEHBEHHEFHEB) { }
+
+	// RVA: 0x496DA58 Offset: 0x4969A58 VA: 0x496DA58
+	public void SetControlsSettings(ControlsSettings GHAFHGCFCAGGBCE) { }
+
+	// RVA: 0x496DA7C Offset: 0x4969A7C VA: 0x496DA7C
+	public void .ctor() { }
+
+	[CompilerGenerated]
+	// RVA: 0x496DB24 Offset: 0x4969B24 VA: 0x496DB24
+	private void GGFBEFCEEECBDEA(TouchHandler BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x496DB2C Offset: 0x4969B2C VA: 0x496DB2C
+	private void DBDEHDGDFBEFABC(int FGBDEHBEHHEFHEB) { }
+
+	// RVA: 0x496DB4C Offset: 0x4969B4C VA: 0x496DB4C
+	public InteractableButton AFBGABEEGBBAEFC() { }
+
+	// RVA: 0x496DB54 Offset: 0x4969B54 VA: 0x496DB54
+	private void EECGEHDGGGHCAGC(int FGBDEHBEHHEFHEB) { }
+
+	// RVA: 0x496DB74 Offset: 0x4969B74 VA: 0x496DB74
+	public void ResetState() { }
+
+	// RVA: 0x496D2FC Offset: 0x49692FC VA: 0x496D2FC
+	private void GGEBCEDDCFHCBBC(LayoutControlsSettings EHGEGBDDEBFHABG) { }
+
+	// RVA: 0x496DB98 Offset: 0x4969B98 VA: 0x496DB98
+	private void GEECGDEAHHADGEE(int FGBDEHBEHHEFHEB) { }
+
+	// RVA: 0x496DBB4 Offset: 0x4969BB4 VA: 0x496DBB4
+	private void FABABFCEECHEDCH(int FGBDEHBEHHEFHEB) { }
+
+	// RVA: 0x496DBD4 Offset: 0x4969BD4 VA: 0x496DBD4
+	private void BGCEBFGBEEDCACF(int FGBDEHBEHHEFHEB) { }
+
+	// RVA: 0x496DC00 Offset: 0x4969C00 VA: 0x496DC00
+	public void HFGCFHGGHHGEDDD(LayoutControlsSettings EHGEGBDDEBFHABG) { }
+
+	// RVA: 0x496E318 Offset: 0x496A318 VA: 0x496E318
+	private void HBDHEFCGHGBACBA() { }
+
+	// RVA: 0x496E338 Offset: 0x496A338 VA: 0x496E338
+	public void CBGFCHHAEAAFBEE(InteractableButton BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x496E340 Offset: 0x496A340 VA: 0x496E340
+	public void FEBHHABHGCBHECB(int FGBDEHBEHHEFHEB) { }
+
+	// RVA: 0x496E344 Offset: 0x496A344 VA: 0x496E344
+	private void BBEAEFGCDBEDAFE() { }
+
+	// RVA: 0x496E360 Offset: 0x496A360 VA: 0x496E360
+	public void FDHHGFGHHBAGEHH() { }
+
+	// RVA: 0x496E37C Offset: 0x496A37C VA: 0x496E37C
+	private void BAFBEGFAADGDAHF() { }
+
+	// RVA: 0x496E39C Offset: 0x496A39C VA: 0x496E39C
+	private void CHDGAEBGGGGFEEB() { }
+
+	// RVA: 0x496E3BC Offset: 0x496A3BC VA: 0x496E3BC
+	public InteractableButton get_ShootInShiftButton() { }
+
+	// RVA: 0x496E3C4 Offset: 0x496A3C4 VA: 0x496E3C4
+	public EGFDFGAHFHAFCCD GetPlayerInputs() { }
+
+	// RVA: 0x496E5B4 Offset: 0x496A5B4 VA: 0x496E5B4
+	private void HDAHGAACDCFFGGB() { }
+
+	// RVA: 0x496ED78 Offset: 0x496AD78 VA: 0x496ED78
+	public TouchHandler CDEAAGHCHGCFFAG() { }
+
+	// RVA: 0x496ED80 Offset: 0x496AD80 VA: 0x496ED80
+	private void GFDCEHFCDECEAHA() { }
+
+	// RVA: 0x496ED9C Offset: 0x496AD9C VA: 0x496ED9C
+	public InteractableButton get_AimButton() { }
+
+	// RVA: 0x496EDA4 Offset: 0x496ADA4 VA: 0x496EDA4
+	private void BEDDCCHCFDBACEE(int FGBDEHBEHHEFHEB) { }
+
+	// RVA: 0x496CE34 Offset: 0x4968E34 VA: 0x496CE34
+	private static ILogger FBDFEBGDFBEFHCE() { }
+
+	// RVA: 0x496EDC0 Offset: 0x496ADC0 VA: 0x496EDC0
+	public void EEBGHBCBFEHCBGH(InteractableButton BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x496EDC8 Offset: 0x496ADC8 VA: 0x496EDC8
+	public void DBACACCGADCGAHE(InteractableButton BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x496EDD0 Offset: 0x496ADD0 VA: 0x496EDD0
+	public void CHCCAAABDCEADCD(int FGBDEHBEHHEFHEB) { }
+
+	// RVA: 0x496EDD4 Offset: 0x496ADD4 VA: 0x496EDD4
+	public InteractableButton AGDBDFBCHCBDAHA() { }
+
+	// RVA: 0x496EDDC Offset: 0x496ADDC VA: 0x496EDDC
+	public void FGFCCEDAFAECBEA() { }
+
+	// RVA: 0x496EDF8 Offset: 0x496ADF8 VA: 0x496EDF8
+	private void CEGBBDDGDHGCHED() { }
+
+	// RVA: 0x496EE18 Offset: 0x496AE18 VA: 0x496EE18
+	private void DHCDAAEEEBFAGGE(int FGBDEHBEHHEFHEB) { }
+
+	// RVA: 0x496EE1C Offset: 0x496AE1C VA: 0x496EE1C
+	public TouchHandler BEDAEEGADECHGCA() { }
+
+	// RVA: 0x496EE24 Offset: 0x496AE24 VA: 0x496EE24
+	public void set_AimButton(InteractableButton BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x496EE2C Offset: 0x496AE2C VA: 0x496EE2C
+	private static ILogger ADCDFABAGCHDHEH() { }
+
+	// RVA: 0x496EF58 Offset: 0x496AF58 VA: 0x496EF58
+	private void AFAEHGBCACBDHAD() { }
+
+	// RVA: 0x496EF78 Offset: 0x496AF78 VA: 0x496EF78
+	public void SetLayoutSettings(LayoutControlsSettings EHGEGBDDEBFHABG) { }
+
+	// RVA: 0x496F314 Offset: 0x496B314 VA: 0x496F314
+	public InteractableButton EEDHEBGBHCCHHHE() { }
+
+	// RVA: 0x496F31C Offset: 0x496B31C VA: 0x496F31C
+	private void ADDDAFGFAADCCDD(int FGBDEHBEHHEFHEB) { }
+
+	// RVA: 0x496DF9C Offset: 0x4969F9C VA: 0x496DF9C
+	private void EAGECCDCGFBFEGF(LayoutControlsSettings EHGEGBDDEBFHABG) { }
+}

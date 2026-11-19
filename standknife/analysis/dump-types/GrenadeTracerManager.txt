@@ -1,0 +1,195 @@
+// Namespace: Axlebolt.Standoff.Inventory.Grenade.Ballistics
+public class GrenadeTracerManager : Singleton<GrenadeTracerManager> // TypeDefIndex: 6529
+{
+	// Fields
+	private const string CHEAECAFCFAHEHF = "GrenadeTracerParameters";
+	private const string BHDACGGDFHFFECF = "Tracer/";
+	private const float GCGEFBEHAEDHDAB = 0.01;
+	private const string DBDFCBDEHFEADDA = "GrenadePracticeTracerParameters";
+	private readonly TracerRuntimeSettings CECFFAHAHEDGHED; // 0x28
+	private readonly HADFDHDEBDECCCE EAFBECAGHFECFBB; // 0x30
+	private readonly TracerMeshGeneratorBuffer GDDGCEGEHCCEBBB; // 0x38
+	private HGCFDDCHGBFFCFB EFFBABBHGAEHHCE; // 0x40
+	private Camera ADDGABCGEDAEADG; // 0x48
+	private GrenadeTracerParameters CHEFEBBADADEDEE; // 0x50
+	private GrenadePracticeTracerParameters DEEHFBHEFDHHGAB; // 0x58
+	private GrenadePracticeService DEEDDFECEHDDBGB; // 0x60
+	private bool GHGBFHCABADAHGH; // 0x68
+
+	// Properties
+	public HGCFDDCHGBFFCFB HHAFHAACAGAAFBC { get; }
+
+	// Methods
+
+	[IteratorStateMachine(typeof(GrenadeTracerManager.GGDHACABDHFCCEE))]
+	// RVA: 0x4FA3604 Offset: 0x4F9F604 VA: 0x4FA3604
+	private IEnumerator EFCFEFFGFAFHADF() { }
+
+	// RVA: 0x4FA36D4 Offset: 0x4F9F6D4 VA: 0x4FA36D4
+	private void GHHEDEAHFEBHAFE(LayerMask AAFDAHHAHBEBHHF) { }
+
+	// RVA: 0x4FA372C Offset: 0x4F9F72C VA: 0x4FA372C
+	private IEnumerator CGCBGDFECAGGCBB() { }
+
+	// RVA: 0x4FA37D8 Offset: 0x4F9F7D8 VA: 0x4FA37D8
+	private void AEGACBCAEBFEFGF(HGCFDDCHGBFFCFB EBGEGHBBGHGECFA) { }
+
+	// RVA: 0x4FA392C Offset: 0x4F9F92C VA: 0x4FA392C
+	private void BEHABEABBECAGEA(HGCFDDCHGBFFCFB EBGEGHBBGHGECFA) { }
+
+	// RVA: 0x4FA39D4 Offset: 0x4F9F9D4 VA: 0x4FA39D4
+	private IEnumerator EABFHBBDEFAABEB() { }
+
+	// RVA: 0x4FA3A80 Offset: 0x4F9FA80 VA: 0x4FA3A80
+	public HGCFDDCHGBFFCFB ACCBABCGDDGECCF() { }
+
+	// RVA: 0x4FA3A88 Offset: 0x4F9FA88 VA: 0x4FA3A88 Slot: 7
+	protected override void OnDispose() { }
+
+	// RVA: 0x4FA3C30 Offset: 0x4F9FC30 VA: 0x4FA3C30
+	public HGCFDDCHGBFFCFB FEEEFBCHEDCEFHC() { }
+
+	// RVA: 0x4FA3C38 Offset: 0x4F9FC38 VA: 0x4FA3C38
+	private void CHDHGFBHBBACACA(LayerMask AAFDAHHAHBEBHHF) { }
+
+	// RVA: 0x4FA3C90 Offset: 0x4F9FC90 VA: 0x4FA3C90
+	public HGCFDDCHGBFFCFB FHBFBBEGBFCHDAA() { }
+
+	// RVA: 0x4FA3C98 Offset: 0x4F9FC98 VA: 0x4FA3C98
+	private void CBBDCBCFCBACBBD(HGCFDDCHGBFFCFB EBGEGHBBGHGECFA) { }
+
+	// RVA: 0x4FA3DEC Offset: 0x4F9FDEC VA: 0x4FA3DEC
+	private GrenadePracticeTracerParameters AGFBADCEHADBGGH() { }
+
+	// RVA: 0x4FA3F4C Offset: 0x4F9FF4C VA: 0x4FA3F4C
+	private GrenadeTracerParameters DDDGCBBHCGGDBDB() { }
+
+	// RVA: 0x4FA40AC Offset: 0x4FA00AC VA: 0x4FA40AC
+	public void .ctor() { }
+
+	// RVA: 0x4FA4254 Offset: 0x4FA0254 VA: 0x4FA4254
+	private GrenadeTracerParameters EFAEBFGDDCGBBAE() { }
+
+	// RVA: 0x4FA43B4 Offset: 0x4FA03B4 VA: 0x4FA43B4
+	private IEnumerator BEHHGDDBHBCBDHG() { }
+
+	// RVA: 0x4FA445C Offset: 0x4FA045C VA: 0x4FA445C
+	public HGCFDDCHGBFFCFB ACCDDCCFAEFDABB() { }
+
+	// RVA: 0x4FA4464 Offset: 0x4FA0464 VA: 0x4FA4464
+	private void BEEACFHACGEHFCG(LayerMask AAFDAHHAHBEBHHF) { }
+
+	// RVA: 0x4FA44BC Offset: 0x4FA04BC VA: 0x4FA44BC
+	public bool TryGetTracerArcController(GameObject BHBBCHGFEHHHCEB, GrenadeParameters EEGGFAHBBDGFHHE, out ITracerArcController EEDBACBDHFGFBAD, out bool HHFGHGACBHCHGGC) { }
+
+	// RVA: 0x4FA4898 Offset: 0x4FA0898 VA: 0x4FA4898
+	private IEnumerator BECAGECFHHACGDG() { }
+
+	// RVA: 0x4FA4944 Offset: 0x4FA0944 VA: 0x4FA4944
+	public bool FCBAHGAAAGAHBFG(GameObject BHBBCHGFEHHHCEB, GrenadeParameters EEGGFAHBBDGFHHE, out ITracerArcController EEDBACBDHFGFBAD, out bool HHFGHGACBHCHGGC) { }
+
+	// RVA: 0x4FA4D28 Offset: 0x4FA0D28 VA: 0x4FA4D28
+	private GrenadeTracerParameters AEDCDGBHAFEEEAE() { }
+
+	// RVA: 0x4FA3D40 Offset: 0x4F9FD40 VA: 0x4FA3D40
+	private IEnumerator ECBFHAAFAACFDAG() { }
+
+	// RVA: 0x4FA4E88 Offset: 0x4FA0E88 VA: 0x4FA4E88
+	public bool GFEBDAEEDEAHGHF(GameObject BHBBCHGFEHHHCEB, GrenadeParameters EEGGFAHBBDGFHHE, out ITracerArcController EEDBACBDHFGFBAD, out bool HHFGHGACBHCHGGC) { }
+
+	// RVA: 0x4FA5100 Offset: 0x4FA1100 VA: 0x4FA5100
+	public bool FBECDDFAFHEBBGG(GameObject BHBBCHGFEHHHCEB, GrenadeParameters EEGGFAHBBDGFHHE, out ITracerArcController EEDBACBDHFGFBAD, out bool HHFGHGACBHCHGGC) { }
+
+	// RVA: 0x4FA5350 Offset: 0x4FA1350 VA: 0x4FA5350
+	public bool GHDHHDAEGBGGBHA(GameObject BHBBCHGFEHHHCEB, GrenadeParameters EEGGFAHBBDGFHHE, out ITracerArcController EEDBACBDHFGFBAD, out bool HHFGHGACBHCHGGC) { }
+
+	// RVA: 0x4FA55A0 Offset: 0x4FA15A0 VA: 0x4FA55A0
+	private IEnumerator CFACAFDBFDFABGF() { }
+
+	// RVA: 0x4FA564C Offset: 0x4FA164C VA: 0x4FA564C
+	private void BHFGBEBBEEFCBDF(LayerMask AAFDAHHAHBEBHHF) { }
+
+	// RVA: 0x4FA56A4 Offset: 0x4FA16A4 VA: 0x4FA56A4
+	public void InitSettings(CFGAHHHABFBAGDH CBGBFEDBFBFBDFD) { }
+
+	// RVA: 0x4FA581C Offset: 0x4FA181C VA: 0x4FA581C
+	public HGCFDDCHGBFFCFB HEAHHCDHCDEDFGB() { }
+
+	// RVA: 0x4FA5824 Offset: 0x4FA1824 VA: 0x4FA5824
+	public HGCFDDCHGBFFCFB BCGACFCADHFCFAE() { }
+
+	// RVA: 0x4FA582C Offset: 0x4FA182C VA: 0x4FA582C
+	private void EGDBAGFFECEDCEE(HGCFDDCHGBFFCFB EBGEGHBBGHGECFA) { }
+
+	// RVA: 0x4FA5980 Offset: 0x4FA1980 VA: 0x4FA5980
+	public void EDCBCHGGEHGEDHD(CFGAHHHABFBAGDH CBGBFEDBFBFBDFD) { }
+
+	// RVA: 0x4FA5774 Offset: 0x4FA1774 VA: 0x4FA5774
+	private void DFFGGFFHEGCFBFF(HGCFDDCHGBFFCFB EBGEGHBBGHGECFA) { }
+
+	// RVA: 0x4FA4738 Offset: 0x4FA0738 VA: 0x4FA4738
+	private GrenadePracticeTracerParameters HHHBABCBAFCAFFG() { }
+
+	// RVA: 0x4FA5A50 Offset: 0x4FA1A50 VA: 0x4FA5A50
+	private void HCHFCAHDFCADBBH(LayerMask AAFDAHHAHBEBHHF) { }
+
+	// RVA: 0x4FA5AA8 Offset: 0x4FA1AA8 VA: 0x4FA5AA8
+	public void FCHEGBDGCHCBCCH(CFGAHHHABFBAGDH CBGBFEDBFBFBDFD) { }
+
+	// RVA: 0x4FA4BC8 Offset: 0x4FA0BC8 VA: 0x4FA4BC8
+	private GrenadePracticeTracerParameters DBAEEADEGGGDDDE() { }
+
+	// RVA: 0x4FA5B74 Offset: 0x4FA1B74 VA: 0x4FA5B74
+	private void AGGGABAFBCACAGB(HGCFDDCHGBFFCFB EBGEGHBBGHGECFA) { }
+
+	// RVA: 0x4FA58D4 Offset: 0x4FA18D4 VA: 0x4FA58D4
+	private IEnumerator GGADFCDFAEHACHA() { }
+
+	// RVA: 0x4FA5C1C Offset: 0x4FA1C1C VA: 0x4FA5C1C
+	private GrenadeTracerParameters AAHBEDEDAGDGFFH() { }
+
+	// RVA: 0x4FA5D7C Offset: 0x4FA1D7C VA: 0x4FA5D7C
+	public bool BBGGFHCACGEHFAH(GameObject BHBBCHGFEHHHCEB, GrenadeParameters EEGGFAHBBDGFHHE, out ITracerArcController EEDBACBDHFGFBAD, out bool HHFGHGACBHCHGGC) { }
+
+	// RVA: 0x4FA6150 Offset: 0x4FA2150 VA: 0x4FA6150
+	public HGCFDDCHGBFFCFB get_GrenadePracticeType() { }
+
+	// RVA: 0x4FA5FF0 Offset: 0x4FA1FF0 VA: 0x4FA5FF0
+	private GrenadePracticeTracerParameters HBGCCEBAEFFFFEC() { }
+
+	// RVA: 0x4FA6158 Offset: 0x4FA2158 VA: 0x4FA6158
+	private GrenadeTracerParameters GABCBEDFCBEBGFG() { }
+
+	// RVA: 0x4FA62B8 Offset: 0x4FA22B8 VA: 0x4FA62B8
+	private IEnumerator BABHGECAHABGDDH() { }
+
+	// RVA: 0x4FA6364 Offset: 0x4FA2364 VA: 0x4FA6364
+	public HGCFDDCHGBFFCFB CHFGHFFGFDDEDFB() { }
+
+	// RVA: 0x4FA636C Offset: 0x4FA236C VA: 0x4FA636C
+	private GrenadeTracerParameters ECGDBFDCGFGHAGD() { }
+
+	// RVA: 0x4FA3880 Offset: 0x4F9F880 VA: 0x4FA3880
+	private IEnumerator HFHCFFHCFHBBGAA() { }
+
+	// RVA: 0x4FA64CC Offset: 0x4FA24CC VA: 0x4FA64CC
+	public bool BFEBHEHGFEEBEHF(GameObject BHBBCHGFEHHHCEB, GrenadeParameters EEGGFAHBBDGFHHE, out ITracerArcController EEDBACBDHFGFBAD, out bool HHFGHGACBHCHGGC) { }
+
+	// RVA: 0x4FA68B4 Offset: 0x4FA28B4 VA: 0x4FA68B4
+	public void FDFGAHFECCACCHD(CFGAHHHABFBAGDH CBGBFEDBFBFBDFD) { }
+
+	// RVA: 0x4FA6984 Offset: 0x4FA2984 VA: 0x4FA6984
+	private void EFHADHGBDHDHECB(HGCFDDCHGBFFCFB EBGEGHBBGHGECFA) { }
+
+	// RVA: 0x4FA6754 Offset: 0x4FA2754 VA: 0x4FA6754
+	private GrenadePracticeTracerParameters EEDGAEDAAEBCGHH() { }
+
+	// RVA: 0x4FA6A2C Offset: 0x4FA2A2C VA: 0x4FA6A2C
+	private GrenadeTracerParameters DEAAHGCCBACGBAH() { }
+
+	// RVA: 0x4FA6B8C Offset: 0x4FA2B8C VA: 0x4FA6B8C
+	public void HFDGCEDHDBGEHED(CFGAHHHABFBAGDH CBGBFEDBFBFBDFD) { }
+
+	// RVA: 0x4FA6C58 Offset: 0x4FA2C58 VA: 0x4FA6C58 Slot: 6
+	protected override void OnInit() { }
+}

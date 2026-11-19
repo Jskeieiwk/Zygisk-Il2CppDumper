@@ -1,0 +1,12 @@
+// Namespace: Axlebolt.Standoff.Missions.Configuration
+public class GrenadeCondition // TypeDefIndex: 8218
+{
+	// Fields
+	public WeaponIdsValue Grenade; // 0x10
+	public ZoneValue Zone; // 0x18
+
+	// Methods
+
+	// RVA: 0x5BF5338 Offset: 0x5BF1338 VA: 0x5BF5338
+	public void .ctor() { }
+}

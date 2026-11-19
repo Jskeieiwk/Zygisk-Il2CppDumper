@@ -1,0 +1,11 @@
+// Namespace: UnityEngine.Rendering.PostProcessing
+public sealed class FloatParameter : ParameterOverride<float> // TypeDefIndex: 21106
+{
+	// Methods
+
+	// RVA: 0xA5737E0 Offset: 0xA56F7E0 VA: 0xA5737E0 Slot: 9
+	public override void Interp(float from, float to, float t) { }
+
+	// RVA: 0xA5737F4 Offset: 0xA56F7F4 VA: 0xA5737F4
+	public void .ctor() { }
+}

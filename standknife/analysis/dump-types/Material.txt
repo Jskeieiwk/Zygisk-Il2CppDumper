@@ -1,0 +1,230 @@
+// Namespace: UnityEngine
+public class Material : Object // TypeDefIndex: 17359
+{
+	// Properties
+	public Shader shader { get; set; }
+	public Color color { get; set; }
+	public Texture mainTexture { get; set; }
+	public int renderQueue { set; }
+	public int passCount { get; }
+	public string[] shaderKeywords { get; set; }
+
+	// Methods
+
+	[FreeFunction("MaterialScripting::CreateWithShader")]
+	// RVA: 0xA746F1C Offset: 0xA742F1C VA: 0xA746F1C
+	private static void CreateWithShader(Material self, Shader shader) { }
+
+	[FreeFunction("MaterialScripting::CreateWithMaterial")]
+	// RVA: 0xA74709C Offset: 0xA74309C VA: 0xA74709C
+	private static void CreateWithMaterial(Material self, Material source) { }
+
+	[FreeFunction("MaterialScripting::CreateWithString")]
+	// RVA: 0xA747238 Offset: 0xA743238 VA: 0xA747238
+	private static void CreateWithString(Material self) { }
+
+	// RVA: 0xA7473B8 Offset: 0xA7433B8 VA: 0xA7473B8
+	public void .ctor(Shader shader) { }
+
+	[RequiredByNativeCode]
+	// RVA: 0xA747470 Offset: 0xA743470 VA: 0xA747470
+	public void .ctor(Material source) { }
+
+	[EditorBrowsable(1)]
+	[Obsolete("Creating materials from shader source string is no longer supported. Use Shader assets instead.", False)]
+	// RVA: 0xA747528 Offset: 0xA743528 VA: 0xA747528
+	public void .ctor(string contents) { }
+
+	// RVA: 0xA7475D0 Offset: 0xA7435D0 VA: 0xA7475D0
+	public Shader get_shader() { }
+
+	// RVA: 0xA747748 Offset: 0xA743748 VA: 0xA747748
+	public void set_shader(Shader value) { }
+
+	// RVA: 0xA7478D8 Offset: 0xA7438D8 VA: 0xA7478D8
+	public Color get_color() { }
+
+	// RVA: 0xA747BB4 Offset: 0xA743BB4 VA: 0xA747BB4
+	public void set_color(Color value) { }
+
+	// RVA: 0xA747D40 Offset: 0xA743D40 VA: 0xA747D40
+	public Texture get_mainTexture() { }
+
+	// RVA: 0xA747E18 Offset: 0xA743E18 VA: 0xA747E18
+	public void set_mainTexture(Texture value) { }
+
+	[NativeName("GetFirstPropertyNameIdByAttributeFromScript")]
+	// RVA: 0xA7479B4 Offset: 0xA7439B4 VA: 0xA7479B4
+	private int GetFirstPropertyNameIdByAttribute(ShaderPropertyFlags attributeFlag) { }
+
+	[NativeName("HasPropertyFromScript")]
+	// RVA: 0xA747F08 Offset: 0xA743F08 VA: 0xA747F08
+	public bool HasProperty(int nameID) { }
+
+	// RVA: 0xA748088 Offset: 0xA744088 VA: 0xA748088
+	public bool HasProperty(string name) { }
+
+	[NativeName("HasFloatFromScript")]
+	// RVA: 0xA7480A8 Offset: 0xA7440A8 VA: 0xA7480A8
+	private bool HasFloatImpl(int name) { }
+
+	// RVA: 0xA748224 Offset: 0xA744224 VA: 0xA748224
+	public bool HasFloat(int nameID) { }
+
+	[NativeName("SetCustomRenderQueue")]
+	// RVA: 0xA748228 Offset: 0xA744228 VA: 0xA748228
+	public void set_renderQueue(int value) { }
+
+	// RVA: 0xA7483A8 Offset: 0xA7443A8 VA: 0xA7483A8
+	public void EnableKeyword(string keyword) { }
+
+	// RVA: 0xA74852C Offset: 0xA74452C VA: 0xA74852C
+	public void DisableKeyword(string keyword) { }
+
+	[NativeName("GetShader()->GetPassCount")]
+	// RVA: 0xA7486A8 Offset: 0xA7446A8 VA: 0xA7486A8
+	public int get_passCount() { }
+
+	[NativeName("GetTag")]
+	// RVA: 0xA748828 Offset: 0xA744828 VA: 0xA748828
+	private string GetTagImpl(string tag, bool currentSubShaderOnly, string defaultValue) { }
+
+	// RVA: 0xA7489DC Offset: 0xA7449DC VA: 0xA7489DC
+	public string GetTag(string tag, bool searchFallbacks) { }
+
+	[FreeFunction("MaterialScripting::SetPass", HasExplicitThis = True)]
+	// RVA: 0xA748A88 Offset: 0xA744A88 VA: 0xA748A88
+	public bool SetPass(int pass) { }
+
+	[FreeFunction("MaterialScripting::CopyPropertiesFrom", HasExplicitThis = True)]
+	// RVA: 0xA748C18 Offset: 0xA744C18 VA: 0xA748C18
+	public void CopyPropertiesFromMaterial(Material mat) { }
+
+	[FreeFunction("MaterialScripting::GetShaderKeywords", HasExplicitThis = True)]
+	// RVA: 0xA748DB0 Offset: 0xA744DB0 VA: 0xA748DB0
+	private string[] GetShaderKeywords() { }
+
+	[FreeFunction("MaterialScripting::SetShaderKeywords", HasExplicitThis = True)]
+	// RVA: 0xA748F20 Offset: 0xA744F20 VA: 0xA748F20
+	private void SetShaderKeywords(string[] names) { }
+
+	// RVA: 0xA7490A8 Offset: 0xA7450A8 VA: 0xA7490A8
+	public string[] get_shaderKeywords() { }
+
+	// RVA: 0xA7490AC Offset: 0xA7450AC VA: 0xA7490AC
+	public void set_shaderKeywords(string[] value) { }
+
+	// RVA: 0xA7490B0 Offset: 0xA7450B0 VA: 0xA7490B0
+	public int ComputeCRC() { }
+
+	[NativeName("SetFloatFromScript")]
+	// RVA: 0xA749228 Offset: 0xA745228 VA: 0xA749228
+	private void SetFloatImpl(int name, float value) { }
+
+	[NativeName("SetColorFromScript")]
+	// RVA: 0xA7493CC Offset: 0xA7453CC VA: 0xA7493CC
+	private void SetColorImpl(int name, Color value) { }
+
+	[NativeName("SetMatrixFromScript")]
+	// RVA: 0xA749594 Offset: 0xA745594 VA: 0xA749594
+	private void SetMatrixImpl(int name, Matrix4x4 value) { }
+
+	[NativeName("SetTextureFromScript")]
+	// RVA: 0xA749734 Offset: 0xA745734 VA: 0xA749734
+	private void SetTextureImpl(int name, Texture value) { }
+
+	[NativeName("GetFloatFromScript")]
+	// RVA: 0xA7498D8 Offset: 0xA7458D8 VA: 0xA7498D8
+	private float GetFloatImpl(int name) { }
+
+	[NativeName("GetColorFromScript")]
+	// RVA: 0xA749A58 Offset: 0xA745A58 VA: 0xA749A58
+	private Color GetColorImpl(int name) { }
+
+	[NativeName("GetTextureFromScript")]
+	// RVA: 0xA749C24 Offset: 0xA745C24 VA: 0xA749C24
+	private Texture GetTextureImpl(int name) { }
+
+	[NativeName("SetTextureOffsetFromScript")]
+	// RVA: 0xA749DAC Offset: 0xA745DAC VA: 0xA749DAC
+	private void SetTextureOffsetImpl(int name, Vector2 offset) { }
+
+	[NativeName("SetTextureScaleFromScript")]
+	// RVA: 0xA749F70 Offset: 0xA745F70 VA: 0xA749F70
+	private void SetTextureScaleImpl(int name, Vector2 scale) { }
+
+	// RVA: 0xA74A130 Offset: 0xA746130 VA: 0xA74A130
+	public void SetInt(string name, int value) { }
+
+	// RVA: 0xA74A160 Offset: 0xA746160 VA: 0xA74A160
+	public void SetInt(int nameID, int value) { }
+
+	// RVA: 0xA74A168 Offset: 0xA746168 VA: 0xA74A168
+	public void SetFloat(string name, float value) { }
+
+	// RVA: 0xA74A198 Offset: 0xA746198 VA: 0xA74A198
+	public void SetFloat(int nameID, float value) { }
+
+	// RVA: 0xA747CE8 Offset: 0xA743CE8 VA: 0xA747CE8
+	public void SetColor(string name, Color value) { }
+
+	// RVA: 0xA747CC4 Offset: 0xA743CC4 VA: 0xA747CC4
+	public void SetColor(int nameID, Color value) { }
+
+	// RVA: 0xA74A19C Offset: 0xA74619C VA: 0xA74A19C
+	public void SetVector(string name, Vector4 value) { }
+
+	// RVA: 0xA74A1F4 Offset: 0xA7461F4 VA: 0xA74A1F4
+	public void SetVector(int nameID, Vector4 value) { }
+
+	// RVA: 0xA74A218 Offset: 0xA746218 VA: 0xA74A218
+	public void SetMatrix(int nameID, Matrix4x4 value) { }
+
+	// RVA: 0xA747ED8 Offset: 0xA743ED8 VA: 0xA747ED8
+	public void SetTexture(string name, Texture value) { }
+
+	// RVA: 0xA747ED4 Offset: 0xA743ED4 VA: 0xA747ED4
+	public void SetTexture(int nameID, Texture value) { }
+
+	// RVA: 0xA74A244 Offset: 0xA746244 VA: 0xA74A244
+	public float GetFloat(string name) { }
+
+	// RVA: 0xA74A264 Offset: 0xA746264 VA: 0xA74A264
+	public float GetFloat(int nameID) { }
+
+	// RVA: 0xA747B78 Offset: 0xA743B78 VA: 0xA747B78
+	public Color GetColor(string name) { }
+
+	// RVA: 0xA747B50 Offset: 0xA743B50 VA: 0xA747B50
+	public Color GetColor(int nameID) { }
+
+	// RVA: 0xA74A268 Offset: 0xA746268 VA: 0xA74A268
+	public Vector4 GetVector(int nameID) { }
+
+	// RVA: 0xA747DF8 Offset: 0xA743DF8 VA: 0xA747DF8
+	public Texture GetTexture(string name) { }
+
+	// RVA: 0xA747DF4 Offset: 0xA743DF4 VA: 0xA747DF4
+	public Texture GetTexture(int nameID) { }
+
+	// RVA: 0xA74A290 Offset: 0xA746290 VA: 0xA74A290
+	public void SetTextureOffset(string name, Vector2 value) { }
+
+	// RVA: 0xA74A2D4 Offset: 0xA7462D4 VA: 0xA74A2D4
+	public void SetTextureScale(string name, Vector2 value) { }
+
+	// RVA: 0xA7493F0 Offset: 0xA7453F0 VA: 0xA7493F0
+	private void SetColorImpl_Injected(int name, ref Color value) { }
+
+	// RVA: 0xA749598 Offset: 0xA745598 VA: 0xA749598
+	private void SetMatrixImpl_Injected(int name, ref Matrix4x4 value) { }
+
+	// RVA: 0xA749A80 Offset: 0xA745A80 VA: 0xA749A80
+	private void GetColorImpl_Injected(int name, out Color ret) { }
+
+	// RVA: 0xA749DC4 Offset: 0xA745DC4 VA: 0xA749DC4
+	private void SetTextureOffsetImpl_Injected(int name, ref Vector2 offset) { }
+
+	// RVA: 0xA749F88 Offset: 0xA745F88 VA: 0xA749F88
+	private void SetTextureScaleImpl_Injected(int name, ref Vector2 scale) { }
+}

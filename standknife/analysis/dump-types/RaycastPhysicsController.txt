@@ -1,0 +1,141 @@
+// Namespace: Axlebolt.Ballistics.Simulation.RaycastPhysicsController
+public sealed class RaycastPhysicsController : IRaycastPhysicsController // TypeDefIndex: 22416
+{
+	// Fields
+	private const int SleepThresoldTickCount = 20;
+	private const float MinVelocity = 0.1;
+	private const float Eps = 0.0001;
+	private readonly List<IRaycastPhysicsListener> _listeners; // 0x10
+	private readonly Vector3 _vector3Zero; // 0x18
+	private readonly bool _isRotationFreeze; // 0x24
+	private readonly BallisticsRotationParameters _ballisticsRotationParameters; // 0x28
+	private readonly IBallisticsState _ballisticsState; // 0x30
+	private readonly Vector3 _vector3Up; // 0x38
+	private Vector3 _position; // 0x44
+	private Quaternion _rotation; // 0x50
+	private readonly IBallisticsSimulation _ballisticsSimulation; // 0x60
+	private readonly IBallisticMath _ballisticMath; // 0x68
+	private float _tryStopStartTime; // 0x70
+	private bool _isTryStop; // 0x74
+	private float _sleepThresold; // 0x78
+	private Vector3 _prevMovement; // 0x7C
+	[CompilerGenerated]
+	private int <LayerMask>k__BackingField; // 0x88
+	[CompilerGenerated]
+	private Vector3 <Velocity>k__BackingField; // 0x8C
+	[CompilerGenerated]
+	private Vector3 <LocalAngularVelocity>k__BackingField; // 0x98
+	[CompilerGenerated]
+	private float <Radius>k__BackingField; // 0xA4
+	[CompilerGenerated]
+	private Transform <Transform>k__BackingField; // 0xA8
+	[CompilerGenerated]
+	private bool <IsSleep>k__BackingField; // 0xB0
+
+	// Properties
+	public int LayerMask { get; set; }
+	public Vector3 Velocity { get; set; }
+	public Vector3 LocalAngularVelocity { get; set; }
+	public Vector3 Position { get; }
+	public Quaternion Rotation { get; }
+	public float Radius { get; set; }
+	public Transform Transform { get; set; }
+	public bool IsSleep { get; set; }
+
+	// Methods
+
+	[CompilerGenerated]
+	// RVA: 0x6BB3954 Offset: 0x6BAF954 VA: 0x6BB3954
+	public int get_LayerMask() { }
+
+	[CompilerGenerated]
+	// RVA: 0x6BB395C Offset: 0x6BAF95C VA: 0x6BB395C
+	public void set_LayerMask(int value) { }
+
+	[CompilerGenerated]
+	// RVA: 0x6BB3964 Offset: 0x6BAF964 VA: 0x6BB3964 Slot: 4
+	public Vector3 get_Velocity() { }
+
+	[CompilerGenerated]
+	// RVA: 0x6BB3970 Offset: 0x6BAF970 VA: 0x6BB3970 Slot: 5
+	public void set_Velocity(Vector3 value) { }
+
+	[CompilerGenerated]
+	// RVA: 0x6BB397C Offset: 0x6BAF97C VA: 0x6BB397C Slot: 6
+	public Vector3 get_LocalAngularVelocity() { }
+
+	[CompilerGenerated]
+	// RVA: 0x6BB3988 Offset: 0x6BAF988 VA: 0x6BB3988 Slot: 7
+	public void set_LocalAngularVelocity(Vector3 value) { }
+
+	// RVA: 0x6BB3994 Offset: 0x6BAF994 VA: 0x6BB3994 Slot: 8
+	public Vector3 get_Position() { }
+
+	// RVA: 0x6BB39A0 Offset: 0x6BAF9A0 VA: 0x6BB39A0 Slot: 9
+	public Quaternion get_Rotation() { }
+
+	[CompilerGenerated]
+	// RVA: 0x6BB39AC Offset: 0x6BAF9AC VA: 0x6BB39AC
+	public float get_Radius() { }
+
+	[CompilerGenerated]
+	// RVA: 0x6BB39B4 Offset: 0x6BAF9B4 VA: 0x6BB39B4
+	public void set_Radius(float value) { }
+
+	[CompilerGenerated]
+	// RVA: 0x6BB39BC Offset: 0x6BAF9BC VA: 0x6BB39BC
+	public Transform get_Transform() { }
+
+	[CompilerGenerated]
+	// RVA: 0x6BB39C4 Offset: 0x6BAF9C4 VA: 0x6BB39C4
+	public void set_Transform(Transform value) { }
+
+	[CompilerGenerated]
+	// RVA: 0x6BB39CC Offset: 0x6BAF9CC VA: 0x6BB39CC Slot: 10
+	public bool get_IsSleep() { }
+
+	[CompilerGenerated]
+	// RVA: 0x6BB39D4 Offset: 0x6BAF9D4 VA: 0x6BB39D4 Slot: 11
+	public void set_IsSleep(bool value) { }
+
+	// RVA: 0x6BB39E0 Offset: 0x6BAF9E0 VA: 0x6BB39E0
+	public void .ctor(BallisticsParameters ballisticsParameters, BallisticsRotationParameters ballisticsRotationParameters) { }
+
+	// RVA: 0x6BB3C5C Offset: 0x6BAFC5C VA: 0x6BB3C5C Slot: 12
+	public void AddListener(IRaycastPhysicsListener listener) { }
+
+	// RVA: 0x6BB3DBC Offset: 0x6BAFDBC VA: 0x6BB3DBC Slot: 13
+	public void RemoveListener(IRaycastPhysicsListener listener) { }
+
+	// RVA: 0x6BB3E64 Offset: 0x6BAFE64 VA: 0x6BB3E64 Slot: 14
+	public void SetSettings(float radius, int layerMask) { }
+
+	// RVA: 0x6BB3E70 Offset: 0x6BAFE70 VA: 0x6BB3E70 Slot: 15
+	public void SetTransform(Transform visualObjectTransform) { }
+
+	// RVA: 0x6BB3E78 Offset: 0x6BAFE78 VA: 0x6BB3E78 Slot: 16
+	public void Throw(Vector3 throwPosition, Quaternion throwRotation, Vector3 throwVelocity, Vector3 throwLocalAngularVelocity) { }
+
+	// RVA: 0x6BB3FEC Offset: 0x6BAFFEC VA: 0x6BB3FEC
+	public void OnStart() { }
+
+	// RVA: 0x6BB4010 Offset: 0x6BB0010 VA: 0x6BB4010
+	public void OnFixedUpdate() { }
+
+	// RVA: 0x6BB4D68 Offset: 0x6BB0D68 VA: 0x6BB4D68
+	public void OnUpdate() { }
+
+	// RVA: 0x6BB4020 Offset: 0x6BB0020 VA: 0x6BB4020
+	private void Simulate() { }
+
+	// RVA: 0x6BB4E5C Offset: 0x6BB0E5C VA: 0x6BB4E5C
+	private void OnCollision(Collider hitCollider, Vector3 startNormalizedVelocity, float startVelocityMagnitude, Vector3 hitPoint, Vector3 hitNormal) { }
+
+	[Conditional("BALLISTICS_DEBUG")]
+	// RVA: 0x6BB50A0 Offset: 0x6BB10A0 VA: 0x6BB50A0
+	private void DebugDrawOnNotHitted() { }
+
+	[Conditional("BALLISTICS_DEBUG")]
+	// RVA: 0x6BB5190 Offset: 0x6BB1190 VA: 0x6BB5190
+	private void DebugDrawOnHitted(Vector3 hitPoint, Vector3 endPosition) { }
+}

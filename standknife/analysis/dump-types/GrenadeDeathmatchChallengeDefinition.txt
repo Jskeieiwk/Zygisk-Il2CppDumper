@@ -1,0 +1,11 @@
+// Namespace: Axlebolt.Standoff.Events.BeholderGames.Scripts.GameChallenges.GrenadeDeathmatch
+public class GrenadeDeathmatchChallengeDefinition : DeathmatchChallengeDefinition // TypeDefIndex: 4439
+{
+	// Methods
+
+	// RVA: 0x403A45C Offset: 0x403645C VA: 0x403A45C Slot: 4
+	public override DGDECEEHCGBHAEH GetExecutor() { }
+
+	// RVA: 0x403A500 Offset: 0x4036500 VA: 0x403A500
+	public void .ctor() { }
+}

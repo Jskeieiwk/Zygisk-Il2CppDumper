@@ -1,0 +1,38 @@
+// Namespace: 
+private sealed class BombEnvironmentContextManager.BBGGDFFCBAFABAH : IEnumerator<object>, IEnumerator, IDisposable // TypeDefIndex: 3214
+{
+	// Fields
+	private int <>1__state; // 0x10
+	private object <>2__current; // 0x18
+	public BombEnvironmentContextManager <>4__this; // 0x20
+	public Vector3 smokePlacement; // 0x28
+
+	// Properties
+	private object System.Collections.Generic.IEnumerator<System.Object>.Current { get; }
+	private object System.Collections.IEnumerator.Current { get; }
+
+	// Methods
+
+	[DebuggerHidden]
+	// RVA: 0x36E98E4 Offset: 0x36E58E4 VA: 0x36E98E4
+	public void .ctor(int <>1__state) { }
+
+	[DebuggerHidden]
+	// RVA: 0x36EC28C Offset: 0x36E828C VA: 0x36EC28C Slot: 5
+	private void System.IDisposable.Dispose() { }
+
+	// RVA: 0x36EC290 Offset: 0x36E8290 VA: 0x36EC290 Slot: 6
+	private bool MoveNext() { }
+
+	[DebuggerHidden]
+	// RVA: 0x36EC4B8 Offset: 0x36E84B8 VA: 0x36EC4B8 Slot: 4
+	private object System.Collections.Generic.IEnumerator<System.Object>.get_Current() { }
+
+	[DebuggerHidden]
+	// RVA: 0x36EC4C0 Offset: 0x36E84C0 VA: 0x36EC4C0 Slot: 8
+	private void System.Collections.IEnumerator.Reset() { }
+
+	[DebuggerHidden]
+	// RVA: 0x36EC528 Offset: 0x36E8528 VA: 0x36EC528 Slot: 7
+	private object System.Collections.IEnumerator.get_Current() { }
+}

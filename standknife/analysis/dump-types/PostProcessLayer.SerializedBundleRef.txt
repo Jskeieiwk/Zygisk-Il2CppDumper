@@ -1,0 +1,12 @@
+// Namespace: 
+public sealed class PostProcessLayer.SerializedBundleRef // TypeDefIndex: 21127
+{
+	// Fields
+	public string assemblyQualifiedName; // 0x10
+	public PostProcessBundle bundle; // 0x18
+
+	// Methods
+
+	// RVA: 0xA57C3D0 Offset: 0xA5783D0 VA: 0xA57C3D0
+	public void .ctor() { }
+}

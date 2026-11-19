@@ -1,0 +1,387 @@
+// Namespace: UnityEngine
+public sealed class Camera : Behaviour // TypeDefIndex: 17307
+{
+	// Fields
+	public const float kMinAperture = 0.7;
+	public const float kMaxAperture = 32;
+	public const int kMinBladeCount = 3;
+	public const int kMaxBladeCount = 11;
+	public static Camera.CameraCallback onPreCull; // 0x0
+	public static Camera.CameraCallback onPreRender; // 0x8
+	public static Camera.CameraCallback onPostRender; // 0x10
+
+	// Properties
+	[NativeProperty("Near")]
+	public float nearClipPlane { get; set; }
+	[NativeProperty("Far")]
+	public float farClipPlane { get; set; }
+	[NativeProperty("VerticalFieldOfView")]
+	public float fieldOfView { get; set; }
+	public RenderingPath actualRenderingPath { get; }
+	public bool allowHDR { get; set; }
+	public bool allowMSAA { get; set; }
+	public bool allowDynamicResolution { get; }
+	public float orthographicSize { get; set; }
+	public bool orthographic { get; set; }
+	public float depth { get; set; }
+	public float aspect { get; }
+	public int cullingMask { get; set; }
+	public int eventMask { get; }
+	public CameraType cameraType { get; }
+	public Color backgroundColor { set; }
+	public CameraClearFlags clearFlags { get; set; }
+	public DepthTextureMode depthTextureMode { get; set; }
+	public bool usePhysicalProperties { get; set; }
+	[NativeProperty("NormalizedViewportRect")]
+	public Rect rect { get; }
+	[NativeProperty("ScreenViewportRect")]
+	public Rect pixelRect { get; }
+	public int pixelWidth { get; }
+	public int pixelHeight { get; }
+	public int scaledPixelWidth { get; }
+	public int scaledPixelHeight { get; }
+	public RenderTexture targetTexture { get; set; }
+	public int targetDisplay { get; }
+	public Matrix4x4 worldToCameraMatrix { get; }
+	public Matrix4x4 projectionMatrix { get; set; }
+	public Matrix4x4 nonJitteredProjectionMatrix { set; }
+	[NativeProperty("UseJitteredProjectionMatrixForTransparent")]
+	public bool useJitteredProjectionMatrixForTransparentRendering { set; }
+	public static Camera main { get; }
+	public static Camera current { get; }
+	public bool stereoEnabled { get; }
+	public StereoTargetEyeMask stereoTargetEye { get; }
+	public Camera.MonoOrStereoscopicEye stereoActiveEye { get; }
+	public static int allCamerasCount { get; }
+
+	// Methods
+
+	// RVA: 0xA724380 Offset: 0xA720380 VA: 0xA724380
+	public void .ctor() { }
+
+	// RVA: 0xA724388 Offset: 0xA720388 VA: 0xA724388
+	public float get_nearClipPlane() { }
+
+	// RVA: 0xA7244F8 Offset: 0xA7204F8 VA: 0xA7244F8
+	public void set_nearClipPlane(float value) { }
+
+	// RVA: 0xA72467C Offset: 0xA72067C VA: 0xA72467C
+	public float get_farClipPlane() { }
+
+	// RVA: 0xA7247FC Offset: 0xA7207FC VA: 0xA7247FC
+	public void set_farClipPlane(float value) { }
+
+	// RVA: 0xA724984 Offset: 0xA720984 VA: 0xA724984
+	public float get_fieldOfView() { }
+
+	// RVA: 0xA724AF8 Offset: 0xA720AF8 VA: 0xA724AF8
+	public void set_fieldOfView(float value) { }
+
+	[NativeName("CalculateRenderingPath")]
+	// RVA: 0xA724C7C Offset: 0xA720C7C VA: 0xA724C7C
+	public RenderingPath get_actualRenderingPath() { }
+
+	// RVA: 0xA724DFC Offset: 0xA720DFC VA: 0xA724DFC
+	public bool get_allowHDR() { }
+
+	// RVA: 0xA724F70 Offset: 0xA720F70 VA: 0xA724F70
+	public void set_allowHDR(bool value) { }
+
+	// RVA: 0xA7250EC Offset: 0xA7210EC VA: 0xA7250EC
+	public bool get_allowMSAA() { }
+
+	// RVA: 0xA72525C Offset: 0xA72125C VA: 0xA72525C
+	public void set_allowMSAA(bool value) { }
+
+	// RVA: 0xA7253D8 Offset: 0xA7213D8 VA: 0xA7253D8
+	public bool get_allowDynamicResolution() { }
+
+	// RVA: 0xA725550 Offset: 0xA721550 VA: 0xA725550
+	public float get_orthographicSize() { }
+
+	// RVA: 0xA7256D0 Offset: 0xA7216D0 VA: 0xA7256D0
+	public void set_orthographicSize(float value) { }
+
+	// RVA: 0xA72584C Offset: 0xA72184C VA: 0xA72584C
+	public bool get_orthographic() { }
+
+	// RVA: 0xA7259CC Offset: 0xA7219CC VA: 0xA7259CC
+	public void set_orthographic(bool value) { }
+
+	// RVA: 0xA725B54 Offset: 0xA721B54 VA: 0xA725B54
+	public float get_depth() { }
+
+	// RVA: 0xA725CB4 Offset: 0xA721CB4 VA: 0xA725CB4
+	public void set_depth(float value) { }
+
+	// RVA: 0xA725E48 Offset: 0xA721E48 VA: 0xA725E48
+	public float get_aspect() { }
+
+	// RVA: 0xA725FB0 Offset: 0xA721FB0 VA: 0xA725FB0
+	public int get_cullingMask() { }
+
+	// RVA: 0xA726124 Offset: 0xA722124 VA: 0xA726124
+	public void set_cullingMask(int value) { }
+
+	// RVA: 0xA7262A4 Offset: 0xA7222A4 VA: 0xA7262A4
+	public int get_eventMask() { }
+
+	// RVA: 0xA726414 Offset: 0xA722414 VA: 0xA726414
+	public CameraType get_cameraType() { }
+
+	// RVA: 0xA726584 Offset: 0xA722584 VA: 0xA726584
+	public void set_backgroundColor(Color value) { }
+
+	// RVA: 0xA726730 Offset: 0xA722730 VA: 0xA726730
+	public CameraClearFlags get_clearFlags() { }
+
+	// RVA: 0xA7268AC Offset: 0xA7228AC VA: 0xA7268AC
+	public void set_clearFlags(CameraClearFlags value) { }
+
+	// RVA: 0xA726A34 Offset: 0xA722A34 VA: 0xA726A34
+	public DepthTextureMode get_depthTextureMode() { }
+
+	// RVA: 0xA726BAC Offset: 0xA722BAC VA: 0xA726BAC
+	public void set_depthTextureMode(DepthTextureMode value) { }
+
+	// RVA: 0xA726D44 Offset: 0xA722D44 VA: 0xA726D44
+	public bool get_usePhysicalProperties() { }
+
+	// RVA: 0xA726EB4 Offset: 0xA722EB4 VA: 0xA726EB4
+	public void set_usePhysicalProperties(bool value) { }
+
+	// RVA: 0xA727044 Offset: 0xA723044 VA: 0xA727044
+	public Rect get_rect() { }
+
+	// RVA: 0xA7271F8 Offset: 0xA7231F8 VA: 0xA7271F8
+	public Rect get_pixelRect() { }
+
+	[FreeFunction("CameraScripting::GetPixelWidth", HasExplicitThis = True)]
+	// RVA: 0xA7273B0 Offset: 0xA7233B0 VA: 0xA7273B0
+	public int get_pixelWidth() { }
+
+	[FreeFunction("CameraScripting::GetPixelHeight", HasExplicitThis = True)]
+	// RVA: 0xA727528 Offset: 0xA723528 VA: 0xA727528
+	public int get_pixelHeight() { }
+
+	[FreeFunction("CameraScripting::GetScaledPixelWidth", HasExplicitThis = True)]
+	// RVA: 0xA72769C Offset: 0xA72369C VA: 0xA72769C
+	public int get_scaledPixelWidth() { }
+
+	[FreeFunction("CameraScripting::GetScaledPixelHeight", HasExplicitThis = True)]
+	// RVA: 0xA727820 Offset: 0xA723820 VA: 0xA727820
+	public int get_scaledPixelHeight() { }
+
+	// RVA: 0xA727994 Offset: 0xA723994 VA: 0xA727994
+	public RenderTexture get_targetTexture() { }
+
+	// RVA: 0xA727AFC Offset: 0xA723AFC VA: 0xA727AFC
+	public void set_targetTexture(RenderTexture value) { }
+
+	// RVA: 0xA727C88 Offset: 0xA723C88 VA: 0xA727C88
+	public int get_targetDisplay() { }
+
+	// RVA: 0xA727DF8 Offset: 0xA723DF8 VA: 0xA727DF8
+	public Matrix4x4 get_worldToCameraMatrix() { }
+
+	// RVA: 0xA727FD0 Offset: 0xA723FD0 VA: 0xA727FD0
+	public Matrix4x4 get_projectionMatrix() { }
+
+	// RVA: 0xA7281A0 Offset: 0xA7241A0 VA: 0xA7281A0
+	public void set_projectionMatrix(Matrix4x4 value) { }
+
+	// RVA: 0xA728334 Offset: 0xA724334 VA: 0xA728334
+	public void set_nonJitteredProjectionMatrix(Matrix4x4 value) { }
+
+	// RVA: 0xA7284D4 Offset: 0xA7244D4 VA: 0xA7284D4
+	public void set_useJitteredProjectionMatrixForTransparentRendering(bool value) { }
+
+	// RVA: 0xA728678 Offset: 0xA724678 VA: 0xA728678
+	public void ResetWorldToCameraMatrix() { }
+
+	// RVA: 0xA728800 Offset: 0xA724800 VA: 0xA728800
+	public void ResetProjectionMatrix() { }
+
+	// RVA: 0xA72897C Offset: 0xA72497C VA: 0xA72897C
+	public Vector3 WorldToScreenPoint(Vector3 position, Camera.MonoOrStereoscopicEye eye) { }
+
+	// RVA: 0xA728B84 Offset: 0xA724B84 VA: 0xA728B84
+	public Vector3 WorldToViewportPoint(Vector3 position, Camera.MonoOrStereoscopicEye eye) { }
+
+	// RVA: 0xA728D94 Offset: 0xA724D94 VA: 0xA728D94
+	public Vector3 ViewportToWorldPoint(Vector3 position, Camera.MonoOrStereoscopicEye eye) { }
+
+	// RVA: 0xA728FA4 Offset: 0xA724FA4 VA: 0xA728FA4
+	public Vector3 ScreenToWorldPoint(Vector3 position, Camera.MonoOrStereoscopicEye eye) { }
+
+	// RVA: 0xA7291AC Offset: 0xA7251AC VA: 0xA7291AC
+	public Vector3 WorldToScreenPoint(Vector3 position) { }
+
+	// RVA: 0xA7291B4 Offset: 0xA7251B4 VA: 0xA7291B4
+	public Vector3 WorldToViewportPoint(Vector3 position) { }
+
+	// RVA: 0xA7291BC Offset: 0xA7251BC VA: 0xA7291BC
+	public Vector3 ViewportToWorldPoint(Vector3 position) { }
+
+	// RVA: 0xA7291C4 Offset: 0xA7251C4 VA: 0xA7291C4
+	public Vector3 ScreenToWorldPoint(Vector3 position) { }
+
+	// RVA: 0xA7291CC Offset: 0xA7251CC VA: 0xA7291CC
+	public Vector3 ScreenToViewportPoint(Vector3 position) { }
+
+	// RVA: 0xA7293B0 Offset: 0xA7253B0 VA: 0xA7293B0
+	private Ray ViewportPointToRay(Vector2 pos, Camera.MonoOrStereoscopicEye eye) { }
+
+	// RVA: 0xA7295A8 Offset: 0xA7255A8 VA: 0xA7295A8
+	public Ray ViewportPointToRay(Vector3 pos, Camera.MonoOrStereoscopicEye eye) { }
+
+	// RVA: 0xA7295F4 Offset: 0xA7255F4 VA: 0xA7295F4
+	public Ray ViewportPointToRay(Vector3 pos) { }
+
+	// RVA: 0xA729640 Offset: 0xA725640 VA: 0xA729640
+	private Ray ScreenPointToRay(Vector2 pos, Camera.MonoOrStereoscopicEye eye) { }
+
+	// RVA: 0xA729850 Offset: 0xA725850 VA: 0xA729850
+	public Ray ScreenPointToRay(Vector3 pos, Camera.MonoOrStereoscopicEye eye) { }
+
+	// RVA: 0xA72989C Offset: 0xA72589C VA: 0xA72989C
+	public Ray ScreenPointToRay(Vector3 pos) { }
+
+	[FreeFunction("FindMainCamera")]
+	// RVA: 0xA7298E8 Offset: 0xA7258E8 VA: 0xA7298E8
+	public static Camera get_main() { }
+
+	[FreeFunction("GetCurrentCameraPPtr")]
+	// RVA: 0xA729A68 Offset: 0xA725A68 VA: 0xA729A68
+	public static Camera get_current() { }
+
+	[NativeMethod("GetStereoEnabledForBuiltInOrSRP")]
+	// RVA: 0xA729BC8 Offset: 0xA725BC8 VA: 0xA729BC8
+	public bool get_stereoEnabled() { }
+
+	// RVA: 0xA729D38 Offset: 0xA725D38 VA: 0xA729D38
+	public StereoTargetEyeMask get_stereoTargetEye() { }
+
+	[FreeFunction("CameraScripting::GetStereoActiveEye", HasExplicitThis = True)]
+	// RVA: 0xA729EB0 Offset: 0xA725EB0 VA: 0xA729EB0
+	public Camera.MonoOrStereoscopicEye get_stereoActiveEye() { }
+
+	// RVA: 0xA72A028 Offset: 0xA726028 VA: 0xA72A028
+	public Matrix4x4 GetStereoNonJitteredProjectionMatrix(Camera.StereoscopicEye eye) { }
+
+	// RVA: 0xA72A224 Offset: 0xA726224 VA: 0xA72A224
+	public void CopyStereoDeviceProjectionMatrixToNonJittered(Camera.StereoscopicEye eye) { }
+
+	[FreeFunction("CameraScripting::GetStereoProjectionMatrix", HasExplicitThis = True)]
+	// RVA: 0xA72A3CC Offset: 0xA7263CC VA: 0xA72A3CC
+	public Matrix4x4 GetStereoProjectionMatrix(Camera.StereoscopicEye eye) { }
+
+	// RVA: 0xA72A5BC Offset: 0xA7265BC VA: 0xA72A5BC
+	public void SetStereoProjectionMatrix(Camera.StereoscopicEye eye, Matrix4x4 matrix) { }
+
+	// RVA: 0xA72A770 Offset: 0xA726770 VA: 0xA72A770
+	public void ResetStereoProjectionMatrices() { }
+
+	[FreeFunction("CameraScripting::GetAllCamerasCount")]
+	// RVA: 0xA72A8E4 Offset: 0xA7268E4 VA: 0xA72A8E4
+	private static int GetAllCamerasCount() { }
+
+	[FreeFunction("CameraScripting::GetAllCameras")]
+	// RVA: 0xA72AA54 Offset: 0xA726A54 VA: 0xA72AA54
+	private static int GetAllCamerasImpl([Out] Camera[] cam) { }
+
+	// RVA: 0xA72ABD4 Offset: 0xA726BD4 VA: 0xA72ABD4
+	public static int get_allCamerasCount() { }
+
+	// RVA: 0xA72ABD8 Offset: 0xA726BD8 VA: 0xA72ABD8
+	public static int GetAllCameras(Camera[] cameras) { }
+
+	[FreeFunction("CameraScripting::Render", HasExplicitThis = True)]
+	// RVA: 0xA72ACD8 Offset: 0xA726CD8 VA: 0xA72ACD8
+	public void Render() { }
+
+	[FreeFunction("CameraScripting::SetupCurrent")]
+	// RVA: 0xA72AE4C Offset: 0xA726E4C VA: 0xA72AE4C
+	public static void SetupCurrent(Camera cur) { }
+
+	[FreeFunction("CameraScripting::CopyFrom", HasExplicitThis = True)]
+	// RVA: 0xA72AFC8 Offset: 0xA726FC8 VA: 0xA72AFC8
+	public void CopyFrom(Camera other) { }
+
+	[NativeName("AddCommandBuffer")]
+	// RVA: 0xA72B14C Offset: 0xA72714C VA: 0xA72B14C
+	private void AddCommandBufferImpl(CameraEvent evt, CommandBuffer buffer) { }
+
+	[NativeName("RemoveCommandBuffer")]
+	// RVA: 0xA72B2EC Offset: 0xA7272EC VA: 0xA72B2EC
+	private void RemoveCommandBufferImpl(CameraEvent evt, CommandBuffer buffer) { }
+
+	// RVA: 0xA72B4A0 Offset: 0xA7274A0 VA: 0xA72B4A0
+	public void AddCommandBuffer(CameraEvent evt, CommandBuffer buffer) { }
+
+	// RVA: 0xA72B674 Offset: 0xA727674 VA: 0xA72B674
+	public void RemoveCommandBuffer(CameraEvent evt, CommandBuffer buffer) { }
+
+	[RequiredByNativeCode]
+	// RVA: 0xA72B848 Offset: 0xA727848 VA: 0xA72B848
+	private static void FireOnPreCull(Camera cam) { }
+
+	[RequiredByNativeCode]
+	// RVA: 0xA72B920 Offset: 0xA727920 VA: 0xA72B920
+	private static void FireOnPreRender(Camera cam) { }
+
+	[RequiredByNativeCode]
+	// RVA: 0xA72B9F8 Offset: 0xA7279F8 VA: 0xA72B9F8
+	private static void FireOnPostRender(Camera cam) { }
+
+	// RVA: 0xA7265A8 Offset: 0xA7225A8 VA: 0xA7265A8
+	private void set_backgroundColor_Injected(ref Color value) { }
+
+	// RVA: 0xA72706C Offset: 0xA72306C VA: 0xA72706C
+	private void get_rect_Injected(out Rect ret) { }
+
+	// RVA: 0xA727220 Offset: 0xA723220 VA: 0xA727220
+	private void get_pixelRect_Injected(out Rect ret) { }
+
+	// RVA: 0xA727E34 Offset: 0xA723E34 VA: 0xA727E34
+	private void get_worldToCameraMatrix_Injected(out Matrix4x4 ret) { }
+
+	// RVA: 0xA72800C Offset: 0xA72400C VA: 0xA72800C
+	private void get_projectionMatrix_Injected(out Matrix4x4 ret) { }
+
+	// RVA: 0xA7281A4 Offset: 0xA7241A4 VA: 0xA7281A4
+	private void set_projectionMatrix_Injected(ref Matrix4x4 value) { }
+
+	// RVA: 0xA728338 Offset: 0xA724338 VA: 0xA728338
+	private void set_nonJitteredProjectionMatrix_Injected(ref Matrix4x4 value) { }
+
+	// RVA: 0xA7289B8 Offset: 0xA7249B8 VA: 0xA7289B8
+	private void WorldToScreenPoint_Injected(ref Vector3 position, Camera.MonoOrStereoscopicEye eye, out Vector3 ret) { }
+
+	// RVA: 0xA728BC0 Offset: 0xA724BC0 VA: 0xA728BC0
+	private void WorldToViewportPoint_Injected(ref Vector3 position, Camera.MonoOrStereoscopicEye eye, out Vector3 ret) { }
+
+	// RVA: 0xA728DD0 Offset: 0xA724DD0 VA: 0xA728DD0
+	private void ViewportToWorldPoint_Injected(ref Vector3 position, Camera.MonoOrStereoscopicEye eye, out Vector3 ret) { }
+
+	// RVA: 0xA728FE0 Offset: 0xA724FE0 VA: 0xA728FE0
+	private void ScreenToWorldPoint_Injected(ref Vector3 position, Camera.MonoOrStereoscopicEye eye, out Vector3 ret) { }
+
+	// RVA: 0xA729204 Offset: 0xA725204 VA: 0xA729204
+	private void ScreenToViewportPoint_Injected(ref Vector3 position, out Vector3 ret) { }
+
+	// RVA: 0xA7293F4 Offset: 0xA7253F4 VA: 0xA7293F4
+	private void ViewportPointToRay_Injected(ref Vector2 pos, Camera.MonoOrStereoscopicEye eye, out Ray ret) { }
+
+	// RVA: 0xA729684 Offset: 0xA725684 VA: 0xA729684
+	private void ScreenPointToRay_Injected(ref Vector2 pos, Camera.MonoOrStereoscopicEye eye, out Ray ret) { }
+
+	// RVA: 0xA72A064 Offset: 0xA726064 VA: 0xA72A064
+	private void GetStereoNonJitteredProjectionMatrix_Injected(Camera.StereoscopicEye eye, out Matrix4x4 ret) { }
+
+	// RVA: 0xA72A408 Offset: 0xA726408 VA: 0xA72A408
+	private void GetStereoProjectionMatrix_Injected(Camera.StereoscopicEye eye, out Matrix4x4 ret) { }
+
+	// RVA: 0xA72A5C0 Offset: 0xA7265C0 VA: 0xA72A5C0
+	private void SetStereoProjectionMatrix_Injected(Camera.StereoscopicEye eye, ref Matrix4x4 matrix) { }
+}

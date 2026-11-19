@@ -1,0 +1,124 @@
+// Namespace: Axlebolt.Standoff.Game.Tutorial.Config
+public class TutorialGrenadeStateConfig : MonoBehaviour // TypeDefIndex: 8073
+{
+	// Fields
+	public TutorialNavigationConfig GrenadeZoneNavigation; // 0x20
+	public float TimeToWaitAfterGrenadePickUp; // 0x60
+	public float TimeToWaitForExit; // 0x64
+	public TutorialMannequinConfig MannequinsConfig; // 0x68
+	public SkinnedMeshRenderer[] MannequinsRenderer; // 0xA0
+	public List<Renderer> WeaponsToOutline; // 0xA8
+	public List<Renderer> WeaponsRenderers; // 0xB0
+	public string GoToTheGrenadeZoneText; // 0xB8
+	public string KillMannequinsText; // 0xC0
+	public Sprite GrenadeZoneSprite; // 0xC8
+	public Sprite DestroyMannequinsSprite; // 0xD0
+	public Transform GrenadePickableZone; // 0xD8
+
+	// Methods
+
+	// RVA: 0x5B066BC Offset: 0x5B026BC VA: 0x5B066BC
+	private void BCFHGGHCBGDFFEC() { }
+
+	// RVA: 0x5B066F0 Offset: 0x5B026F0 VA: 0x5B066F0
+	public void .ctor() { }
+
+	// RVA: 0x5B066F8 Offset: 0x5B026F8 VA: 0x5B066F8
+	private void ECEEFHHGCGGGCBG() { }
+
+	// RVA: 0x5B0672C Offset: 0x5B0272C VA: 0x5B0672C
+	private void CEAFAGEDCFDDAGF() { }
+
+	// RVA: 0x5B06760 Offset: 0x5B02760 VA: 0x5B06760
+	private void BBBDHHGCEFBFECC() { }
+
+	// RVA: 0x5B06794 Offset: 0x5B02794 VA: 0x5B06794
+	private void CBHBFCCFABFEHGD() { }
+
+	// RVA: 0x5B067C8 Offset: 0x5B027C8 VA: 0x5B067C8
+	private void DGHDDBAEHDEEHDG() { }
+
+	// RVA: 0x5B067FC Offset: 0x5B027FC VA: 0x5B067FC
+	private void FGHAEAEABBCGBCG() { }
+
+	// RVA: 0x5B06830 Offset: 0x5B02830 VA: 0x5B06830
+	private void HABGDDCGAEFEDDH() { }
+
+	// RVA: 0x5B06864 Offset: 0x5B02864 VA: 0x5B06864
+	private void AHHGGHBCCEHGFBB() { }
+
+	// RVA: 0x5B06898 Offset: 0x5B02898 VA: 0x5B06898
+	private void CDACABEBHHGBFHD() { }
+
+	// RVA: 0x5B068CC Offset: 0x5B028CC VA: 0x5B068CC
+	private void BAAEAHBFCGEBCBE() { }
+
+	// RVA: 0x5B06900 Offset: 0x5B02900 VA: 0x5B06900
+	private void FEHHGDBEDHFFGAA() { }
+
+	// RVA: 0x5B06934 Offset: 0x5B02934 VA: 0x5B06934
+	private void BEGHDCGGBFBAGCB() { }
+
+	// RVA: 0x5B06968 Offset: 0x5B02968 VA: 0x5B06968
+	private void CEBEECFHEBGEGAD() { }
+
+	// RVA: 0x5B0699C Offset: 0x5B0299C VA: 0x5B0699C
+	private void GAAFGHBBEDGGBBF() { }
+
+	// RVA: 0x5B069D0 Offset: 0x5B029D0 VA: 0x5B069D0
+	private void HCABECHGFEABHBE() { }
+
+	// RVA: 0x5B06A04 Offset: 0x5B02A04 VA: 0x5B06A04
+	private void EHEDEEAABFDHGAG() { }
+
+	// RVA: 0x5B06A38 Offset: 0x5B02A38 VA: 0x5B06A38
+	private void BDCCFGFHFHEDCCH() { }
+
+	// RVA: 0x5B06A6C Offset: 0x5B02A6C VA: 0x5B06A6C
+	private void BFDHDCEFFFGBFDA() { }
+
+	// RVA: 0x5B06AA0 Offset: 0x5B02AA0 VA: 0x5B06AA0
+	private void FGDBEFGDECHCAAC() { }
+
+	// RVA: 0x5B06AD4 Offset: 0x5B02AD4 VA: 0x5B06AD4
+	private void FHBFCFBCDBHGEHH() { }
+
+	// RVA: 0x5B06B08 Offset: 0x5B02B08 VA: 0x5B06B08
+	private void DAABBDAHBHBABEB() { }
+
+	// RVA: 0x5B06B3C Offset: 0x5B02B3C VA: 0x5B06B3C
+	private void AFAHGEHEDACFHFC() { }
+
+	// RVA: 0x5B06B70 Offset: 0x5B02B70 VA: 0x5B06B70
+	private void HHEDDFHBHBDDFCE() { }
+
+	// RVA: 0x5B06BA4 Offset: 0x5B02BA4 VA: 0x5B06BA4
+	private void EHCDDHBACBBCFEA() { }
+
+	// RVA: 0x5B06BD8 Offset: 0x5B02BD8 VA: 0x5B06BD8
+	private void HAGHEFBADAAFCHF() { }
+
+	// RVA: 0x5B06C0C Offset: 0x5B02C0C VA: 0x5B06C0C
+	private void FGFFHFBBGBDFDFD() { }
+
+	// RVA: 0x5B06C40 Offset: 0x5B02C40 VA: 0x5B06C40
+	private void HEBACFHDECHBHFE() { }
+
+	// RVA: 0x5B06C74 Offset: 0x5B02C74 VA: 0x5B06C74
+	private void HAHBGEDBFADFBEH() { }
+
+	// RVA: 0x5B06CA8 Offset: 0x5B02CA8 VA: 0x5B06CA8
+	private void FFBBHAFGFFFBDDB() { }
+
+	// RVA: 0x5B06CDC Offset: 0x5B02CDC VA: 0x5B06CDC
+	private void AFGGFEBEGBBGFDF() { }
+
+	// RVA: 0x5B06D10 Offset: 0x5B02D10 VA: 0x5B06D10
+	private void Awake() { }
+
+	// RVA: 0x5B06D44 Offset: 0x5B02D44 VA: 0x5B06D44
+	private void FGFBBAHBABHCDEE() { }
+
+	// RVA: 0x5B06D78 Offset: 0x5B02D78 VA: 0x5B06D78
+	private void EBCEBBEHGAGAGAA() { }
+}

@@ -1,0 +1,151 @@
+// Namespace: Axlebolt.Standoff.Inventory
+public abstract class WeaponParameters : InventoryParameters, DFEDACAHEACEDDH // TypeDefIndex: 4408
+{
+	// Fields
+	[SerializeField]
+	private float _fixScale; // 0x60
+	[SerializeField]
+	private bool _dropBoxCollider; // 0x64
+	[SerializeField]
+	private WeaponThrowPhysParameters _throwParameters; // 0x68
+	[SerializeField]
+	private bool _inspectable; // 0x70
+	[SerializeField]
+	private bool _forceTakeAfterPickup; // 0x71
+	[SerializeField]
+	private bool _inspectableBonus; // 0x72
+	[SerializeField]
+	private WeaponHitDelayParameters _hitDelayParameters; // 0x78
+	[SerializeField]
+	private string _customAnimationName; // 0x80
+	[SerializeField]
+	private ACFBEBGADFDGEBG _customAnimationWeaponId; // 0x88
+	[SerializeField]
+	private bool _isDroppable; // 0x89
+	[SerializeField]
+	private Sprite _customShootButtonSprite; // 0x90
+	[Header("Shoot In Shift Parameters")]
+	[Tooltip("Точная стрельба. OnPress - выстрелы происходят пока кнопка зажата, OnRelease - выстрел произойдет когда отпустим кнопку.")]
+	[SerializeField]
+	private FGHHBHDBBBGEDFC _shootInShiftFireBehaviourType; // 0x98
+	[SerializeField]
+	[Tooltip("Дополнительно поведение активной точной стрельбы.")]
+	private HHADDBAGHCAEGHG _shootInShiftAdditionalBehaviourType; // 0x9C
+	[SerializeField]
+	private float _shootInShiftSpeedMult; // 0xA0
+	[SerializeField]
+	private bool _drawStrecherOnGettingReadyToFire; // 0xA4
+	[Header("Cancel AIM button parameters")]
+	[Tooltip("Нужно ли включать кнопку отмены Готовности к выстрелу.")]
+	[SerializeField]
+	private bool _hasCancelAimButton; // 0xA5
+	[SerializeField]
+	private EDHHHHEBCAFFBAG _cancelAimBehaviourType; // 0xA6
+	[Tooltip("Тип иконки для отображения в HUD.")]
+	[SerializeField]
+	[Space]
+	private HDFEFADABBCBEBD _weaponAmmoIconType; // 0xA7
+	[Tooltip("Показывать хит маркер.")]
+	[SerializeField]
+	public bool _showHitMarker; // 0xA8
+	[SerializeField]
+	public BCCDFBBDEFHCDHG _killType; // 0xAC
+	private Nullable<BHGCCBBABFFCDGA> _fixScaleSafe; // 0xB0
+	private Nullable<CFGAHHHABFBAGDH> _dropBoxColliderSafe; // 0xBC
+	private Nullable<CFGAHHHABFBAGDH> _inspectableSafe; // 0xC8
+	private Nullable<CFGAHHHABFBAGDH> _forceTakeAfterPickupSafe; // 0xD4
+	private Nullable<CFGAHHHABFBAGDH> _inspectableBonusSafe; // 0xE0
+	private Nullable<CFGAHHHABFBAGDH> _isDroppableSafe; // 0xEC
+	private Nullable<CFGAHHHABFBAGDH> _hasCancelAimButtonSafe; // 0xF8
+	private Nullable<CFGAHHHABFBAGDH> _showHitMarkerSafe; // 0x104
+
+	// Properties
+	public BHGCCBBABFFCDGA FixScale { get; }
+	public CFGAHHHABFBAGDH DropBoxCollider { get; }
+	public WeaponThrowPhysParameters ThrowParameters { get; }
+	public CFGAHHHABFBAGDH Inspectable { get; }
+	public CFGAHHHABFBAGDH ForceTakeAfterPickup { get; }
+	public CFGAHHHABFBAGDH InspectableBonus { get; }
+	public WeaponHitDelayParameters HitDelayParameters { get; }
+	public string CustomAnimationName { get; }
+	public ACFBEBGADFDGEBG CustomAnimationWeaponId { get; }
+	public CFGAHHHABFBAGDH IsDroppable { get; }
+	public Sprite CustomShootButtonSprite { get; }
+	public float ShootInShiftSpeedMult { get; }
+	public bool DrawStretcherOnGettingReadyToFire { get; }
+	public FGHHBHDBBBGEDFC FireBehaviourType { get; }
+	public HHADDBAGHCAEGHG AdditionalBehaviourType { get; }
+	public CFGAHHHABFBAGDH HasCancelAimButton { get; }
+	public EDHHHHEBCAFFBAG CancelAimBehaviourType { get; }
+	public HDFEFADABBCBEBD WeaponAmmoIconType { get; }
+	public CFGAHHHABFBAGDH ShowHitMarker { get; }
+	public BCCDFBBDEFHCDHG KillType { get; }
+
+	// Methods
+
+	// RVA: 0x3FF3780 Offset: 0x3FEF780 VA: 0x3FF3780
+	public BHGCCBBABFFCDGA get_FixScale() { }
+
+	// RVA: 0x3FF3948 Offset: 0x3FEF948 VA: 0x3FF3948
+	public CFGAHHHABFBAGDH get_DropBoxCollider() { }
+
+	// RVA: 0x3FF3B0C Offset: 0x3FEFB0C VA: 0x3FF3B0C
+	public WeaponThrowPhysParameters get_ThrowParameters() { }
+
+	// RVA: 0x3FF3B14 Offset: 0x3FEFB14 VA: 0x3FF3B14
+	public CFGAHHHABFBAGDH get_Inspectable() { }
+
+	// RVA: 0x3FF3CD8 Offset: 0x3FEFCD8 VA: 0x3FF3CD8
+	public CFGAHHHABFBAGDH get_ForceTakeAfterPickup() { }
+
+	// RVA: 0x3FF3E9C Offset: 0x3FEFE9C VA: 0x3FF3E9C
+	public CFGAHHHABFBAGDH get_InspectableBonus() { }
+
+	// RVA: 0x3FF4060 Offset: 0x3FF0060 VA: 0x3FF4060
+	public WeaponHitDelayParameters get_HitDelayParameters() { }
+
+	// RVA: 0x3FF4068 Offset: 0x3FF0068 VA: 0x3FF4068
+	public string get_CustomAnimationName() { }
+
+	// RVA: 0x3FF4070 Offset: 0x3FF0070 VA: 0x3FF4070
+	public ACFBEBGADFDGEBG get_CustomAnimationWeaponId() { }
+
+	// RVA: 0x3FF4078 Offset: 0x3FF0078 VA: 0x3FF4078
+	public CFGAHHHABFBAGDH get_IsDroppable() { }
+
+	// RVA: 0x3FF423C Offset: 0x3FF023C VA: 0x3FF423C
+	public Sprite get_CustomShootButtonSprite() { }
+
+	// RVA: 0x3FF4244 Offset: 0x3FF0244 VA: 0x3FF4244 Slot: 13
+	public float get_ShootInShiftSpeedMult() { }
+
+	// RVA: 0x3FF424C Offset: 0x3FF024C VA: 0x3FF424C Slot: 14
+	public bool get_DrawStretcherOnGettingReadyToFire() { }
+
+	// RVA: 0x3FF4254 Offset: 0x3FF0254 VA: 0x3FF4254 Slot: 15
+	public FGHHBHDBBBGEDFC get_FireBehaviourType() { }
+
+	// RVA: 0x3FF425C Offset: 0x3FF025C VA: 0x3FF425C Slot: 16
+	public HHADDBAGHCAEGHG get_AdditionalBehaviourType() { }
+
+	// RVA: 0x3FF4264 Offset: 0x3FF0264 VA: 0x3FF4264
+	public CFGAHHHABFBAGDH get_HasCancelAimButton() { }
+
+	// RVA: 0x3FF4428 Offset: 0x3FF0428 VA: 0x3FF4428
+	public EDHHHHEBCAFFBAG get_CancelAimBehaviourType() { }
+
+	// RVA: 0x3FF4430 Offset: 0x3FF0430 VA: 0x3FF4430
+	public HDFEFADABBCBEBD get_WeaponAmmoIconType() { }
+
+	// RVA: 0x3FF4438 Offset: 0x3FF0438 VA: 0x3FF4438
+	public CFGAHHHABFBAGDH get_ShowHitMarker() { }
+
+	// RVA: 0x3FF45FC Offset: 0x3FF05FC VA: 0x3FF45FC
+	public BCCDFBBDEFHCDHG get_KillType() { }
+
+	// RVA: 0x3FF4604 Offset: 0x3FF0604 VA: 0x3FF4604 Slot: 10
+	protected override void OnEnable() { }
+
+	// RVA: 0x3FF4944 Offset: 0x3FF0944 VA: 0x3FF4944
+	protected void .ctor() { }
+}

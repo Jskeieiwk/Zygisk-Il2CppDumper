@@ -1,0 +1,18 @@
+// Namespace: 
+private sealed class PostProcessProfile.<>c // TypeDefIndex: 21136
+{
+	// Fields
+	public static readonly PostProcessProfile.<>c <>9; // 0x0
+	public static Predicate<PostProcessEffectSettings> <>9__2_0; // 0x8
+
+	// Methods
+
+	// RVA: 0xA589A40 Offset: 0xA585A40 VA: 0xA589A40
+	private static void .cctor() { }
+
+	// RVA: 0xA589AF8 Offset: 0xA585AF8 VA: 0xA589AF8
+	public void .ctor() { }
+
+	// RVA: 0xA589B00 Offset: 0xA585B00 VA: 0xA589B00
+	internal bool <OnEnable>b__2_0(PostProcessEffectSettings x) { }
+}

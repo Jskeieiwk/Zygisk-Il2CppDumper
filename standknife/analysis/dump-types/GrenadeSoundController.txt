@@ -1,0 +1,144 @@
+// Namespace: Axlebolt.Standoff.Inventory.Grenade
+public class GrenadeSoundController : WeaponSoundController // TypeDefIndex: 7328
+{
+	// Fields
+	private const string EDBDAHFCFFGDDBC = "FpsSwing";
+	private const string BGGCCCGDGGBCDBD = "TpsTeammateSwing";
+	private const string AHGBGHCABHAAFBC = "TpsEnemySwing";
+	private readonly Dictionary<string, CHCGDCEAAEEACHB> HCGGBBDFDFFGCCD; // 0x90
+	private GHDCBEDCHGHBDEC DEHACACGDBCCCBE; // 0x98
+	private GrenadeSoundParameters AAGGDGABGAABFCG; // 0xA0
+	private Nullable<EventInstance> FEABECGCBGCEHAA; // 0xA8
+	private Nullable<EventInstance> CADEAGECFDECGDD; // 0xB8
+
+	// Methods
+
+	// RVA: 0x55B7FE8 Offset: 0x55B3FE8 VA: 0x55B7FE8
+	private string HDCFBFFFHDFFEHF() { }
+
+	// RVA: 0x55B80F8 Offset: 0x55B40F8 VA: 0x55B80F8
+	private string FBADFFACBGECGFB() { }
+
+	// RVA: 0x55B8208 Offset: 0x55B4208 VA: 0x55B8208
+	private void AHDHFBBCBAAEHDG(string EACECFGDCCBEEDD, GUID EGFBAHGHAFHCABG) { }
+
+	// RVA: 0x55B8424 Offset: 0x55B4424 VA: 0x55B8424
+	public void DBGDFACBCGAGGCA() { }
+
+	// RVA: 0x55B8814 Offset: 0x55B4814 VA: 0x55B8814
+	public void FEDDEFFFACDBAFH() { }
+
+	// RVA: 0x55B8914 Offset: 0x55B4914 VA: 0x55B8914
+	public void GCHBCDFEEFCEECA() { }
+
+	// RVA: 0x55B8704 Offset: 0x55B4704 VA: 0x55B8704
+	private string FCGAEEHBAFBFEFC() { }
+
+	// RVA: 0x55B8A14 Offset: 0x55B4A14 VA: 0x55B8A14
+	private void BAAEBFABCDHAAHE(string EACECFGDCCBEEDD, GUID EGFBAHGHAFHCABG) { }
+
+	// RVA: 0x55B8C30 Offset: 0x55B4C30 VA: 0x55B8C30
+	public void AEGFEGBGDHCEFFC() { }
+
+	// RVA: 0x55B8D30 Offset: 0x55B4D30 VA: 0x55B8D30
+	private void HDAFFFDCEFAEEHD(string EACECFGDCCBEEDD, GUID EGFBAHGHAFHCABG) { }
+
+	// RVA: 0x55B8F4C Offset: 0x55B4F4C VA: 0x55B8F4C
+	public void StopSwingSound() { }
+
+	// RVA: 0x55B904C Offset: 0x55B504C VA: 0x55B904C
+	private void CFGEBDAHDAHDCAC(string EACECFGDCCBEEDD, GUID EGFBAHGHAFHCABG) { }
+
+	// RVA: 0x55B9260 Offset: 0x55B5260 VA: 0x55B9260 Slot: 7
+	public override void PreInitialize(BEDEHCEAAAEEHFD CAADEBAEFADDFEH) { }
+
+	// RVA: 0x55B94BC Offset: 0x55B54BC VA: 0x55B94BC
+	public void GFHCACHDDDDEECB() { }
+
+	// RVA: 0x55B98AC Offset: 0x55B58AC VA: 0x55B98AC
+	public void AGBDHECECHDDGAE() { }
+
+	// RVA: 0x55B9B8C Offset: 0x55B5B8C VA: 0x55B9B8C
+	public void AFECDFEHCHHBBAB() { }
+
+	// RVA: 0x55B9C8C Offset: 0x55B5C8C VA: 0x55B9C8C
+	public void EDGCEFAHEDGAFCC() { }
+
+	// RVA: 0x55B9D8C Offset: 0x55B5D8C VA: 0x55B9D8C
+	public void DGGBAHFAFHDCFHH() { }
+
+	// RVA: 0x55B9E8C Offset: 0x55B5E8C VA: 0x55B9E8C
+	private void CBEGGFHADECACCE(string EACECFGDCCBEEDD, GUID EGFBAHGHAFHCABG) { }
+
+	// RVA: 0x55BA0A8 Offset: 0x55B60A8 VA: 0x55BA0A8
+	public void BDBACCFDGCBGACD() { }
+
+	// RVA: 0x55BA1A8 Offset: 0x55B61A8 VA: 0x55BA1A8
+	private void FGEGEACEEHFEBFE(string EACECFGDCCBEEDD, GUID EGFBAHGHAFHCABG) { }
+
+	// RVA: 0x55BA3C4 Offset: 0x55B63C4 VA: 0x55BA3C4
+	public void GAHCABBEDADCDEA() { }
+
+	// RVA: 0x55BA4C4 Offset: 0x55B64C4 VA: 0x55BA4C4
+	public void FGBDFHBFFADGEGE() { }
+
+	// RVA: 0x55BA5C4 Offset: 0x55B65C4 VA: 0x55BA5C4
+	private string BCHCAFEAGEBDAGE() { }
+
+	// RVA: 0x55BA6D4 Offset: 0x55B66D4 VA: 0x55BA6D4
+	private string DBFBDGDHFCHBEHB() { }
+
+	// RVA: 0x55BA7E4 Offset: 0x55B67E4 VA: 0x55BA7E4
+	private string GABCHBADDEBGECC() { }
+
+	// RVA: 0x55BA8F4 Offset: 0x55B68F4 VA: 0x55BA8F4
+	private void HBAECFCBHABFGAC(string EACECFGDCCBEEDD, GUID EGFBAHGHAFHCABG) { }
+
+	// RVA: 0x55B979C Offset: 0x55B579C VA: 0x55B979C
+	private string CCECDGEGFCFEGGG() { }
+
+	// RVA: 0x55BAB10 Offset: 0x55B6B10 VA: 0x55BAB10
+	public void DBABHCEBGBFABAH() { }
+
+	// RVA: 0x55BADF0 Offset: 0x55B6DF0 VA: 0x55BADF0
+	public void GAECGDABACDBCFA() { }
+
+	// RVA: 0x55BB0D0 Offset: 0x55B70D0 VA: 0x55BB0D0
+	private void BBGAFFGCDEBDDCB(string EACECFGDCCBEEDD, GUID EGFBAHGHAFHCABG) { }
+
+	// RVA: 0x55BB2EC Offset: 0x55B72EC VA: 0x55BB2EC
+	public void PlaySwingSound() { }
+
+	// RVA: 0x55BB5C8 Offset: 0x55B75C8 VA: 0x55BB5C8
+	public void CHHBBHHDHCEFFFB() { }
+
+	// RVA: 0x55BB6C8 Offset: 0x55B76C8 VA: 0x55BB6C8
+	public void BDBADEHHGDGBAFA() { }
+
+	// RVA: 0x55BB9A8 Offset: 0x55B79A8 VA: 0x55BB9A8
+	public void .ctor() { }
+
+	// RVA: 0x55BBA9C Offset: 0x55B7A9C VA: 0x55BBA9C
+	private void CEAAAHGDBCBCGHC(string EACECFGDCCBEEDD, GUID EGFBAHGHAFHCABG) { }
+
+	// RVA: 0x55BBCB8 Offset: 0x55B7CB8 VA: 0x55BBCB8
+	public void BAHGCFFCEHFCCEC() { }
+
+	// RVA: 0x55BBDB8 Offset: 0x55B7DB8 VA: 0x55BBDB8
+	public void HCFGDFBHHCBFHDE() { }
+
+	// RVA: 0x55BBEB8 Offset: 0x55B7EB8 VA: 0x55BBEB8
+	public void DBHCBGFHFDAGAEA() { }
+
+	// RVA: 0x55BBFB8 Offset: 0x55B7FB8 VA: 0x55BBFB8
+	public void DFHFHBBAFHFBDGH() { }
+
+	// RVA: 0x55BC0B8 Offset: 0x55B80B8 VA: 0x55BC0B8
+	public void HHAAADGCAADBECE() { }
+
+	// RVA: 0x55BC398 Offset: 0x55B8398 VA: 0x55BC398
+	public void ECFEDBBAGAECEAE() { }
+
+	// RVA: 0x55BC498 Offset: 0x55B8498 VA: 0x55BC498
+	public void BHGADBFBFEHFGGB() { }
+}

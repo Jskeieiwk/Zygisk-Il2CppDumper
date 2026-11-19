@@ -1,0 +1,156 @@
+// Namespace: Axlebolt.Standoff.Cam
+public class MovementPathParameters : ScriptableObject // TypeDefIndex: 3296
+{
+	// Fields
+	[SerializeField]
+	private AnimationCurve _curve; // 0x18
+
+	// Properties
+	public AnimationCurve Curve { get; }
+
+	// Methods
+
+	// RVA: 0x37EEE2C Offset: 0x37EAE2C VA: 0x37EEE2C
+	public AnimationCurve AGCBBAFEHHBBHAF() { }
+
+	// RVA: 0x37EEE34 Offset: 0x37EAE34 VA: 0x37EEE34
+	public AnimationCurve GFAFAFBBFHDFBCA() { }
+
+	// RVA: 0x37EEE3C Offset: 0x37EAE3C VA: 0x37EEE3C
+	public AnimationCurve CDDHHDGEBFGDCCC() { }
+
+	// RVA: 0x37EEE44 Offset: 0x37EAE44 VA: 0x37EEE44
+	public AnimationCurve EGEFAHHCFGFEHEE() { }
+
+	// RVA: 0x37EEE4C Offset: 0x37EAE4C VA: 0x37EEE4C
+	public AnimationCurve EEAGCEBHDHBHGDB() { }
+
+	// RVA: 0x37EEE54 Offset: 0x37EAE54 VA: 0x37EEE54
+	public AnimationCurve EEHCFCFCCECBBHH() { }
+
+	// RVA: 0x37EEE5C Offset: 0x37EAE5C VA: 0x37EEE5C
+	public AnimationCurve FECHBGDACCDGCFD() { }
+
+	// RVA: 0x37EEE64 Offset: 0x37EAE64 VA: 0x37EEE64
+	public AnimationCurve FAEDDFBAFFGHFHH() { }
+
+	// RVA: 0x37EEE6C Offset: 0x37EAE6C VA: 0x37EEE6C
+	public AnimationCurve ADFECEBDHABGDEH() { }
+
+	// RVA: 0x37EEE74 Offset: 0x37EAE74 VA: 0x37EEE74
+	public AnimationCurve GGGEHGEGDFEEDDA() { }
+
+	// RVA: 0x37EEE7C Offset: 0x37EAE7C VA: 0x37EEE7C
+	public AnimationCurve FDAGDFHBGBFFGHH() { }
+
+	// RVA: 0x37EEE84 Offset: 0x37EAE84 VA: 0x37EEE84
+	public AnimationCurve FGCBEEFEBHEEGDD() { }
+
+	// RVA: 0x37EEE8C Offset: 0x37EAE8C VA: 0x37EEE8C
+	public AnimationCurve GCGEBDBGDGFAAFC() { }
+
+	// RVA: 0x37EEE94 Offset: 0x37EAE94 VA: 0x37EEE94
+	public AnimationCurve FAEDHEBGDHHECGH() { }
+
+	// RVA: 0x37EEE9C Offset: 0x37EAE9C VA: 0x37EEE9C
+	public AnimationCurve AHDECCEGBCEDFGD() { }
+
+	// RVA: 0x37EEEA4 Offset: 0x37EAEA4 VA: 0x37EEEA4
+	public AnimationCurve GBDBGHCEDFAGBFF() { }
+
+	// RVA: 0x37EEEAC Offset: 0x37EAEAC VA: 0x37EEEAC
+	public AnimationCurve FBHAGFBCFEGADGE() { }
+
+	// RVA: 0x37EEEB4 Offset: 0x37EAEB4 VA: 0x37EEEB4
+	public AnimationCurve GBAEBBHAHFHGHEH() { }
+
+	// RVA: 0x37EEEBC Offset: 0x37EAEBC VA: 0x37EEEBC
+	public AnimationCurve HFHCDCGAHFDBGAF() { }
+
+	// RVA: 0x37EEEC4 Offset: 0x37EAEC4 VA: 0x37EEEC4
+	public AnimationCurve DFBABCGHBEHBFFG() { }
+
+	// RVA: 0x37EEECC Offset: 0x37EAECC VA: 0x37EEECC
+	public AnimationCurve EADEHGEAABFHDFC() { }
+
+	// RVA: 0x37EEED4 Offset: 0x37EAED4 VA: 0x37EEED4
+	public AnimationCurve FFFGGGEBAABEDED() { }
+
+	// RVA: 0x37EEEDC Offset: 0x37EAEDC VA: 0x37EEEDC
+	public AnimationCurve DAFBEBHFEHFBHDE() { }
+
+	// RVA: 0x37EEEE4 Offset: 0x37EAEE4 VA: 0x37EEEE4
+	public AnimationCurve EFGBGDEFADDCEDA() { }
+
+	// RVA: 0x37EEEEC Offset: 0x37EAEEC VA: 0x37EEEEC
+	public AnimationCurve FGDHGECFHEHBCBF() { }
+
+	// RVA: 0x37EEEF4 Offset: 0x37EAEF4 VA: 0x37EEEF4
+	public AnimationCurve GFDECBDEGDADBCH() { }
+
+	// RVA: 0x37EEEFC Offset: 0x37EAEFC VA: 0x37EEEFC
+	public AnimationCurve BBBGBDEGECGDDBH() { }
+
+	// RVA: 0x37EEF04 Offset: 0x37EAF04 VA: 0x37EEF04
+	public AnimationCurve FCCEGCFDGCBCACE() { }
+
+	// RVA: 0x37EEF0C Offset: 0x37EAF0C VA: 0x37EEF0C
+	public AnimationCurve CHCFEHCGCCDHAFB() { }
+
+	// RVA: 0x37EEF14 Offset: 0x37EAF14 VA: 0x37EEF14
+	public AnimationCurve EGGBFAAHACGCCHB() { }
+
+	// RVA: 0x37EEF1C Offset: 0x37EAF1C VA: 0x37EEF1C
+	public AnimationCurve CBHECHGAGBBCCBG() { }
+
+	// RVA: 0x37EEF24 Offset: 0x37EAF24 VA: 0x37EEF24
+	public AnimationCurve GDFDBAACEGGAGBF() { }
+
+	// RVA: 0x37EEF2C Offset: 0x37EAF2C VA: 0x37EEF2C
+	public AnimationCurve EDGDAFCABAEFHCA() { }
+
+	// RVA: 0x37EEF34 Offset: 0x37EAF34 VA: 0x37EEF34
+	public AnimationCurve GCGAFBGEBAFBCAC() { }
+
+	// RVA: 0x37EEF3C Offset: 0x37EAF3C VA: 0x37EEF3C
+	public AnimationCurve ABFHHAEDHDBAGAD() { }
+
+	// RVA: 0x37EEF44 Offset: 0x37EAF44 VA: 0x37EEF44
+	public AnimationCurve HBEAGGBGDCHBDBH() { }
+
+	// RVA: 0x37EEF4C Offset: 0x37EAF4C VA: 0x37EEF4C
+	public AnimationCurve EHHAFFBEHDACACC() { }
+
+	// RVA: 0x37EEF54 Offset: 0x37EAF54 VA: 0x37EEF54
+	public AnimationCurve CGAGACGEFADFADA() { }
+
+	// RVA: 0x37EEF5C Offset: 0x37EAF5C VA: 0x37EEF5C
+	public AnimationCurve CHCFGCGHHHHFACA() { }
+
+	// RVA: 0x37EEF64 Offset: 0x37EAF64 VA: 0x37EEF64
+	public AnimationCurve ACBCGBGFFBCAGCG() { }
+
+	// RVA: 0x37EEF6C Offset: 0x37EAF6C VA: 0x37EEF6C
+	public AnimationCurve BDBDHDGGEDEBEFF() { }
+
+	// RVA: 0x37EEF74 Offset: 0x37EAF74 VA: 0x37EEF74
+	public AnimationCurve EBEEHABEFCBECEG() { }
+
+	// RVA: 0x37EEF7C Offset: 0x37EAF7C VA: 0x37EEF7C
+	public AnimationCurve FDBCCAAAAEEAFDC() { }
+
+	// RVA: 0x37EEF84 Offset: 0x37EAF84 VA: 0x37EEF84
+	public AnimationCurve GCHCDFFGBBEFFGF() { }
+
+	// RVA: 0x37EEF8C Offset: 0x37EAF8C VA: 0x37EEF8C
+	public void .ctor() { }
+
+	// RVA: 0x37EEF94 Offset: 0x37EAF94 VA: 0x37EEF94
+	public AnimationCurve EGGEAFCEDDFEGDF() { }
+
+	// RVA: 0x37EEF9C Offset: 0x37EAF9C VA: 0x37EEF9C
+	public AnimationCurve get_Curve() { }
+
+	// RVA: 0x37EEFA4 Offset: 0x37EAFA4 VA: 0x37EEFA4
+	public AnimationCurve ECCCBCCCGHACGDF() { }
+}

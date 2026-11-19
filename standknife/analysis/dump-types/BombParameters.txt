@@ -1,0 +1,147 @@
+// Namespace: Axlebolt.Standoff.Inventory.Bomb
+public class BombParameters : WeaponParameters // TypeDefIndex: 8201
+{
+	// Fields
+	[SerializeField]
+	private float _plantDuration; // 0x110
+	[SerializeField]
+	private float _detonationDuration; // 0x114
+	[SerializeField]
+	private float _damageRadius; // 0x118
+	[SerializeField]
+	private float _damage; // 0x11C
+	[SerializeField]
+	private float _takeDuration; // 0x120
+	[SerializeField]
+	private AnimationCurve _damageCurve; // 0x128
+	[SerializeField]
+	private AnimationCurve _armorPenetrationCurve; // 0x130
+	[SerializeField]
+	private float _impulse; // 0x138
+	[SerializeField]
+	private TransformTR _spine2Offset; // 0x140
+	[SerializeField]
+	private bool _dummyOnly; // 0x148
+	private Nullable<BHGCCBBABFFCDGA> _plantDurationSafe; // 0x14C
+	private Nullable<BHGCCBBABFFCDGA> _detonationDurationSafe; // 0x158
+	private Nullable<BHGCCBBABFFCDGA> _damageRadiusSafe; // 0x164
+	private Nullable<BHGCCBBABFFCDGA> _damageSafe; // 0x170
+	private Nullable<BHGCCBBABFFCDGA> _takeDurationSafe; // 0x17C
+	private Nullable<BHGCCBBABFFCDGA> _impulseSafe; // 0x188
+
+	// Properties
+	public BHGCCBBABFFCDGA DamageRadius { get; }
+	public BHGCCBBABFFCDGA Damage { get; }
+	public BHGCCBBABFFCDGA TakeDuration { get; }
+	public AnimationCurve DamageCurve { get; }
+	public AnimationCurve ArmorPenetrationCurve { get; }
+	public bool DummyOnly { get; }
+	public BHGCCBBABFFCDGA PlantDuration { get; }
+	public BHGCCBBABFFCDGA DetonationDuration { get; }
+	public BHGCCBBABFFCDGA Impulse { get; }
+	public TransformTR Spine2Offset { get; }
+
+	// Methods
+
+	// RVA: 0x5BE3DB8 Offset: 0x5BDFDB8 VA: 0x5BE3DB8
+	public bool GGBBFDFCBGADFEE() { }
+
+	// RVA: 0x5BE3DC0 Offset: 0x5BDFDC0 VA: 0x5BE3DC0
+	public bool HDGHCBABEDAHDHF() { }
+
+	// RVA: 0x5BE3DC8 Offset: 0x5BDFDC8 VA: 0x5BE3DC8
+	public AnimationCurve get_ArmorPenetrationCurve() { }
+
+	// RVA: 0x5BE3DD0 Offset: 0x5BDFDD0 VA: 0x5BE3DD0
+	public BHGCCBBABFFCDGA BAHGGFEEFCCFFFB() { }
+
+	// RVA: 0x5BE3F98 Offset: 0x5BDFF98 VA: 0x5BE3F98
+	public AnimationCurve CEBGFGCGCCDECBF() { }
+
+	// RVA: 0x5BE3FA0 Offset: 0x5BDFFA0 VA: 0x5BE3FA0
+	public BHGCCBBABFFCDGA get_Impulse() { }
+
+	// RVA: 0x5BE416C Offset: 0x5BE016C VA: 0x5BE416C
+	public BHGCCBBABFFCDGA get_TakeDuration() { }
+
+	// RVA: 0x5BE4334 Offset: 0x5BE0334 VA: 0x5BE4334
+	public TransformTR HGGCBHFHCDAGEDD() { }
+
+	// RVA: 0x5BE433C Offset: 0x5BE033C VA: 0x5BE433C
+	public BHGCCBBABFFCDGA FEFFFCHBFGCGFCA() { }
+
+	// RVA: 0x5BE4508 Offset: 0x5BE0508 VA: 0x5BE4508
+	public AnimationCurve FCEHDGDBAGAFDFA() { }
+
+	// RVA: 0x5BE4510 Offset: 0x5BE0510 VA: 0x5BE4510
+	public AnimationCurve BAAAEECEGDABGFF() { }
+
+	// RVA: 0x5BE4518 Offset: 0x5BE0518 VA: 0x5BE4518
+	public BHGCCBBABFFCDGA GFAGECEDBHEFGHG() { }
+
+	// RVA: 0x5BE46E4 Offset: 0x5BE06E4 VA: 0x5BE46E4
+	public BHGCCBBABFFCDGA get_PlantDuration() { }
+
+	// RVA: 0x5BE48AC Offset: 0x5BE08AC VA: 0x5BE48AC
+	public AnimationCurve GFFFCBFACEHBECH() { }
+
+	// RVA: 0x5BE48B4 Offset: 0x5BE08B4 VA: 0x5BE48B4
+	public BHGCCBBABFFCDGA get_Damage() { }
+
+	// RVA: 0x5BE4A80 Offset: 0x5BE0A80 VA: 0x5BE4A80
+	public BHGCCBBABFFCDGA GBDEFBEGCCGGCHA() { }
+
+	// RVA: 0x5BE4C4C Offset: 0x5BE0C4C VA: 0x5BE4C4C
+	public bool get_DummyOnly() { }
+
+	// RVA: 0x5BE4C54 Offset: 0x5BE0C54 VA: 0x5BE4C54
+	public AnimationCurve DCFFCAABDDGACAD() { }
+
+	// RVA: 0x5BE4C5C Offset: 0x5BE0C5C VA: 0x5BE4C5C
+	public AnimationCurve CCAFEGFFFCBEBAB() { }
+
+	// RVA: 0x5BE4C64 Offset: 0x5BE0C64 VA: 0x5BE4C64
+	public BHGCCBBABFFCDGA get_DamageRadius() { }
+
+	// RVA: 0x5BE4E2C Offset: 0x5BE0E2C VA: 0x5BE4E2C
+	public AnimationCurve CBEHHGGEGHBAGCE() { }
+
+	// RVA: 0x5BE4E34 Offset: 0x5BE0E34 VA: 0x5BE4E34
+	public BHGCCBBABFFCDGA get_DetonationDuration() { }
+
+	// RVA: 0x5BE5000 Offset: 0x5BE1000 VA: 0x5BE5000
+	public BHGCCBBABFFCDGA GAHECFHCAFDBFCB() { }
+
+	// RVA: 0x5BE51CC Offset: 0x5BE11CC VA: 0x5BE51CC
+	public BHGCCBBABFFCDGA CEAEFGGECHEGECG() { }
+
+	// RVA: 0x5BE5398 Offset: 0x5BE1398 VA: 0x5BE5398
+	public BHGCCBBABFFCDGA CHDFHGHHGAGAEBC() { }
+
+	// RVA: 0x5BE5564 Offset: 0x5BE1564 VA: 0x5BE5564
+	public TransformTR get_Spine2Offset() { }
+
+	// RVA: 0x5BE556C Offset: 0x5BE156C VA: 0x5BE556C Slot: 10
+	protected override void OnEnable() { }
+
+	// RVA: 0x5BE57B4 Offset: 0x5BE17B4 VA: 0x5BE57B4
+	public BHGCCBBABFFCDGA DFAHCCGBHAEDHDD() { }
+
+	// RVA: 0x5BE5980 Offset: 0x5BE1980 VA: 0x5BE5980
+	public AnimationCurve GEFFCGBCFFEGADB() { }
+
+	// RVA: 0x5BE5988 Offset: 0x5BE1988 VA: 0x5BE5988
+	public void .ctor() { }
+
+	// RVA: 0x5BE5990 Offset: 0x5BE1990 VA: 0x5BE5990
+	public AnimationCurve HAECFDFHFCBBDFF() { }
+
+	// RVA: 0x5BE5998 Offset: 0x5BE1998 VA: 0x5BE5998
+	public bool FGEEEFCAEEHGDFC() { }
+
+	// RVA: 0x5BE59A0 Offset: 0x5BE19A0 VA: 0x5BE59A0
+	public BHGCCBBABFFCDGA HFGBHAAEBDFGEBD() { }
+
+	// RVA: 0x5BE5B68 Offset: 0x5BE1B68 VA: 0x5BE5B68
+	public AnimationCurve get_DamageCurve() { }
+}

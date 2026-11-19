@@ -1,0 +1,109 @@
+// Namespace: Axlebolt.Standoff.Game.UI.Hud
+public class BombOwnerIndicator : HudComponentView // TypeDefIndex: 8431
+{
+	// Fields
+	private Animator EGCADFDBFBDFFAA; // 0x38
+	private bool DBFBEHDGBBAHEAC; // 0x40
+	private bool EBEHACGEGAHBGBB; // 0x41
+	private static readonly int CGFAADFFAHFAEBF; // 0x0
+	private static readonly int DBGHFHEEDAEFBHH; // 0x4
+	private static readonly int DBAAFAFHAGEEGEG; // 0x8
+
+	// Methods
+
+	// RVA: 0x5D79FAC Offset: 0x5D75FAC VA: 0x5D79FAC
+	private void HAHBGEDBFADFBEH() { }
+
+	// RVA: 0x5D7A1A4 Offset: 0x5D761A4 VA: 0x5D7A1A4
+	private void CDACABEBHHGBFHD() { }
+
+	// RVA: 0x5D7A39C Offset: 0x5D7639C VA: 0x5D7A39C
+	private void CEAFAGEDCFDDAGF() { }
+
+	// RVA: 0x5D7A590 Offset: 0x5D76590 VA: 0x5D7A590
+	public void .ctor() { }
+
+	// RVA: 0x5D7A598 Offset: 0x5D76598 VA: 0x5D7A598 Slot: 29
+	public override void SetPlayerController(PlayerController AHGEEFHFCCGCHHF) { }
+
+	// RVA: 0x5D7A7C0 Offset: 0x5D767C0 VA: 0x5D7A7C0
+	private void AFAHGEHEDACFHFC() { }
+
+	// RVA: 0x5D7A9B8 Offset: 0x5D769B8 VA: 0x5D7A9B8
+	private void AFGGFEBEGBBGFDF() { }
+
+	// RVA: 0x5D7ABB0 Offset: 0x5D76BB0 VA: 0x5D7ABB0 Slot: 21
+	public override void Hide() { }
+
+	// RVA: 0x5D7ABCC Offset: 0x5D76BCC VA: 0x5D7ABCC
+	private void FGFBBAHBABHCDEE() { }
+
+	// RVA: 0x5D7ADC4 Offset: 0x5D76DC4 VA: 0x5D7ADC4
+	private void BCFHGGHCBGDFFEC() { }
+
+	// RVA: 0x5D7AFBC Offset: 0x5D76FBC VA: 0x5D7AFBC
+	private void BEGHDCGGBFBAGCB() { }
+
+	// RVA: 0x5D7B1B0 Offset: 0x5D771B0 VA: 0x5D7B1B0
+	private void EHCDDHBACBBCFEA() { }
+
+	// RVA: 0x5D7B3A8 Offset: 0x5D773A8 VA: 0x5D7B3A8 Slot: 30
+	public override void UpdateView(PlayerController AHGEEFHFCCGCHHF) { }
+
+	// RVA: 0x5D7B8E0 Offset: 0x5D778E0 VA: 0x5D7B8E0
+	private void FGFFHFBBGBDFDFD() { }
+
+	// RVA: 0x5D7BAD8 Offset: 0x5D77AD8 VA: 0x5D7BAD8
+	private void DAABBDAHBHBABEB() { }
+
+	// RVA: 0x5D7BCD0 Offset: 0x5D77CD0 VA: 0x5D7BCD0
+	private void CEBEECFHEBGEGAD() { }
+
+	// RVA: 0x5D7BEC8 Offset: 0x5D77EC8 VA: 0x5D7BEC8
+	private static void .cctor() { }
+
+	// RVA: 0x5D7C08C Offset: 0x5D7808C VA: 0x5D7C08C
+	private void FGDBEFGDECHCAAC() { }
+
+	// RVA: 0x5D7C284 Offset: 0x5D78284 VA: 0x5D7C284
+	private void FGHAEAEABBCGBCG() { }
+
+	// RVA: 0x5D7C478 Offset: 0x5D78478 VA: 0x5D7C478
+	private void HEBACFHDECHBHFE() { }
+
+	// RVA: 0x5D7C66C Offset: 0x5D7866C VA: 0x5D7C66C
+	private void HABGDDCGAEFEDDH() { }
+
+	// RVA: 0x5D7C864 Offset: 0x5D78864 VA: 0x5D7C864
+	private void AHHGGHBCCEHGFBB() { }
+
+	// RVA: 0x5D7CA5C Offset: 0x5D78A5C VA: 0x5D7CA5C
+	private void DGHDDBAEHDEEHDG() { }
+
+	// RVA: 0x5D7CC50 Offset: 0x5D78C50 VA: 0x5D7CC50
+	private void FFBBHAFGFFFBDDB() { }
+
+	// RVA: 0x5D7CE48 Offset: 0x5D78E48 VA: 0x5D7CE48
+	private void GAAFGHBBEDGGBBF() { }
+
+	// RVA: 0x5D7D040 Offset: 0x5D79040 VA: 0x5D7D040
+	private void BBBDHHGCEFBFECC() { }
+
+	// RVA: 0x5D7D238 Offset: 0x5D79238 VA: 0x5D7D238
+	private void HHEDDFHBHBDDFCE() { }
+
+	// RVA: 0x5D7D430 Offset: 0x5D79430 VA: 0x5D7D430
+	private void FHBFCFBCDBHGEHH() { }
+
+	// RVA: 0x5D7D628 Offset: 0x5D79628 VA: 0x5D7D628
+	private void ECEEFHHGCGGGCBG() { }
+
+	// RVA: 0x5D7D820 Offset: 0x5D79820 VA: 0x5D7D820
+	private void FEHHGDBEDHFFGAA() { }
+
+	// RVA: 0x5D7DA18 Offset: 0x5D79A18 VA: 0x5D7DA18
+	private void Awake() { }
+
+	// RVA: 0x5D7DC10 Offset: 0x5D79C10 VA: 0x5D7DC10
+	private void EHEDEEAABFDHGAG() { }
+}

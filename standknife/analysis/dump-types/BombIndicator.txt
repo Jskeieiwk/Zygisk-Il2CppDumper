@@ -1,0 +1,188 @@
+// Namespace: Axlebolt.Standoff.Inventory.Bomb
+public class BombIndicator : MonoBehaviour // TypeDefIndex: 3799
+{
+	// Fields
+	[SerializeField]
+	private SpriteFlareComponent _indicator; // 0x20
+	private Transform DBGBCECAAFCHEBA; // 0x28
+	private Transform GFGGAECECDFGCEH; // 0x30
+	private Transform ACGEAECEEHEFHFA; // 0x38
+	private float HEDCBBCGBDEFEEG; // 0x40
+	private float HACGAHCHADBFDEC; // 0x44
+	private float CACBBFGBGDABAGF; // 0x48
+	private bool GEDDDGBEAFHEFBD; // 0x4C
+	private ADCGHEBDCBBFGGA HACAHEGBHCABGDD; // 0x50
+
+	// Properties
+	private Transform EGHDFGHCEBAHFDF { get; }
+
+	// Methods
+
+	// RVA: 0x3BCE144 Offset: 0x3BCA144 VA: 0x3BCE144
+	private void DCFGCFAGGEBFHAD() { }
+
+	// RVA: 0x3BCE358 Offset: 0x3BCA358 VA: 0x3BCE358
+	public void FHCHHEEHCCBGDFA(float HBBECHDEDBDCBCA, bool DGHFCHBCDABFDBG = False) { }
+
+	// RVA: 0x3BCE5BC Offset: 0x3BCA5BC VA: 0x3BCE5BC
+	private void DACBAFGHFDACHCG() { }
+
+	// RVA: 0x3BCE5F0 Offset: 0x3BCA5F0 VA: 0x3BCE5F0
+	private void AGHADFCHCFEDCDH() { }
+
+	// RVA: 0x3BCE860 Offset: 0x3BCA860 VA: 0x3BCE860
+	private void EFHDABGBDFHEGCF() { }
+
+	// RVA: 0x3BCEA74 Offset: 0x3BCAA74 VA: 0x3BCEA74
+	public void DEAFEFCDCECBABH(SpriteFlareData AABHEECDEABFAEE) { }
+
+	// RVA: 0x3BCEAA0 Offset: 0x3BCAAA0 VA: 0x3BCEAA0
+	private void AECFDDCEDHACCFE() { }
+
+	// RVA: 0x3BCE5C0 Offset: 0x3BCA5C0 VA: 0x3BCE5C0
+	public void FEEEFDEHACEBDDB() { }
+
+	// RVA: 0x3BCECB4 Offset: 0x3BCACB4 VA: 0x3BCECB4
+	private Transform HBECAAECHGAEBGC() { }
+
+	// RVA: 0x3BCECE4 Offset: 0x3BCACE4 VA: 0x3BCECE4
+	private void FHFBFHEFFBHEHBA() { }
+
+	// RVA: 0x3BCED18 Offset: 0x3BCAD18 VA: 0x3BCED18
+	public void BBFAGCAEEBHHHAA(float HBBECHDEDBDCBCA, bool DGHFCHBCDABFDBG = False) { }
+
+	// RVA: 0x3BCEF7C Offset: 0x3BCAF7C VA: 0x3BCEF7C
+	public void SetFlare(SpriteFlareData AABHEECDEABFAEE) { }
+
+	// RVA: 0x3BCEFA8 Offset: 0x3BCAFA8 VA: 0x3BCEFA8
+	private void GEDAHDFDAGFACHB() { }
+
+	// RVA: 0x3BCEFAC Offset: 0x3BCAFAC VA: 0x3BCEFAC
+	private void GDAGCFEGHBCAGBA() { }
+
+	// RVA: 0x3BCEFE0 Offset: 0x3BCAFE0 VA: 0x3BCEFE0
+	private void DDHHDEGEBHGCDCB() { }
+
+	// RVA: 0x3BCF1DC Offset: 0x3BCB1DC VA: 0x3BCF1DC
+	private void FEBCAGDGBAEDDED() { }
+
+	// RVA: 0x3BCF3EC Offset: 0x3BCB3EC VA: 0x3BCF3EC
+	private void DAHBDBGAAEGHEFB() { }
+
+	// RVA: 0x3BCF600 Offset: 0x3BCB600 VA: 0x3BCF600
+	private void BAFGFFBFAEGDGCB() { }
+
+	// RVA: 0x3BCF870 Offset: 0x3BCB870 VA: 0x3BCF870
+	public void ACFAEHCGHGDDDHB(BombSpriteFlareConfig DHBCFGBBADEGHBB) { }
+
+	// RVA: 0x3BCFA0C Offset: 0x3BCBA0C VA: 0x3BCFA0C
+	public void Play(float HBBECHDEDBDCBCA, bool DGHFCHBCDABFDBG = False) { }
+
+	// RVA: 0x3BCECE8 Offset: 0x3BCACE8 VA: 0x3BCECE8
+	public void Stop() { }
+
+	// RVA: 0x3BCF810 Offset: 0x3BCB810 VA: 0x3BCF810
+	private Transform EFDBGGAEFBAHFEH() { }
+
+	// RVA: 0x3BCFA60 Offset: 0x3BCBA60 VA: 0x3BCFA60
+	private void AFFAEEHDFFAFDEA() { }
+
+	// RVA: 0x3BCFCA0 Offset: 0x3BCBCA0 VA: 0x3BCFCA0
+	private void Update() { }
+
+	// RVA: 0x3BCFCA4 Offset: 0x3BCBCA4 VA: 0x3BCFCA4
+	public void EHHCGECDDHEBEFA(BombSpriteFlareConfig DHBCFGBBADEGHBB) { }
+
+	// RVA: 0x3BCE830 Offset: 0x3BCA830 VA: 0x3BCE830
+	private Transform AGBDCADEHGHGEGH() { }
+
+	// RVA: 0x3BCFE40 Offset: 0x3BCBE40 VA: 0x3BCFE40
+	public void AHGBEDFGGEEBBGA(BombSpriteFlareConfig DHBCFGBBADEGHBB) { }
+
+	// RVA: 0x3BCE3AC Offset: 0x3BCA3AC VA: 0x3BCE3AC
+	private void GADEGDGFGHFBDGH() { }
+
+	// RVA: 0x3BCEFB0 Offset: 0x3BCAFB0 VA: 0x3BCEFB0
+	public void AEBHAABCHHEAGCE() { }
+
+	// RVA: 0x3BCFFDC Offset: 0x3BCBFDC VA: 0x3BCFFDC
+	public void CEHGAEGCEEDBEEB(float HBBECHDEDBDCBCA, bool DGHFCHBCDABFDBG = False) { }
+
+	// RVA: 0x3BCE800 Offset: 0x3BCA800 VA: 0x3BCE800
+	private Transform DHBBFDAAAGBFDBB() { }
+
+	// RVA: 0x3BCED6C Offset: 0x3BCAD6C VA: 0x3BCED6C
+	private void FGGGFHGFDCGAHDF() { }
+
+	// RVA: 0x3BCF3F0 Offset: 0x3BCB3F0 VA: 0x3BCF3F0
+	private void FHDEFEAAAHDEAAG() { }
+
+	// RVA: 0x3BD0240 Offset: 0x3BCC240 VA: 0x3BD0240
+	private void HCEHEHEBGDCGADF() { }
+
+	// RVA: 0x3BD0244 Offset: 0x3BCC244 VA: 0x3BD0244
+	public void DDADBFHCBEAHDCA(float HBBECHDEDBDCBCA, bool DGHFCHBCDABFDBG = False) { }
+
+	// RVA: 0x3BD0298 Offset: 0x3BCC298 VA: 0x3BD0298
+	public void DBAHAECGGACEAHD(BombSpriteFlareConfig DHBCFGBBADEGHBB) { }
+
+	// RVA: 0x3BD0434 Offset: 0x3BCC434 VA: 0x3BD0434
+	public void BHFAGBDBBHGBEEC(float HBBECHDEDBDCBCA, bool DGHFCHBCDABFDBG = False) { }
+
+	// RVA: 0x3BD0488 Offset: 0x3BCC488 VA: 0x3BD0488
+	public void FAEBBAAECAAEBDH(SpriteFlareData AABHEECDEABFAEE) { }
+
+	// RVA: 0x3BD04B4 Offset: 0x3BCC4B4 VA: 0x3BD04B4
+	private void CDBFBECGABDEFHD() { }
+
+	// RVA: 0x3BD04B8 Offset: 0x3BCC4B8 VA: 0x3BD04B8
+	public void Init(BombSpriteFlareConfig DHBCFGBBADEGHBB) { }
+
+	// RVA: 0x3BCE148 Offset: 0x3BCA148 VA: 0x3BCE148
+	private void BBDDACAGHHGBECA() { }
+
+	// RVA: 0x3BD0654 Offset: 0x3BCC654 VA: 0x3BD0654
+	private void EGGCEEFHCFHEFBD() { }
+
+	// RVA: 0x3BCEAA4 Offset: 0x3BCAAA4 VA: 0x3BCEAA4
+	private void DHBFDFBAGDAHGFG() { }
+
+	// RVA: 0x3BCF840 Offset: 0x3BCB840 VA: 0x3BCF840
+	private Transform DHGGAFFFAHBGGDC() { }
+
+	// RVA: 0x3BD06B8 Offset: 0x3BCC6B8 VA: 0x3BD06B8
+	public void CCDHBBCDHGBFFCG(float HBBECHDEDBDCBCA, bool DGHFCHBCDABFDBG = False) { }
+
+	// RVA: 0x3BCFC70 Offset: 0x3BCBC70 VA: 0x3BCFC70
+	private Transform CFGFDFAAGADGBBA() { }
+
+	// RVA: 0x3BD0030 Offset: 0x3BCC030 VA: 0x3BD0030
+	private void AGHDCFBBAFCCFEC() { }
+
+	// RVA: 0x3BD070C Offset: 0x3BCC70C VA: 0x3BD070C
+	private void DGDDBFFGFAHDBAD() { }
+
+	// RVA: 0x3BD0688 Offset: 0x3BCC688 VA: 0x3BD0688
+	private Transform HHDFAAGGDABDHEB() { }
+
+	// RVA: 0x3BCE864 Offset: 0x3BCA864 VA: 0x3BCE864
+	private void AGBBCBECFHBCDFH() { }
+
+	// RVA: 0x3BD0710 Offset: 0x3BCC710 VA: 0x3BD0710
+	public void FFBCFEBAGEFAEEF(BombSpriteFlareConfig DHBCFGBBADEGHBB) { }
+
+	// RVA: 0x3BD08AC Offset: 0x3BCC8AC VA: 0x3BD08AC
+	public void .ctor() { }
+
+	// RVA: 0x3BD08B4 Offset: 0x3BCC8B4 VA: 0x3BD08B4
+	public void FBEDCEFHCGHDBFE(BombSpriteFlareConfig DHBCFGBBADEGHBB) { }
+
+	// RVA: 0x3BD0A50 Offset: 0x3BCCA50 VA: 0x3BD0A50
+	private void OnDisable() { }
+
+	// RVA: 0x3BD0A54 Offset: 0x3BCCA54 VA: 0x3BD0A54
+	public void BGCAGADGGAHFGHF(SpriteFlareData AABHEECDEABFAEE) { }
+
+	// RVA: 0x3BD0658 Offset: 0x3BCC658 VA: 0x3BD0658
+	public void FEGAFBFBFAEHBDH() { }
+}

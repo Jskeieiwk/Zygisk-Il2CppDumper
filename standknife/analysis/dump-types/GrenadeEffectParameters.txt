@@ -1,0 +1,196 @@
+// Namespace: Axlebolt.Standoff.Inventory.Grenade
+public class GrenadeEffectParameters : ScriptableObject // TypeDefIndex: 2211
+{
+	// Fields
+	[SerializeField]
+	private ParticleSystem _particles; // 0x18
+	[SerializeField]
+	private ParticleSystem _alternativeParticles; // 0x20
+	[SerializeField]
+	private ParticleSystem _localExplosionParticles; // 0x28
+	[SerializeField]
+	private float _particleDuration; // 0x30
+	[SerializeField]
+	private bool _particleAdaptiveRotation; // 0x34
+	[SerializeField]
+	private int _particlesPoolSize; // 0x38
+	[SerializeField]
+	private Sprite[] _decals; // 0x40
+	[SerializeField]
+	private Vector2 _decalSize; // 0x48
+	[SerializeField]
+	private float _decalCastDistance; // 0x50
+	[SerializeField]
+	private float _radius; // 0x54
+	[SerializeField]
+	[Header("Effects")]
+	private int _effectPoolSize; // 0x58
+	[SerializeField]
+	private bool _isRubberPool; // 0x5C
+	[SerializeField]
+	private bool _enableOnlyInRadius; // 0x5D
+	[SerializeField]
+	private DamageEffect _damageEffect; // 0x60
+	[SerializeField]
+	private FlashbangEffect _flashbangEffect; // 0x68
+	[SerializeField]
+	private SmokeEffect _smokeEffect; // 0x70
+	[SerializeField]
+	private Vector2 _padding; // 0x78
+	[CompilerGenerated]
+	[SerializeField]
+	private MollyEffect <MollyEffect>k__BackingField; // 0x80
+
+	// Properties
+	public Vector2 Padding { get; }
+	public ParticleSystem Particles { get; }
+	public ParticleSystem AlternativeParticles { get; }
+	public ParticleSystem LocalExplosionParticles { get; }
+	public float ParticleDuration { get; }
+	public bool ParticleAdaptiveRotation { get; }
+	public int ParticlesPoolSize { get; }
+	public Sprite[] Decals { get; }
+	public Vector2 DecalSize { get; }
+	public float DecalCastDistance { get; }
+	public float Radius { get; }
+	public bool EnableOnlyInRadius { get; }
+	public bool IsRubberPool { get; }
+	public int EffectPoolSize { get; }
+	public DamageEffect DamageEffect { get; }
+	public FlashbangEffect FlashbangEffect { get; }
+	public SmokeEffect SmokeEffect { get; }
+	public MollyEffect MollyEffect { get; set; }
+
+	// Methods
+
+	// RVA: 0x692C6B8 Offset: 0x69286B8 VA: 0x692C6B8
+	public float get_Radius() { }
+
+	// RVA: 0x692C6C0 Offset: 0x69286C0 VA: 0x692C6C0
+	public float DADACHFABEHEEAE() { }
+
+	// RVA: 0x692C6C8 Offset: 0x69286C8 VA: 0x692C6C8
+	public void .ctor() { }
+
+	// RVA: 0x692C6DC Offset: 0x69286DC VA: 0x692C6DC
+	public bool GFDCHGAEFCFDBGH() { }
+
+	// RVA: 0x692C6E4 Offset: 0x69286E4 VA: 0x692C6E4
+	public Vector2 GFCAEGAACEAHAEA() { }
+
+	// RVA: 0x692C6EC Offset: 0x69286EC VA: 0x692C6EC
+	public ParticleSystem get_Particles() { }
+
+	// RVA: 0x692C6F4 Offset: 0x69286F4 VA: 0x692C6F4
+	public Sprite[] get_Decals() { }
+
+	// RVA: 0x692C6FC Offset: 0x69286FC VA: 0x692C6FC
+	public float DEEFGHFCBEBEAGH() { }
+
+	// RVA: 0x692C704 Offset: 0x6928704 VA: 0x692C704
+	public int EHDGAFABEEFGDGE() { }
+
+	// RVA: 0x692C70C Offset: 0x692870C VA: 0x692C70C
+	public int get_EffectPoolSize() { }
+
+	// RVA: 0x692C714 Offset: 0x6928714 VA: 0x692C714
+	public Vector2 get_Padding() { }
+
+	// RVA: 0x692C71C Offset: 0x692871C VA: 0x692C71C
+	public bool get_IsRubberPool() { }
+
+	// RVA: 0x692C724 Offset: 0x6928724 VA: 0x692C724
+	public Sprite[] EDAHCFFAFAHHHCC() { }
+
+	// RVA: 0x692C72C Offset: 0x692872C VA: 0x692C72C
+	public int BABEFFHDGHHHEGB() { }
+
+	// RVA: 0x692C734 Offset: 0x6928734 VA: 0x692C734
+	public int get_ParticlesPoolSize() { }
+
+	// RVA: 0x692C73C Offset: 0x692873C VA: 0x692C73C
+	public DamageEffect get_DamageEffect() { }
+
+	[CompilerGenerated]
+	// RVA: 0x692C744 Offset: 0x6928744 VA: 0x692C744
+	public MollyEffect get_MollyEffect() { }
+
+	// RVA: 0x692C74C Offset: 0x692874C VA: 0x692C74C
+	private void HEFBABCDHCGACEG(MollyEffect BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x692C754 Offset: 0x6928754 VA: 0x692C754
+	public float ADBGBBAFCFDEBFD() { }
+
+	// RVA: 0x692C75C Offset: 0x692875C VA: 0x692C75C
+	public bool get_EnableOnlyInRadius() { }
+
+	// RVA: 0x692C764 Offset: 0x6928764 VA: 0x692C764
+	public bool CEEACGACACAHHHA() { }
+
+	// RVA: 0x692C76C Offset: 0x692876C VA: 0x692C76C
+	public Sprite[] CFGBBHCBFCAHBCF() { }
+
+	// RVA: 0x692C774 Offset: 0x6928774 VA: 0x692C774
+	public ParticleSystem get_AlternativeParticles() { }
+
+	// RVA: 0x692C77C Offset: 0x692877C VA: 0x692C77C
+	public Vector2 HFEAACHGDFFGFCG() { }
+
+	// RVA: 0x692C784 Offset: 0x6928784 VA: 0x692C784
+	public float HCEEFFHHBGGAFFG() { }
+
+	// RVA: 0x692C78C Offset: 0x692878C VA: 0x692C78C
+	public SmokeEffect get_SmokeEffect() { }
+
+	// RVA: 0x692C794 Offset: 0x6928794 VA: 0x692C794
+	private void EACFBDECAHBFAHE(MollyEffect BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x692C79C Offset: 0x692879C VA: 0x692C79C
+	public float get_DecalCastDistance() { }
+
+	// RVA: 0x692C7A4 Offset: 0x69287A4 VA: 0x692C7A4
+	public int FCDBGEDCHCABFDF() { }
+
+	// RVA: 0x692C7AC Offset: 0x69287AC VA: 0x692C7AC
+	public Vector2 get_DecalSize() { }
+
+	// RVA: 0x692C7B4 Offset: 0x69287B4 VA: 0x692C7B4
+	public ParticleSystem get_LocalExplosionParticles() { }
+
+	// RVA: 0x692C7BC Offset: 0x69287BC VA: 0x692C7BC
+	public MollyEffect BDEEFHFFFCFEBCG() { }
+
+	// RVA: 0x692C7C4 Offset: 0x69287C4 VA: 0x692C7C4
+	public FlashbangEffect get_FlashbangEffect() { }
+
+	// RVA: 0x692C7CC Offset: 0x69287CC VA: 0x692C7CC
+	public float EHCGFAEGCHCACGH() { }
+
+	// RVA: 0x692C7D4 Offset: 0x69287D4 VA: 0x692C7D4
+	public float get_ParticleDuration() { }
+
+	// RVA: 0x692C7DC Offset: 0x69287DC VA: 0x692C7DC
+	public Sprite[] BHGGECHACGBGCAF() { }
+
+	// RVA: 0x692C7E4 Offset: 0x69287E4 VA: 0x692C7E4
+	public int EEEGHEAFAHHHDHE() { }
+
+	// RVA: 0x692C7EC Offset: 0x69287EC VA: 0x692C7EC
+	public float CCAGAHGEHEAHEDB() { }
+
+	// RVA: 0x692C7F4 Offset: 0x69287F4 VA: 0x692C7F4
+	public float FGFAADDCDCEGDHC() { }
+
+	[CompilerGenerated]
+	// RVA: 0x692C7FC Offset: 0x69287FC VA: 0x692C7FC
+	private void set_MollyEffect(MollyEffect BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x692C804 Offset: 0x6928804 VA: 0x692C804
+	public float GAGADFGFGFBCDFC() { }
+
+	// RVA: 0x692C80C Offset: 0x692880C VA: 0x692C80C
+	public bool get_ParticleAdaptiveRotation() { }
+
+	// RVA: 0x692C814 Offset: 0x6928814 VA: 0x692C814
+	public Vector2 DGDEBCEBGGADCBG() { }
+}

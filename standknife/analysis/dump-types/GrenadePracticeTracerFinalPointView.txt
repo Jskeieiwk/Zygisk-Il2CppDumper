@@ -1,0 +1,30 @@
+// Namespace: Axlebolt.Ballistics.GrenadePractice.Tracer
+public class GrenadePracticeTracerFinalPointView : MonoBehaviour // TypeDefIndex: 22818
+{
+	// Fields
+	[SerializeField]
+	private MeshFilter _meshFilter; // 0x20
+	[SerializeField]
+	private int _meshSortingOrder; // 0x28
+	[SerializeField]
+	private MeshRenderer _meshRenderer; // 0x30
+	[SerializeField]
+	private Material _material; // 0x38
+
+	// Properties
+	public MeshRenderer MeshRenderer { get; }
+
+	// Methods
+
+	// RVA: 0x6BA862C Offset: 0x6BA462C VA: 0x6BA862C
+	public MeshRenderer get_MeshRenderer() { }
+
+	// RVA: 0x6BA8634 Offset: 0x6BA4634 VA: 0x6BA8634
+	private void Awake() { }
+
+	// RVA: 0x6BA8638 Offset: 0x6BA4638 VA: 0x6BA8638
+	private void SetSortingOrder() { }
+
+	// RVA: 0x6BA865C Offset: 0x6BA465C VA: 0x6BA865C
+	public void .ctor() { }
+}

@@ -1,0 +1,22 @@
+// Namespace: 
+public class EECEHBDFAACCHFD : CAEGBFCDHHFEGGH // TypeDefIndex: 950
+{
+	// Fields
+	public Vector3 HCDFCABACDDEFAA; // 0x14
+	public Vector3 GFFHEDBBHFBADCA; // 0x20
+	public Vector3 GGGHAGHAGGGGCGF; // 0x2C
+	public byte GBHEHCAECFEFFHG; // 0x38
+	public float GAHFGGHCDDBCDBE; // 0x3C
+	public EGACEGHEFADDCDH<ABGDFAFFDDCHAAC>[] FAECADBEHCBEBFG; // 0x40
+
+	// Methods
+
+	// RVA: 0x5EAB958 Offset: 0x5EA7958 VA: 0x5EAB958
+	public void .ctor() { }
+
+	// RVA: 0x5EABA48 Offset: 0x5EA7A48 VA: 0x5EABA48 Slot: 5
+	public override void ABGECDCHGCHBHDE(BinaryStream EADACHFBDGEGAAF) { }
+
+	// RVA: 0x5EABD3C Offset: 0x5EA7D3C VA: 0x5EABD3C Slot: 4
+	public override void BAEFHHGHHDEDCED(BinaryStream BAEGHFAECEHHFAF) { }
+}

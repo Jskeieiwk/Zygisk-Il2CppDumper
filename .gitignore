@@ -12,3 +12,8 @@
 /out
 .externalNativeBuild
 .cxx
+# StandKnife project (local tooling, not part of the project)
+standknife/node_modules
+standknife/tools
+standknife/build
+standknife/*.apk

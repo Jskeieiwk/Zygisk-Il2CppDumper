@@ -1,0 +1,333 @@
+// Namespace: Axlebolt.Standoff.Inventory.Drop
+public class WeaponDropManager : ScenePhotonBehavior<WeaponDropManager> // TypeDefIndex: 7860
+{
+	// Fields
+	private const int DABFEEDCCCEDGGB = 5;
+	private static ILogger GGFBEBEFCHEEADD; // 0x0
+	private static WeaponDropManager ABGGFFACFEHCBDG; // 0x8
+	private readonly Dictionary<int, WeaponDropController> AGAHCFFAHAAEHDG; // 0x30
+	private readonly List<WeaponDropController> BHBHAHDFDFBECEE; // 0x38
+	private readonly BinaryStream FBBFCBAHAEHFDCG; // 0x40
+	private int GHDAEEBDFCGDCFD; // 0x48
+	private EDFHEABHFHFFADH HEFHEDDGBAEHCDD; // 0x50
+	private WeaponryController CBECEDAEGACEDAD; // 0x58
+	private bool DBFAHGDEDFBAFBF; // 0x60
+	private Transform CDHEGFEDFGAGHAD; // 0x68
+	public Func<ACFBEBGADFDGEBG, CFGAHHHABFBAGDH> TakeRule; // 0x70
+	public Func<ACFBEBGADFDGEBG, CFGAHHHABFBAGDH> DropRule; // 0x78
+	[CompilerGenerated]
+	private bool <BFFHBEEFHGDAECB>k__BackingField; // 0x80
+	[CompilerGenerated]
+	private ACHHFBAFADAFAHB <EAHHFAAEAFBDCGA>k__BackingField; // 0x88
+	[CompilerGenerated]
+	private Action<WeaponDropController, CAGDEEGAHEBCCBG> BACHCDHFCCDBAAF; // 0x90
+	[CompilerGenerated]
+	private Action<ABGCCDFFDBGGAAC, CAGDEEGAHEBCCBG> DDDHGGEBFEEABGF; // 0x98
+	[CompilerGenerated]
+	private Action CDEDECBDEAHFAAB; // 0xA0
+
+	// Properties
+	private static ILogger FHFEDEGBFGDDCCB { get; }
+	public bool DDDGEECACFHFEGA { get; set; }
+	public ACHHFBAFADAFAHB HGDGBDGGBEHFAGC { get; set; }
+
+	// Methods
+
+	// RVA: 0x58F2480 Offset: 0x58EE480 VA: 0x58F2480
+	private void CFDHAHGEEBAHEDE() { }
+
+	// RVA: 0x58F2524 Offset: 0x58EE524 VA: 0x58F2524
+	private void HAEDGEHEECBADDG(WeaponParameters[] FBEFAGEGBBEBACC) { }
+
+	// RVA: 0x58F27D8 Offset: 0x58EE7D8 VA: 0x58F27D8
+	public bool FEHCAGGBCEFHGHA(CAGDEEGAHEBCCBG HCFHDFFBAHFAFEC) { }
+
+	// RVA: 0x58F3188 Offset: 0x58EF188 VA: 0x58F3188
+	private void BFAFDEFBDECHCEB(bool DABEBGAGBBDFCHD, CAGDEEGAHEBCCBG FEADHDCHAEGAFGG) { }
+
+	// RVA: 0x58F36B4 Offset: 0x58EF6B4 VA: 0x58F36B4
+	public void ACFCDBABCEBGAGG(Action<WeaponDropController, CAGDEEGAHEBCCBG> BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x58F37AC Offset: 0x58EF7AC VA: 0x58F37AC
+	public void EDEBHGEFCFCADGG(Action BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x58F3890 Offset: 0x58EF890 VA: 0x58F3890
+	private CGGDAEBDAHCECHG HBGFGEGDDGFHHEF(byte[] EFCABDEFABFEGAB) { }
+
+	// RVA: 0x58F3AB8 Offset: 0x58EFAB8 VA: 0x58F3AB8
+	public void ABGFCGDABBHCDBH(Action<ABGCCDFFDBGGAAC, CAGDEEGAHEBCCBG> BDFHFCCDABCFGBD) { }
+
+	[DHEDFFDCGDFFCBF]
+	// RVA: 0x58F3BB0 Offset: 0x58EFBB0 VA: 0x58F3BB0
+	private void TakeViaServer(byte[] EFCABDEFABFEGAB, DHDAHBHEBCACCBB BAFEDADDGFHADAC) { }
+
+	// RVA: 0x58F55D8 Offset: 0x58F15D8 VA: 0x58F55D8
+	private void BBFHAABCHFEBFAG(WeaponParameters[] FBEFAGEGBBEBACC) { }
+
+	// RVA: 0x58F588C Offset: 0x58F188C VA: 0x58F588C
+	public static IEnumerator EGBACHDABGHAGHC(WeaponParameters[] FBEFAGEGBBEBACC) { }
+
+	// RVA: 0x58F593C Offset: 0x58F193C VA: 0x58F593C
+	private void ABAADGHGECDEHDF() { }
+
+	[CompilerGenerated]
+	// RVA: 0x58F5A44 Offset: 0x58F1A44 VA: 0x58F5A44
+	private bool HCDGBCGDCDAACCH(WeaponDropController DHCGCGCDGFHAHEB) { }
+
+	// RVA: 0x58F5B48 Offset: 0x58F1B48 VA: 0x58F5B48
+	public void DropImmediately(CAGDEEGAHEBCCBG HCFHDFFBAHFAFEC) { }
+
+	// RVA: 0x58F60E0 Offset: 0x58F20E0 VA: 0x58F60E0
+	private void FGDBAGAHCCCHFBH(bool BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x58F60EC Offset: 0x58F20EC VA: 0x58F60EC
+	private void EDCFHBAFHDCEDGD() { }
+
+	// RVA: 0x58F6550 Offset: 0x58F2550 VA: 0x58F6550
+	private void CCDHECBBFABGECB() { }
+
+	[CompilerGenerated]
+	// RVA: 0x58F69BC Offset: 0x58F29BC VA: 0x58F69BC
+	public void remove_WeaponDropEvent(Action<WeaponDropController, CAGDEEGAHEBCCBG> BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x58F6AB4 Offset: 0x58F2AB4 VA: 0x58F6AB4
+	public void add_WeaponDropEvent(Action<WeaponDropController, CAGDEEGAHEBCCBG> BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x58F2FEC Offset: 0x58EEFEC VA: 0x58F2FEC
+	private byte[] FAADGAHDHDABBCE(SerializableMessage FEEDEADDDGHDGGH) { }
+
+	// RVA: 0x58F6BAC Offset: 0x58F2BAC VA: 0x58F6BAC
+	public void DDFEFHFBBEEBBAA(Action<WeaponDropController, CAGDEEGAHEBCCBG> BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x58F6CA4 Offset: 0x58F2CA4 VA: 0x58F6CA4
+	public void EEFAEFAGHBBAFAC(Action<WeaponDropController, CAGDEEGAHEBCCBG> BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x58F6D9C Offset: 0x58F2D9C VA: 0x58F6D9C
+	public Transform GetDropHelper() { }
+
+	// RVA: 0x58F6DA4 Offset: 0x58F2DA4 VA: 0x58F6DA4
+	public bool Drop(CAGDEEGAHEBCCBG HCFHDFFBAHFAFEC) { }
+
+	[DHEDFFDCGDFFCBF]
+	// RVA: 0x58F72BC Offset: 0x58F32BC VA: 0x58F72BC
+	private void GenerateViaServer(byte[] EFCABDEFABFEGAB) { }
+
+	// RVA: 0x58F7B64 Offset: 0x58F3B64 VA: 0x58F7B64
+	public void Generate(CGGDAEBDAHCECHG FGAACDAEGDAFGHA) { }
+
+	// RVA: 0x58F7DF0 Offset: 0x58F3DF0 VA: 0x58F7DF0
+	public void CGBAFFCGDEEHFGE(CGGDAEBDAHCECHG FGAACDAEGDAFGHA) { }
+
+	[CompilerGenerated]
+	// RVA: 0x58F807C Offset: 0x58F407C VA: 0x58F807C
+	public void add_WeaponTakeEvent(Action<ABGCCDFFDBGGAAC, CAGDEEGAHEBCCBG> BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x58F8174 Offset: 0x58F4174 VA: 0x58F8174
+	public void ABAACGAFDCFGCDG(CAGDEEGAHEBCCBG HCFHDFFBAHFAFEC) { }
+
+	[CompilerGenerated]
+	// RVA: 0x58F8710 Offset: 0x58F4710 VA: 0x58F8710
+	public bool get_InProgress() { }
+
+	// RVA: 0x58F8718 Offset: 0x58F4718 VA: 0x58F8718
+	public Transform DGHFAHEDDGGEEDD() { }
+
+	// RVA: 0x58F8720 Offset: 0x58F4720 VA: 0x58F8720
+	public void EEFGBFABDFBHEAH(Action<ABGCCDFFDBGGAAC, CAGDEEGAHEBCCBG> BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x58F8818 Offset: 0x58F4818 VA: 0x58F8818 Slot: 70
+	public override void OnInstantiate(object[] FHCHDEFHCBDHEHD) { }
+
+	// RVA: 0x58F3588 Offset: 0x58EF588 VA: 0x58F3588
+	private static ILogger FBDFEBGDFBEFHCE() { }
+
+	// RVA: 0x58F8E28 Offset: 0x58F4E28 VA: 0x58F8E28
+	private CGGDAEBDAHCECHG FGGBDCBDFHHHHAF(byte[] EFCABDEFABFEGAB) { }
+
+	// RVA: 0x58F9050 Offset: 0x58F5050 VA: 0x58F9050
+	private void GBDFBCHBFEGFHGH() { }
+
+	// RVA: 0x58F930C Offset: 0x58F530C VA: 0x58F930C
+	public static IEnumerator FFBDGFCEEAEHDDG(WeaponParameters[] FBEFAGEGBBEBACC) { }
+
+	// RVA: 0x58F93BC Offset: 0x58F53BC VA: 0x58F93BC
+	public IEnumerable<WeaponDropController> GetDroppedWeapons() { }
+
+	// RVA: 0x58F9454 Offset: 0x58F5454 VA: 0x58F9454
+	public void .ctor() { }
+
+	[CompilerGenerated]
+	// RVA: 0x58F98A4 Offset: 0x58F58A4 VA: 0x58F98A4
+	public void set_DropListener(ACHHFBAFADAFAHB BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x58F98AC Offset: 0x58F58AC VA: 0x58F98AC
+	private List<WeaponDropController> HCACFFEHDCFBFHA(List<int> CCBADDBFBDBEGDF) { }
+
+	// RVA: 0x58F9B2C Offset: 0x58F5B2C VA: 0x58F9B2C Slot: 68
+	public override void OnReturnToPool() { }
+
+	// RVA: 0x58FA034 Offset: 0x58F6034 VA: 0x58FA034
+	public static IEnumerator FEGGGAHCFFAHFHB(WeaponParameters[] FBEFAGEGBBEBACC) { }
+
+	// RVA: 0x58FA0E4 Offset: 0x58F60E4 VA: 0x58FA0E4
+	public void Take(List<int> CCBADDBFBDBEGDF) { }
+
+	// RVA: 0x58FAEB8 Offset: 0x58F6EB8 VA: 0x58FAEB8
+	public void HGBDFCHFGGFGCFG(Action BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x58F763C Offset: 0x58F363C VA: 0x58F763C
+	public void DropInternal(CAGDEEGAHEBCCBG FEADHDCHAEGAFGG) { }
+
+	// RVA: 0x58FAF9C Offset: 0x58F6F9C VA: 0x58FAF9C
+	public void BBDACAGBAFECBBA(WeaponryController HAABADFDGHHCACH) { }
+
+	// RVA: 0x58FAC30 Offset: 0x58F6C30 VA: 0x58FAC30
+	private List<WeaponDropController> AFFFADFECCFEDCC(List<int> CCBADDBFBDBEGDF) { }
+
+	// RVA: 0x58F55A4 Offset: 0x58F15A4 VA: 0x58F55A4
+	private EDEEGEGGDGEFFDC DDDCBEAHACHCHGH() { }
+
+	// RVA: 0x58FB05C Offset: 0x58F705C VA: 0x58FB05C
+	public bool DHGGBCDBEEBBFEA(CAGDEEGAHEBCCBG HCFHDFFBAHFAFEC) { }
+
+	// RVA: 0x58FB6A0 Offset: 0x58F76A0 VA: 0x58FB6A0
+	private bool FHHEFEECBCBBHEC(int GDHHAGEACDAGDDB) { }
+
+	[CompilerGenerated]
+	// RVA: 0x58FB784 Offset: 0x58F7784 VA: 0x58FB784
+	public ACHHFBAFADAFAHB get_DropListener() { }
+
+	[IteratorStateMachine(typeof(WeaponDropManager.GADBADBDDDHGACF))]
+	// RVA: 0x58FB78C Offset: 0x58F778C VA: 0x58FB78C
+	public static IEnumerator Instantiate(WeaponParameters[] FBEFAGEGBBEBACC) { }
+
+	// RVA: 0x58F5F04 Offset: 0x58F1F04 VA: 0x58F5F04
+	private void HCHHFAHDDGFDEFE() { }
+
+	// RVA: 0x58FB83C Offset: 0x58F783C VA: 0x58FB83C
+	public void FBCFHDACCCEHFED(Action<ABGCCDFFDBGGAAC, CAGDEEGAHEBCCBG> BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x58F8B74 Offset: 0x58F4B74 VA: 0x58F8B74
+	private void HCFEAFCFHGDAGEA(WeaponParameters[] FBEFAGEGBBEBACC) { }
+
+	// RVA: 0x58FB934 Offset: 0x58F7934 VA: 0x58FB934
+	private CGGDAEBDAHCECHG GCEGEGBDBBEFADB(byte[] EFCABDEFABFEGAB) { }
+
+	// RVA: 0x58FB574 Offset: 0x58F7574 VA: 0x58FB574
+	private static ILogger HABFFBFCFDFADEF() { }
+
+	// RVA: 0x58FBB5C Offset: 0x58F7B5C VA: 0x58FBB5C
+	public void DDGDDGGFDFEDBFG(Action<ABGCCDFFDBGGAAC, CAGDEEGAHEBCCBG> BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x58FBC54 Offset: 0x58F7C54 VA: 0x58FBC54
+	public bool CEBHGEADEADCCCE() { }
+
+	// RVA: 0x58FBC5C Offset: 0x58F7C5C VA: 0x58FBC5C
+	public void ABCGFADCGGEDGBE(CAGDEEGAHEBCCBG HCFHDFFBAHFAFEC) { }
+
+	// RVA: 0x58F8534 Offset: 0x58F4534 VA: 0x58F8534
+	private void EGEGHFFCBFDCBAH() { }
+
+	// RVA: 0x58F2CE4 Offset: 0x58EECE4 VA: 0x58F2CE4
+	private static ILogger BHDHFDCEDDDGFDH() { }
+
+	// RVA: 0x58FC018 Offset: 0x58F8018 VA: 0x58FC018
+	private void ABDGGEDFAEGCCBA(WeaponParameters[] FBEFAGEGBBEBACC) { }
+
+	// RVA: 0x58FC2CC Offset: 0x58F82CC VA: 0x58FC2CC
+	public void UnbindPlayer(WeaponryController HAABADFDGHHCACH) { }
+
+	// RVA: 0x58F921C Offset: 0x58F521C VA: 0x58F921C
+	private void CEFHCGCBAGFGAFA() { }
+
+	// RVA: 0x58F9BD0 Offset: 0x58F5BD0 VA: 0x58F9BD0
+	private void FGFGFCFGFCAFEGF() { }
+
+	// RVA: 0x58FC38C Offset: 0x58F838C VA: 0x58FC38C
+	private CAGDEEGAHEBCCBG HGHCEHBEFCDCBCA(byte[] EFCABDEFABFEGAB) { }
+
+	// RVA: 0x58FC5B4 Offset: 0x58F85B4 VA: 0x58FC5B4
+	private CAGDEEGAHEBCCBG HCGCEDEBEFCGFBD(byte[] EFCABDEFABFEGAB) { }
+
+	// RVA: 0x58FC7DC Offset: 0x58F87DC VA: 0x58FC7DC
+	private void HCBAHAHCCCDAGHB(bool DABEBGAGBBDFCHD, CAGDEEGAHEBCCBG FEADHDCHAEGAFGG) { }
+
+	// RVA: 0x58FCBDC Offset: 0x58F8BDC VA: 0x58FCBDC
+	public void BAFHBHBDDGCFDHD(WeaponryController HAABADFDGHHCACH) { }
+
+	// RVA: 0x58FCC9C Offset: 0x58F8C9C VA: 0x58FCC9C
+	public void GEGFGFEDCBHCBHD(Type DGHBEFCCGCDGEFG) { }
+
+	// RVA: 0x58FCCB8 Offset: 0x58F8CB8 VA: 0x58FCCB8
+	public void DCAHFEDAFDGEFGC(List<int> CCBADDBFBDBEGDF) { }
+
+	// RVA: 0x58F5298 Offset: 0x58F1298 VA: 0x58F5298
+	private ABGCCDFFDBGGAAC GCFHHHBAGCAADAA(byte[] EFCABDEFABFEGAB) { }
+
+	// RVA: 0x58F54C0 Offset: 0x58F14C0 VA: 0x58F54C0
+	private bool ABDCDGHECHGFFDG(int GDHHAGEACDAGDDB) { }
+
+	// RVA: 0x58FD808 Offset: 0x58F9808 VA: 0x58FD808
+	public static IEnumerator FBHDFDECEEDHHDF(WeaponParameters[] FBEFAGEGBBEBACC) { }
+
+	// RVA: 0x58FD8B8 Offset: 0x58F98B8 VA: 0x58FD8B8
+	public void GBDCFGDBABCBEHC(Action BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x58FD99C Offset: 0x58F999C VA: 0x58FD99C
+	public bool FGDEFEDGFCDECAD(CAGDEEGAHEBCCBG HCFHDFFBAHFAFEC) { }
+
+	// RVA: 0x58FDEB4 Offset: 0x58F9EB4 VA: 0x58FDEB4
+	public void UpdateDroppedWeapons(float FEGCDBBBGCBEEFD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x58FE300 Offset: 0x58FA300 VA: 0x58FE300
+	public void remove_ClearEvent(Action BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x58FE3E4 Offset: 0x58FA3E4 VA: 0x58FE3E4
+	public void GCABEEEGGFGHBEB(Action<ABGCCDFFDBGGAAC, CAGDEEGAHEBCCBG> BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x58FE4DC Offset: 0x58FA4DC VA: 0x58FE4DC
+	private void ABGFBEFFCBGFGDB() { }
+
+	[DHEDFFDCGDFFCBF]
+	// RVA: 0x58FE7C8 Offset: 0x58FA7C8 VA: 0x58FE7C8
+	private void DropImmediatelyViaServer(byte[] EFCABDEFABFEGAB) { }
+
+	// RVA: 0x58FE6C0 Offset: 0x58FA6C0 VA: 0x58FE6C0
+	private void HDBBDDECHGFHABC() { }
+
+	[CompilerGenerated]
+	// RVA: 0x58FEA64 Offset: 0x58FAA64 VA: 0x58FEA64
+	public void add_ClearEvent(Action BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x58FEB48 Offset: 0x58FAB48 VA: 0x58FEB48
+	public static IEnumerator FEFCBEAGGBCAEHB(WeaponParameters[] FBEFAGEGBBEBACC) { }
+
+	// RVA: 0x58FEBF8 Offset: 0x58FABF8 VA: 0x58FEBF8
+	public void BindPlayer(WeaponryController HAABADFDGHHCACH) { }
+
+	// RVA: 0x58FEC00 Offset: 0x58FAC00 VA: 0x58FEC00
+	public void AddCustomComponent(Type DGHBEFCCGCDGEFG) { }
+
+	[CompilerGenerated]
+	// RVA: 0x58FEC1C Offset: 0x58FAC1C VA: 0x58FEC1C
+	public void remove_WeaponTakeEvent(Action<ABGCCDFFDBGGAAC, CAGDEEGAHEBCCBG> BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x58FED14 Offset: 0x58FAD14 VA: 0x58FED14
+	private ABGCCDFFDBGGAAC BGHBHHACGFCAFDH(byte[] EFCABDEFABFEGAB) { }
+
+	[CompilerGenerated]
+	// RVA: 0x58FEF3C Offset: 0x58FAF3C VA: 0x58FEF3C
+	private void GHCGDCAEECCGDDG(bool BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x58FEF48 Offset: 0x58FAF48 VA: 0x58FEF48
+	public ACHHFBAFADAFAHB BFCDECBECBFDEAG() { }
+
+	[DHEDFFDCGDFFCBF]
+	// RVA: 0x58FEF50 Offset: 0x58FAF50 VA: 0x58FEF50
+	private void DropViaServer(byte[] EFCABDEFABFEGAB) { }
+
+	// RVA: 0x58F2E10 Offset: 0x58EEE10 VA: 0x58F2E10
+	private void DGDFAFHGHGFGDGG() { }
+}

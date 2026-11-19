@@ -1,0 +1,17 @@
+// Namespace: 
+public sealed class MovementController.DDBHFEAECAEECGA : MulticastDelegate // TypeDefIndex: 792
+{
+	// Methods
+
+	// RVA: 0x59D2AE4 Offset: 0x59CEAE4 VA: 0x59D2AE4
+	public void .ctor(object DCBEHHBGFGBDFBE, IntPtr GAFDEFGHECEDDHA) { }
+
+	// RVA: 0x59D2BE4 Offset: 0x59CEBE4 VA: 0x59D2BE4 Slot: 12
+	public virtual void Invoke(MovementController GCFGBDHBCEBGHAC) { }
+
+	// RVA: 0x59D2BF8 Offset: 0x59CEBF8 VA: 0x59D2BF8 Slot: 13
+	public virtual IAsyncResult BeginInvoke(MovementController GCFGBDHBCEBGHAC, AsyncCallback FACCBFHFBECBEFE, object DCBEHHBGFGBDFBE) { }
+
+	// RVA: 0x59D2C18 Offset: 0x59CEC18 VA: 0x59D2C18 Slot: 14
+	public virtual void EndInvoke(IAsyncResult ECCCAEACBHGHDEA) { }
+}

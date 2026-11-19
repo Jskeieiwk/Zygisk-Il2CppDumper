@@ -1,0 +1,14 @@
+// Namespace: 
+private sealed class PostProcessLayer.<>c__DisplayClass54_2 // TypeDefIndex: 21131
+{
+	// Fields
+	public string typeName; // 0x10
+
+	// Methods
+
+	// RVA: 0xA57C3C8 Offset: 0xA5783C8 VA: 0xA57C3C8
+	public void .ctor() { }
+
+	// RVA: 0xA586048 Offset: 0xA582048 VA: 0xA586048
+	internal bool <UpdateBundleSortList>b__4(PostProcessLayer.SerializedBundleRef b) { }
+}

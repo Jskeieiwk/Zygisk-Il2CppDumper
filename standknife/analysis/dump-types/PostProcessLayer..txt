@@ -1,0 +1,18 @@
+// Namespace: 
+private sealed class PostProcessLayer.<>c // TypeDefIndex: 21128
+{
+	// Fields
+	public static readonly PostProcessLayer.<>c <>9; // 0x0
+	public static Func<KeyValuePair<Type, PostProcessBundle>, PostProcessBundle> <>9__54_1; // 0x8
+
+	// Methods
+
+	// RVA: 0xA585AC8 Offset: 0xA581AC8 VA: 0xA585AC8
+	private static void .cctor() { }
+
+	// RVA: 0xA585B80 Offset: 0xA581B80 VA: 0xA585B80
+	public void .ctor() { }
+
+	// RVA: 0xA585B88 Offset: 0xA581B88 VA: 0xA585B88
+	internal PostProcessBundle <UpdateBundleSortList>b__54_1(KeyValuePair<Type, PostProcessBundle> kvp) { }
+}

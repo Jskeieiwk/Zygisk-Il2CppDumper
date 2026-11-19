@@ -1,0 +1,551 @@
+{
+  "version": "0.38",
+  "features": [
+    {
+      "section": "aim",
+      "tab": "main",
+      "feature": "Aim assistance",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "aim",
+      "tab": "main",
+      "feature": "Auto Calibration",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "aim",
+      "tab": "main",
+      "feature": "Draw FOV",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "aim",
+      "tab": "main",
+      "feature": "Back Camera",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "aim",
+      "tab": "main",
+      "feature": "Force Shot",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "aim",
+      "tab": "main",
+      "feature": "Silent Aim",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "aim",
+      "tab": "main",
+      "feature": "Autowall (Aim)",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "aim",
+      "tab": "main",
+      "feature": "Auto Stop",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "aim",
+      "tab": "main",
+      "feature": "Aim Team Filter",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "aim",
+      "tab": "main",
+      "feature": "Aim Visible Only",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "aim",
+      "tab": "main",
+      "feature": "Trigger",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "aim",
+      "tab": "main",
+      "feature": "Autowall",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "aim",
+      "tab": "main",
+      "feature": "Anti Aim",
+      "backend": "missing"
+    },
+    {
+      "section": "behavior",
+      "tab": "main",
+      "feature": "Sticky Aim",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "behavior",
+      "tab": "main",
+      "feature": "Humanize",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "behavior",
+      "tab": "main",
+      "feature": "Overshoot",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "behavior",
+      "tab": "main",
+      "feature": "Jitter",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "behavior",
+      "tab": "main",
+      "feature": "Knife Bot",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "aim",
+      "tab": "main",
+      "feature": "Auto Scope",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "behavior",
+      "tab": "main",
+      "feature": "Multipoints",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "aim",
+      "tab": "main",
+      "feature": "Hitbox All",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "aim",
+      "tab": "main",
+      "feature": "Hitchance",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "players",
+      "feature": "Player ESP",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "players",
+      "feature": "Boxes",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "players",
+      "feature": "Skeleton",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "players",
+      "feature": "Health",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "players",
+      "feature": "Armor",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "players",
+      "feature": "Nickname",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "players",
+      "feature": "Weapons",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "players",
+      "feature": "Distance",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "players",
+      "feature": "Team Filter",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "players",
+      "feature": "Show Avatar",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "players",
+      "feature": "Money",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "players",
+      "feature": "Ping",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "players",
+      "feature": "Clan Tag",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "players",
+      "feature": "Bomb Flag",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "players",
+      "feature": "Chams",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "players",
+      "feature": "Shader Chams",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "players",
+      "feature": "Ghost Chams",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "players",
+      "feature": "3D Model",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "players",
+      "feature": "Model Vis Only",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "players",
+      "feature": "Dormant",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "players",
+      "feature": "Hit Logs",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "screen",
+      "feature": "OOF Arrows",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "screen",
+      "feature": "Snaplines",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "screen",
+      "feature": "Hit Marker",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "screen",
+      "feature": "Sniper Crosshair",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "screen",
+      "feature": "Custom Scope",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "screen",
+      "feature": "Damage Marker",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "screen",
+      "feature": "Target HUD",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "screen",
+      "feature": "Check Recoil",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "screen",
+      "feature": "Bullet Tracers",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "screen",
+      "feature": "Kill Particles",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "screen",
+      "feature": "Kill Flash",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "screen",
+      "feature": "Hit Sound",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "players",
+      "tab": "screen",
+      "feature": "Kill Sound",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "visuals",
+      "tab": "esp",
+      "feature": "Item ESP",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "visuals",
+      "tab": "esp",
+      "feature": "Grenades",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "visuals",
+      "tab": "esp",
+      "feature": "Off-screen Nades",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "visuals",
+      "tab": "esp",
+      "feature": "Molotov Radius",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "visuals",
+      "tab": "esp",
+      "feature": "Smoke Radius",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "visuals",
+      "tab": "esp",
+      "feature": "Player Nades",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "visuals",
+      "tab": "esp",
+      "feature": "Penetration",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "visuals",
+      "tab": "esp",
+      "feature": "Wireframe",
+      "backend": "missing"
+    },
+    {
+      "section": "visuals",
+      "tab": "esp",
+      "feature": "Auto Align",
+      "backend": "missing"
+    },
+    {
+      "section": "visuals",
+      "tab": "esp",
+      "feature": "Grenade Prediction",
+      "backend": "missing"
+    },
+    {
+      "section": "visuals",
+      "tab": "esp",
+      "feature": "Grenade Glow",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "scene",
+      "tab": "scene",
+      "feature": "Weather",
+      "backend": "missing"
+    },
+    {
+      "section": "scene",
+      "tab": "scene",
+      "feature": "Night Mode",
+      "backend": "missing"
+    },
+    {
+      "section": "scene",
+      "tab": "scene",
+      "feature": "Fog",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "scene",
+      "tab": "scene",
+      "feature": "Sky Lighting",
+      "backend": "missing"
+    },
+    {
+      "section": "scene",
+      "tab": "scene",
+      "feature": "Snow Cover",
+      "backend": "missing"
+    },
+    {
+      "section": "scene",
+      "tab": "scene",
+      "feature": "Prism World",
+      "backend": "missing"
+    },
+    {
+      "section": "scene",
+      "tab": "scene",
+      "feature": "Soul Particles",
+      "backend": "missing"
+    },
+    {
+      "section": "scene",
+      "tab": "scene",
+      "feature": "GL Night Tint",
+      "backend": "missing"
+    },
+    {
+      "section": "scene",
+      "tab": "scene",
+      "feature": "No Transparent",
+      "backend": "missing"
+    },
+    {
+      "section": "scene",
+      "tab": "scene",
+      "feature": "GL Full Bright",
+      "backend": "missing"
+    },
+    {
+      "section": "scene",
+      "tab": "scene",
+      "feature": "Map Reflections",
+      "backend": "missing"
+    },
+    {
+      "section": "scene",
+      "tab": "scene",
+      "feature": "Motion Blur",
+      "backend": "missing"
+    },
+    {
+      "section": "weapons",
+      "tab": "main",
+      "feature": "No Recoil",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "misc",
+      "tab": "main",
+      "feature": "Safe Mode",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "misc",
+      "tab": "main",
+      "feature": "OBS Bypass",
+      "backend": "missing"
+    },
+    {
+      "section": "misc",
+      "tab": "main",
+      "feature": "Liquid Glass",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "misc",
+      "tab": "main",
+      "feature": "Raw Input",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "misc",
+      "tab": "main",
+      "feature": "Viewmodel",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "misc",
+      "tab": "main",
+      "feature": "Third Person",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "misc",
+      "tab": "main",
+      "feature": "Watermark",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "misc",
+      "tab": "main",
+      "feature": "Bomb Timer",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "misc",
+      "tab": "main",
+      "feature": "Hotkeys",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "misc",
+      "tab": "main",
+      "feature": "Notifications",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "misc",
+      "tab": "main",
+      "feature": "Accent Color",
+      "backend": "implemented_requires_device_validation"
+    }
+  ]
+}

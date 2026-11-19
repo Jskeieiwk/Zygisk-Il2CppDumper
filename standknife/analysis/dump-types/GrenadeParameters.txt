@@ -1,0 +1,271 @@
+// Namespace: Axlebolt.Standoff.Inventory.Grenade
+public class GrenadeParameters : WeaponParameters // TypeDefIndex: 5044
+{
+	// Fields
+	public const float Radius = 0.05959504;
+	[SerializeField]
+	private float _takeDuration; // 0x110
+	[SerializeField]
+	private float _throwDuration; // 0x114
+	[SerializeField]
+	private float _nearThrowDuration; // 0x118
+	[SerializeField]
+	private bool _throwByTap; // 0x11C
+	[SerializeField]
+	private GrenadeParameters.ThrowParameters _nearThrowParameters; // 0x120
+	[SerializeField]
+	private GrenadeParameters.ThrowParameters _farThrowParameters; // 0x128
+	[SerializeField]
+	private BallisticsParameters _ballisticsParameters; // 0x130
+	[SerializeField]
+	private BallisticsRotationParameters _ballisticsRotationParameters; // 0x138
+	[SerializeField]
+	private Vector3 _scaleOnThrow; // 0x140
+	[SerializeField]
+	private DetonationType _detonationType; // 0x14C
+	[SerializeField]
+	private float _detonationDuration; // 0x150
+	[SerializeField]
+	private float _damageRadius; // 0x154
+	[SerializeField]
+	private int _damage; // 0x158
+	[SerializeField]
+	private int _penetrationPower; // 0x15C
+	[SerializeField]
+	private float _armorPenetration; // 0x160
+	[SerializeField]
+	private int _impulse; // 0x164
+	[SerializeField]
+	private AnimationCurve _damageCurve; // 0x168
+	[SerializeField]
+	private float _backToPoolDelay; // 0x170
+	[SerializeField]
+	private bool _unlimited; // 0x174
+	[SerializeField]
+	private GameObject _effectEmetter1; // 0x178
+	[SerializeField]
+	private GameObject _effectEmetter2; // 0x180
+	[SerializeField]
+	private GameObject _effectEmetterThirdView1; // 0x188
+	[SerializeField]
+	private GameObject _effectEmetterThirdView2; // 0x190
+	[SerializeField]
+	private string _descriptionKeyLocalization; // 0x198
+	[SerializeField]
+	[Header("Stats")]
+	private bool _isCountKillToStats; // 0x1A0
+	[SerializeField]
+	private ADCBDDFECAGCBFA _grenadeStatsFormatKeyType; // 0x1A1
+	private Nullable<BHGCCBBABFFCDGA> _takeDurationSafe; // 0x1A4
+	private Nullable<BHGCCBBABFFCDGA> _throwDurationSafe; // 0x1B0
+	private Nullable<BHGCCBBABFFCDGA> _nearThrowDurationSafe; // 0x1BC
+	private Nullable<CFGAHHHABFBAGDH> _throwByTapSafe; // 0x1C8
+	private Nullable<BHGCCBBABFFCDGA> _detonationDurationSafe; // 0x1D4
+	private Nullable<BHGCCBBABFFCDGA> _damageRadiusSafe; // 0x1E0
+	private Nullable<FDBDCEGHFCHCHDA> _damageSafe; // 0x1EC
+	private Nullable<FDBDCEGHFCHCHDA> _penetrationPowerSafe; // 0x1F8
+	private Nullable<BHGCCBBABFFCDGA> _armorPenetrationSafe; // 0x204
+	private Nullable<FDBDCEGHFCHCHDA> _impulseSafe; // 0x210
+	private Nullable<BHGCCBBABFFCDGA> _backToPoolDelaySafe; // 0x21C
+	private Nullable<CFGAHHHABFBAGDH> _unlimitedSafe; // 0x228
+	private Nullable<CFGAHHHABFBAGDH> _isCountKillToStatsSafe; // 0x234
+	private BCEBGGGCBAHHBBE _statsFormatKeySafe; // 0x240
+
+	// Properties
+	public DetonationType DetonationType { get; }
+	public BHGCCBBABFFCDGA TakeDuration { get; }
+	public BHGCCBBABFFCDGA ThrowDuration { get; }
+	public CFGAHHHABFBAGDH ThrowByTap { get; }
+	public BHGCCBBABFFCDGA NearThrowDuration { get; }
+	public Vector3 ScaleOnThrow { get; }
+	public BHGCCBBABFFCDGA DamageRadius { get; }
+	public FDBDCEGHFCHCHDA Damage { get; }
+	public FDBDCEGHFCHCHDA PenetrationPower { get; }
+	public BHGCCBBABFFCDGA ArmorPenetration { get; }
+	public FDBDCEGHFCHCHDA Impulse { get; }
+	public AnimationCurve DamageCurve { get; }
+	public BHGCCBBABFFCDGA DetonationDuration { get; }
+	public GrenadeParameters.ThrowParameters NearThrowParameters { get; }
+	public GrenadeParameters.ThrowParameters FarThrowParameters { get; }
+	public BallisticsParameters BallisticsParameters { get; }
+	public BallisticsRotationParameters BallisticsRotationParameters { get; }
+	public BHGCCBBABFFCDGA BackToPoolDelay { get; }
+	public CFGAHHHABFBAGDH Unlimited { get; }
+	public GameObject EffectEmitter1 { get; }
+	public GameObject EffectEmitter2 { get; }
+	public GameObject EffectEmitterThirdView1 { get; }
+	public GameObject EffectEmitterThirdView2 { get; }
+	public string DescriptionKeyLocalization { get; }
+	public CFGAHHHABFBAGDH IsCountKillToStats { get; }
+	public ADCBDDFECAGCBFA GrenadeStatsFormatKeyType { get; }
+
+	// Methods
+
+	// RVA: 0x4382E58 Offset: 0x437EE58 VA: 0x4382E58
+	public void .ctor() { }
+
+	// RVA: 0x4382F14 Offset: 0x437EF14 VA: 0x4382F14
+	public BallisticsRotationParameters get_BallisticsRotationParameters() { }
+
+	// RVA: 0x4382F1C Offset: 0x437EF1C VA: 0x4382F1C
+	public GrenadeParameters.ThrowParameters BFDHHEHFFHDHEHD(FHGFCFFHBHEAEEA DGHBEFCCGCDGEFG) { }
+
+	// RVA: 0x4383018 Offset: 0x437F018 VA: 0x4383018
+	public CFGAHHHABFBAGDH AFCGFFEAAAHGACG() { }
+
+	// RVA: 0x4383200 Offset: 0x437F200 VA: 0x4383200
+	public BHGCCBBABFFCDGA HDDEHEGCEBEBEEC() { }
+
+	// RVA: 0x43833C8 Offset: 0x437F3C8 VA: 0x43833C8
+	public CFGAHHHABFBAGDH get_IsCountKillToStats() { }
+
+	// RVA: 0x43835B0 Offset: 0x437F5B0 VA: 0x43835B0
+	public CFGAHHHABFBAGDH CHCCBBFHDDABHEC() { }
+
+	// RVA: 0x4383954 Offset: 0x437F954 VA: 0x4383954
+	public CFGAHHHABFBAGDH get_Unlimited() { }
+
+	// RVA: 0x4383B20 Offset: 0x437FB20 VA: 0x4383B20
+	public AnimationCurve get_DamageCurve() { }
+
+	// RVA: 0x4383B28 Offset: 0x437FB28 VA: 0x4383B28
+	public string DABDDDFAABHEEAG() { }
+
+	// RVA: 0x4383B30 Offset: 0x437FB30 VA: 0x4383B30
+	public GameObject BDAGDACGGDEGACH() { }
+
+	// RVA: 0x4383B38 Offset: 0x437FB38 VA: 0x4383B38
+	public BHGCCBBABFFCDGA GBBDHACBDCEAECB() { }
+
+	// RVA: 0x4383D00 Offset: 0x437FD00 VA: 0x4383D00
+	public GameObject FBEABBDDHBHDFDG() { }
+
+	// RVA: 0x4383D08 Offset: 0x437FD08 VA: 0x4383D08
+	public FDBDCEGHFCHCHDA get_PenetrationPower() { }
+
+	// RVA: 0x4383ECC Offset: 0x437FECC VA: 0x4383ECC
+	public string get_DescriptionKeyLocalization() { }
+
+	// RVA: 0x4383ED4 Offset: 0x437FED4 VA: 0x4383ED4
+	public GameObject CGDDGDEHHAGABDF() { }
+
+	// RVA: 0x4383EDC Offset: 0x437FEDC VA: 0x4383EDC
+	public GameObject get_EffectEmitter2() { }
+
+	// RVA: 0x4383EE4 Offset: 0x437FEE4 VA: 0x4383EE4
+	public ADCBDDFECAGCBFA get_GrenadeStatsFormatKeyType() { }
+
+	// RVA: 0x4383EEC Offset: 0x437FEEC VA: 0x4383EEC
+	public FDBDCEGHFCHCHDA CECHBAHDHHHDAHD() { }
+
+	// RVA: 0x43840AC Offset: 0x43800AC VA: 0x43840AC
+	public FDBDCEGHFCHCHDA CEGEAFHBCBHDDAA() { }
+
+	// RVA: 0x4384270 Offset: 0x4380270 VA: 0x4384270
+	public GameObject DGDGDCGDEGFGEBD() { }
+
+	// RVA: 0x4384278 Offset: 0x4380278 VA: 0x4384278
+	public GameObject GEADAFBDEBDABHG() { }
+
+	// RVA: 0x4384280 Offset: 0x4380280 VA: 0x4384280
+	public BallisticsParameters get_BallisticsParameters() { }
+
+	// RVA: 0x4384288 Offset: 0x4380288 VA: 0x4384288
+	public GameObject get_EffectEmitterThirdView1() { }
+
+	// RVA: 0x4384290 Offset: 0x4380290 VA: 0x4384290
+	public FDBDCEGHFCHCHDA CHBHHEDDGHADCEH() { }
+
+	// RVA: 0x4384454 Offset: 0x4380454 VA: 0x4384454
+	public GameObject EBDHCDGAFECCCBB() { }
+
+	// RVA: 0x438445C Offset: 0x438045C VA: 0x438445C
+	public BHGCCBBABFFCDGA get_TakeDuration() { }
+
+	// RVA: 0x4384848 Offset: 0x4380848 VA: 0x4384848
+	public BHGCCBBABFFCDGA get_ThrowDuration() { }
+
+	// RVA: 0x4384B74 Offset: 0x4380B74 VA: 0x4384B74
+	public DetonationType AGDDECFCDAGHFCE() { }
+
+	// RVA: 0x4384E3C Offset: 0x4380E3C VA: 0x4384E3C
+	public DetonationType get_DetonationType() { }
+
+	// RVA: 0x4384FB4 Offset: 0x4380FB4 VA: 0x4384FB4
+	public BallisticsParameters CAAFHFEEDDDHBAF() { }
+
+	// RVA: 0x4384FBC Offset: 0x4380FBC VA: 0x4384FBC
+	public BHGCCBBABFFCDGA get_BackToPoolDelay() { }
+
+	// RVA: 0x4385184 Offset: 0x4381184 VA: 0x4385184
+	public FDBDCEGHFCHCHDA EEHAHCDBFBCGHFD() { }
+
+	// RVA: 0x4385344 Offset: 0x4381344 VA: 0x4385344
+	public GameObject get_EffectEmitterThirdView2() { }
+
+	// RVA: 0x438534C Offset: 0x438134C VA: 0x438534C
+	public ADCBDDFECAGCBFA GFEGEGHDBACFBCB() { }
+
+	// RVA: 0x4385354 Offset: 0x4381354 VA: 0x4385354
+	public BHGCCBBABFFCDGA get_DetonationDuration() { }
+
+	// RVA: 0x438551C Offset: 0x438151C VA: 0x438551C
+	public GrenadeParameters.ThrowParameters HHBDDGBGEDGAHFG() { }
+
+	// RVA: 0x4385524 Offset: 0x4381524 VA: 0x4385524 Slot: 10
+	protected override void OnEnable() { }
+
+	// RVA: 0x4385A20 Offset: 0x4381A20 VA: 0x4385A20
+	public GrenadeParameters.ThrowParameters get_NearThrowParameters() { }
+
+	// RVA: 0x4385A28 Offset: 0x4381A28 VA: 0x4385A28
+	public CFGAHHHABFBAGDH get_ThrowByTap() { }
+
+	// RVA: 0x4385CF8 Offset: 0x4381CF8 VA: 0x4385CF8
+	public BHGCCBBABFFCDGA get_NearThrowDuration() { }
+
+	// RVA: 0x4385EC0 Offset: 0x4381EC0 VA: 0x4385EC0
+	public GrenadeParameters.ThrowParameters AGFCAEBEECAEBBA(FHGFCFFHBHEAEEA DGHBEFCCGCDGEFG) { }
+
+	// RVA: 0x4385FA8 Offset: 0x4381FA8 VA: 0x4385FA8
+	public GrenadeParameters.ThrowParameters GetThrowParameters(FHGFCFFHBHEAEEA DGHBEFCCGCDGEFG) { }
+
+	// RVA: 0x43860A4 Offset: 0x43820A4 VA: 0x43860A4
+	public GameObject get_EffectEmitter1() { }
+
+	// RVA: 0x43860AC Offset: 0x43820AC VA: 0x43860AC
+	public Vector3 get_ScaleOnThrow() { }
+
+	// RVA: 0x43860BC Offset: 0x43820BC VA: 0x43860BC
+	public FDBDCEGHFCHCHDA get_Impulse() { }
+
+	// RVA: 0x4386280 Offset: 0x4382280 VA: 0x4386280
+	public GameObject DAHGECCDGHGFHDE() { }
+
+	// RVA: 0x4386288 Offset: 0x4382288 VA: 0x4386288
+	public GrenadeParameters.ThrowParameters get_FarThrowParameters() { }
+
+	// RVA: 0x4386290 Offset: 0x4382290 VA: 0x4386290
+	public GrenadeParameters.ThrowParameters GGHHBDFHBEABAGC() { }
+
+	// RVA: 0x4386298 Offset: 0x4382298 VA: 0x4386298
+	public BHGCCBBABFFCDGA get_ArmorPenetration() { }
+
+	// RVA: 0x4386460 Offset: 0x4382460 VA: 0x4386460
+	public AnimationCurve EBEBBGDAFEAGHAF() { }
+
+	// RVA: 0x4386468 Offset: 0x4382468 VA: 0x4386468
+	public BHGCCBBABFFCDGA CCAEGAAHCHBGCEG() { }
+
+	// RVA: 0x4386630 Offset: 0x4382630 VA: 0x4386630
+	public GameObject DBHAGHDDEGAAGED() { }
+
+	// RVA: 0x4386638 Offset: 0x4382638 VA: 0x4386638
+	public BHGCCBBABFFCDGA get_DamageRadius() { }
+
+	// RVA: 0x4386804 Offset: 0x4382804 VA: 0x4386804
+	public FDBDCEGHFCHCHDA get_Damage() { }
+
+	// RVA: 0x43869C4 Offset: 0x43829C4 VA: 0x43869C4
+	public CFGAHHHABFBAGDH HFHGAEGHCEHABED() { }
+}

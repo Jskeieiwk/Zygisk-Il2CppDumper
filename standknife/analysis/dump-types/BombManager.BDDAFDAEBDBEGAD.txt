@@ -1,0 +1,17 @@
+// Namespace: 
+private sealed class BombManager.BDDAFDAEBDBEGAD // TypeDefIndex: 2435
+{
+	// Fields
+	public CCGBEGEAHGBGABG type; // 0x10
+
+	// Methods
+
+	// RVA: 0x6B047BC Offset: 0x6B007BC VA: 0x6B047BC
+	public void .ctor() { }
+
+	// RVA: 0x6B0D98C Offset: 0x6B0998C VA: 0x6B0D98C
+	internal bool BCFAGGDCFAGEGBD(BombSitesContainer c) { }
+
+	// RVA: 0x6B0D9B0 Offset: 0x6B099B0 VA: 0x6B0D9B0
+	internal bool GBEBABACCDCDAEA(BombSite s) { }
+}

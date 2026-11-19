@@ -1,0 +1,175 @@
+// Namespace: Axlebolt.Standoff.Events.BeholderGames.Scripts.GameChallenges.BombIslands
+public class BombIslandsChallengeRoot : GeometryLinkedRootBase<BombIslandsGeometry> // TypeDefIndex: 1276
+{
+	// Fields
+	[SerializeField]
+	private Transform _platformsParent; // 0xC8
+	[CompilerGenerated]
+	private BombPlatform[] <HCFHHCEEHHDDFFD>k__BackingField; // 0xD0
+
+	// Properties
+	public BombPlatform[] HAEAHCCDBBEHHFE { get; set; }
+
+	// Methods
+
+	// RVA: 0x612EBB4 Offset: 0x612ABB4 VA: 0x612EBB4
+	public BombPlatform[] BFEDECACDFBEDFA() { }
+
+	// RVA: 0x612EBBC Offset: 0x612ABBC VA: 0x612EBBC
+	public BombPlatform[] DHDEDGCEHBDCEBH() { }
+
+	// RVA: 0x612EBC4 Offset: 0x612ABC4 VA: 0x612EBC4
+	public BombPlatform[] CGHFFADHCGCHCFG() { }
+
+	// RVA: 0x612EBCC Offset: 0x612ABCC VA: 0x612EBCC
+	public BombPlatform[] DHFHDHCHDHHFHBA() { }
+
+	// RVA: 0x612EBD4 Offset: 0x612ABD4 VA: 0x612EBD4
+	private void FGFFEFHDGEGCCFC(BombPlatform[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x612EBDC Offset: 0x612ABDC VA: 0x612EBDC
+	public BombPlatform[] HAAFHABHGBBBHGG() { }
+
+	// RVA: 0x612EBE4 Offset: 0x612ABE4 VA: 0x612EBE4
+	private void CDCBFEABACAFBGE(BombPlatform[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x612EBEC Offset: 0x612ABEC VA: 0x612EBEC
+	private void BGAGBEGBEBHHEHC(BombPlatform[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x612EBF4 Offset: 0x612ABF4 VA: 0x612EBF4
+	private void DGECGFGAEFHDCEC(BombPlatform[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x612EBFC Offset: 0x612ABFC VA: 0x612EBFC
+	public BombPlatform[] DBGCFBFBGHBCFEF() { }
+
+	// RVA: 0x612EC04 Offset: 0x612AC04 VA: 0x612EC04
+	private void HDGEAEGGFDEHBCH(BombPlatform[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x612EC0C Offset: 0x612AC0C VA: 0x612EC0C
+	public BombPlatform[] EEHDFGGEBFBCBBH() { }
+
+	// RVA: 0x612EC14 Offset: 0x612AC14 VA: 0x612EC14
+	public BombPlatform[] CHDEBGBFDHEADDA() { }
+
+	// RVA: 0x612EC1C Offset: 0x612AC1C VA: 0x612EC1C
+	public BombPlatform[] FGGDAFFHEDCGFHF() { }
+
+	// RVA: 0x612EC24 Offset: 0x612AC24 VA: 0x612EC24
+	public void .ctor() { }
+
+	// RVA: 0x612ECB4 Offset: 0x612ACB4 VA: 0x612ECB4
+	private void AEHDAFAECFHBHBA(BombPlatform[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x612ECBC Offset: 0x612ACBC VA: 0x612ECBC
+	public BombPlatform[] CFDDFAHFBGEEGFB() { }
+
+	// RVA: 0x612ECC4 Offset: 0x612ACC4 VA: 0x612ECC4
+	private void DECCDDBFEHHFBHC(BombPlatform[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x612ECCC Offset: 0x612ACCC VA: 0x612ECCC
+	public BombPlatform[] DGCCBHBBDBBHHFC() { }
+
+	// RVA: 0x612ECD4 Offset: 0x612ACD4 VA: 0x612ECD4
+	public BombPlatform[] AHBEGAEAHABBEEB() { }
+
+	// RVA: 0x612ECDC Offset: 0x612ACDC VA: 0x612ECDC
+	private void GBFGACGDFGCCAAC(BombPlatform[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x612ECE4 Offset: 0x612ACE4 VA: 0x612ECE4
+	public BombPlatform[] CDAEGGEAEHBFAFE() { }
+
+	// RVA: 0x612ECEC Offset: 0x612ACEC VA: 0x612ECEC
+	private void AAFEACBGCBFECEE(BombPlatform[] BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x612ECF4 Offset: 0x612ACF4 VA: 0x612ECF4
+	private void EGHFGBBEGECAHEB(BombPlatform[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x612ECFC Offset: 0x612ACFC VA: 0x612ECFC
+	public BombPlatform[] FCAGFEADABHFHAD() { }
+
+	// RVA: 0x612ED04 Offset: 0x612AD04 VA: 0x612ED04
+	private void EHAHCCGGAABGDHC(BombPlatform[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x612ED0C Offset: 0x612AD0C VA: 0x612ED0C
+	public BombPlatform[] AAHDDEHEFFGAHGD() { }
+
+	// RVA: 0x612ED14 Offset: 0x612AD14 VA: 0x612ED14
+	public BombPlatform[] EEFFEGEEDGEBFAA() { }
+
+	// RVA: 0x612ED1C Offset: 0x612AD1C VA: 0x612ED1C
+	private void CBDGHBAGEHDEACF(BombPlatform[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x612ED24 Offset: 0x612AD24 VA: 0x612ED24
+	private void FCAABEGCHAEBFAD(BombPlatform[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x612ED2C Offset: 0x612AD2C VA: 0x612ED2C
+	public BombPlatform[] GEACGBBDHGEFFHF() { }
+
+	// RVA: 0x612ED34 Offset: 0x612AD34 VA: 0x612ED34
+	private void CFEDEDHDHCHBFDF(BombPlatform[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x612ED3C Offset: 0x612AD3C VA: 0x612ED3C
+	private void ABEBABGBFEFDDBF(BombPlatform[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x612ED44 Offset: 0x612AD44 VA: 0x612ED44
+	private void DCEHCAEBCAGAHFE(BombPlatform[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x612ED4C Offset: 0x612AD4C VA: 0x612ED4C
+	private void AHCAGHDCBHBDBCE(BombPlatform[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x612ED54 Offset: 0x612AD54 VA: 0x612ED54
+	private void ADHBEFHAEEDGGEH(BombPlatform[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x612ED5C Offset: 0x612AD5C VA: 0x612ED5C
+	public BombPlatform[] GFFBEAGBBHHGGCA() { }
+
+	// RVA: 0x612ED64 Offset: 0x612AD64 VA: 0x612ED64
+	public BombPlatform[] HFGAAGDEDEBDEGG() { }
+
+	// RVA: 0x612ED6C Offset: 0x612AD6C VA: 0x612ED6C
+	public BombPlatform[] ACFAHBAGGHDBCBB() { }
+
+	// RVA: 0x612ED74 Offset: 0x612AD74 VA: 0x612ED74
+	public BombPlatform[] GEDEDEFBHHAGFAB() { }
+
+	// RVA: 0x612ED7C Offset: 0x612AD7C VA: 0x612ED7C
+	private void DFHGGEBECFCABFH(BombPlatform[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x612ED84 Offset: 0x612AD84 VA: 0x612ED84 Slot: 18
+	public override void Init() { }
+
+	// RVA: 0x612EED8 Offset: 0x612AED8 VA: 0x612EED8
+	public BombPlatform[] EDDDGGFFBCAFECG() { }
+
+	// RVA: 0x612EEE0 Offset: 0x612AEE0 VA: 0x612EEE0
+	private void FEGBBFGFGACGDCG(BombPlatform[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x612EEE8 Offset: 0x612AEE8 VA: 0x612EEE8
+	public BombPlatform[] HBFFAGDHAEEFBBD() { }
+
+	// RVA: 0x612EEF0 Offset: 0x612AEF0 VA: 0x612EEF0
+	private void EBCBCFGFGGBFHFB(BombPlatform[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x612EEF8 Offset: 0x612AEF8 VA: 0x612EEF8
+	public BombPlatform[] EFFCADFCGDDCAAA() { }
+
+	// RVA: 0x612EF00 Offset: 0x612AF00 VA: 0x612EF00
+	public BombPlatform[] FACHFBHGBFDFGFG() { }
+
+	// RVA: 0x612EF08 Offset: 0x612AF08 VA: 0x612EF08
+	private void BHGFCCHHCDCCFEB(BombPlatform[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x612EF10 Offset: 0x612AF10 VA: 0x612EF10
+	private void BEHCAECABGGGFHH(BombPlatform[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x612EF18 Offset: 0x612AF18 VA: 0x612EF18
+	private void HDGCDFFBEHFFBHD(BombPlatform[] BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x612EF20 Offset: 0x612AF20 VA: 0x612EF20
+	public BombPlatform[] get_BombPlatforms() { }
+
+	// RVA: 0x612EF28 Offset: 0x612AF28 VA: 0x612EF28
+	public BombPlatform[] FCFCFACEHFHFABC() { }
+}

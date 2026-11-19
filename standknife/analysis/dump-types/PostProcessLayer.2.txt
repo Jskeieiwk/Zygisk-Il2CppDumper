@@ -1,0 +1,14 @@
+// Namespace: 
+private sealed class PostProcessLayer.<>c__DisplayClass54_1 // TypeDefIndex: 21130
+{
+	// Fields
+	public string searchStr; // 0x10
+
+	// Methods
+
+	// RVA: 0xA585E98 Offset: 0xA581E98 VA: 0xA585E98
+	public void .ctor() { }
+
+	// RVA: 0xA585EA0 Offset: 0xA581EA0 VA: 0xA585EA0
+	internal bool <UpdateBundleSortList>b__3(PostProcessBundle b) { }
+}

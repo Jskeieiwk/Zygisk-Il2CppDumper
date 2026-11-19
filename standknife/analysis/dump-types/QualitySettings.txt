@@ -1,0 +1,50 @@
+// Namespace: UnityEngine
+public sealed class QualitySettings : Object // TypeDefIndex: 17350
+{
+	// Fields
+	[DebuggerBrowsable(0)]
+	[CompilerGenerated]
+	private static Action<int, int> activeQualityLevelChanged; // 0x0
+
+	// Properties
+	public static int globalTextureMipmapLimit { get; set; }
+	public static int maximumLODLevel { get; set; }
+	public static int vSyncCount { get; set; }
+	public static int antiAliasing { get; set; }
+	public static ColorSpace activeColorSpace { get; }
+
+	// Methods
+
+	[RequiredByNativeCode]
+	// RVA: 0xA7403B0 Offset: 0xA73C3B0 VA: 0xA7403B0
+	internal static void OnActiveQualityLevelChanged(int previousQualityLevel, int currentQualityLevel) { }
+
+	// RVA: 0xA740484 Offset: 0xA73C484 VA: 0xA740484
+	public static int get_globalTextureMipmapLimit() { }
+
+	// RVA: 0xA7405F4 Offset: 0xA73C5F4 VA: 0xA7405F4
+	public static void set_globalTextureMipmapLimit(int value) { }
+
+	// RVA: 0xA740764 Offset: 0xA73C764 VA: 0xA740764
+	public static int get_maximumLODLevel() { }
+
+	// RVA: 0xA7408D0 Offset: 0xA73C8D0 VA: 0xA7408D0
+	public static void set_maximumLODLevel(int value) { }
+
+	// RVA: 0xA740A58 Offset: 0xA73CA58 VA: 0xA740A58
+	public static int get_vSyncCount() { }
+
+	// RVA: 0xA740BD8 Offset: 0xA73CBD8 VA: 0xA740BD8
+	public static void set_vSyncCount(int value) { }
+
+	// RVA: 0xA740D48 Offset: 0xA73CD48 VA: 0xA740D48
+	public static int get_antiAliasing() { }
+
+	// RVA: 0xA740EB0 Offset: 0xA73CEB0 VA: 0xA740EB0
+	public static void set_antiAliasing(int value) { }
+
+	[NativeName("GetColorSpace")]
+	[StaticAccessor("GetPlayerSettings()", 0)]
+	// RVA: 0xA74102C Offset: 0xA73D02C VA: 0xA74102C
+	public static ColorSpace get_activeColorSpace() { }
+}

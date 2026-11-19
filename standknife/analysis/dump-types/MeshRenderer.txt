@@ -1,0 +1,12 @@
+// Namespace: UnityEngine
+public class MeshRenderer : Renderer // TypeDefIndex: 17390
+{
+	// Methods
+
+	[RequiredByNativeCode]
+	// RVA: 0xA74CA80 Offset: 0xA748A80 VA: 0xA74CA80
+	private void DontStripMeshRenderer() { }
+
+	// RVA: 0xA74CA84 Offset: 0xA748A84 VA: 0xA74CA84
+	public void .ctor() { }
+}

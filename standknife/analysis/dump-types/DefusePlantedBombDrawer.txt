@@ -1,0 +1,125 @@
+// Namespace: Axlebolt.Standoff.Game.Defuse
+public class DefusePlantedBombDrawer : DCGCHCFHGEEBBBA // TypeDefIndex: 7265
+{
+	// Fields
+	[SerializeField]
+	private Sprite _bombSprite; // 0x10
+	[SerializeField]
+	private Color _color; // 0x18
+	[SerializeField]
+	private float _animationDuration; // 0x28
+	[SerializeField]
+	private AnimationCurve _animationCurve; // 0x30
+	private bool _isVisible; // 0x38
+	private float _time; // 0x3C
+
+	// Methods
+
+	// RVA: 0x554572C Offset: 0x554172C VA: 0x554572C Slot: 9
+	public Color FBHCHFFHDEGFDGG(PlayerController AHGEEFHFCCGCHHF, bool BBDGEAFBDAEHHCB) { }
+
+	// RVA: 0x5545738 Offset: 0x5541738 VA: 0x5545738
+	public void FDEHEFAEECEGFDG() { }
+
+	// RVA: 0x5545754 Offset: 0x5541754 VA: 0x5545754 Slot: 10
+	public Color EHAFBHFADEGDAEF(PlayerController AHGEEFHFCCGCHHF, bool BBDGEAFBDAEHHCB) { }
+
+	// RVA: 0x5545760 Offset: 0x5541760 VA: 0x5545760 Slot: 11
+	public float AHCBAAFAFGDDAEH(PlayerController AHGEEFHFCCGCHHF, bool BBDGEAFBDAEHHCB) { }
+
+	// RVA: 0x55457A0 Offset: 0x55417A0 VA: 0x55457A0 Slot: 7
+	public string HAFGADDCHEHAHEG() { }
+
+	// RVA: 0x5545828 Offset: 0x5541828 VA: 0x5545828
+	public void HDEDFGACCDGGAAD() { }
+
+	// RVA: 0x5545844 Offset: 0x5541844 VA: 0x5545844
+	private static FECCEFEDHEEHDCH CAHCBBACEFHEDFB(PlayerController AHGEEFHFCCGCHHF) { }
+
+	// RVA: 0x5545980 Offset: 0x5541980 VA: 0x5545980 Slot: 12
+	public string EAHAEEFHHFHGDHF() { }
+
+	// RVA: 0x5545A08 Offset: 0x5541A08 VA: 0x5545A08
+	public void HGFFBEEFCFDAHFB() { }
+
+	// RVA: 0x5545A24 Offset: 0x5541A24 VA: 0x5545A24
+	public void GCCHFCCABHFGGBE() { }
+
+	// RVA: 0x5545A40 Offset: 0x5541A40 VA: 0x5545A40 Slot: 5
+	public bool DHCAFEGGDAHEHDG(PlayerController AHGEEFHFCCGCHHF, bool BBDGEAFBDAEHHCB) { }
+
+	// RVA: 0x5545A94 Offset: 0x5541A94 VA: 0x5545A94 Slot: 13
+	public Sprite HDFGFBHEAGBGGGC(PlayerController AHGEEFHFCCGCHHF, bool BBDGEAFBDAEHHCB) { }
+
+	// RVA: 0x5545A9C Offset: 0x5541A9C VA: 0x5545A9C
+	public void FGBEDEBAGCCHBGE() { }
+
+	// RVA: 0x5545AA8 Offset: 0x5541AA8 VA: 0x5545AA8 Slot: 14
+	public bool GCBBGACDAEGGFDD(PlayerController AHGEEFHFCCGCHHF, bool BBDGEAFBDAEHHCB) { }
+
+	// RVA: 0x5545AC8 Offset: 0x5541AC8 VA: 0x5545AC8 Slot: 6
+	public Sprite AFECFFHBEFGCGBC(PlayerController AHGEEFHFCCGCHHF, bool BBDGEAFBDAEHHCB) { }
+
+	// RVA: 0x5545AD0 Offset: 0x5541AD0 VA: 0x5545AD0
+	public void ECAAFAAEBBDHECD() { }
+
+	// RVA: 0x5545AD8 Offset: 0x5541AD8 VA: 0x5545AD8 Slot: 15
+	public string DHFEHCEFHECHEDB() { }
+
+	// RVA: 0x5545B60 Offset: 0x5541B60 VA: 0x5545B60
+	public void GBBCCDGCHBAAHEE() { }
+
+	// RVA: 0x5545B7C Offset: 0x5541B7C VA: 0x5545B7C
+	public void AEGDCBFBBHBFDCA() { }
+
+	// RVA: 0x5545B98 Offset: 0x5541B98 VA: 0x5545B98 Slot: 16
+	public float BEAEBEHEBBEACED(PlayerController AHGEEFHFCCGCHHF, bool BBDGEAFBDAEHHCB) { }
+
+	// RVA: 0x5545BD8 Offset: 0x5541BD8 VA: 0x5545BD8 Slot: 17
+	public bool DEHAHFAFFCCGGHB(PlayerController AHGEEFHFCCGCHHF, bool BBDGEAFBDAEHHCB) { }
+
+	// RVA: 0x5545C28 Offset: 0x5541C28 VA: 0x5545C28 Slot: 18
+	public float BEFDCGCFGBCBGGB(PlayerController AHGEEFHFCCGCHHF, bool BBDGEAFBDAEHHCB) { }
+
+	// RVA: 0x5545C68 Offset: 0x5541C68 VA: 0x5545C68
+	public void CAADEEHEGFGAAHB() { }
+
+	// RVA: 0x5545C84 Offset: 0x5541C84 VA: 0x5545C84
+	public void .ctor() { }
+
+	// RVA: 0x5545C8C Offset: 0x5541C8C VA: 0x5545C8C
+	public void ADHDFDEADFGBHHF() { }
+
+	// RVA: 0x5545C94 Offset: 0x5541C94 VA: 0x5545C94
+	public void CAGHHFDHEFDDDFB() { }
+
+	// RVA: 0x5545CB0 Offset: 0x5541CB0 VA: 0x5545CB0 Slot: 4
+	public float HBDFBGEBCCDHHAG(PlayerController AHGEEFHFCCGCHHF, bool BBDGEAFBDAEHHCB) { }
+
+	// RVA: 0x5545CF0 Offset: 0x5541CF0 VA: 0x5545CF0
+	public void BBAEEEHCGEGHHFE() { }
+
+	// RVA: 0x5545D0C Offset: 0x5541D0C VA: 0x5545D0C
+	public void FHBCDABDABAHHAB() { }
+
+	// RVA: 0x5545D14 Offset: 0x5541D14 VA: 0x5545D14 Slot: 19
+	public Color CDEFCDDEBBDDFEE(PlayerController AHGEEFHFCCGCHHF, bool BBDGEAFBDAEHHCB) { }
+
+	// RVA: 0x5545D20 Offset: 0x5541D20 VA: 0x5545D20 Slot: 20
+	public float FCDDGCHFCGGDBGD(PlayerController AHGEEFHFCCGCHHF, bool BBDGEAFBDAEHHCB) { }
+
+	// RVA: 0x5545D60 Offset: 0x5541D60 VA: 0x5545D60 Slot: 21
+	public string BBDFFCDAAACHEAF() { }
+
+	// RVA: 0x5545DE8 Offset: 0x5541DE8 VA: 0x5545DE8 Slot: 8
+	public Color EBAFBFHHHABAAHF(PlayerController AHGEEFHFCCGCHHF, bool BBDGEAFBDAEHHCB) { }
+
+	// RVA: 0x5545DF4 Offset: 0x5541DF4 VA: 0x5545DF4 Slot: 22
+	public float DACEBFDCDFCFEFC(PlayerController AHGEEFHFCCGCHHF, bool BBDGEAFBDAEHHCB) { }
+
+	// RVA: 0x5545E34 Offset: 0x5541E34 VA: 0x5545E34 Slot: 23
+	public Color AFFFFDDDBDHDDGA(PlayerController AHGEEFHFCCGCHHF, bool BBDGEAFBDAEHHCB) { }
+
+	// RVA: 0x5545E40 Offset: 0x5541E40 VA: 0x5545E40 Slot: 24
+	public Sprite BFEEGEFFFAFBACE(PlayerController AHGEEFHFCCGCHHF, bool BBDGEAFBDAEHHCB) { }
+}

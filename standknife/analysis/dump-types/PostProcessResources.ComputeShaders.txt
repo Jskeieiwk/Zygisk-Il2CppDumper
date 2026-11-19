@@ -1,0 +1,22 @@
+// Namespace: 
+public sealed class PostProcessResources.ComputeShaders // TypeDefIndex: 21141
+{
+	// Fields
+	public ComputeShader autoExposure; // 0x10
+	public ComputeShader exposureHistogram; // 0x18
+	public ComputeShader lut3DBaker; // 0x20
+	public ComputeShader texture3dLerp; // 0x28
+	public ComputeShader gammaHistogram; // 0x30
+	public ComputeShader waveform; // 0x38
+	public ComputeShader vectorscope; // 0x40
+	public ComputeShader multiScaleAODownsample1; // 0x48
+	public ComputeShader multiScaleAODownsample2; // 0x50
+	public ComputeShader multiScaleAORender; // 0x58
+	public ComputeShader multiScaleAOUpsample; // 0x60
+	public ComputeShader gaussianDownsample; // 0x68
+
+	// Methods
+
+	// RVA: 0xA58A03C Offset: 0xA58603C VA: 0xA58A03C
+	public void .ctor() { }
+}

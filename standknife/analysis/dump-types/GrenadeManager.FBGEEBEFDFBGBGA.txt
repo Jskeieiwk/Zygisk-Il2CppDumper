@@ -1,0 +1,14 @@
+// Namespace: 
+private sealed class GrenadeManager.FBGEEBEFDFBGBGA // TypeDefIndex: 1515
+{
+	// Fields
+	public Vector3 position; // 0x10
+
+	// Methods
+
+	// RVA: 0x6363514 Offset: 0x635F514 VA: 0x6363514
+	public void .ctor() { }
+
+	// RVA: 0x6363EE0 Offset: 0x635FEE0 VA: 0x6363EE0
+	internal bool DEHEFGHCGGEFCEG(Collider z) { }
+}

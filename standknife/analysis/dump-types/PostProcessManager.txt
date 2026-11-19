@@ -1,0 +1,59 @@
+// Namespace: UnityEngine.Rendering.PostProcessing
+public sealed class PostProcessManager // TypeDefIndex: 21135
+{
+	// Fields
+	private static PostProcessManager s_Instance; // 0x0
+	private readonly Dictionary<int, List<PostProcessVolume>> m_SortedVolumes; // 0x10
+	private readonly List<PostProcessVolume> m_Volumes; // 0x18
+	private readonly Dictionary<int, bool> m_SortNeeded; // 0x20
+	private readonly List<PostProcessEffectSettings> m_BaseSettings; // 0x28
+	private readonly List<Collider> m_TempColliders; // 0x30
+	public readonly Dictionary<Type, PostProcessAttribute> settingsTypes; // 0x38
+
+	// Properties
+	public static PostProcessManager instance { get; }
+
+	// Methods
+
+	// RVA: 0xA57B4A0 Offset: 0xA5774A0 VA: 0xA57B4A0
+	public static PostProcessManager get_instance() { }
+
+	// RVA: 0xA586214 Offset: 0xA582214 VA: 0xA586214
+	private void .ctor() { }
+
+	// RVA: 0xA586E68 Offset: 0xA582E68 VA: 0xA586E68
+	private void CleanBaseTypes() { }
+
+	// RVA: 0xA58663C Offset: 0xA58263C VA: 0xA58663C
+	private void ReloadBaseTypes() { }
+
+	// RVA: 0xA587180 Offset: 0xA583180 VA: 0xA587180
+	internal void SetLayerDirty(int layer) { }
+
+	// RVA: 0xA58743C Offset: 0xA58343C VA: 0xA58743C
+	internal void UpdateVolumeLayer(PostProcessVolume volume, int prevLayer, int newLayer) { }
+
+	// RVA: 0xA58778C Offset: 0xA58378C VA: 0xA58778C
+	private void Register(PostProcessVolume volume, int layer) { }
+
+	// RVA: 0xA587B40 Offset: 0xA583B40 VA: 0xA587B40
+	internal void Register(PostProcessVolume volume) { }
+
+	// RVA: 0xA58747C Offset: 0xA58347C VA: 0xA58747C
+	private void Unregister(PostProcessVolume volume, int layer) { }
+
+	// RVA: 0xA587B88 Offset: 0xA583B88 VA: 0xA587B88
+	internal void Unregister(PostProcessVolume volume) { }
+
+	// RVA: 0xA587BD8 Offset: 0xA583BD8 VA: 0xA587BD8
+	private void ReplaceData(PostProcessLayer postProcessLayer) { }
+
+	// RVA: 0xA5816E4 Offset: 0xA57D6E4 VA: 0xA5816E4
+	internal void UpdateSettings(PostProcessLayer postProcessLayer, Camera camera) { }
+
+	// RVA: 0xA58810C Offset: 0xA58410C VA: 0xA58810C
+	private List<PostProcessVolume> GrabVolumes(LayerMask mask) { }
+
+	// RVA: 0xA588798 Offset: 0xA584798 VA: 0xA588798
+	private static void SortByPriority(List<PostProcessVolume> volumes) { }
+}

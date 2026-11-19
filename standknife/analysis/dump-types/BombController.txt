@@ -1,0 +1,191 @@
+// Namespace: Axlebolt.Standoff.Inventory.Bomb
+public class BombController : WeaponController, HFACDEEHDDDABGH, EFFBBBHEDCEHGAA // TypeDefIndex: 1850
+{
+	// Fields
+	private const float DHECGDCAFDDAHHE = 0.1;
+	private readonly BAEGHHDCAEDFCHE<BBAHCAGHFHAEGDG> BAGHDDEBFAGEGAG; // 0xF0
+	private float CACBBFGBGDABAGF; // 0xF8
+	private BombMap GBDADBDGFAHFBCD; // 0x100
+	[CompilerGenerated]
+	private BombParameters <ACACFFHFAFCAEHF>k__BackingField; // 0x108
+
+	// Properties
+	public BombParameters BEABHEFGFHBADCB { get; set; }
+	public override AHDHHCGAEHBGCDG AGBCHDAGBCDGAFH { get; }
+	public Vector3 DAEGEACAFEAHHFC { get; }
+
+	// Methods
+
+	// RVA: 0x65FFCF0 Offset: 0x65FBCF0 VA: 0x65FFCF0
+	private void FFHGHHEBHGBEAGH(BombParameters BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x65FFCF8 Offset: 0x65FBCF8 VA: 0x65FFCF8
+	private void HFBDGCEDAEGBFHD() { }
+
+	// RVA: 0x65FFD38 Offset: 0x65FBD38 VA: 0x65FFD38 Slot: 30
+	public float GetProgress() { }
+
+	// RVA: 0x65FFF3C Offset: 0x65FBF3C VA: 0x65FFF3C Slot: 5
+	public override void PreInitialize(BEDEHCEAAAEEHFD CAADEBAEFADDFEH) { }
+
+	// RVA: 0x6600080 Offset: 0x65FC080 VA: 0x6600080 Slot: 24
+	public override void SetAsPrimary(float CEDEABGCFDCCGAF) { }
+
+	// RVA: 0x6600300 Offset: 0x65FC300 VA: 0x6600300
+	public bool IsTaking(out float DHDBHDFGFFCECAG) { }
+
+	// RVA: 0x6600408 Offset: 0x65FC408 VA: 0x6600408 Slot: 4
+	public override void OnSkeletonReady() { }
+
+	[CompilerGenerated]
+	// RVA: 0x66005CC Offset: 0x65FC5CC VA: 0x66005CC
+	public BombParameters get_BombParameters() { }
+
+	// RVA: 0x66005D4 Offset: 0x65FC5D4 VA: 0x66005D4
+	public Vector3 EBDHEDDBDAAGFHE() { }
+
+	// RVA: 0x6600780 Offset: 0x65FC780 VA: 0x6600780 Slot: 22
+	public override AHDHHCGAEHBGCDG get_WeaponType() { }
+
+	// RVA: 0x65FFF04 Offset: 0x65FBF04 VA: 0x65FFF04 Slot: 28
+	public bool HasProgress() { }
+
+	// RVA: 0x6600788 Offset: 0x65FC788 VA: 0x6600788
+	private void DCCHCHGDHHBEHHF(BombParameters BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x6600790 Offset: 0x65FC790 VA: 0x6600790
+	private void FAHEBBAHHFBADAF(BombParameters BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x6600798 Offset: 0x65FC798 VA: 0x6600798
+	private void ADEAAAACDHFEGGE() { }
+
+	// RVA: 0x6600FC8 Offset: 0x65FCFC8 VA: 0x6600FC8 Slot: 7
+	public override void SetVisible(bool BBDGEAFBDAEHHCB) { }
+
+	// RVA: 0x6601150 Offset: 0x65FD150 VA: 0x6601150
+	private void HHEEHBFCGHEGGCB() { }
+
+	// RVA: 0x6601200 Offset: 0x65FD200 VA: 0x6601200
+	private void FBDHHEBDBCAAHBD() { }
+
+	// RVA: 0x66013EC Offset: 0x65FD3EC VA: 0x66013EC Slot: 6
+	public override void SetAsSecondary() { }
+
+	// RVA: 0x66016AC Offset: 0x65FD6AC VA: 0x66016AC
+	private void ACEFCCEDCDEHEBC() { }
+
+	// RVA: 0x66016EC Offset: 0x65FD6EC VA: 0x66016EC Slot: 27
+	public CFGAHHHABFBAGDH IsDropLocked() { }
+
+	// RVA: 0x66018C4 Offset: 0x65FD8C4 VA: 0x66018C4
+	public void .ctor() { }
+
+	// RVA: 0x66019B8 Offset: 0x65FD9B8 VA: 0x66019B8 Slot: 26
+	public CFGAHHHABFBAGDH IsFiringLocked() { }
+
+	// RVA: 0x6601ADC Offset: 0x65FDADC VA: 0x6601ADC
+	private void FCGDEFBBCBHAFDA() { }
+
+	// RVA: 0x6601B1C Offset: 0x65FDB1C VA: 0x6601B1C Slot: 32
+	public float DGHBADECAFGBGBE() { }
+
+	// RVA: 0x6601C0C Offset: 0x65FDC0C VA: 0x6601C0C
+	private void AHEFCGBBHBCGCFB() { }
+
+	// RVA: 0x6601DB4 Offset: 0x65FDDB4 VA: 0x6601DB4
+	private void GABCEAFDBCABHBE() { }
+
+	// RVA: 0x6601DB8 Offset: 0x65FDDB8 VA: 0x6601DB8
+	public Vector3 get_PlantingStartPosition() { }
+
+	// RVA: 0x6601F64 Offset: 0x65FDF64 VA: 0x6601F64 Slot: 9
+	public override void OnAnimatorStateSet() { }
+
+	// RVA: 0x6601F80 Offset: 0x65FDF80 VA: 0x6601F80 Slot: 33
+	public bool HGEECHCGHHGGDCD() { }
+
+	// RVA: 0x6601FB4 Offset: 0x65FDFB4 VA: 0x6601FB4
+	private void DEGBHAFHGGAGCFC() { }
+
+	// RVA: 0x66020F0 Offset: 0x65FE0F0 VA: 0x66020F0
+	private void BFFFEDAFEGBHGDH() { }
+
+	// RVA: 0x6602774 Offset: 0x65FE774 VA: 0x6602774 Slot: 14
+	public override void Initialize(int DGCFGDFGGGBABBH, DHHAGHHDHBEBAAE HAFCCECAHGECCCE, int FGFDAAABABHAHAA) { }
+
+	// RVA: 0x6602840 Offset: 0x65FE840 VA: 0x6602840
+	private void GCAADAAHHEDGDCC() { }
+
+	// RVA: 0x6602974 Offset: 0x65FE974 VA: 0x6602974 Slot: 34
+	public CFGAHHHABFBAGDH HFFGHGEGACDAAGF() { }
+
+	// RVA: 0x6602A98 Offset: 0x65FEA98 VA: 0x6602A98 Slot: 35
+	public float DFAGGGHBAABEFEF() { }
+
+	// RVA: 0x6602B88 Offset: 0x65FEB88 VA: 0x6602B88
+	private void BBBEDDDAAFCGGEF() { }
+
+	// RVA: 0x6602CC4 Offset: 0x65FECC4 VA: 0x6602CC4 Slot: 17
+	public override BCDDCEHGGBAEDEC GetSnapshot() { }
+
+	// RVA: 0x6602D98 Offset: 0x65FED98 VA: 0x6602D98
+	private void GGAGBGBHECDECEE(BombParameters BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x6602DA0 Offset: 0x65FEDA0 VA: 0x6602DA0 Slot: 18
+	public override void SetSnapshot(BCDDCEHGGBAEDEC EDCHGFBFGGDCGHH) { }
+
+	// RVA: 0x6602EBC Offset: 0x65FEEBC VA: 0x6602EBC Slot: 36
+	public CFGAHHHABFBAGDH EEABFABHFBDDEGE() { }
+
+	// RVA: 0x6603094 Offset: 0x65FF094 VA: 0x6603094
+	private void FGBGHHAHABGCBEG() { }
+
+	// RVA: 0x66030D4 Offset: 0x65FF0D4 VA: 0x66030D4 Slot: 37
+	public float DHFDDFGCBCDCGEF() { }
+
+	// RVA: 0x66031C4 Offset: 0x65FF1C4 VA: 0x66031C4 Slot: 25
+	public CFGAHHHABFBAGDH IsMovementLocked() { }
+
+	// RVA: 0x6601204 Offset: 0x65FD204 VA: 0x6601204
+	private void CADGDFDHBEBAHDD() { }
+
+	// RVA: 0x660339C Offset: 0x65FF39C VA: 0x660339C Slot: 38
+	public CFGAHHHABFBAGDH AEEHDBBEBBBDFCC() { }
+
+	// RVA: 0x66034C0 Offset: 0x65FF4C0 VA: 0x66034C0
+	private void FBHAFFDGDCACCGF() { }
+
+	// RVA: 0x66034C4 Offset: 0x65FF4C4 VA: 0x66034C4
+	private void GDDFGGGAEFDBBDB() { }
+
+	// RVA: 0x6600E1C Offset: 0x65FCE1C VA: 0x6600E1C
+	public Vector3 DCECFGFHCHHBCEC() { }
+
+	// RVA: 0x6600424 Offset: 0x65FC424 VA: 0x6600424
+	private void HCCABEEFHDCHABD() { }
+
+	// RVA: 0x660366C Offset: 0x65FF66C VA: 0x660366C Slot: 31
+	public float GetProgressTime() { }
+
+	// RVA: 0x660375C Offset: 0x65FF75C VA: 0x660375C Slot: 19
+	public override void OnViewModeSet(GFAFADEHEHCHGCH EDEGECBEDADDABF) { }
+
+	// RVA: 0x6603A6C Offset: 0x65FFA6C VA: 0x6603A6C
+	private void GGDEGHGFBDABBHH() { }
+
+	// RVA: 0x6603BA8 Offset: 0x65FFBA8 VA: 0x6603BA8
+	public BombParameters CEHFGBACDHAAAGG() { }
+
+	// RVA: 0x6603BB0 Offset: 0x65FFBB0 VA: 0x6603BB0 Slot: 39
+	public CFGAHHHABFBAGDH GABEADHAHFBGECB() { }
+
+	// RVA: 0x6603D88 Offset: 0x65FFD88 VA: 0x6603D88 Slot: 16
+	public override void ExecuteCommands(CHCEGCBBDDFHDCD DBEGBBCFBABBFGC, float BHGDDGFGGAEDFFB, float CEDEABGCFDCCGAF) { }
+
+	// RVA: 0x6604184 Offset: 0x6600184 VA: 0x6604184 Slot: 40
+	public CFGAHHHABFBAGDH FFDEDBDFFDAAHFE() { }
+
+	// RVA: 0x660435C Offset: 0x660035C VA: 0x660435C Slot: 29
+	public string GetProgressDisplayName() { }
+}

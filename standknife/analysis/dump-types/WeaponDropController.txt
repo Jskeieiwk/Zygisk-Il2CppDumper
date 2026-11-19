@@ -1,0 +1,260 @@
+// Namespace: Axlebolt.Standoff.Inventory.Drop
+public class WeaponDropController : MonoBehaviour, CAHDEDBCCFHCFCH // TypeDefIndex: 3825
+{
+	// Fields
+	private static ILogger GGFBEBEFCHEEADD; // 0x0
+	private const float GGDCAHCGADADCDH = 10;
+	private const float EFGECCHAGFGHGGB = 1;
+	private const float HGFEHGDABGFBBEH = 0.3;
+	private Collider EBEBFGEGFGCECDA; // 0x20
+	private Rigidbody BFBFFCBHBGEFGEC; // 0x28
+	private WeaponMarkerTrigger FDBEGADGGFCHFGE; // 0x30
+	private WeaponMap CBEDDFEHFHBCGGC; // 0x38
+	private WeaponDropParameters DCAADHDADBADHCE; // 0x40
+	private WeaponOcclusionController ADDHHGEBEFACABD; // 0x48
+	private WeaponDropController.FBEHCCGEDCECDEG CHFDHEACBBCDCAG; // 0x50
+	private WeaponDropController.FBEHCCGEDCECDEG CHAACDHEAGAFBDB; // 0x58
+	private int EEAAAGGDFAGHHAD; // 0x60
+	private float FFGDCEEAFEACEEE; // 0x64
+	private GHDCBEDCHGHBDEC DEHACACGDBCCCBE; // 0x68
+	private List<HFCFACHAFBFGDHG> FBAHAFBGEHAFEBA; // 0x70
+	[CompilerGenerated]
+	private WeaponParameters <BCGCEDHABDDDGBG>k__BackingField; // 0x78
+	[CompilerGenerated]
+	private ACFBEBGADFDGEBG <FABFEAHBDEHHFCH>k__BackingField; // 0x80
+	[CompilerGenerated]
+	private int <FEBBGCGCBFBFFFG>k__BackingField; // 0x84
+	[CompilerGenerated]
+	private DHHAGHHDHBEBAAE <ADECGGABDFEBEGG>k__BackingField; // 0x88
+	[CompilerGenerated]
+	private Transform <EAHGDFCCEBHCBDG>k__BackingField; // 0x90
+	[CompilerGenerated]
+	private WeaponLodGroup <ACEDFEFBBAGHACE>k__BackingField; // 0x98
+	[CompilerGenerated]
+	private int <HCGCECCFEAGGDGC>k__BackingField; // 0xA0
+	[CompilerGenerated]
+	private CAGDEEGAHEBCCBG <FBAHHFABDGFEGCD>k__BackingField; // 0xA8
+	[CompilerGenerated]
+	private byte <CEGDDGBBAHHGHHB>k__BackingField; // 0xB0
+	[CompilerGenerated]
+	private WeaponMaterialController <AGBGABFBEFBHGCB>k__BackingField; // 0xB8
+
+	// Properties
+	private static ILogger FHFEDEGBFGDDCCB { get; }
+	public WeaponParameters HABBHFCGBGABAFE { get; set; }
+	public Collider HEDAEEBHHAECDCG { get; }
+	public ACFBEBGADFDGEBG CHEBFDAEEECHCEC { get; set; }
+	public int DHDCBCGDDEBDAEE { get; set; }
+	public DHHAGHHDHBEBAAE DGCEHFHCHEBFADE { get; set; }
+	public Transform BCAFDDGADHHDCDE { get; set; }
+	public WeaponLodGroup GGBDFHGGBFGGEGH { get; set; }
+	public int ADBCEAAFFBBCFGB { get; set; }
+	public CAGDEEGAHEBCCBG BDGDGCGHAGHHAGD { get; set; }
+	public byte FCFFFEBAAHDHEHD { get; set; }
+	public WeaponMaterialController HDCHCGHEDBABBAH { get; set; }
+
+	// Methods
+
+	// RVA: 0x3BEF174 Offset: 0x3BEB174 VA: 0x3BEF174 Slot: 5
+	public void OnObstructed() { }
+
+	// RVA: 0x3BEF178 Offset: 0x3BEB178 VA: 0x3BEF178
+	public byte FBEFGBEDFEGGDDD() { }
+
+	// RVA: 0x3BEF180 Offset: 0x3BEB180 VA: 0x3BEF180
+	public ACFBEBGADFDGEBG DECEGBEBHFEAGFD() { }
+
+	// RVA: 0x3BEF188 Offset: 0x3BEB188 VA: 0x3BEF188
+	public void OnComponentAdded(HFCFACHAFBFGDHG HEEAFEDCBGEAHFE) { }
+
+	// RVA: 0x3BEF328 Offset: 0x3BEB328 VA: 0x3BEF328 Slot: 9
+	private void GAACHDEBGHHHBGH() { }
+
+	[CompilerGenerated]
+	// RVA: 0x3BEF34C Offset: 0x3BEB34C VA: 0x3BEF34C
+	private void BGBGFCFHECFHFGG(CAGDEEGAHEBCCBG BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x3BEF354 Offset: 0x3BEB354 VA: 0x3BEF354
+	private void ACAHFDGGFDFGGCH(ACFBEBGADFDGEBG BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x3BEF35C Offset: 0x3BEB35C VA: 0x3BEF35C
+	public CAGDEEGAHEBCCBG get_DropData() { }
+
+	// RVA: 0x3BEF364 Offset: 0x3BEB364 VA: 0x3BEF364
+	public Transform CEFAAHBBFBECGGE() { }
+
+	// RVA: 0x3BEF36C Offset: 0x3BEB36C VA: 0x3BEF36C
+	private void HDDBBHCGEGAEEHH(ACFBEBGADFDGEBG BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x3BEF374 Offset: 0x3BEB374 VA: 0x3BEF374
+	public Collider get_Collider() { }
+
+	// RVA: 0x3BEF37C Offset: 0x3BEB37C VA: 0x3BEF37C
+	public Transform BGADDAEGECCFDHB() { }
+
+	// RVA: 0x3BEF384 Offset: 0x3BEB384 VA: 0x3BEF384
+	public void PreInitialize(WeaponParameters FHEFDADDBFADFHA, WeaponDropParameters FBFBBFFBEDCAEGB) { }
+
+	// RVA: 0x3BEFFD8 Offset: 0x3BEBFD8 VA: 0x3BEFFD8
+	private void ABDGBBGCHHGAEGC(Collision CFCDCGACGFCBADE) { }
+
+	[CompilerGenerated]
+	// RVA: 0x3BF0870 Offset: 0x3BEC870 VA: 0x3BF0870
+	private void EBCDGDAEHEBDCHB(WeaponLodGroup BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x3BF0878 Offset: 0x3BEC878 VA: 0x3BF0878
+	private void GHCGFFECHFHAACB(CAGDEEGAHEBCCBG BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x3BF0880 Offset: 0x3BEC880 VA: 0x3BF0880
+	private void FFAEDAHBGBFADGC(WeaponMaterialController BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x3BF0888 Offset: 0x3BEC888 VA: 0x3BF0888
+	public byte get_SlotIndex() { }
+
+	// RVA: 0x3BF0740 Offset: 0x3BEC740 VA: 0x3BF0740
+	private static ILogger FBDFEBGDFBEFHCE() { }
+
+	[CompilerGenerated]
+	// RVA: 0x3BF0890 Offset: 0x3BEC890 VA: 0x3BF0890
+	public Transform get_Transform() { }
+
+	// RVA: 0x3BF0898 Offset: 0x3BEC898 VA: 0x3BF0898
+	public void GBEAGCHEGHFFCBH(CAGDEEGAHEBCCBG FEADHDCHAEGAFGG) { }
+
+	// RVA: 0x3BF0C80 Offset: 0x3BECC80 VA: 0x3BF0C80
+	public void Drop(CAGDEEGAHEBCCBG FEADHDCHAEGAFGG) { }
+
+	// RVA: 0x3BF1068 Offset: 0x3BED068 VA: 0x3BF1068
+	public void FAEDHHFCDHDFBAH(HFCFACHAFBFGDHG HEEAFEDCBGEAHFE) { }
+
+	// RVA: 0x3BF1208 Offset: 0x3BED208 VA: 0x3BF1208
+	private void ADFFBGFDHDGAABG(int BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x3BF1210 Offset: 0x3BED210 VA: 0x3BF1210
+	private void EBDGACBBGCHFEHB(Collision CFCDCGACGFCBADE) { }
+
+	[CompilerGenerated]
+	// RVA: 0x3BF199C Offset: 0x3BED99C VA: 0x3BF199C
+	private void EDGFCAAFBHGAHDG(int BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x3BF19A4 Offset: 0x3BED9A4 VA: 0x3BF19A4
+	private void CEDDBAEHEDEDGHH(Transform BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x3BF19AC Offset: 0x3BED9AC VA: 0x3BF19AC
+	public DHHAGHHDHBEBAAE HBEGHDBCDFBAHDD() { }
+
+	[CompilerGenerated]
+	// RVA: 0x3BF19B4 Offset: 0x3BED9B4 VA: 0x3BF19B4
+	private void AGFBHBADHGBGHDG(ACFBEBGADFDGEBG BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x3BF19BC Offset: 0x3BED9BC VA: 0x3BF19BC
+	private static ILogger GEDACEHBCDFHAHA() { }
+
+	[CompilerGenerated]
+	// RVA: 0x3BF1AEC Offset: 0x3BEDAEC VA: 0x3BF1AEC
+	private void EEDDEFFBHAFAGEA(int BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x3BEF32C Offset: 0x3BEB32C VA: 0x3BEF32C
+	public void OnOcclusionBecameInvisible() { }
+
+	[CompilerGenerated]
+	// RVA: 0x3BF1AF4 Offset: 0x3BEDAF4 VA: 0x3BF1AF4
+	public int get_InventoryItemId() { }
+
+	[CompilerGenerated]
+	// RVA: 0x3BF1AFC Offset: 0x3BEDAFC VA: 0x3BF1AFC
+	private void EDEFGGBABFHBHBF(WeaponParameters BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x3BF1B04 Offset: 0x3BEDB04 VA: 0x3BF1B04
+	public void OnOcclusionPostBecameVisible() { }
+
+	// RVA: 0x3BF1B08 Offset: 0x3BEDB08 VA: 0x3BF1B08
+	public ACFBEBGADFDGEBG DCADDAEEFEBGHEH() { }
+
+	// RVA: 0x3BF1B10 Offset: 0x3BEDB10 VA: 0x3BF1B10 Slot: 4
+	public void OnOcclusionBecameVisible() { }
+
+	// RVA: 0x3BF1B30 Offset: 0x3BEDB30 VA: 0x3BF1B30 Slot: 7
+	private void ACFBHGADGHFEGFD() { }
+
+	[CompilerGenerated]
+	// RVA: 0x3BF1B34 Offset: 0x3BEDB34 VA: 0x3BF1B34
+	private void DAHFACDEEEHDBCA(byte BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x3BF1B3C Offset: 0x3BEDB3C VA: 0x3BF1B3C
+	public void .ctor() { }
+
+	[CompilerGenerated]
+	// RVA: 0x3BF1C30 Offset: 0x3BEDC30 VA: 0x3BF1C30
+	public WeaponMaterialController get_WeaponMaterialController() { }
+
+	// RVA: 0x3BF1C38 Offset: 0x3BEDC38 VA: 0x3BF1C38
+	public void PlayTakeSound(bool ABHGDAHAGCFFDGB) { }
+
+	[CompilerGenerated]
+	// RVA: 0x3BF1F1C Offset: 0x3BEDF1C VA: 0x3BF1F1C
+	public WeaponLodGroup get_LodGroup() { }
+
+	// RVA: 0x3BF1F24 Offset: 0x3BEDF24 VA: 0x3BF1F24 Slot: 6
+	private void EHDDGAAFACHCCGD() { }
+
+	// RVA: 0x3BF1F28 Offset: 0x3BEDF28 VA: 0x3BF1F28
+	public void OnReturnToPool() { }
+
+	[CompilerGenerated]
+	// RVA: 0x3BF23E0 Offset: 0x3BEE3E0 VA: 0x3BF23E0
+	private void DHGHGFGFAHAGCFF(DHHAGHHDHBEBAAE BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x3BF23E8 Offset: 0x3BEE3E8 VA: 0x3BF23E8
+	public WeaponParameters get_WeaponParameters() { }
+
+	// RVA: 0x3BF23F0 Offset: 0x3BEE3F0 VA: 0x3BF23F0
+	private void EBGDAFAGGFHCAAC(DHHAGHHDHBEBAAE BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x3BF23F8 Offset: 0x3BEE3F8 VA: 0x3BF23F8
+	private void OnCollisionEnter(Collision CFCDCGACGFCBADE) { }
+
+	// RVA: 0x3BF2460 Offset: 0x3BEE460 VA: 0x3BF2460
+	public WeaponMaterialController CFADAGDAADHADGA() { }
+
+	[CompilerGenerated]
+	// RVA: 0x3BF2468 Offset: 0x3BEE468 VA: 0x3BF2468
+	public ACFBEBGADFDGEBG get_WeaponId() { }
+
+	// RVA: 0x3BF2470 Offset: 0x3BEE470 VA: 0x3BF2470
+	private void CDDHBDAADGHGDAD(Collision CFCDCGACGFCBADE) { }
+
+	// RVA: 0x3BF24D8 Offset: 0x3BEE4D8 VA: 0x3BF24D8
+	public void AGCBFCCFBHEFAGD(CAGDEEGAHEBCCBG FEADHDCHAEGAFGG) { }
+
+	[CompilerGenerated]
+	// RVA: 0x3BF28C0 Offset: 0x3BEE8C0 VA: 0x3BF28C0
+	public DHHAGHHDHBEBAAE get_SkinId() { }
+
+	// RVA: 0x3BF28C8 Offset: 0x3BEE8C8 VA: 0x3BF28C8
+	public Transform EBEBDHCFBACAABE() { }
+
+	// RVA: 0x3BF28D0 Offset: 0x3BEE8D0 VA: 0x3BF28D0
+	public void Initialize(int GFHDBADAGEECFHH, DHHAGHHDHBEBAAE HAFCCECAHGECCCE, int FGFDAAABABHAHAA) { }
+
+	// RVA: 0x3BF2D18 Offset: 0x3BEED18 VA: 0x3BF2D18
+	private void AAHGABGHACADDEE(WeaponLodGroup BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x3BF2D20 Offset: 0x3BEED20 VA: 0x3BF2D20
+	public int get_DropId() { }
+
+	// RVA: 0x3BF2D28 Offset: 0x3BEED28 VA: 0x3BF2D28 Slot: 8
+	public void OnUnobstructed() { }
+
+	// RVA: 0x3BF2D2C Offset: 0x3BEED2C VA: 0x3BF2D2C
+	public WeaponParameters FEEABBFHHCABEHD() { }
+
+	// RVA: 0x3BF2D34 Offset: 0x3BEED34 VA: 0x3BF2D34
+	public bool IsPickUpLocked() { }
+}

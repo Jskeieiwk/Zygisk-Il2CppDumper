@@ -1,0 +1,10 @@
+public enum GunController.CHFEGADECBBEHHE // TypeDefIndex: 4948
+{
+	// Fields
+	public int value__; // 0x0
+	public const GunController.CHFEGADECBBEHHE Aiming = 0;
+	public const GunController.CHFEGADECBBEHHE AimingReload = 1;
+	public const GunController.CHFEGADECBBEHHE NotAiming = 2;
+	public const GunController.CHFEGADECBBEHHE StartingAiming = 3;
+	public const GunController.CHFEGADECBBEHHE FinishingAiming = 4;
+}

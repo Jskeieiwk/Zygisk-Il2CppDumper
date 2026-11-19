@@ -1,0 +1,46 @@
+// Namespace: UnityEngine.Rendering.PostProcessing
+public abstract class PostProcessEffectRenderer<T> : PostProcessEffectRenderer // TypeDefIndex: 21121
+{
+	// Fields
+	[CompilerGenerated]
+	private T <settings>k__BackingField; // 0x0
+
+	// Properties
+	public T settings { get; set; }
+
+	// Methods
+
+	[CompilerGenerated]
+	// RVA: -1 Offset: -1
+	public T get_settings() { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x914AF6C Offset: 0x9146F6C VA: 0x914AF6C
+	|-PostProcessEffectRenderer<object>.get_settings
+	*/
+
+	[CompilerGenerated]
+	// RVA: -1 Offset: -1
+	internal void set_settings(T value) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x914AF74 Offset: 0x9146F74 VA: 0x914AF74
+	|-PostProcessEffectRenderer<object>.set_settings
+	*/
+
+	// RVA: -1 Offset: -1 Slot: 9
+	internal override void SetSettings(PostProcessEffectSettings settings) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x914AF7C Offset: 0x9146F7C VA: 0x914AF7C
+	|-PostProcessEffectRenderer<object>.SetSettings
+	*/
+
+	// RVA: -1 Offset: -1
+	protected void .ctor() { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x914AFE0 Offset: 0x9146FE0 VA: 0x914AFE0
+	|-PostProcessEffectRenderer<object>..ctor
+	*/
+}

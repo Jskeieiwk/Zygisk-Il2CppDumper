@@ -1,0 +1,81 @@
+// Namespace: Axlebolt.Standoff.Game.Settings
+public class BombSettings // TypeDefIndex: 2833
+{
+	// Fields
+	[SerializeField]
+	private float _detonationDuration; // 0x10
+
+	// Properties
+	public float DetonationDuration { get; set; }
+
+	// Methods
+
+	// RVA: 0x337E7B8 Offset: 0x337A7B8 VA: 0x337E7B8
+	public void CEBGCDFCBEGDAED(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x337E7C0 Offset: 0x337A7C0 VA: 0x337E7C0
+	public void DEHADBCGFAGHCGE(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x337E7C8 Offset: 0x337A7C8 VA: 0x337E7C8
+	public float HGDHHFGHGGDAAFD() { }
+
+	// RVA: 0x337E7D0 Offset: 0x337A7D0 VA: 0x337E7D0
+	public void FGCECEDHAFBAFEE(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x337E7D8 Offset: 0x337A7D8 VA: 0x337E7D8
+	public float CBGDBGGEFADADCB() { }
+
+	// RVA: 0x337E7E0 Offset: 0x337A7E0 VA: 0x337E7E0
+	public void BFHHBEHGBBBFBBB(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x337E7E8 Offset: 0x337A7E8 VA: 0x337E7E8
+	public float get_DetonationDuration() { }
+
+	// RVA: 0x337E7F0 Offset: 0x337A7F0 VA: 0x337E7F0
+	public void CDHDBHGFFHFCADH(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x337E7F8 Offset: 0x337A7F8 VA: 0x337E7F8
+	public float GCFBCDHCAGAAFBE() { }
+
+	// RVA: 0x337E800 Offset: 0x337A800 VA: 0x337E800
+	public void FDGDDADFDHCAAHE(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x337E808 Offset: 0x337A808 VA: 0x337E808
+	public float FEFFFCHBFGCGFCA() { }
+
+	// RVA: 0x337E810 Offset: 0x337A810 VA: 0x337E810
+	public void .ctor() { }
+
+	// RVA: 0x337E818 Offset: 0x337A818 VA: 0x337E818
+	public void GFBDHAGHBCGHBDA(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x337E820 Offset: 0x337A820 VA: 0x337E820
+	public void HAABEAGCAAGGEHC(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x337E828 Offset: 0x337A828 VA: 0x337E828
+	public float EEACHCGDFCGABHA() { }
+
+	// RVA: 0x337E830 Offset: 0x337A830 VA: 0x337E830
+	public float GDDEFHDBBBBHGBE() { }
+
+	// RVA: 0x337E838 Offset: 0x337A838 VA: 0x337E838
+	public void GEGFHBCEGDDDGCF(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x337E840 Offset: 0x337A840 VA: 0x337E840
+	public void set_DetonationDuration(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x337E848 Offset: 0x337A848 VA: 0x337E848
+	public float DCDAAHBFAHCBAGH() { }
+
+	// RVA: 0x337E850 Offset: 0x337A850 VA: 0x337E850
+	public void HCEHDCABDFHGFDF(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x337E858 Offset: 0x337A858 VA: 0x337E858
+	public float CEFHFAAEDEGBBFB() { }
+
+	// RVA: 0x337E860 Offset: 0x337A860 VA: 0x337E860
+	public float HFGBCGBDBEACGCH() { }
+
+	// RVA: 0x337E868 Offset: 0x337A868 VA: 0x337E868
+	public float FAFHBCEAGBFDGDF() { }
+}

@@ -1,0 +1,273 @@
+// Namespace: UnityEngine
+public class Object // TypeDefIndex: 17518
+{
+	// Fields
+	private IntPtr m_CachedPtr; // 0x10
+	internal static int OffsetOfInstanceIDInCPlusPlusObject; // 0x0
+	private const string objectIsNullMessage = "The Object you want to instantiate is null.";
+	private const string cloneDestroyedMessage = "Instantiate failed because the clone was destroyed during creation. This can happen if DestroyImmediate is called in MonoBehaviour.Awake.";
+
+	// Properties
+	public string name { get; set; }
+	public HideFlags hideFlags { get; set; }
+
+	// Methods
+
+	// RVA: 0xA78E694 Offset: 0xA78A694 VA: 0xA78E694
+	public int GetInstanceID() { }
+
+	// RVA: 0xA78E980 Offset: 0xA78A980 VA: 0xA78E980 Slot: 2
+	public override int GetHashCode() { }
+
+	// RVA: 0xA78E988 Offset: 0xA78A988 VA: 0xA78E988 Slot: 0
+	public override bool Equals(object other) { }
+
+	// RVA: 0xA78EBC4 Offset: 0xA78ABC4 VA: 0xA78EBC4
+	public static bool op_Implicit(Object exists) { }
+
+	// RVA: 0xA78EACC Offset: 0xA78AACC VA: 0xA78EACC
+	private static bool CompareBaseObjects(Object lhs, Object rhs) { }
+
+	// RVA: 0xA78EC70 Offset: 0xA78AC70 VA: 0xA78EC70
+	private static bool IsNativeObjectAlive(Object o) { }
+
+	// RVA: 0xA78EC90 Offset: 0xA78AC90 VA: 0xA78EC90
+	private IntPtr GetCachedPtr() { }
+
+	// RVA: 0xA78EC98 Offset: 0xA78AC98 VA: 0xA78EC98
+	public string get_name() { }
+
+	// RVA: 0xA78EEA0 Offset: 0xA78AEA0 VA: 0xA78EEA0
+	public void set_name(string value) { }
+
+	[TypeInferenceRule(3)]
+	// RVA: 0xA78F0E0 Offset: 0xA78B0E0 VA: 0xA78F0E0
+	public static Object Instantiate(Object original, Vector3 position, Quaternion rotation) { }
+
+	[TypeInferenceRule(3)]
+	// RVA: 0xA78F504 Offset: 0xA78B504 VA: 0xA78F504
+	public static Object Instantiate(Object original, Vector3 position, Quaternion rotation, Transform parent) { }
+
+	[TypeInferenceRule(3)]
+	// RVA: 0xA78F844 Offset: 0xA78B844 VA: 0xA78F844
+	public static Object Instantiate(Object original) { }
+
+	[TypeInferenceRule(3)]
+	// RVA: 0xA78FB60 Offset: 0xA78BB60 VA: 0xA78FB60
+	public static Object Instantiate(Object original, Transform parent, bool instantiateInWorldSpace) { }
+
+	// RVA: -1 Offset: -1
+	public static T Instantiate<T>(T original) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80E2DA4 Offset: 0x80DEDA4 VA: 0x80E2DA4
+	|-Object.Instantiate<object>
+	*/
+
+	// RVA: -1 Offset: -1
+	public static T Instantiate<T>(T original, Vector3 position, Quaternion rotation) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80E3140 Offset: 0x80DF140 VA: 0x80E3140
+	|-Object.Instantiate<object>
+	*/
+
+	// RVA: -1 Offset: -1
+	public static T Instantiate<T>(T original, Vector3 position, Quaternion rotation, Transform parent) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80E3288 Offset: 0x80DF288 VA: 0x80E3288
+	|-Object.Instantiate<object>
+	*/
+
+	// RVA: -1 Offset: -1
+	public static T Instantiate<T>(T original, Transform parent) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80E2F78 Offset: 0x80DEF78 VA: 0x80E2F78
+	|-Object.Instantiate<object>
+	*/
+
+	// RVA: -1 Offset: -1
+	public static T Instantiate<T>(T original, Transform parent, bool worldPositionStays) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80E3038 Offset: 0x80DF038 VA: 0x80E3038
+	|-Object.Instantiate<object>
+	*/
+
+	[NativeMethod(Name = "Scripting::DestroyObjectFromScripting", IsFreeFunction = True, ThrowsException = True)]
+	// RVA: 0xA78FF08 Offset: 0xA78BF08 VA: 0xA78FF08
+	public static void Destroy(Object obj, float t) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA790098 Offset: 0xA78C098 VA: 0xA790098
+	public static void Destroy(Object obj) { }
+
+	[NativeMethod(Name = "Scripting::DestroyObjectFromScriptingImmediate", IsFreeFunction = True, ThrowsException = True)]
+	// RVA: 0xA790138 Offset: 0xA78C138 VA: 0xA790138
+	public static void DestroyImmediate(Object obj, bool allowDestroyingAssets) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA7902B8 Offset: 0xA78C2B8 VA: 0xA7902B8
+	public static void DestroyImmediate(Object obj) { }
+
+	// RVA: 0xA790358 Offset: 0xA78C358 VA: 0xA790358
+	public static Object[] FindObjectsOfType(Type type) { }
+
+	[TypeInferenceRule(2)]
+	[FreeFunction("UnityEngineObjectBindings::FindObjectsOfType")]
+	// RVA: 0xA7903F8 Offset: 0xA78C3F8 VA: 0xA7903F8
+	public static Object[] FindObjectsOfType(Type type, bool includeInactive) { }
+
+	[FreeFunction("UnityEngineObjectBindings::FindObjectsByType")]
+	[TypeInferenceRule(2)]
+	// RVA: 0xA790580 Offset: 0xA78C580 VA: 0xA790580
+	public static Object[] FindObjectsByType(Type type, FindObjectsInactive findObjectsInactive, FindObjectsSortMode sortMode) { }
+
+	[FreeFunction("GetSceneManager().DontDestroyOnLoad", ThrowsException = True)]
+	// RVA: 0xA79073C Offset: 0xA78C73C VA: 0xA79073C
+	public static void DontDestroyOnLoad(Object target) { }
+
+	// RVA: 0xA7908B4 Offset: 0xA78C8B4 VA: 0xA7908B4
+	public HideFlags get_hideFlags() { }
+
+	// RVA: 0xA790A20 Offset: 0xA78CA20 VA: 0xA790A20
+	public void set_hideFlags(HideFlags value) { }
+
+	// RVA: -1 Offset: -1
+	public static T[] FindObjectsOfType<T>() { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80E2B48 Offset: 0x80DEB48 VA: 0x80E2B48
+	|-Object.FindObjectsOfType<object>
+	*/
+
+	// RVA: -1 Offset: -1
+	public static T[] FindObjectsByType<T>(FindObjectsSortMode sortMode) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80E28D4 Offset: 0x80DE8D4 VA: 0x80E28D4
+	|-Object.FindObjectsByType<object>
+	*/
+
+	// RVA: -1 Offset: -1
+	public static T[] FindObjectsOfType<T>(bool includeInactive) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80E2C74 Offset: 0x80DEC74 VA: 0x80E2C74
+	|-Object.FindObjectsOfType<object>
+	*/
+
+	// RVA: -1 Offset: -1
+	public static T[] FindObjectsByType<T>(FindObjectsInactive findObjectsInactive, FindObjectsSortMode sortMode) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80E2A08 Offset: 0x80DEA08 VA: 0x80E2A08
+	|-Object.FindObjectsByType<object>
+	*/
+
+	// RVA: -1 Offset: -1
+	public static T FindObjectOfType<T>() { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80E2600 Offset: 0x80DE600 VA: 0x80E2600
+	|-Object.FindObjectOfType<object>
+	*/
+
+	// RVA: -1 Offset: -1
+	public static T FindObjectOfType<T>(bool includeInactive) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80E2768 Offset: 0x80DE768 VA: 0x80E2768
+	|-Object.FindObjectOfType<object>
+	*/
+
+	// RVA: -1 Offset: -1
+	public static T FindAnyObjectByType<T>() { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80E2498 Offset: 0x80DE498 VA: 0x80E2498
+	|-Object.FindAnyObjectByType<object>
+	*/
+
+	// RVA: 0xA78F3C8 Offset: 0xA78B3C8 VA: 0xA78F3C8
+	private static void CheckNullArgument(object arg, string message) { }
+
+	[TypeInferenceRule(0)]
+	// RVA: 0xA790BA4 Offset: 0xA78CBA4 VA: 0xA790BA4
+	public static Object FindObjectOfType(Type type) { }
+
+	// RVA: 0xA790C64 Offset: 0xA78CC64 VA: 0xA790C64
+	public static Object FindAnyObjectByType(Type type) { }
+
+	[TypeInferenceRule(0)]
+	// RVA: 0xA790D30 Offset: 0xA78CD30 VA: 0xA790D30
+	public static Object FindObjectOfType(Type type, bool includeInactive) { }
+
+	// RVA: 0xA790DFC Offset: 0xA78CDFC VA: 0xA790DFC
+	public static Object FindAnyObjectByType(Type type, FindObjectsInactive findObjectsInactive) { }
+
+	// RVA: 0xA790ED4 Offset: 0xA78CED4 VA: 0xA790ED4 Slot: 3
+	public override string ToString() { }
+
+	// RVA: 0xA786598 Offset: 0xA782598 VA: 0xA786598
+	public static bool op_Equality(Object x, Object y) { }
+
+	// RVA: 0xA783C60 Offset: 0xA77FC60 VA: 0xA783C60
+	public static bool op_Inequality(Object x, Object y) { }
+
+	[NativeMethod(Name = "Object::GetOffsetOfInstanceIdMember", IsFreeFunction = True, IsThreadSafe = True)]
+	// RVA: 0xA78E800 Offset: 0xA78A800 VA: 0xA78E800
+	private static int GetOffsetOfInstanceIDInCPlusPlusObject() { }
+
+	[NativeMethod(Name = "CloneObject", IsFreeFunction = True, ThrowsException = True)]
+	// RVA: 0xA78F9DC Offset: 0xA78B9DC VA: 0xA78F9DC
+	private static Object Internal_CloneSingle(Object data) { }
+
+	[FreeFunction("CloneObject")]
+	// RVA: 0xA78FD60 Offset: 0xA78BD60 VA: 0xA78FD60
+	private static Object Internal_CloneSingleWithParent(Object data, Transform parent, bool worldPositionStays) { }
+
+	[FreeFunction("InstantiateObject")]
+	// RVA: 0xA78F444 Offset: 0xA78B444 VA: 0xA78F444
+	private static Object Internal_InstantiateSingle(Object data, Vector3 pos, Quaternion rot) { }
+
+	[FreeFunction("InstantiateObject")]
+	// RVA: 0xA78F774 Offset: 0xA78B774 VA: 0xA78F774
+	private static Object Internal_InstantiateSingleWithParent(Object data, Transform parent, Vector3 pos, Quaternion rot) { }
+
+	[FreeFunction("UnityEngineObjectBindings::ToString")]
+	// RVA: 0xA790F70 Offset: 0xA78CF70 VA: 0xA790F70
+	private static string ToString(Object obj) { }
+
+	[FreeFunction("UnityEngineObjectBindings::GetName")]
+	// RVA: 0xA78ED34 Offset: 0xA78AD34 VA: 0xA78ED34
+	private static string GetName(Object obj) { }
+
+	[FreeFunction("UnityEngineObjectBindings::SetName")]
+	// RVA: 0xA78EF4C Offset: 0xA78AF4C VA: 0xA78EF4C
+	private static void SetName(Object obj, string name) { }
+
+	[FreeFunction("UnityEngineObjectBindings::FindObjectFromInstanceID")]
+	[VisibleToOtherModules]
+	// RVA: 0xA79146C Offset: 0xA78D46C VA: 0xA79146C
+	internal static Object FindObjectFromInstanceID(int instanceID) { }
+
+	[FreeFunction("UnityEngineObjectBindings::ForceLoadFromInstanceID")]
+	[VisibleToOtherModules]
+	// RVA: 0xA7915E8 Offset: 0xA78D5E8 VA: 0xA7915E8
+	internal static Object ForceLoadFromInstanceID(int instanceID) { }
+
+	// RVA: 0xA77EF08 Offset: 0xA77AF08 VA: 0xA77EF08
+	public void .ctor() { }
+
+	// RVA: 0xA79175C Offset: 0xA78D75C VA: 0xA79175C
+	private static void .cctor() { }
+
+	// RVA: 0xA7910E0 Offset: 0xA78D0E0 VA: 0xA7910E0
+	private static Object Internal_InstantiateSingle_Injected(Object data, ref Vector3 pos, ref Quaternion rot) { }
+
+	// RVA: 0xA791298 Offset: 0xA78D298 VA: 0xA791298
+	private static Object Internal_InstantiateSingleWithParent_Injected(Object data, Transform parent, ref Vector3 pos, ref Quaternion rot) { }
+}

@@ -1,0 +1,18 @@
+// Namespace: UnityEngine.Rendering.PostProcessing
+public sealed class PostProcessAttribute : Attribute // TypeDefIndex: 21033
+{
+	// Fields
+	public readonly Type renderer; // 0x10
+	public readonly PostProcessEvent eventType; // 0x18
+	public readonly string menuItem; // 0x20
+	public readonly bool allowInSceneView; // 0x28
+	internal readonly bool builtinEffect; // 0x29
+
+	// Methods
+
+	// RVA: 0xA557870 Offset: 0xA553870 VA: 0xA557870
+	public void .ctor(Type renderer, PostProcessEvent eventType, string menuItem, bool allowInSceneView = True) { }
+
+	// RVA: 0xA5578BC Offset: 0xA5538BC VA: 0xA5578BC
+	internal void .ctor(Type renderer, string menuItem, bool allowInSceneView = True) { }
+}

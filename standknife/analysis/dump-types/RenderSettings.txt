@@ -1,0 +1,53 @@
+// Namespace: UnityEngine
+public sealed class RenderSettings : Object // TypeDefIndex: 17357
+{
+	// Properties
+	[NativeProperty("UseFog")]
+	public static bool fog { get; set; }
+	[NativeProperty("LinearFogStart")]
+	public static float fogStartDistance { get; }
+	[NativeProperty("LinearFogEnd")]
+	public static float fogEndDistance { get; set; }
+	public static Color fogColor { get; set; }
+	public static float fogDensity { get; }
+	[NativeProperty("SkyboxMaterial")]
+	public static Material skybox { get; set; }
+
+	// Methods
+
+	// RVA: 0xA7458EC Offset: 0xA7418EC VA: 0xA7458EC
+	public static bool get_fog() { }
+
+	// RVA: 0xA745A64 Offset: 0xA741A64 VA: 0xA745A64
+	public static void set_fog(bool value) { }
+
+	// RVA: 0xA745BDC Offset: 0xA741BDC VA: 0xA745BDC
+	public static float get_fogStartDistance() { }
+
+	// RVA: 0xA745D48 Offset: 0xA741D48 VA: 0xA745D48
+	public static float get_fogEndDistance() { }
+
+	// RVA: 0xA745EB0 Offset: 0xA741EB0 VA: 0xA745EB0
+	public static void set_fogEndDistance(float value) { }
+
+	// RVA: 0xA74603C Offset: 0xA74203C VA: 0xA74603C
+	public static Color get_fogColor() { }
+
+	// RVA: 0xA7461E0 Offset: 0xA7421E0 VA: 0xA7461E0
+	public static void set_fogColor(Color value) { }
+
+	// RVA: 0xA746384 Offset: 0xA742384 VA: 0xA746384
+	public static float get_fogDensity() { }
+
+	// RVA: 0xA7464FC Offset: 0xA7424FC VA: 0xA7464FC
+	public static Material get_skybox() { }
+
+	// RVA: 0xA74666C Offset: 0xA74266C VA: 0xA74666C
+	public static void set_skybox(Material value) { }
+
+	// RVA: 0xA746064 Offset: 0xA742064 VA: 0xA746064
+	private static void get_fogColor_Injected(out Color ret) { }
+
+	// RVA: 0xA746204 Offset: 0xA742204 VA: 0xA746204
+	private static void set_fogColor_Injected(ref Color value) { }
+}

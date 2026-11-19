@@ -1,0 +1,164 @@
+// Namespace: Axlebolt.Standoff.Controls
+public class KeyboardMouseControl : MonoBehaviour // TypeDefIndex: 3847
+{
+	// Fields
+	private const float CDECFBDGBEEDCAB = 5;
+	private const float FBDEEHHFCEHAHGC = 5;
+	private static readonly byte[] GABHBHGHBHAFBHD; // 0x0
+	private readonly Dictionary<string, byte> CFFHCDEHEBCAFAE; // 0x28
+	private DEBDHHCBDDFFHBB EFCCFBCAGAGHGHD; // 0x30
+	private AACFBGFBDGHAEEF GHBHFHBCAHGFGDB; // 0x38
+	private WeaponryController CBECEDAEGACEDAD; // 0x40
+	private DEEEAFCEFACDCFB FCFCBHCGEGDEHBB; // 0x48
+	private bool BCGEGGHEGFBFGFE; // 0x4C
+
+	// Properties
+	public AACFBGFBDGHAEEF GHFGEFBBHDBEHCC { get; }
+
+	// Methods
+
+	// RVA: 0x3C120FC Offset: 0x3C0E0FC VA: 0x3C120FC
+	public AACFBGFBDGHAEEF BCBDFEBHCFAACFG() { }
+
+	// RVA: 0x3C12104 Offset: 0x3C0E104 VA: 0x3C12104
+	public void ECBFBDAEAGDBBGE(TouchController DFFCDEGEDGFAGDF) { }
+
+	// RVA: 0x3C121B4 Offset: 0x3C0E1B4 VA: 0x3C121B4
+	public void CGGAAFFEDEGEAAB(TouchController DFFCDEGEDGFAGDF) { }
+
+	// RVA: 0x3C12264 Offset: 0x3C0E264 VA: 0x3C12264
+	public void .ctor() { }
+
+	// RVA: 0x3C12738 Offset: 0x3C0E738 VA: 0x3C12738
+	public void ECAFDAFEHHBAGEA() { }
+
+	// RVA: 0x3C12754 Offset: 0x3C0E754 VA: 0x3C12754
+	public void DGHECDGEFAFDADD(ControlsSettings GHAFHGCFCAGGBCE) { }
+
+	// RVA: 0x3C12838 Offset: 0x3C0E838 VA: 0x3C12838
+	private static byte BFBACFGGFFEEEBH(byte HBHAEGHEGEAAFBE, int GFEFHHAFCEEDFHA) { }
+
+	// RVA: 0x3C12858 Offset: 0x3C0E858 VA: 0x3C12858
+	public void Initialize(TouchController DFFCDEGEDGFAGDF) { }
+
+	// RVA: 0x3C12908 Offset: 0x3C0E908 VA: 0x3C12908
+	public void CGACHEAAGHAGHGC(WeaponryController HAABADFDGHHCACH) { }
+
+	// RVA: 0x3C12910 Offset: 0x3C0E910 VA: 0x3C12910
+	public void EFADGAHACHFABHG() { }
+
+	// RVA: 0x3C1292C Offset: 0x3C0E92C VA: 0x3C1292C
+	public void HEEFHCCDDCHBHDD(ControlsSettings GHAFHGCFCAGGBCE) { }
+
+	// RVA: 0x3C12A10 Offset: 0x3C0EA10 VA: 0x3C12A10
+	public AACFBGFBDGHAEEF get_KeySettings() { }
+
+	// RVA: 0x3C12A18 Offset: 0x3C0EA18 VA: 0x3C12A18
+	private static void .cctor() { }
+
+	// RVA: 0x3C12B60 Offset: 0x3C0EB60 VA: 0x3C12B60
+	private static byte AFCGACBCGCDFHBB(byte HBHAEGHEGEAAFBE, int GFEFHHAFCEEDFHA) { }
+
+	// RVA: 0x3C12B80 Offset: 0x3C0EB80 VA: 0x3C12B80
+	public void BBGGDFCGCHEGFAC(WeaponryController HAABADFDGHHCACH) { }
+
+	// RVA: 0x3C12B88 Offset: 0x3C0EB88 VA: 0x3C12B88
+	public void AHEGAFEHCEEHHGG(TouchController DFFCDEGEDGFAGDF) { }
+
+	// RVA: 0x3C12C38 Offset: 0x3C0EC38 VA: 0x3C12C38
+	public void HFCCFHDCADBBDGD() { }
+
+	// RVA: 0x3C12C54 Offset: 0x3C0EC54 VA: 0x3C12C54
+	public void DDCBEAFCCAFBHFC(WeaponryController HAABADFDGHHCACH) { }
+
+	// RVA: 0x3C12C5C Offset: 0x3C0EC5C VA: 0x3C12C5C
+	private static byte BEBEHGCDFFHHBBH(byte HBHAEGHEGEAAFBE, int GFEFHHAFCEEDFHA) { }
+
+	// RVA: 0x3C12C78 Offset: 0x3C0EC78 VA: 0x3C12C78
+	public void HCBDAECGCFHDFAG(TouchController DFFCDEGEDGFAGDF) { }
+
+	// RVA: 0x3C12D28 Offset: 0x3C0ED28 VA: 0x3C12D28
+	public void BFAFHCDECGGHCFB(WeaponryController HAABADFDGHHCACH) { }
+
+	// RVA: 0x3C12D30 Offset: 0x3C0ED30 VA: 0x3C12D30
+	public void BGGFDFGAGDDEHBC(TouchController DFFCDEGEDGFAGDF) { }
+
+	// RVA: 0x3C12DE0 Offset: 0x3C0EDE0 VA: 0x3C12DE0
+	private static byte EHAFGDAFDHADHHD(byte HBHAEGHEGEAAFBE, int GFEFHHAFCEEDFHA) { }
+
+	// RVA: 0x3C12DFC Offset: 0x3C0EDFC VA: 0x3C12DFC
+	public void ExecuteUICommands() { }
+
+	// RVA: 0x3C12E18 Offset: 0x3C0EE18 VA: 0x3C12E18
+	public void DCFDACFGDGEBFCH(WeaponryController HAABADFDGHHCACH) { }
+
+	// RVA: 0x3C12E20 Offset: 0x3C0EE20 VA: 0x3C12E20
+	public void FEBABEGGCEABBDA() { }
+
+	// RVA: 0x3C12E3C Offset: 0x3C0EE3C VA: 0x3C12E3C
+	public void SetControlsSettings(ControlsSettings GHAFHGCFCAGGBCE) { }
+
+	// RVA: 0x3C12F20 Offset: 0x3C0EF20 VA: 0x3C12F20
+	private byte EEHEHAGBFDDFBDD(byte BBEHGFCGCFFFAGD) { }
+
+	// RVA: 0x3C131C8 Offset: 0x3C0F1C8 VA: 0x3C131C8
+	private static byte FDGFCGGHAHEDAGA(byte HBHAEGHEGEAAFBE, int GFEFHHAFCEEDFHA) { }
+
+	[CompilerGenerated]
+	// RVA: 0x3C131E8 Offset: 0x3C0F1E8 VA: 0x3C131E8
+	private byte HHCDAEBABGHAACC(byte BBEHGFCGCFFFAGD) { }
+
+	// RVA: 0x3C13498 Offset: 0x3C0F498 VA: 0x3C13498
+	public void BBEDBFFFGHCGHCA() { }
+
+	// RVA: 0x3C134B4 Offset: 0x3C0F4B4 VA: 0x3C134B4
+	public AACFBGFBDGHAEEF AEDGAGAEHBBFHAG() { }
+
+	// RVA: 0x3C134BC Offset: 0x3C0F4BC VA: 0x3C134BC
+	public void EBHEBGEAADCHCED(TouchController DFFCDEGEDGFAGDF) { }
+
+	// RVA: 0x3C1356C Offset: 0x3C0F56C VA: 0x3C1356C
+	public EGFDFGAHFHAFCCD BAEDCEHCDHEEECH() { }
+
+	// RVA: 0x3C14664 Offset: 0x3C10664 VA: 0x3C14664
+	public void HFDFEHAGEFEBAFB() { }
+
+	// RVA: 0x3C14680 Offset: 0x3C10680 VA: 0x3C14680
+	private byte BECGAAEEGAGHFHC(byte BBEHGFCGCFFFAGD) { }
+
+	// RVA: 0x3C14930 Offset: 0x3C10930 VA: 0x3C14930
+	private byte DBEDEAECHCGEBBC(byte BBEHGFCGCFFFAGD) { }
+
+	// RVA: 0x3C14BD0 Offset: 0x3C10BD0 VA: 0x3C14BD0
+	public void SetPlayerWeaponryController(WeaponryController HAABADFDGHHCACH) { }
+
+	// RVA: 0x3C14BD8 Offset: 0x3C10BD8 VA: 0x3C14BD8
+	public EGFDFGAHFHAFCCD ACABDHGFAFAGBAB() { }
+
+	// RVA: 0x3C15A80 Offset: 0x3C11A80 VA: 0x3C15A80
+	private byte CFFACGBGHGFDEAH(byte BBEHGFCGCFFFAGD) { }
+
+	// RVA: 0x3C143BC Offset: 0x3C103BC VA: 0x3C143BC
+	private byte EHCFCCHFBFDAAFG(byte BBEHGFCGCFFFAGD) { }
+
+	// RVA: 0x3C15D28 Offset: 0x3C11D28 VA: 0x3C15D28
+	public AACFBGFBDGHAEEF GHFCEHCEAFBGAHG() { }
+
+	// RVA: 0x3C15D30 Offset: 0x3C11D30 VA: 0x3C15D30
+	public EGFDFGAHFHAFCCD GetPlayerInputs() { }
+
+	// RVA: 0x3C16A8C Offset: 0x3C12A8C VA: 0x3C16A8C
+	public void EGHHACBCGFHDBHD(ControlsSettings GHAFHGCFCAGGBCE) { }
+
+	// RVA: 0x3C16B70 Offset: 0x3C12B70 VA: 0x3C16B70
+	public void CEBEBCDEEHEFAHB(ControlsSettings GHAFHGCFCAGGBCE) { }
+
+	// RVA: 0x3C16C54 Offset: 0x3C12C54 VA: 0x3C16C54
+	public AACFBGFBDGHAEEF DFEBAEFGBHFDHAG() { }
+
+	// RVA: 0x3C16C5C Offset: 0x3C12C5C VA: 0x3C16C5C
+	public void DEECHBDBAEHEAGF() { }
+
+	// RVA: 0x3C16C78 Offset: 0x3C12C78 VA: 0x3C16C78
+	private byte GCDBCGDCCGBAADG(byte BBEHGFCGCFFFAGD) { }
+}

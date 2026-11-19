@@ -1,0 +1,35 @@
+// Namespace: Axlebolt.Ballistics.GrenadePractice.Practice
+public sealed class GrenadePracticeControllerComponent : MonoBehaviour, IGrenadePracticeController, IFullTracerArcListener // TypeDefIndex: 22828
+{
+	// Fields
+	private GrenadePracticeController _grenadePracticeController; // 0x20
+
+	// Methods
+
+	// RVA: 0x6BA4388 Offset: 0x6BA0388 VA: 0x6BA4388
+	public void PreInit(Camera tracerCamera, IGrenadePracticeView grenadePracticeView, TracerRuntimeSettings tracerRuntimeSettings, GrenadePracticeTracerParameters grenadePracticeTracerParameters, TracerMeshGeneratorBuffer tracerMeshGeneratorBuffer) { }
+
+	// RVA: 0x6BACBC4 Offset: 0x6BA8BC4 VA: 0x6BACBC4 Slot: 8
+	public void OnFullPathDrawed(Vector3 finalPosition, List<Vector3> drawPositions) { }
+
+	// RVA: 0x6BACBD4 Offset: 0x6BA8BD4 VA: 0x6BACBD4
+	private void Update() { }
+
+	// RVA: 0x6BACBE4 Offset: 0x6BA8BE4 VA: 0x6BACBE4
+	private void OnDestroy() { }
+
+	// RVA: 0x6BACBF4 Offset: 0x6BA8BF4 VA: 0x6BACBF4 Slot: 4
+	public void SetPlayer(Transform transform) { }
+
+	// RVA: 0x6BACC04 Offset: 0x6BA8C04 VA: 0x6BACC04 Slot: 5
+	public void SetPracticeGrenade(IPracticableGrenade practicableGrenade) { }
+
+	// RVA: 0x6BACC14 Offset: 0x6BA8C14 VA: 0x6BACC14 Slot: 6
+	public void SetDetonationableGrenade(IDetonationableGrenade detonationableGrenade) { }
+
+	// RVA: 0x6BACC24 Offset: 0x6BA8C24 VA: 0x6BACC24 Slot: 7
+	public void SetCameraZones(List<Bounds> levelZones) { }
+
+	// RVA: 0x6BACC34 Offset: 0x6BA8C34 VA: 0x6BACC34
+	public void .ctor() { }
+}

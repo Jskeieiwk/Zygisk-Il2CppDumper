@@ -1,0 +1,726 @@
+// Namespace: Axlebolt.Standoff.Player
+public class PlayerController : PunBehaviour, CAHDEDBCCFHCFCH // TypeDefIndex: 5838
+{
+	// Fields
+	public static int MaxCtArmor; // 0x0
+	[CompilerGenerated]
+	private bool <BDDBHDDFFEACFEF>k__BackingField; // 0x28
+	[CompilerGenerated]
+	private CharacterLodGroup <EEGFHGCBDGBHBEH>k__BackingField; // 0x30
+	private PlayerFPSCamera FHDADFBACBGDBGD; // 0x38
+	[CompilerGenerated]
+	private PhotonView <EFDGEDEDCAAEADG>k__BackingField; // 0x40
+	[CompilerGenerated]
+	private ArmsLodGroup <CDGACGFBBHCEBGA>k__BackingField; // 0x48
+	[SerializeField]
+	private Transform _mainCameraHolder; // 0x50
+	[SerializeField]
+	private GameObject _fpsCameraHolder; // 0x58
+	[SerializeField]
+	private GameObject _fpsDirective; // 0x60
+	private PlayerMainCamera GFGGAECECDFGCEH; // 0x68
+	private Transform DBGBCECAAFCHEBA; // 0x70
+	[CompilerGenerated]
+	private ArmsAnimationController <FFEDABCBEDEEAHG>k__BackingField; // 0x78
+	private PlayerCharacterView DDDFCCBCHDFDGFG; // 0x80
+	private PlayerMarkerTrigger BFDAADGACDGAEAG; // 0x88
+	[CompilerGenerated]
+	private PowerController <GCEBCCGBHBCHCEE>k__BackingField; // 0x90
+	[CompilerGenerated]
+	private bool <FADEBHABCEDEDFG>k__BackingField; // 0x98
+	[CompilerGenerated]
+	private float <CAAEAAEBECEFEBC>k__BackingField; // 0x9C
+	[CompilerGenerated]
+	private SkinnedMeshLodGroup <CCGHAFAFDBACCAH>k__BackingField; // 0xA0
+	[CompilerGenerated]
+	private GDDEBEFGEGAECCG <CFFEEFADGCDBHHE>k__BackingField; // 0xA8
+	private static ILogger GGFBEBEFCHEEADD; // 0x8
+	private Nullable<int> ECEBBBEHACDAEGG; // 0xB0
+	[CompilerGenerated]
+	private PlayerHitController <CBACCDEFAHCGACC>k__BackingField; // 0xB8
+	private Controller[] CDCDAECFHFCBBCD; // 0xC0
+	[CompilerGenerated]
+	private bool <BHEAEDHEEDACCBC>k__BackingField; // 0xC8
+	private Nullable<int> BBDGEECDFAFCAFA; // 0xCC
+	[CompilerGenerated]
+	private PlayerSoundController <GEBGCCEHCCBBFAB>k__BackingField; // 0xD8
+	private CharacterController BEBBDBEEAFHFAGF; // 0xE0
+	[CompilerGenerated]
+	private MecanimController <BABGDBFCHCHDEAG>k__BackingField; // 0xE8
+	[CompilerGenerated]
+	private WeaponryController <FAACCECCGGEDFDB>k__BackingField; // 0xF0
+	[CompilerGenerated]
+	private PlayerOcclusionController <BDEBGGBBCEFCFFB>k__BackingField; // 0xF8
+	private bool HEAECBFEACDEGBE; // 0x100
+	[CompilerGenerated]
+	private float <GCHGBDCACFGBAEE>k__BackingField; // 0x104
+	[CompilerGenerated]
+	private MovementController <HHDACCFEGFBEGDH>k__BackingField; // 0x108
+	public static int MaxCtHealth; // 0x10
+	private Dictionary<Type, Controller> FFGBHBCFGDDGBBC; // 0x110
+	private Vector3 DEEGCHCDHABECBB; // 0x118
+	[CompilerGenerated]
+	private AimController <CAFBFGBHHCHCEEE>k__BackingField; // 0x128
+	private Nullable<bool> CAFGHFDHGGFDDBE; // 0x130
+	public static Vector3 MainCameraPosTPS; // 0x14
+	[CompilerGenerated]
+	private bool <DGEBHFGAAAFGBCA>k__BackingField; // 0x132
+	private FECCEFEDHEEHDCH GHFBEEFHCGBEGAE; // 0x133
+	private PlayerLevelZonesController AEEDEDFCBABABFA; // 0x138
+	[CompilerGenerated]
+	private int <HHDFBFCGBFDDHFH>k__BackingField; // 0x140
+	[CompilerGenerated]
+	private int <HFGEAEDHHADAECA>k__BackingField; // 0x144
+	[CompilerGenerated]
+	private NetworkController <GBFABAGDEFDACEE>k__BackingField; // 0x148
+	private PlayerCharacterView BDBBFBBDHEAHFHB; // 0x150
+	public static int MaxTrHealth; // 0x20
+	[CompilerGenerated]
+	private PlayerCharacterView <DCDHCGAABFHBCBB>k__BackingField; // 0x158
+	[CompilerGenerated]
+	private GFAFADEHEHCHGCH <HHCAGDFHBDABAGB>k__BackingField; // 0x160
+	public static int MaxTrArmor; // 0x24
+	[CompilerGenerated]
+	private AdminCommandsController <EHGBHACHBCDEGHA>k__BackingField; // 0x168
+
+	// Properties
+	private static ILogger FHFEDEGBFGDDCCB { get; }
+	public float GDHDFBAHBACGECF { get; set; }
+	public AimController AECFEADDBEAEAHA { get; set; }
+	public WeaponryController ECDBHDHEADAEGFH { get; set; }
+	public MecanimController ADGBEHBEBADCDEH { get; set; }
+	public MovementController HGHHHDEAFCGBHHH { get; set; }
+	public ArmsAnimationController FHEFEHACBBFBHFA { get; set; }
+	public PlayerHitController ADFDHDGHAAFADEG { get; set; }
+	public PlayerOcclusionController CEGABBGADCFGHCF { get; set; }
+	public NetworkController CCCBEBCGBBBEHHA { get; set; }
+	public ArmsLodGroup CHFCDBGCAGBHCHE { get; set; }
+	public PlayerCharacterView HCEDBEHDFAABGCA { get; set; }
+	public PowerController DBFGCCFFDAGGAED { get; set; }
+	public AdminCommandsController CHBHCCFBBEHDHCD { get; set; }
+	public BipedMap DHCBEGDFEGEADBD { get; }
+	public GameObject BGEBCFGECBADHFE { get; }
+	public Transform BBHEGBBFDEAGGEB { get; }
+	public bool GHCFCFEFDDBDDHE { get; set; }
+	public bool FECEFAGFDHDDDAC { get; set; }
+	public float DFGHBHEAEFCCFDB { get; set; }
+	public PlayerSoundController CACFDCCCBBGAGCH { get; set; }
+	public PlayerMainCamera EGHDFGHCEBAHFDF { get; }
+	public PlayerFPSCamera EDHHHAHGAGAEHCE { get; }
+	public SkinnedMeshLodGroup ACDAAFBBHECCDGE { get; set; }
+	public CharacterLodGroup GGEFCDCDEFCCCCH { get; set; }
+	public bool CGBCCABAGEAABFE { get; set; }
+	public bool GGBBCFDBEFGBGCF { get; set; }
+	public bool FCFDGCDFDECDGFA { get; }
+	public Transform BCAFDDGADHHDCDE { get; }
+	public GFAFADEHEHCHGCH DABDGAECDGDFBAB { get; set; }
+	public PhotonView CGFBEBFADDDHACD { get; set; }
+	public int EEBCDHEFFFHCEDE { get; set; }
+	public int EECGCCAEECBGCBB { get; set; }
+	[CanBeNull]
+	public GDDEBEFGEGAECCG GCDEHBHDEHDCAHH { get; set; }
+
+	// Methods
+
+	[ProtectedMethod]
+	// RVA: 0x49EA6C8 Offset: 0x49E66C8 VA: 0x49EA6C8
+	public void SetArmor(int DFGDFDBFADBBHFC, bool GEACEDFHAEBAFAA) { }
+
+	[ProtectedMethod]
+	// RVA: 0x49EB3F4 Offset: 0x49E73F4 VA: 0x49EB3F4
+	public void Initialize(FECCEFEDHEEHDCH HEEFCBCHDEHAECC) { }
+
+	// RVA: 0x49EBB48 Offset: 0x49E7B48 VA: 0x49EBB48
+	public GameObject get_FpsCameraHolder() { }
+
+	// RVA: 0x49EBB50 Offset: 0x49E7B50 VA: 0x49EBB50 Slot: 67
+	public void HFFFEHGGGHGDGDC() { }
+
+	// RVA: 0x49EBB54 Offset: 0x49E7B54 VA: 0x49EBB54
+	public void OnReturnToPool() { }
+
+	// RVA: 0x49EBD84 Offset: 0x49E7D84 VA: 0x49EBD84
+	public ArmsLodGroup ACBDHBGGHGEEABG() { }
+
+	[ProtectedMethod]
+	// RVA: 0x49EBD8C Offset: 0x49E7D8C VA: 0x49EBD8C
+	public void CancelUntouchable() { }
+
+	// RVA: 0x49EC200 Offset: 0x49E8200 VA: 0x49EC200
+	public void ResetMainCamera() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49EC208 Offset: 0x49E8208 VA: 0x49EC208
+	private void HFGDGGDCGDACHDA(PlayerOcclusionController BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x49EC210 Offset: 0x49E8210 VA: 0x49EC210
+	public AGFGHFGGBGAFGBB GetSnapshot(AGFGHFGGBGAFGBB BHAFHAECFCBFCBF) { }
+
+	// RVA: 0x49EC324 Offset: 0x49E8324 VA: 0x49EC324
+	private void DFCEEHHAGHFFGDH(WeaponryController BDFHFCCDABCFGBD) { }
+
+	[ProtectedMethod]
+	// RVA: 0x49EC32C Offset: 0x49E832C VA: 0x49EC32C
+	private void LateUpdate() { }
+
+	// RVA: 0x49EC75C Offset: 0x49E875C VA: 0x49EC75C
+	public void DDBDBGBBEFHFHHH() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49EC89C Offset: 0x49E889C VA: 0x49EC89C
+	public bool get_IsPreInitialized() { }
+
+	// RVA: 0x49EC8A4 Offset: 0x49E88A4 VA: 0x49EC8A4
+	public bool GEBGHCBGGFCAGFD() { }
+
+	[ProtectedMethod]
+	// RVA: 0x49EC8C8 Offset: 0x49E88C8 VA: 0x49EC8C8 Slot: 65
+	public void OnOcclusionBecameInvisible() { }
+
+	// RVA: 0x49ECA40 Offset: 0x49E8A40 VA: 0x49ECA40
+	public BipedMap get_BipedMap() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49ECA5C Offset: 0x49E8A5C VA: 0x49ECA5C
+	private void GDFDFHCEDHBDFCC(PlayerCharacterView BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x49ECA64 Offset: 0x49E8A64 VA: 0x49ECA64
+	private void HGABGAABBBFBECD(MovementController BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x49ECA6C Offset: 0x49E8A6C VA: 0x49ECA6C
+	public int FABBBBBBBHEDCCD() { }
+
+	// RVA: 0x49ECA90 Offset: 0x49E8A90 VA: 0x49ECA90
+	public void OnWasKilled() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49ECC4C Offset: 0x49E8C4C VA: 0x49ECC4C
+	private void HDBABHADFEHHCCB(AdminCommandsController BDFHFCCDABCFGBD) { }
+
+	[ProtectedMethod]
+	// RVA: 0x49ECC54 Offset: 0x49E8C54 VA: 0x49ECC54
+	public bool HasPredictedHelmet() { }
+
+	[ProtectedMethod]
+	// RVA: 0x49ECEA0 Offset: 0x49E8EA0 VA: 0x49ECEA0
+	public int GetMaxHealth() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49ED0AC Offset: 0x49E90AC VA: 0x49ED0AC
+	public float get_LocalTime() { }
+
+	// RVA: 0x49ED0B4 Offset: 0x49E90B4 VA: 0x49ED0B4
+	public ArmsAnimationController EDEBEAEEGHBFHFE() { }
+
+	// RVA: 0x49ED0BC Offset: 0x49E90BC VA: 0x49ED0BC
+	public void MainCameraTPSTranslate() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49ED200 Offset: 0x49E9200 VA: 0x49ED200
+	private void HHGGGCCDFDFFGGC(SkinnedMeshLodGroup BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x49ED208 Offset: 0x49E9208 VA: 0x49ED208
+	private void FHHAFEHGAAHCHGB(float BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x49ED210 Offset: 0x49E9210 VA: 0x49ED210
+	public AimController get_AimController() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49ED218 Offset: 0x49E9218 VA: 0x49ED218
+	public MecanimController get_MecanimController() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49ED220 Offset: 0x49E9220 VA: 0x49ED220
+	private void DBBBCGHBAGEHCBC(int BDFHFCCDABCFGBD) { }
+
+	[ProtectedMethod]
+	// RVA: 0x49ED228 Offset: 0x49E9228 VA: 0x49ED228
+	public void SetMainCamera(Camera BAFGBFADGGEHGCD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x49ED5B4 Offset: 0x49E95B4 VA: 0x49ED5B4
+	private void DHHAFFFEBDCEEDD(WeaponryController BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x49ED5BC Offset: 0x49E95BC VA: 0x49ED5BC
+	public MovementController get_MovementController() { }
+
+	// RVA: 0x49ED5C4 Offset: 0x49E95C4 VA: 0x49ED5C4
+	public bool DEDFCBGGHCDACDE() { }
+
+	// RVA: 0x49ED6C4 Offset: 0x49E96C4 VA: 0x49ED6C4
+	public void HHFHFEHHDDABHGC() { }
+
+	// RVA: 0x49ED8F4 Offset: 0x49E98F4 VA: 0x49ED8F4
+	private void HADGEHAEHHBEEHC(CharacterLodGroup BDFHFCCDABCFGBD) { }
+
+	[ProtectedMethod]
+	// RVA: 0x49ED8FC Offset: 0x49E98FC VA: 0x49ED8FC
+	public void ClearPreviousArmor() { }
+
+	// RVA: 0x49EDA50 Offset: 0x49E9A50 VA: 0x49EDA50
+	public void FHDFAFEHHAGCCHH() { }
+
+	// RVA: 0x49EDA58 Offset: 0x49E9A58 VA: 0x49EDA58
+	public void ECADAHEFFGBBEBA() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49EDCFC Offset: 0x49E9CFC VA: 0x49EDCFC
+	private void CAEEAFFEDADGFDG(ArmsLodGroup BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x49EDD04 Offset: 0x49E9D04 VA: 0x49EDD04
+	public void PostInitialize() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49EE05C Offset: 0x49EA05C VA: 0x49EE05C
+	public ArmsLodGroup get_ArmsLodGroup() { }
+
+	[ProtectedMethod]
+	// RVA: 0x49EE064 Offset: 0x49EA064 VA: 0x49EE064
+	private void DAFCFDCEEHBEDBB(GFAFADEHEHCHGCH EDEGECBEDADDABF) { }
+
+	[CompilerGenerated]
+	// RVA: 0x49EE4FC Offset: 0x49EA4FC VA: 0x49EE4FC
+	private void AABCBHBCEFCDDEB(bool BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x49EE508 Offset: 0x49EA508 VA: 0x49EE508
+	public PlayerSoundController get_SoundController() { }
+
+	// RVA: 0x49EE510 Offset: 0x49EA510 VA: 0x49EE510
+	private void DEEFCAFGFBECDFD(SkinnedMeshLodGroup BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x49EE518 Offset: 0x49EA518 VA: 0x49EE518
+	public PlayerCharacterView get_PlayerCharacterView() { }
+
+	[ProtectedMethod]
+	// RVA: 0x49EB86C Offset: 0x49E786C VA: 0x49EB86C
+	public void SetCharacterVisible(bool ECFGAGCDHAADFEG) { }
+
+	[CompilerGenerated]
+	// RVA: 0x49EE520 Offset: 0x49EA520 VA: 0x49EE520
+	private void GDGBAACGFBFFGAG(MecanimController BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x49EE528 Offset: 0x49EA528 VA: 0x49EE528
+	private void EGADAFBHEEAHECB(PowerController BDFHFCCDABCFGBD) { }
+
+	[ProtectedMethod]
+	// RVA: 0x49EE530 Offset: 0x49EA530 VA: 0x49EE530
+	public int GetArmor() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49EE698 Offset: 0x49EA698 VA: 0x49EE698
+	private void HAAAEGFHHFHAGEG(PhotonView BDFHFCCDABCFGBD) { }
+
+	[ProtectedMethod]
+	// RVA: 0x49EE6A0 Offset: 0x49EA6A0 VA: 0x49EE6A0
+	public void DestroyReconnectedInstance() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49EE800 Offset: 0x49EA800 VA: 0x49EE800
+	private void CAEDHHGHEBGEFCF(bool BDFHFCCDABCFGBD) { }
+
+	[ProtectedMethod]
+	// RVA: 0x49EE80C Offset: 0x49EA80C VA: 0x49EE80C
+	public bool HasHelmet() { }
+
+	// RVA: 0x49EE980 Offset: 0x49EA980 VA: 0x49EE980
+	private void HBDGHFHCAEBDFBD(BipedMap EHAFDFHABADECEG) { }
+
+	[CompilerGenerated]
+	// RVA: 0x49EEE34 Offset: 0x49EAE34 VA: 0x49EEE34
+	private void AGEDEHCEGAFFGHE(PlayerSoundController BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x49EEE3C Offset: 0x49EAE3C VA: 0x49EEE3C
+	public void GDBBEBAGAAAGCFA(bool BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x49EEE48 Offset: 0x49EAE48 VA: 0x49EEE48
+	private void GEEFADHHDDCBEDG(BipedMap EHAFDFHABADECEG) { }
+
+	[ProtectedMethod]
+	// RVA: 0x49EF2E8 Offset: 0x49EB2E8 VA: 0x49EF2E8
+	public CFGAHHHABFBAGDH IsMatchAdmin() { }
+
+	// RVA: 0x49EF45C Offset: 0x49EB45C VA: 0x49EF45C
+	public void AEDGEEGFEGFAHCG() { }
+
+	// RVA: 0x49EF68C Offset: 0x49EB68C VA: 0x49EF68C
+	private void HEFAFDAHACBGHFD(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x49EF694 Offset: 0x49EB694 VA: 0x49EF694 Slot: 63
+	public void OnObstructed() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49EF698 Offset: 0x49EB698 VA: 0x49EF698
+	public float get_SnapshotSetTime() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49EF6A0 Offset: 0x49EB6A0 VA: 0x49EF6A0
+	public int get_PlayerViewId() { }
+
+	[ProtectedMethod]
+	// RVA: 0x49EB6F8 Offset: 0x49E76F8 VA: 0x49EB6F8
+	public void SetTPSView() { }
+
+	// RVA: 0x49EF9B0 Offset: 0x49EB9B0 VA: 0x49EF9B0 Slot: 64
+	public void OnOcclusionPostBecameVisible() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49EF9B4 Offset: 0x49EB9B4 VA: 0x49EF9B4
+	public NetworkController get_NetworkController() { }
+
+	// RVA: 0x49EF9BC Offset: 0x49EB9BC VA: 0x49EF9BC
+	public void Instantiate(int HHCHHECHFEGHFDE, int DFGDFDBFADBBHFC, bool GEACEDFHAEBAFAA, bool FGFCGGCBECAFCAE, float AFEDAFAGHGFCBFF) { }
+
+	// RVA: 0x49F005C Offset: 0x49EC05C VA: 0x49F005C
+	public PlayerHitController ECCBEFCAHEBCADC() { }
+
+	// RVA: 0x49F0064 Offset: 0x49EC064 VA: 0x49F0064
+	public void AFCBFDCCBDFDAGG() { }
+
+	// RVA: 0x49F0098 Offset: 0x49EC098 VA: 0x49F0098
+	private void BGBAHCEFAEBDCGD(PlayerHitController BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x49F00A0 Offset: 0x49EC0A0 VA: 0x49F00A0
+	private void AEEHEGEDDHEAFFC(WeaponryController BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x49F00A8 Offset: 0x49EC0A8 VA: 0x49F00A8
+	public GFAFADEHEHCHGCH get_ViewMode() { }
+
+	// RVA: 0x49F00B0 Offset: 0x49EC0B0 VA: 0x49F00B0
+	public PlayerFPSCamera get_FpsCamera() { }
+
+	// RVA: 0x49F00B8 Offset: 0x49EC0B8 VA: 0x49F00B8
+	public WeaponryController EEFDBAFDBEFGHDE() { }
+
+	// RVA: 0x49F00C0 Offset: 0x49EC0C0 VA: 0x49F00C0
+	public SkinnedMeshLodGroup FEHHAAEEGDEBAGE() { }
+
+	[ProtectedMethod]
+	// RVA: 0x49EB03C Offset: 0x49E703C VA: 0x49EB03C
+	public int GetHealth() { }
+
+	[ProtectedMethod]
+	// RVA: 0x49F00C8 Offset: 0x49EC0C8 VA: 0x49F00C8
+	public void SetInputs(EGFDFGAHFHAFCCD ABFFAADCFBGAHEA, float ECFCAGECFBBHGEE) { }
+
+	[ProtectedMethod]
+	// RVA: 0x49F05A4 Offset: 0x49EC5A4 VA: 0x49F05A4
+	public bool IsDead() { }
+
+	// RVA: 0x49F0708 Offset: 0x49EC708 VA: 0x49F0708
+	private void AAEHCBECEHGGBCD(int HHCHHECHFEGHFDE, int DFGDFDBFADBBHFC, bool GEACEDFHAEBAFAA, bool FGFCGGCBECAFCAE, float AFEDAFAGHGFCBFF, DHDAHBHEBCACCBB BAFEDADDGFHADAC) { }
+
+	// RVA: 0x49F08C8 Offset: 0x49EC8C8 VA: 0x49F08C8
+	public AimController BEFEGFGDBCGBDCH() { }
+
+	// RVA: 0x49F08D0 Offset: 0x49EC8D0 VA: 0x49F08D0
+	private void EDCDHFGEFGAFFHH(GDDEBEFGEGAECCG BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x49F08D8 Offset: 0x49EC8D8 VA: 0x49F08D8
+	public void ABDDDGFGDDEGEBF(bool ECFGAGCDHAADFEG) { }
+
+	[CompilerGenerated]
+	// RVA: 0x49F0AA4 Offset: 0x49ECAA4 VA: 0x49F0AA4
+	public int get_PlayerId() { }
+
+	// RVA: 0x49F0AAC Offset: 0x49ECAAC VA: 0x49F0AAC
+	public void SetSnapshot(AGFGHFGGBGAFGBB EDCHGFBFGGDCGHH) { }
+
+	[CompilerGenerated]
+	// RVA: 0x49F0BCC Offset: 0x49ECBCC VA: 0x49F0BCC
+	public bool get_IsCharacterVisible() { }
+
+	// RVA: 0x49F0BD4 Offset: 0x49ECBD4 VA: 0x49F0BD4
+	public bool ECEFEBFHEDFGDGH() { }
+
+	[DHEDFFDCGDFFCBF]
+	// RVA: 0x49F0BF0 Offset: 0x49ECBF0 VA: 0x49F0BF0
+	private void CancelUntouchableViaServer() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49F0C18 Offset: 0x49ECC18 VA: 0x49F0C18
+	public AdminCommandsController get_AdminCommandsController() { }
+
+	// RVA: 0x49F0C20 Offset: 0x49ECC20 VA: 0x49F0C20
+	public int GAHFBFFACDDEAFE() { }
+
+	// RVA: 0x49F0CE0 Offset: 0x49ECCE0 VA: 0x49F0CE0
+	private void CHFEDFBBHDGBDED(PowerController BDFHFCCDABCFGBD) { }
+
+	[ProtectedMethod]
+	// RVA: 0x49EDA60 Offset: 0x49E9A60 VA: 0x49EDA60
+	public void Die() { }
+
+	// RVA: 0x49F0CE8 Offset: 0x49ECCE8 VA: 0x49F0CE8
+	public AdminCommandsController DGDDFAFEAFBDHBE() { }
+
+	// RVA: 0x49F0CF0 Offset: 0x49ECCF0 VA: 0x49F0CF0
+	private static void .cctor() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49F0DE4 Offset: 0x49ECDE4 VA: 0x49F0DE4
+	public PowerController get_PowerController() { }
+
+	// RVA: -1 Offset: -1
+	public T GetController<T>() { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80F0478 Offset: 0x80EC478 VA: 0x80F0478
+	|-PlayerController.GetController<object>
+	*/
+
+	[CompilerGenerated]
+	// RVA: 0x49F0DEC Offset: 0x49ECDEC VA: 0x49F0DEC
+	private void ABFGEHFDGEGEGGG(bool BDFHFCCDABCFGBD) { }
+
+	[ProtectedMethod]
+	// RVA: 0x49F0DF8 Offset: 0x49ECDF8 VA: 0x49F0DF8
+	public void SetFpsCamera(Camera HFGCEHHEDGBEBBB) { }
+
+	[CompilerGenerated]
+	// RVA: 0x49F1188 Offset: 0x49ED188 VA: 0x49F1188
+	public PlayerOcclusionController get_PlayerOcclusionController() { }
+
+	// RVA: 0x49F1190 Offset: 0x49ED190 VA: 0x49F1190
+	public bool TryGetCurrentLevelZone(out AFADCFFFCDGAAAB DDHHFCADEGFDECG) { }
+
+	// RVA: 0x49F1294 Offset: 0x49ED294 VA: 0x49F1294
+	private static ILogger AFHFDHGGCCDECDB() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49F13E4 Offset: 0x49ED3E4 VA: 0x49F13E4
+	public SkinnedMeshLodGroup get_MeshLodGroup() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49F13EC Offset: 0x49ED3EC VA: 0x49F13EC
+	private void AAFBEFFAGFCBECH(AimController BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x49F13F4 Offset: 0x49ED3F4 VA: 0x49F13F4
+	public void ResetFpsCamera() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49F13FC Offset: 0x49ED3FC VA: 0x49F13FC
+	private void HCHBBDCAFDDGFBH(GFAFADEHEHCHGCH BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x49F1404 Offset: 0x49ED404 VA: 0x49F1404
+	public CharacterLodGroup get_CharacterMeshLodGroup() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49F140C Offset: 0x49ED40C VA: 0x49F140C
+	public WeaponryController get_WeaponryController() { }
+
+	// RVA: 0x49F1414 Offset: 0x49ED414 VA: 0x49F1414
+	private void AFABGCHBDGCFEEF(BipedMap AFBEFGCGDGCEHHA) { }
+
+	// RVA: 0x49F18C8 Offset: 0x49ED8C8 VA: 0x49F18C8
+	public bool get_IsMine() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49F18E4 Offset: 0x49ED8E4 VA: 0x49F18E4
+	public bool get_IsPostInitialized() { }
+
+	[ProtectedMethod]
+	// RVA: 0x49F18EC Offset: 0x49ED8EC VA: 0x49F18EC
+	public int GetMaxArmor() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49F1AF4 Offset: 0x49EDAF4 VA: 0x49F1AF4
+	public void set_IsBlinded(bool BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x49F1B00 Offset: 0x49EDB00 VA: 0x49F1B00
+	public Transform get_MainCameraHolder() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49F1B08 Offset: 0x49EDB08 VA: 0x49F1B08
+	private void FBCCABDFCCHBHFF(NetworkController BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x49F1B10 Offset: 0x49EDB10 VA: 0x49F1B10
+	public AimController GGAEGFFDDBHGDHC() { }
+
+	// RVA: 0x49F1B18 Offset: 0x49EDB18 VA: 0x49F1B18 Slot: 66
+	public void OnUnobstructed() { }
+
+	// RVA: 0x49F1B1C Offset: 0x49EDB1C VA: 0x49F1B1C Slot: 44
+	public override void OnPhotonInstantiate(DHDAHBHEBCACCBB BBFGCFDHHGHFAEA) { }
+
+	// RVA: 0x49F1B64 Offset: 0x49EDB64 VA: 0x49F1B64
+	public void EDEDHBBHHCBGHGH() { }
+
+	// RVA: 0x49F0804 Offset: 0x49EC804 VA: 0x49F0804
+	public int HADGCCCCBEHEDAB() { }
+
+	// RVA: 0x49F1D20 Offset: 0x49EDD20 VA: 0x49F1D20
+	public void PreInitialize(BipedMap AFBEFGCGDGCEHHA, BipedMap EHAFDFHABADECEG) { }
+
+	[CompilerGenerated]
+	// RVA: 0x49F2A64 Offset: 0x49EEA64 VA: 0x49F2A64
+	private void CHECECBGAACAEGC(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x49F2A6C Offset: 0x49EEA6C VA: 0x49F2A6C
+	public MecanimController EEEEHBECBDGDFFG() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49F2A74 Offset: 0x49EEA74 VA: 0x49F2A74
+	private void HEDCHADAFDDHHED(int BDFHFCCDABCFGBD) { }
+
+	[ProtectedMethod]
+	// RVA: 0x49F2A7C Offset: 0x49EEA7C VA: 0x49F2A7C
+	public void SetTeam(FECCEFEDHEEHDCH HEEFCBCHDEHAECC) { }
+
+	// RVA: 0x49F2BDC Offset: 0x49EEBDC VA: 0x49F2BDC
+	public void DEEBECHCAHCCBFF(int HHCHHECHFEGHFDE, int DFGDFDBFADBBHFC, bool GEACEDFHAEBAFAA, bool FGFCGGCBECAFCAE, float AFEDAFAGHGFCBFF) { }
+
+	[ProtectedMethod]
+	// RVA: 0x49F3278 Offset: 0x49EF278 VA: 0x49F3278
+	public int GetPreviousArmor() { }
+
+	// RVA: 0x49F34C8 Offset: 0x49EF4C8 VA: 0x49F34C8
+	public Transform get_Transform() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49F358C Offset: 0x49EF58C VA: 0x49F358C
+	public ArmsAnimationController get_ArmsAnimController() { }
+
+	// RVA: 0x49EAEEC Offset: 0x49E6EEC VA: 0x49EAEEC
+	private static ILogger FBDFEBGDFBEFHCE() { }
+
+	// RVA: 0x49F3594 Offset: 0x49EF594 VA: 0x49F3594
+	private void DECHEEGACAECABA(PowerController BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x49F359C Offset: 0x49EF59C VA: 0x49F359C
+	public int CGCHDBHACCGCAEC() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49F35A4 Offset: 0x49EF5A4 VA: 0x49F35A4
+	public GDDEBEFGEGAECCG get_Player() { }
+
+	// RVA: 0x49F35AC Offset: 0x49EF5AC VA: 0x49F35AC Slot: 68
+	public void DDGFCAEGHFGFHBH() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49F35B0 Offset: 0x49EF5B0 VA: 0x49F35B0
+	private void GEFHDFDDAFFDHDD(ArmsAnimationController BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x49EF6A8 Offset: 0x49EB6A8 VA: 0x49EF6A8
+	private void FDBBFGEEHEGCEAE(PlayerCharacterView DEBFCHHGBBEAGCA) { }
+
+	[ProtectedMethod]
+	// RVA: 0x49F35B8 Offset: 0x49EF5B8 VA: 0x49F35B8
+	public FECCEFEDHEEHDCH GetTeam() { }
+
+	[ProtectedMethod]
+	// RVA: 0x49EB1B0 Offset: 0x49E71B0 VA: 0x49EB1B0
+	public int GetPredictedArmor() { }
+
+	// RVA: 0x49F370C Offset: 0x49EF70C VA: 0x49F370C
+	public PlayerMainCamera get_MainCamera() { }
+
+	[DHEDFFDCGDFFCBF]
+	// RVA: 0x49F3714 Offset: 0x49EF714 VA: 0x49F3714
+	private void InstantiateViaServer(int HHCHHECHFEGHFDE, int DFGDFDBFADBBHFC, bool GEACEDFHAEBAFAA, bool FGFCGGCBECAFCAE, float AFEDAFAGHGFCBFF, DHDAHBHEBCACCBB BAFEDADDGFHADAC) { }
+
+	[ProtectedMethod]
+	// RVA: 0x49F3814 Offset: 0x49EF814 VA: 0x49F3814
+	public void SetFPSView() { }
+
+	// RVA: 0x49F3988 Offset: 0x49EF988 VA: 0x49F3988
+	public GFAFADEHEHCHGCH DCCBBGCEGCDDGBB() { }
+
+	[ProtectedMethod]
+	// RVA: 0x49F3990 Offset: 0x49EF990 VA: 0x49F3990
+	private void Update() { }
+
+	// RVA: 0x49F3C90 Offset: 0x49EFC90 VA: 0x49F3C90
+	public void BBGHFEFGCFBFFEG() { }
+
+	[DHEDFFDCGDFFCBF]
+	// RVA: 0x49F3C98 Offset: 0x49EFC98 VA: 0x49F3C98
+	private void DieViaServer() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49F40A8 Offset: 0x49F00A8 VA: 0x49F40A8
+	private void FEGBBDEEDGFFFGF(GDDEBEFGEGAECCG BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x49F40B0 Offset: 0x49F00B0 VA: 0x49F40B0
+	public PhotonView get_PhotonView() { }
+
+	// RVA: 0x49F40B8 Offset: 0x49F00B8 VA: 0x49F40B8 Slot: 69
+	public void DBBBHADFGADDGHD() { }
+
+	// RVA: 0x49F40BC Offset: 0x49F00BC VA: 0x49F40BC Slot: 70
+	protected virtual void DFHHBHBCHGABGCG() { }
+
+	[ProtectedMethod]
+	// RVA: 0x49F3F30 Offset: 0x49EFF30 VA: 0x49F3F30
+	public void KillPlayer() { }
+
+	// RVA: 0x49F462C Offset: 0x49F062C VA: 0x49F462C
+	public GDDEBEFGEGAECCG DHBHDHACHDCHHCC() { }
+
+	[ProtectedMethod]
+	// RVA: 0x49F4634 Offset: 0x49F0634 VA: 0x49F4634
+	private void ADBHADGHCDDCHCE(HBGFCDHDDCFBGAE HBCBFBDDEBAEBFD) { }
+
+	// RVA: 0x49F4870 Offset: 0x49F0870 VA: 0x49F4870
+	public void FFEEACEGGCBHAHD() { }
+
+	// RVA: 0x49F48A0 Offset: 0x49F08A0 VA: 0x49F48A0
+	private void EHFAGDDGEHEHEAF(CharacterLodGroup BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x49F48A8 Offset: 0x49F08A8 VA: 0x49F48A8
+	private void HDHABBDGFAHEHGE(CharacterLodGroup BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x49F48B0 Offset: 0x49F08B0 VA: 0x49F48B0
+	public void .ctor() { }
+
+	// RVA: 0x49F4340 Offset: 0x49F0340 VA: 0x49F4340
+	public void DestroyPlayer() { }
+
+	// RVA: 0x49F48B8 Offset: 0x49F08B8 VA: 0x49F48B8
+	public void CheckAndUpdateFPSCamera() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49F48D0 Offset: 0x49F08D0 VA: 0x49F48D0
+	private void ABBDCFHHGBFDCHH(PlayerHitController BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x49F48D8 Offset: 0x49F08D8 VA: 0x49F48D8
+	private void CGHEDFAGHBBEHHF(CharacterLodGroup BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x49F48E0 Offset: 0x49F08E0 VA: 0x49F48E0
+	private void OnDestroy() { }
+
+	// RVA: 0x49F49E4 Offset: 0x49F09E4 VA: 0x49F49E4
+	public float ABDDDGDHDEHFECH() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49F49EC Offset: 0x49F09EC VA: 0x49F49EC
+	public PlayerHitController get_HitController() { }
+
+	[DHEDFFDCGDFFCBF]
+	// RVA: 0x49F49F4 Offset: 0x49F09F4 VA: 0x49F49F4
+	public void SetArmorViaServer(int DFGDFDBFADBBHFC, bool GEACEDFHAEBAFAA) { }
+
+	// RVA: 0x49F4A58 Offset: 0x49F0A58 VA: 0x49F4A58
+	private void EDBFABFBDCHGDGG(PhotonView BDFHFCCDABCFGBD) { }
+
+	[ProtectedMethod]
+	// RVA: 0x49F4A60 Offset: 0x49F0A60 VA: 0x49F4A60 Slot: 62
+	public void OnOcclusionBecameVisible() { }
+
+	// RVA: 0x49F4D14 Offset: 0x49F0D14 VA: 0x49F4D14
+	private void ECDFHFFHGAEEDHG(AimController BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x49F4D1C Offset: 0x49F0D1C VA: 0x49F4D1C
+	public bool get_IsBlinded() { }
+}

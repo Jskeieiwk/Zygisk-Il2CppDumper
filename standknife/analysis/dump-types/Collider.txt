@@ -1,0 +1,68 @@
+// Namespace: UnityEngine
+public class Collider : Component // TypeDefIndex: 22572
+{
+	// Properties
+	public bool enabled { get; set; }
+	public Rigidbody attachedRigidbody { get; }
+	public bool isTrigger { get; set; }
+	public Bounds bounds { get; }
+	[NativeMethod("Material")]
+	public PhysicMaterial sharedMaterial { get; set; }
+	public PhysicMaterial material { get; set; }
+
+	// Methods
+
+	// RVA: 0xA82ECC0 Offset: 0xA82ACC0 VA: 0xA82ECC0
+	public bool get_enabled() { }
+
+	// RVA: 0xA82EE34 Offset: 0xA82AE34 VA: 0xA82EE34
+	public void set_enabled(bool value) { }
+
+	[NativeMethod("GetRigidbody")]
+	// RVA: 0xA82B364 Offset: 0xA827364 VA: 0xA82B364
+	public Rigidbody get_attachedRigidbody() { }
+
+	// RVA: 0xA82EFB8 Offset: 0xA82AFB8 VA: 0xA82EFB8
+	public bool get_isTrigger() { }
+
+	// RVA: 0xA82F138 Offset: 0xA82B138 VA: 0xA82F138
+	public void set_isTrigger(bool value) { }
+
+	// RVA: 0xA82F2B4 Offset: 0xA82B2B4 VA: 0xA82F2B4
+	public Vector3 ClosestPoint(Vector3 position) { }
+
+	// RVA: 0xA82F498 Offset: 0xA82B498 VA: 0xA82F498
+	public Bounds get_bounds() { }
+
+	// RVA: 0xA82F66C Offset: 0xA82B66C VA: 0xA82F66C
+	public PhysicMaterial get_sharedMaterial() { }
+
+	// RVA: 0xA82F7E8 Offset: 0xA82B7E8 VA: 0xA82F7E8
+	public void set_sharedMaterial(PhysicMaterial value) { }
+
+	[NativeMethod("GetClonedMaterial")]
+	// RVA: 0xA82F978 Offset: 0xA82B978 VA: 0xA82F978
+	public PhysicMaterial get_material() { }
+
+	[NativeMethod("SetMaterial")]
+	// RVA: 0xA82FAF4 Offset: 0xA82BAF4 VA: 0xA82FAF4
+	public void set_material(PhysicMaterial value) { }
+
+	// RVA: 0xA82FC8C Offset: 0xA82BC8C VA: 0xA82FC8C
+	private RaycastHit Raycast(Ray ray, float maxDistance, ref bool hasHit) { }
+
+	// RVA: 0xA82FEA0 Offset: 0xA82BEA0 VA: 0xA82FEA0
+	public bool Raycast(Ray ray, out RaycastHit hitInfo, float maxDistance) { }
+
+	// RVA: 0xA82FF0C Offset: 0xA82BF0C VA: 0xA82FF0C
+	public void .ctor() { }
+
+	// RVA: 0xA82F2EC Offset: 0xA82B2EC VA: 0xA82F2EC
+	private void ClosestPoint_Injected(ref Vector3 position, out Vector3 ret) { }
+
+	// RVA: 0xA82F4D0 Offset: 0xA82B4D0 VA: 0xA82F4D0
+	private void get_bounds_Injected(out Bounds ret) { }
+
+	// RVA: 0xA82FCC8 Offset: 0xA82BCC8 VA: 0xA82FCC8
+	private void Raycast_Injected(ref Ray ray, float maxDistance, ref bool hasHit, out RaycastHit ret) { }
+}

@@ -1,0 +1,34 @@
+// Namespace: 
+private sealed class WeaponDropManager.<>c // TypeDefIndex: 7858
+{
+	// Fields
+	public static readonly WeaponDropManager.<>c <>9; // 0x0
+	public static Func<WeaponDropController, int> <>9__38_1; // 0x8
+	public static Func<object, WeaponParameters> <>9__40_0; // 0x10
+	public static Func<WeaponParameters, object> <>9__44_0; // 0x18
+	public static Func<ACFBEBGADFDGEBG, CFGAHHHABFBAGDH> <>9__65_0; // 0x20
+	public static Func<ACFBEBGADFDGEBG, CFGAHHHABFBAGDH> <>9__65_1; // 0x28
+
+	// Methods
+
+	// RVA: 0x592A6A0 Offset: 0x59266A0 VA: 0x592A6A0
+	private static void .cctor() { }
+
+	// RVA: 0x592A760 Offset: 0x5926760 VA: 0x592A760
+	internal CFGAHHHABFBAGDH BHCFBGFBCDHEDAG(ACFBEBGADFDGEBG _) { }
+
+	// RVA: 0x592A884 Offset: 0x5926884 VA: 0x592A884
+	internal CFGAHHHABFBAGDH FECCDEHCECAEFAB(ACFBEBGADFDGEBG _) { }
+
+	// RVA: 0x592A9A8 Offset: 0x59269A8 VA: 0x592A9A8
+	internal WeaponParameters EHGHCBCEAEAHHDD(object weaponId) { }
+
+	// RVA: 0x592A758 Offset: 0x5926758 VA: 0x592A758
+	public void .ctor() { }
+
+	// RVA: 0x592AAC0 Offset: 0x5926AC0 VA: 0x592AAC0
+	internal object FAEDBFHGFDBBHAB(WeaponParameters weapon) { }
+
+	// RVA: 0x592AB78 Offset: 0x5926B78 VA: 0x592AB78
+	internal int ECCAGDEAEBFFDAC(WeaponDropController controller) { }
+}

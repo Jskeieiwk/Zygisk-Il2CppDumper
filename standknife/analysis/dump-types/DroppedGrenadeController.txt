@@ -1,0 +1,290 @@
+// Namespace: Axlebolt.Standoff.Inventory.Grenade
+public class DroppedGrenadeController : MonoBehaviour, IRaycastPhysicsListener, IDetonationableGrenade, IDetonationableGrenadeSource // TypeDefIndex: 3702
+{
+	// Fields
+	public const float GrenadeCollisionSoundMinSpeed = 0.1;
+	private const float GGDCAHCGADADCDH = 20;
+	private readonly List<ABBHCAAFBACFDBD> FBAHAFBGEHAFEBA; // 0x20
+	private readonly List<IDetonationableGrenadeListener> BAEEAHFCAFABGFH; // 0x28
+	private GrenadeParameters EGGDGDEHEBAAHCH; // 0x30
+	private GrenadeSoundParameters ECDBAFBHDAEEFHF; // 0x38
+	private const float EHCEDFHDEGGEGGA = 0.07;
+	private Transform DBGBCECAAFCHEBA; // 0x40
+	private WeaponMap CBEDDFEHFHBCGGC; // 0x48
+	private WeaponLodGroup EBBBGCCADAFEFEH; // 0x50
+	private WeaponMaterialController BACAFECDHFFCEAF; // 0x58
+	private DDGHBGGDCFEBHBF CGBHADBEDEGEDHG; // 0x60
+	private float HBACGCBDDGGCACE; // 0x68
+	private GrenadeStates EGBCECGCHDEEAHF; // 0x6C
+	private float CAHGDFGFCFBHCFH; // 0x70
+	private GDDEBEFGEGAECCG ECDGEDGFBCFBFAE; // 0x78
+	private EECFGGBDFDAAFEE GEACDGBDCGAFEBE; // 0x80
+	private GHDCBEDCHGHBDEC DEHACACGDBCCCBE; // 0x88
+	private Nullable<PhysicsCollisionDataValue> HFCGCECAAHEDCCE; // 0x90
+	private ACFBEBGADFDGEBG EDGDHAFCHECCAEE; // 0xC8
+	private static int FFCDFAHDCDDFEHF; // 0x0
+	private GameObject BDCDDFHBEAGEBBA; // 0xD0
+	private GameObject AFBGHBDAFBACFGD; // 0xD8
+	private IRaycastPhysicsController HFAFACGBCCDDEGE; // 0xE0
+	private Vector3 FABCADDBAAGHHBG; // 0xE8
+	private Vector3 EGADDFDDDCHFBBE; // 0xF4
+	[CompilerGenerated]
+	private FECCEFEDHEEHDCH <FCFBAHADCDFHEHH>k__BackingField; // 0x100
+	[CompilerGenerated]
+	private Vector3 <DFEAAGEAHHGHCDE>k__BackingField; // 0x104
+
+	// Properties
+	public Vector3 GDFAAGDBFAAGHAE { get; }
+	public DHHAGHHDHBEBAAE DGCEHFHCHEBFADE { get; }
+	public int ADBCEAAFFBBCFGB { get; }
+	public int AGCEDEHDCGDGBCH { get; }
+	public GrenadeParameters BGCFAFBAEEAAEFC { get; }
+	public Transform BCAFDDGADHHDCDE { get; }
+	public GDDEBEFGEGAECCG GCDEHBHDEHDCAHH { get; }
+	public Nullable<PhysicsCollisionDataValue> DGBCDEFEEGGHABH { get; }
+	public FECCEFEDHEEHDCH BGGBGEFBGFCBCHC { get; set; }
+	public Vector3 GHFEABBEFEBFGDF { get; set; }
+	public GrenadeStates DDCGEDFDDHGEACF { get; }
+	public DetonationType AGHGGECACAAFFGH { get; }
+
+	// Methods
+
+	// RVA: 0x3B0337C Offset: 0x3AFF37C VA: 0x3B0337C
+	private void FixedUpdate() { }
+
+	// RVA: 0x3B03980 Offset: 0x3AFF980 VA: 0x3B03980
+	private void OnDestroy() { }
+
+	// RVA: 0x3B03A70 Offset: 0x3AFFA70 VA: 0x3B03A70
+	public void CEDEBGHFBHEGHGA(ABBHCAAFBACFDBD HEEAFEDCBGEAHFE) { }
+
+	// RVA: 0x3B03C24 Offset: 0x3AFFC24 VA: 0x3B03C24
+	public void GCEEEBBDEGCBGDD(Vector3 BEAFEDEABADDAAB, bool AHFHEACABDFFCBB) { }
+
+	// RVA: 0x3B041C8 Offset: 0x3B001C8 VA: 0x3B041C8
+	private void ECDBAEFDAABBEFG() { }
+
+	// RVA: 0x3B0436C Offset: 0x3B0036C VA: 0x3B0436C
+	public void OnInitialize(GDDEBEFGEGAECCG GDBGAGDBBCDHFEG, int DGCFGDFGGGBABBH, DHHAGHHDHBEBAAE HAFCCECAHGECCCE, int CADHBBFGEDCCDGE, bool CCHDHBEHGEHFHBA, bool DBHEDADDBEBDBED) { }
+
+	// RVA: 0x3B0483C Offset: 0x3B0083C VA: 0x3B0483C
+	public Transform BGADDAEGECCFDHB() { }
+
+	// RVA: 0x3B04900 Offset: 0x3B00900 VA: 0x3B04900
+	private void FCFCEFABGHAAAFG() { }
+
+	// RVA: 0x3B04AA4 Offset: 0x3B00AA4 VA: 0x3B04AA4
+	public DetonationType EHHDCEEHFCDFHFD() { }
+
+	// RVA: 0x3B04AC0 Offset: 0x3B00AC0 VA: 0x3B04AC0
+	public void OnComponentAdded(ABBHCAAFBACFDBD HEEAFEDCBGEAHFE) { }
+
+	// RVA: 0x3B04C74 Offset: 0x3B00C74 VA: 0x3B04C74
+	private void GBBCAGHFEAFFDFC(in PhysicsCollisionDataValue AAFECBBEAEADDEG) { }
+
+	// RVA: 0x3B05030 Offset: 0x3B01030 VA: 0x3B05030
+	public void HGHCEBAHEHBHFDE(Vector3 BEAFEDEABADDAAB, Vector3 BFEHBCGFHAHEEAE, FHGFCFFHBHEAEEA ABAGBHEGEDFCEDF, float GDBAEEBFBACCBAD, double DGCAHFFHEDHDAAH) { }
+
+	// RVA: 0x3B05A74 Offset: 0x3B01A74 VA: 0x3B05A74
+	private void DFEEDAFHGHFABBH() { }
+
+	// RVA: 0x3B05B64 Offset: 0x3B01B64 VA: 0x3B05B64
+	private void FCEBADHDHEEDCBB(in PhysicsCollisionDataValue AAFECBBEAEADDEG) { }
+
+	// RVA: 0x3B05E44 Offset: 0x3B01E44 VA: 0x3B05E44
+	private void BFDHDCEFFFGBFDA() { }
+
+	[CompilerGenerated]
+	// RVA: 0x3B060E4 Offset: 0x3B020E4 VA: 0x3B060E4
+	private void AHHAGHFHDAAHBDF(FECCEFEDHEEHDCH BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x3B060EC Offset: 0x3B020EC VA: 0x3B060EC
+	public GDDEBEFGEGAECCG ADEFCCBCFBEBGHF() { }
+
+	// RVA: 0x3B060F4 Offset: 0x3B020F4 VA: 0x3B060F4
+	public GrenadeStates get_CurrentState() { }
+
+	// RVA: 0x3B04F6C Offset: 0x3B00F6C VA: 0x3B04F6C
+	public Transform get_Transform() { }
+
+	// RVA: 0x3B060FC Offset: 0x3B020FC VA: 0x3B060FC
+	public void DDADBGGHEABHACD() { }
+
+	// RVA: 0x3B06210 Offset: 0x3B02210 VA: 0x3B06210
+	private static void .cctor() { }
+
+	// RVA: 0x3B062B0 Offset: 0x3B022B0 VA: 0x3B062B0
+	public void HDHCAGDEEAHACFB(Vector3 BEAFEDEABADDAAB, Vector3 BFEHBCGFHAHEEAE, FHGFCFFHBHEAEEA ABAGBHEGEDFCEDF, float GDBAEEBFBACCBAD, double DGCAHFFHEDHDAAH) { }
+
+	// RVA: 0x3B06C2C Offset: 0x3B02C2C VA: 0x3B06C2C Slot: 8
+	public void EGEHGCFBAFEBCCB(IDetonationableGrenadeListener DHECGAGCCEAGHAE) { }
+
+	// RVA: 0x3B06D8C Offset: 0x3B02D8C VA: 0x3B06D8C
+	public int get_InventoryItemId() { }
+
+	// RVA: 0x3B06DA8 Offset: 0x3B02DA8 VA: 0x3B06DA8
+	public void BDAHABGEGHEBHHH(Vector3 BEAFEDEABADDAAB, bool AHFHEACABDFFCBB) { }
+
+	// RVA: 0x3B07348 Offset: 0x3B03348 VA: 0x3B07348
+	private void HBBBHGHCHFDBAFD(FECCEFEDHEEHDCH BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x3B07350 Offset: 0x3B03350 VA: 0x3B07350
+	public FECCEFEDHEEHDCH BDFEDADCDCGCHBB() { }
+
+	// RVA: 0x3B07358 Offset: 0x3B03358 VA: 0x3B07358
+	public GDDEBEFGEGAECCG HDABCGHBEACDFHE() { }
+
+	// RVA: 0x3B07360 Offset: 0x3B03360 VA: 0x3B07360
+	public void EEDECHHFGHBGHFE(Vector3 BEAFEDEABADDAAB, Vector3 BFEHBCGFHAHEEAE, FHGFCFFHBHEAEEA ABAGBHEGEDFCEDF, float GDBAEEBFBACCBAD, double DGCAHFFHEDHDAAH) { }
+
+	[CompilerGenerated]
+	// RVA: 0x3B03838 Offset: 0x3AFF838 VA: 0x3B03838
+	private bool HCAGFGFFAEDGFHA(RaycastHit CECFHDBCEHFEDCC) { }
+
+	// RVA: 0x3B07CDC Offset: 0x3B03CDC VA: 0x3B07CDC
+	public DHHAGHHDHBEBAAE get_SkinId() { }
+
+	// RVA: 0x3B03888 Offset: 0x3AFF888 VA: 0x3B03888
+	private void GCAHHHBDFGGECDC() { }
+
+	// RVA: 0x3B07CF8 Offset: 0x3B03CF8 VA: 0x3B07CF8
+	public void .ctor() { }
+
+	// RVA: 0x3B07F7C Offset: 0x3B03F7C VA: 0x3B07F7C
+	public DHHAGHHDHBEBAAE AGGBHFDAFDBHHCD() { }
+
+	// RVA: 0x3B07F98 Offset: 0x3B03F98 VA: 0x3B07F98
+	private bool DHDDGCBDBGCHHHD() { }
+
+	// RVA: 0x3B08148 Offset: 0x3B04148 VA: 0x3B08148
+	public bool BAGCBHAGGBCBCCE() { }
+
+	// RVA: 0x3B0822C Offset: 0x3B0422C VA: 0x3B0822C
+	public void Detonated(Vector3 BEAFEDEABADDAAB, bool AHFHEACABDFFCBB) { }
+
+	// RVA: 0x3B08974 Offset: 0x3B04974 VA: 0x3B08974
+	public int DEFGEEFDBCHGBFF() { }
+
+	// RVA: 0x3B08990 Offset: 0x3B04990 VA: 0x3B08990 Slot: 9
+	public void DBFEBDECHAGEEBG(PhysicsCollisionDataValue AAFECBBEAEADDEG) { }
+
+	// RVA: 0x3B08D30 Offset: 0x3B04D30 VA: 0x3B08D30
+	public void OnPreInitialize(GrenadeParameters FAFDCHEHBCDAHHC, GrenadeSoundParameters FHDAADCGHACAGCD, GrenadeEffectParameters DCCGGHCFEDEBGEH, ACFBEBGADFDGEBG HGEAFDEDCHEFHBE, WeaponLodGroup CEFGDHFBEAHGHBE) { }
+
+	// RVA: 0x3B087D0 Offset: 0x3B047D0 VA: 0x3B087D0
+	private void DHBCEEFBAHGEFFG() { }
+
+	// RVA: 0x3B0984C Offset: 0x3B0584C VA: 0x3B0984C
+	private bool CBEGBABFCCAEFCD(RaycastHit CECFHDBCEHFEDCC) { }
+
+	// RVA: 0x3B09854 Offset: 0x3B05854 VA: 0x3B09854
+	private void EFGHCEDCCFEDAHF() { }
+
+	// RVA: 0x3B099F8 Offset: 0x3B059F8 VA: 0x3B099F8
+	public GrenadeParameters get_Parameters() { }
+
+	// RVA: 0x3B09A00 Offset: 0x3B05A00 VA: 0x3B09A00
+	public void BHHGFCDDHGCDBEC() { }
+
+	// RVA: 0x3B09E68 Offset: 0x3B05E68 VA: 0x3B09E68
+	public int CDEDBACBEFFAEHG() { }
+
+	// RVA: 0x3B09E84 Offset: 0x3B05E84 VA: 0x3B09E84
+	public bool IsTimeLeft() { }
+
+	// RVA: 0x3B09F68 Offset: 0x3B05F68 VA: 0x3B09F68
+	public void DDABFGHEEABDDGA(Vector3 BEAFEDEABADDAAB, bool AHFHEACABDFFCBB) { }
+
+	// RVA: 0x3B0A50C Offset: 0x3B0650C VA: 0x3B0A50C Slot: 10
+	public void HCGADBEBDBDHHBG(IDetonationableGrenadeListener DHECGAGCCEAGHAE) { }
+
+	// RVA: 0x3B0A66C Offset: 0x3B0666C VA: 0x3B0A66C Slot: 4
+	public void OnCollision(PhysicsCollisionDataValue AAFECBBEAEADDEG) { }
+
+	// RVA: 0x3B0AAC4 Offset: 0x3B06AC4 VA: 0x3B0AAC4
+	public GrenadeStates HEHFEBDGADDGFCD() { }
+
+	[CompilerGenerated]
+	// RVA: 0x3B0AACC Offset: 0x3B06ACC VA: 0x3B0AACC
+	public FECCEFEDHEEHDCH get_TeamOwner() { }
+
+	// RVA: 0x3B059B0 Offset: 0x3B019B0 VA: 0x3B059B0
+	public Transform CCCBBGEDACGGDFE() { }
+
+	// RVA: 0x3B0AAD4 Offset: 0x3B06AD4 VA: 0x3B0AAD4
+	private bool DABHGBEADGFFBDE(RaycastHit CECFHDBCEHFEDCC) { }
+
+	// RVA: 0x3B0AB24 Offset: 0x3B06B24 VA: 0x3B0AB24
+	public GDDEBEFGEGAECCG get_Player() { }
+
+	// RVA: 0x3B0AB2C Offset: 0x3B06B2C VA: 0x3B0AB2C
+	public void PlayLocalEffects() { }
+
+	// RVA: 0x3B0ADD8 Offset: 0x3B06DD8 VA: 0x3B0ADD8
+	public DetonationType get_DetonationType() { }
+
+	// RVA: 0x3B0ADF4 Offset: 0x3B06DF4 VA: 0x3B0ADF4 Slot: 5
+	public Vector3 get_Position() { }
+
+	// RVA: 0x3B0AE10 Offset: 0x3B06E10 VA: 0x3B0AE10
+	public Vector3 ECABCCEEGBDHBEG() { }
+
+	// RVA: 0x3B0AE20 Offset: 0x3B06E20 VA: 0x3B0AE20
+	public int get_OwnerId() { }
+
+	// RVA: 0x3B0AE3C Offset: 0x3B06E3C VA: 0x3B0AE3C
+	public GDDEBEFGEGAECCG GGHBHBGGAFHEBAD() { }
+
+	// RVA: 0x3B0AE44 Offset: 0x3B06E44 VA: 0x3B0AE44 Slot: 7
+	public void RemoveListener(IDetonationableGrenadeListener DHECGAGCCEAGHAE) { }
+
+	// RVA: 0x3B0AEEC Offset: 0x3B06EEC VA: 0x3B0AEEC
+	private void Awake() { }
+
+	// RVA: 0x3B0B18C Offset: 0x3B0718C VA: 0x3B0B18C Slot: 6
+	public void AddListener(IDetonationableGrenadeListener DHECGAGCCEAGHAE) { }
+
+	[CompilerGenerated]
+	// RVA: 0x3B0B2EC Offset: 0x3B072EC VA: 0x3B0B2EC
+	public Vector3 get_ThrowPosition() { }
+
+	// RVA: 0x3B0B2FC Offset: 0x3B072FC VA: 0x3B0B2FC
+	public void OnDetonating() { }
+
+	// RVA: 0x3B0B410 Offset: 0x3B07410 VA: 0x3B0B410
+	private void FFBBHAFGFFFBDDB() { }
+
+	// RVA: 0x3B0A918 Offset: 0x3B06918 VA: 0x3B0A918
+	private bool GABGEBBBEHECFFH() { }
+
+	// RVA: 0x3B08C3C Offset: 0x3B04C3C VA: 0x3B08C3C
+	private void GBBHFEAEFGCHHAD() { }
+
+	// RVA: 0x3B0B6B0 Offset: 0x3B076B0 VA: 0x3B0B6B0
+	public void Throw(Vector3 BEAFEDEABADDAAB, Vector3 BFEHBCGFHAHEEAE, FHGFCFFHBHEAEEA ABAGBHEGEDFCEDF, float GDBAEEBFBACCBAD, double DGCAHFFHEDHDAAH) { }
+
+	[CompilerGenerated]
+	// RVA: 0x3B0C02C Offset: 0x3B0802C VA: 0x3B0C02C
+	private void DDBCHCCCAAEHGAG(Vector3 BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x3B0C03C Offset: 0x3B0803C VA: 0x3B0C03C
+	public void OnReturnToPool() { }
+
+	// RVA: 0x3B0C4A4 Offset: 0x3B084A4 VA: 0x3B0C4A4
+	public GDDEBEFGEGAECCG AAHGAHHECECGHED() { }
+
+	// RVA: 0x3B0C4AC Offset: 0x3B084AC VA: 0x3B0C4AC
+	private void BBFEBAEGDHBDEDB(Vector3 BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x3B0C4BC Offset: 0x3B084BC VA: 0x3B0C4BC
+	public void BFDGECABBFBFAGC(GDDEBEFGEGAECCG GDBGAGDBBCDHFEG, int DGCFGDFGGGBABBH, DHHAGHHDHBEBAAE HAFCCECAHGECCCE, int CADHBBFGEDCCDGE, bool CCHDHBEHGEHFHBA, bool DBHEDADDBEBDBED) { }
+
+	// RVA: 0x3B0C98C Offset: 0x3B0898C VA: 0x3B0C98C
+	public void ADDFBFGAGDDEDFG(ABBHCAAFBACFDBD HEEAFEDCBGEAHFE) { }
+
+	// RVA: 0x3B0CB40 Offset: 0x3B08B40 VA: 0x3B0CB40
+	public Nullable<PhysicsCollisionDataValue> get_Collision() { }
+
+	// RVA: 0x3B0CB5C Offset: 0x3B08B5C VA: 0x3B0CB5C
+	public void CHHBCFFDFDEBADH(ABBHCAAFBACFDBD HEEAFEDCBGEAHFE) { }
+}

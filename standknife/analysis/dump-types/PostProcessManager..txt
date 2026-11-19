@@ -1,0 +1,18 @@
+// Namespace: 
+private sealed class PostProcessManager.<>c // TypeDefIndex: 21134
+{
+	// Fields
+	public static readonly PostProcessManager.<>c <>9; // 0x0
+	public static Func<Type, bool> <>9__12_0; // 0x8
+
+	// Methods
+
+	// RVA: 0xA58897C Offset: 0xA58497C VA: 0xA58897C
+	private static void .cctor() { }
+
+	// RVA: 0xA588A34 Offset: 0xA584A34 VA: 0xA588A34
+	public void .ctor() { }
+
+	// RVA: 0xA588A3C Offset: 0xA584A3C VA: 0xA588A3C
+	internal bool <ReloadBaseTypes>b__12_0(Type t) { }
+}

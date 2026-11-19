@@ -1,0 +1,171 @@
+// Namespace: UnityEngine
+public class Input // TypeDefIndex: 23230
+{
+	// Fields
+	private static Gyroscope s_MainGyro; // 0x0
+
+	// Properties
+	[NativeThrows]
+	public static bool anyKey { get; }
+	[NativeThrows]
+	public static bool anyKeyDown { get; }
+	[NativeThrows]
+	public static Vector3 mousePosition { get; }
+	[NativeThrows]
+	public static Vector2 mouseScrollDelta { get; }
+	public static IMECompositionMode imeCompositionMode { get; set; }
+	public static string compositionString { get; }
+	public static Vector2 compositionCursorPos { get; set; }
+	public static bool mousePresent { get; }
+	public static int touchCount { get; }
+	public static bool touchSupported { get; }
+	public static bool multiTouchEnabled { set; }
+	public static DeviceOrientation deviceOrientation { get; }
+	public static Vector3 acceleration { get; }
+	public static Gyroscope gyro { get; }
+	public static Touch[] touches { get; }
+
+	// Methods
+
+	// RVA: 0xA817AC0 Offset: 0xA813AC0 VA: 0xA817AC0
+	public static float GetAxis(string axisName) { }
+
+	// RVA: 0xA817C30 Offset: 0xA813C30 VA: 0xA817C30
+	public static float GetAxisRaw(string axisName) { }
+
+	// RVA: 0xA817DA4 Offset: 0xA813DA4 VA: 0xA817DA4
+	public static bool GetButton(string buttonName) { }
+
+	// RVA: 0xA817F24 Offset: 0xA813F24 VA: 0xA817F24
+	public static bool GetButtonDown(string buttonName) { }
+
+	[NativeThrows]
+	// RVA: 0xA8180A4 Offset: 0xA8140A4 VA: 0xA8180A4
+	private static bool GetKeyInt(KeyCode key) { }
+
+	[NativeThrows]
+	// RVA: 0xA818218 Offset: 0xA814218 VA: 0xA818218
+	private static bool GetKeyUpInt(KeyCode key) { }
+
+	[NativeThrows]
+	// RVA: 0xA81838C Offset: 0xA81438C VA: 0xA81838C
+	private static bool GetKeyDownInt(KeyCode key) { }
+
+	[NativeThrows]
+	// RVA: 0xA818508 Offset: 0xA814508 VA: 0xA818508
+	public static bool GetMouseButton(int button) { }
+
+	[NativeThrows]
+	// RVA: 0xA818674 Offset: 0xA814674 VA: 0xA818674
+	public static bool GetMouseButtonDown(int button) { }
+
+	[NativeThrows]
+	// RVA: 0xA8187E8 Offset: 0xA8147E8 VA: 0xA8187E8
+	public static bool GetMouseButtonUp(int button) { }
+
+	[NativeThrows]
+	// RVA: 0xA818958 Offset: 0xA814958 VA: 0xA818958
+	public static Touch GetTouch(int index) { }
+
+	[NativeThrows]
+	// RVA: 0xA818B2C Offset: 0xA814B2C VA: 0xA818B2C
+	public static PenData GetLastPenContactEvent() { }
+
+	[NativeThrows]
+	// RVA: 0xA818CE8 Offset: 0xA814CE8 VA: 0xA818CE8
+	public static void ClearLastPenContactEvent() { }
+
+	// RVA: 0xA818E60 Offset: 0xA814E60 VA: 0xA818E60
+	public static bool GetKey(KeyCode key) { }
+
+	// RVA: 0xA818E64 Offset: 0xA814E64 VA: 0xA818E64
+	public static bool GetKeyUp(KeyCode key) { }
+
+	// RVA: 0xA818E68 Offset: 0xA814E68 VA: 0xA818E68
+	public static bool GetKeyDown(KeyCode key) { }
+
+	// RVA: 0xA818E6C Offset: 0xA814E6C VA: 0xA818E6C
+	public static bool get_anyKey() { }
+
+	// RVA: 0xA818FC0 Offset: 0xA814FC0 VA: 0xA818FC0
+	public static bool get_anyKeyDown() { }
+
+	// RVA: 0xA819130 Offset: 0xA815130 VA: 0xA819130
+	public static Vector3 get_mousePosition() { }
+
+	// RVA: 0xA8192D8 Offset: 0xA8152D8 VA: 0xA8192D8
+	public static Vector2 get_mouseScrollDelta() { }
+
+	// RVA: 0xA819480 Offset: 0xA815480 VA: 0xA819480
+	public static IMECompositionMode get_imeCompositionMode() { }
+
+	// RVA: 0xA8195F0 Offset: 0xA8155F0 VA: 0xA8195F0
+	public static void set_imeCompositionMode(IMECompositionMode value) { }
+
+	// RVA: 0xA819770 Offset: 0xA815770 VA: 0xA819770
+	public static string get_compositionString() { }
+
+	// RVA: 0xA8198E4 Offset: 0xA8158E4 VA: 0xA8198E4
+	public static Vector2 get_compositionCursorPos() { }
+
+	// RVA: 0xA819A84 Offset: 0xA815A84 VA: 0xA819A84
+	public static void set_compositionCursorPos(Vector2 value) { }
+
+	[FreeFunction("GetMousePresent")]
+	// RVA: 0xA819C24 Offset: 0xA815C24 VA: 0xA819C24
+	public static bool get_mousePresent() { }
+
+	[FreeFunction("GetTouchCount")]
+	// RVA: 0xA819D9C Offset: 0xA815D9C VA: 0xA819D9C
+	public static int get_touchCount() { }
+
+	[FreeFunction("IsTouchSupported")]
+	// RVA: 0xA819F0C Offset: 0xA815F0C VA: 0xA819F0C
+	public static bool get_touchSupported() { }
+
+	[FreeFunction("SetMultiTouchEnabled")]
+	// RVA: 0xA81A074 Offset: 0xA816074 VA: 0xA81A074
+	public static void set_multiTouchEnabled(bool value) { }
+
+	[FreeFunction("GetDeviceOrientation")]
+	// RVA: 0xA81A1E0 Offset: 0xA8161E0 VA: 0xA81A1E0
+	public static DeviceOrientation get_deviceOrientation() { }
+
+	[FreeFunction("GetAcceleration")]
+	// RVA: 0xA81A354 Offset: 0xA816354 VA: 0xA81A354
+	public static Vector3 get_acceleration() { }
+
+	[FreeFunction("GetGyro")]
+	// RVA: 0xA81A4FC Offset: 0xA8164FC VA: 0xA81A4FC
+	private static int GetGyroInternal() { }
+
+	// RVA: 0xA81A670 Offset: 0xA816670 VA: 0xA81A670
+	public static Gyroscope get_gyro() { }
+
+	// RVA: 0xA81A7AC Offset: 0xA8167AC VA: 0xA81A7AC
+	public static Touch[] get_touches() { }
+
+	// RVA: 0xA81A8E8 Offset: 0xA8168E8 VA: 0xA81A8E8
+	internal static bool CheckDisabled() { }
+
+	// RVA: 0xA818998 Offset: 0xA814998 VA: 0xA818998
+	private static void GetTouch_Injected(int index, out Touch ret) { }
+
+	// RVA: 0xA818B68 Offset: 0xA814B68 VA: 0xA818B68
+	private static void GetLastPenContactEvent_Injected(out PenData ret) { }
+
+	// RVA: 0xA81915C Offset: 0xA81515C VA: 0xA81915C
+	private static void get_mousePosition_Injected(out Vector3 ret) { }
+
+	// RVA: 0xA8192F4 Offset: 0xA8152F4 VA: 0xA8192F4
+	private static void get_mouseScrollDelta_Injected(out Vector2 ret) { }
+
+	// RVA: 0xA819900 Offset: 0xA815900 VA: 0xA819900
+	private static void get_compositionCursorPos_Injected(out Vector2 ret) { }
+
+	// RVA: 0xA819A9C Offset: 0xA815A9C VA: 0xA819A9C
+	private static void set_compositionCursorPos_Injected(ref Vector2 value) { }
+
+	// RVA: 0xA81A380 Offset: 0xA816380 VA: 0xA81A380
+	private static void get_acceleration_Injected(out Vector3 ret) { }
+}

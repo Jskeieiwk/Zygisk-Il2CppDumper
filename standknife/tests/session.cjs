@@ -1,0 +1,18 @@
+const assert=require('node:assert/strict'),vm=require('node:vm'),fs=require('node:fs');
+const context=vm.createContext({});
+vm.runInContext(fs.readFileSync('assets/session.js','utf8').replace('export function','function')+'\nglobalThis.session=createMatchSession();',context);
+const session=context.session;
+assert.equal(session.update(false,1,1000,1).ready,false);
+assert.equal(session.present(1000),false);
+assert.equal(session.update(true,2,1010,2).reset,true);
+assert.equal(session.ready(1010),false);
+assert.equal(session.update(true,2,1011,2).ready,false,'Another camera in the same frame is not a new frame');
+session.update(true,2,1020,3);
+assert.equal(session.update(true,2,1030,4).ready,true);
+assert.equal(session.ready(1400),false,'Paused/stale sessions must close the guard');
+const generation=session.generation();
+assert.equal(session.update(false,2,1410,5).reset,true);
+assert.equal(session.generation(),generation+1);
+assert.equal(session.ready(1410),false);
+assert.equal(session.update(true,3,1420,6).ready,false);
+console.log('Lobby, distinct frames, scene changes, stale state and generation checks passed.');

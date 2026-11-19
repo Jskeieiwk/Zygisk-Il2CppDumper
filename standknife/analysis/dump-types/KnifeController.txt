@@ -1,0 +1,144 @@
+// Namespace: Axlebolt.Standoff.Inventory
+public class KnifeController : WeaponController // TypeDefIndex: 8065
+{
+	// Fields
+	private readonly float GAEAGCHFFABCGDH; // 0xEC
+	private KnifeParameters EGGDGDEHEBAAHCH; // 0xF0
+	private BAEGHHDCAEDFCHE<KnifeController.HCCGCEHDABHFHFG> BAGHDDEBFAGEGAG; // 0xF8
+	private float FEABBBECDBDAADG; // 0x100
+	private KnifeSoundController GCDBEBDABEFFCBF; // 0x108
+
+	// Properties
+	public override AHDHHCGAEHBGCDG AGBCHDAGBCDGAFH { get; }
+
+	// Methods
+
+	// RVA: 0x5AED754 Offset: 0x5AE9754 VA: 0x5AED754
+	private void DBAECDCBBHDBADE() { }
+
+	// RVA: 0x5AED9C4 Offset: 0x5AE99C4 VA: 0x5AED9C4
+	private void ADDCAFABHDEGGBE(Vector3 BHHAAEEFEEACECD, Vector3 BFEHBCGFHAHEEAE, bool DHEAFGBHBHFDACC) { }
+
+	// RVA: 0x5AEE1E4 Offset: 0x5AEA1E4 VA: 0x5AEE1E4
+	private void FBDHHEBDBCAAHBD() { }
+
+	// RVA: 0x5AEE528 Offset: 0x5AEA528 VA: 0x5AEE528
+	private void CHCGGDBBHGGCBHC(IList<ADHBCBBDCFDBDAD> HGGDCHAFHFHDBHH) { }
+
+	// RVA: 0x5AEE618 Offset: 0x5AEA618 VA: 0x5AEE618 Slot: 20
+	public override CFGAHHHABFBAGDH CanBeDropped() { }
+
+	// RVA: 0x5AEE73C Offset: 0x5AEA73C VA: 0x5AEE73C
+	private void FDACBEBDAEHFHCD() { }
+
+	// RVA: 0x5AEE940 Offset: 0x5AEA940 VA: 0x5AEE940
+	private void AEHAEBAFABCFGGB() { }
+
+	// RVA: 0x5AEF2E4 Offset: 0x5AEB2E4 VA: 0x5AEF2E4 Slot: 21
+	public override void SetPlayer(PlayerController AHGEEFHFCCGCHHF) { }
+
+	// RVA: 0x5AEF300 Offset: 0x5AEB300 VA: 0x5AEF300
+	private void CBCFFECEFFFECDC() { }
+
+	// RVA: 0x5AEF4E0 Offset: 0x5AEB4E0 VA: 0x5AEF4E0
+	public void .ctor() { }
+
+	// RVA: 0x5AEF5DC Offset: 0x5AEB5DC VA: 0x5AEF5DC
+	private void DAHBAGBEBFHHEHG() { }
+
+	// RVA: 0x5AEF73C Offset: 0x5AEB73C VA: 0x5AEF73C
+	private void CBGFBBDAGEABECH() { }
+
+	// RVA: 0x5AEF90C Offset: 0x5AEB90C VA: 0x5AEF90C Slot: 17
+	public override BCDDCEHGGBAEDEC GetSnapshot() { }
+
+	// RVA: 0x5AEF9C8 Offset: 0x5AEB9C8 VA: 0x5AEF9C8 Slot: 22
+	public override AHDHHCGAEHBGCDG get_WeaponType() { }
+
+	// RVA: 0x5AEF9D0 Offset: 0x5AEB9D0 VA: 0x5AEF9D0
+	private void HCGFDGBEBDAEDCC() { }
+
+	// RVA: 0x5AEFBC0 Offset: 0x5AEBBC0 VA: 0x5AEFBC0
+	private void CEECHEACCFHCGGF() { }
+
+	// RVA: 0x5AEFDA4 Offset: 0x5AEBDA4 VA: 0x5AEFDA4
+	private void BFEHHCGFEHDDECD(Vector3 BHHAAEEFEEACECD, Vector3 BFEHBCGFHAHEEAE, bool DHEAFGBHBHFDACC) { }
+
+	// RVA: 0x5AF05C8 Offset: 0x5AEC5C8 VA: 0x5AF05C8
+	private void BBGAFGGGBFCDEEH(Vector3 BHHAAEEFEEACECD, Vector3 BFEHBCGFHAHEEAE, bool DHEAFGBHBHFDACC) { }
+
+	// RVA: 0x5AF0CFC Offset: 0x5AECCFC VA: 0x5AF0CFC
+	private void FBFHAGGHGHBCEGG() { }
+
+	// RVA: 0x5AEEBB0 Offset: 0x5AEABB0 VA: 0x5AEEBB0
+	private void DGFEFEHCDFDEEGE(Vector3 BHHAAEEFEEACECD, Vector3 BFEHBCGFHAHEEAE, bool DHEAFGBHBHFDACC) { }
+
+	// RVA: 0x5AF0EEC Offset: 0x5AECEEC VA: 0x5AF0EEC Slot: 24
+	public override void SetAsPrimary(float CEDEABGCFDCCGAF) { }
+
+	// RVA: 0x5AF0FA8 Offset: 0x5AECFA8 VA: 0x5AF0FA8
+	private void AFFBFBFEDCGCAHA() { }
+
+	// RVA: 0x5AF118C Offset: 0x5AED18C VA: 0x5AF118C Slot: 5
+	public override void PreInitialize(BEDEHCEAAAEEHFD CAADEBAEFADDFEH) { }
+
+	// RVA: 0x5AF12D4 Offset: 0x5AED2D4 VA: 0x5AF12D4
+	private void HDAAAHEGEAFGEBF() { }
+
+	// RVA: 0x5AF1324 Offset: 0x5AED324 VA: 0x5AF1324
+	private void GDCBDHAAEGGDEEC(Vector3 BHHAAEEFEEACECD, Vector3 BFEHBCGFHAHEEAE, bool DHEAFGBHBHFDACC) { }
+
+	// RVA: 0x5AF1A5C Offset: 0x5AEDA5C VA: 0x5AF1A5C
+	private void CHCEDAAAFGGGCDF() { }
+
+	// RVA: 0x5AF1C60 Offset: 0x5AEDC60 VA: 0x5AF1C60
+	private void EFGBBBDFDCAEEAH(IList<ADHBCBBDCFDBDAD> HGGDCHAFHFHDBHH) { }
+
+	// RVA: 0x5AF1D50 Offset: 0x5AEDD50 VA: 0x5AF1D50
+	private void CAADFBGEAABHDEE() { }
+
+	// RVA: 0x5AF1FC0 Offset: 0x5AEDFC0 VA: 0x5AF1FC0 Slot: 16
+	public override void ExecuteCommands(CHCEGCBBDDFHDCD DBEGBBCFBABBFGC, float BHGDDGFGGAEDFFB, float CEDEABGCFDCCGAF) { }
+
+	// RVA: 0x5AEE0F4 Offset: 0x5AEA0F4 VA: 0x5AEE0F4
+	private void HHDCAAFCBBAEHHH(IList<ADHBCBBDCFDBDAD> HGGDCHAFHFHDBHH) { }
+
+	// RVA: 0x5AF23A8 Offset: 0x5AEE3A8 VA: 0x5AF23A8
+	private void DDACCFBDAAEGFAF() { }
+
+	// RVA: 0x5AF258C Offset: 0x5AEE58C VA: 0x5AF258C Slot: 13
+	public override void OnReturnToPool() { }
+
+	// RVA: 0x5AF26F0 Offset: 0x5AEE6F0 VA: 0x5AF26F0
+	private void DEEDBGBADBFBEFF() { }
+
+	// RVA: 0x5AF28E0 Offset: 0x5AEE8E0 VA: 0x5AF28E0 Slot: 18
+	public override void SetSnapshot(BCDDCEHGGBAEDEC FAFDCHEHBCDAHHC) { }
+
+	// RVA: 0x5AF2938 Offset: 0x5AEE938 VA: 0x5AF2938 Slot: 6
+	public override void SetAsSecondary() { }
+
+	// RVA: 0x5AF2A9C Offset: 0x5AEEA9C VA: 0x5AF2A9C
+	private void HAAHEHABGECBCGD(Vector3 BHHAAEEFEEACECD, Vector3 BFEHBCGFHAHEEAE, bool DHEAFGBHBHFDACC) { }
+
+	// RVA: 0x5AF2358 Offset: 0x5AEE358 VA: 0x5AF2358
+	private void EABCEGDFBAHDFCC() { }
+
+	// RVA: 0x5AEE344 Offset: 0x5AEA344 VA: 0x5AEE344
+	private void CADGDFDHBEBAHDD() { }
+
+	// RVA: 0x5AF31D4 Offset: 0x5AEF1D4 VA: 0x5AF31D4
+	private void AFGGGAAAHCHBABB() { }
+
+	// RVA: 0x5AF3334 Offset: 0x5AEF334 VA: 0x5AF3334
+	private void GFECBDBHBCHFGCH() { }
+
+	// RVA: 0x5AF20E8 Offset: 0x5AEE0E8 VA: 0x5AF20E8
+	private void EADGCEGFFFDHBCA() { }
+
+	// RVA: 0x5AF3494 Offset: 0x5AEF494 VA: 0x5AF3494 Slot: 12
+	public override CFGAHHHABFBAGDH IsDroppable() { }
+
+	// RVA: 0x5AF04D8 Offset: 0x5AEC4D8 VA: 0x5AF04D8
+	private void CFEBDEAGBECHGHH(IList<ADHBCBBDCFDBDAD> HGGDCHAFHFHDBHH) { }
+}

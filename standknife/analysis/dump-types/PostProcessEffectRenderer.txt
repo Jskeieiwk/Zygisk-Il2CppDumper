@@ -1,0 +1,29 @@
+// Namespace: UnityEngine.Rendering.PostProcessing
+public abstract class PostProcessEffectRenderer // TypeDefIndex: 21120
+{
+	// Fields
+	protected bool m_ResetHistory; // 0x10
+
+	// Methods
+
+	// RVA: 0xA577D04 Offset: 0xA573D04 VA: 0xA577D04 Slot: 4
+	public virtual void Init() { }
+
+	// RVA: 0xA577D08 Offset: 0xA573D08 VA: 0xA577D08 Slot: 5
+	public virtual DepthTextureMode GetCameraFlags() { }
+
+	// RVA: 0xA577D10 Offset: 0xA573D10 VA: 0xA577D10 Slot: 6
+	public virtual void ResetHistory() { }
+
+	// RVA: 0xA577D1C Offset: 0xA573D1C VA: 0xA577D1C Slot: 7
+	public virtual void Release() { }
+
+	// RVA: -1 Offset: -1 Slot: 8
+	public abstract void Render(PostProcessRenderContext context);
+
+	// RVA: -1 Offset: -1 Slot: 9
+	internal abstract void SetSettings(PostProcessEffectSettings settings);
+
+	// RVA: 0xA577E88 Offset: 0xA573E88 VA: 0xA577E88
+	protected void .ctor() { }
+}

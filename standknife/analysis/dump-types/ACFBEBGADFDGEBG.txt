@@ -1,0 +1,76 @@
+// Namespace: 
+public enum ACFBEBGADFDGEBG // TypeDefIndex: 5789
+{
+	// Fields
+	public byte value__; // 0x0
+	public const ACFBEBGADFDGEBG None = 0;
+	public const ACFBEBGADFDGEBG G22 = 11;
+	public const ACFBEBGADFDGEBG USP = 12;
+	public const ACFBEBGADFDGEBG P350 = 13;
+	public const ACFBEBGADFDGEBG Deagle = 15;
+	public const ACFBEBGADFDGEBG Tec9 = 16;
+	public const ACFBEBGADFDGEBG FiveSeven = 17;
+	public const ACFBEBGADFDGEBG Berettas = 18;
+	public const ACFBEBGADFDGEBG UMP45 = 32;
+	public const ACFBEBGADFDGEBG AkimboUzi = 33;
+	public const ACFBEBGADFDGEBG MP7 = 34;
+	public const ACFBEBGADFDGEBG P90 = 35;
+	public const ACFBEBGADFDGEBG MP5 = 36;
+	public const ACFBEBGADFDGEBG MAC10 = 37;
+	public const ACFBEBGADFDGEBG VAL = 42;
+	public const ACFBEBGADFDGEBG M4A1 = 43;
+	public const ACFBEBGADFDGEBG AKR = 44;
+	public const ACFBEBGADFDGEBG AKR12 = 45;
+	public const ACFBEBGADFDGEBG M4 = 46;
+	public const ACFBEBGADFDGEBG M16 = 47;
+	public const ACFBEBGADFDGEBG FAMAS = 48;
+	public const ACFBEBGADFDGEBG FnFal = 49;
+	public const ACFBEBGADFDGEBG AWM = 51;
+	public const ACFBEBGADFDGEBG M40 = 52;
+	public const ACFBEBGADFDGEBG M110 = 53;
+	public const ACFBEBGADFDGEBG Mallard = 54;
+	public const ACFBEBGADFDGEBG SM1014 = 62;
+	public const ACFBEBGADFDGEBG FabM = 63;
+	public const ACFBEBGADFDGEBG M60 = 64;
+	public const ACFBEBGADFDGEBG SPAS = 65;
+	public const ACFBEBGADFDGEBG Knife = 70;
+	public const ACFBEBGADFDGEBG KnifeBayonet = 71;
+	public const ACFBEBGADFDGEBG KnifeKarambit = 72;
+	public const ACFBEBGADFDGEBG jKommando = 73;
+	public const ACFBEBGADFDGEBG KnifeButterfly = 75;
+	public const ACFBEBGADFDGEBG FlipKnife = 77;
+	public const ACFBEBGADFDGEBG KunaiKnife = 78;
+	public const ACFBEBGADFDGEBG ScorpionKnife = 79;
+	public const ACFBEBGADFDGEBG KnifeTanto = 80;
+	public const ACFBEBGADFDGEBG DaggerKnife = 81;
+	public const ACFBEBGADFDGEBG KnifeKukri = 82;
+	public const ACFBEBGADFDGEBG KnifeStilet = 83;
+	public const ACFBEBGADFDGEBG SkeletonKnife = 74;
+	public const ACFBEBGADFDGEBG KnifeMantis = 85;
+	public const ACFBEBGADFDGEBG KnifeFang = 86;
+	public const ACFBEBGADFDGEBG KnifeSting = 88;
+	public const ACFBEBGADFDGEBG Hands = 89;
+	public const ACFBEBGADFDGEBG GrenadeHE = 91;
+	public const ACFBEBGADFDGEBG GrenadeSmoke = 92;
+	public const ACFBEBGADFDGEBG GrenadeFlash = 93;
+	public const ACFBEBGADFDGEBG GrenadeMolotov = 94;
+	public const ACFBEBGADFDGEBG GrenadeIncendiary = 95;
+	public const ACFBEBGADFDGEBG Bomb = 100;
+	public const ACFBEBGADFDGEBG Defuser = 101;
+	public const ACFBEBGADFDGEBG DefuseKit = 102;
+	public const ACFBEBGADFDGEBG Vest = 110;
+	public const ACFBEBGADFDGEBG VestAndHelmet = 111;
+	public const ACFBEBGADFDGEBG Watergun = 19;
+	public const ACFBEBGADFDGEBG ScifiRailgun = 66;
+	public const ACFBEBGADFDGEBG ScifiShotgun = 68;
+	public const ACFBEBGADFDGEBG ScifiP90 = 69;
+	public const ACFBEBGADFDGEBG CandyCane = 84;
+	public const ACFBEBGADFDGEBG Firecracker = 96;
+	public const ACFBEBGADFDGEBG EventGrenadeMolotov = 97;
+	public const ACFBEBGADFDGEBG GrenadeSnowball = 99;
+	public const ACFBEBGADFDGEBG AtomicGrenade = 191;
+	public const ACFBEBGADFDGEBG FireballGrenade = 192;
+	public const ACFBEBGADFDGEBG DarkballGrenade = 193;
+	public const ACFBEBGADFDGEBG HolyballGrenade = 194;
+	public const ACFBEBGADFDGEBG ThunderboltGrenade = 195;
+}

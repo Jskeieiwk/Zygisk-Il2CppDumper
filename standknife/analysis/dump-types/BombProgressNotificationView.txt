@@ -1,0 +1,33 @@
+// Namespace: Axlebolt.Standoff.Game.UI.Notifications
+public class BombProgressNotificationView : NotificationsHudView, FCEGHGHAEGDDCAB, EEBFACGHHEHBACH // TypeDefIndex: 6906
+{
+	// Fields
+	[SerializeField]
+	private Image _backgroundImage; // 0x40
+	[SerializeField]
+	private Image _progressIndicator; // 0x48
+	[SerializeField]
+	private Image _icon; // 0x50
+	[SerializeField]
+	private Sprite _defuseKitIcon; // 0x58
+	[SerializeField]
+	private Sprite _bombIcon; // 0x60
+	[SerializeField]
+	private TMP_Text _timeText; // 0x68
+	[SerializeField]
+	private Color _defuseColor; // 0x70
+	[SerializeField]
+	private Color _defuseColorBg; // 0x80
+	[SerializeField]
+	private Color _plantColor; // 0x90
+	[SerializeField]
+	private Color _plantColorBg; // 0xA0
+
+	// Methods
+
+	// RVA: 0x52665F4 Offset: 0x52625F4 VA: 0x52665F4 Slot: 31
+	public override void UpdateView(PlayerController AHGEEFHFCCGCHHF) { }
+
+	// RVA: 0x52677B8 Offset: 0x52637B8 VA: 0x52677B8
+	public void .ctor() { }
+}

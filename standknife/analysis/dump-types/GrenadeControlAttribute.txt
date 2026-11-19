@@ -1,0 +1,163 @@
+// Namespace: Axlebolt.Standoff.Settings.Controls.CustomizationController.Attributes
+public class GrenadeControlAttribute : ControlAttribute // TypeDefIndex: 5163
+{
+	// Fields
+	[SerializeField]
+	private Toggle _grenadeSecondsButtonToggle; // 0x38
+
+	// Properties
+	public Toggle FAFEBFDCBGAFAAE { get; }
+
+	// Methods
+
+	// RVA: 0x449374C Offset: 0x448F74C VA: 0x449374C
+	public Toggle GCACGHCEADBCDAE() { }
+
+	[CompilerGenerated]
+	// RVA: 0x4493754 Offset: 0x448F754 VA: 0x4493754
+	private void BDBCBHCAFEGCDBA(bool GCECBAAHDCFHFAH) { }
+
+	// RVA: 0x449375C Offset: 0x448F75C VA: 0x449375C
+	private void FFFGDFCAGAGDCAH(bool GCECBAAHDCFHFAH) { }
+
+	// RVA: 0x4493764 Offset: 0x448F764 VA: 0x4493764
+	public void .ctor() { }
+
+	// RVA: 0x449376C Offset: 0x448F76C VA: 0x449376C
+	public Toggle DHGDDHEEHGBEAHC() { }
+
+	// RVA: 0x4493774 Offset: 0x448F774 VA: 0x4493774
+	public Toggle BHBEGAHCDGADCBG() { }
+
+	// RVA: 0x449377C Offset: 0x448F77C VA: 0x449377C
+	private void BGBEFECGCCBCCGG(bool GCECBAAHDCFHFAH) { }
+
+	// RVA: 0x4493784 Offset: 0x448F784 VA: 0x4493784
+	public Toggle EAADEEGCGGAGGCE() { }
+
+	// RVA: 0x449378C Offset: 0x448F78C VA: 0x449378C
+	private void DDAAFHDHCACEFGG(bool GCECBAAHDCFHFAH) { }
+
+	// RVA: 0x4493794 Offset: 0x448F794 VA: 0x4493794
+	private void FFFAAECDFGAFGDF(bool GCECBAAHDCFHFAH) { }
+
+	// RVA: 0x449379C Offset: 0x448F79C VA: 0x449379C
+	private void DGEGHHGHBEGACCE(bool GCECBAAHDCFHFAH) { }
+
+	// RVA: 0x44937A4 Offset: 0x448F7A4 VA: 0x44937A4
+	private void FBDFCDEECFCCAHE(bool GCECBAAHDCFHFAH) { }
+
+	// RVA: 0x44937AC Offset: 0x448F7AC VA: 0x44937AC
+	private void GCDHDGEDAEDFBDH(bool GCECBAAHDCFHFAH) { }
+
+	// RVA: 0x44937B4 Offset: 0x448F7B4 VA: 0x44937B4
+	private void ADFDGEAFDBGDBCH(bool GCECBAAHDCFHFAH) { }
+
+	// RVA: 0x44937BC Offset: 0x448F7BC VA: 0x44937BC
+	private void FCBDGEAHEHBCBFG(bool GCECBAAHDCFHFAH) { }
+
+	// RVA: 0x44937C4 Offset: 0x448F7C4 VA: 0x44937C4
+	private void BEAFGEFEDACHADH(bool GCECBAAHDCFHFAH) { }
+
+	// RVA: 0x44937CC Offset: 0x448F7CC VA: 0x44937CC
+	public Toggle AFGFBBADEHDEEBG() { }
+
+	// RVA: 0x44937D4 Offset: 0x448F7D4 VA: 0x44937D4
+	public Toggle CECCEABCEBBAEFF() { }
+
+	// RVA: 0x44937DC Offset: 0x448F7DC VA: 0x44937DC
+	public Toggle BFDDEBDGHDHFAAA() { }
+
+	// RVA: 0x44937E4 Offset: 0x448F7E4 VA: 0x44937E4
+	public Toggle BDDDHHCGBEAGGGF() { }
+
+	// RVA: 0x44937EC Offset: 0x448F7EC VA: 0x44937EC Slot: 37
+	public override void UnSelectUnique() { }
+
+	// RVA: 0x4493810 Offset: 0x448F810 VA: 0x4493810 Slot: 35
+	public override void SelectUnique(FEBGAFGDEDGHGHE ECHFEHBCCACFCCE) { }
+
+	// RVA: 0x4493964 Offset: 0x448F964 VA: 0x4493964
+	public Toggle DGADBDDFHGCDBCA() { }
+
+	// RVA: 0x449396C Offset: 0x448F96C VA: 0x449396C
+	private void FFDAFHCCBGGECCA(bool GCECBAAHDCFHFAH) { }
+
+	// RVA: 0x4493974 Offset: 0x448F974 VA: 0x4493974
+	private void BEEAAFGHCEHGDFE(bool GCECBAAHDCFHFAH) { }
+
+	// RVA: 0x449397C Offset: 0x448F97C VA: 0x449397C Slot: 29
+	public override void SetupSettings(LayoutControlsSettings EHGEGBDDEBFHABG, GFDHADBAGEBCGFF CADCCAGACEFDDAG) { }
+
+	// RVA: 0x44939A0 Offset: 0x448F9A0 VA: 0x44939A0
+	private void DHDEFECCADEAHHC(bool GCECBAAHDCFHFAH) { }
+
+	// RVA: 0x44939A8 Offset: 0x448F9A8 VA: 0x44939A8
+	public Toggle get_GrenadeSecondsButtonToggle() { }
+
+	// RVA: 0x44939B0 Offset: 0x448F9B0 VA: 0x44939B0
+	private void CEGBHBCCFBFGAED(bool GCECBAAHDCFHFAH) { }
+
+	// RVA: 0x44939B8 Offset: 0x448F9B8 VA: 0x44939B8
+	private void GCGAECGCCDBBADC(bool GCECBAAHDCFHFAH) { }
+
+	// RVA: 0x44939C0 Offset: 0x448F9C0 VA: 0x44939C0
+	private void ADECDACEHHFHGHC(bool GCECBAAHDCFHFAH) { }
+
+	// RVA: 0x44939C8 Offset: 0x448F9C8 VA: 0x44939C8
+	public Toggle DBHHGAGAFBGAFFA() { }
+
+	// RVA: 0x44939D0 Offset: 0x448F9D0 VA: 0x44939D0
+	public Toggle HFHEFCGAEADHDHE() { }
+
+	// RVA: 0x44939D8 Offset: 0x448F9D8 VA: 0x44939D8
+	private void CDHFBFAGACCCEHB(bool GCECBAAHDCFHFAH) { }
+
+	// RVA: 0x44939E0 Offset: 0x448F9E0 VA: 0x44939E0
+	public Toggle DEHCEEFCADCGDED() { }
+
+	// RVA: 0x44939E8 Offset: 0x448F9E8 VA: 0x44939E8
+	public Toggle FGCDEGDBBDHFCHD() { }
+
+	// RVA: 0x44939F0 Offset: 0x448F9F0 VA: 0x44939F0
+	public Toggle GDBGCBDADFBAGFG() { }
+
+	// RVA: 0x44939F8 Offset: 0x448F9F8 VA: 0x44939F8
+	public Toggle HDCCBBHCGBEACGB() { }
+
+	// RVA: 0x4493A00 Offset: 0x448FA00 VA: 0x4493A00
+	public Toggle AAEDFABFCDBHBBA() { }
+
+	// RVA: 0x4493A08 Offset: 0x448FA08 VA: 0x4493A08
+	private void HBDFEGDADHDEDDF(bool GCECBAAHDCFHFAH) { }
+
+	// RVA: 0x4493A10 Offset: 0x448FA10 VA: 0x4493A10
+	private void ABDFHGFBAHHGCDB(bool GCECBAAHDCFHFAH) { }
+
+	// RVA: 0x4493A18 Offset: 0x448FA18 VA: 0x4493A18
+	private void HCEBFBEAEDGFHBF(bool GCECBAAHDCFHFAH) { }
+
+	// RVA: 0x4493A20 Offset: 0x448FA20 VA: 0x4493A20
+	public Toggle AGEDEGHCFFEBECB() { }
+
+	// RVA: 0x4493A28 Offset: 0x448FA28 VA: 0x4493A28
+	private void BABGCACBCFFAGFE(bool GCECBAAHDCFHFAH) { }
+
+	// RVA: 0x4493A30 Offset: 0x448FA30 VA: 0x4493A30
+	public Toggle HDGACAGCGHAFFHE() { }
+
+	// RVA: 0x4493A38 Offset: 0x448FA38 VA: 0x4493A38
+	public Toggle GDCFCGEABCCGGAB() { }
+
+	// RVA: 0x4493A40 Offset: 0x448FA40 VA: 0x4493A40
+	public Toggle GCDHCHGFBDECAGH() { }
+
+	// RVA: 0x4493A48 Offset: 0x448FA48 VA: 0x4493A48
+	public Toggle HHDHFHFCEBBAFHC() { }
+
+	// RVA: 0x4493A50 Offset: 0x448FA50 VA: 0x4493A50
+	public Toggle HHHEGFFEHGCHFFD() { }
+
+	// RVA: 0x4493A58 Offset: 0x448FA58 VA: 0x4493A58
+	public Toggle AEAADCFAEAECHGF() { }
+}

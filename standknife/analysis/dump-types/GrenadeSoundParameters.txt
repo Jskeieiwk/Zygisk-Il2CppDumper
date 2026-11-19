@@ -1,0 +1,151 @@
+// Namespace: Axlebolt.Standoff.Inventory.Grenade
+public class GrenadeSoundParameters : WeaponSoundParameters // TypeDefIndex: 1042
+{
+	// Fields
+	[SerializeField]
+	private EventReference _explosionSoundEventRef; // 0x98
+	[SerializeField]
+	private EventReference _localExplosionSoundEventRef; // 0xA8
+	[SerializeField]
+	private EventReference _alternativeExplosionSoundEventRef; // 0xB8
+	[SerializeField]
+	private EventReference _fpsDropSoundEventRef; // 0xC8
+	[SerializeField]
+	private EventReference _tpsDropTeammateSoundEventRef; // 0xD8
+	[SerializeField]
+	private EventReference _tpsDropEnemySoundEventRef; // 0xE8
+	[SerializeField]
+	private FAHHCDBEGFHDEBG _earRingingType; // 0xF8
+	[SerializeField]
+	private float _earRingingDistance; // 0xFC
+	[SerializeField]
+	private AnimationCurve _earRingingDurationCurve; // 0x100
+	[SerializeField]
+	private bool _isContinuousExplosionEffect; // 0x108
+	[Header("Swing")]
+	[SerializeField]
+	private EventReference _fpsSwingEventRef; // 0x10C
+	[SerializeField]
+	private EventReference _tpsTeammateSwingEventRef; // 0x11C
+	[SerializeField]
+	private EventReference _tpsEnemySwingEventRef; // 0x12C
+
+	// Properties
+	public GUID ExplosionSoundEvent { get; }
+	public GUID LocalExplosionSoundEvent { get; }
+	public GUID AlternativeExplosionSoundEvent { get; }
+	public GUID FpsDropSoundEvent { get; }
+	public GUID TpsDropTeammateSoundEvent { get; }
+	public GUID TpsDropEnemySoundEvent { get; }
+	public GUID FpsSwingEvent { get; }
+	public GUID TpsTeammateSwingEvent { get; }
+	public GUID TpsEnemySwingEvent { get; }
+	public FAHHCDBEGFHDEBG EarRingingType { get; }
+	public float EarRingingDistance { get; }
+	public AnimationCurve EarRingingDurationCurve { get; }
+	public bool IsContinuousExplosionEffect { get; }
+
+	// Methods
+
+	// RVA: 0x5F49FB0 Offset: 0x5F45FB0 VA: 0x5F49FB0
+	public GUID get_TpsEnemySwingEvent() { }
+
+	// RVA: 0x5F49FBC Offset: 0x5F45FBC VA: 0x5F49FBC
+	public AnimationCurve get_EarRingingDurationCurve() { }
+
+	// RVA: 0x5F49FC4 Offset: 0x5F45FC4 VA: 0x5F49FC4
+	public GUID ABGDEGGCAHDEAGC() { }
+
+	// RVA: 0x5F49FD0 Offset: 0x5F45FD0 VA: 0x5F49FD0
+	public GUID get_TpsDropTeammateSoundEvent() { }
+
+	// RVA: 0x5F49FDC Offset: 0x5F45FDC VA: 0x5F49FDC
+	public GUID EECDEABBGCHFDDG() { }
+
+	// RVA: 0x5F49FE8 Offset: 0x5F45FE8 VA: 0x5F49FE8
+	public GUID HCCHGBEGHFGDEHB() { }
+
+	// RVA: 0x5F49FF4 Offset: 0x5F45FF4 VA: 0x5F49FF4
+	public void .ctor() { }
+
+	// RVA: 0x5F49FFC Offset: 0x5F45FFC VA: 0x5F49FFC
+	public GUID HHEGDDEBCEDAFHB() { }
+
+	// RVA: 0x5F4A008 Offset: 0x5F46008 VA: 0x5F4A008
+	public FAHHCDBEGFHDEBG HHBACDFGHGBECAA() { }
+
+	// RVA: 0x5F4A010 Offset: 0x5F46010 VA: 0x5F4A010
+	public GUID AHCEGCAEBDCDFHB() { }
+
+	// RVA: 0x5F4A01C Offset: 0x5F4601C VA: 0x5F4A01C
+	public GUID get_FpsDropSoundEvent() { }
+
+	// RVA: 0x5F4A028 Offset: 0x5F46028 VA: 0x5F4A028
+	public GUID get_AlternativeExplosionSoundEvent() { }
+
+	// RVA: 0x5F4A034 Offset: 0x5F46034 VA: 0x5F4A034
+	public GUID get_ExplosionSoundEvent() { }
+
+	// RVA: 0x5F4A040 Offset: 0x5F46040 VA: 0x5F4A040
+	public bool DGEAAGBDCHGEHHC() { }
+
+	// RVA: 0x5F4A048 Offset: 0x5F46048 VA: 0x5F4A048
+	public GUID get_TpsTeammateSwingEvent() { }
+
+	// RVA: 0x5F4A054 Offset: 0x5F46054 VA: 0x5F4A054
+	public FAHHCDBEGFHDEBG BCGEGDBDBGAECAF() { }
+
+	// RVA: 0x5F4A05C Offset: 0x5F4605C VA: 0x5F4A05C
+	public GUID FEGBEEGDBDHAGDA() { }
+
+	// RVA: 0x5F4A068 Offset: 0x5F46068 VA: 0x5F4A068
+	public bool get_IsContinuousExplosionEffect() { }
+
+	// RVA: 0x5F4A070 Offset: 0x5F46070 VA: 0x5F4A070
+	public GUID CEBGBAHBDGECFAG() { }
+
+	// RVA: 0x5F4A07C Offset: 0x5F4607C VA: 0x5F4A07C
+	public float get_EarRingingDistance() { }
+
+	// RVA: 0x5F4A084 Offset: 0x5F46084 VA: 0x5F4A084
+	public bool HGHFABGHGGBFEEE() { }
+
+	// RVA: 0x5F4A08C Offset: 0x5F4608C VA: 0x5F4A08C
+	public GUID DAECCHEABBEFAFA() { }
+
+	// RVA: 0x5F4A098 Offset: 0x5F46098 VA: 0x5F4A098
+	public FAHHCDBEGFHDEBG get_EarRingingType() { }
+
+	// RVA: 0x5F4A0A0 Offset: 0x5F460A0 VA: 0x5F4A0A0
+	public GUID HCEDGABHDDBEAGG() { }
+
+	// RVA: 0x5F4A0AC Offset: 0x5F460AC VA: 0x5F4A0AC
+	public GUID get_FpsSwingEvent() { }
+
+	// RVA: 0x5F4A0B8 Offset: 0x5F460B8 VA: 0x5F4A0B8
+	public AnimationCurve DAHHFHEEGHFHADF() { }
+
+	// RVA: 0x5F4A0C0 Offset: 0x5F460C0 VA: 0x5F4A0C0
+	public GUID AEFHAAHFEEGACBD() { }
+
+	// RVA: 0x5F4A0CC Offset: 0x5F460CC VA: 0x5F4A0CC
+	public GUID AHDCEDBEGCEFEAD() { }
+
+	// RVA: 0x5F4A0D8 Offset: 0x5F460D8 VA: 0x5F4A0D8
+	public AnimationCurve CFCACECAHAEAACE() { }
+
+	// RVA: 0x5F4A0E0 Offset: 0x5F460E0 VA: 0x5F4A0E0
+	public GUID get_LocalExplosionSoundEvent() { }
+
+	// RVA: 0x5F4A0EC Offset: 0x5F460EC VA: 0x5F4A0EC
+	public GUID FFGFGAAHEGGACHB() { }
+
+	// RVA: 0x5F4A0F8 Offset: 0x5F460F8 VA: 0x5F4A0F8
+	public GUID get_TpsDropEnemySoundEvent() { }
+
+	// RVA: 0x5F4A104 Offset: 0x5F46104 VA: 0x5F4A104
+	public GUID FAEGABEGCBGEABE() { }
+
+	// RVA: 0x5F4A110 Offset: 0x5F46110 VA: 0x5F4A110
+	public AnimationCurve CFGHBHFFGEBDHBC() { }
+}

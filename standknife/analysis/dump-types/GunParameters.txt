@@ -1,0 +1,448 @@
+// Namespace: Axlebolt.Standoff.Inventory.Gun
+public class GunParameters : WeaponParameters // TypeDefIndex: 4533
+{
+	// Fields
+	[Header("Gun Parameters")]
+	[SerializeField]
+	[Space]
+	private HHDADFEBBCBCBFD _sightType; // 0x110
+	[SerializeField]
+	[Tooltip("Необходимо ли рисовать дефолтное перекрестие находясь не в прицеле")]
+	private bool _drawDefaultRecoilLinesNotInAiming; // 0x114
+	[SerializeField]
+	private GCEEFECHEFCFCGC _rifleType; // 0x115
+	[SerializeField]
+	private GBDHFAEEFBHDHGD _bulletTraceType; // 0x116
+	[SerializeField]
+	private HDDCDDBCGGHGFDB _reloadType; // 0x117
+	[SerializeField]
+	private FGDAHBBGBGDGFEC _ammunitionType; // 0x118
+	[SerializeField]
+	private ShotgunShellParameters _shotgunShellParameters; // 0x120
+	[SerializeField]
+	private CFFBGFBFHFGAHEE _muzzleType; // 0x128
+	[SerializeField]
+	private bool _combineMeshInIdle; // 0x129
+	[SerializeField]
+	private float _scopeAimSensitivityMult; // 0x12C
+	[SerializeField]
+	private Ammunition _ammunition; // 0x130
+	[FormerlySerializedAs("_displayDoubledAmmunition")]
+	[SerializeField]
+	private bool _doubledAmmoConsumption; // 0x138
+	[SerializeField]
+	private Damage _damage; // 0x140
+	[SerializeField]
+	private float _hitRange; // 0x148
+	[SerializeField]
+	private int _fireRate; // 0x14C
+	[SerializeField]
+	private int _recoilControl; // 0x150
+	[SerializeField]
+	private RecoilParameters _recoilParameters; // 0x158
+	[FormerlySerializedAs("AccuracyAdditiveCurve")]
+	[SerializeField]
+	private AnimationCurve _accuracyAdditiveCurve; // 0x160
+	[SerializeField]
+	private float _accuracyMultOnJump; // 0x168
+	[SerializeField]
+	private AnimationCurve _additiveNoAimDispertionCurve; // 0x170
+	[SerializeField]
+	private float _recoilMultOnCrouch; // 0x178
+	[SerializeField]
+	private float _accuracyMultOnCrouch; // 0x17C
+	[SerializeField]
+	private float _recoilAimMult; // 0x180
+	[SerializeField]
+	private float _accuracyAimMult; // 0x184
+	[SerializeField]
+	private float _recoilAimMultOnCrouch; // 0x188
+	[SerializeField]
+	private float _accuracyAimMultOnCrouch; // 0x18C
+	[SerializeField]
+	private int _accurateRange; // 0x190
+	[SerializeField]
+	private GunSightViewParameters _gunSightViewParameters; // 0x198
+	[SerializeField]
+	[Range(0, 100)]
+	private float _armorPenetration; // 0x1A0
+	[SerializeField]
+	private int _penetrationPower; // 0x1A4
+	[SerializeField]
+	private float _reloadDuration; // 0x1A8
+	[SerializeField]
+	private float _tacticalReloadDuration; // 0x1AC
+	[SerializeField]
+	private float _roundInsertDuration; // 0x1B0
+	[SerializeField]
+	private float _reloadStartOffset; // 0x1B4
+	[SerializeField]
+	private float _roundInsertOffset; // 0x1B8
+	[SerializeField]
+	private int _visibleCartridgeCount; // 0x1BC
+	[SerializeField]
+	private float _magazineInsertTime; // 0x1C0
+	[SerializeField]
+	private float _takeDuration; // 0x1C4
+	[SerializeField]
+	private float _preReloadTime; // 0x1C8
+	[SerializeField]
+	private int _impulse; // 0x1CC
+	[SerializeField]
+	private DEAHEEBDBGBBBFH _muzzleFlashType; // 0x1D0
+	private Nullable<FDBDCEGHFCHCHDA> _fireRateSafe; // 0x1D4
+	private Nullable<BHGCCBBABFFCDGA> _scopeAimSensitivityMultSafe; // 0x1E0
+	private Nullable<BHGCCBBABFFCDGA> _accuracyMultOnJumpSafe; // 0x1EC
+	private Nullable<BHGCCBBABFFCDGA> _recoilMultOnCrouchSafe; // 0x1F8
+	private Nullable<BHGCCBBABFFCDGA> _accuracyMultOnCrouchSafe; // 0x204
+	private Nullable<BHGCCBBABFFCDGA> _recoilAimMultSafe; // 0x210
+	private Nullable<BHGCCBBABFFCDGA> _accuracyAimMultSafe; // 0x21C
+	private Nullable<BHGCCBBABFFCDGA> _recoilAimMultOnCrouchSafe; // 0x228
+	private Nullable<BHGCCBBABFFCDGA> _accuracyAimMultOnCrouchSafe; // 0x234
+	private Nullable<FDBDCEGHFCHCHDA> _recoilControlSafe; // 0x240
+	private Nullable<FDBDCEGHFCHCHDA> _accurateRangeSafe; // 0x24C
+	private Nullable<BHGCCBBABFFCDGA> _armorPenetrationSafe; // 0x258
+	private Nullable<FDBDCEGHFCHCHDA> _penetrationPowerSafe; // 0x264
+	private Nullable<BHGCCBBABFFCDGA> _reloadDurationSafe; // 0x270
+	private Nullable<BHGCCBBABFFCDGA> _tacticalReloadDurationSafe; // 0x27C
+	private Nullable<BHGCCBBABFFCDGA> _reloadStartOffsetSafe; // 0x288
+	private Nullable<BHGCCBBABFFCDGA> _roundInsertOffsetSafe; // 0x294
+	private Nullable<BHGCCBBABFFCDGA> _roundInsertDurationSafe; // 0x2A0
+	private Nullable<BHGCCBBABFFCDGA> _magazineInsertTimeSafe; // 0x2AC
+	private Nullable<BHGCCBBABFFCDGA> _takeDurationSafe; // 0x2B8
+	private Nullable<BHGCCBBABFFCDGA> _preReloadTimeSafe; // 0x2C4
+	private Nullable<FDBDCEGHFCHCHDA> _impulseSafe; // 0x2D0
+	private Nullable<BHGCCBBABFFCDGA> _hitRangeSafe; // 0x2DC
+	private Nullable<CFGAHHHABFBAGDH> _combineMeshInIdleSafe; // 0x2E8
+	private Nullable<FDBDCEGHFCHCHDA> _visibleCartridgeCountSafe; // 0x2F4
+	private Nullable<CFGAHHHABFBAGDH> _drawDefaultRecoilLinesNotInAimingSafe; // 0x300
+	private Nullable<CFGAHHHABFBAGDH> _doubledAmmoConsumptionSafe; // 0x30C
+
+	// Properties
+	public ABGAECFECCHDBFC GunType { get; }
+	public GCEEFECHEFCFCGC RifleType { get; }
+	public HHDADFEBBCBCBFD SightType { get; }
+	public CFGAHHHABFBAGDH DrawDefaultRecoilLinesNotInAiming { get; }
+	public HDDCDDBCGGHGFDB ReloadType { get; }
+	public FGDAHBBGBGDGFEC AmmunitionType { get; }
+	public ShotgunShellParameters ShotgunShellParameters { get; }
+	public GBDHFAEEFBHDHGD BulletTraceType { get; }
+	public CFFBGFBFHFGAHEE MuzzleType { get; }
+	public DEAHEEBDBGBBBFH MuzzleFlashType { get; }
+	public AnimationCurve AccuracyAdditiveCurve { get; }
+	public AnimationCurve AdditiveNoAimDispertionCurve { get; }
+	public GunSightViewParameters GunSightViewParameters { get; }
+	public RecoilParameters RecoilParameters { get; }
+	public Ammunition Ammunition { get; }
+	public Damage Damage { get; }
+	public BHGCCBBABFFCDGA ScopeAimSensitivityMult { get; }
+	public FDBDCEGHFCHCHDA FireRate { get; }
+	public BHGCCBBABFFCDGA AccuracyMultOnJump { get; }
+	public BHGCCBBABFFCDGA RecoilMultOnCrouch { get; }
+	public BHGCCBBABFFCDGA AccuracyMultOnCrouch { get; }
+	public BHGCCBBABFFCDGA RecoilAimMult { get; }
+	public BHGCCBBABFFCDGA AccuracyAimMult { get; }
+	public BHGCCBBABFFCDGA RecoilAimMultOnCrouch { get; }
+	public BHGCCBBABFFCDGA AccuracyAimMultOnCrouch { get; }
+	public FDBDCEGHFCHCHDA RecoilControl { get; }
+	public FDBDCEGHFCHCHDA AccurateRange { get; }
+	public BHGCCBBABFFCDGA ArmorPenetration { get; }
+	public FDBDCEGHFCHCHDA PenetrationPower { get; }
+	public BHGCCBBABFFCDGA ReloadDuration { get; }
+	public BHGCCBBABFFCDGA TacticalReloadDuration { get; }
+	public BHGCCBBABFFCDGA ReloadStartOffset { get; }
+	public BHGCCBBABFFCDGA RoundInsertOffset { get; }
+	public BHGCCBBABFFCDGA RoundInsertDuration { get; }
+	public BHGCCBBABFFCDGA MagazineInsertTime { get; }
+	public BHGCCBBABFFCDGA TakeDuration { get; }
+	public BHGCCBBABFFCDGA PreReloadTime { get; }
+	public FDBDCEGHFCHCHDA Impulse { get; }
+	public BHGCCBBABFFCDGA HitRange { get; }
+	public CFGAHHHABFBAGDH CombineMeshInIdle { get; }
+	public CFGAHHHABFBAGDH DoubledAmmoConsumption { get; }
+	public FDBDCEGHFCHCHDA VisibleCartridgeCount { get; }
+
+	// Methods
+
+	// RVA: 0x4134F2C Offset: 0x4130F2C VA: 0x4134F2C
+	public FDBDCEGHFCHCHDA EDCCFGEGAHGFCEG() { }
+
+	// RVA: 0x41350EC Offset: 0x41310EC VA: 0x41350EC
+	public BHGCCBBABFFCDGA get_TakeDuration() { }
+
+	// RVA: 0x41352B8 Offset: 0x41312B8 VA: 0x41352B8
+	public BHGCCBBABFFCDGA get_RoundInsertOffset() { }
+
+	// RVA: 0x4135480 Offset: 0x4131480 VA: 0x4135480
+	public BHGCCBBABFFCDGA ADBFHEFGFBEGECA() { }
+
+	// RVA: 0x4135648 Offset: 0x4131648 VA: 0x4135648
+	public CFGAHHHABFBAGDH EBHAFCFEBECCBAA() { }
+
+	// RVA: 0x4135810 Offset: 0x4131810 VA: 0x4135810
+	public DEAHEEBDBGBBBFH AGHGEFDGDABFHGD() { }
+
+	// RVA: 0x4135818 Offset: 0x4131818 VA: 0x4135818
+	public BHGCCBBABFFCDGA BAHEAHHGCCGDAHD() { }
+
+	// RVA: 0x41359E4 Offset: 0x41319E4 VA: 0x41359E4
+	public FGDAHBBGBGDGFEC get_AmmunitionType() { }
+
+	// RVA: 0x41359EC Offset: 0x41319EC VA: 0x41359EC
+	public BHGCCBBABFFCDGA get_PreReloadTime() { }
+
+	// RVA: 0x4135BB4 Offset: 0x4131BB4 VA: 0x4135BB4
+	public CFGAHHHABFBAGDH get_DoubledAmmoConsumption() { }
+
+	// RVA: 0x4135D78 Offset: 0x4131D78 VA: 0x4135D78
+	public ABGAECFECCHDBFC get_GunType() { }
+
+	// RVA: 0x4135D90 Offset: 0x4131D90 VA: 0x4135D90
+	public BHGCCBBABFFCDGA FFHGHDADCHCEGCG() { }
+
+	// RVA: 0x4135F5C Offset: 0x4131F5C VA: 0x4135F5C
+	public BHGCCBBABFFCDGA get_RecoilMultOnCrouch() { }
+
+	// RVA: 0x4136128 Offset: 0x4132128 VA: 0x4136128
+	public AnimationCurve DDBHHGBBCDHDCEF() { }
+
+	// RVA: 0x4136130 Offset: 0x4132130 VA: 0x4136130
+	public BHGCCBBABFFCDGA get_ArmorPenetration() { }
+
+	// RVA: 0x41362FC Offset: 0x41322FC VA: 0x41362FC
+	public Ammunition get_Ammunition() { }
+
+	// RVA: 0x4136304 Offset: 0x4132304 VA: 0x4136304
+	public BHGCCBBABFFCDGA BBFHDEGCEBBBFAG() { }
+
+	// RVA: 0x41364CC Offset: 0x41324CC VA: 0x41364CC
+	public GCEEFECHEFCFCGC get_RifleType() { }
+
+	// RVA: 0x4136658 Offset: 0x4132658 VA: 0x4136658
+	public ABGAECFECCHDBFC GEFGFGAAAGBFDCE() { }
+
+	// RVA: 0x4136670 Offset: 0x4132670 VA: 0x4136670
+	public BHGCCBBABFFCDGA get_MagazineInsertTime() { }
+
+	// RVA: 0x4136838 Offset: 0x4132838 VA: 0x4136838
+	public FDBDCEGHFCHCHDA get_PenetrationPower() { }
+
+	// RVA: 0x41369F8 Offset: 0x41329F8 VA: 0x41369F8
+	public FDBDCEGHFCHCHDA ADHFAABEHDGCBAE() { }
+
+	// RVA: 0x4136BB8 Offset: 0x4132BB8 VA: 0x4136BB8
+	public AnimationCurve DCDFHHBGCEGFAAA() { }
+
+	// RVA: 0x4136BC0 Offset: 0x4132BC0 VA: 0x4136BC0
+	public AnimationCurve get_AccuracyAdditiveCurve() { }
+
+	// RVA: 0x4136BC8 Offset: 0x4132BC8 VA: 0x4136BC8
+	public BHGCCBBABFFCDGA get_TacticalReloadDuration() { }
+
+	// RVA: 0x4136D90 Offset: 0x4132D90 VA: 0x4136D90
+	public FDBDCEGHFCHCHDA CHBHHEDDGHADCEH() { }
+
+	// RVA: 0x4136F50 Offset: 0x4132F50 VA: 0x4136F50
+	public BHGCCBBABFFCDGA BCFAAHAHHGFADCD() { }
+
+	// RVA: 0x4137118 Offset: 0x4133118 VA: 0x4137118
+	public BHGCCBBABFFCDGA GBGFDEGGEDEBEFB() { }
+
+	// RVA: 0x41372E4 Offset: 0x41332E4 VA: 0x41372E4
+	public BHGCCBBABFFCDGA DEEHEAEAAEHFFHG() { }
+
+	// RVA: 0x41374AC Offset: 0x41334AC VA: 0x41374AC
+	public AnimationCurve EDHEAAABGECEBAD() { }
+
+	// RVA: 0x41374B4 Offset: 0x41334B4 VA: 0x41374B4
+	public BHGCCBBABFFCDGA get_AccuracyAimMult() { }
+
+	// RVA: 0x413767C Offset: 0x413367C VA: 0x413767C
+	public GBDHFAEEFBHDHGD get_BulletTraceType() { }
+
+	// RVA: 0x4137684 Offset: 0x4133684 VA: 0x4137684
+	public BHGCCBBABFFCDGA FBFAGGDHADEEABA() { }
+
+	// RVA: 0x4137850 Offset: 0x4133850 VA: 0x4137850
+	public FGDAHBBGBGDGFEC BCCFGFAEACFHCAD() { }
+
+	// RVA: 0x4137858 Offset: 0x4133858 VA: 0x4137858
+	public AnimationCurve get_AdditiveNoAimDispertionCurve() { }
+
+	// RVA: 0x4137860 Offset: 0x4133860 VA: 0x4137860
+	public FDBDCEGHFCHCHDA HAFAAAGHAEDDEGH() { }
+
+	// RVA: 0x4137A24 Offset: 0x4133A24 VA: 0x4137A24
+	public CFGAHHHABFBAGDH get_CombineMeshInIdle() { }
+
+	// RVA: 0x4137BEC Offset: 0x4133BEC VA: 0x4137BEC
+	public AnimationCurve GFFGEAHACHEHEGG() { }
+
+	// RVA: 0x4137BF4 Offset: 0x4133BF4 VA: 0x4137BF4
+	public ABGAECFECCHDBFC AFDGAACAEBEHECE() { }
+
+	// RVA: 0x4137C0C Offset: 0x4133C0C VA: 0x4137C0C
+	public BHGCCBBABFFCDGA GECECABDHEEFCDA() { }
+
+	// RVA: 0x4137DD8 Offset: 0x4133DD8 VA: 0x4137DD8
+	public FDBDCEGHFCHCHDA DBDFDEFDGHFDCFD() { }
+
+	// RVA: 0x4137F9C Offset: 0x4133F9C VA: 0x4137F9C
+	public HDDCDDBCGGHGFDB get_ReloadType() { }
+
+	// RVA: 0x4137FA4 Offset: 0x4133FA4 VA: 0x4137FA4
+	public BHGCCBBABFFCDGA DHGDGDDAAFAHBGD() { }
+
+	// RVA: 0x4138170 Offset: 0x4134170 VA: 0x4138170 Slot: 10
+	protected override void OnEnable() { }
+
+	// RVA: 0x4138AB4 Offset: 0x4134AB4 VA: 0x4138AB4
+	public BHGCCBBABFFCDGA GFEFBACHFHDFDHG() { }
+
+	// RVA: 0x4138C80 Offset: 0x4134C80 VA: 0x4138C80
+	public BHGCCBBABFFCDGA FFBCBDHHGHCGCGF() { }
+
+	// RVA: 0x4138E4C Offset: 0x4134E4C VA: 0x4138E4C
+	public BHGCCBBABFFCDGA get_AccuracyMultOnJump() { }
+
+	// RVA: 0x4139014 Offset: 0x4135014 VA: 0x4139014
+	public BHGCCBBABFFCDGA GDECCFBGEEFDGCF() { }
+
+	// RVA: 0x41391DC Offset: 0x41351DC VA: 0x41391DC
+	public FDBDCEGHFCHCHDA get_AccurateRange() { }
+
+	// RVA: 0x413939C Offset: 0x413539C VA: 0x413939C
+	public RecoilParameters get_RecoilParameters() { }
+
+	// RVA: 0x41393A4 Offset: 0x41353A4 VA: 0x41393A4
+	public Ammunition DABEEFFCGCBEEHB() { }
+
+	// RVA: 0x41393AC Offset: 0x41353AC VA: 0x41393AC
+	public BHGCCBBABFFCDGA get_ScopeAimSensitivityMult() { }
+
+	// RVA: 0x4139578 Offset: 0x4135578 VA: 0x4139578
+	public RecoilParameters GDCDCFBGHEHECHB() { }
+
+	// RVA: 0x4139580 Offset: 0x4135580 VA: 0x4139580
+	public GunSightViewParameters get_GunSightViewParameters() { }
+
+	// RVA: 0x4139588 Offset: 0x4135588 VA: 0x4139588
+	public FDBDCEGHFCHCHDA get_RecoilControl() { }
+
+	// RVA: 0x413974C Offset: 0x413574C VA: 0x413974C
+	public HDDCDDBCGGHGFDB BGAGAHEBECECBEE() { }
+
+	// RVA: 0x4139754 Offset: 0x4135754 VA: 0x4139754
+	public FGDAHBBGBGDGFEC DBHABHDACABDDDB() { }
+
+	// RVA: 0x413975C Offset: 0x413575C VA: 0x413975C
+	public void .ctor() { }
+
+	// RVA: 0x413978C Offset: 0x413578C VA: 0x413978C
+	public FDBDCEGHFCHCHDA get_Impulse() { }
+
+	// RVA: 0x4139950 Offset: 0x4135950 VA: 0x4139950
+	public CFGAHHHABFBAGDH get_DrawDefaultRecoilLinesNotInAiming() { }
+
+	// RVA: 0x4139B18 Offset: 0x4135B18 VA: 0x4139B18
+	public BHGCCBBABFFCDGA EHBBFCGCEAFHGCD() { }
+
+	// RVA: 0x4139CE0 Offset: 0x4135CE0 VA: 0x4139CE0
+	public Ammunition FGDCHBHHHDGBFFD() { }
+
+	// RVA: 0x4139CE8 Offset: 0x4135CE8 VA: 0x4139CE8
+	public BHGCCBBABFFCDGA FDHHGAEABBBBGEA() { }
+
+	// RVA: 0x4139EB0 Offset: 0x4135EB0 VA: 0x4139EB0
+	public BHGCCBBABFFCDGA get_AccuracyMultOnCrouch() { }
+
+	// RVA: 0x413A078 Offset: 0x4136078 VA: 0x413A078
+	public BHGCCBBABFFCDGA get_ReloadStartOffset() { }
+
+	// RVA: 0x413A244 Offset: 0x4136244 VA: 0x413A244
+	public CFFBGFBFHFGAHEE get_MuzzleType() { }
+
+	// RVA: 0x413A24C Offset: 0x413624C VA: 0x413A24C
+	public Damage AFCEHGAHBABGADF() { }
+
+	// RVA: 0x413A254 Offset: 0x4136254 VA: 0x413A254
+	public HHDADFEBBCBCBFD get_SightType() { }
+
+	// RVA: 0x413A25C Offset: 0x413625C VA: 0x413A25C
+	public ABGAECFECCHDBFC EACBCDCGHHBBCCH() { }
+
+	// RVA: 0x413A274 Offset: 0x4136274 VA: 0x413A274
+	public FDBDCEGHFCHCHDA CCBGDAEGHACACGB() { }
+
+	// RVA: 0x413A434 Offset: 0x4136434 VA: 0x413A434
+	public Damage get_Damage() { }
+
+	// RVA: 0x413A43C Offset: 0x413643C VA: 0x413A43C
+	public FDBDCEGHFCHCHDA HDBFHHEHEHEAGGG() { }
+
+	// RVA: 0x413A600 Offset: 0x4136600 VA: 0x413A600
+	public BHGCCBBABFFCDGA get_ReloadDuration() { }
+
+	// RVA: 0x413A7CC Offset: 0x41367CC VA: 0x413A7CC
+	public CFGAHHHABFBAGDH CFGDFBEBDCDHFED() { }
+
+	// RVA: 0x413A990 Offset: 0x4136990 VA: 0x413A990
+	public BHGCCBBABFFCDGA get_AccuracyAimMultOnCrouch() { }
+
+	// RVA: 0x413AB58 Offset: 0x4136B58 VA: 0x413AB58
+	public FDBDCEGHFCHCHDA CAHECHHGCAACDAB() { }
+
+	// RVA: 0x413AD1C Offset: 0x4136D1C VA: 0x413AD1C
+	public BHGCCBBABFFCDGA get_RecoilAimMultOnCrouch() { }
+
+	// RVA: 0x413AEE8 Offset: 0x4136EE8 VA: 0x413AEE8
+	public BHGCCBBABFFCDGA get_RecoilAimMult() { }
+
+	// RVA: 0x413B0B4 Offset: 0x41370B4 VA: 0x413B0B4 Slot: 2
+	public override int GetHashCode() { }
+
+	// RVA: 0x413BA4C Offset: 0x4137A4C VA: 0x413BA4C
+	public FDBDCEGHFCHCHDA HEAGACEBCHCCCCA() { }
+
+	// RVA: 0x413BC0C Offset: 0x4137C0C VA: 0x413BC0C
+	public HHDADFEBBCBCBFD GADEAHGHBABCHBG() { }
+
+	// RVA: 0x413BC14 Offset: 0x4137C14 VA: 0x413BC14
+	public BHGCCBBABFFCDGA FDAECAEDGHABEEE() { }
+
+	// RVA: 0x413BDDC Offset: 0x4137DDC VA: 0x413BDDC
+	public FDBDCEGHFCHCHDA GGAEFDGFFCDGGGA() { }
+
+	// RVA: 0x413BFA0 Offset: 0x4137FA0 VA: 0x413BFA0
+	public BHGCCBBABFFCDGA FHFBDBDCAAGGDGC() { }
+
+	// RVA: 0x413C16C Offset: 0x413816C VA: 0x413C16C
+	public BHGCCBBABFFCDGA FDACDBBCHCEFHEB() { }
+
+	// RVA: 0x413B4F8 Offset: 0x41374F8 VA: 0x413B4F8
+	public FDBDCEGHFCHCHDA get_FireRate() { }
+
+	// RVA: 0x413C334 Offset: 0x4138334 VA: 0x413C334
+	public BHGCCBBABFFCDGA DHECCHCAABBHADH() { }
+
+	// RVA: 0x413C500 Offset: 0x4138500 VA: 0x413C500
+	public FDBDCEGHFCHCHDA get_VisibleCartridgeCount() { }
+
+	// RVA: 0x413C6C0 Offset: 0x41386C0 VA: 0x413C6C0
+	public BHGCCBBABFFCDGA FCBEFHADCGFABBE() { }
+
+	// RVA: 0x413C888 Offset: 0x4138888 VA: 0x413C888
+	public ShotgunShellParameters get_ShotgunShellParameters() { }
+
+	// RVA: 0x413C890 Offset: 0x4138890 VA: 0x413C890
+	public DEAHEEBDBGBBBFH get_MuzzleFlashType() { }
+
+	// RVA: 0x413C898 Offset: 0x4138898 VA: 0x413C898
+	public FDBDCEGHFCHCHDA AGADFEDACFDDFHA() { }
+
+	// RVA: 0x413B6B8 Offset: 0x41376B8 VA: 0x413B6B8
+	public BHGCCBBABFFCDGA get_RoundInsertDuration() { }
+
+	// RVA: 0x413B884 Offset: 0x4137884 VA: 0x413B884
+	public BHGCCBBABFFCDGA get_HitRange() { }
+}

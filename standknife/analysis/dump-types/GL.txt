@@ -1,0 +1,98 @@
+// Namespace: UnityEngine
+public sealed class GL // TypeDefIndex: 17344
+{
+	// Properties
+	[NativeProperty("UserBackfaceMode")]
+	public static bool invertCulling { set; }
+	public static Matrix4x4 modelview { set; }
+
+	// Methods
+
+	[NativeName("ImmediateVertex")]
+	// RVA: 0xA73E2C0 Offset: 0xA73A2C0 VA: 0xA73E2C0
+	public static void Vertex3(float x, float y, float z) { }
+
+	[NativeName("ImmediateTexCoordAll")]
+	// RVA: 0xA73E460 Offset: 0xA73A460 VA: 0xA73E460
+	public static void TexCoord3(float x, float y, float z) { }
+
+	// RVA: 0xA73E604 Offset: 0xA73A604 VA: 0xA73E604
+	public static void TexCoord2(float x, float y) { }
+
+	[NativeName("ImmediateColor")]
+	// RVA: 0xA73E60C Offset: 0xA73A60C VA: 0xA73E60C
+	private static void ImmediateColor(float r, float g, float b, float a) { }
+
+	// RVA: 0xA73E7B0 Offset: 0xA73A7B0 VA: 0xA73E7B0
+	public static void Color(Color c) { }
+
+	// RVA: 0xA73E7B4 Offset: 0xA73A7B4 VA: 0xA73E7B4
+	public static void set_invertCulling(bool value) { }
+
+	// RVA: 0xA73E920 Offset: 0xA73A920 VA: 0xA73E920
+	private static void SetViewMatrix(Matrix4x4 m) { }
+
+	// RVA: 0xA73EAB0 Offset: 0xA73AAB0 VA: 0xA73EAB0
+	public static void set_modelview(Matrix4x4 value) { }
+
+	[FreeFunction("GLPushMatrixScript")]
+	// RVA: 0xA73EADC Offset: 0xA73AADC VA: 0xA73EADC
+	public static void PushMatrix() { }
+
+	[FreeFunction("GLPopMatrixScript")]
+	// RVA: 0xA73EC4C Offset: 0xA73AC4C VA: 0xA73EC4C
+	public static void PopMatrix() { }
+
+	[FreeFunction("GLLoadOrthoScript")]
+	// RVA: 0xA73EDB8 Offset: 0xA73ADB8 VA: 0xA73EDB8
+	public static void LoadOrtho() { }
+
+	[FreeFunction("GLLoadProjectionMatrixScript")]
+	// RVA: 0xA73EF20 Offset: 0xA73AF20 VA: 0xA73EF20
+	public static void LoadProjectionMatrix(Matrix4x4 mat) { }
+
+	[FreeFunction("GLGetGPUProjectionMatrix")]
+	// RVA: 0xA73F0A0 Offset: 0xA73B0A0 VA: 0xA73F0A0
+	public static Matrix4x4 GetGPUProjectionMatrix(Matrix4x4 proj, bool renderIntoTexture) { }
+
+	[FreeFunction]
+	// RVA: 0xA73F294 Offset: 0xA73B294 VA: 0xA73F294
+	private static void GLLoadPixelMatrixScript(float left, float right, float bottom, float top) { }
+
+	// RVA: 0xA73F438 Offset: 0xA73B438 VA: 0xA73F438
+	public static void LoadPixelMatrix(float left, float right, float bottom, float top) { }
+
+	[FreeFunction("GLBegin", ThrowsException = True)]
+	// RVA: 0xA73F43C Offset: 0xA73B43C VA: 0xA73F43C
+	public static void Begin(int mode) { }
+
+	[FreeFunction("GLEnd")]
+	// RVA: 0xA73F5AC Offset: 0xA73B5AC VA: 0xA73F5AC
+	public static void End() { }
+
+	[FreeFunction]
+	// RVA: 0xA73F714 Offset: 0xA73B714 VA: 0xA73F714
+	private static void GLClear(bool clearDepth, bool clearColor, Color backgroundColor, float depth) { }
+
+	// RVA: 0xA73F8F8 Offset: 0xA73B8F8 VA: 0xA73F8F8
+	public static void Clear(bool clearDepth, bool clearColor, Color backgroundColor, float depth) { }
+
+	[FreeFunction("SetGLViewport")]
+	// RVA: 0xA73F928 Offset: 0xA73B928 VA: 0xA73F928
+	public static void Viewport(Rect pixelRect) { }
+
+	// RVA: 0xA73E924 Offset: 0xA73A924 VA: 0xA73E924
+	private static void SetViewMatrix_Injected(ref Matrix4x4 m) { }
+
+	// RVA: 0xA73EF24 Offset: 0xA73AF24 VA: 0xA73EF24
+	private static void LoadProjectionMatrix_Injected(ref Matrix4x4 mat) { }
+
+	// RVA: 0xA73F0E0 Offset: 0xA73B0E0 VA: 0xA73F0E0
+	private static void GetGPUProjectionMatrix_Injected(ref Matrix4x4 proj, bool renderIntoTexture, out Matrix4x4 ret) { }
+
+	// RVA: 0xA73F744 Offset: 0xA73B744 VA: 0xA73F744
+	private static void GLClear_Injected(bool clearDepth, bool clearColor, ref Color backgroundColor, float depth) { }
+
+	// RVA: 0xA73F94C Offset: 0xA73B94C VA: 0xA73F94C
+	private static void Viewport_Injected(ref Rect pixelRect) { }
+}

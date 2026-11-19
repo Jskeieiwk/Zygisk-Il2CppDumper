@@ -1,0 +1,278 @@
+// Namespace: Axlebolt.Standoff.Cam
+public class CameraMovementController : MonoBehaviour // TypeDefIndex: 5027
+{
+	// Fields
+	private static ILogger GGFBEBEFCHEEADD; // 0x0
+	private bool DDAHFEAGGFECBBC; // 0x20
+	private bool AHHGHAHGCHEDDEA; // 0x21
+	private bool GAEDFEFEEDHCHBB; // 0x22
+	private float GHHCHAHEDFDADBG; // 0x24
+	private float EFGBDBGAEADEECH; // 0x28
+	private float EGADGGCHGGBCEBC; // 0x2C
+	private float DAACCFEDBBGBGDG; // 0x30
+	private bool DHCDEGFGBFCEDGF; // 0x34
+	private float AEEAAFGBCEHAHFC; // 0x38
+	private float DDGBFHAGEGDGBGD; // 0x3C
+	private DCEDGCDFECEGHGE AECHBBCHDFABCCD; // 0x40
+	private Transform DDDBBCBGBADHFHD; // 0x48
+	private AnimationCurve EEGBGBGGCBCHECB; // 0x50
+	private Vector3 DEEGCHCDHABECBB; // 0x58
+	private Vector3 AHFAAEHEDCDDCDF; // 0x64
+	private RaycastHit HEBCFFGAHGABCBA; // 0x70
+	[CompilerGenerated]
+	private Camera <EFDBFHCAABBGECD>k__BackingField; // 0xA0
+	[CompilerGenerated]
+	private float <GEEHGECCCCFHAFF>k__BackingField; // 0xA8
+	[CompilerGenerated]
+	private Transform <EAHGDFCCEBHCBDG>k__BackingField; // 0xB0
+
+	// Properties
+	private static ILogger FHFEDEGBFGDDCCB { get; }
+	public Camera GADEGBADAGHAHBC { get; set; }
+	public float EGDCFGHEAHCFCDD { get; set; }
+	public Transform BCAFDDGADHHDCDE { get; set; }
+	public Vector3 GDFAAGDBFAAGHAE { get; }
+	public Quaternion HGEAGAHCEAHHCAE { get; }
+
+	// Methods
+
+	// RVA: 0x43633A0 Offset: 0x435F3A0 VA: 0x43633A0
+	private void FABCECHBFHDCFDC() { }
+
+	// RVA: 0x4363708 Offset: 0x435F708 VA: 0x4363708
+	public void SetPositionAndRotation(ECBDFAFCHBEGCCC DGHBAEFFGGAEGCG, bool DHEAFGBHBHFDACC = False) { }
+
+	// RVA: 0x436382C Offset: 0x435F82C VA: 0x436382C
+	public void EGFCHBDEBGHBAHF() { }
+
+	// RVA: 0x4363634 Offset: 0x435F634 VA: 0x4363634
+	public Vector3 get_Position() { }
+
+	// RVA: 0x4363834 Offset: 0x435F834 VA: 0x4363834
+	public void GABDEDHBCBBBEGC(Vector3 FGDFGECHDEABBBC, float CEDEABGCFDCCGAF = 0) { }
+
+	// RVA: 0x43639C0 Offset: 0x435F9C0 VA: 0x43639C0
+	private static ILogger FBDFEBGDFBEFHCE() { }
+
+	// RVA: 0x4363AEC Offset: 0x435FAEC VA: 0x4363AEC
+	private void EFCHBFDGDDEHBEE(MovementPathParameters FAFDCHEHBCDAHHC) { }
+
+	[CompilerGenerated]
+	// RVA: 0x4363BBC Offset: 0x435FBBC VA: 0x4363BBC
+	public Transform get_Transform() { }
+
+	// RVA: 0x4363BC4 Offset: 0x435FBC4 VA: 0x4363BC4 Slot: 4
+	protected virtual void Update() { }
+
+	// RVA: 0x4363CBC Offset: 0x435FCBC VA: 0x4363CBC
+	public RaycastHit GetSafeCheckingHit() { }
+
+	[CompilerGenerated]
+	// RVA: 0x4363CD0 Offset: 0x435FCD0 VA: 0x4363CD0
+	private void HFFFEAFBCBDBBBD(Camera BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x4363CD8 Offset: 0x435FCD8 VA: 0x4363CD8
+	private void EEFABFFDECBDDHG(Transform BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x4363CE0 Offset: 0x435FCE0 VA: 0x4363CE0
+	public Vector3 FDAEEBDBCBEBCHG() { }
+
+	// RVA: 0x4363CFC Offset: 0x435FCFC VA: 0x4363CFC
+	public void DBDCCDCBCEBHHDF() { }
+
+	// RVA: 0x4363D28 Offset: 0x435FD28 VA: 0x4363D28
+	public void StartPath(DCEDGCDFECEGHGE HAECGCDCDHCAFGA, float CEDEABGCFDCCGAF, bool DGDDDHABBFGDAGA, bool CAGFAAHABEACHAA = True, MovementPathParameters FAFDCHEHBCDAHHC, bool DEBCEEEEAHGCABF = False, float GBGGBCEDDDADBDG = 0, float AEHGAEDFCBDFBFA = 0) { }
+
+	// RVA: 0x4363DB4 Offset: 0x435FDB4 VA: 0x4363DB4
+	private void EGFGHDCDAFGHEGH(MovementPathParameters FAFDCHEHBCDAHHC) { }
+
+	[CompilerGenerated]
+	// RVA: 0x4363E84 Offset: 0x435FE84 VA: 0x4363E84
+	public Camera get_Camera() { }
+
+	// RVA: 0x4363E8C Offset: 0x435FE8C VA: 0x4363E8C
+	public void ABBDGAEDEHDCHHC(Transform BHBGGADCEBBEBDB) { }
+
+	// RVA: 0x4363EEC Offset: 0x435FEEC VA: 0x4363EEC
+	public void AGBACDADDBDDCGF(Vector3 BHBGGADCEBBEBDB) { }
+
+	// RVA: 0x4364018 Offset: 0x4360018 VA: 0x4364018
+	private void BDHBEFFADCFHDDD() { }
+
+	// RVA: 0x43640D0 Offset: 0x43600D0 VA: 0x43640D0
+	private Quaternion FFEGCEAHGDBADCF(Quaternion AEHDBAGDDDBAECF, Quaternion BHBGGADCEBBEBDB, ref float GFFHEDBBHFBADCA, float DGBEHEBBBCHCFED) { }
+
+	// RVA: 0x4364180 Offset: 0x4360180 VA: 0x4364180
+	public void BAHGDAAFEEEBBAF(DCEDGCDFECEGHGE HAECGCDCDHCAFGA, float CEDEABGCFDCCGAF, bool DGDDDHABBFGDAGA, bool CAGFAAHABEACHAA = True, MovementPathParameters FAFDCHEHBCDAHHC, bool DEBCEEEEAHGCABF = False, float GBGGBCEDDDADBDG = 0, float AEHGAEDFCBDFBFA = 0) { }
+
+	// RVA: 0x4364284 Offset: 0x4360284 VA: 0x4364284
+	public void CAAFECHHCFEGHAD(Vector3 BEAFEDEABADDAAB, float DGBEHEBBBCHCFED = 0) { }
+
+	// RVA: 0x436429C Offset: 0x436029C VA: 0x436429C
+	public void FFCCFACDAAHBGFF(Transform BHBGGADCEBBEBDB) { }
+
+	// RVA: 0x43642FC Offset: 0x43602FC VA: 0x43642FC
+	public bool FCHFHFBHFBBHABE(Vector3 BEAFEDEABADDAAB, Vector3 FGDFGECHDEABBBC, int GADEECEHHEFBBGD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x43644E0 Offset: 0x43604E0 VA: 0x43644E0
+	private void CEDDBAEHEDEDGHH(Transform BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x43644E8 Offset: 0x43604E8 VA: 0x43644E8
+	public void BDHAGCFHGBAHGFC(ECBDFAFCHBEGCCC DGHBAEFFGGAEGCG, bool DHEAFGBHBHFDACC = False) { }
+
+	// RVA: 0x4364610 Offset: 0x4360610 VA: 0x4364610
+	public void .ctor() { }
+
+	// RVA: 0x4363650 Offset: 0x435F650 VA: 0x4363650
+	public void SmoothRotate(Quaternion FEFHBBCEEDBBCGG, float CEDEABGCFDCCGAF = 0) { }
+
+	// RVA: 0x4364618 Offset: 0x4360618 VA: 0x4364618
+	public Transform EADAABHHBEBBEGH() { }
+
+	// RVA: 0x4364620 Offset: 0x4360620 VA: 0x4364620
+	public void LockViewOnTarget(Transform BHBGGADCEBBEBDB, float DGBEHEBBBCHCFED = 0) { }
+
+	// RVA: 0x43648B0 Offset: 0x43608B0 VA: 0x43648B0
+	public Transform HCCABHACFBECEAA() { }
+
+	// RVA: 0x43648B8 Offset: 0x43608B8 VA: 0x43648B8
+	public void StopPath() { }
+
+	// RVA: 0x43648C0 Offset: 0x43608C0 VA: 0x43648C0
+	public static MovementPathParameters AGECHHECGGADGED(string HEEAHABCFHAHHHE) { }
+
+	// RVA: 0x43649A8 Offset: 0x43609A8 VA: 0x43649A8
+	public bool IsPositionSafe(Vector3 BEAFEDEABADDAAB, Vector3 FGDFGECHDEABBBC, int GADEECEHHEFBBGD) { }
+
+	// RVA: 0x4364B8C Offset: 0x4360B8C VA: 0x4364B8C
+	public Quaternion get_Rotation() { }
+
+	// RVA: 0x4364BA8 Offset: 0x4360BA8 VA: 0x4364BA8
+	public void LockViewOnTarget(Vector3 BEAFEDEABADDAAB, float DGBEHEBBBCHCFED = 0) { }
+
+	// RVA: 0x4364BC0 Offset: 0x4360BC0 VA: 0x4364BC0
+	private void EFGDAECHCAFABCH() { }
+
+	// RVA: 0x4364E24 Offset: 0x4360E24 VA: 0x4364E24
+	public Quaternion GBEHDABBFGGBHBE() { }
+
+	// RVA: 0x4364E40 Offset: 0x4360E40 VA: 0x4364E40
+	public void TargetCamera(Transform BHBGGADCEBBEBDB) { }
+
+	// RVA: 0x4364EA0 Offset: 0x4360EA0 VA: 0x4364EA0
+	protected void FixedUpdate() { }
+
+	// RVA: 0x4364EC8 Offset: 0x4360EC8 VA: 0x4364EC8
+	public void EFEAAGDEGGGAFFB(Vector3 FGDFGECHDEABBBC, float CEDEABGCFDCCGAF = 0) { }
+
+	// RVA: 0x4365054 Offset: 0x4361054 VA: 0x4365054 Slot: 5
+	protected virtual void ABFEDDCFBEDDACF() { }
+
+	// RVA: 0x4365310 Offset: 0x4361310 VA: 0x4365310
+	public void GEHBEHAAHBGFCFF() { }
+
+	// RVA: 0x436455C Offset: 0x436055C VA: 0x436455C
+	private void HDEHDFFFBHCABEA() { }
+
+	// RVA: 0x4365330 Offset: 0x4361330 VA: 0x4365330
+	public void CFFAAACFCHBHHAF(Vector3 BHBGGADCEBBEBDB) { }
+
+	// RVA: 0x4365440 Offset: 0x4361440 VA: 0x4365440
+	private void DHBFCBBFEFCEAGH() { }
+
+	// RVA: 0x4363D1C Offset: 0x435FD1C VA: 0x4363D1C
+	public void UnlockViewOnTarget() { }
+
+	// RVA: 0x43656F0 Offset: 0x43616F0 VA: 0x43656F0
+	public void LookAt(Vector3 BHBGGADCEBBEBDB) { }
+
+	// RVA: 0x4365800 Offset: 0x4361800 VA: 0x4365800
+	public void UseFixedUpdate(bool CGHFHFBCCDEDBEF) { }
+
+	// RVA: 0x436580C Offset: 0x436180C VA: 0x436580C
+	public void EADGBECCHDHDAFH(Vector3 BEAFEDEABADDAAB, Quaternion HBFHCEAHDCHDDEE, bool DHEAFGBHBHFDACC = False) { }
+
+	// RVA: 0x4363BEC Offset: 0x435FBEC VA: 0x4363BEC
+	private void CAGAFGGHEGAACDE() { }
+
+	// RVA: 0x436507C Offset: 0x436107C VA: 0x436507C
+	private void ACBEHGEAGABBHHH() { }
+
+	// RVA: 0x43659B8 Offset: 0x43619B8 VA: 0x43659B8
+	public void ToDoToFixOsmanAfterVocation() { }
+
+	// RVA: 0x43659D8 Offset: 0x43619D8 VA: 0x43659D8
+	protected void BADCCBCDBEFEHGB() { }
+
+	// RVA: 0x4365A00 Offset: 0x4361A00 VA: 0x4365A00
+	public RaycastHit BHDCBHEBADEEEBH() { }
+
+	// RVA: 0x4365A14 Offset: 0x4361A14 VA: 0x4365A14
+	public void DBADDDDFCACAFFB(Transform BHBGGADCEBBEBDB) { }
+
+	// RVA: 0x4365A74 Offset: 0x4361A74 VA: 0x4365A74
+	public static MovementPathParameters LoadPathParameters(string HEEAHABCFHAHHHE) { }
+
+	// RVA: 0x436377C Offset: 0x435F77C VA: 0x436377C
+	private void Reset() { }
+
+	[CompilerGenerated]
+	// RVA: 0x4365B5C Offset: 0x4361B5C VA: 0x4365B5C
+	private void BGDFFDGGHAEGEBG(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x43656D4 Offset: 0x43616D4 VA: 0x43656D4
+	public Vector3 FCEBCHADCHGEHBE() { }
+
+	// RVA: 0x4365B64 Offset: 0x4361B64 VA: 0x4365B64 Slot: 6
+	protected virtual void EHEDEEAABFDHGAG() { }
+
+	// RVA: 0x4365C14 Offset: 0x4361C14 VA: 0x4365C14
+	private void ECBCFEGHBCGCACB(Camera BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x4365C1C Offset: 0x4361C1C VA: 0x4365C1C Slot: 7
+	protected virtual void Awake() { }
+
+	// RVA: 0x4365894 Offset: 0x4361894 VA: 0x4365894
+	public void SmoothTranslate(Vector3 FGDFGECHDEABBBC, float CEDEABGCFDCCGAF = 0) { }
+
+	// RVA: 0x436599C Offset: 0x436199C VA: 0x436599C
+	public Vector3 EDCDCADHGFFCEBC() { }
+
+	// RVA: 0x4364210 Offset: 0x4360210 VA: 0x4364210
+	public void DEBCDAGCEGAFDGG(ECBDFAFCHBEGCCC DGHBAEFFGGAEGCG, bool DHEAFGBHBHFDACC = False) { }
+
+	// RVA: 0x4365CCC Offset: 0x4361CCC VA: 0x4365CCC
+	private void HGBFEHBEDEEFEAD(MovementPathParameters FAFDCHEHBCDAHHC) { }
+
+	// RVA: 0x4365D9C Offset: 0x4361D9C VA: 0x4365D9C
+	public void GCHHDFBDFADGHDD(Vector3 BEAFEDEABADDAAB, float DGBEHEBBBCHCFED = 0) { }
+
+	// RVA: 0x4363FFC Offset: 0x435FFFC VA: 0x4363FFC
+	public Vector3 CCHGEEADGEHDGBF() { }
+
+	// RVA: 0x4365DB0 Offset: 0x4361DB0 VA: 0x4365DB0
+	private Quaternion DCHADFGFFBEDFFH(Quaternion AEHDBAGDDDBAECF, Quaternion BHBGGADCEBBEBDB, ref float GFFHEDBBHFBADCA, float DGBEHEBBBCHCFED) { }
+
+	// RVA: 0x4365E68 Offset: 0x4361E68 VA: 0x4365E68
+	public Transform EGGBAGHCAADGHBG() { }
+
+	[CompilerGenerated]
+	// RVA: 0x4365E70 Offset: 0x4361E70 VA: 0x4365E70
+	public float get_PathProgress() { }
+
+	// RVA: 0x4365E78 Offset: 0x4361E78 VA: 0x4365E78
+	public void BGEFHBBCEECEGHD(bool CGHFHFBCCDEDBEF) { }
+
+	// RVA: 0x4364C98 Offset: 0x4360C98 VA: 0x4364C98
+	public void ACDCDDDFFDAEAEF(Vector3 FGDFGECHDEABBBC, float CEDEABGCFDCCGAF = 0) { }
+
+	// RVA: 0x4365E84 Offset: 0x4361E84 VA: 0x4365E84
+	public Transform FCCCFEFCAFBGCDC() { }
+
+	// RVA: 0x4365E8C Offset: 0x4361E8C VA: 0x4365E8C
+	public void SetPositionAndRotation(Vector3 BEAFEDEABADDAAB, Quaternion HBFHCEAHDCHDDEE, bool DHEAFGBHBHFDACC = False) { }
+
+	// RVA: 0x4365F14 Offset: 0x4361F14 VA: 0x4365F14
+	public RaycastHit AAHHACHEHEDEGHE() { }
+}

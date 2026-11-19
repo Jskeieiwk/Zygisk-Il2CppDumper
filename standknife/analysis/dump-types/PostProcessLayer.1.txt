@@ -1,0 +1,18 @@
+// Namespace: 
+private sealed class PostProcessLayer.<>c__DisplayClass54_0 // TypeDefIndex: 21129
+{
+	// Fields
+	public PostProcessEvent evt; // 0x10
+	public List<PostProcessBundle> effects; // 0x18
+
+	// Methods
+
+	// RVA: 0xA57C3C0 Offset: 0xA5783C0 VA: 0xA57C3C0
+	public void .ctor() { }
+
+	// RVA: 0xA585C14 Offset: 0xA581C14 VA: 0xA585C14
+	internal bool <UpdateBundleSortList>b__0(KeyValuePair<Type, PostProcessBundle> kvp) { }
+
+	// RVA: 0xA585CD4 Offset: 0xA581CD4 VA: 0xA585CD4
+	internal bool <UpdateBundleSortList>b__2(PostProcessLayer.SerializedBundleRef x) { }
+}

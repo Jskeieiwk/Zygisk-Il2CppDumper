@@ -1,0 +1,46 @@
+// Namespace: Axlebolt.Ballistics.Simulation.Tracer
+public sealed class GrenadeTracerLineRendererView : MonoBehaviour // TypeDefIndex: 22406
+{
+	// Fields
+	[SerializeField]
+	private LineRenderer _reflectionLineRenderer; // 0x20
+	[SerializeField]
+	private Transform _tracerOffsetPoint; // 0x28
+	[SerializeField]
+	private MeshFilter _meshFilter; // 0x30
+	[SerializeField]
+	private int _meshSortingOrder; // 0x38
+	[SerializeField]
+	private int _lineRendererSortingOrder; // 0x3C
+	[SerializeField]
+	private MeshRenderer _arcMeshRenderer; // 0x40
+
+	// Properties
+	public LineRenderer ReflectionLineRenderer { get; }
+	public Transform TracerOffsetPoint { get; }
+	public MeshFilter MeshFilter { get; }
+	public MeshRenderer ArcMeshRenderer { get; }
+
+	// Methods
+
+	// RVA: 0x6BAD0CC Offset: 0x6BA90CC VA: 0x6BAD0CC
+	public LineRenderer get_ReflectionLineRenderer() { }
+
+	// RVA: 0x6BAD0D4 Offset: 0x6BA90D4 VA: 0x6BAD0D4
+	public Transform get_TracerOffsetPoint() { }
+
+	// RVA: 0x6BAD0DC Offset: 0x6BA90DC VA: 0x6BAD0DC
+	public MeshFilter get_MeshFilter() { }
+
+	// RVA: 0x6BAD0E4 Offset: 0x6BA90E4 VA: 0x6BAD0E4
+	public MeshRenderer get_ArcMeshRenderer() { }
+
+	// RVA: 0x6BAD0EC Offset: 0x6BA90EC VA: 0x6BAD0EC
+	private void Awake() { }
+
+	// RVA: 0x6BAD0F0 Offset: 0x6BA90F0 VA: 0x6BAD0F0
+	private void SetSortingOrder() { }
+
+	// RVA: 0x6BAD1E4 Offset: 0x6BA91E4 VA: 0x6BAD1E4
+	public void .ctor() { }
+}

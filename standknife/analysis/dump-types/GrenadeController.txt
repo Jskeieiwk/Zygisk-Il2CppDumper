@@ -1,0 +1,253 @@
+// Namespace: Axlebolt.Standoff.Inventory.Grenade
+public class GrenadeController : WeaponController, IPracticableGrenade // TypeDefIndex: 2638
+{
+	// Fields
+	private const float DHECGDCAFDDAHHE = 0.3;
+	public static readonly int RayLayerMask; // 0x0
+	public static readonly float RayRadius; // 0x4
+	private readonly Vector3 EEGAHBFCBAAHCAH; // 0xEC
+	private readonly BAEGHHDCAEDFCHE<GrenadeController.AGDHFBHBAGGDEBC> BAGHDDEBFAGEGAG; // 0xF8
+	private GrenadeParameters EGGDGDEHEBAAHCH; // 0x100
+	private bool GCFEFEHFEGBBBBF; // 0x108
+	private bool EAEHHGEGBCCHBEB; // 0x109
+	private float AEFAADAACHAEDHB; // 0x10C
+	private CFGAHHHABFBAGDH EGBCBAHGHAFCBBG; // 0x110
+	private GDAAEEADFFHAHED AEEAGHADADGADFF; // 0x118
+	private GrenadeSoundController GCDBEBDABEFFCBF; // 0x120
+	private GameObject BDCDDFHBEAGEBBA; // 0x128
+	private GameObject AFBGHBDAFBACFGD; // 0x130
+	private bool GBHAEHHGHHECBBE; // 0x138
+	private bool CAGHHDEDBBEHDBG; // 0x139
+	private bool AGGCGFHHGCCBDCC; // 0x13A
+	private bool ACBCFBCHBFCAEFB; // 0x13B
+	[CanBeNull]
+	private ITracerArcController CHFEHCDBFGGAHFG; // 0x140
+	private IFullTracerArcSource ACAAGFAAFHBABFB; // 0x148
+	private bool BFECAEAEBCFBHDE; // 0x150
+	private bool BGDDEHCDCFADHFD; // 0x151
+	private int ABCCBHGFFECEBDG; // 0x154
+	private int DABAAGCDDGCAHHA; // 0x158
+
+	// Properties
+	public IFullTracerArcSource GDCCGFAHCBEBGFB { get; }
+	public ITracerArcController BDEEFDFEDEAGGAC { get; }
+	public bool AHHBEHDCEGHBCGF { get; }
+	public override AHDHHCGAEHBGCDG AGBCHDAGBCDGAFH { get; }
+	public bool AEDDBBDFEEFCFFC { get; }
+	private CFGAHHHABFBAGDH CBFFCBBFHEHDHBC { get; }
+
+	// Methods
+
+	// RVA: 0x31F18A0 Offset: 0x31ED8A0 VA: 0x31F18A0
+	private void HEFHHFDHHDCEFBB() { }
+
+	// RVA: 0x31F1A90 Offset: 0x31EDA90 VA: 0x31F1A90
+	private float EFADBBFCEAAFFGH(MovementController DFAGABFHFHFCAGF, in Vector3 BFEHBCGFHAHEEAE) { }
+
+	// RVA: 0x31F2044 Offset: 0x31EE044 VA: 0x31F2044
+	private void HFGCAEEHDFEHBCH(bool FCFHAGECFDEGHAG) { }
+
+	// RVA: 0x31F28C0 Offset: 0x31EE8C0 VA: 0x31F28C0
+	private void DGAFHCFDHHACAAG(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x31F29CC Offset: 0x31EE9CC VA: 0x31F29CC Slot: 28
+	public IFullTracerArcSource BGEEGBGACHFBCFF() { }
+
+	// RVA: 0x31F29D4 Offset: 0x31EE9D4 VA: 0x31F29D4
+	public bool get_IsThrown() { }
+
+	// RVA: 0x31F29F8 Offset: 0x31EE9F8 VA: 0x31F29F8 Slot: 21
+	public override void SetPlayer(PlayerController AHGEEFHFCCGCHHF) { }
+
+	// RVA: 0x31F2C1C Offset: 0x31EEC1C VA: 0x31F2C1C Slot: 27
+	public bool get_IsGrenadeStateReadyToThrow() { }
+
+	// RVA: 0x31F2C40 Offset: 0x31EEC40 VA: 0x31F2C40
+	private void BBGDHDEEFBDDHBG() { }
+
+	// RVA: 0x31F2E30 Offset: 0x31EEE30 VA: 0x31F2E30 Slot: 22
+	public override AHDHHCGAEHBGCDG get_WeaponType() { }
+
+	// RVA: 0x31F2E38 Offset: 0x31EEE38 VA: 0x31F2E38
+	private void BDCHCDHBEDDEHEB(bool DFADCGEFCEAGADA) { }
+
+	// RVA: 0x31F3AFC Offset: 0x31EFAFC VA: 0x31F3AFC Slot: 18
+	public override void SetSnapshot(BCDDCEHGGBAEDEC FAFDCHEHBCDAHHC) { }
+
+	// RVA: 0x31F3DAC Offset: 0x31EFDAC VA: 0x31F3DAC
+	private bool EFCCAEAAHEGAGCH(bool AADEHGHGCAHBDHD) { }
+
+	// RVA: 0x31F3FE4 Offset: 0x31EFFE4 VA: 0x31F3FE4 Slot: 5
+	public override void PreInitialize(BEDEHCEAAAEEHFD ACACCFCGDACABDC) { }
+
+	// RVA: 0x31F49A8 Offset: 0x31F09A8 VA: 0x31F49A8 Slot: 17
+	public override BCDDCEHGGBAEDEC GetSnapshot() { }
+
+	// RVA: 0x31F49E4 Offset: 0x31F09E4 VA: 0x31F49E4
+	private void EAABCABCDBBBBHA() { }
+
+	// RVA: 0x31F4A48 Offset: 0x31F0A48 VA: 0x31F4A48
+	private void EAAEBHGDGCEDEDE() { }
+
+	// RVA: 0x31F4E38 Offset: 0x31F0E38 VA: 0x31F4E38
+	private float BCGHABBGDAACAEB(MovementController DFAGABFHFHFCAGF, in Vector3 BFEHBCGFHAHEEAE) { }
+
+	// RVA: 0x31F53E8 Offset: 0x31F13E8 VA: 0x31F53E8
+	private static void .cctor() { }
+
+	// RVA: 0x31F556C Offset: 0x31F156C VA: 0x31F556C
+	private float HEBEHDHDBBFHGHD(MovementController DFAGABFHFHFCAGF, in Vector3 BFEHBCGFHAHEEAE) { }
+
+	// RVA: 0x31F5ABC Offset: 0x31F1ABC VA: 0x31F5ABC
+	private float GHBEACAGDHCEHAA(MovementController DFAGABFHFHFCAGF, in Vector3 BFEHBCGFHAHEEAE) { }
+
+	// RVA: 0x31F6070 Offset: 0x31F2070 VA: 0x31F6070
+	private void CBCFFECEFFFECDC() { }
+
+	// RVA: 0x31F62CC Offset: 0x31F22CC VA: 0x31F62CC
+	private void CCDEEEHDDGGDFFE(bool FCFHAGECFDEGHAG) { }
+
+	// RVA: 0x31F6B40 Offset: 0x31F2B40 VA: 0x31F6B40
+	private CFGAHHHABFBAGDH DFGABDHAEBHCFFG() { }
+
+	// RVA: 0x31F6C70 Offset: 0x31F2C70 VA: 0x31F6C70
+	public bool GADDBFFHEHCEAGD() { }
+
+	// RVA: 0x31F6C94 Offset: 0x31F2C94 VA: 0x31F6C94 Slot: 8
+	public override void OnPreRender() { }
+
+	// RVA: 0x31F6D78 Offset: 0x31F2D78 VA: 0x31F6D78 Slot: 29
+	public bool HGAACBHAFABFCCB() { }
+
+	// RVA: 0x31F6D9C Offset: 0x31F2D9C VA: 0x31F6D9C
+	private void EDFDGDEEDAAGABB() { }
+
+	// RVA: 0x31F3548 Offset: 0x31EF548 VA: 0x31F3548
+	private float FADCCEGBDFEBGHC(MovementController DFAGABFHFHFCAGF, in Vector3 BFEHBCGFHAHEEAE) { }
+
+	// RVA: 0x31F6E00 Offset: 0x31F2E00 VA: 0x31F6E00
+	private void FBDHHEBDBCAAHBD() { }
+
+	// RVA: 0x31F71E0 Offset: 0x31F31E0 VA: 0x31F71E0 Slot: 10
+	public override void SetActive(bool BABAHECHEBGBFCF) { }
+
+	// RVA: 0x31F732C Offset: 0x31F332C VA: 0x31F732C
+	private void DHECFHGFAGDADAA() { }
+
+	// RVA: 0x31F74AC Offset: 0x31F34AC VA: 0x31F74AC
+	private void HFFGFCAHFCBEHBD() { }
+
+	// RVA: 0x31F7510 Offset: 0x31F3510 VA: 0x31F7510
+	private void ACEAHBBHDBBDDGF(bool DFADCGEFCEAGADA) { }
+
+	// RVA: 0x31F7AB0 Offset: 0x31F3AB0 VA: 0x31F7AB0
+	public bool BCCFCBDCGEGDFDH() { }
+
+	// RVA: 0x31F1984 Offset: 0x31ED984 VA: 0x31F1984
+	private void HEHABEFFEAEAHHD(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x31F7AD4 Offset: 0x31F3AD4 VA: 0x31F7AD4 Slot: 6
+	public override void SetAsSecondary() { }
+
+	// RVA: 0x31F7D14 Offset: 0x31F3D14 VA: 0x31F7D14
+	public bool BGCBGGHDFCHACBE() { }
+
+	// RVA: 0x31F7D38 Offset: 0x31F3D38 VA: 0x31F7D38
+	private void ACEFCCEDCDEHEBC() { }
+
+	// RVA: 0x31F7D9C Offset: 0x31F3D9C VA: 0x31F7D9C Slot: 30
+	public ITracerArcController HEGCHDABHHCDEDA() { }
+
+	// RVA: 0x31F7DA4 Offset: 0x31F3DA4 VA: 0x31F7DA4 Slot: 24
+	public override void SetAsPrimary(float CEDEABGCFDCCGAF) { }
+
+	// RVA: 0x31F7F50 Offset: 0x31F3F50 VA: 0x31F7F50
+	private void GAHCBBEDGCFDBEC() { }
+
+	// RVA: 0x31F8210 Offset: 0x31F4210 VA: 0x31F8210
+	private void EEBHAGDBEEBEFEE(bool FCFHAGECFDEGHAG) { }
+
+	// RVA: 0x31F8330 Offset: 0x31F4330 VA: 0x31F8330 Slot: 16
+	public override void ExecuteCommands(CHCEGCBBDDFHDCD DBEGBBCFBABBFGC, float BHGDDGFGGAEDFFB, float CEDEABGCFDCCGAF) { }
+
+	// RVA: 0x31F891C Offset: 0x31F491C VA: 0x31F891C
+	public bool DEGCGBHCDAHAGDC() { }
+
+	// RVA: 0x31F8940 Offset: 0x31F4940 VA: 0x31F8940
+	public bool BEFFCEDCDDHDADH() { }
+
+	// RVA: 0x31F8964 Offset: 0x31F4964 VA: 0x31F8964
+	public void .ctor() { }
+
+	// RVA: 0x31F8B50 Offset: 0x31F4B50 VA: 0x31F8B50
+	private bool EFCGEAEEBEEGHFF(bool AADEHGHGCAHBDHD) { }
+
+	// RVA: 0x31F8DA4 Offset: 0x31F4DA4 VA: 0x31F8DA4 Slot: 25
+	public IFullTracerArcSource get_FullTracerArcSource() { }
+
+	// RVA: 0x31F4D08 Offset: 0x31F0D08 VA: 0x31F4D08
+	private CFGAHHHABFBAGDH DEHFGAEBEFCECDA() { }
+
+	// RVA: 0x31F8DAC Offset: 0x31F4DAC VA: 0x31F8DAC
+	private CFGAHHHABFBAGDH CFEGFFCAGABCAFE() { }
+
+	// RVA: 0x31F8EDC Offset: 0x31F4EDC VA: 0x31F8EDC
+	private bool CCAGDGHGAGEFCCB(bool AADEHGHGCAHBDHD) { }
+
+	// RVA: 0x31F910C Offset: 0x31F510C VA: 0x31F910C
+	private void HDEDEBDHGHFHEAA(bool FCFHAGECFDEGHAG) { }
+
+	// RVA: 0x31F9228 Offset: 0x31F5228 VA: 0x31F9228
+	private void DAEAGEDAFGAEDFE() { }
+
+	// RVA: 0x31F7248 Offset: 0x31F3248 VA: 0x31F7248
+	private void GCHCHFHECEBCGDE() { }
+
+	// RVA: 0x31F94E8 Offset: 0x31F54E8 VA: 0x31F94E8
+	private void CDAGBCGEBDGGAGF() { }
+
+	// RVA: 0x31F6F80 Offset: 0x31F2F80 VA: 0x31F6F80
+	private void CADGDFDHBEBAHDD() { }
+
+	// RVA: 0x31F86BC Offset: 0x31F46BC VA: 0x31F86BC
+	private bool CAFDCHFGEBGGHAB(bool AADEHGHGCAHBDHD) { }
+
+	// RVA: 0x31F9528 Offset: 0x31F5528 VA: 0x31F9528 Slot: 20
+	public override CFGAHHHABFBAGDH CanBeDropped() { }
+
+	// RVA: 0x31F9700 Offset: 0x31F5700 VA: 0x31F9700
+	private void HGHDHBAAHDDHFBH(bool DFADCGEFCEAGADA) { }
+
+	// RVA: 0x31F9CAC Offset: 0x31F5CAC VA: 0x31F9CAC
+	private void BDEDGGABACEEDHB(bool DFADCGEFCEAGADA) { }
+
+	// RVA: 0x31FA25C Offset: 0x31F625C VA: 0x31FA25C Slot: 26
+	public ITracerArcController get_TracerArcController() { }
+
+	// RVA: 0x31F2D24 Offset: 0x31EED24 VA: 0x31F2D24
+	private void AHBHEAECAHFACAD(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x31F33E8 Offset: 0x31EF3E8 VA: 0x31F33E8
+	private Vector3 CCGAEFBFCEEEAFH(Transform CDGBGFEAGDBHCAC, GrenadeParameters.ThrowParameters HCCGBFGGHACDECB) { }
+
+	// RVA: 0x31F3D6C Offset: 0x31EFD6C VA: 0x31F3D6C
+	private void CBBBBEFDCAFHCHE() { }
+
+	// RVA: 0x31FA264 Offset: 0x31F6264 VA: 0x31FA264 Slot: 13
+	public override void OnReturnToPool() { }
+
+	// RVA: 0x31F63EC Offset: 0x31F23EC VA: 0x31F63EC
+	private void EBHBBEEGGHCHGGC(FHGFCFFHBHEAEEA ABAGBHEGEDFCEDF) { }
+
+	// RVA: 0x31FA454 Offset: 0x31F6454 VA: 0x31FA454
+	private CFGAHHHABFBAGDH EAGHFDGBDDCCDGF() { }
+
+	// RVA: 0x31FA584 Offset: 0x31F6584 VA: 0x31FA584 Slot: 9
+	public override void OnAnimatorStateSet() { }
+
+	// RVA: 0x31FA5A0 Offset: 0x31F65A0 VA: 0x31FA5A0 Slot: 31
+	public bool HEBGADDBGHADHBA() { }
+
+	// RVA: 0x31F2160 Offset: 0x31EE160 VA: 0x31F2160
+	private void HDFGGBHEAHHDGHE(FHGFCFFHBHEAEEA ABAGBHEGEDFCEDF) { }
+}

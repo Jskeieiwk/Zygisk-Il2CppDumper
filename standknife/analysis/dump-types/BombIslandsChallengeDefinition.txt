@@ -1,0 +1,171 @@
+// Namespace: Axlebolt.Standoff.Events.BeholderGames.Scripts.GameChallenges.BombIslands
+public class BombIslandsChallengeDefinition : BeholderGamesChallengeDefinition // TypeDefIndex: 503
+{
+	// Fields
+	[SerializeField]
+	private AudioClipReference _roundCompleteEventReference; // 0x68
+	[SerializeField]
+	private AudioClipReference _crossAppearEventReference; // 0x70
+	[SerializeField]
+	private AudioLayersReference _platformExplosionEventReference; // 0x78
+	[SerializeField]
+	private AudioLayersReference _suicideFPSoundEventReference; // 0x80
+	[SerializeField]
+	private AudioLayersReference _suicideTPSoundEventReference; // 0x88
+	[SerializeField]
+	private AudioLayersReference _suicideTriggerFPSoundEventReference; // 0x90
+	[SerializeField]
+	private AudioLayersReference _suicideTriggerTPSoundEventReference; // 0x98
+	[SerializeField]
+	[CompilerGenerated]
+	private float <Interval>k__BackingField; // 0xA0
+	[CompilerGenerated]
+	[SerializeField]
+	private bool <FirstStateIsKilling>k__BackingField; // 0xA4
+	[SerializeField]
+	[CompilerGenerated]
+	private List<GameFieldPattern> <Patterns>k__BackingField; // 0xA8
+
+	// Properties
+	public float Interval { get; set; }
+	public bool FirstStateIsKilling { get; set; }
+	public List<GameFieldPattern> Patterns { get; set; }
+	public AudioClipReference RoundCompleteEvent { get; }
+	public AudioClipReference CrossAppearEvent { get; }
+	public AudioLayersReference PlatformExplosionEvent { get; }
+	public AudioLayersReference SuicideFPSoundEvent { get; }
+	public AudioLayersReference SuicideTPSoundEvent { get; }
+	public AudioLayersReference SuicideTriggerFPSoundEvent { get; }
+	public AudioLayersReference SuicideTriggerTPSoundEvent { get; }
+
+	// Methods
+
+	// RVA: 0x40F7C48 Offset: 0x40F3C48 VA: 0x40F7C48
+	public AudioLayersReference CAFHFEHFEDFEAEC() { }
+
+	// RVA: 0x40F7C50 Offset: 0x40F3C50 VA: 0x40F7C50
+	public AudioLayersReference EDAEFEAFBCDFGCH() { }
+
+	// RVA: 0x40F7C58 Offset: 0x40F3C58 VA: 0x40F7C58
+	private void HBBACHBGFGCGBEG(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x40F7C60 Offset: 0x40F3C60 VA: 0x40F7C60
+	public AudioLayersReference DAGEHDDGFFGAGGH() { }
+
+	// RVA: 0x40F7C68 Offset: 0x40F3C68 VA: 0x40F7C68
+	public AudioLayersReference get_SuicideTPSoundEvent() { }
+
+	// RVA: 0x40F7C70 Offset: 0x40F3C70 VA: 0x40F7C70
+	private void EFAAAGBCAFCFABG(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x40F7C78 Offset: 0x40F3C78 VA: 0x40F7C78
+	public AudioLayersReference BBGEGDGEAGCAHCD() { }
+
+	// RVA: 0x40F7C80 Offset: 0x40F3C80 VA: 0x40F7C80
+	public AudioClipReference FECDFGGEBGAAEFB() { }
+
+	// RVA: 0x40F7C88 Offset: 0x40F3C88 VA: 0x40F7C88
+	public AudioLayersReference DFECECDFFHCBABA() { }
+
+	// RVA: 0x40F7C90 Offset: 0x40F3C90 VA: 0x40F7C90
+	public AudioLayersReference get_SuicideTriggerFPSoundEvent() { }
+
+	// RVA: 0x40F7C98 Offset: 0x40F3C98 VA: 0x40F7C98
+	public List<GameFieldPattern> DBEDFGEFEACAHEE() { }
+
+	[CompilerGenerated]
+	// RVA: 0x40F7CA0 Offset: 0x40F3CA0 VA: 0x40F7CA0
+	private void set_Patterns(List<GameFieldPattern> BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x40F7CA8 Offset: 0x40F3CA8 VA: 0x40F7CA8
+	public AudioClipReference DGCDAEEHEBDDABB() { }
+
+	// RVA: 0x40F7CB0 Offset: 0x40F3CB0 VA: 0x40F7CB0
+	public AudioLayersReference FFGAEEHEGCDGDAG() { }
+
+	[CompilerGenerated]
+	// RVA: 0x40F7CB8 Offset: 0x40F3CB8 VA: 0x40F7CB8
+	public float get_Interval() { }
+
+	// RVA: 0x40F7CC0 Offset: 0x40F3CC0 VA: 0x40F7CC0
+	public AudioClipReference get_RoundCompleteEvent() { }
+
+	// RVA: 0x40F7CC8 Offset: 0x40F3CC8 VA: 0x40F7CC8
+	public bool DBGAHBHFAHHBEGG() { }
+
+	// RVA: 0x40F7CD0 Offset: 0x40F3CD0 VA: 0x40F7CD0
+	private void DBDDADHHBEFDEEG(bool BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x40F7CDC Offset: 0x40F3CDC VA: 0x40F7CDC
+	public void .ctor() { }
+
+	[CompilerGenerated]
+	// RVA: 0x40F7CE4 Offset: 0x40F3CE4 VA: 0x40F7CE4
+	private void set_FirstStateIsKilling(bool BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x40F7CF0 Offset: 0x40F3CF0 VA: 0x40F7CF0
+	private void AAGEACHDHFBDEBB(List<GameFieldPattern> BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x40F7CF8 Offset: 0x40F3CF8 VA: 0x40F7CF8
+	public AudioLayersReference HEBFAFCGEBBGEAF() { }
+
+	// RVA: 0x40F7D00 Offset: 0x40F3D00 VA: 0x40F7D00
+	public AudioLayersReference BGDBBCDBEBHDAGG() { }
+
+	// RVA: 0x40F7D08 Offset: 0x40F3D08 VA: 0x40F7D08
+	public AudioLayersReference CHDEBDFDAEFDECE() { }
+
+	// RVA: 0x40F7D10 Offset: 0x40F3D10 VA: 0x40F7D10
+	public bool HABDHCDEECFBBDB() { }
+
+	[CompilerGenerated]
+	// RVA: 0x40F7D18 Offset: 0x40F3D18 VA: 0x40F7D18
+	private void set_Interval(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x40F7D20 Offset: 0x40F3D20 VA: 0x40F7D20
+	public AudioLayersReference get_PlatformExplosionEvent() { }
+
+	// RVA: 0x40F7D28 Offset: 0x40F3D28 VA: 0x40F7D28 Slot: 4
+	public override DGDECEEHCGBHAEH GetExecutor() { }
+
+	[CompilerGenerated]
+	// RVA: 0x40F7DCC Offset: 0x40F3DCC VA: 0x40F7DCC
+	public List<GameFieldPattern> get_Patterns() { }
+
+	// RVA: 0x40F7DD4 Offset: 0x40F3DD4 VA: 0x40F7DD4
+	public AudioLayersReference get_SuicideTriggerTPSoundEvent() { }
+
+	// RVA: 0x40F7DDC Offset: 0x40F3DDC VA: 0x40F7DDC
+	public bool GFEAFEHGFACDGGE() { }
+
+	[CompilerGenerated]
+	// RVA: 0x40F7DE4 Offset: 0x40F3DE4 VA: 0x40F7DE4
+	public bool get_FirstStateIsKilling() { }
+
+	// RVA: 0x40F7DEC Offset: 0x40F3DEC VA: 0x40F7DEC
+	public AudioLayersReference BEGCGGFADCHCFCH() { }
+
+	// RVA: 0x40F7DF4 Offset: 0x40F3DF4 VA: 0x40F7DF4
+	public AudioLayersReference GBDFCAHFAGDCAEA() { }
+
+	// RVA: 0x40F7DFC Offset: 0x40F3DFC VA: 0x40F7DFC
+	public AudioClipReference get_CrossAppearEvent() { }
+
+	// RVA: 0x40F7E04 Offset: 0x40F3E04 VA: 0x40F7E04
+	private void DBBFHBHCABGDBCF(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x40F7E0C Offset: 0x40F3E0C VA: 0x40F7E0C
+	public AudioLayersReference get_SuicideFPSoundEvent() { }
+
+	// RVA: 0x40F7E14 Offset: 0x40F3E14 VA: 0x40F7E14
+	public AudioLayersReference FCGEGBECHHAGAGC() { }
+
+	// RVA: 0x40F7E1C Offset: 0x40F3E1C VA: 0x40F7E1C
+	private void HCHCCDDGCADDADG(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x40F7E24 Offset: 0x40F3E24 VA: 0x40F7E24
+	public AudioClipReference AAAEFEBEEFAECED() { }
+
+	// RVA: 0x40F7E2C Offset: 0x40F3E2C VA: 0x40F7E2C
+	public AudioLayersReference GBCEGBEBHHDCHDE() { }
+}

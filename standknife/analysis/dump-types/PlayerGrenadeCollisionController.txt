@@ -1,0 +1,17 @@
+// Namespace: Axlebolt.Standoff.Events.NewYear25.Scripts.CatchUp
+public class PlayerGrenadeCollisionController : Controller // TypeDefIndex: 1065
+{
+	// Fields
+	private CapsuleCollider BGECGFFHEEHDDBG; // 0x58
+
+	// Methods
+
+	// RVA: 0x5FCBCDC Offset: 0x5FC7CDC VA: 0x5FCBCDC Slot: 62
+	public override void OnPreInitialize() { }
+
+	// RVA: 0x5FCBF38 Offset: 0x5FC7F38 VA: 0x5FCBF38 Slot: 44
+	public override void OnPhotonInstantiate(DHDAHBHEBCACCBB BBFGCFDHHGHFAEA) { }
+
+	// RVA: 0x5FCBF8C Offset: 0x5FC7F8C VA: 0x5FCBF8C
+	public void .ctor() { }
+}

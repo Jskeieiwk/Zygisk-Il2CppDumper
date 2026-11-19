@@ -1,0 +1,26 @@
+// Namespace: 
+private sealed class GrenadeManager.<>c // TypeDefIndex: 1513
+{
+	// Fields
+	public static readonly GrenadeManager.<>c <>9; // 0x0
+	public static Func<WeaponParameters, bool> <>9__53_0; // 0x8
+	public static Func<WeaponParameters, object> <>9__53_1; // 0x10
+	public static Func<object, WeaponParameters> <>9__55_0; // 0x18
+
+	// Methods
+
+	// RVA: 0x6363B30 Offset: 0x635FB30 VA: 0x6363B30
+	private static void .cctor() { }
+
+	// RVA: 0x6363BF0 Offset: 0x635FBF0 VA: 0x6363BF0
+	internal bool EBEBEADBDAGHAGC(WeaponParameters weapon) { }
+
+	// RVA: 0x6363CB0 Offset: 0x635FCB0 VA: 0x6363CB0
+	internal WeaponParameters DEEBBEHBDHAAFEC(object weaponId) { }
+
+	// RVA: 0x6363BE8 Offset: 0x635FBE8 VA: 0x6363BE8
+	public void .ctor() { }
+
+	// RVA: 0x6363DC8 Offset: 0x635FDC8 VA: 0x6363DC8
+	internal object BFBFDHFGDHCEADF(WeaponParameters weapon) { }
+}

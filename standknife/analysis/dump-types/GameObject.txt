@@ -1,0 +1,296 @@
+// Namespace: UnityEngine
+public sealed class GameObject : Object // TypeDefIndex: 17489
+{
+	// Properties
+	public Transform transform { get; }
+	public int layer { get; set; }
+	public bool activeSelf { get; }
+	public bool activeInHierarchy { get; }
+	public bool isStatic { get; }
+	public string tag { get; set; }
+	public Scene scene { get; }
+	public GameObject gameObject { get; }
+
+	// Methods
+
+	[FreeFunction("GameObjectBindings::CreatePrimitive")]
+	// RVA: 0xA7835C0 Offset: 0xA77F5C0 VA: 0xA7835C0
+	public static GameObject CreatePrimitive(PrimitiveType type) { }
+
+	// RVA: -1 Offset: -1
+	public T GetComponent<T>() { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80A5480 Offset: 0x80A1480 VA: 0x80A5480
+	|-GameObject.GetComponent<object>
+	|
+	|-RVA: 0x80A555C Offset: 0x80A155C VA: 0x80A555C
+	|-GameObject.GetComponent<__Il2CppFullySharedGenericType>
+	*/
+
+	[FreeFunction(Name = "GameObjectBindings::GetComponentFromType", HasExplicitThis = True, ThrowsException = True)]
+	[TypeInferenceRule(0)]
+	// RVA: 0xA77DF00 Offset: 0xA779F00 VA: 0xA77DF00
+	public Component GetComponent(Type type) { }
+
+	[NativeWritableSelf]
+	[FreeFunction(Name = "GameObjectBindings::GetComponentFastPath", HasExplicitThis = True, ThrowsException = True)]
+	// RVA: 0xA783744 Offset: 0xA77F744 VA: 0xA783744
+	internal void GetComponentFastPath(Type type, IntPtr oneFurtherThanResultValue) { }
+
+	[FreeFunction(Name = "GameObjectBindings::GetComponentInChildren", HasExplicitThis = True, ThrowsException = True)]
+	[TypeInferenceRule(0)]
+	// RVA: 0xA77E340 Offset: 0xA77A340 VA: 0xA77E340
+	public Component GetComponentInChildren(Type type, bool includeInactive) { }
+
+	[ExcludeFromDocs]
+	// RVA: -1 Offset: -1
+	public T GetComponentInChildren<T>() { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80A577C Offset: 0x80A177C VA: 0x80A577C
+	|-GameObject.GetComponentInChildren<object>
+	|
+	|-RVA: 0x80A57B8 Offset: 0x80A17B8 VA: 0x80A57B8
+	|-GameObject.GetComponentInChildren<__Il2CppFullySharedGenericType>
+	*/
+
+	// RVA: -1 Offset: -1
+	public T GetComponentInChildren<T>(bool includeInactive) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80A58C0 Offset: 0x80A18C0 VA: 0x80A58C0
+	|-GameObject.GetComponentInChildren<object>
+	|
+	|-RVA: 0x80A59D8 Offset: 0x80A19D8 VA: 0x80A59D8
+	|-GameObject.GetComponentInChildren<__Il2CppFullySharedGenericType>
+	*/
+
+	[TypeInferenceRule(0)]
+	[FreeFunction(Name = "GameObjectBindings::GetComponentInParent", HasExplicitThis = True, ThrowsException = True)]
+	// RVA: 0xA77E510 Offset: 0xA77A510 VA: 0xA77E510
+	public Component GetComponentInParent(Type type, bool includeInactive) { }
+
+	[ExcludeFromDocs]
+	// RVA: -1 Offset: -1
+	public T GetComponentInParent<T>() { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80A5B88 Offset: 0x80A1B88 VA: 0x80A5B88
+	|-GameObject.GetComponentInParent<object>
+	|
+	|-RVA: 0x80A5BC4 Offset: 0x80A1BC4 VA: 0x80A5BC4
+	|-GameObject.GetComponentInParent<__Il2CppFullySharedGenericType>
+	*/
+
+	// RVA: -1 Offset: -1
+	public T GetComponentInParent<T>(bool includeInactive) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80A5CCC Offset: 0x80A1CCC VA: 0x80A5CCC
+	|-GameObject.GetComponentInParent<object>
+	|
+	|-RVA: 0x80A5DE4 Offset: 0x80A1DE4 VA: 0x80A5DE4
+	|-GameObject.GetComponentInParent<__Il2CppFullySharedGenericType>
+	*/
+
+	[FreeFunction(Name = "GameObjectBindings::GetComponentsInternal", HasExplicitThis = True, ThrowsException = True)]
+	// RVA: 0xA7838D4 Offset: 0xA77F8D4 VA: 0xA7838D4
+	private Array GetComponentsInternal(Type type, bool useSearchTypeAsArrayReturnType, bool recursive, bool includeInactive, bool reverse, object resultList) { }
+
+	// RVA: -1 Offset: -1
+	public T[] GetComponents<T>() { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80A5F94 Offset: 0x80A1F94 VA: 0x80A5F94
+	|-GameObject.GetComponents<object>
+	|
+	|-RVA: 0x80A60B0 Offset: 0x80A20B0 VA: 0x80A60B0
+	|-GameObject.GetComponents<__Il2CppFullySharedGenericType>
+	*/
+
+	// RVA: -1 Offset: -1
+	public void GetComponents<T>(List<T> results) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80A61CC Offset: 0x80A21CC VA: 0x80A61CC
+	|-GameObject.GetComponents<object>
+	|
+	|-RVA: 0x80A62AC Offset: 0x80A22AC VA: 0x80A62AC
+	|-GameObject.GetComponents<__Il2CppFullySharedGenericType>
+	*/
+
+	// RVA: -1 Offset: -1
+	public T[] GetComponentsInChildren<T>(bool includeInactive) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80A6408 Offset: 0x80A2408 VA: 0x80A6408
+	|-GameObject.GetComponentsInChildren<object>
+	|
+	|-RVA: 0x80A6530 Offset: 0x80A2530 VA: 0x80A6530
+	|-GameObject.GetComponentsInChildren<__Il2CppFullySharedGenericType>
+	*/
+
+	// RVA: -1 Offset: -1
+	public void GetComponentsInChildren<T>(bool includeInactive, List<T> results) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80A6658 Offset: 0x80A2658 VA: 0x80A6658
+	|-GameObject.GetComponentsInChildren<object>
+	|
+	|-RVA: 0x80A673C Offset: 0x80A273C VA: 0x80A673C
+	|-GameObject.GetComponentsInChildren<__Il2CppFullySharedGenericType>
+	*/
+
+	// RVA: -1 Offset: -1
+	public T[] GetComponentsInChildren<T>() { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80A638C Offset: 0x80A238C VA: 0x80A638C
+	|-GameObject.GetComponentsInChildren<object>
+	|
+	|-RVA: 0x80A63C8 Offset: 0x80A23C8 VA: 0x80A63C8
+	|-GameObject.GetComponentsInChildren<__Il2CppFullySharedGenericType>
+	*/
+
+	// RVA: -1 Offset: -1
+	public void GetComponentsInParent<T>(bool includeInactive, List<T> results) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80A6A70 Offset: 0x80A2A70 VA: 0x80A6A70
+	|-GameObject.GetComponentsInParent<object>
+	|
+	|-RVA: 0x80A6B54 Offset: 0x80A2B54 VA: 0x80A6B54
+	|-GameObject.GetComponentsInParent<__Il2CppFullySharedGenericType>
+	*/
+
+	// RVA: -1 Offset: -1
+	public T[] GetComponentsInParent<T>(bool includeInactive) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80A6820 Offset: 0x80A2820 VA: 0x80A6820
+	|-GameObject.GetComponentsInParent<object>
+	|
+	|-RVA: 0x80A6948 Offset: 0x80A2948 VA: 0x80A6948
+	|-GameObject.GetComponentsInParent<__Il2CppFullySharedGenericType>
+	*/
+
+	// RVA: -1 Offset: -1
+	public bool TryGetComponent<T>(out T component) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80A6C38 Offset: 0x80A2C38 VA: 0x80A6C38
+	|-GameObject.TryGetComponent<object>
+	|
+	|-RVA: 0x80A6D2C Offset: 0x80A2D2C VA: 0x80A6D2C
+	|-GameObject.TryGetComponent<__Il2CppFullySharedGenericType>
+	*/
+
+	// RVA: 0xA77E24C Offset: 0xA77A24C VA: 0xA77E24C
+	public bool TryGetComponent(Type type, out Component component) { }
+
+	[TypeInferenceRule(0)]
+	[FreeFunction(Name = "GameObjectBindings::TryGetComponentFromType", HasExplicitThis = True, ThrowsException = True)]
+	// RVA: 0xA783AD0 Offset: 0xA77FAD0 VA: 0xA783AD0
+	internal Component TryGetComponentInternal(Type type) { }
+
+	[NativeWritableSelf]
+	[FreeFunction(Name = "GameObjectBindings::TryGetComponentFastPath", HasExplicitThis = True, ThrowsException = True)]
+	// RVA: 0xA783D18 Offset: 0xA77FD18 VA: 0xA783D18
+	internal void TryGetComponentFastPath(Type type, IntPtr oneFurtherThanResultValue) { }
+
+	// RVA: 0xA783EB8 Offset: 0xA77FEB8 VA: 0xA783EB8
+	public static GameObject FindWithTag(string tag) { }
+
+	// RVA: 0xA784040 Offset: 0xA780040 VA: 0xA784040
+	public void SendMessage(string methodName, SendMessageOptions options) { }
+
+	[FreeFunction(Name = "MonoAddComponentWithType", HasExplicitThis = True)]
+	// RVA: 0xA7841F4 Offset: 0xA7801F4 VA: 0xA7841F4
+	private Component Internal_AddComponentWithType(Type componentType) { }
+
+	[TypeInferenceRule(0)]
+	// RVA: 0xA784380 Offset: 0xA780380 VA: 0xA784380
+	public Component AddComponent(Type componentType) { }
+
+	// RVA: -1 Offset: -1
+	public T AddComponent<T>() { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80A5350 Offset: 0x80A1350 VA: 0x80A5350
+	|-GameObject.AddComponent<object>
+	*/
+
+	[FreeFunction("GameObjectBindings::GetTransform", HasExplicitThis = True)]
+	// RVA: 0xA784384 Offset: 0xA780384 VA: 0xA784384
+	public Transform get_transform() { }
+
+	// RVA: 0xA7844F0 Offset: 0xA7804F0 VA: 0xA7844F0
+	public int get_layer() { }
+
+	// RVA: 0xA784658 Offset: 0xA780658 VA: 0xA784658
+	public void set_layer(int value) { }
+
+	[NativeMethod(Name = "SetSelfActive")]
+	// RVA: 0xA7847CC Offset: 0xA7807CC VA: 0xA7847CC
+	public void SetActive(bool value) { }
+
+	[NativeMethod(Name = "IsSelfActive")]
+	// RVA: 0xA784950 Offset: 0xA780950 VA: 0xA784950
+	public bool get_activeSelf() { }
+
+	[NativeMethod(Name = "IsActive")]
+	// RVA: 0xA784AC8 Offset: 0xA780AC8 VA: 0xA784AC8
+	public bool get_activeInHierarchy() { }
+
+	[NativeMethod(Name = "GetIsStaticDeprecated")]
+	// RVA: 0xA784C3C Offset: 0xA780C3C VA: 0xA784C3C
+	public bool get_isStatic() { }
+
+	[FreeFunction("GameObjectBindings::GetTag", HasExplicitThis = True)]
+	// RVA: 0xA77E86C Offset: 0xA77A86C VA: 0xA77E86C
+	public string get_tag() { }
+
+	[FreeFunction("GameObjectBindings::SetTag", HasExplicitThis = True)]
+	// RVA: 0xA77E9FC Offset: 0xA77A9FC VA: 0xA77E9FC
+	public void set_tag(string value) { }
+
+	[FreeFunction(Name = "GameObjectBindings::CompareTag", HasExplicitThis = True)]
+	// RVA: 0xA77EBB4 Offset: 0xA77ABB4 VA: 0xA77EBB4
+	public bool CompareTag(string tag) { }
+
+	[FreeFunction(Name = "GameObjectBindings::FindGameObjectWithTag", ThrowsException = True)]
+	// RVA: 0xA783EBC Offset: 0xA77FEBC VA: 0xA783EBC
+	public static GameObject FindGameObjectWithTag(string tag) { }
+
+	[FreeFunction(Name = "Scripting::SendScriptingMessage", HasExplicitThis = True)]
+	// RVA: 0xA78404C Offset: 0xA78004C VA: 0xA78404C
+	public void SendMessage(string methodName, object value, SendMessageOptions options) { }
+
+	// RVA: 0xA784DB8 Offset: 0xA780DB8 VA: 0xA784DB8
+	public void .ctor(string name) { }
+
+	// RVA: 0xA785004 Offset: 0xA781004 VA: 0xA785004
+	public void .ctor() { }
+
+	// RVA: 0xA7850B0 Offset: 0xA7810B0 VA: 0xA7850B0
+	public void .ctor(string name, Type[] components) { }
+
+	[FreeFunction(Name = "GameObjectBindings::Internal_CreateGameObject")]
+	// RVA: 0xA784E70 Offset: 0xA780E70 VA: 0xA784E70
+	private static void Internal_CreateGameObject(GameObject self, string name) { }
+
+	[FreeFunction(Name = "GameObjectBindings::Find")]
+	// RVA: 0xA7851B8 Offset: 0xA7811B8 VA: 0xA7851B8
+	public static GameObject Find(string name) { }
+
+	[FreeFunction("GameObjectBindings::GetScene", HasExplicitThis = True)]
+	// RVA: 0xA785334 Offset: 0xA781334 VA: 0xA785334
+	public Scene get_scene() { }
+
+	// RVA: 0xA7854EC Offset: 0xA7814EC VA: 0xA7854EC
+	public GameObject get_gameObject() { }
+
+	// RVA: 0xA785350 Offset: 0xA781350 VA: 0xA785350
+	private void get_scene_Injected(out Scene ret) { }
+}

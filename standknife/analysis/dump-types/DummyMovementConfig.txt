@@ -1,0 +1,12 @@
+// Namespace: Axlebolt.Standoff.Game.AimTraining.Dummy
+public class DummyMovementConfig // TypeDefIndex: 3131
+{
+	// Fields
+	public float Acceleration; // 0x10
+	public float MaxSpeed; // 0x14
+
+	// Methods
+
+	// RVA: 0x36558D0 Offset: 0x36518D0 VA: 0x36558D0
+	public void .ctor() { }
+}

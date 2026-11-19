@@ -1,0 +1,22 @@
+// Namespace: Axlebolt.Standoff.Player.Weaponry
+public class BombWeaponryController : Controller // TypeDefIndex: 3822
+{
+	// Fields
+	private WeaponryController CBECEDAEGACEDAD; // 0x58
+	private PlayerHitController CEHAHHFBDHEHCDG; // 0x60
+	private bool BFFBBGHEFABDGEE; // 0x68
+
+	// Methods
+
+	// RVA: 0x3BEE6DC Offset: 0x3BEA6DC VA: 0x3BEE6DC Slot: 67
+	public override void OnReturnToPool() { }
+
+	// RVA: 0x3BEE798 Offset: 0x3BEA798 VA: 0x3BEE798 Slot: 65
+	public override void OnPostInitialize() { }
+
+	// RVA: 0x3BEE8E8 Offset: 0x3BEA8E8 VA: 0x3BEE8E8 Slot: 62
+	public override void OnPreInitialize() { }
+
+	// RVA: 0x3BEE9E8 Offset: 0x3BEA9E8 VA: 0x3BEE9E8
+	public void .ctor() { }
+}

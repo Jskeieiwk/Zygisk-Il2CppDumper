@@ -1,0 +1,34 @@
+// Namespace: 
+public sealed class PostProcessResources.Shaders // TypeDefIndex: 21140
+{
+	// Fields
+	public Shader bloom; // 0x10
+	public Shader copy; // 0x18
+	public Shader copyStd; // 0x20
+	public Shader copyStdFromTexArray; // 0x28
+	public Shader copyStdFromDoubleWide; // 0x30
+	public Shader discardAlpha; // 0x38
+	public Shader depthOfField; // 0x40
+	public Shader finalPass; // 0x48
+	public Shader grainBaker; // 0x50
+	public Shader motionBlur; // 0x58
+	public Shader temporalAntialiasing; // 0x60
+	public Shader subpixelMorphologicalAntialiasing; // 0x68
+	public Shader texture2dLerp; // 0x70
+	public Shader uber; // 0x78
+	public Shader lut2DBaker; // 0x80
+	public Shader lightMeter; // 0x88
+	public Shader gammaHistogram; // 0x90
+	public Shader waveform; // 0x98
+	public Shader vectorscope; // 0xA0
+	public Shader debugOverlays; // 0xA8
+	public Shader deferredFog; // 0xB0
+	public Shader scalableAO; // 0xB8
+	public Shader multiScaleAO; // 0xC0
+	public Shader screenSpaceReflections; // 0xC8
+
+	// Methods
+
+	// RVA: 0xA58A034 Offset: 0xA586034 VA: 0xA58A034
+	public void .ctor() { }
+}

@@ -1,0 +1,300 @@
+// Namespace: UnityEngine
+public class Physics // TypeDefIndex: 22567
+{
+	// Fields
+	[DebuggerBrowsable(0)]
+	[CompilerGenerated]
+	private static Action<PhysicsScene, NativeArray<ModifiableContactPair>> ContactModifyEvent; // 0x0
+	[DebuggerBrowsable(0)]
+	[CompilerGenerated]
+	private static Action<PhysicsScene, NativeArray<ModifiableContactPair>> ContactModifyEventCCD; // 0x8
+	[DebuggerBrowsable(0)]
+	[CompilerGenerated]
+	private static Physics.ContactEventDelegate ContactEvent; // 0x10
+	private static readonly Collision s_ReusableCollision; // 0x18
+
+	// Properties
+	public static Vector3 gravity { get; }
+	public static bool invokeCollisionCallbacks { get; }
+	[NativeProperty("DefaultPhysicsSceneHandle", True, 0, True)]
+	public static PhysicsScene defaultPhysicsScene { get; }
+	public static bool reuseCollisionCallbacks { get; }
+
+	// Methods
+
+	[RequiredByNativeCode]
+	// RVA: 0xA823D90 Offset: 0xA81FD90 VA: 0xA823D90
+	private static void OnSceneContactModify(PhysicsScene scene, IntPtr buffer, int count, bool isCCD) { }
+
+	[ThreadSafe]
+	// RVA: 0xA823F08 Offset: 0xA81FF08 VA: 0xA823F08
+	public static Vector3 get_gravity() { }
+
+	// RVA: 0xA82411C Offset: 0xA82011C VA: 0xA82411C
+	public static bool get_invokeCollisionCallbacks() { }
+
+	// RVA: 0xA824284 Offset: 0xA820284 VA: 0xA824284
+	public static PhysicsScene get_defaultPhysicsScene() { }
+
+	// RVA: 0xA8244A8 Offset: 0xA8204A8 VA: 0xA8244A8
+	public static void IgnoreCollision(Collider collider1, Collider collider2, bool ignore) { }
+
+	[NativeName("IgnoreCollision")]
+	// RVA: 0xA82465C Offset: 0xA82065C VA: 0xA82465C
+	public static void IgnoreLayerCollision(int layer1, int layer2, bool ignore) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA8247FC Offset: 0xA8207FC VA: 0xA8247FC
+	public static void IgnoreLayerCollision(int layer1, int layer2) { }
+
+	// RVA: 0xA8248AC Offset: 0xA8208AC VA: 0xA8248AC
+	public static bool GetIgnoreLayerCollision(int layer1, int layer2) { }
+
+	// RVA: 0xA824A34 Offset: 0xA820A34 VA: 0xA824A34
+	public static bool Raycast(Vector3 origin, Vector3 direction, float maxDistance, int layerMask, QueryTriggerInteraction queryTriggerInteraction) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA824DE8 Offset: 0xA820DE8 VA: 0xA824DE8
+	public static bool Raycast(Vector3 origin, Vector3 direction, float maxDistance, int layerMask) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA824EF4 Offset: 0xA820EF4 VA: 0xA824EF4
+	public static bool Raycast(Vector3 origin, Vector3 direction, float maxDistance) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA825004 Offset: 0xA821004 VA: 0xA825004
+	public static bool Raycast(Vector3 origin, Vector3 direction) { }
+
+	// RVA: 0xA825104 Offset: 0xA821104 VA: 0xA825104
+	public static bool Raycast(Vector3 origin, Vector3 direction, out RaycastHit hitInfo, float maxDistance, int layerMask, QueryTriggerInteraction queryTriggerInteraction) { }
+
+	[RequiredByNativeCode]
+	[ExcludeFromDocs]
+	// RVA: 0xA8254D4 Offset: 0xA8214D4 VA: 0xA8254D4
+	public static bool Raycast(Vector3 origin, Vector3 direction, out RaycastHit hitInfo, float maxDistance, int layerMask) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA8255F8 Offset: 0xA8215F8 VA: 0xA8255F8
+	public static bool Raycast(Vector3 origin, Vector3 direction, out RaycastHit hitInfo, float maxDistance) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA825708 Offset: 0xA821708 VA: 0xA825708
+	public static bool Raycast(Vector3 origin, Vector3 direction, out RaycastHit hitInfo) { }
+
+	// RVA: 0xA825818 Offset: 0xA821818 VA: 0xA825818
+	public static bool Raycast(Ray ray, float maxDistance, int layerMask, QueryTriggerInteraction queryTriggerInteraction) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA8258F8 Offset: 0xA8218F8 VA: 0xA8258F8
+	public static bool Raycast(Ray ray, float maxDistance, int layerMask) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA8259DC Offset: 0xA8219DC VA: 0xA8259DC
+	public static bool Raycast(Ray ray, float maxDistance) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA825AAC Offset: 0xA821AAC VA: 0xA825AAC
+	public static bool Raycast(Ray ray) { }
+
+	// RVA: 0xA825B7C Offset: 0xA821B7C VA: 0xA825B7C
+	public static bool Raycast(Ray ray, out RaycastHit hitInfo, float maxDistance, int layerMask, QueryTriggerInteraction queryTriggerInteraction) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA825C74 Offset: 0xA821C74 VA: 0xA825C74
+	public static bool Raycast(Ray ray, out RaycastHit hitInfo, float maxDistance, int layerMask) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA825D74 Offset: 0xA821D74 VA: 0xA825D74
+	public static bool Raycast(Ray ray, out RaycastHit hitInfo, float maxDistance) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA825E5C Offset: 0xA821E5C VA: 0xA825E5C
+	public static bool Raycast(Ray ray, out RaycastHit hitInfo) { }
+
+	// RVA: 0xA825F34 Offset: 0xA821F34 VA: 0xA825F34
+	public static bool Linecast(Vector3 start, Vector3 end, int layerMask, QueryTriggerInteraction queryTriggerInteraction) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA8260E0 Offset: 0xA8220E0 VA: 0xA8260E0
+	public static bool Linecast(Vector3 start, Vector3 end, int layerMask) { }
+
+	// RVA: 0xA8261C8 Offset: 0xA8221C8 VA: 0xA8261C8
+	public static bool Linecast(Vector3 start, Vector3 end, out RaycastHit hitInfo, int layerMask, QueryTriggerInteraction queryTriggerInteraction) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA826384 Offset: 0xA822384 VA: 0xA826384
+	public static bool Linecast(Vector3 start, Vector3 end, out RaycastHit hitInfo, int layerMask) { }
+
+	// RVA: 0xA82647C Offset: 0xA82247C VA: 0xA82647C
+	public static bool SphereCast(Vector3 origin, float radius, Vector3 direction, out RaycastHit hitInfo, float maxDistance, int layerMask, QueryTriggerInteraction queryTriggerInteraction) { }
+
+	// RVA: 0xA8265A0 Offset: 0xA8225A0 VA: 0xA8265A0
+	public static bool SphereCast(Ray ray, float radius, out RaycastHit hitInfo, float maxDistance, int layerMask, QueryTriggerInteraction queryTriggerInteraction) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA8266B4 Offset: 0xA8226B4 VA: 0xA8266B4
+	public static bool SphereCast(Ray ray, float radius, out RaycastHit hitInfo, float maxDistance, int layerMask) { }
+
+	// RVA: 0xA8267B4 Offset: 0xA8227B4 VA: 0xA8267B4
+	public static bool BoxCast(Vector3 center, Vector3 halfExtents, Vector3 direction, out RaycastHit hitInfo, Quaternion orientation, float maxDistance, int layerMask, QueryTriggerInteraction queryTriggerInteraction) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA826908 Offset: 0xA822908 VA: 0xA826908
+	public static bool BoxCast(Vector3 center, Vector3 halfExtents, Vector3 direction, out RaycastHit hitInfo, Quaternion orientation, float maxDistance, int layerMask) { }
+
+	[NativeName("RaycastAll")]
+	[StaticAccessor("GetPhysicsManager().GetPhysicsQuery()", 0)]
+	// RVA: 0xA826AAC Offset: 0xA822AAC VA: 0xA826AAC
+	private static RaycastHit[] Internal_RaycastAll(PhysicsScene physicsScene, Ray ray, float maxDistance, int mask, QueryTriggerInteraction queryTriggerInteraction) { }
+
+	// RVA: 0xA826D70 Offset: 0xA822D70 VA: 0xA826D70
+	public static RaycastHit[] RaycastAll(Vector3 origin, Vector3 direction, float maxDistance, int layerMask, QueryTriggerInteraction queryTriggerInteraction) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA8270D4 Offset: 0xA8230D4 VA: 0xA8270D4
+	public static RaycastHit[] RaycastAll(Vector3 origin, Vector3 direction, float maxDistance, int layerMask) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA8271CC Offset: 0xA8231CC VA: 0xA8271CC
+	public static RaycastHit[] RaycastAll(Vector3 origin, Vector3 direction, float maxDistance) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA8272C0 Offset: 0xA8232C0 VA: 0xA8272C0
+	public static RaycastHit[] RaycastAll(Vector3 origin, Vector3 direction) { }
+
+	// RVA: 0xA8273AC Offset: 0xA8233AC VA: 0xA8273AC
+	public static RaycastHit[] RaycastAll(Ray ray, float maxDistance, int layerMask, QueryTriggerInteraction queryTriggerInteraction) { }
+
+	[ExcludeFromDocs]
+	[RequiredByNativeCode]
+	// RVA: 0xA8274A8 Offset: 0xA8234A8 VA: 0xA8274A8
+	public static RaycastHit[] RaycastAll(Ray ray, float maxDistance, int layerMask) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA8275A0 Offset: 0xA8235A0 VA: 0xA8275A0
+	public static RaycastHit[] RaycastAll(Ray ray, float maxDistance) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA82768C Offset: 0xA82368C VA: 0xA82768C
+	public static RaycastHit[] RaycastAll(Ray ray) { }
+
+	// RVA: 0xA827770 Offset: 0xA823770 VA: 0xA827770
+	public static int RaycastNonAlloc(Ray ray, RaycastHit[] results, float maxDistance, int layerMask, QueryTriggerInteraction queryTriggerInteraction) { }
+
+	[RequiredByNativeCode]
+	[ExcludeFromDocs]
+	// RVA: 0xA827BE8 Offset: 0xA823BE8 VA: 0xA827BE8
+	public static int RaycastNonAlloc(Ray ray, RaycastHit[] results, float maxDistance, int layerMask) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA827CC8 Offset: 0xA823CC8 VA: 0xA827CC8
+	public static int RaycastNonAlloc(Ray ray, RaycastHit[] results, float maxDistance) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA827DAC Offset: 0xA823DAC VA: 0xA827DAC
+	public static int RaycastNonAlloc(Ray ray, RaycastHit[] results) { }
+
+	// RVA: 0xA827E80 Offset: 0xA823E80 VA: 0xA827E80
+	public static int RaycastNonAlloc(Vector3 origin, Vector3 direction, RaycastHit[] results, float maxDistance, int layerMask, QueryTriggerInteraction queryTriggerInteraction) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA827F9C Offset: 0xA823F9C VA: 0xA827F9C
+	public static int RaycastNonAlloc(Vector3 origin, Vector3 direction, RaycastHit[] results, float maxDistance, int layerMask) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA8280BC Offset: 0xA8240BC VA: 0xA8280BC
+	public static int RaycastNonAlloc(Vector3 origin, Vector3 direction, RaycastHit[] results, float maxDistance) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA8281C8 Offset: 0xA8241C8 VA: 0xA8281C8
+	public static int RaycastNonAlloc(Vector3 origin, Vector3 direction, RaycastHit[] results) { }
+
+	[NativeName("OverlapSphere")]
+	[StaticAccessor("GetPhysicsManager().GetPhysicsQuery()", 0)]
+	// RVA: 0xA8282D4 Offset: 0xA8242D4 VA: 0xA8282D4
+	private static Collider[] OverlapSphere_Internal(PhysicsScene physicsScene, Vector3 position, float radius, int layerMask, QueryTriggerInteraction queryTriggerInteraction) { }
+
+	// RVA: 0xA8285A0 Offset: 0xA8245A0 VA: 0xA8285A0
+	public static Collider[] OverlapSphere(Vector3 position, float radius, int layerMask, QueryTriggerInteraction queryTriggerInteraction) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA828684 Offset: 0xA824684 VA: 0xA828684
+	public static Collider[] OverlapSphere(Vector3 position, float radius, int layerMask) { }
+
+	// RVA: 0xA828754 Offset: 0xA824754 VA: 0xA828754
+	public static bool get_reuseCollisionCallbacks() { }
+
+	// RVA: 0xA8288C4 Offset: 0xA8248C4 VA: 0xA8288C4
+	public static int OverlapSphereNonAlloc(Vector3 position, float radius, Collider[] results, int layerMask, QueryTriggerInteraction queryTriggerInteraction) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA828A00 Offset: 0xA824A00 VA: 0xA828A00
+	public static int OverlapSphereNonAlloc(Vector3 position, float radius, Collider[] results, int layerMask) { }
+
+	[NativeName("OverlapBox")]
+	[StaticAccessor("GetPhysicsManager().GetPhysicsQuery()")]
+	// RVA: 0xA828AE0 Offset: 0xA824AE0 VA: 0xA828AE0
+	private static Collider[] OverlapBox_Internal(PhysicsScene physicsScene, Vector3 center, Vector3 halfExtents, Quaternion orientation, int layerMask, QueryTriggerInteraction queryTriggerInteraction) { }
+
+	// RVA: 0xA828DB8 Offset: 0xA824DB8 VA: 0xA828DB8
+	public static Collider[] OverlapBox(Vector3 center, Vector3 halfExtents, Quaternion orientation, int layerMask, QueryTriggerInteraction queryTriggerInteraction) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA828EC4 Offset: 0xA824EC4 VA: 0xA828EC4
+	public static Collider[] OverlapBox(Vector3 center, Vector3 halfExtents) { }
+
+	// RVA: 0xA82904C Offset: 0xA82504C VA: 0xA82904C
+	public static int OverlapBoxNonAlloc(Vector3 center, Vector3 halfExtents, Collider[] results, Quaternion orientation, int mask, QueryTriggerInteraction queryTriggerInteraction) { }
+
+	[ExcludeFromDocs]
+	// RVA: 0xA829184 Offset: 0xA825184 VA: 0xA829184
+	public static int OverlapBoxNonAlloc(Vector3 center, Vector3 halfExtents, Collider[] results, Quaternion orientation, int mask) { }
+
+	[StaticAccessor("PhysicsManager", 2)]
+	// RVA: 0xA8292E4 Offset: 0xA8252E4 VA: 0xA8292E4
+	internal static Collider GetColliderByInstanceID(int instanceID) { }
+
+	[StaticAccessor("PhysicsManager", 2)]
+	// RVA: 0xA829460 Offset: 0xA825460 VA: 0xA829460
+	internal static Component GetBodyByInstanceID(int instanceID) { }
+
+	[StaticAccessor("PhysicsManager", 2)]
+	// RVA: 0xA8295DC Offset: 0xA8255DC VA: 0xA8295DC
+	private static void SendOnCollisionEnter(Component component, Collision collision) { }
+
+	[StaticAccessor("PhysicsManager", 2)]
+	// RVA: 0xA82977C Offset: 0xA82577C VA: 0xA82977C
+	private static void SendOnCollisionStay(Component component, Collision collision) { }
+
+	[StaticAccessor("PhysicsManager", 2)]
+	// RVA: 0xA82991C Offset: 0xA82591C VA: 0xA82991C
+	private static void SendOnCollisionExit(Component component, Collision collision) { }
+
+	[RequiredByNativeCode]
+	// RVA: 0xA829AB8 Offset: 0xA825AB8 VA: 0xA829AB8
+	private static void OnSceneContact(PhysicsScene scene, IntPtr buffer, int count) { }
+
+	// RVA: 0xA829E50 Offset: 0xA825E50 VA: 0xA829E50
+	private static void ReportContacts(NativeArray.ReadOnly<ContactPairHeader> array) { }
+
+	// RVA: 0xA82A230 Offset: 0xA826230 VA: 0xA82A230
+	private static Collision GetCollisionToReport(in ContactPairHeader header, in ContactPair pair, bool flipped) { }
+
+	// RVA: 0xA82A3F0 Offset: 0xA8263F0 VA: 0xA82A3F0
+	private static void .cctor() { }
+
+	// RVA: 0xA823FBC Offset: 0xA81FFBC VA: 0xA823FBC
+	private static void get_gravity_Injected(out Vector3 ret) { }
+
+	// RVA: 0xA824328 Offset: 0xA820328 VA: 0xA824328
+	private static void get_defaultPhysicsScene_Injected(out PhysicsScene ret) { }
+
+	// RVA: 0xA826B7C Offset: 0xA822B7C VA: 0xA826B7C
+	private static RaycastHit[] Internal_RaycastAll_Injected(ref PhysicsScene physicsScene, ref Ray ray, float maxDistance, int mask, QueryTriggerInteraction queryTriggerInteraction) { }
+
+	// RVA: 0xA8283B0 Offset: 0xA8243B0 VA: 0xA8283B0
+	private static Collider[] OverlapSphere_Internal_Injected(ref PhysicsScene physicsScene, ref Vector3 position, float radius, int layerMask, QueryTriggerInteraction queryTriggerInteraction) { }
+
+	// RVA: 0xA828BC4 Offset: 0xA824BC4 VA: 0xA828BC4
+	private static Collider[] OverlapBox_Internal_Injected(ref PhysicsScene physicsScene, ref Vector3 center, ref Vector3 halfExtents, ref Quaternion orientation, int layerMask, QueryTriggerInteraction queryTriggerInteraction) { }
+}

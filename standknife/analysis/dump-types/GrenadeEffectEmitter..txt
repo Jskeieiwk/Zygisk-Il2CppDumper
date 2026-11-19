@@ -1,0 +1,22 @@
+// Namespace: 
+private sealed class GrenadeEffectEmitter.<>c // TypeDefIndex: 1892
+{
+	// Fields
+	public static readonly GrenadeEffectEmitter.<>c <>9; // 0x0
+	public static Func<GrenadeParameters, ACFBEBGADFDGEBG> <>9__8_0; // 0x8
+	public static Func<GrenadeParameters, GrenadeEffectParameters> <>9__8_1; // 0x10
+
+	// Methods
+
+	// RVA: 0x667BFB8 Offset: 0x6677FB8 VA: 0x667BFB8
+	public void .ctor() { }
+
+	// RVA: 0x667BFC0 Offset: 0x6677FC0 VA: 0x667BFC0
+	internal GrenadeEffectParameters ADGABEDFHCHEAFH(GrenadeParameters p) { }
+
+	// RVA: 0x667C0C8 Offset: 0x66780C8 VA: 0x667C0C8
+	internal ACFBEBGADFDGEBG GGCECDEAAHHDBDE(GrenadeParameters p) { }
+
+	// RVA: 0x667C0E0 Offset: 0x66780E0 VA: 0x667C0E0
+	private static void .cctor() { }
+}

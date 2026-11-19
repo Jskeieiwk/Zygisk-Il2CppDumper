@@ -1,0 +1,219 @@
+// Namespace: Axlebolt.Standoff
+public class GrenadePracticeViewPlacement : MonoBehaviour // TypeDefIndex: 2649
+{
+	// Fields
+	private const float HDEEAGAADABCDHH = 0.05;
+	[SerializeField]
+	private RectTransform _draggableUIElement; // 0x20
+	[SerializeField]
+	private Canvas _canvas; // 0x28
+	[SerializeField]
+	private RectTransform _lockButtonElement; // 0x30
+	[SerializeField]
+	private Color _lockedColor; // 0x38
+	[SerializeField]
+	private Color _unLockedColor; // 0x48
+	[SerializeField]
+	private Image _lockImage; // 0x58
+	private readonly Dictionary<int, GrenadePracticeViewPlacement.DGFEDGCBCGGEEHD> DHEDGAEHGGHEGFA; // 0x60
+	private bool DGCCCGADAGBBFAE; // 0x68
+	private bool BDCHBFGABHAHAFD; // 0x69
+	private int DBGEDFHDCBEFGDC; // 0x6C
+	private RectTransform DEFBFGAAFEGECEB; // 0x70
+	private Camera ABAGBFGECGDCABD; // 0x78
+	[CompilerGenerated]
+	private bool <FDHFEHCGCEEABEC>k__BackingField; // 0x80
+
+	// Properties
+	public bool FGDABBFGAGBFBHB { get; set; }
+
+	// Methods
+
+	// RVA: 0x320BE60 Offset: 0x3207E60 VA: 0x320BE60
+	private void FHBAFHBEDCCHEGF(int EDEFHCCBAGEAGAC, TouchPhase EFDEGEHEDABCHBG, Vector2 EFDEFEDFADDHBHG) { }
+
+	// RVA: 0x320C408 Offset: 0x3208408 VA: 0x320C408
+	private void AEBCFGBDCAEFGHF() { }
+
+	// RVA: 0x320C5A0 Offset: 0x32085A0 VA: 0x320C5A0
+	private void AGDEAHCBHFAHBBG() { }
+
+	// RVA: 0x320C77C Offset: 0x320877C VA: 0x320C77C
+	private void FFEFGHHDHFEBGGC(int EDEFHCCBAGEAGAC, Vector2 EFDEFEDFADDHBHG) { }
+
+	// RVA: 0x320C4C4 Offset: 0x32084C4 VA: 0x320C4C4
+	private void CHBGABGBHCDEBFF(int EDEFHCCBAGEAGAC, TouchPhase EFDEGEHEDABCHBG, Vector2 EFDEFEDFADDHBHG) { }
+
+	// RVA: 0x320D1D0 Offset: 0x32091D0 VA: 0x320D1D0
+	public void DDCGDEBACBCGECE(bool BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x320D1DC Offset: 0x32091DC VA: 0x320D1DC
+	private void AFFDEEEGAEDCHAC(int EDEFHCCBAGEAGAC, Vector2 EFDEFEDFADDHBHG) { }
+
+	// RVA: 0x320D3DC Offset: 0x32093DC VA: 0x320D3DC
+	public bool HDAHAFFGEBEDDHD() { }
+
+	// RVA: 0x320D3E4 Offset: 0x32093E4 VA: 0x320D3E4
+	public void AFEBFFEDADFBGHD(bool BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x320D3F0 Offset: 0x32093F0 VA: 0x320D3F0
+	private void AHGBHDABBBCHBAD(RectTransform CCCEFAEEEGBDFHG, int EDEFHCCBAGEAGAC, Vector2 EFDEFEDFADDHBHG, bool ABBFGDFBBABGCBC) { }
+
+	// RVA: 0x320BE88 Offset: 0x3207E88 VA: 0x320BE88
+	private void AAAFFFEABCEHBBA(int EDEFHCCBAGEAGAC, Vector2 EFDEFEDFADDHBHG) { }
+
+	// RVA: 0x320D7B0 Offset: 0x32097B0 VA: 0x320D7B0
+	private void BAACCGBHBDBFBCG() { }
+
+	// RVA: 0x320D984 Offset: 0x3209984 VA: 0x320D984
+	private void GCECFDAEEACHGDF(int EDEFHCCBAGEAGAC, Vector2 EFDEFEDFADDHBHG) { }
+
+	// RVA: 0x320DBBC Offset: 0x3209BBC VA: 0x320DBBC
+	private void EHHBFBBAGHFHFDD() { }
+
+	// RVA: 0x320DD90 Offset: 0x3209D90 VA: 0x320DD90
+	private void DDBBDHCGABGEBED() { }
+
+	// RVA: 0x320DF44 Offset: 0x3209F44 VA: 0x320DF44
+	private void CFEEFHFEBFHEHBA(int EDEFHCCBAGEAGAC, Vector2 EFDEFEDFADDHBHG) { }
+
+	// RVA: 0x320E284 Offset: 0x320A284 VA: 0x320E284
+	private void BBCEDBGAHEAAAHA() { }
+
+	// RVA: 0x320E354 Offset: 0x320A354 VA: 0x320E354
+	private void DHDCFFEFHDGCGFC(int EDEFHCCBAGEAGAC, Vector2 EFDEFEDFADDHBHG) { }
+
+	// RVA: 0x320E694 Offset: 0x320A694 VA: 0x320E694
+	private void AACFHGAAEHHEBBE(RectTransform CCCEFAEEEGBDFHG, int EDEFHCCBAGEAGAC, Vector2 EFDEFEDFADDHBHG, bool ABBFGDFBBABGCBC) { }
+
+	// RVA: 0x320E874 Offset: 0x320A874 VA: 0x320E874
+	public bool BADABBAGFGFBCCA() { }
+
+	// RVA: 0x320E87C Offset: 0x320A87C VA: 0x320E87C
+	private void Start() { }
+
+	// RVA: 0x320BEE0 Offset: 0x3207EE0 VA: 0x320BEE0
+	private void EGBDBGCGHDCAHDB(int EDEFHCCBAGEAGAC, Vector2 EFDEFEDFADDHBHG) { }
+
+	// RVA: 0x320E94C Offset: 0x320A94C VA: 0x320E94C
+	private void HCAGCAABBGBGCBF() { }
+
+	// RVA: 0x320EA38 Offset: 0x320AA38 VA: 0x320EA38
+	private void GBAFHECHDDCEBDG(int EDEFHCCBAGEAGAC, Vector2 EFDEFEDFADDHBHG) { }
+
+	// RVA: 0x320EC70 Offset: 0x320AC70 VA: 0x320EC70
+	private void HAHGHAGGAFGBFCF() { }
+
+	// RVA: 0x320ED2C Offset: 0x320AD2C VA: 0x320ED2C
+	private void FAFEBGCFBGCABDF(int EDEFHCCBAGEAGAC, TouchPhase EFDEGEHEDABCHBG, Vector2 EFDEFEDFADDHBHG) { }
+
+	// RVA: 0x320EDAC Offset: 0x320ADAC VA: 0x320EDAC
+	private void BGFBBCDECDDGFGE() { }
+
+	// RVA: 0x320EE7C Offset: 0x320AE7C VA: 0x320EE7C
+	private void CGHHFDEEGDFCEED(int EDEFHCCBAGEAGAC, Vector2 EFDEFEDFADDHBHG) { }
+
+	// RVA: 0x320ED54 Offset: 0x320AD54 VA: 0x320ED54
+	private void CGDFHAAEEDFDAFA(int EDEFHCCBAGEAGAC, Vector2 EFDEFEDFADDHBHG) { }
+
+	// RVA: 0x320F07C Offset: 0x320B07C VA: 0x320F07C
+	private void FDADBGDAFBEEDBE(int EDEFHCCBAGEAGAC, Vector2 EFDEFEDFADDHBHG) { }
+
+	[CompilerGenerated]
+	// RVA: 0x320F27C Offset: 0x320B27C VA: 0x320F27C
+	public bool get_IsActive() { }
+
+	// RVA: 0x320F284 Offset: 0x320B284 VA: 0x320F284
+	private void DGFGFCAHBDHAGBC() { }
+
+	// RVA: 0x320F414 Offset: 0x320B414 VA: 0x320F414
+	private void GEDAHDFDAGFACHB() { }
+
+	// RVA: 0x320C4EC Offset: 0x32084EC VA: 0x320C4EC
+	private void EEEECAEHHCHEEFG() { }
+
+	// RVA: 0x320CABC Offset: 0x3208ABC VA: 0x320CABC
+	private void CHEBFBHBDCFHAEA() { }
+
+	// RVA: 0x320F4D0 Offset: 0x320B4D0 VA: 0x320F4D0
+	private void AAGDFHFCCGBADDH() { }
+
+	// RVA: 0x320F6AC Offset: 0x320B6AC VA: 0x320F6AC
+	public void GHADEFEDDDBADHC(bool BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x320F6B8 Offset: 0x320B6B8 VA: 0x320F6B8
+	private void Update() { }
+
+	// RVA: 0x320F848 Offset: 0x320B848 VA: 0x320F848
+	private void AEFFCFGGFCBDBBH() { }
+
+	// RVA: 0x320CC90 Offset: 0x3208C90 VA: 0x320CC90
+	private void FCCAAABBGGCACGD(int EDEFHCCBAGEAGAC, Vector2 EFDEFEDFADDHBHG) { }
+
+	[CompilerGenerated]
+	// RVA: 0x320F928 Offset: 0x320B928 VA: 0x320F928
+	public void set_IsActive(bool BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x320DE98 Offset: 0x3209E98 VA: 0x320DE98
+	private void AHFHCCDCEEGFCBC() { }
+
+	// RVA: 0x320F934 Offset: 0x320B934 VA: 0x320F934
+	private void GAEDBDCGFBADGEB() { }
+
+	// RVA: 0x320EA10 Offset: 0x320AA10 VA: 0x320EA10
+	private void BDHEFHCHEDFDEEE(int EDEFHCCBAGEAGAC, TouchPhase EFDEGEHEDABCHBG, Vector2 EFDEFEDFADDHBHG) { }
+
+	// RVA: 0x320CE90 Offset: 0x3208E90 VA: 0x320CE90
+	private void DHAHDGHFDBEGACD(int EDEFHCCBAGEAGAC, Vector2 EFDEFEDFADDHBHG) { }
+
+	// RVA: 0x320FB10 Offset: 0x320BB10 VA: 0x320FB10
+	private void DADFBECBHHFAEFE() { }
+
+	// RVA: 0x320E9E8 Offset: 0x320A9E8 VA: 0x320E9E8
+	private void BHFBAGHEBEBEDDD(int EDEFHCCBAGEAGAC, TouchPhase EFDEGEHEDABCHBG, Vector2 EFDEFEDFADDHBHG) { }
+
+	// RVA: 0x320D5D0 Offset: 0x32095D0 VA: 0x320D5D0
+	private void CEEFFCFBDCHEGDA(RectTransform CCCEFAEEEGBDFHG, int EDEFHCCBAGEAGAC, Vector2 EFDEFEDFADDHBHG, bool ABBFGDFBBABGCBC) { }
+
+	// RVA: 0x320DE70 Offset: 0x3209E70 VA: 0x320DE70
+	private void CAEGEEGDAEBFEDE(int EDEFHCCBAGEAGAC, TouchPhase EFDEGEHEDABCHBG, Vector2 EFDEFEDFADDHBHG) { }
+
+	// RVA: 0x320FDDC Offset: 0x320BDDC VA: 0x320FDDC
+	private void EBDGACCACDAEEEA() { }
+
+	// RVA: 0x320C0C8 Offset: 0x32080C8 VA: 0x320C0C8
+	private void BGDECBEFGGBHDDA(int EDEFHCCBAGEAGAC, Vector2 EFDEFEDFADDHBHG) { }
+
+	// RVA: 0x320FFB8 Offset: 0x320BFB8 VA: 0x320FFB8
+	private void ACDFDEBAFEAEHBF() { }
+
+	// RVA: 0x320F798 Offset: 0x320B798 VA: 0x320F798
+	private void FGHCCBHDADBECAD() { }
+
+	// RVA: 0x3210098 Offset: 0x320C098 VA: 0x3210098
+	private void EHGDECEDEHCBHDE(int EDEFHCCBAGEAGAC, Vector2 EFDEFEDFADDHBHG) { }
+
+	// RVA: 0x3210298 Offset: 0x320C298 VA: 0x3210298
+	private void FHFEGACFDDBEGFA(int EDEFHCCBAGEAGAC, Vector2 EFDEFEDFADDHBHG) { }
+
+	// RVA: 0x320FBE0 Offset: 0x320BBE0 VA: 0x320FBE0
+	private void DAGFDGBHBCGBBHC(int EDEFHCCBAGEAGAC, Vector2 EFDEFEDFADDHBHG) { }
+
+	// RVA: 0x320EA90 Offset: 0x320AA90 VA: 0x320EA90
+	private void EGFGBGFACCGEHDD(RectTransform CCCEFAEEEGBDFHG, int EDEFHCCBAGEAGAC, Vector2 EFDEFEDFADDHBHG, bool ABBFGDFBBABGCBC) { }
+
+	// RVA: 0x320D9DC Offset: 0x32099DC VA: 0x320D9DC
+	private void EHHGCABEAGDHHHD(RectTransform CCCEFAEEEGBDFHG, int EDEFHCCBAGEAGAC, Vector2 EFDEFEDFADDHBHG, bool ABBFGDFBBABGCBC) { }
+
+	// RVA: 0x32105D8 Offset: 0x320C5D8 VA: 0x32105D8
+	private void GHAEAAGAFACEDCA() { }
+
+	// RVA: 0x320F364 Offset: 0x320B364 VA: 0x320F364
+	private void BEADBCFFAAECHCD() { }
+
+	// RVA: 0x32106A8 Offset: 0x320C6A8 VA: 0x32106A8
+	public bool BFCDEAFEFDCGGGH() { }
+
+	// RVA: 0x32106B0 Offset: 0x320C6B0 VA: 0x32106B0
+	public void .ctor() { }
+}

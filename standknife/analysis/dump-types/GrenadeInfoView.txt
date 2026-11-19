@@ -1,0 +1,153 @@
+// Namespace: Axlebolt.Standoff.Controls
+public class GrenadeInfoView : HudComponentView // TypeDefIndex: 4218
+{
+	// Fields
+	[SerializeField]
+	private Image _weaponImage; // 0x38
+	[SerializeField]
+	private Image _rarityIndicator; // 0x40
+	[SerializeField]
+	private CanvasGroup _weaponImageCanvasGroup; // 0x48
+	[SerializeField]
+	private CanvasGroup _rarityIndicatorCanvasGroup; // 0x50
+	[SerializeField]
+	private float _selectedAlpha; // 0x58
+	[SerializeField]
+	private float _unselectedAlpha; // 0x5C
+	[SerializeField]
+	private float _minAlpha; // 0x60
+	[SerializeField]
+	private float _rarityCoeffHighlighter; // 0x64
+	[SerializeField]
+	private ItemSelectArea _grenadeSelectArea; // 0x68
+	private WeaponController AEGGHCGHHGFGGAE; // 0x70
+	private bool CHCHHABAHEBAGDC; // 0x78
+	private float HCBHAHDHAECGCFH; // 0x7C
+	private byte BBAFFCAHBGBFDFC; // 0x80
+
+	// Properties
+	public bool DCDGACCAAFAGEGE { set; }
+	public Image GFEGBEDAFCEGGHD { get; }
+
+	// Methods
+
+	// RVA: 0x3EC4794 Offset: 0x3EC0794 VA: 0x3EC4794
+	private void AAFHGACCEEDHBHD(bool HBDAECBGBBHDEBA) { }
+
+	// RVA: 0x3EC482C Offset: 0x3EC082C VA: 0x3EC482C
+	public Image get_WeaponImage() { }
+
+	// RVA: 0x3EC4834 Offset: 0x3EC0834 VA: 0x3EC4834
+	public Image GGAFEGGEHHEAHFE() { }
+
+	// RVA: 0x3EC483C Offset: 0x3EC083C VA: 0x3EC483C
+	public void set_IsDropByDoubleClickEnabled(bool BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x3EC485C Offset: 0x3EC085C VA: 0x3EC485C
+	public void AECDDBECBCGDBDA(bool BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x3EC487C Offset: 0x3EC087C VA: 0x3EC487C Slot: 28
+	protected override void HGHHFBCEECDFHGB(bool BABAHECHEBGBFCF) { }
+
+	// RVA: 0x3EC48B8 Offset: 0x3EC08B8 VA: 0x3EC48B8
+	private void GAHDFFCBDCFBGHH() { }
+
+	// RVA: 0x3EC4A4C Offset: 0x3EC0A4C VA: 0x3EC4A4C Slot: 31
+	public override void Init() { }
+
+	// RVA: 0x3EC4AE4 Offset: 0x3EC0AE4 VA: 0x3EC4AE4
+	private void HEAEDGHEFAFEGGH(WeaponController DHDEFGDDFEDDHBG, bool HBCEEBABFGCGCCH) { }
+
+	// RVA: 0x3EC50B4 Offset: 0x3EC10B4 VA: 0x3EC50B4
+	public void .ctor() { }
+
+	// RVA: 0x3EC50BC Offset: 0x3EC10BC VA: 0x3EC50BC
+	private void BHHECCAFBHGFCGF() { }
+
+	// RVA: 0x3EC5254 Offset: 0x3EC1254 VA: 0x3EC5254
+	private void CFCDFBECDHGBFGE() { }
+
+	// RVA: 0x3EC55F8 Offset: 0x3EC15F8 VA: 0x3EC55F8
+	public Image HAGFECEBGEGDGHH() { }
+
+	// RVA: 0x3EC5600 Offset: 0x3EC1600 VA: 0x3EC5600 Slot: 29
+	public override void SetPlayerController(PlayerController AHGEEFHFCCGCHHF) { }
+
+	// RVA: 0x3EC4A68 Offset: 0x3EC0A68 VA: 0x3EC4A68
+	private void FDEGGHHCAFHDFEH() { }
+
+	// RVA: 0x3EC5798 Offset: 0x3EC1798 VA: 0x3EC5798
+	public Image BCCFCDFGEBBHBGG() { }
+
+	// RVA: 0x3EC57A0 Offset: 0x3EC17A0 VA: 0x3EC57A0
+	public void SetAlpha(float EFDBABFBFHHGGBA) { }
+
+	// RVA: 0x3EC4CF4 Offset: 0x3EC0CF4 VA: 0x3EC4CF4
+	private void EFECAAACAAAHBFE(bool HBDAECBGBBHDEBA) { }
+
+	// RVA: 0x3EC57A8 Offset: 0x3EC17A8 VA: 0x3EC57A8
+	public void BAAECFBHAEAHACD(bool BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x3EC57C8 Offset: 0x3EC17C8 VA: 0x3EC57C8
+	public void GCEEGHCAHHBAACG(float EFDBABFBFHHGGBA) { }
+
+	// RVA: 0x3EC584C Offset: 0x3EC184C VA: 0x3EC584C Slot: 30
+	public override void UpdateView(PlayerController AHGEEFHFCCGCHHF) { }
+
+	// RVA: 0x3EC5CAC Offset: 0x3EC1CAC VA: 0x3EC5CAC
+	public void HGCDEECACADBCBH(bool BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x3EC57D0 Offset: 0x3EC17D0 VA: 0x3EC57D0
+	private void BBEEHGBCHBBCEEA() { }
+
+	// RVA: 0x3EC5CCC Offset: 0x3EC1CCC VA: 0x3EC5CCC
+	public Image FADBDBBGBCHDHCD() { }
+
+	// RVA: 0x3EC47B0 Offset: 0x3EC07B0 VA: 0x3EC47B0
+	private void AHEBEDFDBCBBBCD() { }
+
+	// RVA: 0x3EC5CD4 Offset: 0x3EC1CD4 VA: 0x3EC5CD4
+	private void AEGHCBEECACGDAE() { }
+
+	// RVA: 0x3EC6078 Offset: 0x3EC2078 VA: 0x3EC6078
+	private void EGAHEBBHGHDDGAF(WeaponController DHDEFGDDFEDDHBG, bool HBCEEBABFGCGCCH) { }
+
+	// RVA: 0x3EC5A9C Offset: 0x3EC1A9C VA: 0x3EC5A9C
+	private void GCBEFDABHCCECGF(WeaponController DHDEFGDDFEDDHBG, bool HBCEEBABFGCGCCH) { }
+
+	// RVA: 0x3EC62A4 Offset: 0x3EC22A4 VA: 0x3EC62A4
+	private void EACFEEBGEFBDFGA() { }
+
+	// RVA: 0x3EC4D10 Offset: 0x3EC0D10 VA: 0x3EC4D10
+	private void GGFDFDGECEBBHHB() { }
+
+	// RVA: 0x3EC6648 Offset: 0x3EC2648 VA: 0x3EC6648
+	public Image ABCBFEFFAGBBEAA() { }
+
+	// RVA: 0x3EC6650 Offset: 0x3EC2650 VA: 0x3EC6650
+	private void BFABCBDDBFEBDCG() { }
+
+	// RVA: 0x3EC5604 Offset: 0x3EC1604 VA: 0x3EC5604
+	private void ECCAFFHEBFHBEFF() { }
+
+	// RVA: 0x3EC69F4 Offset: 0x3EC29F4 VA: 0x3EC69F4
+	private void HCBDFFGBCGDHFAC() { }
+
+	// RVA: 0x3EC6B8C Offset: 0x3EC2B8C VA: 0x3EC6B8C
+	private void GHFHGGBBGDGCEBC() { }
+
+	// RVA: 0x3EC6F30 Offset: 0x3EC2F30 VA: 0x3EC6F30
+	public void CBFAACFACDGEHFD(bool BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x3EC6F50 Offset: 0x3EC2F50 VA: 0x3EC6F50
+	private void CHGDEBCHHHHEHGH(WeaponController DHDEFGDDFEDDHBG, bool HBCEEBABFGCGCCH) { }
+
+	// RVA: 0x3EC7160 Offset: 0x3EC3160 VA: 0x3EC7160
+	private void DCECAFBFFFGHBFG() { }
+
+	// RVA: 0x3EC7504 Offset: 0x3EC3504 VA: 0x3EC7504
+	public void DECAGBFFGEBHCAB(float EFDBABFBFHHGGBA) { }
+
+	// RVA: 0x3EC6288 Offset: 0x3EC2288 VA: 0x3EC6288
+	private void GHBDDBDAECHFFGD(bool HBDAECBGBBHDEBA) { }
+}

@@ -1,0 +1,57 @@
+// Namespace: UnityEngine.Rendering.PostProcessing
+public sealed class PostProcessVolume : MonoBehaviour // TypeDefIndex: 21144
+{
+	// Fields
+	public PostProcessProfile sharedProfile; // 0x20
+	[Tooltip("Check this box to mark this volume as global. This volume's Profile will be applied to the whole Scene.")]
+	public bool isGlobal; // 0x28
+	[Tooltip("The distance (from the attached Collider) to start blending from. A value of 0 means there will be no blending and the Volume overrides will be applied immediatly upon entry to the attached Collider.")]
+	[Min(0)]
+	public float blendDistance; // 0x2C
+	[Range(0, 1)]
+	[Tooltip("The total weight of this Volume in the Scene. A value of 0 signifies that it will have no effect, 1 signifies full effect.")]
+	public float weight; // 0x30
+	[Tooltip("The volume priority in the stack. A higher value means higher priority. Negative values are supported.")]
+	public float priority; // 0x34
+	private int m_PreviousLayer; // 0x38
+	private float m_PreviousPriority; // 0x3C
+	private List<Collider> m_TempColliders; // 0x40
+	private PostProcessProfile m_InternalProfile; // 0x48
+
+	// Properties
+	public PostProcessProfile profile { get; set; }
+	internal PostProcessProfile profileRef { get; }
+	internal int previousLayer { get; }
+
+	// Methods
+
+	// RVA: 0xA58A04C Offset: 0xA58604C VA: 0xA58A04C
+	public PostProcessProfile get_profile() { }
+
+	// RVA: 0xA58A48C Offset: 0xA58648C VA: 0xA58A48C
+	public void set_profile(PostProcessProfile value) { }
+
+	// RVA: 0xA5886D8 Offset: 0xA5846D8 VA: 0xA5886D8
+	internal PostProcessProfile get_profileRef() { }
+
+	// RVA: 0xA58A494 Offset: 0xA586494 VA: 0xA58A494
+	public bool HasInstantiatedProfile() { }
+
+	// RVA: 0xA58A53C Offset: 0xA58653C VA: 0xA58A53C
+	internal int get_previousLayer() { }
+
+	// RVA: 0xA58A544 Offset: 0xA586544 VA: 0xA58A544
+	private void OnEnable() { }
+
+	// RVA: 0xA58A660 Offset: 0xA586660 VA: 0xA58A660
+	private void OnDisable() { }
+
+	// RVA: 0xA58A680 Offset: 0xA586680 VA: 0xA58A680
+	private void Update() { }
+
+	// RVA: 0xA58A704 Offset: 0xA586704 VA: 0xA58A704
+	private void OnDrawGizmos() { }
+
+	// RVA: 0xA58B240 Offset: 0xA587240 VA: 0xA58B240
+	public void .ctor() { }
+}

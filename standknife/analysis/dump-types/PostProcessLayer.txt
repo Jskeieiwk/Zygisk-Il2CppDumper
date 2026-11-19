@@ -1,0 +1,211 @@
+// Namespace: UnityEngine.Rendering.PostProcessing
+public sealed class PostProcessLayer : MonoBehaviour // TypeDefIndex: 21133
+{
+	// Fields
+	public Transform volumeTrigger; // 0x20
+	public LayerMask volumeLayer; // 0x28
+	public bool stopNaNPropagation; // 0x2C
+	public bool finalBlitToCameraTarget; // 0x2D
+	public PostProcessLayer.Antialiasing antialiasingMode; // 0x30
+	public TemporalAntialiasing temporalAntialiasing; // 0x38
+	public SubpixelMorphologicalAntialiasing subpixelMorphologicalAntialiasing; // 0x40
+	public FastApproximateAntialiasing fastApproximateAntialiasing; // 0x48
+	public Fog fog; // 0x50
+	private Dithering dithering; // 0x58
+	public PostProcessDebugLayer debugLayer; // 0x60
+	[SerializeField]
+	private PostProcessResources m_Resources; // 0x68
+	private PostProcessResources m_OldResources; // 0x70
+	[Preserve]
+	[SerializeField]
+	private bool m_ShowToolkit; // 0x78
+	[Preserve]
+	[SerializeField]
+	private bool m_ShowCustomSorter; // 0x79
+	public bool breakBeforeColorGrading; // 0x7A
+	[SerializeField]
+	private List<PostProcessLayer.SerializedBundleRef> m_BeforeTransparentBundles; // 0x80
+	[SerializeField]
+	private List<PostProcessLayer.SerializedBundleRef> m_BeforeStackBundles; // 0x88
+	[SerializeField]
+	private List<PostProcessLayer.SerializedBundleRef> m_AfterStackBundles; // 0x90
+	[CompilerGenerated]
+	private Dictionary<PostProcessEvent, List<PostProcessLayer.SerializedBundleRef>> <sortedBundles>k__BackingField; // 0x98
+	[CompilerGenerated]
+	private DepthTextureMode <cameraDepthFlags>k__BackingField; // 0xA0
+	[CompilerGenerated]
+	private bool <haveBundlesBeenInited>k__BackingField; // 0xA4
+	private Dictionary<Type, PostProcessBundle> m_Bundles; // 0xA8
+	private PropertySheetFactory m_PropertySheetFactory; // 0xB0
+	private CommandBuffer m_LegacyCmdBufferBeforeReflections; // 0xB8
+	private CommandBuffer m_LegacyCmdBufferBeforeLighting; // 0xC0
+	private CommandBuffer m_LegacyCmdBufferOpaque; // 0xC8
+	private CommandBuffer m_LegacyCmdBuffer; // 0xD0
+	private Camera m_Camera; // 0xD8
+	private PostProcessRenderContext m_CurrentContext; // 0xE0
+	private LogHistogram m_LogHistogram; // 0xE8
+	private bool m_SettingsUpdateNeeded; // 0xF0
+	private bool m_IsRenderingInSceneView; // 0xF1
+	private TargetPool m_TargetPool; // 0xF8
+	private bool m_NaNKilled; // 0x100
+	private readonly List<PostProcessEffectRenderer> m_ActiveEffects; // 0x108
+	private readonly List<RenderTargetIdentifier> m_Targets; // 0x110
+
+	// Properties
+	public Dictionary<PostProcessEvent, List<PostProcessLayer.SerializedBundleRef>> sortedBundles { get; set; }
+	public DepthTextureMode cameraDepthFlags { get; set; }
+	public bool haveBundlesBeenInited { get; set; }
+
+	// Methods
+
+	[CompilerGenerated]
+	// RVA: 0xA579FB0 Offset: 0xA575FB0 VA: 0xA579FB0
+	public Dictionary<PostProcessEvent, List<PostProcessLayer.SerializedBundleRef>> get_sortedBundles() { }
+
+	[CompilerGenerated]
+	// RVA: 0xA579FB8 Offset: 0xA575FB8 VA: 0xA579FB8
+	private void set_sortedBundles(Dictionary<PostProcessEvent, List<PostProcessLayer.SerializedBundleRef>> value) { }
+
+	[CompilerGenerated]
+	// RVA: 0xA579FC0 Offset: 0xA575FC0 VA: 0xA579FC0
+	public DepthTextureMode get_cameraDepthFlags() { }
+
+	[CompilerGenerated]
+	// RVA: 0xA579FC8 Offset: 0xA575FC8 VA: 0xA579FC8
+	private void set_cameraDepthFlags(DepthTextureMode value) { }
+
+	[CompilerGenerated]
+	// RVA: 0xA579FD0 Offset: 0xA575FD0 VA: 0xA579FD0
+	public bool get_haveBundlesBeenInited() { }
+
+	[CompilerGenerated]
+	// RVA: 0xA579FD8 Offset: 0xA575FD8 VA: 0xA579FD8
+	private void set_haveBundlesBeenInited(bool value) { }
+
+	// RVA: 0xA579FE4 Offset: 0xA575FE4 VA: 0xA579FE4
+	private void OnEnable() { }
+
+	// RVA: 0xA57AEA8 Offset: 0xA576EA8 VA: 0xA57AEA8
+	private void InitLegacy() { }
+
+	// RVA: 0xA57B1BC Offset: 0xA5771BC VA: 0xA57B1BC
+	private bool DynamicResolutionAllowsFinalBlitToCameraTarget() { }
+
+	[ImageEffectUsesCommandBuffer]
+	// RVA: 0xA57B3AC Offset: 0xA5773AC VA: 0xA57B3AC
+	private void OnRenderImage(RenderTexture src, RenderTexture dst) { }
+
+	// RVA: 0xA57A1D8 Offset: 0xA5761D8 VA: 0xA57A1D8
+	public void Init(PostProcessResources resources) { }
+
+	// RVA: 0xA57A4D4 Offset: 0xA5764D4 VA: 0xA57A4D4
+	public void InitBundles() { }
+
+	// RVA: 0xA57B57C Offset: 0xA57757C VA: 0xA57B57C
+	private void UpdateBundleSortList(List<PostProcessLayer.SerializedBundleRef> sortedList, PostProcessEvent evt) { }
+
+	// RVA: 0xA57C3E0 Offset: 0xA5783E0 VA: 0xA57C3E0
+	private void OnDisable() { }
+
+	// RVA: 0xA57CAAC Offset: 0xA578AAC VA: 0xA57CAAC
+	private void Reset() { }
+
+	// RVA: 0xA57CAC8 Offset: 0xA578AC8 VA: 0xA57CAC8
+	private void OnPreCull() { }
+
+	// RVA: 0xA57DFD0 Offset: 0xA579FD0 VA: 0xA57DFD0
+	private void OnPreRender() { }
+
+	// RVA: 0xA57E09C Offset: 0xA57A09C VA: 0xA57E09C
+	private static bool RequiresInitialBlit(Camera camera, PostProcessRenderContext context) { }
+
+	// RVA: 0xA57E0A4 Offset: 0xA57A0A4 VA: 0xA57E0A4
+	private void UpdateSrcDstForOpaqueOnly(ref int src, ref int dst, PostProcessRenderContext context, RenderTargetIdentifier cameraTarget, int opaqueOnlyEffectsRemaining) { }
+
+	// RVA: 0xA57D084 Offset: 0xA579084 VA: 0xA57D084
+	private void BuildCommandBuffers() { }
+
+	// RVA: 0xA57FDAC Offset: 0xA57BDAC VA: 0xA57FDAC
+	private void OnPostRender() { }
+
+	// RVA: -1 Offset: -1
+	public PostProcessBundle GetBundle<T>() { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80F13B0 Offset: 0x80ED3B0 VA: 0x80F13B0
+	|-PostProcessLayer.GetBundle<object>
+	*/
+
+	// RVA: 0xA57FF74 Offset: 0xA57BF74 VA: 0xA57FF74
+	public PostProcessBundle GetBundle(Type settingsType) { }
+
+	// RVA: -1 Offset: -1
+	public T GetSettings<T>() { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80F1470 Offset: 0x80ED470 VA: 0x80F1470
+	|-PostProcessLayer.GetSettings<object>
+	*/
+
+	// RVA: 0xA58001C Offset: 0xA57C01C VA: 0xA58001C
+	public void BakeMSVOMap(CommandBuffer cmd, Camera camera, RenderTargetIdentifier destination, Nullable<RenderTargetIdentifier> depthMap, bool invert, bool isMSAA = False) { }
+
+	// RVA: 0xA5801AC Offset: 0xA57C1AC VA: 0xA5801AC
+	internal void OverrideSettings(List<PostProcessEffectSettings> baseSettings, float interpFactor) { }
+
+	// RVA: 0xA58071C Offset: 0xA57C71C VA: 0xA58071C
+	private void SetLegacyCameraFlags(PostProcessRenderContext context) { }
+
+	// RVA: 0xA580D14 Offset: 0xA57CD14 VA: 0xA580D14
+	public void ResetHistory() { }
+
+	// RVA: 0xA57EADC Offset: 0xA57AADC VA: 0xA57EADC
+	public bool HasOpaqueOnlyEffects(PostProcessRenderContext context) { }
+
+	// RVA: 0xA580F84 Offset: 0xA57CF84 VA: 0xA580F84
+	public bool HasActiveEffects(PostProcessEvent evt, PostProcessRenderContext context) { }
+
+	// RVA: 0xA57E66C Offset: 0xA57A66C VA: 0xA57E66C
+	private void SetupContext(PostProcessRenderContext context) { }
+
+	// RVA: 0xA57E844 Offset: 0xA57A844 VA: 0xA57E844
+	public void UpdateVolumeSystem(Camera cam, CommandBuffer cmd) { }
+
+	// RVA: 0xA57F0C0 Offset: 0xA57B0C0 VA: 0xA57F0C0
+	public void RenderOpaqueOnly(PostProcessRenderContext context) { }
+
+	// RVA: 0xA57F250 Offset: 0xA57B250 VA: 0xA57F250
+	public void Render(PostProcessRenderContext context) { }
+
+	// RVA: 0xA5831C4 Offset: 0xA57F1C4 VA: 0xA5831C4
+	private int RenderInjectionPoint(PostProcessEvent evt, PostProcessRenderContext context, string marker, int releaseTargetAfterUse = -1) { }
+
+	// RVA: 0xA581EFC Offset: 0xA57DEFC VA: 0xA581EFC
+	private void RenderList(List<PostProcessLayer.SerializedBundleRef> list, PostProcessRenderContext context, string marker) { }
+
+	// RVA: 0xA584720 Offset: 0xA580720 VA: 0xA584720
+	private void ApplyFlip(PostProcessRenderContext context, MaterialPropertyBlock properties) { }
+
+	// RVA: 0xA584820 Offset: 0xA580820 VA: 0xA584820
+	private void ApplyDefaultFlip(MaterialPropertyBlock properties) { }
+
+	// RVA: 0xA58339C Offset: 0xA57F39C VA: 0xA58339C
+	private int RenderBuiltins(PostProcessRenderContext context, bool isFinalPass, int releaseTargetAfterUse = -1, int eye = -1) { }
+
+	// RVA: 0xA583DC0 Offset: 0xA57FDC0 VA: 0xA583DC0
+	private void RenderFinalPass(PostProcessRenderContext context, int releaseTargetAfterUse = -1, int eye = -1) { }
+
+	// RVA: -1 Offset: -1
+	private int RenderEffect<T>(PostProcessRenderContext context, bool useTempTarget = False) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80F14BC Offset: 0x80ED4BC VA: 0x80F14BC
+	|-PostProcessLayer.RenderEffect<object>
+	*/
+
+	// RVA: 0xA584C30 Offset: 0xA580C30 VA: 0xA584C30
+	private bool ShouldGenerateLogHistogram(PostProcessRenderContext context) { }
+
+	// RVA: 0xA585930 Offset: 0xA581930 VA: 0xA585930
+	public void .ctor() { }
+}

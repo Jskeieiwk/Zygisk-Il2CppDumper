@@ -1,0 +1,12 @@
+// Namespace: 
+public sealed class PostProcessResources.SMAALuts // TypeDefIndex: 21142
+{
+	// Fields
+	public Texture2D area; // 0x10
+	public Texture2D search; // 0x18
+
+	// Methods
+
+	// RVA: 0xA58A044 Offset: 0xA586044 VA: 0xA58A044
+	public void .ctor() { }
+}

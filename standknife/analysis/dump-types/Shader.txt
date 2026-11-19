@@ -1,0 +1,33 @@
+// Namespace: UnityEngine
+public sealed class Shader : Object // TypeDefIndex: 17358
+{
+	// Properties
+	public bool isSupported { get; }
+
+	// Methods
+
+	// RVA: 0xA7467F0 Offset: 0xA7427F0 VA: 0xA7467F0
+	public static Shader Find(string name) { }
+
+	[NativeMethod("IsSupported")]
+	// RVA: 0xA7469F0 Offset: 0xA7429F0 VA: 0xA7469F0
+	public bool get_isSupported() { }
+
+	[FreeFunction("ShaderScripting::TagToID")]
+	// RVA: 0xA746B6C Offset: 0xA742B6C VA: 0xA746B6C
+	internal static int TagToID(string name) { }
+
+	[FreeFunction(Name = "ShaderScripting::PropertyToID", IsThreadSafe = True)]
+	// RVA: 0xA74339C Offset: 0xA73F39C VA: 0xA74339C
+	public static int PropertyToID(string name) { }
+
+	[FreeFunction("ShaderScripting::SetGlobalFloat")]
+	// RVA: 0xA746CE4 Offset: 0xA742CE4 VA: 0xA746CE4
+	private static void SetGlobalFloatImpl(int name, float value) { }
+
+	// RVA: 0xA746E78 Offset: 0xA742E78 VA: 0xA746E78
+	public static void SetGlobalFloat(int nameID, float value) { }
+
+	// RVA: 0xA746E7C Offset: 0xA742E7C VA: 0xA746E7C
+	private void .ctor() { }
+}

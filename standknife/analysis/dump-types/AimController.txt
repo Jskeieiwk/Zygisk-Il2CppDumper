@@ -1,0 +1,314 @@
+// Namespace: Axlebolt.Standoff.Player.Aim
+public class AimController : Controller, GGCGFHDGBGCGEAH<FEEAEBBFAGAFCBB, HBADHEDGEDACBBE>, ACAHDBDADBBAGCA, DGDAGHFBGCEDEEH, CAHDEDBCCFHCFCH, FHGEDHDCDGHGAHF // TypeDefIndex: 7148
+{
+	// Fields
+	[SerializeField]
+	private bool _overrideSpineRotation; // 0x53
+	private AAEGADAHFBAHCHC DGBADBABHBHBFFC; // 0x54
+	public float sensitivityX; // 0x58
+	public float sensitivityY; // 0x5C
+	public float minimumX; // 0x60
+	public float maximumX; // 0x64
+	public Transform FPSP_go; // 0x68
+	public Transform spineDirector; // 0x70
+	public Transform FPSCamera; // 0x78
+	public Transform camTransform; // 0x80
+	public AimController.AimingParameters aimingParameters; // 0x88
+	public ABCDDEEFBEHHAAC aimingData; // 0x90
+	public AimController.CBABFEABGCBEABC interpolatorsBunch; // 0x98
+	public AimController.TuningParams tuningParams; // 0xA0
+	[SerializeField]
+	private float _headDampingSpeed; // 0xA8
+	private PlayerController FAHEFDAEDDGCECB; // 0xB0
+	private MovementController BFGEDCGHDBAGHFH; // 0xB8
+	private Transform FEGEECCFFDACFEE; // 0xC0
+	private MecanimController GDGHBABGEDCHCFD; // 0xC8
+	private Transform EGBEHBADCAFFAHB; // 0xD0
+	private bool CAHCHHDBEDEDEDG; // 0xD8
+	private HBADHEDGEDACBBE DFDDBFFCEDAHCEH; // 0xE0
+	private readonly BAEGHHDCAEDFCHE<GFAFADEHEHCHGCH> AEHFGDBBGHBGEEG; // 0xE8
+	private Vector3 AACEEGCGAGABECG; // 0xF0
+	private readonly BAEGHHDCAEDFCHE<AimController.GHGFFBEEBBDDEEA> BBHBBAFFGAEEFAF; // 0x100
+	private readonly BAEGHHDCAEDFCHE<AimController.FFCHGDFBFBFCGDC> FGCBDHEFHBCHEGD; // 0x108
+	private readonly TransformTR DCDHEEDBAEHFGFD; // 0x110
+	private readonly TransformTR GBAFBHGBFEHDDFE; // 0x118
+	private Pose CGDCHFGGFAEGDHE; // 0x120
+	private Pose EFAFDCBFAGFDAHB; // 0x13C
+	private Pose EAHECGGDAFCGBFD; // 0x158
+	private Pose EFAFFCHBHAEFAAH; // 0x174
+	private Pose ACEBBEDFBADFDBG; // 0x190
+	private WeaponAnimationParameters DCCHHHGBAGFDEHG; // 0x1B0
+	private readonly FEEAEBBFAGAFCBB AEEAGHADADGADFF; // 0x1B8
+	private Action HCBBDGDFGDHFCAA; // 0x1C0
+	private CFEBFDABGDCAAHA GFCGBEEABGEBBFB; // 0x1C8
+	private float EEBFCFCGFHCDEHH; // 0x1D0
+	private float BBAHABFBECBGCFH; // 0x1D4
+	private GECCFHDGECADBCF[] BAEEAHFCAFABGFH; // 0x1D8
+	private WeaponryController CBECEDAEGACEDAD; // 0x1E0
+	private Quaternion GCCBBHDDCFABCBE; // 0x1E8
+	[HideInInspector]
+	public bool ToolPivotTuningEnabled; // 0x1F8
+	public bool SpineRotationEnabled; // 0x1F9
+	private Vector3 BDCBBEAFGFAHBBE; // 0x1FC
+	private readonly Vector3 CFDBDDHCDCGEBBB; // 0x208
+	private readonly Vector3 GDGEEAHEAFAEBCE; // 0x214
+	private Pose CAAABEAFHCDHDDE; // 0x220
+	[CompilerGenerated]
+	private bool <ACACCGAHFGGGDHH>k__BackingField; // 0x23C
+	[CompilerGenerated]
+	private float <CAAEAAEBECEFEBC>k__BackingField; // 0x240
+	[CompilerGenerated]
+	private float <BBCHEDDHFFCHACF>k__BackingField; // 0x244
+
+	// Properties
+	public bool CBDFDDCCHGFHBHA { get; set; }
+	public float GDHDFBAHBACGECF { get; set; }
+	public float DGBACGCAACCHHGD { get; set; }
+	public WeaponAnimationParameters CEGEDFGGBFHFCFF { get; }
+	private WeaponAnimationParameters GEAAFHBFCEBFBAB { get; }
+
+	// Methods
+
+	// RVA: 0x54510D4 Offset: 0x544D0D4 VA: 0x54510D4
+	private Vector2 HDAECHAECCFDAHH() { }
+
+	// RVA: 0x5451170 Offset: 0x544D170 VA: 0x5451170
+	private void ACFAFDBEGDEADGF() { }
+
+	[CompilerGenerated]
+	// RVA: 0x5451604 Offset: 0x544D604 VA: 0x5451604
+	public float get_LocalTime() { }
+
+	// RVA: 0x545160C Offset: 0x544D60C VA: 0x545160C Slot: 86
+	public void OnOcclusionBecameInvisible() { }
+
+	// RVA: 0x5451618 Offset: 0x544D618 VA: 0x5451618 Slot: 85
+	public void OnOcclusionPostBecameVisible() { }
+
+	// RVA: 0x545161C Offset: 0x544D61C VA: 0x545161C
+	public void BFDDECEBECBGGHF(bool BCABEBGGFBAHFFG) { }
+
+	[CompilerGenerated]
+	// RVA: 0x5451628 Offset: 0x544D628 VA: 0x5451628
+	private void EADEGEHCGFCFAEA(float BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x5451630 Offset: 0x544D630 VA: 0x5451630
+	public void set_OverrideSpine(bool BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x545163C Offset: 0x544D63C VA: 0x545163C Slot: 90
+	public void CABAACEAAAAEACG() { }
+
+	// RVA: 0x5451648 Offset: 0x544D648 VA: 0x5451648
+	private WeaponAnimationParameters CEFAGEEFFAECEFH() { }
+
+	// RVA: 0x545166C Offset: 0x544D66C VA: 0x545166C
+	private void GEGCABECFHCCCDG() { }
+
+	// RVA: 0x5451788 Offset: 0x544D788 VA: 0x5451788
+	private Vector2 DBAEDHFBHAEGACD() { }
+
+	// RVA: 0x54518A4 Offset: 0x544D8A4 VA: 0x54518A4
+	private void DGFCCAFAAECCDDE(float BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x54518AC Offset: 0x544D8AC VA: 0x54518AC
+	private void FHHAFEHGAAHCHGB(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x54518B4 Offset: 0x544D8B4 VA: 0x54518B4
+	public void BakeToolPivotLowerPoint() { }
+
+	// RVA: 0x54518B8 Offset: 0x544D8B8 VA: 0x54518B8
+	private void CBBCBFCEFHAGCAE() { }
+
+	// RVA: 0x54519E4 Offset: 0x544D9E4 VA: 0x54519E4
+	public void SetRotation(Vector3 DFHCFEGGADDHHFD) { }
+
+	// RVA: 0x5451A18 Offset: 0x544DA18 VA: 0x5451A18
+	public void .ctor() { }
+
+	// RVA: 0x5451F98 Offset: 0x544DF98 VA: 0x5451F98
+	private void GEEDGDECEBECBBH() { }
+
+	// RVA: 0x5452708 Offset: 0x544E708 VA: 0x5452708
+	public Vector3 GetRotation() { }
+
+	// RVA: 0x545272C Offset: 0x544E72C VA: 0x545272C
+	private void EBDABEAFAFHHGFC() { }
+
+	// RVA: 0x5452988 Offset: 0x544E988 VA: 0x5452988 Slot: 91
+	public void FCFGDCDEDEACFHF() { }
+
+	// RVA: 0x545298C Offset: 0x544E98C VA: 0x545298C Slot: 92
+	public void BGAADEEEFDBBFFA(float AGCCACHDCADECDB) { }
+
+	// RVA: 0x5452A7C Offset: 0x544EA7C VA: 0x5452A7C
+	public bool DBFEHDBHGFBFECA() { }
+
+	// RVA: 0x5452A84 Offset: 0x544EA84 VA: 0x5452A84
+	public WeaponAnimationParameters get_CurWeaponParameters() { }
+
+	// RVA: 0x5452A8C Offset: 0x544EA8C VA: 0x5452A8C
+	private void BCACFCDACBBFGEC() { }
+
+	// RVA: 0x5452E68 Offset: 0x544EE68 VA: 0x5452E68
+	public void SetToolPivotTuningEnabled(bool BCABEBGGFBAHFFG) { }
+
+	// RVA: 0x5452E74 Offset: 0x544EE74 VA: 0x5452E74 Slot: 62
+	public override void OnPreInitialize() { }
+
+	// RVA: 0x5453218 Offset: 0x544F218 VA: 0x5453218
+	public void SetSpineToolPivotPoseExternal() { }
+
+	// RVA: 0x5453300 Offset: 0x544F300 VA: 0x5453300 Slot: 78
+	public void OnMovementCrouch() { }
+
+	// RVA: 0x54533C0 Offset: 0x544F3C0 VA: 0x54533C0 Slot: 84
+	public void OnObstructed() { }
+
+	// RVA: 0x5451734 Offset: 0x544D734 VA: 0x5451734
+	private void GBFHGEEGBFCBFBE() { }
+
+	// RVA: 0x54533C4 Offset: 0x544F3C4 VA: 0x54533C4
+	private Vector2 HDHCBDDFGFBADBC() { }
+
+	// RVA: 0x5453460 Offset: 0x544F460 VA: 0x5453460
+	private void CCFFEBADAHGFFCB() { }
+
+	// RVA: 0x54534C4 Offset: 0x544F4C4 VA: 0x54534C4
+	public void BakeToolPivotUpperPoint() { }
+
+	// RVA: 0x54534C8 Offset: 0x544F4C8 VA: 0x54534C8 Slot: 76
+	public void SetSnapshot(FEEAEBBFAGAFCBB FAFDCHEHBCDAHHC) { }
+
+	// RVA: 0x54536A4 Offset: 0x544F6A4 VA: 0x54536A4 Slot: 93
+	public void DHEDDEABFAHBHEG(float AGCCACHDCADECDB) { }
+
+	// RVA: 0x5453794 Offset: 0x544F794 VA: 0x5453794 Slot: 79
+	public void OnMovementInit() { }
+
+	// RVA: 0x54537B4 Offset: 0x544F7B4 VA: 0x54537B4 Slot: 94
+	public void AEEDCBGFHAHFDCF() { }
+
+	// RVA: 0x54537B8 Offset: 0x544F7B8 VA: 0x54537B8
+	private void GFFCAFDDFEDCAED() { }
+
+	// RVA: 0x5453850 Offset: 0x544F850 VA: 0x5453850
+	public void SetSpineRotationEnabled(bool BCABEBGGFBAHFFG) { }
+
+	// RVA: 0x545385C Offset: 0x544F85C VA: 0x545385C Slot: 95
+	public void DAFFBDFGBCAHHFD(float AGCCACHDCADECDB) { }
+
+	// RVA: 0x545394C Offset: 0x544F94C VA: 0x545394C Slot: 75
+	public void ExecuteCommands(HBADHEDGEDACBBE DBEGBBCFBABBFGC, float BHGDDGFGGAEDFFB, float CEDEABGCFDCCGAF) { }
+
+	// RVA: 0x5453A88 Offset: 0x544FA88 VA: 0x5453A88
+	private void CDDGEAAADCCAAEH() { }
+
+	// RVA: 0x5453F1C Offset: 0x544FF1C VA: 0x5453F1C Slot: 74
+	public FEEAEBBFAGAFCBB GetSnapshot() { }
+
+	// RVA: 0x5453FCC Offset: 0x544FFCC VA: 0x5453FCC Slot: 96
+	public void BCHDADGHGBBDBDE() { }
+
+	// RVA: 0x5454088 Offset: 0x5450088 VA: 0x5454088 Slot: 68
+	public override void OnBipedMapSet(BipedMap HAEFHFGDDDFDECH) { }
+
+	// RVA: 0x54540E0 Offset: 0x54500E0 VA: 0x54540E0 Slot: 77
+	public void OnWeaponSet(WeaponController DHDEFGDDFEDDHBG) { }
+
+	// RVA: 0x5454490 Offset: 0x5450490 VA: 0x5454490
+	private void BBBHAABGDHGHHGG() { }
+
+	// RVA: 0x54547EC Offset: 0x54507EC VA: 0x54547EC
+	public void OnNewWeaponSet(WeaponController DHDEFGDDFEDDHBG) { }
+
+	// RVA: 0x54547F0 Offset: 0x54507F0 VA: 0x54547F0 Slot: 88
+	public void OnAnimatorUpdated() { }
+
+	// RVA: 0x545481C Offset: 0x545081C VA: 0x545481C
+	private void FDHFHDAECGCGDEB() { }
+
+	// RVA: 0x5454858 Offset: 0x5450858 VA: 0x5454858
+	public void BakeToolPivotMidPoint() { }
+
+	// RVA: 0x54530EC Offset: 0x544F0EC VA: 0x54530EC
+	private void GEADCECEBFFCHCG() { }
+
+	// RVA: 0x54548F0 Offset: 0x54508F0 VA: 0x54548F0 Slot: 83
+	public void OnOcclusionBecameVisible() { }
+
+	// RVA: 0x54548FC Offset: 0x54508FC VA: 0x54548FC Slot: 71
+	public override void OnInitialize(FECCEFEDHEEHDCH HEEFCBCHDEHAECC) { }
+
+	// RVA: 0x5454C84 Offset: 0x5450C84 VA: 0x5454C84
+	public void GGAFAADCFCCEAGA(WeaponController DHDEFGDDFEDDHBG) { }
+
+	// RVA: 0x5454C88 Offset: 0x5450C88 VA: 0x5454C88
+	public void FBDBDCFEFAEBBCE(bool BCABEBGGFBAHFFG) { }
+
+	// RVA: 0x5454C94 Offset: 0x5450C94 VA: 0x5454C94 Slot: 80
+	public void OnMovementStand() { }
+
+	// RVA: 0x5454D54 Offset: 0x5450D54 VA: 0x5454D54
+	private Vector3 EGAFACAFEAEDECE() { }
+
+	// RVA: 0x5452AC4 Offset: 0x544EAC4 VA: 0x5452AC4
+	private void AEGHDCEAFCGFABA() { }
+
+	// RVA: 0x5454F64 Offset: 0x5450F64 VA: 0x5454F64
+	public bool IsSpineTPSotationApplied(float CEDEABGCFDCCGAF) { }
+
+	// RVA: 0x5454F80 Offset: 0x5450F80 VA: 0x5454F80
+	public void GABBDDAAEFHCHGD(bool BCABEBGGFBAHFFG) { }
+
+	// RVA: 0x5452B04 Offset: 0x544EB04 VA: 0x5452B04
+	private void FBBGFFGBEBGFHHH() { }
+
+	// RVA: 0x5454F8C Offset: 0x5450F8C VA: 0x5454F8C Slot: 67
+	public override void OnReturnToPool() { }
+
+	// RVA: 0x5454FA8 Offset: 0x5450FA8 VA: 0x5454FA8
+	public void OnDropWeapon(WeaponController DHDEFGDDFEDDHBG) { }
+
+	// RVA: 0x5454FAC Offset: 0x5450FAC VA: 0x5454FAC Slot: 81
+	public void OnMovementLand(float AGCCACHDCADECDB) { }
+
+	[CompilerGenerated]
+	// RVA: 0x545509C Offset: 0x545109C VA: 0x545509C
+	public float get_DeltaTime() { }
+
+	[CompilerGenerated]
+	// RVA: 0x54550A4 Offset: 0x54510A4 VA: 0x54550A4
+	public bool get_OverrideSpine() { }
+
+	// RVA: 0x54550AC Offset: 0x54510AC VA: 0x54550AC
+	public bool IsSpineFPSRotationApplied(float CEDEABGCFDCCGAF) { }
+
+	// RVA: 0x54546BC Offset: 0x54506BC VA: 0x54546BC
+	private void FBGACBFFCHGBDCB() { }
+
+	// RVA: 0x54550C8 Offset: 0x54510C8 VA: 0x54550C8 Slot: 64
+	public override void OnViewModeSet(GFAFADEHEHCHGCH EDEGECBEDADDABF) { }
+
+	// RVA: 0x54551CC Offset: 0x54511CC VA: 0x54551CC Slot: 87
+	public void OnUnobstructed() { }
+
+	// RVA: 0x54551D0 Offset: 0x54511D0 VA: 0x54551D0
+	public WeaponAnimationParameters GAEAABCEBGDDBEH() { }
+
+	// RVA: 0x54551D8 Offset: 0x54511D8 VA: 0x54551D8 Slot: 82
+	public void OnMovementJump() { }
+
+	// RVA: 0x5455294 Offset: 0x5451294 VA: 0x5455294
+	public void GAGCGBDFAADEEDH() { }
+
+	// RVA: 0x545537C Offset: 0x545137C VA: 0x545537C
+	private Vector3 AEEGGFBFEDDDCCE() { }
+
+	// RVA: 0x5455590 Offset: 0x5451590 VA: 0x5455590
+	private void DBEHHGCBBEAGFCD() { }
+
+	// RVA: 0x54555CC Offset: 0x54515CC VA: 0x54555CC Slot: 89
+	public void OnAnimatorStateSet() { }
+}

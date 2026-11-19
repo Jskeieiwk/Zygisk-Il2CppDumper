@@ -1,0 +1,10 @@
+// Namespace: Axlebolt.Ballistics.GrenadeLogic
+public enum GrenadeStates // TypeDefIndex: 23762
+{
+	// Fields
+	public byte value__; // 0x0
+	public const GrenadeStates Thrown = 0;
+	public const GrenadeStates Stopped = 1;
+	public const GrenadeStates NotStated = 2;
+	public const GrenadeStates Detonated = 3;
+}

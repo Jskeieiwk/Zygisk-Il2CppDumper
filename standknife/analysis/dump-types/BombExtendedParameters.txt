@@ -1,0 +1,188 @@
+// Namespace: Axlebolt.Standoff.Inventory.Bomb
+public class BombExtendedParameters : ScriptableObject // TypeDefIndex: 3853
+{
+	// Fields
+	[SerializeField]
+	private ParticleSystem _explosionParticle; // 0x18
+	[SerializeField]
+	private Vector3 _bombRotation; // 0x20
+	[SerializeField]
+	private Vector3 _bombOffset; // 0x2C
+	[SerializeField]
+	private Vector3 _explosionParticleOffset; // 0x38
+	[SerializeField]
+	private BombBeepStep[] _beepSteps; // 0x48
+	[SerializeField]
+	private float _finalClipTime; // 0x50
+	[SerializeField]
+	private float _indicatorSignalInterval; // 0x54
+	[SerializeField]
+	private BombSpriteFlareConfig _bombSpriteFlareConfig; // 0x58
+	[SerializeField]
+	private bool _enabledSpriteFlare; // 0x60
+
+	// Properties
+	public ParticleSystem ExplosionParticle { get; }
+	public Vector3 BombRotation { get; }
+	public Vector3 BombOffset { get; }
+	public BombBeepStep[] BeepSteps { get; }
+	public float FinalClipTime { get; }
+	public Vector3 ExplosionParticleOffset { get; }
+	public float IndicatorSignalInterval { get; }
+	public BombSpriteFlareConfig SpriteFlareConfig { get; }
+
+	// Methods
+
+	// RVA: 0x3C19194 Offset: 0x3C15194 VA: 0x3C19194
+	public float DHAAADAGAGEGFFH() { }
+
+	// RVA: 0x3C1919C Offset: 0x3C1519C VA: 0x3C1919C
+	public BombBeepStep[] HHEGCAFEHDBCCAG() { }
+
+	// RVA: 0x3C191A4 Offset: 0x3C151A4 VA: 0x3C191A4
+	public Vector3 BBACDBDHFHBEHCB() { }
+
+	// RVA: 0x3C191B0 Offset: 0x3C151B0 VA: 0x3C191B0
+	public BombBeepStep[] get_BeepSteps() { }
+
+	// RVA: 0x3C191B8 Offset: 0x3C151B8 VA: 0x3C191B8
+	public Vector3 DFDFGFFADGGEADB() { }
+
+	// RVA: 0x3C191C4 Offset: 0x3C151C4 VA: 0x3C191C4
+	public Vector3 HBCGGABDFHAGAHD() { }
+
+	// RVA: 0x3C191D0 Offset: 0x3C151D0 VA: 0x3C191D0
+	public ParticleSystem BADFEACEGHFEEHB() { }
+
+	// RVA: 0x3C191D8 Offset: 0x3C151D8 VA: 0x3C191D8
+	public BombBeepStep[] EGEGBBFAFFGCGEA() { }
+
+	// RVA: 0x3C191E0 Offset: 0x3C151E0 VA: 0x3C191E0
+	public Vector3 get_ExplosionParticleOffset() { }
+
+	// RVA: 0x3C191EC Offset: 0x3C151EC VA: 0x3C191EC
+	public float FCABADFDDEDEEHA() { }
+
+	// RVA: 0x3C191F4 Offset: 0x3C151F4 VA: 0x3C191F4
+	public float get_FinalClipTime() { }
+
+	// RVA: 0x3C191FC Offset: 0x3C151FC VA: 0x3C191FC
+	public BombSpriteFlareConfig HAABCGHEAFBAABC() { }
+
+	// RVA: 0x3C19204 Offset: 0x3C15204 VA: 0x3C19204
+	public BombSpriteFlareConfig CEGHFAAGCBCAFFG() { }
+
+	// RVA: 0x3C1920C Offset: 0x3C1520C VA: 0x3C1920C
+	public void .ctor() { }
+
+	// RVA: 0x3C19214 Offset: 0x3C15214 VA: 0x3C19214
+	public float HBCEGDDCBFFBFDA() { }
+
+	// RVA: 0x3C1921C Offset: 0x3C1521C VA: 0x3C1921C
+	public Vector3 EAFECADBHHDGCHA() { }
+
+	// RVA: 0x3C19228 Offset: 0x3C15228 VA: 0x3C19228
+	public Vector3 DDDBDCCBAGFACDC() { }
+
+	// RVA: 0x3C19234 Offset: 0x3C15234 VA: 0x3C19234
+	public BombBeepStep[] CHFBAHHDADEAGDD() { }
+
+	// RVA: 0x3C1923C Offset: 0x3C1523C VA: 0x3C1923C
+	public BombSpriteFlareConfig ACCGAGFCEGAECBA() { }
+
+	// RVA: 0x3C19244 Offset: 0x3C15244 VA: 0x3C19244
+	public float EDEDDDFAHDAEFCA() { }
+
+	// RVA: 0x3C1924C Offset: 0x3C1524C VA: 0x3C1924C
+	public BombBeepStep[] BBFBBHCAHBEFCFB() { }
+
+	// RVA: 0x3C19254 Offset: 0x3C15254 VA: 0x3C19254
+	public Vector3 EHABCAGCFDGBCEG() { }
+
+	// RVA: 0x3C19260 Offset: 0x3C15260 VA: 0x3C19260
+	public float GBHBBDCEBBAGGBF() { }
+
+	// RVA: 0x3C19268 Offset: 0x3C15268 VA: 0x3C19268
+	public BombSpriteFlareConfig HAGBHEHEAFGACHD() { }
+
+	// RVA: 0x3C19270 Offset: 0x3C15270 VA: 0x3C19270
+	public BombBeepStep[] HGFBBBFGFEFDFFA() { }
+
+	// RVA: 0x3C19278 Offset: 0x3C15278 VA: 0x3C19278
+	public float GBFEBBGCBADCCAD() { }
+
+	// RVA: 0x3C19280 Offset: 0x3C15280 VA: 0x3C19280
+	public ParticleSystem AAGDBGBADHBFEBH() { }
+
+	// RVA: 0x3C19288 Offset: 0x3C15288 VA: 0x3C19288
+	public ParticleSystem DDGCGBBBDAHDAAB() { }
+
+	// RVA: 0x3C19290 Offset: 0x3C15290 VA: 0x3C19290
+	public Vector3 DGDGBAHHAHEHDHA() { }
+
+	// RVA: 0x3C1929C Offset: 0x3C1529C VA: 0x3C1929C
+	public BombSpriteFlareConfig get_SpriteFlareConfig() { }
+
+	// RVA: 0x3C192A4 Offset: 0x3C152A4 VA: 0x3C192A4
+	public BombBeepStep[] FDDGCGAFEHGCHHC() { }
+
+	// RVA: 0x3C192AC Offset: 0x3C152AC VA: 0x3C192AC
+	public Vector3 get_BombOffset() { }
+
+	// RVA: 0x3C192B8 Offset: 0x3C152B8 VA: 0x3C192B8
+	public float CAEGCFBCDDHBAEG() { }
+
+	// RVA: 0x3C192C0 Offset: 0x3C152C0 VA: 0x3C192C0
+	public BombSpriteFlareConfig BGGCHFBGGFECHEF() { }
+
+	// RVA: 0x3C192C8 Offset: 0x3C152C8 VA: 0x3C192C8
+	public Vector3 get_BombRotation() { }
+
+	// RVA: 0x3C192D4 Offset: 0x3C152D4 VA: 0x3C192D4
+	public float HDAGFEHFBCHBECD() { }
+
+	// RVA: 0x3C192DC Offset: 0x3C152DC VA: 0x3C192DC
+	public BombBeepStep[] ACBFHCHDABHFCEA() { }
+
+	// RVA: 0x3C192E4 Offset: 0x3C152E4 VA: 0x3C192E4
+	public Vector3 BADBEHHAGFDAEGG() { }
+
+	// RVA: 0x3C192F0 Offset: 0x3C152F0 VA: 0x3C192F0
+	public BombSpriteFlareConfig DHBHHHHBEFBAGDF() { }
+
+	// RVA: 0x3C192F8 Offset: 0x3C152F8 VA: 0x3C192F8
+	public Vector3 DABDDAEBCCEBFCH() { }
+
+	// RVA: 0x3C19304 Offset: 0x3C15304 VA: 0x3C19304
+	public ParticleSystem get_ExplosionParticle() { }
+
+	// RVA: 0x3C1930C Offset: 0x3C1530C VA: 0x3C1930C
+	public Vector3 AABCHFEHHCGCBAH() { }
+
+	// RVA: 0x3C19318 Offset: 0x3C15318 VA: 0x3C19318
+	public ParticleSystem DHFFDDECFDHEBED() { }
+
+	// RVA: 0x3C19320 Offset: 0x3C15320 VA: 0x3C19320
+	public float GFDEBBCCGDCDECA() { }
+
+	// RVA: 0x3C19328 Offset: 0x3C15328 VA: 0x3C19328
+	public ParticleSystem BDBAGFFDDHFEAGB() { }
+
+	// RVA: 0x3C19330 Offset: 0x3C15330 VA: 0x3C19330
+	public float EFFHFHBEGHEFAAD() { }
+
+	// RVA: 0x3C19338 Offset: 0x3C15338 VA: 0x3C19338
+	public float DGFDHDADAHEEDCB() { }
+
+	// RVA: 0x3C19340 Offset: 0x3C15340 VA: 0x3C19340
+	public float get_IndicatorSignalInterval() { }
+
+	// RVA: 0x3C19348 Offset: 0x3C15348 VA: 0x3C19348
+	public Vector3 HEHEEBGFABFBBEE() { }
+
+	// RVA: 0x3C19354 Offset: 0x3C15354 VA: 0x3C19354
+	public BombSpriteFlareConfig GCCDGBCADGFFFHG() { }
+
+	// RVA: 0x3C1935C Offset: 0x3C1535C VA: 0x3C1935C
+	public float BEHCADBCEFBAHDD() { }
+}

@@ -1,0 +1,16 @@
+// Namespace: 
+public class GrenadeParameters.ThrowParameters // TypeDefIndex: 5043
+{
+	// Fields
+	public Vector3 Offset; // 0x10
+	public float UpVectorLength; // 0x1C
+	public float ThrowForce; // 0x20
+	public float AdditionalForcePerMovementVelocity; // 0x24
+	public float AdditionalForceLimit; // 0x28
+	public float ThrowRotation; // 0x2C
+
+	// Methods
+
+	// RVA: 0x4386D3C Offset: 0x4382D3C VA: 0x4386D3C
+	public void .ctor() { }
+}

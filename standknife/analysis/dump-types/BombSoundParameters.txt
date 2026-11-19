@@ -1,0 +1,172 @@
+// Namespace: Axlebolt.Standoff.Inventory.Bomb
+public class BombSoundParameters : WeaponSoundParameters // TypeDefIndex: 4596
+{
+	// Fields
+	public const int FinalElementIndex = 9;
+	[SerializeField]
+	private EventReference _beepSoundEventRef; // 0x98
+	[SerializeField]
+	private EventReference _fpsDefusedEventRef; // 0xA8
+	[SerializeField]
+	private EventReference _tpsTeammateDefusedEventRef; // 0xB8
+	[SerializeField]
+	private EventReference _tpsEnemyDefusedEventRef; // 0xC8
+	[SerializeField]
+	private EventReference _detonatedEventRef; // 0xD8
+
+	// Properties
+	public GUID BeepSoundEvent { get; }
+	public GUID FpsDefusedEvent { get; }
+	public GUID TpsTeammateDefusedEvent { get; }
+	public GUID TpsEnemyDefusedEvent { get; }
+	public GUID DetonatedEvent { get; }
+
+	// Methods
+
+	// RVA: 0x41C5CCC Offset: 0x41C1CCC VA: 0x41C5CCC
+	public GUID HHAFGGFGAEBCBDC() { }
+
+	// RVA: 0x41C5CD8 Offset: 0x41C1CD8 VA: 0x41C5CD8
+	public GUID CDCGDHGCBBEFDCF() { }
+
+	// RVA: 0x41C5CE4 Offset: 0x41C1CE4 VA: 0x41C5CE4
+	public GUID HADCBGGFAGGAGDD() { }
+
+	// RVA: 0x41C5CF0 Offset: 0x41C1CF0 VA: 0x41C5CF0
+	public GUID GADHHDHCBHCDBAD() { }
+
+	// RVA: 0x41C5CFC Offset: 0x41C1CFC VA: 0x41C5CFC
+	public GUID EDEDBFGABEDDDBD() { }
+
+	// RVA: 0x41C5D08 Offset: 0x41C1D08 VA: 0x41C5D08
+	public GUID BCEHCEGGCCECAEF() { }
+
+	// RVA: 0x41C5D14 Offset: 0x41C1D14 VA: 0x41C5D14
+	public GUID HHCDADADCFCDAFH() { }
+
+	// RVA: 0x41C5D20 Offset: 0x41C1D20 VA: 0x41C5D20
+	public GUID BFBBADGFBGGABDH() { }
+
+	// RVA: 0x41C5D2C Offset: 0x41C1D2C VA: 0x41C5D2C
+	public GUID HCAEFDCEABAFBGE() { }
+
+	// RVA: 0x41C5D38 Offset: 0x41C1D38 VA: 0x41C5D38
+	public GUID AGCCDBEFACGHEHD() { }
+
+	// RVA: 0x41C5D44 Offset: 0x41C1D44 VA: 0x41C5D44
+	public GUID DCBCFAHGFDEGFDC() { }
+
+	// RVA: 0x41C5D50 Offset: 0x41C1D50 VA: 0x41C5D50
+	public GUID AADHAFHCDCCDGFH() { }
+
+	// RVA: 0x41C5D5C Offset: 0x41C1D5C VA: 0x41C5D5C
+	public GUID GGDFEBGHHGGAHCH() { }
+
+	// RVA: 0x41C5D68 Offset: 0x41C1D68 VA: 0x41C5D68
+	public GUID EFHCHHDABDFEFFH() { }
+
+	// RVA: 0x41C5D74 Offset: 0x41C1D74 VA: 0x41C5D74
+	public GUID get_BeepSoundEvent() { }
+
+	// RVA: 0x41C5D80 Offset: 0x41C1D80 VA: 0x41C5D80
+	public GUID EGAFGDEAFBBGGCB() { }
+
+	// RVA: 0x41C5D8C Offset: 0x41C1D8C VA: 0x41C5D8C
+	public GUID EFAHHFCDGHAAAGD() { }
+
+	// RVA: 0x41C5D98 Offset: 0x41C1D98 VA: 0x41C5D98
+	public GUID FFGHDGFFCAEAGBC() { }
+
+	// RVA: 0x41C5DA4 Offset: 0x41C1DA4 VA: 0x41C5DA4
+	public GUID get_TpsTeammateDefusedEvent() { }
+
+	// RVA: 0x41C5DB0 Offset: 0x41C1DB0 VA: 0x41C5DB0
+	public GUID BHBAFHBFFHBCEAH() { }
+
+	// RVA: 0x41C5DBC Offset: 0x41C1DBC VA: 0x41C5DBC
+	public GUID EADGGEGBGFFFCDG() { }
+
+	// RVA: 0x41C5DC8 Offset: 0x41C1DC8 VA: 0x41C5DC8
+	public GUID FBEGGDGEEFFFDAA() { }
+
+	// RVA: 0x41C5DD4 Offset: 0x41C1DD4 VA: 0x41C5DD4
+	public GUID get_TpsEnemyDefusedEvent() { }
+
+	// RVA: 0x41C5DE0 Offset: 0x41C1DE0 VA: 0x41C5DE0
+	public GUID AAHCCECABFDDAGD() { }
+
+	// RVA: 0x41C5DEC Offset: 0x41C1DEC VA: 0x41C5DEC
+	public GUID CHDBCGCCEBAEADH() { }
+
+	// RVA: 0x41C5DF8 Offset: 0x41C1DF8 VA: 0x41C5DF8
+	public GUID get_DetonatedEvent() { }
+
+	// RVA: 0x41C5E04 Offset: 0x41C1E04 VA: 0x41C5E04
+	public GUID FDHADGBDBBFHGCG() { }
+
+	// RVA: 0x41C5E10 Offset: 0x41C1E10 VA: 0x41C5E10
+	public GUID AHDABBFDEFCACAG() { }
+
+	// RVA: 0x41C5E1C Offset: 0x41C1E1C VA: 0x41C5E1C
+	public GUID BEBDADAEACGCEDA() { }
+
+	// RVA: 0x41C5E28 Offset: 0x41C1E28 VA: 0x41C5E28
+	public GUID EFFDGCDCHEAAGCD() { }
+
+	// RVA: 0x41C5E34 Offset: 0x41C1E34 VA: 0x41C5E34
+	public GUID BCCEBEFHDGHGFHB() { }
+
+	// RVA: 0x41C5E40 Offset: 0x41C1E40 VA: 0x41C5E40
+	public GUID DFEDHFBCHABHCHA() { }
+
+	// RVA: 0x41C5E4C Offset: 0x41C1E4C VA: 0x41C5E4C
+	public GUID FBHHDEBHABHAADA() { }
+
+	// RVA: 0x41C5E58 Offset: 0x41C1E58 VA: 0x41C5E58
+	public GUID EHDFCCFEGEADAFC() { }
+
+	// RVA: 0x41C5E64 Offset: 0x41C1E64 VA: 0x41C5E64
+	public GUID HGGCEHBEADBAEGG() { }
+
+	// RVA: 0x41C5E70 Offset: 0x41C1E70 VA: 0x41C5E70
+	public GUID BEFGAFHBGEGBBFF() { }
+
+	// RVA: 0x41C5E7C Offset: 0x41C1E7C VA: 0x41C5E7C
+	public GUID AFCEHFHFAHDCFBB() { }
+
+	// RVA: 0x41C5E88 Offset: 0x41C1E88 VA: 0x41C5E88
+	public GUID get_FpsDefusedEvent() { }
+
+	// RVA: 0x41C5E94 Offset: 0x41C1E94 VA: 0x41C5E94
+	public GUID CEHBBBBHCGDGEDD() { }
+
+	// RVA: 0x41C5EA0 Offset: 0x41C1EA0 VA: 0x41C5EA0
+	public void .ctor() { }
+
+	// RVA: 0x41C5EA8 Offset: 0x41C1EA8 VA: 0x41C5EA8
+	public GUID FBDFAAFGDFFHECG() { }
+
+	// RVA: 0x41C5EB4 Offset: 0x41C1EB4 VA: 0x41C5EB4
+	public GUID BEDFHCHEEFFHFDB() { }
+
+	// RVA: 0x41C5EC0 Offset: 0x41C1EC0 VA: 0x41C5EC0
+	public GUID FDEGGBBHEBHFDBG() { }
+
+	// RVA: 0x41C5ECC Offset: 0x41C1ECC VA: 0x41C5ECC
+	public GUID GHBBFAFBDDHADFC() { }
+
+	// RVA: 0x41C5ED8 Offset: 0x41C1ED8 VA: 0x41C5ED8
+	public GUID AFAGECGGECEHAEE() { }
+
+	// RVA: 0x41C5EE4 Offset: 0x41C1EE4 VA: 0x41C5EE4
+	public GUID CGGCDEBHFHGAAHF() { }
+
+	// RVA: 0x41C5EF0 Offset: 0x41C1EF0 VA: 0x41C5EF0
+	public GUID BHEHFABEEHEDEHC() { }
+
+	// RVA: 0x41C5EFC Offset: 0x41C1EFC VA: 0x41C5EFC
+	public GUID AEGDBEBCHBADGAB() { }
+
+	// RVA: 0x41C5F08 Offset: 0x41C1F08 VA: 0x41C5F08
+	public GUID GDFDGGBAEFCEGAF() { }
+}

@@ -1,0 +1,152 @@
+// Namespace: Axlebolt.Standoff.Game.AimTraining.Dummy
+public class DummyMovementController : MonoBehaviour // TypeDefIndex: 6179
+{
+	// Fields
+	private static ILogger GGFBEBEFCHEEADD; // 0x0
+	private DummyMecanimController GDGHBABGEDCHCFD; // 0x20
+	private Vector3 BAHCEFAGCGGAAGH; // 0x28
+	private Vector3 AAGBAFHGDFEGDBG; // 0x34
+	private List<DummyMovementPattern> HAGGFHEBFCGGEHF; // 0x40
+	private DummyMovementConfig BDDAHGDHDFBHGAH; // 0x48
+	private float HHCCADAEHAEEFBA; // 0x50
+	private float FGFFDBHCHAGBDBC; // 0x54
+	private int AEGAFBGAHGCACCB; // 0x58
+	private float CCGHGDFCFEBEHFE; // 0x5C
+	private DummyMovementPattern GGBEAHCCFAEGADH; // 0x60
+	private DummyMovementController.CCGADFBHAFEBEFC BAGHDDEBFAGEGAG; // 0x68
+	private DummyMovementController.CBCACAHAAFDDDDF ECCAGAGHHFHECBH; // 0x6C
+	private float[] CBEBFEHEFFGHDGG; // 0x70
+	private float EBHAADHHDDHBAFH; // 0x78
+	private float FBFGAEHFFGFGBFA; // 0x7C
+	private float FAAGFHGHFFEEDEG; // 0x80
+
+	// Properties
+	private static ILogger FHFEDEGBFGDDCCB { get; }
+	public float DBAEAHGADEHGAEC { get; }
+	public float AHCAAHBBFBCDAFB { get; }
+
+	// Methods
+
+	// RVA: 0x4CBC46C Offset: 0x4CB846C VA: 0x4CBC46C
+	public float ECBBGEGBCEBFFEE() { }
+
+	// RVA: 0x4CBC474 Offset: 0x4CB8474 VA: 0x4CBC474
+	public void DHDFCDFFDFCDECB(Vector3 GBBDCHEFHCGFHGC, Vector3 FCAHGCHHADECGFG, Vector3 DHDABGDBFGHFGGD, List<DummyMovementPattern> FEEGAAHHAEGGFAF, DummyMovementConfig DHBCFGBBADEGHBB) { }
+
+	// RVA: 0x4CBCE00 Offset: 0x4CB8E00 VA: 0x4CBCE00
+	private float FBHBCHEBGCDHBFB(float DEACFACHFGHCFFC) { }
+
+	// RVA: 0x4CBCE74 Offset: 0x4CB8E74 VA: 0x4CBCE74
+	public float BDDGHFECAADEGHF() { }
+
+	// RVA: 0x4CBCE7C Offset: 0x4CB8E7C VA: 0x4CBCE7C
+	private float GADGAADGBCAEBGG(float DEACFACHFGHCFFC) { }
+
+	// RVA: 0x4CBCEF0 Offset: 0x4CB8EF0 VA: 0x4CBCEF0
+	private void CDGBGGEBDAEEHBF() { }
+
+	// RVA: 0x4CBD74C Offset: 0x4CB974C VA: 0x4CBD74C
+	private float GCEFGHDHDEHHAFB(float DEACFACHFGHCFFC) { }
+
+	// RVA: 0x4CBD7C0 Offset: 0x4CB97C0 VA: 0x4CBD7C0
+	public float get_CurrentSpeed() { }
+
+	// RVA: 0x4CBD7C8 Offset: 0x4CB97C8 VA: 0x4CBD7C8
+	public void ACFAEHCGHGDDDHB() { }
+
+	// RVA: 0x4CBD860 Offset: 0x4CB9860 VA: 0x4CBD860
+	private float FHACCADGHGHGGHF(float DEACFACHFGHCFFC) { }
+
+	// RVA: 0x4CBD8C8 Offset: 0x4CB98C8 VA: 0x4CBD8C8
+	private void AEBFAECHEEACDBE() { }
+
+	// RVA: 0x4CBD620 Offset: 0x4CB9620 VA: 0x4CBD620
+	private static ILogger CBCGCCDCABEABAG() { }
+
+	// RVA: 0x4CBDDDC Offset: 0x4CB9DDC VA: 0x4CBDDDC
+	private static ILogger GEAHAFAABFGBHHB() { }
+
+	// RVA: 0x4CBDF08 Offset: 0x4CB9F08 VA: 0x4CBDF08
+	private void DDCGFGBBHCAHFGG() { }
+
+	// RVA: 0x4CBE45C Offset: 0x4CBA45C VA: 0x4CBE45C
+	private void BFGACEGGCGAADDB() { }
+
+	// RVA: 0x4CBE970 Offset: 0x4CBA970 VA: 0x4CBE970
+	public void GGHHAAGFBGDEAGE() { }
+
+	// RVA: 0x4CBEA08 Offset: 0x4CBAA08 VA: 0x4CBEA08
+	public void BCDAADEBDHFDGBE() { }
+
+	// RVA: 0x4CBEAA0 Offset: 0x4CBAAA0 VA: 0x4CBEAA0
+	private static ILogger CEFBCHGDABHBFCE() { }
+
+	// RVA: 0x4CBEBCC Offset: 0x4CBABCC VA: 0x4CBEBCC
+	private void GHCDFAFGFDAHGDA() { }
+
+	// RVA: 0x4CBC6DC Offset: 0x4CB86DC VA: 0x4CBC6DC
+	private void DHDBDCEBGDACAFC() { }
+
+	// RVA: 0x4CBF93C Offset: 0x4CBB93C VA: 0x4CBF93C
+	public float CDDFAGAFHGAHHCE() { }
+
+	// RVA: 0x4CBF944 Offset: 0x4CBB944 VA: 0x4CBF944
+	public void DGEACFFCGGDHAEB(Vector3 GBBDCHEFHCGFHGC, Vector3 FCAHGCHHADECGFG, Vector3 DHDABGDBFGHFGGD, List<DummyMovementPattern> FEEGAAHHAEGGFAF, DummyMovementConfig DHBCFGBBADEGHBB) { }
+
+	// RVA: 0x4CBFB94 Offset: 0x4CBBB94 VA: 0x4CBFB94
+	public float GFFBCEFBBGCFGBE() { }
+
+	// RVA: 0x4CBFB9C Offset: 0x4CBBB9C VA: 0x4CBFB9C
+	public void StartMovement(Vector3 GBBDCHEFHCGFHGC, Vector3 FCAHGCHHADECGFG, Vector3 DHDABGDBFGHFGGD, List<DummyMovementPattern> FEEGAAHHAEGGFAF, DummyMovementConfig DHBCFGBBADEGHBB) { }
+
+	// RVA: 0x4CBFDE4 Offset: 0x4CBBDE4 VA: 0x4CBFDE4
+	public void EFAGAEBCAAAHDBB(Vector3 GBBDCHEFHCGFHGC) { }
+
+	// RVA: 0x4CBFE48 Offset: 0x4CBBE48 VA: 0x4CBFE48
+	public void EFAHHGHEGEEEDED() { }
+
+	// RVA: 0x4CBF0E0 Offset: 0x4CBB0E0 VA: 0x4CBF0E0
+	private void EFHDEBEGGEDHFEB() { }
+
+	// RVA: 0x4CBFEE0 Offset: 0x4CBBEE0 VA: 0x4CBFEE0
+	public void Init() { }
+
+	// RVA: 0x4CBFF78 Offset: 0x4CBBF78 VA: 0x4CBFF78
+	public void StartIdle(Vector3 GBBDCHEFHCGFHGC) { }
+
+	// RVA: 0x4CBFFD8 Offset: 0x4CBBFD8 VA: 0x4CBFFD8
+	public void FFBCFEBAGEFAEEF() { }
+
+	// RVA: 0x4CC0070 Offset: 0x4CBC070 VA: 0x4CC0070
+	public float get_TargetSpeed() { }
+
+	// RVA: 0x4CC0078 Offset: 0x4CBC078 VA: 0x4CC0078
+	private void Update() { }
+
+	// RVA: 0x4CBF810 Offset: 0x4CBB810 VA: 0x4CBF810
+	private static ILogger FBDFEBGDFBEFHCE() { }
+
+	// RVA: 0x4CC0588 Offset: 0x4CBC588 VA: 0x4CC0588
+	public void FBEDCEFHCGHDBFE() { }
+
+	// RVA: 0x4CC0620 Offset: 0x4CBC620 VA: 0x4CC0620
+	public void EEGFAFFHCADBEDG(Vector3 GBBDCHEFHCGFHGC, Vector3 FCAHGCHHADECGFG, Vector3 DHDABGDBFGHFGGD, List<DummyMovementPattern> FEEGAAHHAEGGFAF, DummyMovementConfig DHBCFGBBADEGHBB) { }
+
+	// RVA: 0x4CC0878 Offset: 0x4CBC878 VA: 0x4CC0878
+	public float DBEEHBCGGCHBADF() { }
+
+	// RVA: 0x4CC0880 Offset: 0x4CBC880 VA: 0x4CC0880
+	public float FCCFCADGGDADBAC() { }
+
+	// RVA: 0x4CC0888 Offset: 0x4CBC888 VA: 0x4CC0888
+	public float HCHCGAAGEFGEAHC() { }
+
+	// RVA: 0x4CC0890 Offset: 0x4CBC890 VA: 0x4CC0890
+	public void CGEFCAAFDBEGCED(Vector3 GBBDCHEFHCGFHGC) { }
+
+	// RVA: 0x4CC08F0 Offset: 0x4CBC8F0 VA: 0x4CC08F0
+	public void .ctor() { }
+
+	// RVA: 0x4CC08F8 Offset: 0x4CBC8F8 VA: 0x4CC08F8
+	private void HEBGABCAEAGCAAB() { }
+}

@@ -1,0 +1,19 @@
+// Namespace: 
+public class HBADHEDGEDACBBE : SerializableMessage // TypeDefIndex: 4669
+{
+	// Fields
+	public HEBFBBGDHCFGFBE FHBFCDDADDEDHEF; // 0x10
+	public Vector3 EEADDCCGDCECHDB; // 0x14
+	public Vector2 ECECGDFGEEFEECF; // 0x20
+
+	// Methods
+
+	// RVA: 0x425460C Offset: 0x425060C VA: 0x425460C Slot: 5
+	public override void ABGECDCHGCHBHDE(BinaryStream EADACHFBDGEGAAF) { }
+
+	// RVA: 0x4254690 Offset: 0x4250690 VA: 0x4254690 Slot: 4
+	public override void BAEFHHGHHDEDCED(BinaryStream BAEGHFAECEHHFAF) { }
+
+	// RVA: 0x4254724 Offset: 0x4250724 VA: 0x4254724
+	public void .ctor() { }
+}

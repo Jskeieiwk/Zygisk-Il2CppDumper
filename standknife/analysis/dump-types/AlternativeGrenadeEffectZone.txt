@@ -1,0 +1,83 @@
+// Namespace: Axlebolt.Standoff.Level
+public class AlternativeGrenadeEffectZone : MonoBehaviour // TypeDefIndex: 4506
+{
+	// Fields
+	private Collider EBEBFGEGFGCECDA; // 0x20
+
+	// Methods
+
+	// RVA: 0x40B84FC Offset: 0x40B44FC VA: 0x40B84FC
+	private void DFHCABDAHBHGAEG() { }
+
+	// RVA: 0x40B8604 Offset: 0x40B4604 VA: 0x40B8604
+	private void FHBFCFBCDBHGEHH() { }
+
+	// RVA: 0x40B86B8 Offset: 0x40B46B8 VA: 0x40B86B8
+	private void OnDestroy() { }
+
+	// RVA: 0x40B87F4 Offset: 0x40B47F4 VA: 0x40B87F4
+	private void FGFFDDBBHAHDFHC() { }
+
+	// RVA: 0x40B8930 Offset: 0x40B4930 VA: 0x40B8930
+	private void CEBEECFHEBGEGAD() { }
+
+	// RVA: 0x40B89E4 Offset: 0x40B49E4 VA: 0x40B89E4
+	private void FBFBFGHGBGBFHHE() { }
+
+	// RVA: 0x40B8C8C Offset: 0x40B4C8C VA: 0x40B8C8C
+	private void EDDFGHDBFBCADGE() { }
+
+	// RVA: 0x40B8DC8 Offset: 0x40B4DC8 VA: 0x40B8DC8
+	private void HBDEEBGCGBDHEBF() { }
+
+	// RVA: 0x40B8F04 Offset: 0x40B4F04 VA: 0x40B8F04
+	private void AEGHACBFECCCDFH() { }
+
+	// RVA: 0x40B8B84 Offset: 0x40B4B84 VA: 0x40B8B84
+	private void DEEFFFEBCABFDBG() { }
+
+	// RVA: 0x40B91AC Offset: 0x40B51AC VA: 0x40B91AC
+	private void FGFFHFBBGBDFDFD() { }
+
+	// RVA: 0x40B9260 Offset: 0x40B5260 VA: 0x40B9260
+	private void HEBACFHDECHBHFE() { }
+
+	// RVA: 0x40B9314 Offset: 0x40B5314 VA: 0x40B9314
+	private void Awake() { }
+
+	// RVA: 0x40B93C8 Offset: 0x40B53C8 VA: 0x40B93C8
+	private void AHABGGCAABEHFCB() { }
+
+	// RVA: 0x40B9504 Offset: 0x40B5504 VA: 0x40B9504
+	private void EDCCFAGBBCECBGB() { }
+
+	// RVA: 0x40B9640 Offset: 0x40B5640 VA: 0x40B9640
+	private void DGAEGHDGHAFAGHA() { }
+
+	// RVA: 0x40B977C Offset: 0x40B577C VA: 0x40B977C
+	private void EHEDEEAABFDHGAG() { }
+
+	// RVA: 0x40B9830 Offset: 0x40B5830 VA: 0x40B9830
+	private void BAHFABHFEEEFGHG() { }
+
+	// RVA: 0x40B90A4 Offset: 0x40B50A4 VA: 0x40B90A4
+	private void DGGHAADACABFDBA() { }
+
+	// RVA: 0x40B9938 Offset: 0x40B5938 VA: 0x40B9938
+	public void .ctor() { }
+
+	// RVA: 0x40B9940 Offset: 0x40B5940 VA: 0x40B9940
+	private void Start() { }
+
+	// RVA: 0x40B9AE0 Offset: 0x40B5AE0 VA: 0x40B9AE0
+	private void ACCAHEDAGECAGEE() { }
+
+	// RVA: 0x40B9C80 Offset: 0x40B5C80 VA: 0x40B9C80
+	private void HHAHAHBDBFACHDD() { }
+
+	// RVA: 0x40B9D88 Offset: 0x40B5D88 VA: 0x40B9D88
+	private void AFAHGEHEDACFHFC() { }
+
+	// RVA: 0x40B9E3C Offset: 0x40B5E3C VA: 0x40B9E3C
+	private void HABGDDCGAEFEDDH() { }
+}

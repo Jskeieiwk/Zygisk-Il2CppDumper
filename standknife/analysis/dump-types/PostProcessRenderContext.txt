@@ -1,0 +1,272 @@
+// Namespace: UnityEngine.Rendering.PostProcessing
+public sealed class PostProcessRenderContext // TypeDefIndex: 21139
+{
+	// Fields
+	private Camera m_Camera; // 0x10
+	[CompilerGenerated]
+	private CommandBuffer <command>k__BackingField; // 0x18
+	[CompilerGenerated]
+	private RenderTargetIdentifier <source>k__BackingField; // 0x20
+	[CompilerGenerated]
+	private RenderTargetIdentifier <destination>k__BackingField; // 0x48
+	[CompilerGenerated]
+	private RenderTextureFormat <sourceFormat>k__BackingField; // 0x70
+	[CompilerGenerated]
+	private bool <flip>k__BackingField; // 0x74
+	[CompilerGenerated]
+	private PostProcessResources <resources>k__BackingField; // 0x78
+	[CompilerGenerated]
+	private PropertySheetFactory <propertySheets>k__BackingField; // 0x80
+	[CompilerGenerated]
+	private Dictionary<string, object> <userData>k__BackingField; // 0x88
+	[CompilerGenerated]
+	private PostProcessDebugLayer <debugLayer>k__BackingField; // 0x90
+	[CompilerGenerated]
+	private int <width>k__BackingField; // 0x98
+	[CompilerGenerated]
+	private int <height>k__BackingField; // 0x9C
+	[CompilerGenerated]
+	private bool <stereoActive>k__BackingField; // 0xA0
+	[CompilerGenerated]
+	private int <xrActiveEye>k__BackingField; // 0xA4
+	[CompilerGenerated]
+	private int <numberOfEyes>k__BackingField; // 0xA8
+	[CompilerGenerated]
+	private PostProcessRenderContext.StereoRenderingMode <stereoRenderingMode>k__BackingField; // 0xAC
+	[CompilerGenerated]
+	private int <screenWidth>k__BackingField; // 0xB0
+	[CompilerGenerated]
+	private int <screenHeight>k__BackingField; // 0xB4
+	[CompilerGenerated]
+	private bool <isSceneView>k__BackingField; // 0xB8
+	[CompilerGenerated]
+	private PostProcessLayer.Antialiasing <antialiasing>k__BackingField; // 0xBC
+	[CompilerGenerated]
+	private TemporalAntialiasing <temporalAntialiasing>k__BackingField; // 0xC0
+	internal PropertySheet uberSheet; // 0xC8
+	internal Texture autoExposureTexture; // 0xD0
+	internal LogHistogram logHistogram; // 0xD8
+	internal Texture logLut; // 0xE0
+	internal AutoExposure autoExposure; // 0xE8
+	internal int bloomBufferNameID; // 0xF0
+	internal bool physicalCamera; // 0xF4
+	private RenderTextureDescriptor m_sourceDescriptor; // 0xF8
+
+	// Properties
+	public Camera camera { get; set; }
+	public CommandBuffer command { get; set; }
+	public RenderTargetIdentifier source { get; set; }
+	public RenderTargetIdentifier destination { get; set; }
+	public RenderTextureFormat sourceFormat { get; set; }
+	public bool flip { get; set; }
+	public PostProcessResources resources { get; set; }
+	public PropertySheetFactory propertySheets { get; set; }
+	public Dictionary<string, object> userData { get; set; }
+	public PostProcessDebugLayer debugLayer { get; set; }
+	public int width { get; set; }
+	public int height { get; set; }
+	public bool stereoActive { get; set; }
+	public int xrActiveEye { get; set; }
+	public int numberOfEyes { get; set; }
+	public PostProcessRenderContext.StereoRenderingMode stereoRenderingMode { get; set; }
+	public int screenWidth { get; set; }
+	public int screenHeight { get; set; }
+	public bool isSceneView { get; set; }
+	public PostProcessLayer.Antialiasing antialiasing { get; set; }
+	public TemporalAntialiasing temporalAntialiasing { get; set; }
+
+	// Methods
+
+	// RVA: 0xA589BA4 Offset: 0xA585BA4 VA: 0xA589BA4
+	public Camera get_camera() { }
+
+	// RVA: 0xA57E540 Offset: 0xA57A540 VA: 0xA57E540
+	public void set_camera(Camera value) { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589BAC Offset: 0xA585BAC VA: 0xA589BAC
+	public CommandBuffer get_command() { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589BB4 Offset: 0xA585BB4 VA: 0xA589BB4
+	public void set_command(CommandBuffer value) { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589BBC Offset: 0xA585BBC VA: 0xA589BBC
+	public RenderTargetIdentifier get_source() { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589BD0 Offset: 0xA585BD0 VA: 0xA589BD0
+	public void set_source(RenderTargetIdentifier value) { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589BE4 Offset: 0xA585BE4 VA: 0xA589BE4
+	public RenderTargetIdentifier get_destination() { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589BFC Offset: 0xA585BFC VA: 0xA589BFC
+	public void set_destination(RenderTargetIdentifier value) { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589C14 Offset: 0xA585C14 VA: 0xA589C14
+	public RenderTextureFormat get_sourceFormat() { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589C1C Offset: 0xA585C1C VA: 0xA589C1C
+	public void set_sourceFormat(RenderTextureFormat value) { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589C24 Offset: 0xA585C24 VA: 0xA589C24
+	public bool get_flip() { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589C2C Offset: 0xA585C2C VA: 0xA589C2C
+	public void set_flip(bool value) { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589C38 Offset: 0xA585C38 VA: 0xA589C38
+	public PostProcessResources get_resources() { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589C40 Offset: 0xA585C40 VA: 0xA589C40
+	internal void set_resources(PostProcessResources value) { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589C48 Offset: 0xA585C48 VA: 0xA589C48
+	public PropertySheetFactory get_propertySheets() { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589C50 Offset: 0xA585C50 VA: 0xA589C50
+	internal void set_propertySheets(PropertySheetFactory value) { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589C58 Offset: 0xA585C58 VA: 0xA589C58
+	public Dictionary<string, object> get_userData() { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589C60 Offset: 0xA585C60 VA: 0xA589C60
+	private void set_userData(Dictionary<string, object> value) { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589C68 Offset: 0xA585C68 VA: 0xA589C68
+	public PostProcessDebugLayer get_debugLayer() { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589C70 Offset: 0xA585C70 VA: 0xA589C70
+	internal void set_debugLayer(PostProcessDebugLayer value) { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589C78 Offset: 0xA585C78 VA: 0xA589C78
+	public int get_width() { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589C80 Offset: 0xA585C80 VA: 0xA589C80
+	private void set_width(int value) { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589C88 Offset: 0xA585C88 VA: 0xA589C88
+	public int get_height() { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589C90 Offset: 0xA585C90 VA: 0xA589C90
+	private void set_height(int value) { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589C98 Offset: 0xA585C98 VA: 0xA589C98
+	public bool get_stereoActive() { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589CA0 Offset: 0xA585CA0 VA: 0xA589CA0
+	private void set_stereoActive(bool value) { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589CAC Offset: 0xA585CAC VA: 0xA589CAC
+	public int get_xrActiveEye() { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589CB4 Offset: 0xA585CB4 VA: 0xA589CB4
+	public void set_xrActiveEye(int value) { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589CBC Offset: 0xA585CBC VA: 0xA589CBC
+	public int get_numberOfEyes() { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589CC4 Offset: 0xA585CC4 VA: 0xA589CC4
+	private void set_numberOfEyes(int value) { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589CCC Offset: 0xA585CCC VA: 0xA589CCC
+	public PostProcessRenderContext.StereoRenderingMode get_stereoRenderingMode() { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589CD4 Offset: 0xA585CD4 VA: 0xA589CD4
+	private void set_stereoRenderingMode(PostProcessRenderContext.StereoRenderingMode value) { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589CDC Offset: 0xA585CDC VA: 0xA589CDC
+	public int get_screenWidth() { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589CE4 Offset: 0xA585CE4 VA: 0xA589CE4
+	private void set_screenWidth(int value) { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589CEC Offset: 0xA585CEC VA: 0xA589CEC
+	public int get_screenHeight() { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589CF4 Offset: 0xA585CF4 VA: 0xA589CF4
+	private void set_screenHeight(int value) { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589CFC Offset: 0xA585CFC VA: 0xA589CFC
+	public bool get_isSceneView() { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589D04 Offset: 0xA585D04 VA: 0xA589D04
+	internal void set_isSceneView(bool value) { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589D10 Offset: 0xA585D10 VA: 0xA589D10
+	public PostProcessLayer.Antialiasing get_antialiasing() { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589D18 Offset: 0xA585D18 VA: 0xA589D18
+	internal void set_antialiasing(PostProcessLayer.Antialiasing value) { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589D20 Offset: 0xA585D20 VA: 0xA589D20
+	public TemporalAntialiasing get_temporalAntialiasing() { }
+
+	[CompilerGenerated]
+	// RVA: 0xA589D28 Offset: 0xA585D28 VA: 0xA589D28
+	internal void set_temporalAntialiasing(TemporalAntialiasing value) { }
+
+	// RVA: 0xA57E2F8 Offset: 0xA57A2F8 VA: 0xA57E2F8
+	public void Reset() { }
+
+	// RVA: 0xA57D048 Offset: 0xA579048 VA: 0xA57D048
+	public bool IsTemporalAntialiasingActive() { }
+
+	// RVA: 0xA589D30 Offset: 0xA585D30 VA: 0xA589D30
+	public bool IsDebugOverlayEnabled(DebugOverlay overlay) { }
+
+	// RVA: 0xA589D54 Offset: 0xA585D54 VA: 0xA589D54
+	public void PushDebugOverlay(CommandBuffer cmd, RenderTargetIdentifier source, PropertySheet sheet, int pass) { }
+
+	// RVA: 0xA589D9C Offset: 0xA585D9C VA: 0xA589D9C
+	internal RenderTextureDescriptor GetDescriptor(int depthBufferBits = 0, RenderTextureFormat colorFormat = 7, RenderTextureReadWrite readWrite = 0) { }
+
+	// RVA: 0xA57E1E4 Offset: 0xA57A1E4 VA: 0xA57E1E4
+	public void GetScreenSpaceTemporaryRT(CommandBuffer cmd, int nameID, int depthBufferBits = 0, RenderTextureFormat colorFormat = 7, RenderTextureReadWrite readWrite = 0, FilterMode filter = 1, int widthOverride = 0, int heightOverride = 0) { }
+
+	// RVA: 0xA589FB0 Offset: 0xA585FB0 VA: 0xA589FB0
+	public RenderTexture GetScreenSpaceTemporaryRT(int depthBufferBits = 0, RenderTextureFormat colorFormat = 7, RenderTextureReadWrite readWrite = 0, int widthOverride = 0, int heightOverride = 0) { }
+
+	// RVA: 0xA57EA04 Offset: 0xA57AA04 VA: 0xA57EA04
+	public void UpdateSinglePassStereoState(bool isTAAEnabled, bool isAOEnabled, bool isSSREnabled) { }
+
+	// RVA: 0xA57B1B4 Offset: 0xA5771B4 VA: 0xA57B1B4
+	public void .ctor() { }
+}

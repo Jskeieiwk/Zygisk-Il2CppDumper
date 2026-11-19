@@ -1,0 +1,15 @@
+// Namespace: Axlebolt.Standoff.Game.UI.LevelZones
+public class BombSiteLevelZoneLabel : LevelZoneLabel // TypeDefIndex: 8482
+{
+	// Fields
+	[SerializeField]
+	private CCGBEGEAHGBGABG _bombSite; // 0x44
+
+	// Methods
+
+	// RVA: 0x5E16144 Offset: 0x5E12144 VA: 0x5E16144 Slot: 10
+	public override void SetupLabel(GameModesSchemaParams GCFAFACGBFFDEHC) { }
+
+	// RVA: 0x5E1625C Offset: 0x5E1225C VA: 0x5E1625C
+	public void .ctor() { }
+}

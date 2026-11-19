@@ -1,0 +1,228 @@
+public class KnifeParameters : WeaponParameters // TypeDefIndex: 8426
+{
+	// Fields
+	[SerializeField]
+	private float _hitInterval; // 0x110
+	[SerializeField]
+	private float _takeDuration; // 0x114
+	[SerializeField]
+	private int _hitImpulse; // 0x118
+	[SerializeField]
+	private float _hitRadius; // 0x11C
+	[SerializeField]
+	private Vector3 _additiveHitVector3; // 0x120
+	[SerializeField]
+	[Range(0, 100)]
+	private float _armorPenetration; // 0x12C
+	[SerializeField]
+	private Damage _damage; // 0x130
+	[SerializeField]
+	private int _backDamage; // 0x138
+	[SerializeField]
+	private KnifeHittingParameters _hitParameters; // 0x140
+	[SerializeField]
+	private int _hitAnimationTypesCount; // 0x148
+	private Nullable<BHGCCBBABFFCDGA> _hitIntervalSafe; // 0x14C
+	private Nullable<BHGCCBBABFFCDGA> _takeDurationSafe; // 0x158
+	private Nullable<FDBDCEGHFCHCHDA> _hitImpulseSafe; // 0x164
+	private Nullable<BHGCCBBABFFCDGA> _armorPenetrationSafe; // 0x170
+	private Nullable<BHGCCBBABFFCDGA> _hitRadiusSafe; // 0x17C
+	private Nullable<FDBDCEGHFCHCHDA> _backDamageSafe; // 0x188
+
+	// Properties
+	public BHGCCBBABFFCDGA HitInterval { get; }
+	public BHGCCBBABFFCDGA TakeDuration { get; }
+	public FDBDCEGHFCHCHDA HitImpulse { get; }
+	public BHGCCBBABFFCDGA ArmorPenetration { get; }
+	public BHGCCBBABFFCDGA HitRadius { get; }
+	public Vector3 AdditiveHitVector3 { get; }
+	public FDBDCEGHFCHCHDA BackDamage { get; }
+	public Damage Damage { get; }
+	public int HitAnimationTypesCount { get; }
+	public KnifeHittingParameters HitParameters { get; }
+
+	// Methods
+
+	// RVA: 0x5D71838 Offset: 0x5D6D838 VA: 0x5D71838
+	public BHGCCBBABFFCDGA get_TakeDuration() { }
+
+	// RVA: 0x5D71A04 Offset: 0x5D6DA04 VA: 0x5D71A04
+	public Damage GGGHBEHHBHHBGHD() { }
+
+	// RVA: 0x5D71A0C Offset: 0x5D6DA0C VA: 0x5D71A0C
+	public BHGCCBBABFFCDGA FBCCCHCFGEDAEHC() { }
+
+	// RVA: 0x5D71BD8 Offset: 0x5D6DBD8 VA: 0x5D71BD8
+	public int CHFDEGHEHFBCFCB() { }
+
+	// RVA: 0x5D71BE0 Offset: 0x5D6DBE0 VA: 0x5D71BE0
+	public Damage CFDGFFGEBAEGDEH() { }
+
+	// RVA: 0x5D71BE8 Offset: 0x5D6DBE8 VA: 0x5D71BE8
+	public Vector3 DFGFGDHDECBHBHD() { }
+
+	// RVA: 0x5D71BF8 Offset: 0x5D6DBF8 VA: 0x5D71BF8
+	public FDBDCEGHFCHCHDA CDHFEEFAEGDFHBB() { }
+
+	// RVA: 0x5D71DBC Offset: 0x5D6DDBC VA: 0x5D71DBC
+	public Vector3 AGADHCCDGFEBDGG() { }
+
+	// RVA: 0x5D71DCC Offset: 0x5D6DDCC VA: 0x5D71DCC
+	public Damage BHHHGFAEHGBHDCG() { }
+
+	// RVA: 0x5D71DD4 Offset: 0x5D6DDD4 VA: 0x5D71DD4
+	public BHGCCBBABFFCDGA get_HitInterval() { }
+
+	// RVA: 0x5D72104 Offset: 0x5D6E104 VA: 0x5D72104
+	public BHGCCBBABFFCDGA BEDCAHEBACECHEB() { }
+
+	// RVA: 0x5D722D0 Offset: 0x5D6E2D0 VA: 0x5D722D0
+	public KnifeHittingParameters FAGDHEGEHBGFFHF() { }
+
+	// RVA: 0x5D722D8 Offset: 0x5D6E2D8 VA: 0x5D722D8
+	public Damage DCFFHGHEHBAAEDD() { }
+
+	// RVA: 0x5D722E0 Offset: 0x5D6E2E0 VA: 0x5D722E0
+	public BHGCCBBABFFCDGA CECHCBABFBECFAB() { }
+
+	// RVA: 0x5D724AC Offset: 0x5D6E4AC VA: 0x5D724AC
+	public int CFGDADBAHAHFGCA() { }
+
+	// RVA: 0x5D724B4 Offset: 0x5D6E4B4 VA: 0x5D724B4
+	public KnifeHittingParameters DFGGHGBCDCHCAGC() { }
+
+	// RVA: 0x5D724BC Offset: 0x5D6E4BC VA: 0x5D724BC
+	public FDBDCEGHFCHCHDA get_BackDamage() { }
+
+	// RVA: 0x5D72680 Offset: 0x5D6E680 VA: 0x5D72680
+	public int HHBABFGAAECAEFA() { }
+
+	// RVA: 0x5D72688 Offset: 0x5D6E688 VA: 0x5D72688 Slot: 10
+	protected override void OnEnable() { }
+
+	// RVA: 0x5D72964 Offset: 0x5D6E964 VA: 0x5D72964
+	public BHGCCBBABFFCDGA FGFBHACHEHAGGCG() { }
+
+	// RVA: 0x5D72B30 Offset: 0x5D6EB30 VA: 0x5D72B30
+	public KnifeHittingParameters get_HitParameters() { }
+
+	// RVA: 0x5D72B38 Offset: 0x5D6EB38 VA: 0x5D72B38
+	public int get_HitAnimationTypesCount() { }
+
+	// RVA: 0x5D72B40 Offset: 0x5D6EB40 VA: 0x5D72B40
+	public int FHHGCHCCHHFAEBA() { }
+
+	// RVA: 0x5D72B48 Offset: 0x5D6EB48 VA: 0x5D72B48
+	public int BHBAGBHDGFDHGGA() { }
+
+	// RVA: 0x5D72B50 Offset: 0x5D6EB50 VA: 0x5D72B50
+	public BHGCCBBABFFCDGA ABGHHHGGEHCDADE() { }
+
+	// RVA: 0x5D72E80 Offset: 0x5D6EE80 VA: 0x5D72E80
+	public BHGCCBBABFFCDGA AFCBBDGBDCHBFDC() { }
+
+	// RVA: 0x5D731B0 Offset: 0x5D6F1B0 VA: 0x5D731B0
+	public FDBDCEGHFCHCHDA CCCACHFGCEGDECD() { }
+
+	// RVA: 0x5D73370 Offset: 0x5D6F370 VA: 0x5D73370
+	public void .ctor() { }
+
+	// RVA: 0x5D73434 Offset: 0x5D6F434 VA: 0x5D73434
+	public BHGCCBBABFFCDGA GEHCEHBGFFDBGHG() { }
+
+	// RVA: 0x5D73764 Offset: 0x5D6F764 VA: 0x5D73764
+	public BHGCCBBABFFCDGA HBEBBBEABHGGHDH() { }
+
+	// RVA: 0x5D73A94 Offset: 0x5D6FA94 VA: 0x5D73A94
+	public BHGCCBBABFFCDGA FHFBDBDCAAGGDGC() { }
+
+	// RVA: 0x5D73C60 Offset: 0x5D6FC60 VA: 0x5D73C60
+	public BHGCCBBABFFCDGA DGEHGEHAHGHFDDD() { }
+
+	// RVA: 0x5D73F90 Offset: 0x5D6FF90 VA: 0x5D73F90
+	public Damage BDDABHAADEEDFFB() { }
+
+	// RVA: 0x5D73F98 Offset: 0x5D6FF98 VA: 0x5D73F98
+	public FDBDCEGHFCHCHDA FCDEABEDFCCHAHD() { }
+
+	// RVA: 0x5D74158 Offset: 0x5D70158 VA: 0x5D74158
+	public Vector3 get_AdditiveHitVector3() { }
+
+	// RVA: 0x5D74168 Offset: 0x5D70168 VA: 0x5D74168
+	public BHGCCBBABFFCDGA GFEFBACHFHDFDHG() { }
+
+	// RVA: 0x5D74334 Offset: 0x5D70334 VA: 0x5D74334
+	public Vector3 ACEDFEGDFCBHAEF() { }
+
+	// RVA: 0x5D74344 Offset: 0x5D70344 VA: 0x5D74344
+	public FDBDCEGHFCHCHDA EGFFFEFBBFAHCBD() { }
+
+	// RVA: 0x5D74504 Offset: 0x5D70504 VA: 0x5D74504
+	public BHGCCBBABFFCDGA DHHCHGEGGDGCEDF() { }
+
+	// RVA: 0x5D746D0 Offset: 0x5D706D0 VA: 0x5D746D0
+	public BHGCCBBABFFCDGA get_ArmorPenetration() { }
+
+	// RVA: 0x5D7489C Offset: 0x5D7089C VA: 0x5D7489C
+	public BHGCCBBABFFCDGA get_HitRadius() { }
+
+	// RVA: 0x5D74BCC Offset: 0x5D70BCC VA: 0x5D74BCC
+	public FDBDCEGHFCHCHDA AHGDAEFHAEBBCBB() { }
+
+	// RVA: 0x5D74D8C Offset: 0x5D70D8C VA: 0x5D74D8C
+	public KnifeHittingParameters EAHDFCBEEFAGEFD() { }
+
+	// RVA: 0x5D74D94 Offset: 0x5D70D94 VA: 0x5D74D94
+	public KnifeHittingParameters CFBHAHHEEGCGEAB() { }
+
+	// RVA: 0x5D74D9C Offset: 0x5D70D9C VA: 0x5D74D9C
+	public FDBDCEGHFCHCHDA HBAGECECDADFDBG() { }
+
+	// RVA: 0x5D74F5C Offset: 0x5D70F5C VA: 0x5D74F5C
+	public BHGCCBBABFFCDGA HGFHAADFHEDDFHD() { }
+
+	// RVA: 0x5D75128 Offset: 0x5D71128 VA: 0x5D75128
+	public int FGACAAFHFDECDAA() { }
+
+	// RVA: 0x5D75130 Offset: 0x5D71130 VA: 0x5D75130
+	public BHGCCBBABFFCDGA HFGCGCEDFGDAGAE() { }
+
+	// RVA: 0x5D752FC Offset: 0x5D712FC VA: 0x5D752FC
+	public Damage get_Damage() { }
+
+	// RVA: 0x5D75304 Offset: 0x5D71304 VA: 0x5D75304
+	public int EHBECFCEEEDFFGE() { }
+
+	// RVA: 0x5D7530C Offset: 0x5D7130C VA: 0x5D7530C
+	public BHGCCBBABFFCDGA FEDABEFECHBCBEA() { }
+
+	// RVA: 0x5D7563C Offset: 0x5D7163C VA: 0x5D7563C
+	public BHGCCBBABFFCDGA FBFECBFEGGBHGDH() { }
+
+	// RVA: 0x5D75808 Offset: 0x5D71808 VA: 0x5D75808
+	public BHGCCBBABFFCDGA HDBFFBFDHCGGFCE() { }
+
+	// RVA: 0x5D75B38 Offset: 0x5D71B38 VA: 0x5D75B38
+	public FDBDCEGHFCHCHDA get_HitImpulse() { }
+
+	// RVA: 0x5D75CF8 Offset: 0x5D71CF8 VA: 0x5D75CF8
+	public Vector3 HCHEAEBBEAACAHH() { }
+
+	// RVA: 0x5D75D08 Offset: 0x5D71D08 VA: 0x5D75D08
+	public BHGCCBBABFFCDGA AFHCDGFFFGFCBDF() { }
+
+	// RVA: 0x5D76038 Offset: 0x5D72038 VA: 0x5D76038
+	public BHGCCBBABFFCDGA EFFCGDCBHHBBFAA() { }
+
+	// RVA: 0x5D76204 Offset: 0x5D72204 VA: 0x5D76204
+	public BHGCCBBABFFCDGA DHGFGFBFFHEEBFA() { }
+
+	// RVA: 0x5D763D0 Offset: 0x5D723D0 VA: 0x5D763D0
+	public BHGCCBBABFFCDGA HFEDGDCBAEAGFHE() { }
+
+	// RVA: 0x5D76700 Offset: 0x5D72700 VA: 0x5D76700
+	public int BFGHHDHGCABHEFB() { }
+
+	// RVA: 0x5D76708 Offset: 0x5D72708 VA: 0x5D76708
+	public KnifeHittingParameters DAFFCBBEFEECDGG() { }
+}

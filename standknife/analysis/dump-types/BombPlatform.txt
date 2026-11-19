@@ -1,0 +1,87 @@
+// Namespace: Axlebolt.Standoff.Events.BeholderGames.Scripts.GameChallenges.BombIslands
+public class BombPlatform : MonoBehaviour // TypeDefIndex: 5854
+{
+	// Fields
+	[SerializeField]
+	private GameObject _deathTrigger; // 0x20
+	[SerializeField]
+	private GameObject _marker; // 0x28
+	[SerializeField]
+	private GameObject _prefab1; // 0x30
+	[SerializeField]
+	private GameObject _prefab2; // 0x38
+
+	// Methods
+
+	// RVA: 0x49FECD8 Offset: 0x49FACD8 VA: 0x49FECD8
+	public void AGABEGFCHHFGFCA(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x49FECF8 Offset: 0x49FACF8 VA: 0x49FECF8
+	public void FGEBBEAHHGCEBHB(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x49FED18 Offset: 0x49FAD18 VA: 0x49FED18
+	public void SetMarkActive(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x49FED38 Offset: 0x49FAD38 VA: 0x49FED38
+	public void ACFEGGAFAHBDDHE(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x49FED58 Offset: 0x49FAD58 VA: 0x49FED58
+	public void FBEDCEFHCGHDBFE(ABHFEBDCDDHAFGF DHECGAGCCEAGHAE) { }
+
+	// RVA: 0x49FEE0C Offset: 0x49FAE0C VA: 0x49FEE0C
+	public void CBHDFFEBBAAADCE(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x49FEE2C Offset: 0x49FAE2C VA: 0x49FEE2C
+	public void EGEFHEDFHAGCCAH(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x49FEE4C Offset: 0x49FAE4C VA: 0x49FEE4C
+	public void EDHEEGGGAFBDGDC(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x49FEE6C Offset: 0x49FAE6C VA: 0x49FEE6C
+	public void .ctor() { }
+
+	// RVA: 0x49FEE74 Offset: 0x49FAE74 VA: 0x49FEE74
+	public void EGHHGGGFFCHDHGD(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x49FEE94 Offset: 0x49FAE94 VA: 0x49FEE94
+	public void SetColliderActive(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x49FEEB4 Offset: 0x49FAEB4 VA: 0x49FEEB4
+	public void FCACHDACDBDAGED(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x49FEED4 Offset: 0x49FAED4 VA: 0x49FEED4
+	public void BADCEFGEHCFDHGH(ABHFEBDCDDHAFGF DHECGAGCCEAGHAE) { }
+
+	// RVA: 0x49FEF88 Offset: 0x49FAF88 VA: 0x49FEF88
+	public void HDBHBAFAGHFBCFA(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x49FEFA8 Offset: 0x49FAFA8 VA: 0x49FEFA8
+	public void FDDGDADDAHGDBFB(ABHFEBDCDDHAFGF DHECGAGCCEAGHAE) { }
+
+	// RVA: 0x49FF05C Offset: 0x49FB05C VA: 0x49FF05C
+	public void EDCAGHAEAAFDGDC(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x49FF07C Offset: 0x49FB07C VA: 0x49FF07C
+	public void HFEGAEDFHDAHGCD(ABHFEBDCDDHAFGF DHECGAGCCEAGHAE) { }
+
+	// RVA: 0x49FF130 Offset: 0x49FB130 VA: 0x49FF130
+	public void BHDCHECFCAAAFEA(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x49FF150 Offset: 0x49FB150 VA: 0x49FF150
+	public void ABDFBAEDFCECDAB(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x49FF170 Offset: 0x49FB170 VA: 0x49FF170
+	public void FGBCBBBADAGDCDA(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x49FF190 Offset: 0x49FB190 VA: 0x49FF190
+	public void Init(ABHFEBDCDDHAFGF DHECGAGCCEAGHAE) { }
+
+	// RVA: 0x49FF244 Offset: 0x49FB244 VA: 0x49FF244
+	public void EDFEBABADGHDCEF(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x49FF264 Offset: 0x49FB264 VA: 0x49FF264
+	public void FGEHDFCBDEEFCAC(bool CAGAFHEHEFAGHEH) { }
+
+	// RVA: 0x49FF284 Offset: 0x49FB284 VA: 0x49FF284
+	public void EAGDEHBHDAHAFFD(ABHFEBDCDDHAFGF DHECGAGCCEAGHAE) { }
+}

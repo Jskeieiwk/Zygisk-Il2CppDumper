@@ -1,0 +1,44 @@
+// Namespace: System.ComponentModel
+public class Component : MarshalByRefObject, IComponent, IDisposable // TypeDefIndex: 16537
+{
+	// Fields
+	private static readonly object EventDisposed; // 0x0
+	private ISite site; // 0x18
+	private EventHandlerList events; // 0x20
+
+	// Properties
+	protected virtual bool CanRaiseEvents { get; }
+	internal bool CanRaiseEventsInternal { get; }
+	[DesignerSerializationVisibility(0)]
+	[Browsable(False)]
+	public virtual ISite Site { get; }
+
+	// Methods
+
+	// RVA: 0xA44C298 Offset: 0xA448298 VA: 0xA44C298 Slot: 1
+	protected override void Finalize() { }
+
+	// RVA: 0xA44C47C Offset: 0xA44847C VA: 0xA44C47C Slot: 8
+	protected virtual bool get_CanRaiseEvents() { }
+
+	// RVA: 0xA44C484 Offset: 0xA448484 VA: 0xA44C484
+	internal bool get_CanRaiseEventsInternal() { }
+
+	// RVA: 0xA44C5EC Offset: 0xA4485EC VA: 0xA44C5EC Slot: 9
+	public virtual ISite get_Site() { }
+
+	// RVA: 0xA44C5F4 Offset: 0xA4485F4 VA: 0xA44C5F4 Slot: 7
+	public void Dispose() { }
+
+	// RVA: 0xA44C7F4 Offset: 0xA4487F4 VA: 0xA44C7F4 Slot: 10
+	protected virtual void Dispose(bool disposing) { }
+
+	// RVA: 0xA44CC20 Offset: 0xA448C20 VA: 0xA44CC20 Slot: 3
+	public override string ToString() { }
+
+	// RVA: 0xA44D060 Offset: 0xA449060 VA: 0xA44D060
+	public void .ctor() { }
+
+	// RVA: 0xA44D068 Offset: 0xA449068 VA: 0xA44D068
+	private static void .cctor() { }
+}

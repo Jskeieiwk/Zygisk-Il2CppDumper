@@ -1,0 +1,191 @@
+public class AimingArea : InteractableZone // TypeDefIndex: 6589
+{
+	// Fields
+	public AnimationCurve accelerationCurve; // 0x70
+	public float accelerationMultiplier; // 0x78
+	public float accelerationBase; // 0x7C
+	public float heightToWidthAccelerationRatio; // 0x80
+	public float referenceSensitivity; // 0x84
+	private Vector3 GEHGCDHCFDEEACF; // 0x88
+	private Vector3 BFDCEDFAAFBBHDB; // 0x94
+	private readonly List<float> HGHAAEEBEBGFFHH; // 0xA0
+	private readonly List<float> HAAEABECEFCEEHF; // 0xA8
+	private readonly List<float> BBEBDCHFHBCEDAA; // 0xB0
+	private float AHFBABGBGBGHFHF; // 0xB8
+	private float HGHAEGBGDAGBCCD; // 0xBC
+	private Vector2 FFAEAABHFCEHAED; // 0xC0
+	[CompilerGenerated]
+	private float <GBGAGGGEHAHGCFF>k__BackingField; // 0xC8
+	[CompilerGenerated]
+	private float <DGDBABFEADFECFG>k__BackingField; // 0xCC
+
+	// Properties
+	public Vector2 CGEBGDDBBGHGBHE { get; }
+	public float DDADGBFGDBFFGEE { get; set; }
+	public float DDDFFCDBDABEEBD { get; set; }
+
+	// Methods
+
+	// RVA: 0x502CB34 Offset: 0x5028B34 VA: 0x502CB34
+	public Vector2 BHFFHACFAFAEGCC() { }
+
+	// RVA: 0x502D18C Offset: 0x502918C VA: 0x502D18C
+	public void CDGHGDBEBDDHHFB(float BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x502D194 Offset: 0x5029194 VA: 0x502D194
+	public float get_AimSmoothing() { }
+
+	// RVA: 0x502D19C Offset: 0x502919C VA: 0x502D19C
+	public float CFGEBFFBEDFDHCF() { }
+
+	// RVA: 0x502D1A4 Offset: 0x50291A4 VA: 0x502D1A4
+	public void ECDEBDEBBGCBBAB(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x502D1AC Offset: 0x50291AC VA: 0x502D1AC
+	public float GBCDBCBCEDBEBHC() { }
+
+	// RVA: 0x502D1B4 Offset: 0x50291B4 VA: 0x502D1B4
+	public Vector2 DGCGEAEBDHFDCBB() { }
+
+	// RVA: 0x502D808 Offset: 0x5029808 VA: 0x502D808
+	public float GHBCBEEGEHDBBCD() { }
+
+	// RVA: 0x502D810 Offset: 0x5029810 VA: 0x502D810
+	public void BGCCBDCCFHGEAGH(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x502D818 Offset: 0x5029818 VA: 0x502D818
+	public void BEGCAGBFGBBAGHD(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x502D820 Offset: 0x5029820 VA: 0x502D820
+	public float CCECCHECAGCGBCC() { }
+
+	// RVA: 0x502D828 Offset: 0x5029828 VA: 0x502D828
+	public void .ctor() { }
+
+	// RVA: 0x502DAB8 Offset: 0x5029AB8 VA: 0x502DAB8
+	public Vector2 EAGCCAFFCFAEEHE() { }
+
+	// RVA: 0x502E110 Offset: 0x502A110 VA: 0x502E110
+	public float DGFGCDADDEABFDB() { }
+
+	// RVA: 0x502E118 Offset: 0x502A118 VA: 0x502E118
+	public float GHEHDBBEDCBBHHH() { }
+
+	// RVA: 0x502E120 Offset: 0x502A120 VA: 0x502E120
+	public void HBBBAFHGFFEDEHB(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x502E128 Offset: 0x502A128 VA: 0x502E128 Slot: 22
+	public override void OnTouchStayActive(DEACAAEDHEEDEEA BCACFGCBGABDEFA) { }
+
+	// RVA: 0x502E16C Offset: 0x502A16C VA: 0x502E16C Slot: 15
+	public override void OnTouchEnd(DEACAAEDHEEDEEA BCACFGCBGABDEFA) { }
+
+	// RVA: 0x502E21C Offset: 0x502A21C VA: 0x502E21C
+	public float GFEFCCCFHDBFFDB() { }
+
+	// RVA: 0x502E224 Offset: 0x502A224 VA: 0x502E224
+	public Vector2 GHACCFBHADBHFDF() { }
+
+	// RVA: 0x502E878 Offset: 0x502A878 VA: 0x502E878
+	public void GHHGFBGFFDDFAHB(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x502E880 Offset: 0x502A880 VA: 0x502E880
+	public void HDEDBGEGFBFBCHB(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x502E888 Offset: 0x502A888 VA: 0x502E888
+	public float CCBAAHEHHGBEHCA() { }
+
+	// RVA: 0x502E890 Offset: 0x502A890 VA: 0x502E890
+	public void GBFECCBAAGAAABG(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x502E898 Offset: 0x502A898 VA: 0x502E898
+	public float CBEFHGGFFGFEFGA() { }
+
+	// RVA: 0x502E8A0 Offset: 0x502A8A0 VA: 0x502E8A0
+	public void ADDFGBHCACGCGGF(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x502E8A8 Offset: 0x502A8A8 VA: 0x502E8A8
+	public void GBGFFGADDFHEECB(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x502E8B0 Offset: 0x502A8B0 VA: 0x502E8B0
+	public void HBGAHEAFGGDABFC(float BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x502E8B8 Offset: 0x502A8B8 VA: 0x502E8B8
+	public float get_Acceleration() { }
+
+	// RVA: 0x502E8C0 Offset: 0x502A8C0 VA: 0x502E8C0
+	public Vector2 BBABCDAFDEBEGEH() { }
+
+	// RVA: 0x502EF14 Offset: 0x502AF14 VA: 0x502EF14
+	public Vector2 BDHEFEHDCCGEFAE() { }
+
+	// RVA: 0x502F568 Offset: 0x502B568 VA: 0x502F568
+	public Vector2 BGFGFBFFEADHDBB() { }
+
+	// RVA: 0x502FBC0 Offset: 0x502BBC0 VA: 0x502FBC0
+	public void EDCCBAAHEDBFGHH(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x502FBC8 Offset: 0x502BBC8 VA: 0x502FBC8
+	public Vector2 FGBHEEACGFFAAFC() { }
+
+	// RVA: 0x5030218 Offset: 0x502C218 VA: 0x5030218
+	public float CFCEHGDGBEHDBGG() { }
+
+	// RVA: 0x5030220 Offset: 0x502C220 VA: 0x5030220
+	public void BCAEEBGEBGEDHGF(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x5030228 Offset: 0x502C228 VA: 0x5030228
+	public void BECHHBFCAGFFCEG(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x5030230 Offset: 0x502C230 VA: 0x5030230
+	public Vector2 GEDADFCFBAGFBHD() { }
+
+	// RVA: 0x5030888 Offset: 0x502C888 VA: 0x5030888
+	public void GHDFACEEBAGCEBA(float BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x5030890 Offset: 0x502C890 VA: 0x5030890
+	public void set_AimSmoothing(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x5030898 Offset: 0x502C898 VA: 0x5030898
+	public void HECDGBAEDDAAHHA(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x50308A0 Offset: 0x502C8A0 VA: 0x50308A0
+	public Vector2 CDDAEFGFAHFHECB() { }
+
+	// RVA: 0x5030EF4 Offset: 0x502CEF4 VA: 0x5030EF4
+	public Vector2 GGCHBHAHAFAFFEC() { }
+
+	// RVA: 0x503154C Offset: 0x502D54C VA: 0x503154C Slot: 20
+	public override void OnTouchDown(DEACAAEDHEEDEEA BCACFGCBGABDEFA) { }
+
+	// RVA: 0x50316C4 Offset: 0x502D6C4 VA: 0x50316C4
+	public Vector2 get_AimingAxis() { }
+
+	// RVA: 0x5031CF4 Offset: 0x502DCF4 VA: 0x5031CF4
+	public Vector2 CFBAGFCCDAHCDGE() { }
+
+	// RVA: 0x503234C Offset: 0x502E34C VA: 0x503234C
+	public void ABEECFAAHBAFBGF(float BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x5032354 Offset: 0x502E354 VA: 0x5032354
+	public void set_Acceleration(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x503235C Offset: 0x502E35C VA: 0x503235C
+	public float GGHCAEBHDFHCFFE() { }
+
+	// RVA: 0x5032364 Offset: 0x502E364 VA: 0x5032364
+	public float HGHEGCGCBGEAHGA() { }
+
+	// RVA: 0x503236C Offset: 0x502E36C VA: 0x503236C Slot: 18
+	public override void OnReplaceTouch(DEACAAEDHEEDEEA BCACFGCBGABDEFA) { }
+
+	// RVA: 0x5032458 Offset: 0x502E458 VA: 0x5032458
+	public float CAGEHBDCHCHEFCG() { }
+
+	// RVA: 0x5032460 Offset: 0x502E460 VA: 0x5032460
+	public Vector2 HCCHCDGGGGEHGFF() { }
+}

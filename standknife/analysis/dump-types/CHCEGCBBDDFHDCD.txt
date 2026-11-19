@@ -1,0 +1,11 @@
+// Namespace: 
+public struct CHCEGCBBDDFHDCD // TypeDefIndex: 3482
+{
+	// Fields
+	public bool EHCGFCAAFEEDADB; // 0x0
+	public bool FAGBCEHHEBAFEEA; // 0x1
+	public bool FABDAEEFBFBBCHA; // 0x2
+	public bool EFBCHFEEBCBBEGC; // 0x3
+	public bool DBGGFAADACAABHE; // 0x4
+	public bool GGDFGABCFEFGAGG; // 0x5
+}

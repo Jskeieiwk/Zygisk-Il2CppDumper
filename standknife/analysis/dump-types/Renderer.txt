@@ -1,0 +1,143 @@
+// Namespace: UnityEngine
+public class Renderer : Component // TypeDefIndex: 17356
+{
+	// Properties
+	public Bounds bounds { get; set; }
+	public bool enabled { get; set; }
+	public ShadowCastingMode shadowCastingMode { set; }
+	public bool receiveShadows { set; }
+	public LightProbeUsage lightProbeUsage { set; }
+	public ReflectionProbeUsage reflectionProbeUsage { set; }
+	public int sortingLayerID { get; set; }
+	public int sortingOrder { get; set; }
+	internal int sortingGroupID { get; }
+	internal int sortingGroupOrder { get; }
+	public Transform probeAnchor { set; }
+	public Material[] materials { get; set; }
+	public Material material { get; set; }
+	public Material sharedMaterial { get; set; }
+	public Material[] sharedMaterials { get; set; }
+
+	// Methods
+
+	[FreeFunction(Name = "RendererScripting::GetWorldBounds", HasExplicitThis = True)]
+	// RVA: 0xA743524 Offset: 0xA73F524 VA: 0xA743524
+	public Bounds get_bounds() { }
+
+	[NativeName("SetWorldAABB")]
+	// RVA: 0xA7436F0 Offset: 0xA73F6F0 VA: 0xA7436F0
+	public void set_bounds(Bounds value) { }
+
+	[FreeFunction(Name = "RendererScripting::GetMaterial", HasExplicitThis = True)]
+	// RVA: 0xA743888 Offset: 0xA73F888 VA: 0xA743888
+	private Material GetMaterial() { }
+
+	[FreeFunction(Name = "RendererScripting::GetSharedMaterial", HasExplicitThis = True)]
+	// RVA: 0xA7439FC Offset: 0xA73F9FC VA: 0xA7439FC
+	private Material GetSharedMaterial() { }
+
+	[FreeFunction(Name = "RendererScripting::SetMaterial", HasExplicitThis = True)]
+	// RVA: 0xA743B70 Offset: 0xA73FB70 VA: 0xA743B70
+	private void SetMaterial(Material m) { }
+
+	[FreeFunction(Name = "RendererScripting::GetMaterialArray", HasExplicitThis = True)]
+	// RVA: 0xA743CE8 Offset: 0xA73FCE8 VA: 0xA743CE8
+	private Material[] GetMaterialArray() { }
+
+	[FreeFunction(Name = "RendererScripting::SetMaterialArray", HasExplicitThis = True)]
+	// RVA: 0xA743E60 Offset: 0xA73FE60 VA: 0xA743E60
+	private void SetMaterialArray(Material[] m, int length) { }
+
+	// RVA: 0xA743FF8 Offset: 0xA73FFF8 VA: 0xA743FF8
+	private void SetMaterialArray(Material[] m) { }
+
+	[FreeFunction(Name = "RendererScripting::SetPropertyBlock", HasExplicitThis = True)]
+	// RVA: 0xA74401C Offset: 0xA74001C VA: 0xA74401C
+	internal void Internal_SetPropertyBlock(MaterialPropertyBlock properties) { }
+
+	[FreeFunction(Name = "RendererScripting::GetPropertyBlock", HasExplicitThis = True)]
+	// RVA: 0xA7441B0 Offset: 0xA7401B0 VA: 0xA7441B0
+	internal void Internal_GetPropertyBlock(MaterialPropertyBlock dest) { }
+
+	// RVA: 0xA74434C Offset: 0xA74034C VA: 0xA74434C
+	public void SetPropertyBlock(MaterialPropertyBlock properties) { }
+
+	// RVA: 0xA744350 Offset: 0xA740350 VA: 0xA744350
+	public void GetPropertyBlock(MaterialPropertyBlock properties) { }
+
+	// RVA: 0xA744354 Offset: 0xA740354 VA: 0xA744354
+	public bool get_enabled() { }
+
+	// RVA: 0xA7444C8 Offset: 0xA7404C8 VA: 0xA7444C8
+	public void set_enabled(bool value) { }
+
+	// RVA: 0xA744648 Offset: 0xA740648 VA: 0xA744648
+	public void set_shadowCastingMode(ShadowCastingMode value) { }
+
+	// RVA: 0xA7447E0 Offset: 0xA7407E0 VA: 0xA7447E0
+	public void set_receiveShadows(bool value) { }
+
+	// RVA: 0xA744964 Offset: 0xA740964 VA: 0xA744964
+	public void set_lightProbeUsage(LightProbeUsage value) { }
+
+	// RVA: 0xA744AF4 Offset: 0xA740AF4 VA: 0xA744AF4
+	public void set_reflectionProbeUsage(ReflectionProbeUsage value) { }
+
+	// RVA: 0xA744C9C Offset: 0xA740C9C VA: 0xA744C9C
+	public int get_sortingLayerID() { }
+
+	// RVA: 0xA744E20 Offset: 0xA740E20 VA: 0xA744E20
+	public void set_sortingLayerID(int value) { }
+
+	// RVA: 0xA744FB4 Offset: 0xA740FB4 VA: 0xA744FB4
+	public int get_sortingOrder() { }
+
+	// RVA: 0xA745128 Offset: 0xA741128 VA: 0xA745128
+	public void set_sortingOrder(int value) { }
+
+	// RVA: 0xA7452AC Offset: 0xA7412AC VA: 0xA7452AC
+	internal int get_sortingGroupID() { }
+
+	// RVA: 0xA74542C Offset: 0xA74142C VA: 0xA74542C
+	internal int get_sortingGroupOrder() { }
+
+	// RVA: 0xA7455B0 Offset: 0xA7415B0 VA: 0xA7455B0
+	public void set_probeAnchor(Transform value) { }
+
+	[NativeName("GetMaterialArray")]
+	// RVA: 0xA745740 Offset: 0xA741740 VA: 0xA745740
+	private Material[] GetSharedMaterialArray() { }
+
+	// RVA: 0xA7458CC Offset: 0xA7418CC VA: 0xA7458CC
+	public Material[] get_materials() { }
+
+	// RVA: 0xA7458D0 Offset: 0xA7418D0 VA: 0xA7458D0
+	public void set_materials(Material[] value) { }
+
+	// RVA: 0xA7458D4 Offset: 0xA7418D4 VA: 0xA7458D4
+	public Material get_material() { }
+
+	// RVA: 0xA7458D8 Offset: 0xA7418D8 VA: 0xA7458D8
+	public void set_material(Material value) { }
+
+	// RVA: 0xA7458DC Offset: 0xA7418DC VA: 0xA7458DC
+	public Material get_sharedMaterial() { }
+
+	// RVA: 0xA7458E0 Offset: 0xA7418E0 VA: 0xA7458E0
+	public void set_sharedMaterial(Material value) { }
+
+	// RVA: 0xA7458E4 Offset: 0xA7418E4 VA: 0xA7458E4
+	public Material[] get_sharedMaterials() { }
+
+	// RVA: 0xA7458E8 Offset: 0xA7418E8 VA: 0xA7458E8
+	public void set_sharedMaterials(Material[] value) { }
+
+	// RVA: 0xA741940 Offset: 0xA73D940 VA: 0xA741940
+	public void .ctor() { }
+
+	// RVA: 0xA74355C Offset: 0xA73F55C VA: 0xA74355C
+	private void get_bounds_Injected(out Bounds ret) { }
+
+	// RVA: 0xA7436F4 Offset: 0xA73F6F4 VA: 0xA7436F4
+	private void set_bounds_Injected(ref Bounds value) { }
+}

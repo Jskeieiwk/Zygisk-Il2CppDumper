@@ -1,0 +1,31 @@
+public class PostProcessEffectSettings : ScriptableObject // TypeDefIndex: 21123
+{
+	// Fields
+	public bool active; // 0x18
+	public BoolParameter enabled; // 0x20
+	internal ReadOnlyCollection<ParameterOverride> parameters; // 0x28
+
+	// Methods
+
+	// RVA: 0xA577E98 Offset: 0xA573E98 VA: 0xA577E98
+	private void OnEnable() { }
+
+	// RVA: 0xA578950 Offset: 0xA574950 VA: 0xA578950
+	private void OnDisable() { }
+
+	// RVA: 0xA578E30 Offset: 0xA574E30 VA: 0xA578E30
+	public void SetAllOverridesTo(bool state, bool excludeEnabled = True) { }
+
+	// RVA: 0xA5791AC Offset: 0xA5751AC VA: 0xA5791AC Slot: 4
+	public virtual bool IsEnabledAndSupported(PostProcessRenderContext context) { }
+
+	// RVA: 0xA5791C8 Offset: 0xA5751C8 VA: 0xA5791C8
+	public int GetHash() { }
+
+	// RVA: 0xA5796DC Offset: 0xA5756DC VA: 0xA5796DC
+	public void .ctor() { }
+
+	[CompilerGenerated]
+	// RVA: 0xA579794 Offset: 0xA575794 VA: 0xA579794
+	private ParameterOverride <OnEnable>b__3_2(FieldInfo t) { }
+}

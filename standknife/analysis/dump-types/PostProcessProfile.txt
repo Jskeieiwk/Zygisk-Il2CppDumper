@@ -1,0 +1,68 @@
+// Namespace: UnityEngine.Rendering.PostProcessing
+public sealed class PostProcessProfile : ScriptableObject // TypeDefIndex: 21137
+{
+	// Fields
+	[Tooltip("A list of all settings currently stored in this profile.")]
+	public List<PostProcessEffectSettings> settings; // 0x18
+	public bool isDirty; // 0x20
+
+	// Methods
+
+	// RVA: 0xA588CC0 Offset: 0xA584CC0 VA: 0xA588CC0
+	private void OnEnable() { }
+
+	// RVA: -1 Offset: -1
+	public T AddSettings<T>() { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80F17A0 Offset: 0x80ED7A0 VA: 0x80F17A0
+	|-PostProcessProfile.AddSettings<object>
+	*/
+
+	// RVA: 0xA588EB8 Offset: 0xA584EB8 VA: 0xA588EB8
+	public PostProcessEffectSettings AddSettings(Type type) { }
+
+	// RVA: 0xA589524 Offset: 0xA585524 VA: 0xA589524
+	public PostProcessEffectSettings AddSettings(PostProcessEffectSettings effect) { }
+
+	// RVA: -1 Offset: -1
+	public void RemoveSettings<T>() { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80F1C38 Offset: 0x80EDC38 VA: 0x80F1C38
+	|-PostProcessProfile.RemoveSettings<object>
+	*/
+
+	// RVA: 0xA5896D0 Offset: 0xA5856D0 VA: 0xA5896D0
+	public void RemoveSettings(Type type) { }
+
+	// RVA: -1 Offset: -1
+	public bool HasSettings<T>() { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80F1B78 Offset: 0x80EDB78 VA: 0x80F1B78
+	|-PostProcessProfile.HasSettings<object>
+	*/
+
+	// RVA: 0xA589270 Offset: 0xA585270 VA: 0xA589270
+	public bool HasSettings(Type type) { }
+
+	// RVA: -1 Offset: -1
+	public T GetSetting<T>() { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80F18A8 Offset: 0x80ED8A8 VA: 0x80F18A8
+	|-PostProcessProfile.GetSetting<object>
+	*/
+
+	// RVA: -1 Offset: -1
+	public bool TryGetSettings<T>(out T outSetting) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80F1CF8 Offset: 0x80EDCF8 VA: 0x80F1CF8
+	|-PostProcessProfile.TryGetSettings<object>
+	*/
+
+	// RVA: 0xA589944 Offset: 0xA585944 VA: 0xA589944
+	public void .ctor() { }
+}

@@ -1,0 +1,34 @@
+// Namespace: 
+private sealed class GrenadeMollyManager.<>c // TypeDefIndex: 5581
+{
+	// Fields
+	public static readonly GrenadeMollyManager.<>c <>9; // 0x0
+	public static Func<GrenadeParameters, ACFBEBGADFDGEBG> <>9__18_0; // 0x8
+	public static Func<GrenadeParameters, ACFBEBGADFDGEBG> <>9__18_2; // 0x10
+	public static Func<GrenadeParameters, GrenadeEffectParameters> <>9__18_3; // 0x18
+	public static Func<KeyValuePair<ACFBEBGADFDGEBG, GrenadeEffectParameters>, bool> <>9__18_4; // 0x20
+	public static Func<KeyValuePair<ACFBEBGADFDGEBG, GrenadeEffectParameters>, ACFBEBGADFDGEBG> <>9__18_5; // 0x28
+
+	// Methods
+
+	// RVA: 0x4821EEC Offset: 0x481DEEC VA: 0x4821EEC
+	internal GrenadeEffectParameters BHAFFGGEEGAGBCD(GrenadeParameters p) { }
+
+	// RVA: 0x4821FF4 Offset: 0x481DFF4 VA: 0x4821FF4
+	internal bool AAHEACCBFEEAHFF(KeyValuePair<ACFBEBGADFDGEBG, GrenadeEffectParameters> p) { }
+
+	// RVA: 0x4822098 Offset: 0x481E098 VA: 0x4822098
+	public void .ctor() { }
+
+	// RVA: 0x48220A0 Offset: 0x481E0A0 VA: 0x48220A0
+	internal ACFBEBGADFDGEBG GDGBCCECDBGHBCH(KeyValuePair<ACFBEBGADFDGEBG, GrenadeEffectParameters> p) { }
+
+	// RVA: 0x482212C Offset: 0x481E12C VA: 0x482212C
+	internal ACFBEBGADFDGEBG CFEDBDBAGCHAHCE(GrenadeParameters x) { }
+
+	// RVA: 0x4822144 Offset: 0x481E144 VA: 0x4822144
+	internal ACFBEBGADFDGEBG CCECDHAHGADAGDE(GrenadeParameters p) { }
+
+	// RVA: 0x482215C Offset: 0x481E15C VA: 0x482215C
+	private static void .cctor() { }
+}

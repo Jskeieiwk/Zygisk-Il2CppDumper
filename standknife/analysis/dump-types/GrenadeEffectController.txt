@@ -1,0 +1,44 @@
+// Namespace: Axlebolt.Standoff.Inventory.Grenade
+public abstract class GrenadeEffectController : View // TypeDefIndex: 6249
+{
+	// Fields
+	protected ParticleSystem BDDDDHCCDBEHAHH; // 0x28
+	private RawImage CEAADGEDGGHDGEE; // 0x30
+	private GrenadeEffectParameters EGGDGDEHEBAAHCH; // 0x38
+	private RectTransform EEAGCEADHCHCHCH; // 0x40
+	private GrenadeEffectEmitter BCHDDCCDHGDFFFD; // 0x48
+	private ACFBEBGADFDGEBG EDGDHAFCHECCAEE; // 0x50
+
+	// Properties
+	public RawImage CBBHBAABHDGGAFC { get; }
+	public GrenadeEffectParameters BGCFAFBAEEAAEFC { get; }
+
+	// Methods
+
+	// RVA: 0x4D5521C Offset: 0x4D5121C VA: 0x4D5521C Slot: 25
+	public virtual void Init(GrenadeEffectEmitter ABEFDAGAHDHGFHH, ACFBEBGADFDGEBG HGEAFDEDCHEFHBE, GrenadeEffectParameters FAFDCHEHBCDAHHC) { }
+
+	// RVA: -1 Offset: -1 Slot: 26
+	protected abstract void FEFCFFCDDCGDDEB(Vector3 BEAFEDEABADDAAB);
+
+	// RVA: 0x4D55658 Offset: 0x4D51658 VA: 0x4D55658 Slot: 27
+	public virtual void Done() { }
+
+	// RVA: 0x4D556A0 Offset: 0x4D516A0 VA: 0x4D556A0
+	protected void .ctor() { }
+
+	// RVA: 0x4D556A8 Offset: 0x4D516A8 VA: 0x4D556A8
+	public void Play(Vector3 BEAFEDEABADDAAB) { }
+
+	// RVA: 0x4D55860 Offset: 0x4D51860 VA: 0x4D55860
+	public RawImage get_RawImage() { }
+
+	// RVA: 0x4D55868 Offset: 0x4D51868 VA: 0x4D55868
+	public void BindParticle(ParticleSystem HEHGCAHEHEGCGBC) { }
+
+	// RVA: 0x4D55870 Offset: 0x4D51870 VA: 0x4D55870 Slot: 28
+	protected virtual void OnDestroy() { }
+
+	// RVA: 0x4D558A4 Offset: 0x4D518A4 VA: 0x4D558A4
+	public GrenadeEffectParameters get_Parameters() { }
+}

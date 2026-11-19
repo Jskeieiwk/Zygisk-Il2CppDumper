@@ -1,0 +1,186 @@
+// Namespace: Axlebolt.Standoff.Events.NewYear25.Scripts.GameControllerLogic.FeatureDefinitions
+public class GrenadeSnowballSoundFeatureDefinition : FeatureDefinition // TypeDefIndex: 5849
+{
+	// Fields
+	[SerializeField]
+	private EventReference _snowballExplosionSoundEffectRef; // 0x18
+	[CompilerGenerated]
+	private readonly Type[] <EGBGHEBDHEAAGCG>k__BackingField; // 0x28
+	[CompilerGenerated]
+	private readonly Type[] <EBACEGHGAAFGECH>k__BackingField; // 0x30
+	[CompilerGenerated]
+	private readonly Type[] <GFHHHFCCFCBHCGE>k__BackingField; // 0x38
+
+	// Properties
+	public GUID SnowballExplosionSoundEffect { get; }
+	public override Type[] RequiredDefaultContentViews { get; }
+	public override Type[] RequiredSafeContentViews { get; }
+	public override Type[] RequiredNotificationViews { get; }
+
+	// Methods
+
+	// RVA: 0x49F65A0 Offset: 0x49F25A0 VA: 0x49F65A0
+	public GUID FAHDHFGDACAHEEA() { }
+
+	// RVA: 0x49F65AC Offset: 0x49F25AC VA: 0x49F65AC
+	public GUID DFGFECGHHHCDFBG() { }
+
+	// RVA: 0x49F65B8 Offset: 0x49F25B8 VA: 0x49F65B8
+	public GUID CAAEHFHDHCEDHCF() { }
+
+	// RVA: 0x49F65C4 Offset: 0x49F25C4 VA: 0x49F65C4
+	public GUID ACGHAEFBGCHDBBE() { }
+
+	// RVA: 0x49F65D0 Offset: 0x49F25D0 VA: 0x49F65D0
+	public GUID AHDAAGBDFHEHFDF() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49F65DC Offset: 0x49F25DC VA: 0x49F65DC Slot: 6
+	public override Type[] get_RequiredNotificationViews() { }
+
+	// RVA: 0x49F65E4 Offset: 0x49F25E4 VA: 0x49F65E4
+	public GUID DDGAFECEGBABDCG() { }
+
+	// RVA: 0x49F65F0 Offset: 0x49F25F0 VA: 0x49F65F0
+	public GUID DDCFBGEFCFECCBE() { }
+
+	// RVA: 0x49F65FC Offset: 0x49F25FC VA: 0x49F65FC
+	public GUID GHCDHHHACCDFGCD() { }
+
+	// RVA: 0x49F6608 Offset: 0x49F2608 VA: 0x49F6608
+	public GUID CAFACDHEDCAFDDC() { }
+
+	// RVA: 0x49F6614 Offset: 0x49F2614 VA: 0x49F6614
+	public GUID ADFDHDDHCDBGFEF() { }
+
+	// RVA: 0x49F6620 Offset: 0x49F2620 VA: 0x49F6620
+	public GUID CDGFFEGGCCFFGCH() { }
+
+	// RVA: 0x49F662C Offset: 0x49F262C VA: 0x49F662C
+	public GUID GCAHHFGGHHBCGHC() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49F6638 Offset: 0x49F2638 VA: 0x49F6638 Slot: 4
+	public override Type[] get_RequiredDefaultContentViews() { }
+
+	// RVA: 0x49F6640 Offset: 0x49F2640 VA: 0x49F6640
+	public GUID FCFDFAAHHEGHAHC() { }
+
+	// RVA: 0x49F664C Offset: 0x49F264C VA: 0x49F664C
+	public GUID BEEDGEBACHFDABF() { }
+
+	// RVA: 0x49F6658 Offset: 0x49F2658 VA: 0x49F6658
+	public GUID GCGCGCCCCFEFFDH() { }
+
+	// RVA: 0x49F6664 Offset: 0x49F2664 VA: 0x49F6664
+	public GUID GHEGGAADAACCGFB() { }
+
+	// RVA: 0x49F6670 Offset: 0x49F2670 VA: 0x49F6670
+	public GUID get_SnowballExplosionSoundEffect() { }
+
+	// RVA: 0x49F667C Offset: 0x49F267C VA: 0x49F667C
+	public GUID EBDHABFFAGAEEAG() { }
+
+	// RVA: 0x49F6688 Offset: 0x49F2688 VA: 0x49F6688
+	public GUID CAEFHGCDGGFFCHC() { }
+
+	// RVA: 0x49F6694 Offset: 0x49F2694 VA: 0x49F6694
+	public GUID AGEEFBBHEBFCBGG() { }
+
+	// RVA: 0x49F66A0 Offset: 0x49F26A0 VA: 0x49F66A0
+	public GUID EACECBFGDHHACEG() { }
+
+	// RVA: 0x49F66AC Offset: 0x49F26AC VA: 0x49F66AC
+	public GUID GFBBHEHDDACFFHA() { }
+
+	// RVA: 0x49F66B8 Offset: 0x49F26B8 VA: 0x49F66B8
+	public GUID EBDBABBEBFHHCDF() { }
+
+	[CompilerGenerated]
+	// RVA: 0x49F66C4 Offset: 0x49F26C4 VA: 0x49F66C4 Slot: 5
+	public override Type[] get_RequiredSafeContentViews() { }
+
+	// RVA: 0x49F66CC Offset: 0x49F26CC VA: 0x49F66CC
+	public GUID EDABEDGDFDFHGHH() { }
+
+	// RVA: 0x49F66D8 Offset: 0x49F26D8 VA: 0x49F66D8
+	public void .ctor() { }
+
+	// RVA: 0x49F67BC Offset: 0x49F27BC VA: 0x49F67BC
+	public GUID BFCFDAFFEHBGBDE() { }
+
+	// RVA: 0x49F67C8 Offset: 0x49F27C8 VA: 0x49F67C8
+	public GUID EHEGABDEADAGCGH() { }
+
+	// RVA: 0x49F67D4 Offset: 0x49F27D4 VA: 0x49F67D4
+	public GUID CFDHCDCCCABDFCB() { }
+
+	// RVA: 0x49F67E0 Offset: 0x49F27E0 VA: 0x49F67E0
+	public GUID EHBAGBEAEBCFBAC() { }
+
+	// RVA: 0x49F67EC Offset: 0x49F27EC VA: 0x49F67EC
+	public GUID HECFHEBECEGFDHH() { }
+
+	// RVA: 0x49F67F8 Offset: 0x49F27F8 VA: 0x49F67F8
+	public GUID FCFBHAACDBCGGHA() { }
+
+	// RVA: 0x49F6804 Offset: 0x49F2804 VA: 0x49F6804
+	public GUID HEHCDGCGCEBGEFC() { }
+
+	// RVA: 0x49F6810 Offset: 0x49F2810 VA: 0x49F6810
+	public GUID BGHHDCFGDFDAEHH() { }
+
+	// RVA: 0x49F681C Offset: 0x49F281C VA: 0x49F681C
+	public GUID BBBHAFFCEHHABHG() { }
+
+	// RVA: 0x49F6828 Offset: 0x49F2828 VA: 0x49F6828
+	public GUID AAEBDBDEGDDAAGB() { }
+
+	// RVA: 0x49F6834 Offset: 0x49F2834 VA: 0x49F6834
+	public GUID EGCFGEHBCDGBHCE() { }
+
+	// RVA: 0x49F6840 Offset: 0x49F2840 VA: 0x49F6840
+	public GUID HBHHEGBDEFDAGBE() { }
+
+	// RVA: 0x49F684C Offset: 0x49F284C VA: 0x49F684C
+	public GUID BFHAEADFEEDDACD() { }
+
+	// RVA: 0x49F6858 Offset: 0x49F2858 VA: 0x49F6858
+	public GUID CACGAABHHHCCGEH() { }
+
+	// RVA: 0x49F6864 Offset: 0x49F2864 VA: 0x49F6864
+	public GUID HDGDDAAGABCBGCG() { }
+
+	// RVA: 0x49F6870 Offset: 0x49F2870 VA: 0x49F6870
+	public GUID CEBGBAGGHHHDDAD() { }
+
+	// RVA: 0x49F687C Offset: 0x49F287C VA: 0x49F687C
+	public GUID DHABAGBEDHEEEEC() { }
+
+	// RVA: 0x49F6888 Offset: 0x49F2888 VA: 0x49F6888
+	public GUID GCDFGCHFEBBAFHC() { }
+
+	// RVA: 0x49F6894 Offset: 0x49F2894 VA: 0x49F6894
+	public GUID EDGHAGBGGCDHGFG() { }
+
+	// RVA: 0x49F68A0 Offset: 0x49F28A0 VA: 0x49F68A0
+	public GUID CFHCBHBGDHDABDA() { }
+
+	// RVA: 0x49F68AC Offset: 0x49F28AC VA: 0x49F68AC Slot: 7
+	public override EEABBFCDCDHEFEH GetExecutor() { }
+
+	// RVA: 0x49F6950 Offset: 0x49F2950 VA: 0x49F6950
+	public GUID HFBAADEHADDFFDC() { }
+
+	// RVA: 0x49F695C Offset: 0x49F295C VA: 0x49F695C
+	public GUID DGHDHFFAHEEBEFF() { }
+
+	// RVA: 0x49F6968 Offset: 0x49F2968 VA: 0x49F6968
+	public GUID ECEHHEDBDGHBHHG() { }
+
+	// RVA: 0x49F6974 Offset: 0x49F2974 VA: 0x49F6974
+	public GUID GCGHCBEFACHDFBF() { }
+
+	// RVA: 0x49F6980 Offset: 0x49F2980 VA: 0x49F6980
+	public GUID GAHCACCDDHBDAFH() { }
+}

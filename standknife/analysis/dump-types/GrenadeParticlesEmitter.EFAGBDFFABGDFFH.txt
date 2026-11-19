@@ -1,0 +1,41 @@
+// Namespace: 
+private sealed class GrenadeParticlesEmitter.EFAGBDFFABGDFFH : IEnumerator<object>, IEnumerator, IDisposable // TypeDefIndex: 4049
+{
+	// Fields
+	private int <>1__state; // 0x10
+	private object <>2__current; // 0x18
+	public GrenadeParticlesEmitter <>4__this; // 0x20
+	public ACFBEBGADFDGEBG weaponId; // 0x28
+	public ParticleSystem particles; // 0x30
+	public IReadOnlyDictionary<ACFBEBGADFDGEBG, HashSet<ParticleSystem>> instances; // 0x38
+	public IReadOnlyDictionary<ACFBEBGADFDGEBG, Queue<ParticleSystem>> pool; // 0x40
+
+	// Properties
+	private object System.Collections.Generic.IEnumerator<System.Object>.Current { get; }
+	private object System.Collections.IEnumerator.Current { get; }
+
+	// Methods
+
+	[DebuggerHidden]
+	// RVA: 0x3DB0BE4 Offset: 0x3DACBE4 VA: 0x3DB0BE4
+	public void .ctor(int <>1__state) { }
+
+	[DebuggerHidden]
+	// RVA: 0x3DB7824 Offset: 0x3DB3824 VA: 0x3DB7824 Slot: 5
+	private void System.IDisposable.Dispose() { }
+
+	// RVA: 0x3DB7828 Offset: 0x3DB3828 VA: 0x3DB7828 Slot: 6
+	private bool MoveNext() { }
+
+	[DebuggerHidden]
+	// RVA: 0x3DB7B9C Offset: 0x3DB3B9C VA: 0x3DB7B9C Slot: 4
+	private object System.Collections.Generic.IEnumerator<System.Object>.get_Current() { }
+
+	[DebuggerHidden]
+	// RVA: 0x3DB7BA4 Offset: 0x3DB3BA4 VA: 0x3DB7BA4 Slot: 8
+	private void System.Collections.IEnumerator.Reset() { }
+
+	[DebuggerHidden]
+	// RVA: 0x3DB7C0C Offset: 0x3DB3C0C VA: 0x3DB7C0C Slot: 7
+	private object System.Collections.IEnumerator.get_Current() { }
+}

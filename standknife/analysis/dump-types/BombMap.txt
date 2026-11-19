@@ -1,0 +1,94 @@
+// Namespace: Axlebolt.Standoff.Inventory.Bomb
+public class BombMap : MonoBehaviour // TypeDefIndex: 6282
+{
+	// Fields
+	public List<MeshRenderer> Displays; // 0x20
+	public MeshRenderer Indicator; // 0x28
+	public MeshRenderer IndicatorLighted; // 0x30
+
+	// Methods
+
+	// RVA: 0x4D8BB7C Offset: 0x4D87B7C VA: 0x4D8BB7C
+	public void HACGGCGABDGDHEC() { }
+
+	// RVA: 0x4D8BDD8 Offset: 0x4D87DD8 VA: 0x4D8BDD8
+	public void HECEDFFAEGBCDGG() { }
+
+	// RVA: 0x4D8C034 Offset: 0x4D88034 VA: 0x4D8C034
+	public void AGAACCEEGGCAEDG() { }
+
+	// RVA: 0x4D8C290 Offset: 0x4D88290 VA: 0x4D8C290
+	public void FBGGBGHBBBBDADH(int HGFGEAGDFFEEHHE) { }
+
+	// RVA: 0x4D8C52C Offset: 0x4D8852C VA: 0x4D8C52C
+	public void SetActivated() { }
+
+	// RVA: 0x4D8C8B4 Offset: 0x4D888B4 VA: 0x4D8C8B4
+	public void SetLayer(int HGFGEAGDFFEEHHE) { }
+
+	// RVA: 0x4D8CB50 Offset: 0x4D88B50 VA: 0x4D8CB50
+	public void CCDDEFFCACFGACE(int HGFGEAGDFFEEHHE) { }
+
+	// RVA: 0x4D8CDEC Offset: 0x4D88DEC VA: 0x4D8CDEC
+	public void CECHDGAFBHEHDGG() { }
+
+	// RVA: 0x4D8D170 Offset: 0x4D89170 VA: 0x4D8D170
+	public void FGDAECHEEEDBHAE() { }
+
+	// RVA: 0x4D8D3CC Offset: 0x4D893CC VA: 0x4D8D3CC
+	public void FFFAFEHGGCGEDHB() { }
+
+	// RVA: 0x4D8D628 Offset: 0x4D89628 VA: 0x4D8D628
+	public void GDGCDEAFBBEGHHH(int HGFGEAGDFFEEHHE) { }
+
+	// RVA: 0x4D8D8C4 Offset: 0x4D898C4 VA: 0x4D8D8C4
+	public void AFEFHCAABHGDEEE() { }
+
+	// RVA: 0x4D8D9F0 Offset: 0x4D899F0 VA: 0x4D8D9F0
+	public void CABGCFBAABFADFG() { }
+
+	// RVA: 0x4D8DB1C Offset: 0x4D89B1C VA: 0x4D8DB1C
+	public void EDBDHCHCBEAGCGF(int HGFGEAGDFFEEHHE) { }
+
+	// RVA: 0x4D8DDB8 Offset: 0x4D89DB8 VA: 0x4D8DDB8
+	public void HFEHFCBABDGGGEC(int HGFGEAGDFFEEHHE) { }
+
+	// RVA: 0x4D8E054 Offset: 0x4D8A054 VA: 0x4D8E054
+	public void HCDFEACHBHDFADC() { }
+
+	// RVA: 0x4D8E2B0 Offset: 0x4D8A2B0 VA: 0x4D8E2B0
+	public void BBDEFDHADBHBCHC(int HGFGEAGDFFEEHHE) { }
+
+	// RVA: 0x4D8E54C Offset: 0x4D8A54C VA: 0x4D8E54C
+	public void .ctor() { }
+
+	// RVA: 0x4D8E554 Offset: 0x4D8A554 VA: 0x4D8E554
+	public void GDADGBHAHBEGGDE() { }
+
+	// RVA: 0x4D8E680 Offset: 0x4D8A680 VA: 0x4D8E680
+	public void AHBBDECDBEBEFDE(int HGFGEAGDFFEEHHE) { }
+
+	// RVA: 0x4D8E91C Offset: 0x4D8A91C VA: 0x4D8E91C
+	public void GEEGBGHFHFBHFBB(int HGFGEAGDFFEEHHE) { }
+
+	// RVA: 0x4D8CF14 Offset: 0x4D88F14 VA: 0x4D8CF14
+	public void CBEDDFAHEHAGFBA() { }
+
+	// RVA: 0x4D8EBB8 Offset: 0x4D8ABB8 VA: 0x4D8EBB8
+	public void BACBHFEADEGGEDD() { }
+
+	// RVA: 0x4D8EE14 Offset: 0x4D8AE14 VA: 0x4D8EE14
+	public void BHDCBFFEGGFDFAC() { }
+
+	// RVA: 0x4D8C658 Offset: 0x4D88658 VA: 0x4D8C658
+	public void DisableParts() { }
+
+	// RVA: 0x4D8F070 Offset: 0x4D8B070 VA: 0x4D8F070
+	public void BBFBDGHFCEDHGEG(int HGFGEAGDFFEEHHE) { }
+
+	// RVA: 0x4D8F30C Offset: 0x4D8B30C VA: 0x4D8F30C
+	public void GFHEEDEGGDEAADD(int HGFGEAGDFFEEHHE) { }
+
+	// RVA: 0x4D8F5A8 Offset: 0x4D8B5A8 VA: 0x4D8F5A8
+	public void DCEHCHCFHEGCDFG() { }
+}

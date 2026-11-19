@@ -1,0 +1,134 @@
+// Namespace: 
+private class WeaponDropManager.AGHEDCDGDCDGCDH : IEqualityComparer<WeaponDropController> // TypeDefIndex: 7857
+{
+	// Methods
+
+	// RVA: 0x58FF18C Offset: 0x58FB18C VA: 0x58FF18C Slot: 6
+	public int FACHAHEHAGFDDCB(WeaponDropController FGDBEEHBEDCGCFA) { }
+
+	// RVA: 0x58FF1DC Offset: 0x58FB1DC VA: 0x58FF1DC Slot: 7
+	public int HEBHEDFHDBBHCBE(WeaponDropController FGDBEEHBEDCGCFA) { }
+
+	// RVA: 0x58FF22C Offset: 0x58FB22C VA: 0x58FF22C Slot: 8
+	public bool GCCCBCGHDGCAECC(WeaponDropController DECGCAAADAAFHHE, WeaponDropController HFHBEFADAHAFAHH) { }
+
+	// RVA: 0x58FF388 Offset: 0x58FB388 VA: 0x58FF388 Slot: 9
+	public bool DDFAFBGEAEDGAEA(WeaponDropController DECGCAAADAAFHHE, WeaponDropController HFHBEFADAHAFAHH) { }
+
+	// RVA: 0x58FF4E4 Offset: 0x58FB4E4 VA: 0x58FF4E4 Slot: 10
+	public bool HGBDAEFAAFGDCBD(WeaponDropController DECGCAAADAAFHHE, WeaponDropController HFHBEFADAHAFAHH) { }
+
+	// RVA: 0x58FF638 Offset: 0x58FB638 VA: 0x58FF638 Slot: 11
+	public int GCDHCCEGGECHAEA(WeaponDropController FGDBEEHBEDCGCFA) { }
+
+	// RVA: 0x58FF688 Offset: 0x58FB688 VA: 0x58FF688 Slot: 12
+	public int HHDGGCAHBHAGGFF(WeaponDropController FGDBEEHBEDCGCFA) { }
+
+	// RVA: 0x58FF6D8 Offset: 0x58FB6D8 VA: 0x58FF6D8 Slot: 13
+	public int EBFDDDEBHBFEAEG(WeaponDropController FGDBEEHBEDCGCFA) { }
+
+	// RVA: 0x58FF728 Offset: 0x58FB728 VA: 0x58FF728 Slot: 14
+	public bool CBCCCFCACBGEHAE(WeaponDropController DECGCAAADAAFHHE, WeaponDropController HFHBEFADAHAFAHH) { }
+
+	// RVA: 0x58FF87C Offset: 0x58FB87C VA: 0x58FF87C Slot: 5
+	public int GetHashCode(WeaponDropController FGDBEEHBEDCGCFA) { }
+
+	// RVA: 0x58FF8CC Offset: 0x58FB8CC VA: 0x58FF8CC Slot: 15
+	public bool FHCAAAHFCABGAGF(WeaponDropController DECGCAAADAAFHHE, WeaponDropController HFHBEFADAHAFAHH) { }
+
+	// RVA: 0x58FFA28 Offset: 0x58FBA28 VA: 0x58FFA28 Slot: 16
+	public int GBBDHHDBHFEDFHE(WeaponDropController FGDBEEHBEDCGCFA) { }
+
+	// RVA: 0x58FFA78 Offset: 0x58FBA78 VA: 0x58FFA78 Slot: 17
+	public bool EEHGCGAGFBADDEA(WeaponDropController DECGCAAADAAFHHE, WeaponDropController HFHBEFADAHAFAHH) { }
+
+	// RVA: 0x58FFBD4 Offset: 0x58FBBD4 VA: 0x58FFBD4 Slot: 18
+	public bool GFABDEHHFBBDEEG(WeaponDropController DECGCAAADAAFHHE, WeaponDropController HFHBEFADAHAFAHH) { }
+
+	// RVA: 0x58FFD28 Offset: 0x58FBD28 VA: 0x58FFD28 Slot: 19
+	public int FBGGGGHDBFCCGBC(WeaponDropController FGDBEEHBEDCGCFA) { }
+
+	// RVA: 0x58FFD78 Offset: 0x58FBD78 VA: 0x58FFD78 Slot: 20
+	public bool HEGGFFHBBEHBDCD(WeaponDropController DECGCAAADAAFHHE, WeaponDropController HFHBEFADAHAFAHH) { }
+
+	// RVA: 0x58FFED4 Offset: 0x58FBED4 VA: 0x58FFED4 Slot: 21
+	public bool HAGGDFHBCFBBHAH(WeaponDropController DECGCAAADAAFHHE, WeaponDropController HFHBEFADAHAFAHH) { }
+
+	// RVA: 0x5900028 Offset: 0x58FC028 VA: 0x5900028 Slot: 22
+	public bool FGAGCFBBAAFCBEH(WeaponDropController DECGCAAADAAFHHE, WeaponDropController HFHBEFADAHAFAHH) { }
+
+	// RVA: 0x590017C Offset: 0x58FC17C VA: 0x590017C Slot: 23
+	public int FABGCCDFBEHAGEE(WeaponDropController FGDBEEHBEDCGCFA) { }
+
+	// RVA: 0x59001CC Offset: 0x58FC1CC VA: 0x59001CC Slot: 24
+	public int BGGEBGFBFDFEEDE(WeaponDropController FGDBEEHBEDCGCFA) { }
+
+	// RVA: 0x590021C Offset: 0x58FC21C VA: 0x590021C Slot: 25
+	public int FDADGDHGBAAEHBH(WeaponDropController FGDBEEHBEDCGCFA) { }
+
+	// RVA: 0x590026C Offset: 0x58FC26C VA: 0x590026C Slot: 26
+	public int EAGEGABGCBGEBDG(WeaponDropController FGDBEEHBEDCGCFA) { }
+
+	// RVA: 0x59002BC Offset: 0x58FC2BC VA: 0x59002BC Slot: 27
+	public int EACDCGAGHBCFDFC(WeaponDropController FGDBEEHBEDCGCFA) { }
+
+	// RVA: 0x590030C Offset: 0x58FC30C VA: 0x590030C Slot: 28
+	public int HGBAEFFHDAABEEH(WeaponDropController FGDBEEHBEDCGCFA) { }
+
+	// RVA: 0x590035C Offset: 0x58FC35C VA: 0x590035C Slot: 29
+	public bool CGGGDEHHAFAAGEE(WeaponDropController DECGCAAADAAFHHE, WeaponDropController HFHBEFADAHAFAHH) { }
+
+	// RVA: 0x59004B0 Offset: 0x58FC4B0 VA: 0x59004B0 Slot: 30
+	public int DFHFEGEBFDHEFAD(WeaponDropController FGDBEEHBEDCGCFA) { }
+
+	// RVA: 0x5900500 Offset: 0x58FC500 VA: 0x5900500 Slot: 31
+	public int HABDFDCHCBCDACD(WeaponDropController FGDBEEHBEDCGCFA) { }
+
+	// RVA: 0x5900550 Offset: 0x58FC550 VA: 0x5900550 Slot: 32
+	public int DFBBHEHECGCEBFC(WeaponDropController FGDBEEHBEDCGCFA) { }
+
+	// RVA: 0x59005A0 Offset: 0x58FC5A0 VA: 0x59005A0 Slot: 33
+	public bool AGAHCFEAACDFEAF(WeaponDropController DECGCAAADAAFHHE, WeaponDropController HFHBEFADAHAFAHH) { }
+
+	// RVA: 0x59006FC Offset: 0x58FC6FC VA: 0x59006FC Slot: 34
+	public int CGGCFDFECBHBACD(WeaponDropController FGDBEEHBEDCGCFA) { }
+
+	// RVA: 0x590074C Offset: 0x58FC74C VA: 0x590074C Slot: 35
+	public bool FBCEHHGCGHBBHGB(WeaponDropController DECGCAAADAAFHHE, WeaponDropController HFHBEFADAHAFAHH) { }
+
+	// RVA: 0x59008A0 Offset: 0x58FC8A0 VA: 0x59008A0 Slot: 36
+	public bool HBHDHBABEAACCFF(WeaponDropController DECGCAAADAAFHHE, WeaponDropController HFHBEFADAHAFAHH) { }
+
+	// RVA: 0x59009F4 Offset: 0x58FC9F4 VA: 0x59009F4 Slot: 37
+	public int CDAEEBDFDCDCEDH(WeaponDropController FGDBEEHBEDCGCFA) { }
+
+	// RVA: 0x5900A44 Offset: 0x58FCA44 VA: 0x5900A44 Slot: 38
+	public bool DCEECHBACDBGDCE(WeaponDropController DECGCAAADAAFHHE, WeaponDropController HFHBEFADAHAFAHH) { }
+
+	// RVA: 0x5900BA0 Offset: 0x58FCBA0 VA: 0x5900BA0 Slot: 39
+	public bool HBBEEBCFDEDBBBA(WeaponDropController DECGCAAADAAFHHE, WeaponDropController HFHBEFADAHAFAHH) { }
+
+	// RVA: 0x5900CFC Offset: 0x58FCCFC VA: 0x5900CFC Slot: 40
+	public int DECABFGFGBCDACE(WeaponDropController FGDBEEHBEDCGCFA) { }
+
+	// RVA: 0x5900D4C Offset: 0x58FCD4C VA: 0x5900D4C Slot: 41
+	public int DBBDDDGBBAFGGAG(WeaponDropController FGDBEEHBEDCGCFA) { }
+
+	// RVA: 0x5900D9C Offset: 0x58FCD9C VA: 0x5900D9C Slot: 42
+	public int DACBDFEACCEFDEC(WeaponDropController FGDBEEHBEDCGCFA) { }
+
+	// RVA: 0x5900DEC Offset: 0x58FCDEC VA: 0x5900DEC Slot: 43
+	public int CFHDAEFHHGFCGBG(WeaponDropController FGDBEEHBEDCGCFA) { }
+
+	// RVA: 0x5900E3C Offset: 0x58FCE3C VA: 0x5900E3C Slot: 44
+	public int BEFHGCFGFGCAGHC(WeaponDropController FGDBEEHBEDCGCFA) { }
+
+	// RVA: 0x5900E8C Offset: 0x58FCE8C VA: 0x5900E8C Slot: 45
+	public int GFBDDBBCAGDACFH(WeaponDropController FGDBEEHBEDCGCFA) { }
+
+	// RVA: 0x5900EDC Offset: 0x58FCEDC VA: 0x5900EDC Slot: 4
+	public bool Equals(WeaponDropController DECGCAAADAAFHHE, WeaponDropController HFHBEFADAHAFAHH) { }
+
+	// RVA: 0x58FAEB0 Offset: 0x58F6EB0 VA: 0x58FAEB0
+	public void .ctor() { }
+}

@@ -1,0 +1,11 @@
+// Namespace: UnityEngine.Rendering.PostProcessing
+internal struct PostProcessEventComparer : IEqualityComparer<PostProcessEvent> // TypeDefIndex: 21125
+{
+	// Methods
+
+	// RVA: 0xA579F9C Offset: 0xA575F9C VA: 0xA579F9C Slot: 4
+	public bool Equals(PostProcessEvent x, PostProcessEvent y) { }
+
+	// RVA: 0xA579FA8 Offset: 0xA575FA8 VA: 0xA579FA8 Slot: 5
+	public int GetHashCode(PostProcessEvent obj) { }
+}

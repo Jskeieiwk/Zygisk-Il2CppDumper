@@ -1,0 +1,14 @@
+// Namespace: Axlebolt.Standoff.Inventory.Bomb
+public class PlantedBombOcclusionController : ObjectOcclusionController // TypeDefIndex: 2684
+{
+	// Fields
+	private readonly Vector3[] HDBEHHECDDHFFGE; // 0x50
+
+	// Methods
+
+	// RVA: 0x32570EC Offset: 0x32530EC VA: 0x32570EC Slot: 12
+	public override Vector3[] GetRaycastHitPoints(Vector3 CAFDCCHEDHDGDAD) { }
+
+	// RVA: 0x32572D4 Offset: 0x32532D4 VA: 0x32572D4
+	public void .ctor() { }
+}

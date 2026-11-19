@@ -1,0 +1,57 @@
+public abstract class ParameterOverride // TypeDefIndex: 21104
+{
+	// Fields
+	public bool overrideState; // 0x10
+
+	// Methods
+
+	// RVA: -1 Offset: -1 Slot: 4
+	internal abstract void Interp(ParameterOverride from, ParameterOverride to, float t);
+
+	// RVA: -1 Offset: -1 Slot: 5
+	public abstract int GetHash();
+
+	// RVA: -1 Offset: -1
+	public T GetValue<T>() { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80E51F4 Offset: 0x80E11F4 VA: 0x80E51F4
+	|-ParameterOverride.GetValue<bool>
+	|
+	|-RVA: 0x80E52BC Offset: 0x80E12BC VA: 0x80E52BC
+	|-ParameterOverride.GetValue<Color>
+	|
+	|-RVA: 0x80E5388 Offset: 0x80E1388 VA: 0x80E5388
+	|-ParameterOverride.GetValue<int>
+	|
+	|-RVA: 0x80E5450 Offset: 0x80E1450 VA: 0x80E5450
+	|-ParameterOverride.GetValue<Int32Enum>
+	|
+	|-RVA: 0x80E5518 Offset: 0x80E1518 VA: 0x80E5518
+	|-ParameterOverride.GetValue<object>
+	|
+	|-RVA: 0x80E55E0 Offset: 0x80E15E0 VA: 0x80E55E0
+	|-ParameterOverride.GetValue<float>
+	|
+	|-RVA: 0x80E56A8 Offset: 0x80E16A8 VA: 0x80E56A8
+	|-ParameterOverride.GetValue<Vector2>
+	|
+	|-RVA: 0x80E5770 Offset: 0x80E1770 VA: 0x80E5770
+	|-ParameterOverride.GetValue<Vector4>
+	|
+	|-RVA: 0x80E583C Offset: 0x80E183C VA: 0x80E583C
+	|-ParameterOverride.GetValue<__Il2CppFullySharedGenericType>
+	*/
+
+	// RVA: 0xA5737D0 Offset: 0xA56F7D0 VA: 0xA5737D0 Slot: 6
+	protected internal virtual void OnEnable() { }
+
+	// RVA: 0xA5737D4 Offset: 0xA56F7D4 VA: 0xA5737D4 Slot: 7
+	protected internal virtual void OnDisable() { }
+
+	// RVA: -1 Offset: -1 Slot: 8
+	internal abstract void SetValue(ParameterOverride parameter);
+
+	// RVA: 0xA5737D8 Offset: 0xA56F7D8 VA: 0xA5737D8
+	protected void .ctor() { }
+}

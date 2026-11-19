@@ -1,0 +1,219 @@
+// Namespace: UnityEngine
+public class Component : Object // TypeDefIndex: 17476
+{
+	// Properties
+	public Transform transform { get; }
+	public GameObject gameObject { get; }
+	public string tag { get; set; }
+
+	// Methods
+
+	[FreeFunction("GetTransform", HasExplicitThis = True, ThrowsException = True)]
+	// RVA: 0xA77DBF4 Offset: 0xA779BF4 VA: 0xA77DBF4
+	public Transform get_transform() { }
+
+	[FreeFunction("GetGameObject", HasExplicitThis = True)]
+	// RVA: 0xA77DD70 Offset: 0xA779D70 VA: 0xA77DD70
+	public GameObject get_gameObject() { }
+
+	[TypeInferenceRule(0)]
+	// RVA: 0xA77DEE0 Offset: 0xA779EE0 VA: 0xA77DEE0
+	public Component GetComponent(Type type) { }
+
+	[FreeFunction(HasExplicitThis = True, ThrowsException = True)]
+	// RVA: 0xA77E07C Offset: 0xA77A07C VA: 0xA77E07C
+	internal void GetComponentFastPath(Type type, IntPtr oneFurtherThanResultValue) { }
+
+	// RVA: -1 Offset: -1
+	public T GetComponent<T>() { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x7FF1B50 Offset: 0x7FEDB50 VA: 0x7FF1B50
+	|-Component.GetComponent<object>
+	|
+	|-RVA: 0x7FF1C2C Offset: 0x7FEDC2C VA: 0x7FF1C2C
+	|-Component.GetComponent<__Il2CppFullySharedGenericType>
+	*/
+
+	[TypeInferenceRule(0)]
+	// RVA: 0xA77E21C Offset: 0xA77A21C VA: 0xA77E21C
+	public bool TryGetComponent(Type type, out Component component) { }
+
+	// RVA: -1 Offset: -1
+	public bool TryGetComponent<T>(out T component) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x7FF2D0C Offset: 0x7FEED0C VA: 0x7FF2D0C
+	|-Component.TryGetComponent<object>
+	|
+	|-RVA: 0x7FF2D5C Offset: 0x7FEED5C VA: 0x7FF2D5C
+	|-Component.TryGetComponent<__Il2CppFullySharedGenericType>
+	*/
+
+	[TypeInferenceRule(0)]
+	// RVA: 0xA77E310 Offset: 0xA77A310 VA: 0xA77E310
+	public Component GetComponentInChildren(Type t, bool includeInactive) { }
+
+	// RVA: -1 Offset: -1
+	public T GetComponentInChildren<T>(bool includeInactive) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x7FF2104 Offset: 0x7FEE104 VA: 0x7FF2104
+	|-Component.GetComponentInChildren<object>
+	|
+	|-RVA: 0x7FF221C Offset: 0x7FEE21C VA: 0x7FF221C
+	|-Component.GetComponentInChildren<__Il2CppFullySharedGenericType>
+	*/
+
+	[ExcludeFromDocs]
+	// RVA: -1 Offset: -1
+	public T GetComponentInChildren<T>() { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x7FF1E4C Offset: 0x7FEDE4C VA: 0x7FF1E4C
+	|-Component.GetComponentInChildren<object>
+	|
+	|-RVA: 0x7FF1F58 Offset: 0x7FEDF58 VA: 0x7FF1F58
+	|-Component.GetComponentInChildren<__Il2CppFullySharedGenericType>
+	*/
+
+	// RVA: -1 Offset: -1
+	public T[] GetComponentsInChildren<T>(bool includeInactive) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x7FF2934 Offset: 0x7FEE934 VA: 0x7FF2934
+	|-Component.GetComponentsInChildren<object>
+	|
+	|-RVA: 0x7FF29C8 Offset: 0x7FEE9C8 VA: 0x7FF29C8
+	|-Component.GetComponentsInChildren<__Il2CppFullySharedGenericType>
+	*/
+
+	// RVA: -1 Offset: -1
+	public void GetComponentsInChildren<T>(bool includeInactive, List<T> result) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x7FF2A64 Offset: 0x7FEEA64 VA: 0x7FF2A64
+	|-Component.GetComponentsInChildren<object>
+	|
+	|-RVA: 0x7FF2AC4 Offset: 0x7FEEAC4 VA: 0x7FF2AC4
+	|-Component.GetComponentsInChildren<__Il2CppFullySharedGenericType>
+	*/
+
+	// RVA: -1 Offset: -1
+	public T[] GetComponentsInChildren<T>() { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x7FF28B8 Offset: 0x7FEE8B8 VA: 0x7FF28B8
+	|-Component.GetComponentsInChildren<object>
+	|
+	|-RVA: 0x7FF28F4 Offset: 0x7FEE8F4 VA: 0x7FF28F4
+	|-Component.GetComponentsInChildren<__Il2CppFullySharedGenericType>
+	*/
+
+	// RVA: -1 Offset: -1
+	public void GetComponentsInChildren<T>(List<T> results) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x7FF2984 Offset: 0x7FEE984 VA: 0x7FF2984
+	|-Component.GetComponentsInChildren<object>
+	|
+	|-RVA: 0x7FF2A1C Offset: 0x7FEEA1C VA: 0x7FF2A1C
+	|-Component.GetComponentsInChildren<__Il2CppFullySharedGenericType>
+	*/
+
+	[TypeInferenceRule(0)]
+	// RVA: 0xA77E4E0 Offset: 0xA77A4E0 VA: 0xA77E4E0
+	public Component GetComponentInParent(Type t, bool includeInactive) { }
+
+	// RVA: -1 Offset: -1
+	public T GetComponentInParent<T>() { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x7FF23CC Offset: 0x7FEE3CC VA: 0x7FF23CC
+	|-Component.GetComponentInParent<object>
+	|
+	|-RVA: 0x7FF24D8 Offset: 0x7FEE4D8 VA: 0x7FF24D8
+	|-Component.GetComponentInParent<__Il2CppFullySharedGenericType>
+	*/
+
+	// RVA: -1 Offset: -1
+	public T[] GetComponentsInParent<T>(bool includeInactive) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x7FF2BA4 Offset: 0x7FEEBA4 VA: 0x7FF2BA4
+	|-Component.GetComponentsInParent<object>
+	|
+	|-RVA: 0x7FF2BF4 Offset: 0x7FEEBF4 VA: 0x7FF2BF4
+	|-Component.GetComponentsInParent<__Il2CppFullySharedGenericType>
+	*/
+
+	// RVA: -1 Offset: -1
+	public void GetComponentsInParent<T>(bool includeInactive, List<T> results) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x7FF2C48 Offset: 0x7FEEC48 VA: 0x7FF2C48
+	|-Component.GetComponentsInParent<object>
+	|
+	|-RVA: 0x7FF2CA8 Offset: 0x7FEECA8 VA: 0x7FF2CA8
+	|-Component.GetComponentsInParent<__Il2CppFullySharedGenericType>
+	*/
+
+	// RVA: -1 Offset: -1
+	public T[] GetComponentsInParent<T>() { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x7FF2B28 Offset: 0x7FEEB28 VA: 0x7FF2B28
+	|-Component.GetComponentsInParent<object>
+	|
+	|-RVA: 0x7FF2B64 Offset: 0x7FEEB64 VA: 0x7FF2B64
+	|-Component.GetComponentsInParent<__Il2CppFullySharedGenericType>
+	*/
+
+	[FreeFunction(HasExplicitThis = True, ThrowsException = True)]
+	// RVA: 0xA77E6A4 Offset: 0xA77A6A4 VA: 0xA77E6A4
+	private void GetComponentsForListInternal(Type searchType, object resultList) { }
+
+	// RVA: 0xA77E850 Offset: 0xA77A850 VA: 0xA77E850
+	public void GetComponents(Type type, List<Component> results) { }
+
+	// RVA: -1 Offset: -1
+	public void GetComponents<T>(List<T> results) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x7FF2718 Offset: 0x7FEE718 VA: 0x7FF2718
+	|-Component.GetComponents<object>
+	|
+	|-RVA: 0x7FF27E8 Offset: 0x7FEE7E8 VA: 0x7FF27E8
+	|-Component.GetComponents<__Il2CppFullySharedGenericType>
+	*/
+
+	// RVA: 0xA77E854 Offset: 0xA77A854 VA: 0xA77E854
+	public string get_tag() { }
+
+	// RVA: 0xA77E9DC Offset: 0xA77A9DC VA: 0xA77E9DC
+	public void set_tag(string value) { }
+
+	// RVA: -1 Offset: -1
+	public T[] GetComponents<T>() { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x7FF2684 Offset: 0x7FEE684 VA: 0x7FF2684
+	|-Component.GetComponents<object>
+	|
+	|-RVA: 0x7FF26CC Offset: 0x7FEE6CC VA: 0x7FF26CC
+	|-Component.GetComponents<__Il2CppFullySharedGenericType>
+	*/
+
+	// RVA: 0xA77EB94 Offset: 0xA77AB94 VA: 0xA77EB94
+	public bool CompareTag(string tag) { }
+
+	// RVA: 0xA77ED3C Offset: 0xA77AD3C VA: 0xA77ED3C
+	public void SendMessage(string methodName, object value) { }
+
+	[FreeFunction("SendMessage", HasExplicitThis = True)]
+	// RVA: 0xA77ED44 Offset: 0xA77AD44 VA: 0xA77ED44
+	public void SendMessage(string methodName, object value, SendMessageOptions options) { }
+
+	// RVA: 0xA77C9C8 Offset: 0xA7789C8 VA: 0xA77C9C8
+	public void .ctor() { }
+}

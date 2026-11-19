@@ -1,0 +1,22 @@
+// Namespace: 
+private sealed class PostProcessEffectSettings.<>c // TypeDefIndex: 21122
+{
+	// Fields
+	public static readonly PostProcessEffectSettings.<>c <>9; // 0x0
+	public static Func<FieldInfo, bool> <>9__3_0; // 0x8
+	public static Func<FieldInfo, int> <>9__3_1; // 0x10
+
+	// Methods
+
+	// RVA: 0xA5799C0 Offset: 0xA5759C0 VA: 0xA5799C0
+	private static void .cctor() { }
+
+	// RVA: 0xA579A78 Offset: 0xA575A78 VA: 0xA579A78
+	public void .ctor() { }
+
+	// RVA: 0xA579A80 Offset: 0xA575A80 VA: 0xA579A80
+	internal bool <OnEnable>b__3_0(FieldInfo t) { }
+
+	// RVA: 0xA579E24 Offset: 0xA575E24 VA: 0xA579E24
+	internal int <OnEnable>b__3_1(FieldInfo t) { }
+}

@@ -1,0 +1,186 @@
+// Namespace: Axlebolt.Standoff.Game.UI.Notifications
+public class GrenadeAlertNotificationView : NotificationsHudView // TypeDefIndex: 1049
+{
+	// Fields
+	[SerializeField]
+	private NotificatedItemController _he; // 0x40
+	[SerializeField]
+	private NotificatedItemController _smoke; // 0x48
+	[SerializeField]
+	private NotificatedItemController _flash; // 0x50
+	[SerializeField]
+	private NotificatedItemController _molotov; // 0x58
+	[SerializeField]
+	private NotificatedItemController _defuseKit; // 0x60
+	[SerializeField]
+	private HorizontalLayoutGroupLightweight _horizontalLayoutGroupLightweight; // 0x68
+	[SerializeField]
+	private Sprite _defuseKitSprite; // 0x70
+	[SerializeField]
+	private float _lifetime; // 0x78
+	[SerializeField]
+	private float _waitForHideTime; // 0x7C
+	private GrenadeAlertNotificationView.GBABFBEHAFECCBA EGBCECGCHDEEAHF; // 0x80
+	private float BCHDHFEDDCGCAEB; // 0x84
+
+	// Methods
+
+	// RVA: 0x5F5BD00 Offset: 0x5F57D00 VA: 0x5F5BD00
+	public void FGBGDGHCGEGDGHF(WeaponParameters FAFDCHEHBCDAHHC) { }
+
+	// RVA: 0x5F5BDAC Offset: 0x5F57DAC VA: 0x5F5BDAC
+	public void CECDFEGAFCHEDEF(WeaponryController HAABADFDGHHCACH, WeaponParameters FAFDCHEHBCDAHHC) { }
+
+	// RVA: 0x5F5C324 Offset: 0x5F58324 VA: 0x5F5C324
+	private void FDFAHAGCFCGCHHH() { }
+
+	// RVA: 0x5F5C384 Offset: 0x5F58384 VA: 0x5F5C384
+	private void EABHBGCBEGFBAHD() { }
+
+	// RVA: 0x5F5C3E4 Offset: 0x5F583E4 VA: 0x5F5C3E4
+	public void ACBEFDHBHDACGEG(WeaponParameters FAFDCHEHBCDAHHC) { }
+
+	// RVA: 0x5F5C444 Offset: 0x5F58444 VA: 0x5F5C444
+	public void DDAGCHACFAHDAFC(WeaponryController HAABADFDGHHCACH, WeaponParameters FAFDCHEHBCDAHHC) { }
+
+	// RVA: 0x5F5C9F4 Offset: 0x5F589F4 VA: 0x5F5C9F4
+	private void EFGEEAEFCBDDGFA() { }
+
+	// RVA: 0x5F5CA54 Offset: 0x5F58A54 VA: 0x5F5CA54
+	private void CBAHAFEHCDHFHEF() { }
+
+	// RVA: 0x5F5CAB4 Offset: 0x5F58AB4 VA: 0x5F5CAB4
+	private void EEDGDAEFBADECBF() { }
+
+	// RVA: 0x5F5CB14 Offset: 0x5F58B14 VA: 0x5F5CB14
+	public void .ctor() { }
+
+	// RVA: 0x5F5CB1C Offset: 0x5F58B1C VA: 0x5F5CB1C
+	public void FBFFGDDHAECEEGB(WeaponryController HAABADFDGHHCACH, WeaponParameters FAFDCHEHBCDAHHC) { }
+
+	// RVA: 0x5F5D0D8 Offset: 0x5F590D8 VA: 0x5F5D0D8
+	public void BCCDEGDCCHHFDAF(WeaponParameters FAFDCHEHBCDAHHC) { }
+
+	// RVA: 0x5F5D184 Offset: 0x5F59184 VA: 0x5F5D184
+	private void FBGHBFEHABDFHBB() { }
+
+	// RVA: 0x5F5D1E4 Offset: 0x5F591E4 VA: 0x5F5D1E4
+	public void EGCBHFGBFAFGFEB(WeaponryController HAABADFDGHHCACH) { }
+
+	// RVA: 0x5F5D7FC Offset: 0x5F597FC VA: 0x5F5D7FC
+	private void FEGEGCCEEFGBCBC() { }
+
+	// RVA: 0x5F5D85C Offset: 0x5F5985C VA: 0x5F5D85C Slot: 34
+	protected override void AABCFCAFHGEEBAF() { }
+
+	// RVA: 0x5F5D934 Offset: 0x5F59934 VA: 0x5F5D934
+	public void BoughtHighlight(WeaponryController HAABADFDGHHCACH) { }
+
+	// RVA: 0x5F5DF68 Offset: 0x5F59F68 VA: 0x5F5DF68
+	private void EFFBEBCEGFCABDG() { }
+
+	// RVA: 0x5F5DFC8 Offset: 0x5F59FC8 VA: 0x5F5DFC8
+	private void ABFEDDCFBEDDACF() { }
+
+	// RVA: 0x5F5E1F4 Offset: 0x5F5A1F4 VA: 0x5F5E1F4
+	private void AEBFAECHEEACDBE() { }
+
+	// RVA: 0x5F5E480 Offset: 0x5F5A480 VA: 0x5F5E480
+	public void EAFDEBBDBHDFEGE(WeaponryController HAABADFDGHHCACH, WeaponParameters FAFDCHEHBCDAHHC) { }
+
+	// RVA: 0x5F5EAA0 Offset: 0x5F5AAA0 VA: 0x5F5EAA0
+	private void CFGHGHDEGBEFDGD() { }
+
+	// RVA: 0x5F5ED2C Offset: 0x5F5AD2C VA: 0x5F5ED2C
+	private void FFDDBBHGDBAGFGB() { }
+
+	// RVA: 0x5F5ED8C Offset: 0x5F5AD8C VA: 0x5F5ED8C
+	private void FHFCBHEECBFGEHG() { }
+
+	// RVA: 0x5F5EDEC Offset: 0x5F5ADEC VA: 0x5F5EDEC
+	public void CAHGAFCADCABAHC(WeaponryController HAABADFDGHHCACH) { }
+
+	// RVA: 0x5F5F410 Offset: 0x5F5B410 VA: 0x5F5F410
+	private void CBHCEAFDCDBBCDD() { }
+
+	// RVA: 0x5F5F470 Offset: 0x5F5B470 VA: 0x5F5F470
+	private void BEHFGBAFFGABADC() { }
+
+	// RVA: 0x5F5F4D0 Offset: 0x5F5B4D0 VA: 0x5F5F4D0
+	private void FGBFADHGFCAACFA() { }
+
+	// RVA: 0x5F5F530 Offset: 0x5F5B530 VA: 0x5F5F530
+	private void CBHGFACBCEFAGDH() { }
+
+	// RVA: 0x5F5F7BC Offset: 0x5F5B7BC VA: 0x5F5F7BC
+	public void DCDBCGCDADBHEEF(WeaponryController HAABADFDGHHCACH, WeaponParameters FAFDCHEHBCDAHHC) { }
+
+	// RVA: 0x5F5FD7C Offset: 0x5F5BD7C VA: 0x5F5FD7C
+	public void BHDGGEHEBBGFCEF(WeaponryController HAABADFDGHHCACH, WeaponParameters FAFDCHEHBCDAHHC) { }
+
+	// RVA: 0x5F60334 Offset: 0x5F5C334 VA: 0x5F60334
+	public void FEBGGAHHDABDECG(WeaponryController HAABADFDGHHCACH) { }
+
+	// RVA: 0x5F6099C Offset: 0x5F5C99C VA: 0x5F6099C
+	private void GAFHEGEFBBADGGF() { }
+
+	// RVA: 0x5F609FC Offset: 0x5F5C9FC VA: 0x5F609FC
+	public void FHCFCEBFFHHAFHA(WeaponryController HAABADFDGHHCACH) { }
+
+	// RVA: 0x5F60FF0 Offset: 0x5F5CFF0 VA: 0x5F60FF0
+	public void BDGCFHBHGCHBDFC(WeaponParameters FAFDCHEHBCDAHHC) { }
+
+	// RVA: 0x5F6109C Offset: 0x5F5D09C VA: 0x5F6109C
+	public void DBECAEFEDFDDBDE(WeaponParameters FAFDCHEHBCDAHHC) { }
+
+	// RVA: 0x5F610FC Offset: 0x5F5D0FC VA: 0x5F610FC
+	public void CEBHHBBADHHDAEA(WeaponryController HAABADFDGHHCACH) { }
+
+	// RVA: 0x5F6170C Offset: 0x5F5D70C VA: 0x5F6170C
+	private void FHEGDCBFADHCEBC() { }
+
+	// RVA: 0x5F61994 Offset: 0x5F5D994 VA: 0x5F61994
+	public void ABAFFEABHCCEBHC(WeaponryController HAABADFDGHHCACH, WeaponParameters FAFDCHEHBCDAHHC) { }
+
+	// RVA: 0x5F61F30 Offset: 0x5F5DF30 VA: 0x5F61F30
+	public void DGAFGDGACCGDGEB(WeaponryController HAABADFDGHHCACH) { }
+
+	// RVA: 0x5F6253C Offset: 0x5F5E53C VA: 0x5F6253C
+	public void ABGEEAACBEABFAE(WeaponryController HAABADFDGHHCACH) { }
+
+	// RVA: 0x5F62B4C Offset: 0x5F5EB4C VA: 0x5F62B4C
+	private void BEEFBHDGHABEHGE() { }
+
+	// RVA: 0x5F62DD4 Offset: 0x5F5EDD4 VA: 0x5F62DD4
+	private void Update() { }
+
+	// RVA: 0x5F63064 Offset: 0x5F5F064 VA: 0x5F63064
+	private void EBAFAECDCHDBFFH() { }
+
+	// RVA: 0x5F63298 Offset: 0x5F5F298 VA: 0x5F63298
+	public void HFDAABHEFGFEDFD(WeaponParameters FAFDCHEHBCDAHHC) { }
+
+	// RVA: 0x5F63334 Offset: 0x5F5F334 VA: 0x5F63334
+	public void Hide(WeaponParameters FAFDCHEHBCDAHHC) { }
+
+	// RVA: 0x5F6093C Offset: 0x5F5C93C VA: 0x5F6093C
+	private void GDFGEBHGCBAADFA() { }
+
+	// RVA: 0x5F633D0 Offset: 0x5F5F3D0 VA: 0x5F633D0 Slot: 21
+	public override void Hide() { }
+
+	// RVA: 0x5F633F8 Offset: 0x5F5F3F8 VA: 0x5F633F8
+	public void Show(WeaponryController HAABADFDGHHCACH, WeaponParameters FAFDCHEHBCDAHHC) { }
+
+	// RVA: 0x5F639B4 Offset: 0x5F5F9B4 VA: 0x5F639B4
+	public void FBCCDFEFGHBCFBB(WeaponryController HAABADFDGHHCACH, WeaponParameters FAFDCHEHBCDAHHC) { }
+
+	// RVA: 0x5F63FC4 Offset: 0x5F5FFC4 VA: 0x5F63FC4
+	public void EGCBGEDEHBGHGDG(WeaponryController HAABADFDGHHCACH) { }
+
+	// RVA: 0x5F645DC Offset: 0x5F605DC VA: 0x5F645DC
+	public void DDEEFADHCHDBAGA(WeaponryController HAABADFDGHHCACH) { }
+
+	// RVA: 0x5F64BFC Offset: 0x5F60BFC VA: 0x5F64BFC
+	public void EFEEBCAGCDACHHA(WeaponryController HAABADFDGHHCACH, WeaponParameters FAFDCHEHBCDAHHC) { }
+}

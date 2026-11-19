@@ -1,0 +1,108 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Cloud · StandKnife</title><style>
+:root{color-scheme:dark;--bg:#0a0d0c;--panel:#121615;--border:#292f2d;--text:#e7ebe8;--muted:#8c9691;--accent:#e9a8c5}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:transparent;color:var(--text);font-family:Arial,Helvetica,sans-serif;font-size:13px}body{display:grid;place-items:center;background:#080a09}.shell{width:100%;height:100%;min-height:0;display:grid;grid-template-columns:42px 1fr;border:1px solid #252b28;border-radius:0;background:linear-gradient(145deg,#161a18,#0b0d0c);box-shadow:0 20px 45px #000a;overflow:hidden}.rail{display:flex;flex-direction:column;align-items:center;gap:8px;padding:8px 4px;background:#111513;border-right:1px solid var(--border)}.logo{font-weight:900;font-style:italic;color:var(--accent);height:29px;display:grid;place-items:center}.nav{width:32px;height:32px;border:0;border-radius:0;background:transparent;color:#909a95;font-size:19px;cursor:pointer}.nav.on{background:#30282d;color:var(--accent);box-shadow:inset 2px 0 var(--accent)}.main{padding:7px;min-width:0;display:flex;flex-direction:column;gap:6px}.tabs{display:flex;gap:5px;height:29px}.tab{flex:1;border:1px solid transparent;border-radius:0;background:#191d1b;color:#a8b0ab;font-weight:700;font-size:11px;cursor:pointer}.tab.on{border-color:#69545e;background:#292326;color:#f5e7ee}.cols{min-height:0;flex:1;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:10px}.col{min-width:0;overflow-y:auto;border:1px solid var(--border);border-radius:0;background:linear-gradient(#171c19,#101412);padding:9px}.group{color:#a7b1aa;font-weight:700;text-transform:lowercase;margin:4px 0 9px}.row{display:flex;min-height:27px;align-items:center;gap:7px;cursor:pointer;color:#c5cdc7}.row:hover{color:white}.row.pending{opacity:.4;cursor:default}.row.pending span:last-child{font-size:9px;letter-spacing:0}.options{display:grid;grid-template-columns:1fr 1fr;gap:8px}.setting{display:block;font-size:11px;color:var(--muted);margin:8px 0}.setting input[type=color]{display:block;width:100%;height:24px;border:0;background:none}.setting output{float:right;color:var(--accent)}.preview canvas{width:100%;height:155px}.preview{background:#0b100e}.hint{margin-top:8px}.dot{appearance:none;width:14px;height:14px;border-radius:50%;border:1px solid #626e65;background:#323a35;margin:0;flex:none}.dot:checked{border-color:var(--accent);background:var(--accent);box-shadow:inset 0 0 0 4px #382d33}.dots{margin-left:auto;color:#838b86;letter-spacing:2px}.divider{height:1px;background:var(--border);margin:10px 0}.hint{font-size:10px;color:var(--muted);line-height:1.5}.value{color:var(--accent)}input[type=range]{width:100%;accent-color:var(--accent)}select{width:100%;border:1px solid var(--border);border-radius:0;background:#1b201d;color:#ddd;padding:4px}.preview{min-height:140px;border:1px solid #2b332e;border-radius:0;background:radial-gradient(#313d36,#0b100e 67%);display:grid;place-items:center;color:#b4bcb6}.badge{position:absolute;bottom:4px;right:8px;font-size:9px;color:#65736a}.wrap{position:relative;width:100%;height:100%;padding:5px}@media(max-width:600px){.shell{width:100%;height:100%;grid-template-columns:37px 1fr}.nav{width:29px;height:29px}.col{padding:6px}.row{font-size:10px}}
+body.liquid{background:transparent}body.liquid .shell{background:rgba(16,20,18,.78)}body.liquid .rail{background:rgba(17,21,19,.7)}body.liquid .col{background:rgba(13,17,15,.6)}</style></head><body><div class="wrap"><div class="shell"><nav class="rail"><div class="logo" title="Cloud">C</div><button class="nav" data-page="aim" title="Aim">✣</button><button class="nav" data-page="behavior" title="Behavior">◇</button><button class="nav" data-page="players" title="Players">◎</button><button class="nav" data-page="visuals" title="Visuals">◉</button><button class="nav" data-page="scene" title="Scene">◈</button><button class="nav" data-page="weapons" title="Weapons">⊕</button><button class="nav" data-page="misc" title="Misc">☷</button></nav><main class="main"><div id="tabs" class="tabs"></div><div id="cols" class="cols"></div></main></div><div class="badge" id="runtimeStatus">CLOUD · 0.23</div></div><script>
+const pages={
+ aim:{main:[{title:'aim assistance',rows:['Aim assistance','Auto Calibration','Draw FOV','Back Camera','Force Shot','Autowall (Aim)','Auto Stop','Auto Scope']},{title:'hitboxes',rows:['Hitbox All','Hitbox Head','Hitbox Body','Hitbox Legs','Multipoints','Hitchance']},{title:'trigger',rows:['Aim Team Filter','Aim Visible Only','Trigger','Autowall']} ]},
+ behavior:{main:[{title:'aim behavior',rows:['Sticky Aim','Humanize','Overshoot','Jitter']},{title:'knife bot',rows:['Knife Bot']}]},
+ players:{players:[{title:'players',rows:['Player ESP','Boxes','Skeleton','Health','Armor','Nickname','Weapons','Distance','Team Filter','Show Avatar','Money','Ping','Clan Tag','Bomb Flag','Chams','Shader Chams','Ghost Chams','3D Model','Model Vis Only','Dormant','Reveal Occluded','Hit Logs']},{title:'esp preview',preview:true,rows:[]}],screen:[{title:'screen',rows:['OOF Arrows','Snaplines','Hit Marker','Sniper Crosshair','Custom Scope','Damage Marker','Target HUD','Check Recoil']},{title:'effects',rows:['Bullet Tracers','Kill Particles','Kill Flash','Hit Sound','Kill Sound']}]},
+ visuals:{esp:[{title:'esp',rows:['Item ESP','Grenades','Off-screen Nades','Molotov Radius','Smoke Radius','Player Nades','Penetration','Wireframe']},{title:'helper',rows:['Auto Align','Grenade Prediction','Grenade Glow']}]},
+ scene:{scene:[{title:'world',rows:['Weather','Night Mode','Fog','Sky Lighting','Snow Cover']},{title:'scene',rows:['Prism World','Soul Particles','GL Night Tint','No Transparent','GL Full Bright','Map Reflections','Motion Blur']}]},
+ weapons:{main:[{title:'rage',rows:['No Recoil','Silent Aim','Wallshot']},{title:'status',rows:[]}]},
+ misc:{main:[{title:'main',rows:['Safe Mode','OBS Bypass','Liquid Glass','Raw Input','Viewmodel','Third Person']},{title:'overlay',rows:['Watermark','Bomb Timer','Hotkeys','Notifications','Accent Color']}]}}
+const tabs=document.querySelector('#tabs'),cols=document.querySelector('#cols');let page=window.menuInitialPage||'players',tab='main';const selections=window.menuInitial||{};
+const supported=new Set(['Wallshot','Hitbox All','Hitchance','Auto Scope','Hitbox Head','Hitbox Body','Hitbox Legs','Knife Bot','Safe Mode','Raw Input','Penetration','Liquid Glass','Grenade Glow','Watermark','Hotkeys','Notifications','Accent Color','Back Camera','Third Person','Viewmodel','Fog','Auto Stop','Overshoot','Jitter','Multipoints','Item ESP','Grenades','Off-screen Nades','Molotov Radius','Smoke Radius','Player Nades','Bomb Timer','Silent Aim','Trigger','Autowall','Autowall (Aim)','Force Shot','Auto Calibration','Aim assistance','Draw FOV','Sticky Aim','Humanize','Aim Team Filter','Aim Visible Only','No Recoil',...pages.players.players[0].rows,...pages.players.screen.flatMap(group=>group.rows)]);
+let runtime=window.menuRuntime||null;
+function available(feature){return supported.has(feature)&&(!runtime||runtime.capabilities[feature]===true);}
+window.setRuntimeState=function(value){runtime=value;if(value.settings)Object.assign(selections,value.settings);render();};
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function emit(key,value) {
+  selections[key]=value;
+  if(key==='Watermark'&&!value)selections.Hotkeys=true;
+  if(key==='Liquid Glass')document.body.classList.toggle('liquid',value===true);
+  if(key==='Accent Color')document.documentElement.style.setProperty('--accent',value);
+  console.log('MENU:'+JSON.stringify({key,value}));
+  preview();
+}
+function options() {
+  return `<div class="options">
+    <label class="setting">Цвет противника<input type="color" data-option="Enemy Color" value="${selections['Enemy Color']||'#efa8c5'}"></label>
+    <label class="setting">Цвет команды<input type="color" data-option="Team Color" value="${selections['Team Color']||'#72baff'}"></label>
+  </div><label class="setting">Дальность <output id="rangeValue">${selections['Max Distance']||300} м</output>
+  <input type="range" min="10" max="500" step="10" data-option="Max Distance" value="${selections['Max Distance']||300}"></label>
+  <label class="setting">Толщина <output id="strokeValue">${selections['Line Width']||2}</output>
+  <input type="range" min="1" max="4" step="1" data-option="Line Width" value="${selections['Line Width']||2}"></label>
+  <label class="setting">Размер текста <output>${selections['Text Size']||13}</output>
+  <input type="range" min="9" max="20" step="1" data-option="Text Size" value="${selections['Text Size']||13}"></label>
+  <label class="setting">Непрозрачность чамсов <output>${selections['Chams Opacity']||70}%</output>
+  <input type="range" min="10" max="100" step="5" data-option="Chams Opacity" value="${selections['Chams Opacity']||70}"></label>
+  <label class="setting">Радиус прицела <output>${selections['Scope Radius']||70}</output>
+  <input type="range" min="30" max="200" step="5" data-option="Scope Radius" value="${selections['Scope Radius']||70}"></label>
+  <div class="hint">Team Filter скрывает свою команду. Model Vis Only ограничивает цветной проход видимыми поверхностями. Dormant показывает последнюю позицию до 2 секунд. Ghost Chams оставляет след модели. 3D Model добавляет проход исходной текстуры, Shader Chams — пульсацию цвета.</div>`;
+}
+function aimOptions() {
+  const ranges=[['Aim FOV','FOV, полуугол (180 = 360°)',1,180,1,10],['Aim Smoothing','Плавность, мс',0,500,10,100],['Aim Range','Дальность, м',5,300,5,150],['Trigger Delay','Задержка Trigger, мс',1,1000,1,150],['Multipoint Scale','Мультипоинты: разброс точек, %',10,100,5,50],['Hitchance Percent','Хитшанс: минимум, %',1,100,1,60],['Jitter Strength','Jitter, градусы',0,.5,.01,.1]];
+  const selects=[['Aim Activation','Активация',['Всегда','Удержание экрана','В прицеле']],['Aim Priority','Приоритет цели',['Ближе к прицелу','Ближе по расстоянию','Меньше здоровья']],['Hitbox Priority','Приоритет части тела',['Голова, тело, ноги','Тело, голова, ноги','Без приоритета (ближе к прицелу)']]];
+  return '<div class="hint">Knife Bot использует калибровку огня автомата и обычную проверку попадания ножа. Multipoints добавляет точки вокруг центра выбранной части тела; «разброс точек» — насколько далеко они от центра в процентах от оценённого размера хитбокса (размер считается по костям, не откалиброван). Хитшанс — минимальная доля точек хитбокса, до которых дошёл бы выстрел; ниже порога Trigger, Force Shot и Silent Aim не стреляют (это видимость цели, а не разброс оружия). Auto Stop блокирует ввод движения при выбранной цели. Overshoot — пружинное наведение, Jitter — небольшое колебание угла. Для Trigger/Silent/Force Shot подержите огонь из автомата без прицела: калибровка должна определить единственный флаг выстрела. Autowall (Aim), Autowall и Wallshot (rage) — обычные переключатели: насквозь идут только преграды, которые игра пропускает (игроки; ломаемые объекты — после заполнения WALL_RULES в wall-rules.js), остальное считается стеной. Все тело включает голову, тело и ноги сразу; при нескольких частях сначала берётся часть по «Приоритет части тела», ноги — только если выше ничего не видно. Auto Scope сам открывает прицел снайперки при цели: сначала откройте прицел вручную 3 раза, чтобы модуль узнал кнопку. Без выбора хитбокса — голова. FOV 180 — цель в любой стороне.</div>'+ranges.map(([key,label,min,max,step,value])=>`<label class="setting">${label}<output>${selections[key]??value}</output><input type="range" data-option="${key}" min="${min}" max="${max}" step="${step}" value="${selections[key]??value}"></label>`).join('')+
+    selects.map(([key,label,values])=>`<label class="setting">${label}<select data-option="${key}">${values.map((v,i)=>`<option value="${i}" ${i===(selections[key]??(key==='Aim Activation'?1:0))?'selected':''}>${v}</option>`).join('')}</select></label>`).join('');
+}
+function soundOptions(){
+ const names=['Звон','Клик','Колокол','Поп'];
+ const pick=(key,label,fallback)=>`<label class="setting">${label}<select data-option="${key}">${names.map((n,i)=>`<option value="${i}" ${i===(selections[key]??fallback)?'selected':''}>${n}</option>`).join('')}</select></label>`;
+ return pick('Hit Sound Type','Звук попадания',0)+pick('Kill Sound Type','Звук убийства',2)+
+  `<label class="setting">Громкость звуков, %<output>${selections['Hit Sound Volume']??150}</output><input type="range" data-option="Hit Sound Volume" min="50" max="200" step="10" value="${selections['Hit Sound Volume']??150}"></label>`;
+}
+function knifeOptions(){
+ return [['Knife Range','Дистанция активации, м',.5,3,.1,1.5],['Knife FOV','Угол активации, °',5,90,1,30]].map(([key,label,min,max,step,value])=>`<label class="setting">${label}<output>${selections[key]??value}</output><input type="range" data-option="${key}" min="${min}" max="${max}" step="${step}" value="${selections[key]??value}"></label>`).join('')+'<div class="hint">Сначала нужна калибровка огня из автомата. Knife Bot использует обычный удар ножом; дальность попадания остаётся игровой.</div>';
+}
+function cameraOptions(){
+  const fields=[['Camera Distance','Камера: расстояние, м',.5,5,.1,2],['Camera Height','Камера: высота, м',-1,2,.05,.25],['Viewmodel X','Оружие X, м',-1,1,.01,.15],['Viewmodel Y','Оружие Y, м',-1,1,.01,-.1],['Viewmodel Z','Оружие Z, м',-1,1,.01,.2]];
+  return fields.map(([key,label,min,max,step,value])=>`<label class="setting">${label}<output>${selections[key]??value}</output><input type="range" data-option="${key}" min="${min}" max="${max}" step="${step}" value="${selections[key]??value}"></label>`).join('')+'<div class="hint">Safe Mode выключает тяжёлые эффекты и автоматическую стрельбу. Raw Input отключает игровое сглаживание касаний, сохраняя чувствительность. Penetration показывает геометрию преграды, а не обещает пробитие. Third Person смещает камеру с проверкой препятствий. Back Camera разворачивает вид назад. Viewmodel смещает руки только на время отрисовки. Hotkeys: уменьшение громкости открывает и закрывает меню. При скрытии ватермарка Hotkeys включается автоматически; после перезапуска Cloud снова виден.</div>';
+}
+function radiusOptions(){
+  return [['Molotov Radius Scale','Молотов: радиус круга, %',25,400,5,200],['Smoke Radius Scale','Дым: радиус круга, %',25,400,5,55]].map(([key,label,min,max,step,value])=>`<label class="setting">${label}<output>${selections[key]??value}</output><input type="range" data-option="${key}" min="${min}" max="${max}" step="${step}" value="${selections[key]??value}"></label>`).join('')+'<div class="hint">Круги показываются, пока горит огонь или стоит дым. Радиус из игры не совпадает с видимым: подгони процентами.</div>';
+}
+function syncOptions(){
+  return `<label class="setting">Задержка ESP, кадры<output>${selections['ESP Sync Frames']??0}</output><input type="range" data-option="ESP Sync Frames" min="0" max="4" step="0.25" value="${selections['ESP Sync Frames']??0}"></label><div class="hint">Если рамки убегают вперёд модели (особенно при повороте камеры), увеличь задержку; если отстают, уменьши до 0. Единица — кадр игры, поэтому подбор не зависит от FPS.</div>`;
+}
+function fogOptions(){return `<label class="setting">Дальность тумана, м<output>${selections['Fog Distance']??80}</output><input type="range" data-option="Fog Distance" min="5" max="300" step="5" value="${selections['Fog Distance']??80}"></label><label class="setting">Цвет тумана<input type="color" data-option="Fog Color" value="${selections['Fog Color']||'#78909c'}"></label>`;}
+function featureRow(r){
+  if(r==='Accent Color')return `<label class="setting">Акцент меню<input type="color" data-option="Accent Color" value="${selections['Accent Color']||'#e9a8c5'}"></label>`;
+  return `<label class="row ${available(r)?'':'pending'}"><input class="dot" type="checkbox" data-feature="${escapeHtml(r)}" ${selections[r]?'checked':''} ${available(r)?'':'disabled'}><span>${escapeHtml(r)}</span><span class="dots">${available(r)?'':supported.has(r)?'не подключено':'нет данных'}</span></label>`;
+}
+function preview() {
+  const canvas=document.querySelector('#espPreview');
+  if(!canvas)return;
+  const c=canvas.getContext('2d'), tint=selections['Enemy Color']||'#efa8c5';
+  c.clearRect(0,0,300,155);c.strokeStyle=tint;c.fillStyle=tint;c.lineWidth=selections['Line Width']||2;
+  if(!selections['Player ESP']){c.font='12px Arial';c.fillText('ESP выключен',100,75);return;}
+  if(selections.Boxes)c.strokeRect(125,27,50,95);
+  if(selections.Skeleton){c.beginPath();c.moveTo(150,30);c.lineTo(150,80);c.moveTo(130,60);c.lineTo(150,45);c.lineTo(170,60);c.moveTo(130,118);c.lineTo(150,80);c.lineTo(170,118);c.stroke();}
+  if(selections.Snaplines){c.beginPath();c.moveTo(150,155);c.lineTo(150,122);c.stroke();}
+  c.font='11px Arial';c.textAlign='center';
+  if(selections.Nickname)c.fillText('Player',150,18);
+  if(selections.Weapons||selections.Distance)c.fillText([selections.Weapons?'AKR':'',selections.Distance?'25 m':''].filter(Boolean).join(' · '),150,143);
+  if(selections.Health){c.fillStyle='#73ed96';c.fillRect(118,27,3,95);}
+  if(selections.Armor){c.fillStyle='#72baff';c.fillRect(125,126,50,3);}
+}
+function render() {
+  document.querySelectorAll('.nav').forEach(x=>x.classList.toggle('on',x.dataset.page===page));
+  document.querySelector('#runtimeStatus').textContent='CLOUD · 0.38'+(runtime&&!runtime.ready?' · модуль не готов':'');
+  const t=pages[page];if(!t[tab])tab=Object.keys(t)[0];
+  tabs.innerHTML=Object.keys(t).map(x=>`<button class="tab ${x===tab?'on':''}" data-tab="${x}">${escapeHtml(x)}</button>`).join('');
+  cols.innerHTML=t[tab].map(group=>`<section class="col"><div class="group">${escapeHtml(group.title)}</div>${group.rows.map(featureRow).join('')}${page==='aim' && group.title==='trigger'?aimOptions():''}${page==='behavior'&&group.title==='knife bot'?knifeOptions():''}${page==='visuals'&&group.title==='esp'?'<div class="hint">Penetration показывает толщину преграды. Это геометрический индикатор; урон зависит от правил игры.</div>'+radiusOptions():''}${page==='scene'&&group.title==='world'?fogOptions():''}${page==='misc'&&group.title==='main'?cameraOptions()+syncOptions():''}${page==='players' && tab==='screen' && group.title==='effects'?soundOptions()+options():''}${group.preview?'<div class="preview"><canvas id="espPreview" width="300" height="155"></canvas></div><div class="hint">Предпросмотр настроек</div>'+options():''}</section>`).join('');
+  tabs.querySelectorAll('button').forEach(b=>b.onclick=()=>{tab=b.dataset.tab;render()});
+  cols.querySelectorAll('input[data-feature]').forEach(i=>i.onchange=()=>emit(i.dataset.feature,i.checked));
+  cols.querySelectorAll('[data-option]').forEach(i=>i.oninput=()=>{
+    const value=i.type==='color'?i.value:Number(i.value);
+    emit(i.dataset.option,value);
+    if(i.dataset.option==='Max Distance')document.querySelector('#rangeValue').textContent=value+' м';
+    if(i.dataset.option==='Line Width')document.querySelector('#strokeValue').textContent=value;
+    const output=i.closest('label').querySelector('output');
+    if(output)output.textContent=value+(i.dataset.option==='Max Distance'?' м':i.dataset.option==='Chams Opacity'?'%':'');
+  });
+  preview();
+}
+document.body.classList.toggle('liquid',selections['Liquid Glass']===true);
+document.documentElement.style.setProperty('--accent',selections['Accent Color']||'#e9a8c5');
+document.querySelectorAll('.nav').forEach(b=>b.onclick=()=>{page=b.dataset.page;tab=Object.keys(pages[page])[0];console.log('MENU:'+JSON.stringify({key:'__page',value:page}));render()});render();
+</script></body></html>

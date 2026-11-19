@@ -1,0 +1,167 @@
+// Namespace: Axlebolt.Standoff.Events.BeholderGames.Scripts.GameChallenges.GrenadeDeathmatch
+public class GrenadeDeathmatchChallengeRoot : CustomGeometryLinkedRootBase<GrenadeDeathmatchGeometry> // TypeDefIndex: 3325
+{
+	// Fields
+	[CompilerGenerated]
+	[SerializeField]
+	private Transform <SpawnZonesParent>k__BackingField; // 0x28
+	[CompilerGenerated]
+	private RandomSpawnZone[] <DAEDAGEGABCBEBE>k__BackingField; // 0x30
+
+	// Properties
+	public Transform HDCBEEGBGAGEEEB { get; set; }
+	public RandomSpawnZone[] EDDECCGFFCHBCGB { get; set; }
+
+	// Methods
+
+	// RVA: 0x381BAF0 Offset: 0x3817AF0 VA: 0x381BAF0
+	private void DECEAEFABHFAGEG(RandomSpawnZone[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x381BAF8 Offset: 0x3817AF8 VA: 0x381BAF8
+	private void ECGEEEFFAEADBDF(Transform BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x381BB00 Offset: 0x3817B00 VA: 0x381BB00
+	public Transform GBHDGEBAFCHGBGF() { }
+
+	// RVA: 0x381BB08 Offset: 0x3817B08 VA: 0x381BB08
+	public Transform CACFCCHDAGFACHC() { }
+
+	// RVA: 0x381BB10 Offset: 0x3817B10 VA: 0x381BB10
+	private void AHEEEDEBCEDGADA(Transform BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x381BB18 Offset: 0x3817B18 VA: 0x381BB18
+	public Transform DADHFADEFEEDAGA() { }
+
+	// RVA: 0x381BB20 Offset: 0x3817B20 VA: 0x381BB20
+	public RandomSpawnZone[] BGEHAGADEBDBECE() { }
+
+	// RVA: 0x381BB28 Offset: 0x3817B28 VA: 0x381BB28
+	private void FDCBEGFEEBDHBBH(RandomSpawnZone[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x381BB30 Offset: 0x3817B30 VA: 0x381BB30
+	public RandomSpawnZone[] ABGEHGHBDAABGBG() { }
+
+	// RVA: 0x381BB38 Offset: 0x3817B38 VA: 0x381BB38
+	private void DEABCDDGCFCDGGA(RandomSpawnZone[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x381BB40 Offset: 0x3817B40 VA: 0x381BB40
+	public Transform BDDEDFFHDHCAGEB() { }
+
+	// RVA: 0x381BB48 Offset: 0x3817B48 VA: 0x381BB48
+	public RandomSpawnZone[] FEAHFGFCCFCHCBH() { }
+
+	// RVA: 0x381BB50 Offset: 0x3817B50 VA: 0x381BB50
+	public RandomSpawnZone[] GFGGECACFHBAHCB() { }
+
+	// RVA: 0x381BB58 Offset: 0x3817B58 VA: 0x381BB58
+	public Transform FHHCFGBEHHGAECA() { }
+
+	// RVA: 0x381BB60 Offset: 0x3817B60 VA: 0x381BB60
+	public RandomSpawnZone[] EBHBDHGCCCDGGFE() { }
+
+	// RVA: 0x381BB68 Offset: 0x3817B68 VA: 0x381BB68
+	public RandomSpawnZone[] CHGHGBDFAEHFCHG() { }
+
+	// RVA: 0x381BB70 Offset: 0x3817B70 VA: 0x381BB70
+	public void .ctor() { }
+
+	// RVA: 0x381BC00 Offset: 0x3817C00 VA: 0x381BC00
+	public RandomSpawnZone[] BDEGGCCCHHCGGDE() { }
+
+	// RVA: 0x381BC08 Offset: 0x3817C08 VA: 0x381BC08
+	private void GADEEGFFHBGEAFH(Transform BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x381BC10 Offset: 0x3817C10 VA: 0x381BC10
+	public Transform get_SpawnZonesParent() { }
+
+	// RVA: 0x381BC18 Offset: 0x3817C18 VA: 0x381BC18
+	public Transform EBAGHCHDAHHGFGC() { }
+
+	// RVA: 0x381BC20 Offset: 0x3817C20 VA: 0x381BC20
+	private void CGECEFFFBDAFBAH(RandomSpawnZone[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x381BC28 Offset: 0x3817C28 VA: 0x381BC28
+	private void HFHDGCAGCECAECE(RandomSpawnZone[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x381BC30 Offset: 0x3817C30 VA: 0x381BC30
+	public RandomSpawnZone[] FAFDBDHGHEEGGAH() { }
+
+	// RVA: 0x381BC38 Offset: 0x3817C38 VA: 0x381BC38
+	private void CBHABCAEEAEGGHB(RandomSpawnZone[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x381BC40 Offset: 0x3817C40 VA: 0x381BC40
+	public RandomSpawnZone[] ACFBHFHAGABBHAC() { }
+
+	// RVA: 0x381BC48 Offset: 0x3817C48 VA: 0x381BC48
+	private void ADBAHABHEGGECEA(Transform BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x381BC50 Offset: 0x3817C50 VA: 0x381BC50
+	private void CFDEHAHDCADHEDG(Transform BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x381BC58 Offset: 0x3817C58 VA: 0x381BC58
+	private void CBHHFEHECHABCFC(RandomSpawnZone[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x381BC60 Offset: 0x3817C60 VA: 0x381BC60
+	private void DHBBBCAFBDGDFGB(RandomSpawnZone[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x381BC68 Offset: 0x3817C68 VA: 0x381BC68
+	public Transform BAGDABGDFCCHADF() { }
+
+	// RVA: 0x381BC70 Offset: 0x3817C70 VA: 0x381BC70 Slot: 6
+	public override void Init() { }
+
+	// RVA: 0x381BD68 Offset: 0x3817D68 VA: 0x381BD68
+	private void FGHGEGCBAGHAGHH(RandomSpawnZone[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x381BD70 Offset: 0x3817D70 VA: 0x381BD70
+	private void BCFEAAGDGAEEBCG(Transform BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x381BD78 Offset: 0x3817D78 VA: 0x381BD78
+	private void DDBBDAFHBFAHEBD(Transform BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x381BD80 Offset: 0x3817D80 VA: 0x381BD80
+	public RandomSpawnZone[] DHACCBEDAACGBCE() { }
+
+	// RVA: 0x381BD88 Offset: 0x3817D88 VA: 0x381BD88
+	public Transform AHFCFHFEHHHHBCG() { }
+
+	// RVA: 0x381BD90 Offset: 0x3817D90 VA: 0x381BD90
+	public RandomSpawnZone[] EEEBGEDBCHCHBEF() { }
+
+	// RVA: 0x381BD98 Offset: 0x3817D98 VA: 0x381BD98
+	public RandomSpawnZone[] CEDFFFHGCGCEEGB() { }
+
+	[CompilerGenerated]
+	// RVA: 0x381BDA0 Offset: 0x3817DA0 VA: 0x381BDA0
+	private void HEHBDAECDADFBAB(Transform BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x381BDA8 Offset: 0x3817DA8 VA: 0x381BDA8
+	public Transform BDCAAGCDGHDFAFD() { }
+
+	[CompilerGenerated]
+	// RVA: 0x381BDB0 Offset: 0x3817DB0 VA: 0x381BDB0
+	public RandomSpawnZone[] get_SpawnZones() { }
+
+	// RVA: 0x381BDB8 Offset: 0x3817DB8 VA: 0x381BDB8
+	public RandomSpawnZone[] GDGAEHAHDHCFHHA() { }
+
+	// RVA: 0x381BDC0 Offset: 0x3817DC0 VA: 0x381BDC0
+	private void FGHCBCEEFBEFEBB(RandomSpawnZone[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x381BDC8 Offset: 0x3817DC8 VA: 0x381BDC8
+	public Transform FBACDADHGEEHEBG() { }
+
+	// RVA: 0x381BDD0 Offset: 0x3817DD0 VA: 0x381BDD0
+	private void AEDHCEDAADFHGGA(Transform BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x381BDD8 Offset: 0x3817DD8 VA: 0x381BDD8
+	private void GAEEGCBFHHBAAFH(RandomSpawnZone[] BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x381BDE0 Offset: 0x3817DE0 VA: 0x381BDE0
+	public RandomSpawnZone[] FEFDHDHGAGBAAFC() { }
+
+	// RVA: 0x381BDE8 Offset: 0x3817DE8 VA: 0x381BDE8
+	private void GCCCDBACHHBFGGC(Transform BDFHFCCDABCFGBD) { }
+}

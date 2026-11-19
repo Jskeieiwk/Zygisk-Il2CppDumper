@@ -1,0 +1,60 @@
+public sealed class PostProcessBundle // TypeDefIndex: 21115
+{
+	// Fields
+	[CompilerGenerated]
+	private PostProcessAttribute <attribute>k__BackingField; // 0x10
+	[CompilerGenerated]
+	private PostProcessEffectSettings <settings>k__BackingField; // 0x18
+	private PostProcessEffectRenderer m_Renderer; // 0x20
+
+	// Properties
+	public PostProcessAttribute attribute { get; set; }
+	public PostProcessEffectSettings settings { get; set; }
+	internal PostProcessEffectRenderer renderer { get; }
+
+	// Methods
+
+	[CompilerGenerated]
+	// RVA: 0xA575444 Offset: 0xA571444 VA: 0xA575444
+	public PostProcessAttribute get_attribute() { }
+
+	[CompilerGenerated]
+	// RVA: 0xA57544C Offset: 0xA57144C VA: 0xA57544C
+	private void set_attribute(PostProcessAttribute value) { }
+
+	[CompilerGenerated]
+	// RVA: 0xA575454 Offset: 0xA571454 VA: 0xA575454
+	public PostProcessEffectSettings get_settings() { }
+
+	[CompilerGenerated]
+	// RVA: 0xA57545C Offset: 0xA57145C VA: 0xA57545C
+	private void set_settings(PostProcessEffectSettings value) { }
+
+	// RVA: 0xA575464 Offset: 0xA571464 VA: 0xA575464
+	internal PostProcessEffectRenderer get_renderer() { }
+
+	// RVA: 0xA575818 Offset: 0xA571818 VA: 0xA575818
+	internal void .ctor(PostProcessEffectSettings settings) { }
+
+	// RVA: 0xA575944 Offset: 0xA571944 VA: 0xA575944
+	internal void Release() { }
+
+	// RVA: 0xA575B4C Offset: 0xA571B4C VA: 0xA575B4C
+	internal void ResetHistory() { }
+
+	// RVA: -1 Offset: -1
+	internal T CastSettings<T>() { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80F1340 Offset: 0x80ED340 VA: 0x80F1340
+	|-PostProcessBundle.CastSettings<object>
+	*/
+
+	// RVA: -1 Offset: -1
+	internal T CastRenderer<T>() { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x80F12C4 Offset: 0x80ED2C4 VA: 0x80F12C4
+	|-PostProcessBundle.CastRenderer<object>
+	*/
+}

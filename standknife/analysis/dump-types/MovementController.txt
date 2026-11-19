@@ -1,0 +1,363 @@
+// Namespace: Axlebolt.Standoff.Player.Movement
+public class MovementController : Controller, GGCGFHDGBGCGEAH<EECEHBDFAACCHFD, HCCEBBHAFGCBCEF>, ACAHDBDADBBAGCA // TypeDefIndex: 794
+{
+	// Fields
+	[CompilerGenerated]
+	private HCCEBBHAFGCBCEF <HCHHACEEGDAFFHD>k__BackingField; // 0x58
+	private EGACEGHEFADDCDH<ABGDFAFFDDCHAAC>[] ECAAFACAFFGBCFF; // 0x60
+	[CompilerGenerated]
+	private Transform <EFGFBDEDGGEBECE>k__BackingField; // 0x68
+	private List<EGACEGHEFADDCDH<ABGDFAFFDDCHAAC>> BEEBGCEGAADFBHE; // 0x70
+	private BFFDDGCHDGHECBG DAFFCBCBBEHABEB; // 0x78
+	[SerializeField]
+	private bool _neverIdle; // 0x80
+	private const float CDDGAHEHHDEEGHC = 0.5;
+	[CompilerGenerated]
+	private CharacterController <FGCBEAHAHHCFAGA>k__BackingField; // 0x88
+	public PlayerTranslationParameters translationParameters; // 0x90
+	public CEEECDDHEBCBHFE translationData; // 0x98
+	[CompilerGenerated]
+	private float <CAAEAAEBECEFEBC>k__BackingField; // 0xA0
+	[HideInInspector]
+	public Transform characterTransform; // 0xA8
+	private EECEHBDFAACCHFD HFECFBGDBGGGGGA; // 0xB0
+	private static ILogger GGFBEBEFCHEEADD; // 0x0
+	[CompilerGenerated]
+	private float <BBCHEDDHFFCHACF>k__BackingField; // 0xB8
+	private float AHBGDHCBEFDBAHF; // 0xBC
+	private PlayerOcclusionController ADDHHGEBEFACABD; // 0xC0
+	[CompilerGenerated]
+	private MecanimController <BABGDBFCHCHDEAG>k__BackingField; // 0xC8
+	private DGDAGHFBGCEDEEH[] BAEEAHFCAFABGFH; // 0xD0
+	private List<EGACEGHEFADDCDH<ABGDFAFFDDCHAAC>> HDHACACCFGECFHF; // 0xD8
+	private const int HGDCGBDCFGBCFFA = 10;
+	[CompilerGenerated]
+	private Trigger <AFHECCBAHCAFGEB>k__BackingField; // 0xE0
+	private PlayerController FAHEFDAEDDGCECB; // 0xE8
+
+	// Properties
+	private static ILogger FHFEDEGBFGDDCCB { get; }
+	public bool GBHEEFCCFHDHCHC { get; }
+	public Transform ACAEDCHADGHADGF { get; set; }
+	public HCCEBBHAFGCBCEF GDAEEBCEHFHHFGH { get; set; }
+	public float DGBACGCAACCHHGD { get; set; }
+	public float GDHDFBAHBACGECF { get; set; }
+	public CharacterController CDBBFDABDHCBHAD { get; set; }
+	public Trigger EEAACBEHEDCEBHC { get; set; }
+	public DGADCECGCFCFCDF EAHGHEEFACBCFCA { get; }
+	public float GGGBHEBGEBDEFDA { get; }
+	public MecanimController ADGBEHBEBADCDEH { get; set; }
+	public DGADCECGCFCFCDF CGAGHEEGBADHAEB { get; set; }
+	public Vector3 EHBCHGBEAEAFGDA { get; }
+
+	// Methods
+
+	[ProtectedMethod]
+	// RVA: 0x59CACAC Offset: 0x59C6CAC VA: 0x59CACAC
+	private void EFEFGEGDDBAGDCF() { }
+
+	// RVA: 0x59CB334 Offset: 0x59C7334 VA: 0x59CB334
+	public void CallOnStandEvent() { }
+
+	// RVA: 0x59CB6C8 Offset: 0x59C76C8 VA: 0x59CB6C8 Slot: 78
+	public void DEHEBEFCBFCDDDD(WeaponController DHDEFGDDFEDDHBG) { }
+
+	// RVA: 0x59CB7B4 Offset: 0x59C77B4 VA: 0x59CB7B4
+	public float EHBECEGGHEEDDAG() { }
+
+	// RVA: 0x59CB7BC Offset: 0x59C77BC VA: 0x59CB7BC
+	public Vector3 CCGCDHDHHBDGACD() { }
+
+	// RVA: 0x59CBAF8 Offset: 0x59C7AF8 VA: 0x59CBAF8
+	public void DFHFBADFBCGGBAB(WeaponController DHDEFGDDFEDDHBG) { }
+
+	// RVA: 0x59CBAFC Offset: 0x59C7AFC VA: 0x59CBAFC Slot: 79
+	public void GEEBHGFFADHBBHH(HCCEBBHAFGCBCEF DBEGBBCFBABBFGC, float BHGDDGFGGAEDFFB, float CEDEABGCFDCCGAF) { }
+
+	// RVA: 0x59CBC8C Offset: 0x59C7C8C VA: 0x59CBC8C
+	public Vector3 ECHCCFHAFGFGFDD() { }
+
+	[CompilerGenerated]
+	// RVA: 0x59CBE98 Offset: 0x59C7E98 VA: 0x59CBE98
+	public Trigger get_CharacterControllerTrigger() { }
+
+	// RVA: 0x59CBEA0 Offset: 0x59C7EA0 VA: 0x59CBEA0
+	private void CAGEGGGBECGFDEE(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x59CBEA8 Offset: 0x59C7EA8 VA: 0x59CBEA8
+	private void ACDCGGFGEAEAFBF(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x59CBEB0 Offset: 0x59C7EB0 VA: 0x59CBEB0
+	public void .ctor() { }
+
+	// RVA: 0x59CC0D8 Offset: 0x59C80D8 VA: 0x59CC0D8 Slot: 80
+	public EECEHBDFAACCHFD BDACCCADAADHHHB() { }
+
+	// RVA: 0x59CC520 Offset: 0x59C8520 VA: 0x59CC520
+	public void SetDelay(AnimationCurve FCFADCGGFGHDEGG, float BEFAEHDGGFEFACB, float BHGDDGFGGAEDFFB) { }
+
+	// RVA: 0x59CC544 Offset: 0x59C8544 VA: 0x59CC544
+	public void BEHAFDAEEABEGCB() { }
+
+	[CompilerGenerated]
+	// RVA: 0x59CC77C Offset: 0x59C877C VA: 0x59CC77C
+	private void CGEDDAAEGEEHCCD(Transform BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x59CC784 Offset: 0x59C8784 VA: 0x59CC784
+	private void GDGBAACGFBFFGAG(MecanimController BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x59CC78C Offset: 0x59C878C VA: 0x59CC78C Slot: 81
+	public EECEHBDFAACCHFD BGGACBAEEDAGEGH() { }
+
+	// RVA: 0x59CCD04 Offset: 0x59C8D04 VA: 0x59CCD04
+	private void EAAGHHEGGCAAGEB(EGACEGHEFADDCDH<ABGDFAFFDDCHAAC>[] AGCEDCCBCHHFDAE) { }
+
+	// RVA: 0x59CCE7C Offset: 0x59C8E7C VA: 0x59CCE7C
+	private void CDEEAGBFBBAACDA(float CEDEABGCFDCCGAF, float ECFCAGECFBBHGEE) { }
+
+	// RVA: 0x59CD544 Offset: 0x59C9544 VA: 0x59CD544
+	private void BHDHDBFECBGEEHB(float CEDEABGCFDCCGAF, float ECFCAGECFBBHGEE) { }
+
+	// RVA: 0x59CD98C Offset: 0x59C998C VA: 0x59CD98C
+	private void GGDHHDFCGDAEGBG(MecanimController BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x59CD994 Offset: 0x59C9994 VA: 0x59CD994 Slot: 76
+	public void SetSnapshot(EECEHBDFAACCHFD HGDFFCHFDEHGDBE) { }
+
+	// RVA: 0x59CE278 Offset: 0x59CA278 VA: 0x59CE278
+	private void EEHEECHEBHGGEDG(HCCEBBHAFGCBCEF BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x59CE280 Offset: 0x59CA280 VA: 0x59CE280
+	private void ACGCCFGGGFFHHGA(Transform BDFHFCCDABCFGBD) { }
+
+	[ProtectedMethod]
+	// RVA: 0x59CE288 Offset: 0x59CA288 VA: 0x59CE288 Slot: 75
+	public void ExecuteCommands(HCCEBBHAFGCBCEF DBEGBBCFBABBFGC, float BHGDDGFGGAEDFFB, float CEDEABGCFDCCGAF) { }
+
+	// RVA: 0x59CE544 Offset: 0x59CA544 VA: 0x59CE544
+	public void ADHECGCFAHHDBAD() { }
+
+	// RVA: 0x59CE644 Offset: 0x59CA644 VA: 0x59CE644
+	private void DBDFHBDEECGEGFF(float CEDEABGCFDCCGAF, float ECFCAGECFBBHGEE) { }
+
+	// RVA: 0x59CEAB0 Offset: 0x59CAAB0 VA: 0x59CEAB0
+	public void HDGBGDBGGDEEGGD(AnimationCurve FCFADCGGFGHDEGG, float BEFAEHDGGFEFACB, float BHGDDGFGGAEDFFB) { }
+
+	// RVA: 0x59CD864 Offset: 0x59C9864 VA: 0x59CD864
+	private void HCADBHBDECEDHHG(float AGCCACHDCADECDB) { }
+
+	// RVA: 0x59CC644 Offset: 0x59C8644 VA: 0x59CC644
+	private void CEFABDHHCHGFEAA() { }
+
+	// RVA: 0x59CEAD4 Offset: 0x59CAAD4 VA: 0x59CEAD4
+	public void OnNewWeaponSet(WeaponController DHDEFGDDFEDDHBG) { }
+
+	// RVA: 0x59CD2D4 Offset: 0x59C92D4 VA: 0x59CD2D4
+	private void EADEAAAHGHGDFBA() { }
+
+	[CompilerGenerated]
+	// RVA: 0x59CEAD8 Offset: 0x59CAAD8 VA: 0x59CEAD8
+	private void CGCHHBAAEEFCHBA(CharacterController BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x59CEAE0 Offset: 0x59CAAE0 VA: 0x59CEAE0 Slot: 82
+	public void CCDFEFAEGGAEFFF(EECEHBDFAACCHFD HGDFFCHFDEHGDBE) { }
+
+	// RVA: 0x59CF24C Offset: 0x59CB24C VA: 0x59CF24C
+	public void ValidateState() { }
+
+	[CompilerGenerated]
+	// RVA: 0x59CF344 Offset: 0x59CB344 VA: 0x59CF344
+	public MecanimController get_MecanimController() { }
+
+	[CompilerGenerated]
+	// RVA: 0x59CF34C Offset: 0x59CB34C VA: 0x59CF34C
+	private void EADEGEHCGFCFAEA(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x59CF254 Offset: 0x59CB254 VA: 0x59CF254
+	public void set_CurrentStateEnum(DGADCECGCFCFCDF BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x59CF354 Offset: 0x59CB354 VA: 0x59CF354 Slot: 71
+	public override void OnInitialize(FECCEFEDHEEHDCH HEEFCBCHDEHAECC) { }
+
+	// RVA: 0x59CF740 Offset: 0x59CB740 VA: 0x59CF740
+	public bool CFDGBBEDCDHBFDE() { }
+
+	// RVA: 0x59CE100 Offset: 0x59CA100 VA: 0x59CE100
+	private void HFBFDCEHCGDEEGF(EGACEGHEFADDCDH<ABGDFAFFDDCHAAC>[] AGCEDCCBCHHFDAE) { }
+
+	// RVA: 0x59CF748 Offset: 0x59CB748 VA: 0x59CF748
+	public void GFCAGDBBEAAABFF(DGADCECGCFCFCDF BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x59CF838 Offset: 0x59CB838 VA: 0x59CF838
+	public Vector3 get_Velocity() { }
+
+	// RVA: 0x59CFA44 Offset: 0x59CBA44 VA: 0x59CFA44
+	public DGADCECGCFCFCDF GACBFBEFCFEFECE() { }
+
+	[ProtectedMethod]
+	// RVA: 0x59CFB28 Offset: 0x59CBB28 VA: 0x59CFB28
+	public void SetSpeedMultiplier(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x59CFC9C Offset: 0x59CBC9C VA: 0x59CFC9C
+	private void EHACAEHGBBBEDFD(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x59CFCA4 Offset: 0x59CBCA4 VA: 0x59CFCA4
+	public void FGFDBBCBBEDBGGH() { }
+
+	// RVA: 0x59CFDA4 Offset: 0x59CBDA4 VA: 0x59CFDA4
+	private void DHDGDABCBEGBDDD(float BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x59CD1A8 Offset: 0x59C91A8 VA: 0x59CD1A8
+	private void HHHDHFFFGGBGFHG() { }
+
+	// RVA: 0x59CFDAC Offset: 0x59CBDAC VA: 0x59CFDAC
+	public void CallOnCrouchEvent() { }
+
+	// RVA: 0x59CB564 Offset: 0x59C7564 VA: 0x59CB564
+	private EGACEGHEFADDCDH<ABGDFAFFDDCHAAC> BBDHACEBDHFGFFG(float CEDEABGCFDCCGAF, byte GBADBBHGBHHECHG) { }
+
+	// RVA: 0x59CFEAC Offset: 0x59CBEAC VA: 0x59CFEAC Slot: 68
+	public override void OnBipedMapSet(BipedMap HAEFHFGDDDFDECH) { }
+
+	// RVA: 0x59CFED8 Offset: 0x59CBED8 VA: 0x59CFED8
+	public bool get_NeverIdle() { }
+
+	// RVA: 0x59CFEE0 Offset: 0x59CBEE0 VA: 0x59CFEE0
+	public DGADCECGCFCFCDF get_CurrentStateEnum() { }
+
+	// RVA: 0x59CFFC4 Offset: 0x59CBFC4 VA: 0x59CFFC4
+	public float BDGDDBADFCEBFAF() { }
+
+	// RVA: 0x59CFFCC Offset: 0x59CBFCC VA: 0x59CFFCC
+	public Trigger DCEFDDEGHABGBHG() { }
+
+	// RVA: 0x59CFFD4 Offset: 0x59CBFD4 VA: 0x59CFFD4
+	public Transform DCFHBHCCDHCGEFC() { }
+
+	[CompilerGenerated]
+	// RVA: 0x59CFFDC Offset: 0x59CBFDC VA: 0x59CFFDC
+	private void AFFCEEHCCDGBDDF(HCCEBBHAFGCBCEF BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x59CFFE4 Offset: 0x59CBFE4 VA: 0x59CFFE4
+	public void HBHDFFDGCADBCGG() { }
+
+	// RVA: 0x59D00E4 Offset: 0x59CC0E4 VA: 0x59D00E4
+	public DGADCECGCFCFCDF GHBDDAGCGGBGBCB() { }
+
+	// RVA: 0x59D01C8 Offset: 0x59CC1C8 VA: 0x59D01C8
+	public DGADCECGCFCFCDF get_GetCurrentState() { }
+
+	// RVA: 0x59D02AC Offset: 0x59CC2AC VA: 0x59D02AC Slot: 74
+	public EECEHBDFAACCHFD GetSnapshot() { }
+
+	// RVA: 0x59CCBD4 Offset: 0x59C8BD4 VA: 0x59CCBD4
+	private static ILogger FBDFEBGDFBEFHCE() { }
+
+	// RVA: 0x59D06F4 Offset: 0x59CC6F4 VA: 0x59D06F4 Slot: 83
+	public EECEHBDFAACCHFD BCBAHGFFGGAFGCE() { }
+
+	// RVA: 0x59D0B3C Offset: 0x59CCB3C VA: 0x59D0B3C
+	private void FFDDEFAFDHHFGBA(EGACEGHEFADDCDH<ABGDFAFFDDCHAAC>[] AGCEDCCBCHHFDAE) { }
+
+	// RVA: 0x59D0CB8 Offset: 0x59CCCB8 VA: 0x59D0CB8
+	public DGADCECGCFCFCDF EGEFBGBDAFBBHEG() { }
+
+	// RVA: 0x59D0D9C Offset: 0x59CCD9C VA: 0x59D0D9C Slot: 62
+	public override void OnPreInitialize() { }
+
+	[CompilerGenerated]
+	// RVA: 0x59D1CB8 Offset: 0x59CDCB8 VA: 0x59D1CB8
+	public float get_DeltaTime() { }
+
+	// RVA: 0x59D1CC0 Offset: 0x59CDCC0 VA: 0x59D1CC0
+	public void CallOnLandEvent(float BHGDDGFGGAEDFFB) { }
+
+	[CompilerGenerated]
+	// RVA: 0x59D2050 Offset: 0x59CE050 VA: 0x59D2050
+	private void DBFBEBHFDACBHFG(Trigger BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x59D2058 Offset: 0x59CE058 VA: 0x59D2058 Slot: 84
+	public void FHFACCFGDGEAHBE(HCCEBBHAFGCBCEF DBEGBBCFBABBFGC, float BHGDDGFGGAEDFFB, float CEDEABGCFDCCGAF) { }
+
+	[CompilerGenerated]
+	// RVA: 0x59D21EC Offset: 0x59CE1EC VA: 0x59D21EC
+	public CharacterController get_CharacterController() { }
+
+	// RVA: 0x59D21F4 Offset: 0x59CE1F4 VA: 0x59D21F4
+	public Trigger CEABFACDCCHCEBB() { }
+
+	// RVA: 0x59D21FC Offset: 0x59CE1FC VA: 0x59D21FC
+	public Vector3 EBCDHFFFCGBEEBB() { }
+
+	[CompilerGenerated]
+	// RVA: 0x59D2408 Offset: 0x59CE408 VA: 0x59D2408
+	public Transform get_MovementDirector() { }
+
+	// RVA: 0x59D1578 Offset: 0x59CD578 VA: 0x59D1578
+	private void GEADCECEBFFCHCG() { }
+
+	// RVA: 0x59D2410 Offset: 0x59CE410 VA: 0x59D2410 Slot: 65
+	public override void OnPostInitialize() { }
+
+	// RVA: 0x59D2470 Offset: 0x59CE470 VA: 0x59D2470 Slot: 77
+	public void OnWeaponSet(WeaponController DHDEFGDDFEDDHBG) { }
+
+	// RVA: 0x59D255C Offset: 0x59CE55C VA: 0x59D255C
+	private void CGCCACGFCCEBFBG(float BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x59D2564 Offset: 0x59CE564 VA: 0x59D2564
+	public HCCEBBHAFGCBCEF get_CmdParameters() { }
+
+	// RVA: 0x59D256C Offset: 0x59CE56C VA: 0x59D256C
+	public Transform GBADDECBGGDHAFF() { }
+
+	// RVA: 0x59D2574 Offset: 0x59CE574 VA: 0x59D2574
+	public float get_CharacterMaxWalkSpeed() { }
+
+	// RVA: 0x59CD404 Offset: 0x59C9404 VA: 0x59CD404
+	private void GDHHEFEBHDGAFED(float AGCCACHDCADECDB) { }
+
+	// RVA: 0x59D2630 Offset: 0x59CE630 VA: 0x59D2630
+	private void GHHEHEGCEEAFDHG(MecanimController BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x59D2638 Offset: 0x59CE638 VA: 0x59D2638
+	private void FHHAFEHGAAHCHGB(float BDFHFCCDABCFGBD) { }
+
+	[CompilerGenerated]
+	// RVA: 0x59D2640 Offset: 0x59CE640 VA: 0x59D2640
+	public float get_LocalTime() { }
+
+	// RVA: 0x59D2648 Offset: 0x59CE648 VA: 0x59D2648
+	private void HHEBDDBADCDEEHG(HCCEBBHAFGCBCEF BDFHFCCDABCFGBD) { }
+
+	// RVA: 0x59D2650 Offset: 0x59CE650 VA: 0x59D2650
+	public void OnDropWeapon(WeaponController DHDEFGDDFEDDHBG) { }
+
+	[ProtectedMethod]
+	// RVA: 0x59D2654 Offset: 0x59CE654 VA: 0x59D2654
+	public void RollbackPosition(Vector3 BEAFEDEABADDAAB, Vector3 HBFHCEAHDCHDDEE) { }
+
+	// RVA: 0x59D2818 Offset: 0x59CE818 VA: 0x59D2818
+	public float HECAHHDHFHBCCBB() { }
+
+	// RVA: 0x59D28D4 Offset: 0x59CE8D4 VA: 0x59D28D4
+	private void FACEFAEBCCEFCCB() { }
+
+	// RVA: 0x59CB434 Offset: 0x59C7434 VA: 0x59CB434
+	private void DFCECBBFBDCGCAG() { }
+
+	// RVA: 0x59D16E4 Offset: 0x59CD6E4 VA: 0x59D16E4
+	private void AABCFCAFHGEEBAF() { }
+
+	// RVA: 0x59CE978 Offset: 0x59CA978 VA: 0x59CE978
+	private void DEBAACBGDHHHECF() { }
+
+	// RVA: 0x59D29E4 Offset: 0x59CE9E4 VA: 0x59D29E4
+	public void CallOnJumpEvent() { }
+
+	// RVA: 0x59CB9C8 Offset: 0x59C79C8 VA: 0x59CB9C8
+	private static ILogger AFHFDHGGCCDECDB() { }
+}

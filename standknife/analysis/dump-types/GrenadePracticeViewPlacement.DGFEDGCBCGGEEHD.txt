@@ -1,0 +1,8 @@
+// Namespace: 
+private struct GrenadePracticeViewPlacement.DGFEDGCBCGGEEHD // TypeDefIndex: 2648
+{
+	// Fields
+	public bool GGECCADFBGFEDFH; // 0x0
+	public RectTransform EGBHCABFGGAGEFA; // 0x8
+	public Vector2 DHDHBCEAFGCDAAC; // 0x10
+}

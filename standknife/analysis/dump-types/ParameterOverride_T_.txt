@@ -1,0 +1,231 @@
+public class ParameterOverride<T> : ParameterOverride // TypeDefIndex: 21105
+{
+	// Fields
+	public T value; // 0x0
+
+	// Methods
+
+	// RVA: -1 Offset: -1
+	public void .ctor() { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x913E9F4 Offset: 0x913A9F4 VA: 0x913E9F4
+	|-ParameterOverride<bool>..ctor
+	|
+	|-RVA: 0x913ED64 Offset: 0x913AD64 VA: 0x913ED64
+	|-ParameterOverride<Color>..ctor
+	|
+	|-RVA: 0x913F1A8 Offset: 0x913B1A8 VA: 0x913F1A8
+	|-ParameterOverride<int>..ctor
+	|
+	|-RVA: 0x913F514 Offset: 0x913B514 VA: 0x913F514
+	|-ParameterOverride<Int32Enum>..ctor
+	|
+	|-RVA: 0x913F86C Offset: 0x913B86C VA: 0x913F86C
+	|-ParameterOverride<object>..ctor
+	|
+	|-RVA: 0x913FD24 Offset: 0x913BD24 VA: 0x913FD24
+	|-ParameterOverride<float>..ctor
+	|
+	|-RVA: 0x914009C Offset: 0x913C09C VA: 0x914009C
+	|-ParameterOverride<Vector2>..ctor
+	|
+	|-RVA: 0x9140434 Offset: 0x913C434 VA: 0x9140434
+	|-ParameterOverride<Vector4>..ctor
+	|
+	|-RVA: 0x9140858 Offset: 0x913C858 VA: 0x9140858
+	|-ParameterOverride<__Il2CppFullySharedGenericType>..ctor
+	*/
+
+	// RVA: -1 Offset: -1
+	public void .ctor(T value, bool overrideState) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x913EA10 Offset: 0x913AA10 VA: 0x913EA10
+	|-ParameterOverride<bool>..ctor
+	|
+	|-RVA: 0x913ED88 Offset: 0x913AD88 VA: 0x913ED88
+	|-ParameterOverride<Color>..ctor
+	|
+	|-RVA: 0x913F1C8 Offset: 0x913B1C8 VA: 0x913F1C8
+	|-ParameterOverride<int>..ctor
+	|
+	|-RVA: 0x913F534 Offset: 0x913B534 VA: 0x913F534
+	|-ParameterOverride<Int32Enum>..ctor
+	|
+	|-RVA: 0x913F88C Offset: 0x913B88C VA: 0x913F88C
+	|-ParameterOverride<object>..ctor
+	|
+	|-RVA: 0x913FD44 Offset: 0x913BD44 VA: 0x913FD44
+	|-ParameterOverride<float>..ctor
+	|
+	|-RVA: 0x91400BC Offset: 0x913C0BC VA: 0x91400BC
+	|-ParameterOverride<Vector2>..ctor
+	|
+	|-RVA: 0x9140458 Offset: 0x913C458 VA: 0x9140458
+	|-ParameterOverride<Vector4>..ctor
+	|
+	|-RVA: 0x9140944 Offset: 0x913C944 VA: 0x9140944
+	|-ParameterOverride<__Il2CppFullySharedGenericType>..ctor
+	*/
+
+	// RVA: -1 Offset: -1 Slot: 4
+	internal override void Interp(ParameterOverride from, ParameterOverride to, float t) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x913EA40 Offset: 0x913AA40 VA: 0x913EA40
+	|-ParameterOverride<bool>.Interp
+	|
+	|-RVA: 0x913EDD8 Offset: 0x913ADD8 VA: 0x913EDD8
+	|-ParameterOverride<Color>.Interp
+	|
+	|-RVA: 0x913F1F8 Offset: 0x913B1F8 VA: 0x913F1F8
+	|-ParameterOverride<int>.Interp
+	|
+	|-RVA: 0x913F564 Offset: 0x913B564 VA: 0x913F564
+	|-ParameterOverride<Int32Enum>.Interp
+	|
+	|-RVA: 0x913F8BC Offset: 0x913B8BC VA: 0x913F8BC
+	|-ParameterOverride<object>.Interp
+	|
+	|-RVA: 0x913FD7C Offset: 0x913BD7C VA: 0x913FD7C
+	|-ParameterOverride<float>.Interp
+	|
+	|-RVA: 0x91400F8 Offset: 0x913C0F8 VA: 0x91400F8
+	|-ParameterOverride<Vector2>.Interp
+	|
+	|-RVA: 0x91404A8 Offset: 0x913C4A8 VA: 0x91404A8
+	|-ParameterOverride<Vector4>.Interp
+	|
+	|-RVA: 0x9140A24 Offset: 0x913CA24 VA: 0x9140A24
+	|-ParameterOverride<__Il2CppFullySharedGenericType>.Interp
+	*/
+
+	// RVA: -1 Offset: -1 Slot: 9
+	public virtual void Interp(T from, T to, float t) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x913EC18 Offset: 0x913AC18 VA: 0x913EC18
+	|-ParameterOverride<bool>.Interp
+	|
+	|-RVA: 0x913EFF8 Offset: 0x913AFF8 VA: 0x913EFF8
+	|-ParameterOverride<Color>.Interp
+	|
+	|-RVA: 0x913F3D0 Offset: 0x913B3D0 VA: 0x913F3D0
+	|-ParameterOverride<int>.Interp
+	|
+	|-RVA: 0x913F73C Offset: 0x913B73C VA: 0x913F73C
+	|-ParameterOverride<Int32Enum>.Interp
+	|
+	|-RVA: 0x913FA94 Offset: 0x913BA94 VA: 0x913FA94
+	|-ParameterOverride<object>.Interp
+	|
+	|-RVA: 0x913FF58 Offset: 0x913BF58 VA: 0x913FF58
+	|-ParameterOverride<float>.Interp
+	|
+	|-RVA: 0x91402EC Offset: 0x913C2EC VA: 0x91402EC
+	|-ParameterOverride<Vector2>.Interp
+	|
+	|-RVA: 0x91406C8 Offset: 0x913C6C8 VA: 0x91406C8
+	|-ParameterOverride<Vector4>.Interp
+	|
+	|-RVA: 0x9140B44 Offset: 0x913CB44 VA: 0x9140B44
+	|-ParameterOverride<__Il2CppFullySharedGenericType>.Interp
+	*/
+
+	// RVA: -1 Offset: -1 Slot: 8
+	internal override void SetValue(ParameterOverride parameter) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x913EC3C Offset: 0x913AC3C VA: 0x913EC3C
+	|-ParameterOverride<bool>.SetValue
+	|
+	|-RVA: 0x913F02C Offset: 0x913B02C VA: 0x913F02C
+	|-ParameterOverride<Color>.SetValue
+	|
+	|-RVA: 0x913F3F0 Offset: 0x913B3F0 VA: 0x913F3F0
+	|-ParameterOverride<int>.SetValue
+	|
+	|-RVA: 0x913F75C Offset: 0x913B75C VA: 0x913F75C
+	|-ParameterOverride<Int32Enum>.SetValue
+	|
+	|-RVA: 0x913FAB4 Offset: 0x913BAB4 VA: 0x913FAB4
+	|-ParameterOverride<object>.SetValue
+	|
+	|-RVA: 0x913FF78 Offset: 0x913BF78 VA: 0x913FF78
+	|-ParameterOverride<float>.SetValue
+	|
+	|-RVA: 0x9140310 Offset: 0x913C310 VA: 0x9140310
+	|-ParameterOverride<Vector2>.SetValue
+	|
+	|-RVA: 0x91406FC Offset: 0x913C6FC VA: 0x91406FC
+	|-ParameterOverride<Vector4>.SetValue
+	|
+	|-RVA: 0x9140C60 Offset: 0x913CC60 VA: 0x9140C60
+	|-ParameterOverride<__Il2CppFullySharedGenericType>.SetValue
+	*/
+
+	// RVA: -1 Offset: -1 Slot: 5
+	public override int GetHash() { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x913EC74 Offset: 0x913AC74 VA: 0x913EC74
+	|-ParameterOverride<bool>.GetHash
+	|
+	|-RVA: 0x913F064 Offset: 0x913B064 VA: 0x913F064
+	|-ParameterOverride<Color>.GetHash
+	|
+	|-RVA: 0x913F424 Offset: 0x913B424 VA: 0x913F424
+	|-ParameterOverride<int>.GetHash
+	|
+	|-RVA: 0x913F790 Offset: 0x913B790 VA: 0x913F790
+	|-ParameterOverride<Int32Enum>.GetHash
+	|
+	|-RVA: 0x913FAE8 Offset: 0x913BAE8 VA: 0x913FAE8
+	|-ParameterOverride<object>.GetHash
+	|
+	|-RVA: 0x913FFAC Offset: 0x913BFAC VA: 0x913FFAC
+	|-ParameterOverride<float>.GetHash
+	|
+	|-RVA: 0x9140344 Offset: 0x913C344 VA: 0x9140344
+	|-ParameterOverride<Vector2>.GetHash
+	|
+	|-RVA: 0x9140734 Offset: 0x913C734 VA: 0x9140734
+	|-ParameterOverride<Vector4>.GetHash
+	|
+	|-RVA: 0x9140D24 Offset: 0x913CD24 VA: 0x9140D24
+	|-ParameterOverride<__Il2CppFullySharedGenericType>.GetHash
+	*/
+
+	// RVA: -1 Offset: -1
+	public static T op_Implicit(ParameterOverride<T> prop) { }
+	/* GenericInstMethod :
+	|
+	|-RVA: 0x913ED4C Offset: 0x913AD4C VA: 0x913ED4C
+	|-ParameterOverride<bool>.op_Implicit
+	|
+	|-RVA: 0x913F18C Offset: 0x913B18C VA: 0x913F18C
+	|-ParameterOverride<Color>.op_Implicit
+	|
+	|-RVA: 0x913F4FC Offset: 0x913B4FC VA: 0x913F4FC
+	|-ParameterOverride<int>.op_Implicit
+	|
+	|-RVA: 0x913F854 Offset: 0x913B854 VA: 0x913F854
+	|-ParameterOverride<Int32Enum>.op_Implicit
+	|
+	|-RVA: 0x913FD0C Offset: 0x913BD0C VA: 0x913FD0C
+	|-ParameterOverride<object>.op_Implicit
+	|
+	|-RVA: 0x9140084 Offset: 0x913C084 VA: 0x9140084
+	|-ParameterOverride<float>.op_Implicit
+	|
+	|-RVA: 0x914041C Offset: 0x913C41C VA: 0x914041C
+	|-ParameterOverride<Vector2>.op_Implicit
+	|
+	|-RVA: 0x914083C Offset: 0x913C83C VA: 0x914083C
+	|-ParameterOverride<Vector4>.op_Implicit
+	|
+	|-RVA: 0x9140EB0 Offset: 0x913CEB0 VA: 0x9140EB0
+	|-ParameterOverride<__Il2CppFullySharedGenericType>.op_Implicit
+	*/
+}

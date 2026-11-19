@@ -1,0 +1,9 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="dev.cloud.standknife" android:versionCode="38" android:versionName="0.38-hitbox-autoscope">
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+  <uses-sdk android:minSdkVersion="24" android:targetSdkVersion="28"/>
+  <queries><package android:name="com.neshurick.standknife"/></queries>
+  <application android:label="Cloud StandKnife Loader" android:theme="@android:style/Theme.Material.NoActionBar" android:allowBackup="false">
+    <service android:name=".LoaderService" android:exported="false" android:stopWithTask="false"/>
+    <activity android:name=".MainActivity" android:exported="true"><intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter></activity>
+  </application>
+</manifest>

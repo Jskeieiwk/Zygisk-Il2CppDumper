@@ -1,0 +1,117 @@
+// Namespace: Axlebolt.Standoff.Inventory.Bomb
+public class BombSpriteFlareConfig // TypeDefIndex: 5166
+{
+	// Fields
+	[SerializeField]
+	private SpriteFlareEnvironmentData _environmentData; // 0x10
+	[SerializeField]
+	private SpriteFlareData _plantedIndicatorSpriteFlare; // 0x18
+	[SerializeField]
+	private SpriteFlareData _detonatedIndicatorSpriteFlare; // 0x20
+
+	// Properties
+	public SpriteFlareData PlantedIndicatorSpriteFlare { get; }
+	public SpriteFlareData DetonatedIndicatorSpriteFlare { get; }
+	public SpriteFlareEnvironmentData EnvironmentData { get; }
+
+	// Methods
+
+	// RVA: 0x4498CD8 Offset: 0x4494CD8 VA: 0x4498CD8
+	public SpriteFlareEnvironmentData HEAHFBHAGGHBFEC() { }
+
+	// RVA: 0x4498CE0 Offset: 0x4494CE0 VA: 0x4498CE0
+	public SpriteFlareData get_DetonatedIndicatorSpriteFlare() { }
+
+	// RVA: 0x4498CE8 Offset: 0x4494CE8 VA: 0x4498CE8
+	public SpriteFlareData ACEAABFEFFEGACG() { }
+
+	// RVA: 0x4498CF0 Offset: 0x4494CF0 VA: 0x4498CF0
+	public SpriteFlareData BEDHCEHCDGDFGCC() { }
+
+	// RVA: 0x4498CF8 Offset: 0x4494CF8 VA: 0x4498CF8
+	public SpriteFlareData get_PlantedIndicatorSpriteFlare() { }
+
+	// RVA: 0x4498D00 Offset: 0x4494D00 VA: 0x4498D00
+	public SpriteFlareData CEEBEEDHAEEHBHF() { }
+
+	// RVA: 0x4498D08 Offset: 0x4494D08 VA: 0x4498D08
+	public SpriteFlareData AEBCAHABCFDDBAH() { }
+
+	// RVA: 0x4498D10 Offset: 0x4494D10 VA: 0x4498D10
+	public SpriteFlareData BFDBCCCBBAEBBDE() { }
+
+	// RVA: 0x4498D18 Offset: 0x4494D18 VA: 0x4498D18
+	public SpriteFlareEnvironmentData DCGCAGFFHCEBFFH() { }
+
+	// RVA: 0x4498D20 Offset: 0x4494D20 VA: 0x4498D20
+	public SpriteFlareEnvironmentData ABDEGBGBDDHHDCD() { }
+
+	// RVA: 0x4498D28 Offset: 0x4494D28 VA: 0x4498D28
+	public SpriteFlareData BBAHGBBADDGDBEE() { }
+
+	// RVA: 0x4498D30 Offset: 0x4494D30 VA: 0x4498D30
+	public SpriteFlareEnvironmentData DBHDDDHEBDBAGEH() { }
+
+	// RVA: 0x4498D38 Offset: 0x4494D38 VA: 0x4498D38
+	public SpriteFlareData DGBEEFADFHDDEAD() { }
+
+	// RVA: 0x4498D40 Offset: 0x4494D40 VA: 0x4498D40
+	public SpriteFlareEnvironmentData DBCCGHGEBAHGFFH() { }
+
+	// RVA: 0x4498D48 Offset: 0x4494D48 VA: 0x4498D48
+	public SpriteFlareData EEEDHBFEBBCFCFF() { }
+
+	// RVA: 0x4498D50 Offset: 0x4494D50 VA: 0x4498D50
+	public SpriteFlareData FGGFADGHEAACAHG() { }
+
+	// RVA: 0x4498D58 Offset: 0x4494D58 VA: 0x4498D58
+	public SpriteFlareEnvironmentData DGEBBHFDHHFFECD() { }
+
+	// RVA: 0x4498D60 Offset: 0x4494D60 VA: 0x4498D60
+	public SpriteFlareData HGBDHFHBCHCCCBF() { }
+
+	// RVA: 0x4498D68 Offset: 0x4494D68 VA: 0x4498D68
+	public SpriteFlareEnvironmentData ECBAHFHDFHBEEAD() { }
+
+	// RVA: 0x4498D70 Offset: 0x4494D70 VA: 0x4498D70
+	public SpriteFlareEnvironmentData HCAEBFDGCCADGAA() { }
+
+	// RVA: 0x4498D78 Offset: 0x4494D78 VA: 0x4498D78
+	public SpriteFlareEnvironmentData get_EnvironmentData() { }
+
+	// RVA: 0x4498D80 Offset: 0x4494D80 VA: 0x4498D80
+	public SpriteFlareData EHDFGAECGGBCFDE() { }
+
+	// RVA: 0x4498D88 Offset: 0x4494D88 VA: 0x4498D88
+	public void .ctor() { }
+
+	// RVA: 0x4498D90 Offset: 0x4494D90 VA: 0x4498D90
+	public SpriteFlareData AEECBCFDGADFEBH() { }
+
+	// RVA: 0x4498D98 Offset: 0x4494D98 VA: 0x4498D98
+	public SpriteFlareEnvironmentData DAGFDHBGEEDBCFA() { }
+
+	// RVA: 0x4498DA0 Offset: 0x4494DA0 VA: 0x4498DA0
+	public SpriteFlareEnvironmentData CADEHDACDDFBFEF() { }
+
+	// RVA: 0x4498DA8 Offset: 0x4494DA8 VA: 0x4498DA8
+	public SpriteFlareData GFGAFCHEFGAGGAA() { }
+
+	// RVA: 0x4498DB0 Offset: 0x4494DB0 VA: 0x4498DB0
+	public SpriteFlareData HCECDGHDGEGHCBD() { }
+
+	// RVA: 0x4498DB8 Offset: 0x4494DB8 VA: 0x4498DB8
+	public SpriteFlareEnvironmentData GBFCDGCDFEBEAAH() { }
+
+	// RVA: 0x4498DC0 Offset: 0x4494DC0 VA: 0x4498DC0
+	public SpriteFlareData BGDCGDAFCAGDFFA() { }
+
+	// RVA: 0x4498DC8 Offset: 0x4494DC8 VA: 0x4498DC8
+	public SpriteFlareEnvironmentData FGFCBGBGEAHCAFG() { }
+
+	// RVA: 0x4498DD0 Offset: 0x4494DD0 VA: 0x4498DD0
+	public SpriteFlareData CGBEBBHCFEAGDHC() { }
+
+	// RVA: 0x4498DD8 Offset: 0x4494DD8 VA: 0x4498DD8
+	public SpriteFlareEnvironmentData DDFDGHBFDCDDCDB() { }
+}

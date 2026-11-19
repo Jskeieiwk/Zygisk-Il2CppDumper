@@ -1,0 +1,111 @@
+// Namespace: Axlebolt.Standoff.Inventory.Bomb
+public class BombBeepStep // TypeDefIndex: 182
+{
+	// Fields
+	[SerializeField]
+	private float _time; // 0x10
+	[SerializeField]
+	private float _interval; // 0x14
+
+	// Properties
+	public float Time { get; }
+	public float Interval { get; }
+
+	// Methods
+
+	// RVA: 0x6557494 Offset: 0x6553494 VA: 0x6557494
+	public float HAABBCGHACAGAHG() { }
+
+	// RVA: 0x655749C Offset: 0x655349C VA: 0x655749C
+	public float DHHHGBEBDFHFCBF() { }
+
+	// RVA: 0x65574A4 Offset: 0x65534A4 VA: 0x65574A4
+	public float ECBECGCFCBHGEHH() { }
+
+	// RVA: 0x65574AC Offset: 0x65534AC VA: 0x65574AC
+	public float FFCDAHGCAFACDBF() { }
+
+	// RVA: 0x65574B4 Offset: 0x65534B4 VA: 0x65574B4
+	public float DECEDBBAGGDFGGF() { }
+
+	// RVA: 0x65574BC Offset: 0x65534BC VA: 0x65574BC
+	public float CEGEEEDHFGADCHD() { }
+
+	// RVA: 0x65574C4 Offset: 0x65534C4 VA: 0x65574C4
+	public float HAEHGCGAHGADBAE() { }
+
+	// RVA: 0x65574CC Offset: 0x65534CC VA: 0x65574CC
+	public float get_Time() { }
+
+	// RVA: 0x65574D4 Offset: 0x65534D4 VA: 0x65574D4
+	public float AADAHEACEGHFEAC() { }
+
+	// RVA: 0x65574DC Offset: 0x65534DC VA: 0x65574DC
+	public float AABHEGDGFGCDACG() { }
+
+	// RVA: 0x65574E4 Offset: 0x65534E4 VA: 0x65574E4
+	public float FAGDDBHBHBHEFDB() { }
+
+	// RVA: 0x65574EC Offset: 0x65534EC VA: 0x65574EC
+	public float FBBCFEEFHEAHAHC() { }
+
+	// RVA: 0x65574F4 Offset: 0x65534F4 VA: 0x65574F4
+	public float AAAADDCGBEDHHBF() { }
+
+	// RVA: 0x65574FC Offset: 0x65534FC VA: 0x65574FC
+	public float HGHHACHFCBEBCEB() { }
+
+	// RVA: 0x6557504 Offset: 0x6553504 VA: 0x6557504
+	public float BCAHDAGBHBGABDG() { }
+
+	// RVA: 0x655750C Offset: 0x655350C VA: 0x655750C
+	public float EGHEFEAGDHAFAHH() { }
+
+	// RVA: 0x6557514 Offset: 0x6553514 VA: 0x6557514
+	public float GCCEEFABGEHHDEE() { }
+
+	// RVA: 0x655751C Offset: 0x655351C VA: 0x655751C
+	public float GEHHCDDFCAHBACC() { }
+
+	// RVA: 0x6557524 Offset: 0x6553524 VA: 0x6557524
+	public float get_Interval() { }
+
+	// RVA: 0x655752C Offset: 0x655352C VA: 0x655752C
+	public void .ctor() { }
+
+	// RVA: 0x6557534 Offset: 0x6553534 VA: 0x6557534
+	public float EBCFDADEBHDHADG() { }
+
+	// RVA: 0x655753C Offset: 0x655353C VA: 0x655753C
+	public float CFACCHCFBHEEDGC() { }
+
+	// RVA: 0x6557544 Offset: 0x6553544 VA: 0x6557544
+	public float GDFDGBEAHBACDAA() { }
+
+	// RVA: 0x655754C Offset: 0x655354C VA: 0x655754C
+	public float ABDFEEHFGDCECAG() { }
+
+	// RVA: 0x6557554 Offset: 0x6553554 VA: 0x6557554
+	public float FABHDAGGEGDFHGG() { }
+
+	// RVA: 0x655755C Offset: 0x655355C VA: 0x655755C
+	public float FHEABCHBACCCGDF() { }
+
+	// RVA: 0x6557564 Offset: 0x6553564 VA: 0x6557564
+	public float BFECCDDEFEFHFAB() { }
+
+	// RVA: 0x655756C Offset: 0x655356C VA: 0x655756C
+	public float ECFGGGHCCEFEHEA() { }
+
+	// RVA: 0x6557574 Offset: 0x6553574 VA: 0x6557574
+	public float DFEEGGGFCGBHDCD() { }
+
+	// RVA: 0x655757C Offset: 0x655357C VA: 0x655757C
+	public float BCEFBCCACABEDFB() { }
+
+	// RVA: 0x6557584 Offset: 0x6553584 VA: 0x6557584
+	public float FDBBBHGHCGDHBBC() { }
+
+	// RVA: 0x655758C Offset: 0x655358C VA: 0x655758C
+	public float DGBHBDHCFCDECGH() { }
+}
