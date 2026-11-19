@@ -52,8 +52,41 @@ inline size_t MetadataV31TotalSize(const uint8_t *header, size_t available) {
     return (size_t) end;
 }
 
-// Scans this process's anonymous readable memory for a decrypted global-metadata image and writes
-// each distinct one (at most 4) to <outDir>/files/global-metadata.dec.dat, .dec2.dat, ...
+
+// Magic-independent detector for metadata versions 24..31, whose header is: magic, version,
+// then (offset, size) int pairs with the first offset equal to the header size (8 + 8 * pairs).
+// A protector may replace the magic word, so the first word is ignored here. Returns the total size
+// (largest offset+size) when the pairs are non-negative, offsets never decrease, every offset is
+// at least the header size and most sections are non-empty; otherwise 0.
+inline size_t MetadataStructureSize(const uint8_t *header, size_t available) {
+    if (available < 12) return 0;
+    int32_t version;
+    uint32_t first;
+    std::memcpy(&version, header + 4, 4);
+    std::memcpy(&first, header + 8, 4);
+    if (version < 24 || version > 31 || first < 0xC0 || first > 0x200 || (first & 7) != 0) return 0;
+    if (available < first) return 0;
+    size_t pairs = (first - 8) / 8;
+    uint64_t end = first;
+    uint32_t prev_offset = first;
+    size_t non_empty = 0;
+    for (size_t i = 0; i < pairs; i++) {
+        int32_t offset, size;
+        std::memcpy(&offset, header + 8 + i * 8, 4);
+        std::memcpy(&size, header + 12 + i * 8, 4);
+        if (offset < 0 || size < 0 || (uint32_t) offset < prev_offset || (uint32_t) offset < first) return 0;
+        prev_offset = (uint32_t) offset;
+        uint64_t section_end = (uint64_t) (uint32_t) offset + (uint32_t) size;
+        if (section_end > kMetadataMaxSize) return 0;
+        if (section_end > end) end = section_end;
+        if (size > 0) non_empty++;
+    }
+    if (non_empty * 3 < pairs * 2) return 0;
+    return (size_t) end;
+}
+
+// Scans this process's readable runtime memory for a decrypted global-metadata image, found either
+// by its magic word or by the structure of its header, and writes each distinct one (at most 4) to <outDir>/files/global-metadata.dec.dat, .dec2.dat, ...
 // Returns the number of files written. Needs no per-build offsets.
 int dump_decrypted_metadata(const char *outDir);
 

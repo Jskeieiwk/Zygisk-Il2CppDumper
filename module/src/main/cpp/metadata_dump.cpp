@@ -73,39 +73,61 @@ std::vector<Region> ScannableRegions() {
     return regions;
 }
 
-// Candidate metadata image found at `addr`; `limit` is the end of its mapping.
-bool ReadCandidate(uint64_t addr, uint64_t limit, std::vector<uint8_t> &out) {
+// Candidate metadata image found at `addr`; `limit` is the end of its mapping. `by_structure` means
+// the first word is not the standard magic: the image is accepted from its header layout alone and
+// the magic is restored in the output.
+bool ReadCandidate(uint64_t addr, uint64_t limit, bool by_structure, std::vector<uint8_t> &out) {
     uint8_t header[kMetadataProbeSize];
     size_t probe = (size_t) std::min<uint64_t>(sizeof(header), limit - addr);
     if (!SafeRead(addr, header, probe)) return false;
-    if (!MetadataHeaderPlausible(header, probe)) {
-        static int rejected_logged = 0;
-        if (rejected_logged++ < 8) {
-            int32_t version;
-            uint32_t first;
-            std::memcpy(&version, header + 4, 4);
-            std::memcpy(&first, header + 8, 4);
-            LOGW("metadata: magic at %llx rejected: version=%d firstSection=0x%x",
-                 (unsigned long long) addr, version, first);
-        }
-        return false;
-    }
-    size_t total = MetadataV31TotalSize(header, probe);
-    if (total) {
-        if (addr + total > limit) {
-            LOGW("metadata: v31 header at %llx needs %zu bytes but its mapping has %llu",
-                 (unsigned long long) addr, total, (unsigned long long) (limit - addr));
+    size_t total = 0;
+    if (by_structure) {
+        total = MetadataStructureSize(header, probe);
+        if (!total) return false;
+        uint32_t first_word;
+        std::memcpy(&first_word, header, 4);
+        LOGI("metadata: structural match at %llx, first word %08x, size %zu",
+             (unsigned long long) addr, first_word, total);
+    } else {
+        if (!MetadataHeaderPlausible(header, probe)) {
+            static int rejected_logged = 0;
+            if (rejected_logged++ < 8) {
+                int32_t version;
+                uint32_t first;
+                std::memcpy(&version, header + 4, 4);
+                std::memcpy(&first, header + 8, 4);
+                LOGW("metadata: magic at %llx rejected: version=%d firstSection=0x%x",
+                     (unsigned long long) addr, version, first);
+            }
             return false;
         }
-        LOGI("metadata: v31 image at %llx, exact size %zu", (unsigned long long) addr, total);
-    } else {
-        // Other versions: layout not verified here, so bound by the mapping and say so.
-        total = (size_t) std::min<uint64_t>(limit - addr, kMetadataMaxSize);
-        LOGW("metadata: header at %llx has version != 31, size taken from the mapping (%zu), unverified",
-             (unsigned long long) addr, total);
+        total = MetadataV31TotalSize(header, probe);
+        if (total) {
+            LOGI("metadata: v31 image at %llx, exact size %zu", (unsigned long long) addr, total);
+        } else {
+            total = MetadataStructureSize(header, probe);
+            if (total) {
+                LOGI("metadata: image at %llx, size from header %zu", (unsigned long long) addr, total);
+            } else {
+                // Other versions: layout not verified here, so bound by the mapping and say so.
+                total = (size_t) std::min<uint64_t>(limit - addr, kMetadataMaxSize);
+                LOGW("metadata: header at %llx has an unverified layout, size taken from the mapping (%zu)",
+                     (unsigned long long) addr, total);
+            }
+        }
+    }
+    if (addr + total > limit) {
+        LOGW("metadata: header at %llx needs %zu bytes but its mapping has %llu", (unsigned long long) addr,
+             total, (unsigned long long) (limit - addr));
+        return false;
     }
     out.resize(total);
-    return SafeRead(addr, out.data(), total);
+    if (!SafeRead(addr, out.data(), total)) return false;
+    if (by_structure) {
+        const uint8_t magic[4] = {0xAF, 0x1B, 0xB1, 0xFA};
+        std::memcpy(out.data(), magic, 4);
+    }
+    return true;
 }
 
 bool WriteFile(const std::string &path, const std::vector<uint8_t> &data) {
@@ -127,23 +149,31 @@ int dump_decrypted_metadata(const char *outDir) {
     std::string files_dir = std::string(outDir).append("/files");
     if (mkdir(files_dir.c_str(), 0771) != 0 && errno != EEXIST)
         LOGE("metadata: mkdir %s failed (errno %d)", files_dir.c_str(), errno);
-    // The image's own header bytes AF 1B B1 FA, scanned on 4-byte boundaries.
+    // Two detectors on 4-byte boundaries: the standard magic word, and a magic-independent one
+    // (version word followed by a plausible header size) for builds whose protector changed the magic.
     const uint8_t magic[4] = {0xAF, 0x1B, 0xB1, 0xFA};
+    constexpr size_t kOverlap = 12;
     std::vector<std::vector<uint8_t>> found;
     for (int round = 0; round < kScanRounds && found.empty(); round++) {
         if (round) sleep(3);
-        std::vector<uint8_t> chunk(kChunk + 4);
+        std::vector<uint8_t> chunk(kChunk + kOverlap);
         for (const Region &r: ScannableRegions()) {
             for (uint64_t pos = r.start; pos < r.end; pos += kChunk) {
-                size_t n = (size_t) std::min<uint64_t>(kChunk + 3, r.end - pos);
-                if (n < 4 || !SafeRead(pos, chunk.data(), n)) continue;
-                for (size_t i = 0; i + 4 <= n; i += 4) {
-                    if (std::memcmp(&chunk[i], magic, 4) != 0) continue;
+                size_t n = (size_t) std::min<uint64_t>(kChunk + kOverlap, r.end - pos);
+                if (n < 12 || !SafeRead(pos, chunk.data(), n)) continue;
+                for (size_t i = 0; i + 12 <= n; i += 4) {
+                    uint32_t w1, w2;
+                    std::memcpy(&w1, &chunk[i + 4], 4);
+                    std::memcpy(&w2, &chunk[i + 8], 4);
+                    bool by_magic = std::memcmp(&chunk[i], magic, 4) == 0;
+                    bool by_structure = !by_magic && w1 >= 24 && w1 <= 31 && w2 >= 0xC0 && w2 <= 0x200 &&
+                                        (w2 & 7) == 0;
+                    if (!by_magic && !by_structure) continue;
                     uint64_t hit = pos + i;
                     uint64_t self = (uint64_t) chunk.data();
                     if (hit >= self && hit < self + chunk.size()) continue;  // our own read buffer
                     std::vector<uint8_t> image;
-                    if (!ReadCandidate(hit, r.end, image)) continue;
+                    if (!ReadCandidate(hit, r.end, by_structure, image)) continue;
                     bool duplicate = false;
                     for (const auto &g: found) duplicate = duplicate || g == image;
                     if (!duplicate && (int) found.size() < kMaxFiles) found.push_back(std::move(image));
