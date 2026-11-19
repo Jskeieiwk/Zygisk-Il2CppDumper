@@ -42,12 +42,10 @@ menu.html, имя APK в build.sh и analysis/feature-audit.json.
 
 ## Текущий статус
 
-**v0.38** (`analysis/V038_RU.md`): автовалл без толщин (переключатели; насквозь только игроки и ломаемые объекты), `Hitbox All`,
-приоритет частей тела, `Multipoint Scale` %, `Hitchance` %, `Auto Scope` с обучением бита прицела. 28 локальных тестов проходят,
-APK не собирался, на телефоне не запускалась. Ломаемые объекты распознаются только после заполнения `WALL_RULES` в
-`assets/wall-rules.js` (нужны `dump.cs`/`script.json`); пока значения `null`, автовалл проходит только через игроков.
-Релизный `zusa99.zip` повреждён (дыра из нулей), `dump.cs` из него не достать, пересобирать Il2CppDumper из
-`libil2cpp-for-dumper.so` + `global-metadata.dat` (адреса в README_RU.txt архива).
+**v0.38** (`analysis/V038_RU.md`): автовалл без толщин (переключатели; насквозь только игроки и объекты с `BreakableObjectBase`,
+значения в `WALL_RULES` измерены по дампу 3.3), `Hitbox All`, приоритет частей тела, `Multipoint Scale` %, `Hitchance` %,
+`Auto Scope` с обучением бита прицела. 28 локальных тестов проходят, APK собран и подписан тем же ключом, **на телефоне не запускалась**.
+Рабочий дамп (dump.cs, script.json, libil2cpp.so) лежит в `Cloud-project-v23.tar.gz.enc` релиза dump3; релизный `zusa99.zip` повреждён.
 
 Состояние v0.37 ниже сохранено для истории.
 

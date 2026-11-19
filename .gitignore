@@ -17,3 +17,10 @@ standknife/node_modules
 standknife/tools
 standknife/build
 standknife/*.apk
+standknife/loader.p12
+standknife/assets/inject-arm
+standknife/assets/inject-arm64
+standknife/dump.cs
+standknife/script.json
+standknife/libil2cpp.so
+standknife/*.apk

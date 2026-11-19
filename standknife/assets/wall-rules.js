@@ -5,22 +5,23 @@
 //
 // Players are recognised by the aim code itself (it owns the tracked players). This file classifies everything else.
 //
-// WALL_RULES holds the measured game values. null means "not measured yet" and is never treated as zero: while a value is null
-// the classifier answers null for every obstacle and Autowall behaves like a direct line plus players. To fill it in, search
-// the 3.3 dump.cs (regenerated with libil2cpp-for-dumper.so + global-metadata.dat, see README_RU.txt of zusa99.zip) for:
-//   breakableType        full name of the breakable-object component class, e.g. the class "BreakableObjectBase" with its
-//                        namespace and assembly, in the form engine.type() takes: 'Namespace.Type, Assembly-CSharp'.
-//   getComponentInParent RVA of UnityEngine.Component.GetComponentInParent(System.Type, bool) in UnityEngine.CoreModule
-//                        (script.json ScriptMethod, name "UnityEngine.Component$$GetComponentInParent"); compare with the RVA of
-//                        GetComponentInChildren(Type,bool) that world-visuals.js already calls (0xA77E310).
-//   getComponentInParentMethodInfo   MethodInfo for the call, if the dump lists one for that overload; otherwise leave 0.
+// WALL_RULES holds game values measured from the 3.3 dump (dump.cs / script.json from Cloud-project-v23.tar.gz.enc, built from
+// the libil2cpp.so with SHA-256 45a634d2...2339). A value that is not measured is null, never 0: while one is null the classifier
+// answers null for every obstacle and Autowall behaves like a direct line plus players.
+//   breakableType         dump.cs line 317347: namespace Axlebolt.Standoff.Game.BreakableObject, class BreakableObjectBase
+//                         (TypeDefIndex 3857, Assembly-CSharp), in the form engine.type() takes.
+//   getComponentInParent  script.json ScriptMethod "UnityEngine.Component$$GetComponentInParent" (Type t, bool includeInactive,
+//                         MethodInfo): RVA 0xA77E4E0. Same signature shape as GetComponentInChildren 0xA77E310 used elsewhere.
+//   minBreakOffset/minCoeffOffset  BreakableObjectBase fields _minBreakPenetrationValue (float, 0x4C) and
+//                         _minPenetrationValueForCoeff (float, 0x48). They are only logged (see classify): how they compare with
+//                         the weapon's penetration power (WeaponParameters+0x1A4) is not known, so nothing is decided by them.
+// Not verified in a match: that every bullet-stopping-but-breakable object has this component above its collider.
 const WALL_RULES={
-  build:'StandKnife 3.3 (zusa99.zip dump, 2026-11-17)',
-  breakableType:null,
-  getComponentInParent:null,
-  // Penetration thresholds on BreakableObjectBase are not read: a breakable object counts as passable and the game decides
-  // how much power it takes. Set to an object-field offset once measured to compare against the weapon's penetration power.
-  thresholdOffset:null
+  build:'StandKnife 3.3 (libil2cpp.so sha256 45a634d2...2339)',
+  breakableType:'Axlebolt.Standoff.Game.BreakableObject.BreakableObjectBase, Assembly-CSharp',
+  getComponentInParent:0xa77e4e0,
+  minBreakOffset:0x4c,
+  minCoeffOffset:0x48
 };
 
 export function wallRulesReady(config=WALL_RULES){
@@ -31,7 +32,7 @@ export function wallRulesReady(config=WALL_RULES){
 // cached per collider for the life of the session, because map colliders and breakable objects keep their identity.
 export function createWallRules({engine,config=WALL_RULES,log=()=>{}}){
   const cache=new Map();
-  let logged=false,getInParent=null,breakableType=null;
+  let logged=false,getInParent=null,breakableType=null,thresholdLogs=0;
   function bind(){
     if(getInParent)return true;
     if(!wallRulesReady(config))return false;
@@ -43,7 +44,9 @@ export function createWallRules({engine,config=WALL_RULES,log=()=>{}}){
     ready:()=>wallRulesReady(config),
     // true: breakable (the bullet can pass), false: solid, null: classifier unavailable or the lookup failed.
     classify(collider){
-      if(!bind()){
+      let bound=false;
+      try{bound=bind();}catch(error){if(!logged){logged=true;log('CLOUD:wall-rules-error '+error);}return null;}
+      if(!bound){
         if(!logged){logged=true;log('CLOUD:wall-rules unset ('+config.build+'): only the direct line and players are passable');}
         return null;
       }
@@ -53,10 +56,16 @@ export function createWallRules({engine,config=WALL_RULES,log=()=>{}}){
       try{
         const found=getInParent(collider,breakableType,1,ptr(0));
         verdict=!found.isNull();
+        // Evidence for later tuning: the thresholds of the first breakable objects met (at most 40 lines per session).
+        if(verdict&&thresholdLogs<40&&config.minBreakOffset!==null&&config.minCoeffOffset!==null){
+          thresholdLogs++;
+          log('CLOUD:wall-rules breakable minBreak='+found.add(config.minBreakOffset).readFloat().toFixed(3)+
+            ' minCoeff='+found.add(config.minCoeffOffset).readFloat().toFixed(3));
+        }
       }catch(error){log('CLOUD:wall-rules-error '+error);}
       if(verdict!==null)cache.set(key,verdict);
       return verdict;
     },
-    reset(){cache.clear();}
+    reset(){cache.clear();thresholdLogs=0;}
   };
 }

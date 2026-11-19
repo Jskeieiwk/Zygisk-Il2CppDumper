@@ -119,8 +119,24 @@ console.log('Aim/Auto Stop shutdown integration passed.');
   slabs=[[4,4.9,'breakable']];state=decision();assert(state.selected,'A target behind a breakable obstacle can be aimed at');
   slabs=[];
   // Rules that are not filled in yet (null) answer null for every obstacle: Autowall then equals the direct line.
-  const unset=api.createWallRules({engine:{},log:()=>{}});
-  assert.equal(unset.ready(),false);assert.equal(unset.classify(new Pointer(1)),null);
+  const unsetLog=[];
+  const unset=api.createWallRules({engine:{},config:{build:'test',breakableType:null,getComponentInParent:null},log:m=>unsetLog.push(m)});
+  assert.equal(unset.ready(),false);assert.equal(unset.classify(new Pointer(1)),null);assert.equal(unset.classify(new Pointer(1)),null);
+  assert.equal(unsetLog.length,1,'The unset warning is logged once');
+  // Filled in: the classifier asks the game for the component above the collider (GetComponentInParent), caches the answer and
+  // logs the first thresholds. A failing type lookup or a throwing call answers null instead of raising.
+  const floats=new Map([[0x4c,2.5],[0x48,1.25]]);
+  class Component {constructor(v){this.value=v;}isNull(){return !this.value;}add(o){return {readFloat:()=>floats.get(o)};}toString(){return 'c'+this.value;}}
+  let calls=0;const ruleLog=[];
+  const rules=api.createWallRules({engine:{type:name=>({name}),method:(rva,ret,args)=>{assert.equal(rva,0xa77e4e0);assert.deepEqual(Array.from(args),['pointer','pointer','bool','pointer']);
+      return (collider,type,inactive)=>{calls++;assert.equal(type.name,'T, A');assert.equal(inactive,1);return new Component(collider.value===7?55:0);};}},
+    config:{build:'test',breakableType:'T, A',getComponentInParent:0xa77e4e0,minBreakOffset:0x4c,minCoeffOffset:0x48},log:m=>ruleLog.push(m)});
+  const c7=new Pointer(7),c8=new Pointer(8);c7.toString=()=>'7';c8.toString=()=>'8';
+  assert.equal(rules.ready(),true);assert.equal(rules.classify(c7),true);assert.equal(rules.classify(c8),false);
+  assert.equal(rules.classify(c7),true);assert.equal(calls,2,'Verdicts are cached per collider');
+  assert.deepEqual(ruleLog,['CLOUD:wall-rules breakable minBreak=2.500 minCoeff=1.250']);
+  const failing=api.createWallRules({engine:{type:()=>{throw Error('Missing managed type T');},method(){}},config:{build:'t',breakableType:'T',getComponentInParent:1},log:()=>{}});
+  assert.equal(failing.classify(c7),null,'A missing type answers unknown');
 }
 console.log('Autowall without thickness, Wallshot gating and aim-assist wall rule passed.');
 
