@@ -52,7 +52,7 @@ public class LoaderService extends Service {
   void runSession(){
     try{
       new FileOutputStream(new File(getFilesDir(),"session.log")).close();
-      log("Cloud v0.48 / Frida 17.26.3\nDevice: "+Build.MANUFACTURER+" "+Build.MODEL+"\nAndroid: "+Build.VERSION.RELEASE+" SDK "+Build.VERSION.SDK_INT+"\nABIs: "+java.util.Arrays.toString(Build.SUPPORTED_ABIS));
+      log("Cloud v0.49 / Frida 17.26.3\nDevice: "+Build.MANUFACTURER+" "+Build.MODEL+"\nAndroid: "+Build.VERSION.RELEASE+" SDK "+Build.VERSION.SDK_INT+"\nABIs: "+java.util.Arrays.toString(Build.SUPPORTED_ABIS));
       PackageInfo info=getPackageManager().getPackageInfo(GAME,0);log("Game: "+info.versionName+" / "+info.versionCode);
       if(!"3.3".equals(info.versionName))throw new IOException("Нужна игра 3.3");
       state("Проверка root…");String uid=root("id");log(uid);if(!uid.contains("uid=0"))throw new IOException("su не выдал root");

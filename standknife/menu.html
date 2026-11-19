@@ -51,9 +51,6 @@ function soundOptions(){
  return pick('Hit Sound Type','Звук попадания',0)+pick('Kill Sound Type','Звук убийства',2)+
   `<label class="setting">Громкость звуков, %<output>${selections['Hit Sound Volume']??150}</output><input type="range" data-option="Hit Sound Volume" min="50" max="200" step="10" value="${selections['Hit Sound Volume']??150}"></label>`;
 }
-function knifeOptions(){
- return [['Knife Range','Дистанция активации, м',.5,3,.1,1.5],['Knife FOV','Угол активации, °',5,90,1,30]].map(([key,label,min,max,step,value])=>`<label class="setting">${label}<output>${selections[key]??value}</output><input type="range" data-option="${key}" min="${min}" max="${max}" step="${step}" value="${selections[key]??value}"></label>`).join('')+'<div class="hint">Сначала нужна калибровка огня из автомата. Knife Bot использует обычный удар ножом; дальность попадания остаётся игровой.</div>';
-}
 function cameraOptions(){
   const fields=[['Camera Distance','Камера: расстояние, м',.5,5,.1,2],['Camera Height','Камера: высота, м',-1,2,.05,.25],['Viewmodel X','Оружие X, м',-1,1,.01,.15],['Viewmodel Y','Оружие Y, м',-1,1,.01,-.1],['Viewmodel Z','Оружие Z, м',-1,1,.01,.2]];
   return fields.map(([key,label,min,max,step,value])=>`<label class="setting">${label}<output>${selections[key]??value}</output><input type="range" data-option="${key}" min="${min}" max="${max}" step="${step}" value="${selections[key]??value}"></label>`).join('')+'<div class="hint">Safe Mode выключает тяжёлые эффекты и автоматическую стрельбу. Raw Input отключает игровое сглаживание касаний, сохраняя чувствительность. Penetration показывает геометрию преграды, а не обещает пробитие. Third Person смещает камеру с проверкой препятствий. Back Camera разворачивает вид назад. Viewmodel смещает руки только на время отрисовки. Hotkeys: уменьшение громкости открывает и закрывает меню. При скрытии ватермарка Hotkeys включается автоматически; после перезапуска Cloud снова виден.</div>';
@@ -93,10 +90,10 @@ function preview() {
 }
 function render() {
   document.querySelectorAll('.nav').forEach(x=>x.classList.toggle('on',x.dataset.page===page));
-  document.querySelector('#runtimeStatus').textContent='CLOUD · 0.48'+(runtime&&!runtime.ready?' · модуль не готов':'');
+  document.querySelector('#runtimeStatus').textContent='CLOUD · 0.49'+(runtime&&!runtime.ready?' · модуль не готов':'');
   const t=pages[page];if(!t[tab])tab=Object.keys(t)[0];
   tabs.innerHTML=Object.keys(t).map(x=>`<button class="tab ${x===tab?'on':''}" data-tab="${x}">${escapeHtml(x)}</button>`).join('');
-  cols.innerHTML=t[tab].map(group=>`<section class="col"><div class="group">${escapeHtml(group.title)}</div>${group.rows.map(r=>featureRow(r)+rowSlider(r)).join('')}${page==='aim' && group.title==='trigger'?aimOptions():''}${page==='behavior'&&group.title==='knife bot'?knifeOptions():''}${page==='visuals'&&group.title==='esp'?'<div class="hint">Penetration показывает толщину преграды. Это геометрический индикатор; урон зависит от правил игры.</div>'+radiusOptions():''}${page==='scene'&&group.title==='world'?fogOptions():''}${page==='misc'&&group.title==='main'?cameraOptions()+syncOptions():''}${page==='players' && tab==='screen' && group.title==='effects'?soundOptions()+options():''}${group.preview?'<div class="preview"><canvas id="espPreview" width="300" height="155"></canvas></div><div class="hint">Предпросмотр настроек</div>'+options():''}</section>`).join('');
+  cols.innerHTML=t[tab].map(group=>`<section class="col"><div class="group">${escapeHtml(group.title)}</div>${group.rows.map(r=>featureRow(r)+rowSlider(r)).join('')}${page==='aim' && group.title==='trigger'?aimOptions():''}${page==='visuals'&&group.title==='esp'?'<div class="hint">Penetration показывает толщину преграды. Это геометрический индикатор; урон зависит от правил игры.</div>'+radiusOptions():''}${page==='scene'&&group.title==='world'?fogOptions():''}${page==='misc'&&group.title==='main'?cameraOptions()+syncOptions():''}${page==='players' && tab==='screen' && group.title==='effects'?soundOptions()+options():''}${group.preview?'<div class="preview"><canvas id="espPreview" width="300" height="155"></canvas></div><div class="hint">Предпросмотр настроек</div>'+options():''}</section>`).join('');
   tabs.querySelectorAll('button').forEach(b=>b.onclick=()=>{tab=b.dataset.tab;render()});
   cols.querySelectorAll('input[data-feature]').forEach(i=>i.onchange=()=>emit(i.dataset.feature,i.checked));
   cols.querySelectorAll('[data-option]').forEach(i=>i.oninput=()=>{

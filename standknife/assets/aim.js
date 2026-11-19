@@ -39,6 +39,8 @@ export function createAim(context) {
   // With wall (Autowall/Wallshot) the line may cross obstacles the game lets bullets through: other players, and whatever the
   // wall rules classify as passable (breakable objects, see wall-rules.js). Nothing is measured in centimetres: an obstacle is
   // passable or it is not. An unknown obstacle counts as solid. MAX_OBSTACLES only bounds the loop.
+  // Knife Bot has no settings: it acts on an enemy within this distance and this angle of the crosshair while a knife is in hand (the old slider defaults).
+  const KNIFE_RANGE_METERS=1.5,KNIFE_FOV_DEGREES=30;
   const MAX_OBSTACLES=4,PASS_EPSILON=.02;
   // Autowall is one button. Besides players and known breakable objects, an obstacle counts as passable when its summed thickness stays within
   // THIN_WALL_METERS (15 cm, the v0.37 default). Not a setting and not calibrated against the game's penetration: v0.36 fired into solid gates
@@ -151,7 +153,7 @@ export function createAim(context) {
           if(!struck.isNull())rayTransform=transform(struck,ptr(0));
         }
       }
-      const range=isKnife?settings['Knife Range']:settings['Aim Range'],fovLimit=isKnife?settings['Knife FOV']:settings['Aim FOV'];
+      const range=isKnife?KNIFE_RANGE_METERS:settings['Aim Range'],fovLimit=isKnife?KNIFE_FOV_DEGREES:settings['Aim FOV'];
       const wallAim=!isKnife&&(settings['Autowall (Aim)']||settings.Autowall);
       let crosshairKey=null;
       for(const [key,item]of records) {
