@@ -18,9 +18,31 @@
 #include <linux/unistd.h>
 #include <array>
 
+// Logs the distinct mapped paths containing "il2cpp" or "unity" so a different library name is visible.
+static void LogUnityLibraries() {
+    FILE *f = fopen("/proc/self/maps", "r");
+    if (!f) return;
+    char line[512];
+    std::string last;
+    int logged = 0;
+    while (fgets(line, sizeof(line), f) && logged < 12) {
+        const char *path = strchr(line, '/');
+        if (!path || (!strstr(path, "il2cpp") && !strstr(path, "unity") && !strstr(path, "Unity")))
+            continue;
+        std::string p(path);
+        while (!p.empty() && (p.back() == '\n' || p.back() == ' ')) p.pop_back();
+        if (p == last) continue;
+        last = p;
+        LOGI("mapped: %s", p.c_str());
+        logged++;
+    }
+    fclose(f);
+}
+
 void hack_start(const char *game_data_dir) {
     bool load = false;
-    for (int i = 0; i < 10; i++) {
+    // The original module waited 10 s; this game loads libil2cpp.so later than that.
+    for (int i = 0; i < 300; i++) {
         void *handle = xdl_open("libil2cpp.so", 0);
         if (handle) {
             load = true;
@@ -34,6 +56,7 @@ void hack_start(const char *game_data_dir) {
     }
     if (!load) {
         LOGI("libil2cpp.so not found in thread %d", gettid());
+        LogUnityLibraries();
     }
 }
 
