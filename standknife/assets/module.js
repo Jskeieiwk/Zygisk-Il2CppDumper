@@ -302,6 +302,21 @@ function installEsp(hooks=createHookSet(moduleBase,Interceptor)) {
     worldVisuals.setEffectHook(installed);
     console.log('CLOUD:effect-hook='+(installed?'on':'unavailable, scene scan fallback'));
   }
+  // The same for items, dropped grenades and the planted bomb: lifecycle methods from the 3.3 dump (script.json) register the objects as the
+  // game creates them. A kind with no installed hook keeps the periodic scene scan (worldScanMs 40-52 ms every ~2 s in the v0.38 log).
+  //   DroppedGrenadeController.Awake 0x3B0AEEC, PlantedBombController.Awake 0x519E18C,
+  //   WeaponDropController.PreInitialize 0x3BEF384 and .Initialize 0x3BF28D0 (the class has no Awake/OnEnable; whether either runs for
+  //   every drop, including map-placed ones, is not verified on the device: objects that exist when the feature is switched on are found by one seed scan).
+  if(worldVisuals&&worldVisuals.noteObject){
+    const registry=[['grenades','grenade-awake',0x3b0aeec],['bombs','bomb-awake',0x519e18c],['items','drop-preinit',0x3bef384],['items','drop-init',0x3bf28d0]];
+    const installedKinds=new Map();
+    for(const [kind,label,rva] of registry){
+      const installed=hooks.attach(rva,{onEnter(args){try{worldVisuals.noteObject(kind,args[0]);}catch(error){}}},label);
+      installedKinds.set(kind,installedKinds.get(kind)||installed);
+    }
+    for(const [kind,installed] of installedKinds)worldVisuals.setHook(kind,installed);
+    console.log('CLOUD:world-registry-hooks '+[...installedKinds].map(([kind,installed])=>kind+'='+(installed?'on':'scan-fallback')).join(' '));
+  }
   aimEngine=createAim({native,settings,paused:()=>menuOpen,base:moduleBase,getLocalPlayer:gameplayPlayer,fireActive:()=>!menuOpen&&!!gameplayPlayer(),getScope:()=>({active:screenFrame.scopeActive===true,sniper:screenFrame.sniperWeapon===true}),canRun:()=>!!gameplayPlayer(),generation:()=>matchSession.generation(), transform,position,records:worldRecords,tracked:trackedPlayers,getHealth,
     active:()=>!menuOpen&&!!gameplayPlayer()&&(settings['Aim Activation']===0 || (settings['Aim Activation']===1?getTouchCount(ptr(0))>0:screenFrame.scopeActive===true))});
   try{cameraEffects=createCameraEffects({native,settings,base:moduleBase,transform,position,getCamera:worldCamera,getLocalPlayer:gameplayPlayer,canRun:()=>!!gameplayPlayer()});console.log('CLOUD:camera-mode-ready');}

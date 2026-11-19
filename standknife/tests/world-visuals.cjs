@@ -27,7 +27,7 @@ memory.set(bomb.value+0x20,bombParameter);memory.set(bombParameter.value+0x114,4
 positions.set(camera.value,[0,1,0]);positions.set(item.value,[10,0,10]);positions.set(grenade.value,[3,2,8]);positions.set(particles.value,[6,0,12]);positions.set(bomb.value,[1,0,10]);
 const scene={WeaponDropController:[item],DroppedGrenadeController:[grenade],GrenadeEffectController:[effect],PlantedBombController:[bomb]};
 let disposedBomb=false,probeMode=0,traceCalls=0,effectPlaying=true,playingThrows=false;
-const scanCounts={};
+const scanCounts={},inactive=new Set();
 function native(address){return (...args)=>{
  switch(address){
  case 0x95103ec:{const result=allocate();strings.set(result.value,strings.get(args[0].value));return result;}
@@ -37,6 +37,8 @@ function native(address){return (...args)=>{
  case 0xa78ebc4:return !args[0].isNull()&&!dead.has(args[0].value);
  case 0xa790358:{const type=strings.get(args[0].value).split(',')[0].split('.').pop();scanCounts[type]=(scanCounts[type]||0)+1;return array(scene[type]||[]);}
  case 0xa77e310:return renderer;
+ case 0xa77dd70:return args[0];
+ case 0xa784ac8:return !inactive.has(args[0].value);
  case 0xa81e2f4:if(playingThrows)throw Error('isPlaying unavailable');return effectPlaying;
  case 0x519d65c:return true;
  case 0x5198c84:return disposedBomb;
@@ -145,6 +147,47 @@ context.api.reset();assert.equal(handles.size,0,'Leaving a scene must release ev
   tick+=2000;slowContext.api.snapshot(camera);assert.equal(scanCounts.DroppedGrenadeController||0,first,'A slow scan is not repeated after 1.5 s');
   tick+=5000;slowContext.api.snapshot(camera);assert.equal(scanCounts.DroppedGrenadeController||0,first,'Still waiting (about 8 s since the scan): four 300 ms scans mean a 12 s pause');
   tick+=5000;slowContext.api.snapshot(camera);assert(scanCounts.DroppedGrenadeController>first,'It is repeated once the pause (capped at 12 s) has passed');
+}
+// Registry hooks for items, grenades and the planted bomb: a hooked kind is scanned once when enabled (to find what already exists)
+// and never periodically afterwards; that periodic scan was the 40-52 ms freeze every ~2 s in the v0.38 phone log.
+{
+  matchReady=true;settings.Penetration=false;context.api.reset();dead.clear();
+  const count=name=>scanCounts[name]||0,before={items:count('WeaponDropController'),grenades:count('DroppedGrenadeController'),bombs:count('PlantedBombController')};
+  context.api.setHook('items',true);context.api.setHook('grenades',true);context.api.setHook('bombs',true);
+  now+=5000;let s=context.api.snapshot(camera);
+  assert.equal(count('WeaponDropController'),before.items+1,'A hooked kind is seeded with exactly one scan');
+  assert.equal(count('DroppedGrenadeController'),before.grenades+1);assert.equal(count('PlantedBombController'),before.bombs+1);
+  assert.equal(s.objects.length,3,'The seeded objects are shown');assert.equal(s.bombs.length,1);
+  for(let i=0;i<40;i++){now+=2000;context.api.snapshot(camera);}
+  assert.equal(count('WeaponDropController'),before.items+1,'No periodic item scan with the hook active');
+  assert.equal(count('DroppedGrenadeController'),before.grenades+1,'No periodic grenade scan with the hook active');
+  assert.equal(count('PlantedBombController'),before.bombs+1,'No periodic bomb scan with the hook active');
+  assert.equal(context.api.snapshot(camera).scanMs,0,'Nothing scanned, nothing reported');
+  // A new object reaches the screen through the hook, and registering twice pins it once.
+  const item2=allocate();memory.set(item2.value+0x78,weaponParameter);positions.set(item2.value,[12,0,12]);
+  const roots=handles.size;context.api.noteObject('items',item2);context.api.noteObject('items',item2);
+  assert.equal(handles.size,roots+1);
+  now+=100;assert.equal(context.api.snapshot(camera).objects.filter(o=>o.kind==='item').length,2);
+  // Pooled but switched off: hidden, and shown again when reactivated.
+  inactive.add(item2.value);now+=100;assert.equal(context.api.snapshot(camera).objects.filter(o=>o.kind==='item').length,1,'An inactive pooled object is not shown');
+  inactive.delete(item2.value);now+=100;assert.equal(context.api.snapshot(camera).objects.filter(o=>o.kind==='item').length,2);
+  // Destroyed: dropped and unpinned.
+  dead.add(item2.value);now+=100;context.api.snapshot(camera);assert.equal(handles.size,roots,'A destroyed item is unpinned');
+  dead.delete(item2.value);
+  // Switching a feature off clears its registry; switching it on seeds it again.
+  settings['Item ESP']=false;now+=100;assert(!context.api.snapshot(camera).objects.some(o=>o.kind==='item'));
+  settings['Item ESP']=true;now+=100;context.api.snapshot(camera);
+  assert.equal(count('WeaponDropController'),before.items+2,'Enabling the feature again seeds again, once');
+  // A registered grenade's glow renderer goes away with it.
+  dead.add(grenade.value);now+=100;context.api.snapshot(camera);assert.equal(context.api.glowPlayers().size,0);dead.delete(grenade.value);
+  // Objects are not pinned while their feature is off.
+  settings['Bomb Timer']=false;now+=100;context.api.snapshot(camera);const off=handles.size;
+  context.api.noteObject('bombs',bomb);assert.equal(handles.size,off,'A disabled feature registers nothing');
+  settings['Bomb Timer']=true;
+  // A hook that fails to install leaves the scan as fallback for that kind.
+  context.api.setHook('items',false);const scans=count('WeaponDropController');now+=15000;context.api.snapshot(camera);
+  assert(count('WeaponDropController')>scans,'Without the hook the periodic scan is back');
+  context.api.reset();
 }
 assert.equal(context.math.validatedBombTime(110,120,45,45),null);
 assert.equal(context.math.validatedBombTime(200,100,45,45),null);

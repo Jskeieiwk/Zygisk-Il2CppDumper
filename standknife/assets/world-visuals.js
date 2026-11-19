@@ -22,31 +22,67 @@ export function createWorldVisuals(context){
   const safeFloat=['int','int'];
   let previousScan=-Infinity,previousFlags='',timerFault=false,lastReport=-Infinity;
   const effectPlaying=new Map();
-  // Radius rings need the grenade effect controllers. Finding them by scanning the scene (Object.FindObjectsOfType every 1.5 s) froze the
-  // game thread for 45-300 ms each time, so when a hook on GrenadeEffectController.Play is available the controllers are registered
-  // as they start instead and the scene is not scanned for them at all. Entries are pinned while registered and checked for
-  // native liveness on every use, exactly like scanned objects.
-  const effects=new Map();let effectHook=false,scanInterval=1500;
-  function noteEffect(object){
-    if(!object||object.isNull())return;
-    const key=object.toString(),entry=effects.get(key),now=Date.now();
-    if(entry){entry.t=now;return;}
-    effects.set(key,{object:engine.hold(object),t:now});
-    if(effects.size<=3||effects.size%8===0)console.log('CLOUD:effect-registered controllers='+effects.size);
-    if(effects.size>64){const oldest=effects.keys().next().value;engine.release(effects.get(oldest).object);effects.delete(oldest);}
+  const typeNames={
+    items:'Axlebolt.Standoff.Inventory.Drop.WeaponDropController, Assembly-CSharp',
+    grenades:'Axlebolt.Standoff.Inventory.Grenade.DroppedGrenadeController, Assembly-CSharp',
+    effects:'Axlebolt.Standoff.Inventory.Grenade.GrenadeEffectController, Assembly-CSharp',
+    bombs:'Axlebolt.Standoff.Inventory.Bomb.PlantedBombController, Assembly-CSharp'
+  };
+  // Finding these objects with Object.FindObjectsOfType freezes the game thread for 40-300 ms per scan (CLOUD:capture-slow ... worldScanMs).
+  // When a lifecycle hook is available for a kind, its objects are registered as the game creates them and the scene is not scanned
+  // periodically any more. Entries are pinned while registered and checked for native liveness (and for being active in the scene)
+  // on every use, exactly like scanned objects. 'seed' kinds are scanned once when the feature is switched on (or after a reset),
+  // because objects that already exist then never pass through the hook; effects are transient, so they are never seeded.
+  // A kind without a working hook keeps the periodic scan as its fallback.
+  const kinds={
+    items:{type:typeNames.items,on:()=>settings['Item ESP'],cap:128,seed:true},
+    grenades:{type:typeNames.grenades,on:()=>settings.Grenades||settings['Off-screen Nades']||settings['Grenade Glow'],cap:64,seed:true},
+    effects:{type:typeNames.effects,on:()=>settings['Molotov Radius']||settings['Smoke Radius'],cap:64,seed:false,maxAge:90000},
+    bombs:{type:typeNames.bombs,on:()=>settings['Bomb Timer'],cap:8,seed:true}
+  };
+  for(const kind of Object.values(kinds)){kind.hooked=false;kind.seeded=false;kind.registry=new Map();}
+  let scanInterval=1500;
+  function dropEntry(kind,key,entry){
+    engine.release(entry.object);kind.registry.delete(key);
+    const renderer=rendererCache.get('grenade:'+key);if(renderer){engine.release(renderer);rendererCache.delete('grenade:'+key);}
   }
-  function registeredEffects(now){
+  function trim(kind){while(kind.registry.size>kind.cap){const oldest=kind.registry.keys().next().value;dropEntry(kind,oldest,kind.registry.get(oldest));}}
+  function noteObject(name,object){
+    const kind=kinds[name];
+    if(!kind||!object||object.isNull()||!kind.on())return;
+    const key=object.toString(),entry=kind.registry.get(key),now=Date.now();
+    if(entry){entry.t=now;return;}
+    kind.registry.set(key,{object:engine.hold(object),t:now});
+    if(kind.registry.size<=3||kind.registry.size%8===0)console.log('CLOUD:'+(name==='effects'?'effect-registered controllers=':'world-registered kind='+name+' count=')+kind.registry.size);
+    trim(kind);
+  }
+  function noteEffect(object){noteObject('effects',object);}
+  // A pooled object can stay alive but be switched off; it is skipped while inactive and shown again when reactivated.
+  function activeInScene(object){
+    try{
+      const gameObject=engine.method(0xa77dd70,'pointer',['pointer','pointer'])(object,ptr(0));
+      return gameObject.isNull()||!!engine.method(0xa784ac8,'bool',['pointer','pointer'])(gameObject,ptr(0));
+    }catch(error){report('active-unavailable',error);return true;}
+  }
+  function registered(kind,now){
     const result=[];
-    for(const [key,entry] of effects){
+    for(const [key,entry] of [...kind.registry]){
       let alive=false;
-      try{alive=engine.live(entry.object);}catch(error){report('effect-live-error',error);}
-      if(!alive||now-entry.t>90000){engine.release(entry.object);effects.delete(key);continue;}
-      result.push(entry.object);
+      try{alive=engine.live(entry.object);}catch(error){report('registry-live-error',error);}
+      if(!alive||(kind.maxAge&&now-entry.t>kind.maxAge)){dropEntry(kind,key,entry);continue;}
+      if(kind.maxAge||activeInScene(entry.object))result.push(entry.object);
     }
     return result;
   }
-  function releaseEffects(){for(const entry of effects.values())engine.release(entry.object);effects.clear();}
-  function setEffectHook(on){effectHook=!!on;if(!effectHook)releaseEffects();}
+  function clearKind(kind){
+    for(const [key,entry] of [...kind.registry])dropEntry(kind,key,entry);
+    clearGroup(kind.type);kind.seeded=false;
+  }
+  function setHook(name,on){
+    const kind=kinds[name];if(!kind)return;
+    kind.hooked=!!on;clearKind(kind);
+  }
+  function setEffectHook(on){setHook('effects',on);}
   function report(label,error){if(!errors.has(label)){errors.add(label);console.log('CLOUD:world-'+label+' '+error);}}
   function clearGroup(name){
     const group=groups.get(name);if(group)for(const object of group)engine.release(object);
@@ -56,27 +92,32 @@ export function createWorldVisuals(context){
     clearGroup(name);if(!enabled)return;
     try{groups.set(name,engine.find(name,96));}catch(error){report('scan-error '+name,error);}
   }
-  const typeNames={
-    items:'Axlebolt.Standoff.Inventory.Drop.WeaponDropController, Assembly-CSharp',
-    grenades:'Axlebolt.Standoff.Inventory.Grenade.DroppedGrenadeController, Assembly-CSharp',
-    effects:'Axlebolt.Standoff.Inventory.Grenade.GrenadeEffectController, Assembly-CSharp',
-    bombs:'Axlebolt.Standoff.Inventory.Bomb.PlantedBombController, Assembly-CSharp'
-  };
-  // Returns how long a scan took in milliseconds, or 0 when none ran. Object.FindObjectsOfType walks the whole scene.
+  function seed(kind){
+    try{
+      const now=Date.now();
+      for(const object of engine.find(kind.type,96)){
+        const key=object.toString();
+        if(kind.registry.has(key))engine.release(object);else kind.registry.set(key,{object,t:now});
+      }
+      trim(kind);
+    }catch(error){report('seed-error '+kind.type,error);}
+  }
+  // Returns how long the scanning took in milliseconds, or 0 when none ran. Object.FindObjectsOfType walks the whole scene.
   function updateScan(now){
     const flags=worldFeatureNames.map(name=>!!settings[name]).join(',');
-    if(flags===previousFlags&&now-previousScan<scanInterval)return 0;
-    const began=Date.now();
-    previousFlags=flags;previousScan=now;
-    for(const renderer of rendererCache.values())engine.release(renderer);rendererCache.clear();
-    scanGroup(typeNames.items,settings['Item ESP']);
-    scanGroup(typeNames.grenades,settings.Grenades||settings['Off-screen Nades']||settings['Grenade Glow']);
-    if(effectHook)clearGroup(typeNames.effects);
-    else scanGroup(typeNames.effects,settings['Molotov Radius']||settings['Smoke Radius']);
-    scanGroup(typeNames.bombs,settings['Bomb Timer']);
+    const changed=flags!==previousFlags,due=changed||now-previousScan>=scanInterval;
+    if(!due&&!Object.values(kinds).some(kind=>kind.hooked&&kind.seed&&!kind.seeded&&kind.on()))return 0;
+    const began=Date.now();let periodic=false;
+    if(due){previousFlags=flags;previousScan=now;}
+    if(changed||(due&&!kinds.grenades.hooked)){for(const renderer of rendererCache.values())engine.release(renderer);rendererCache.clear();}
+    for(const kind of Object.values(kinds)){
+      if(!kind.on()){if(kind.registry.size||groups.has(kind.type)||kind.seeded)clearKind(kind);continue;}
+      if(kind.hooked){if(kind.seed&&!kind.seeded){kind.seeded=true;seed(kind);}continue;}
+      if(due){periodic=true;scanGroup(kind.type,true);}
+    }
     const elapsed=Date.now()-began;
-    // A scan blocks the game thread: wait at least 50 times as long as the last one took (1.5 s to 12 s).
-    scanInterval=Math.max(1500,Math.min(12000,elapsed*50));
+    // A periodic scan blocks the game thread: wait at least 50 times as long as the last one took (1.5 s to 12 s).
+    if(periodic)scanInterval=Math.max(1500,Math.min(12000,elapsed*50));
     return elapsed;
   }
   function label(object,offset,fallback){
@@ -105,12 +146,13 @@ export function createWorldVisuals(context){
   function snapshot(camera){
     const output={objects:[],rings:[],bombs:[],t:Date.now()};glowPlayers=new Map();
     if(!worldFeatureNames.some(name=>settings[name])||(context.canRun&&!context.canRun())){
-      for(const name of groups.keys())clearGroup(name);
+      for(const kind of Object.values(kinds))clearKind(kind);
+      for(const name of [...groups.keys()])clearGroup(name);
       for(const renderer of rendererCache.values())engine.release(renderer);rendererCache.clear();
       previousFlags='';return output;
     }
     output.scanMs=updateScan(output.t);
-    if(!settings.Penetration&&!effects.size&&![...groups.values()].some(group=>group.length))return output;
+    if(!settings.Penetration&&!Object.values(kinds).some(kind=>kind.registry.size)&&![...groups.values()].some(group=>group.length))return output;
     const cameraPos=objectPosition(camera);if(!cameraPos)return output;
     function visit(name,callback,list){for(const object of list||groups.get(name)||[])try{if(engine.live(object))callback(object);}catch(error){report('object-error '+name,error);}}
     function marker(object,name,kind){
@@ -135,7 +177,8 @@ export function createWorldVisuals(context){
         }
       }
     }catch(error){report('penetration-error',error);}
-    visit(typeNames.items,object=>marker(object,label(object,0x78,'Weapon'),'item'));
+    const listOf=name=>kinds[name].hooked?registered(kinds[name],output.t):undefined;
+    visit(typeNames.items,object=>marker(object,label(object,0x78,'Weapon'),'item'),listOf('items'));
     visit(typeNames.grenades,object=>{
       const state=object.add(0x6c).readU8();if(state>1)return;
       if(settings['Grenade Glow']){
@@ -148,7 +191,7 @@ export function createWorldVisuals(context){
         if(renderer&&engine.live(renderer))glowPlayers.set(key,{player:object,renderer,kind:'grenade',local:false,team:0,t:output.t});
       }
       const id=object.add(0xc8).readU8();marker(object,grenadeName(id)||label(object,0x30,'Grenade'),'grenade');
-    });
+    },listOf('grenades'));
     visit(typeNames.effects,object=>{
       const id=object.add(0x50).readU8();
       if(!(id===92&&settings['Smoke Radius'])&&!([94,95,97].includes(id)&&settings['Molotov Radius']))return;
@@ -172,7 +215,7 @@ export function createWorldVisuals(context){
       const radius=parameters.add(0x54).readFloat()*(Number.isFinite(scale)&&scale>0?scale:1);
       const worldPoints=worldRing(center,radius,16),points=worldPoints.map(point=>project(camera,point));
       if(points.length)output.rings.push({name:grenadeName(id),worldPoints,points,kind:id===92?'smoke':'fire'});
-    },effectHook?registeredEffects(output.t):undefined);
+    },listOf('effects'));
     visit(typeNames.bombs,object=>{
       if(!engine.method(0x519d65c,'bool',['pointer','pointer'])(object,ptr(0))||
          engine.method(0x5198c84,'bool',['pointer','pointer'])(object,ptr(0))||
@@ -180,7 +223,7 @@ export function createWorldVisuals(context){
       let seconds=null;try{seconds=bombTime(object);}catch(error){timerFault=true;report('timer-unavailable',error);}
       output.bombs.push({key:object.toString(),seconds});
       marker(object,'C4','bomb');
-    });
+    },listOf('bombs'));
     if(output.t-lastReport>=15000){
       lastReport=output.t;console.log('CLOUD:world-frame objects='+output.objects.length+' radii='+output.rings.length+' glow='+glowPlayers.size+' bombs='+output.bombs.length+' timerValid='+output.bombs.some(bomb=>Number.isFinite(bomb.seconds)));
     }
@@ -202,6 +245,6 @@ export function createWorldVisuals(context){
       return result;
     }catch(error){report('inventory-error',error);return [];}
   }
-  function reset(){for(const name of groups.keys())clearGroup(name);rendererCache.clear();glowPlayers.clear();effectPlaying.clear();effects.clear();engine.reset();previousFlags='';previousScan=-Infinity;scanInterval=1500;timerFault=false;}
-  return {snapshot,inventory,reset,glowPlayers:()=>glowPlayers,noteEffect,setEffectHook};
+  function reset(){for(const name of groups.keys())clearGroup(name);rendererCache.clear();glowPlayers.clear();effectPlaying.clear();for(const kind of Object.values(kinds)){kind.registry.clear();kind.seeded=false;}engine.reset();previousFlags='';previousScan=-Infinity;scanInterval=1500;timerFault=false;}
+  return {snapshot,inventory,reset,glowPlayers:()=>glowPlayers,noteEffect,setEffectHook,noteObject,setHook};
 }
