@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <string>
+#include <sys/stat.h>
 #include <sys/uio.h>
 #include <unistd.h>
 #include <vector>
@@ -89,6 +90,10 @@ bool WriteFile(const std::string &path, const std::vector<uint8_t> &data) {
 }  // namespace
 
 int dump_decrypted_metadata(const char *outDir) {
+    // <outDir>/files may not exist yet in the game's data directory; il2cpp_dump writes there too.
+    std::string files_dir = std::string(outDir).append("/files");
+    if (mkdir(files_dir.c_str(), 0771) != 0 && errno != EEXIST)
+        LOGE("metadata: mkdir %s failed (errno %d)", files_dir.c_str(), errno);
     // The image's own header bytes AF 1B B1 FA, scanned on 4-byte boundaries.
     const uint8_t magic[4] = {0xAF, 0x1B, 0xB1, 0xFA};
     std::vector<std::vector<uint8_t>> found;
