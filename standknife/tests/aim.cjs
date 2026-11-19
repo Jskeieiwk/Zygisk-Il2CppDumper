@@ -238,6 +238,33 @@ console.log('Hitbox ranking, hitbox-all, multipoint percent and hit chance gatin
     nearBlocked=true;pairStep();
     assert.equal(readTarget(),'far','When the first player is hidden the other one, skipped earlier by score, is checked at once');
   }
+  // After the 100 ms memory only the best two points are probed; the full sweep returns after 400 ms. A player stepping out of cover
+  // is found by the probe when a best point shows, otherwise by the next full sweep.
+  {
+    const castLog=[];let visibleAt=null;
+    const probeNative=rva=>rva===0xa8261c8?(from,to)=>{castLog.push(to.slice());return visibleAt&&visibleAt.every((v,i)=>Math.abs(v-to[i])<1e-9)?0:1;}:rva===0xa82b000?()=>new Pointer(500):rva===0xa7a4150?()=>false:native(rva);
+    const rec=new Map([['enemy',{t:time,team:2,health:100,bonePositions:bones}]]);
+    const probeEngine=api.createAim({native:probeNative,wallRules:{classify:()=>false,reset(){}},settings:memorySettings,records:rec,tracked:new Map([['enemy',{player:new Pointer(2)}]]),
+      transform:value=>value,position:()=>[0,0,0],getHealth:()=>100,active:()=>false});
+    const stepProbe=ms=>{time+=ms;rec.get('enemy').t=time;const before=castLog.length;probeEngine.step(new Pointer(1),new Pointer(3),1);return castLog.length-before;};
+    const sweep=stepProbe(16);assert(sweep>=4,'full sweep first: '+sweep);
+    const best=castLog[0].slice(),last=castLog[sweep-1].slice();
+    assert.equal(stepProbe(16),0,'inside the memory nothing is cast');
+    assert.equal(stepProbe(100),2,'after 100 ms exactly the two best points are probed, not all '+sweep);
+    assert.equal(probeEngine.status().target,null);
+    assert.equal(stepProbe(16),0,'after a failed probe the player stays remembered as hidden');
+    visibleAt=best;stepProbe(100);
+    assert.equal(probeEngine.status().target,'enemy','A best point that becomes visible is found by the probe');
+    visibleAt=null;stepProbe(16);   // blocked again: the memory was cleared by the pick, so this is a full sweep
+    stepProbe(16);stepProbe(100);   // probe
+    visibleAt=last;stepProbe(100);
+    assert.equal(probeEngine.status().target,null,'A point beyond the probed ones is not found by a probe');
+    assert.equal(stepProbe(400),sweep,'but the full sweep after 400 ms casts every point again');
+    assert.equal(probeEngine.status().target,'enemy','and finds it');
+    const taken=probeEngine.takeCost();
+    assert(taken.steps>=8&&taken.casts>0&&taken.probes>=2&&taken.skipped>=2,'takeCost() reports what the steps did: '+JSON.stringify(taken));
+    assert.equal(probeEngine.takeCost().steps,0,'and zeroes it');
+  }
   context.Date=Date;
 }
 console.log('Hidden-player memory: skipped within 100 ms, re-checked after it, on camera/player movement and on reset passed.');

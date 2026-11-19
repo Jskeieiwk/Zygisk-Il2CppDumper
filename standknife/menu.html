@@ -93,7 +93,7 @@ function preview() {
 }
 function render() {
   document.querySelectorAll('.nav').forEach(x=>x.classList.toggle('on',x.dataset.page===page));
-  document.querySelector('#runtimeStatus').textContent='CLOUD · 0.42'+(runtime&&!runtime.ready?' · модуль не готов':'');
+  document.querySelector('#runtimeStatus').textContent='CLOUD · 0.43'+(runtime&&!runtime.ready?' · модуль не готов':'');
   const t=pages[page];if(!t[tab])tab=Object.keys(t)[0];
   tabs.innerHTML=Object.keys(t).map(x=>`<button class="tab ${x===tab?'on':''}" data-tab="${x}">${escapeHtml(x)}</button>`).join('');
   cols.innerHTML=t[tab].map(group=>`<section class="col"><div class="group">${escapeHtml(group.title)}</div>${group.rows.map(featureRow).join('')}${page==='aim' && group.title==='trigger'?aimOptions():''}${page==='behavior'&&group.title==='knife bot'?knifeOptions():''}${page==='weapons'&&group.title==='rage'?antiAimOptions():''}${page==='visuals'&&group.title==='esp'?'<div class="hint">Penetration показывает толщину преграды. Это геометрический индикатор; урон зависит от правил игры.</div>'+radiusOptions():''}${page==='scene'&&group.title==='world'?fogOptions():''}${page==='misc'&&group.title==='main'?cameraOptions()+syncOptions():''}${page==='players' && tab==='screen' && group.title==='effects'?soundOptions()+options():''}${group.preview?'<div class="preview"><canvas id="espPreview" width="300" height="155"></canvas></div><div class="hint">Предпросмотр настроек</div>'+options():''}</section>`).join('');

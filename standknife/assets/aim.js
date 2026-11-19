@@ -63,13 +63,24 @@ export function createAim(context) {
   // moved HIDDEN_MOVE metres. With a wide FOV, Multipoints and Autowall (Aim) a player behind a wall costs one cast (and, with
   // Autowall, several classifications) per point per step, about 740 native calls per step for five hidden players (counted in a
   // scratch profile, not timed). A player who steps into view is noticed within HIDDEN_RECHECK_MS; a visible one is checked every step.
-  const HIDDEN_RECHECK_MS=100,HIDDEN_MOVE=.5,hidden=new Map();
+  // After HIDDEN_RECHECK_MS only the PROBE_POINTS best points of a hidden player are cast (a player stepping out of cover shows its best
+  // points first); the full sweep of every point is repeated every HIDDEN_FULL_MS. Measured on the device (v0.42 log): the aim step took
+  // 5.7-7.3 ms on average at 18-37 fps, so at that frame rate a 100 ms memory covered only about three steps.
+  const HIDDEN_RECHECK_MS=100,HIDDEN_FULL_MS=400,PROBE_POINTS=2,HIDDEN_MOVE=.5,hidden=new Map();
+  // Counters for the perf line (CLOUD:perf aimCasts/aimReachMs ...): what one step really does, read and zeroed by takeCost().
+  let cost={steps:0,casts:0,obstacles:0,skipped:0,probes:0,reachMs:0};
   const apart=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1],a[2]-b[2]);
   function reaches(origin,target,player,wall) {
+    const began=Date.now();
+    try{return reachesLine(origin,target,player,wall);}finally{cost.reachMs+=Date.now()-began;}
+  }
+  function reachesLine(origin,target,player,wall) {
     evidence={wall:!!wall,direct:false,walls:0,blocked:null};
     let start=origin;
     for(let step=0;step<=MAX_OBSTACLES;step++){
+      cost.casts++;
       if(!linecast(start,target,hit,-1,1,ptr(0))){evidence.direct=evidence.walls===0;return true;}
+      cost.obstacles++;
       const obstacle=collider(hit,ptr(0));if(obstacle.isNull())return false;
       if(ownCollider(obstacle,player)){evidence.direct=evidence.walls===0;return true;}
       if(!wall){evidence.blocked='solid';return false;}
@@ -88,7 +99,7 @@ export function createAim(context) {
   let previous=0,locked=null,failed=0,lastReport=0,status={target:null,fov:60};
   function step(local,camera,team) {
     const now=Date.now(),elapsed=previous?Math.max(0,(now-previous)/1000):1/60;previous=now;
-    status.target=null;fireState={t:now,selected:null,crosshair:false,clear:false};rootCache.clear();
+    status.target=null;fireState={t:now,selected:null,crosshair:false,clear:false};rootCache.clear();cost.steps++;
     if(context.canRun&&!context.canRun()){stop.update(local,false);motion.reset();return;}
     if(context.paused&&context.paused()){if(fire.suspend)fire.suspend();stop.update(local,false);motion.reset();return;}
     fire.ensureInstalled();
@@ -146,12 +157,17 @@ export function createAim(context) {
         }
         candidates.sort((a,b)=>a.rank-b.rank||a.angle-b.angle);
         const needsLine=isKnife||settings['Aim Visible Only']||settings['Autowall (Aim)'],anchor=candidates.length?candidates[0].point:null;
+        let probeOnly=false,memo=null;
         if(needsLine&&anchor){
-          const memo=hidden.get(key);
-          if(memo&&now<memo.until&&apart(memo.origin,origin)<HIDDEN_MOVE&&apart(memo.anchor,anchor)<HIDDEN_MOVE)continue;
+          memo=hidden.get(key)||null;
+          if(memo&&apart(memo.origin,origin)<HIDDEN_MOVE&&apart(memo.anchor,anchor)<HIDDEN_MOVE){
+            if(now<memo.until){cost.skipped++;continue;}
+            if(now<memo.full){probeOnly=true;cost.probes++;}
+          }else memo=null;
         }
         let tried=0,picked=false;
         for(const candidate of candidates){
+          if(probeOnly&&tried>=PROBE_POINTS)break;
           let value=settings['Aim Priority']===1?candidate.distance:settings['Aim Priority']===2?targetHealth:candidate.angle;
           if(settings['Sticky Aim']&&key===locked)value-=1000;
           if(value>=score)continue;
@@ -166,8 +182,12 @@ export function createAim(context) {
           break;
         }
         if(needsLine&&anchor){
-          if(picked||tried<candidates.length)hidden.delete(key);
-          else{if(hidden.size>64)hidden.clear();hidden.set(key,{until:now+HIDDEN_RECHECK_MS,origin,anchor});}
+          if(picked)hidden.delete(key);
+          else if(probeOnly){if(tried>0)memo.until=now+HIDDEN_RECHECK_MS;}   // probe found nothing: stay hidden until the next probe
+          else if(tried>0&&tried>=candidates.length){
+            if(hidden.size>64)hidden.clear();
+            hidden.set(key,{until:now+HIDDEN_RECHECK_MS,full:now+HIDDEN_FULL_MS,origin,anchor});
+          }else hidden.delete(key);
         }
       }
       if(!selected) {locked=null;motion.reset();return;}
@@ -210,8 +230,8 @@ export function createAim(context) {
     }catch(error){locked=null;if(failed++<5)console.log('CLOUD:aim-error '+error);}
     finally{if(!keepStopped)try{stop.update(local,false);}catch(error){if(failed++<5)console.log('CLOUD:auto-stop-error '+error);}}
   }
-  function reset(){hidden.clear();rules.reset();try{stop.reset();}catch(error){if(failed++<5)console.log('CLOUD:auto-stop-reset-error '+error);}motion.reset();previous=0;locked=null;status.target=null;fireState={t:0,selected:null,crosshair:false,clear:false};fire.reset();}
-  return {step,reset,needsUpdate:()=>stop.active()||!!(fire.needsCleanup&&fire.needsCleanup()),status:(camera)=>{
+  function reset(){hidden.clear();cost={steps:0,casts:0,obstacles:0,skipped:0,probes:0,reachMs:0};rules.reset();try{stop.reset();}catch(error){if(failed++<5)console.log('CLOUD:auto-stop-reset-error '+error);}motion.reset();previous=0;locked=null;status.target=null;fireState={t:0,selected:null,crosshair:false,clear:false};fire.reset();}
+  return {step,reset,takeCost(){const taken=cost;cost={steps:0,casts:0,obstacles:0,skipped:0,probes:0,reachMs:0};return taken;},needsUpdate:()=>stop.active()||!!(fire.needsCleanup&&fire.needsCleanup()),status:(camera)=>{
     if(camera&&!camera.isNull())try{status.fov=getFov(camera,ptr(0));}catch(error){}
     return {...status,fire:fire.status()};
   }};

@@ -33,6 +33,17 @@ for(const phase of costPhases)frameCost[phase]={calls:0,ms:0,max:0};
 function phaseCost(phase){const stat=frameCost[phase];return (stat.ms/Math.max(1,stat.calls)).toFixed(1)+'/'+stat.max;}
 // camera: whole game-camera callback. draw: composing one overlay frame (Picture path) or one JS onDraw (fallback).
 // capture: 10 Hz player/world sampling. reproject: per-frame reprojection between samples. Times are ms, "average/maximum".
+// Per-window aim telemetry: what one step does (casts, obstacle classifications, skipped/probed players, time inside reaches()) and
+// which aim settings are on, so the next log shows the cost and its cause together.
+const aimFlags=['Aim assistance','Trigger','Autowall','Autowall (Aim)','Force Shot','Silent Aim','Multipoints','Hitchance','Hitbox All','Aim Visible Only','Auto Scope'];
+function aimCostText(){
+  try{
+    const c=aimEngine&&aimEngine.takeCost?aimEngine.takeCost():null;if(!c)return '';
+    const steps=Math.max(1,c.steps),per=value=>(value/steps).toFixed(1);
+    return ' aimCasts='+per(c.casts)+' aimObstacles='+per(c.obstacles)+' aimSkipped='+per(c.skipped)+' aimProbes='+per(c.probes)+' aimReachMs='+per(c.reachMs)+
+      ' aimFov='+settings['Aim FOV']+' aimOn='+aimFlags.filter(key=>settings[key]).join(',');
+  }catch(error){return '';}
+}
 function recordFrameCost(kind,elapsed){
   const now=Date.now();if(!frameCost.since)frameCost.since=now;
   const stat=frameCost[kind];stat.calls++;stat.ms+=elapsed;stat.max=Math.max(stat.max,elapsed);
@@ -40,7 +51,7 @@ function recordFrameCost(kind,elapsed){
     console.log('CLOUD:perf gameFps='+gameFrameMeter.value(now)+' cameraMs='+phaseCost('camera')+
       ' canvasMs='+phaseCost('draw')+
       ' frames='+frameCost.camera.calls+'/'+frameCost.draw.calls+' players='+projected.size+
-      ' captureMs='+phaseCost('capture')+' reprojectMs='+phaseCost('reproject')+' aimMs='+phaseCost('aim')+' aimSteps='+frameCost.aim.calls);
+      ' captureMs='+phaseCost('capture')+' reprojectMs='+phaseCost('reproject')+' aimMs='+phaseCost('aim')+' aimSteps='+frameCost.aim.calls+aimCostText());
     frameCost.since=now;
     for(const phase of costPhases){const stat=frameCost[phase];stat.calls=stat.ms=stat.max=0;}
   }
