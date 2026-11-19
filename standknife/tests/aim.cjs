@@ -183,5 +183,11 @@ console.log('Autowall without thickness, Wallshot gating and aim-assist wall rul
   settings['Hitchance Percent']=90;choose();assert.equal(captured.getAim().clear,false,'85.7% is below a 90% hit chance');
   settings['Hitchance Percent']=80;choose();assert.equal(captured.getAim().clear,true,'85.7% meets an 80% hit chance');
   settings.Hitchance=false;settings['Hitchance Percent']=100;choose();assert.equal(captured.getAim().clear,true,'Hit chance off: no gating');
+  // 360 degrees: 'Aim FOV' is a half angle, so 180 covers a target straight behind the camera and 90 does not.
+  const behind=Array(16).fill(null);behind[0]=[0,1.7,-10];behind[1]=[0,1.5,-10];behind[2]=[0,1.2,-10];behind[3]=[0,.9,-10];
+  records.get('enemy').bonePositions=behind;settings['Hitbox Head']=true;settings['Hitbox Body']=false;settings['Hitbox Legs']=false;
+  settings.Multipoints=false;settings['Aim Visible Only']=false;
+  settings['Aim FOV']=90;assert.equal(choose(),null,'A target behind the camera is outside a 90 degree half angle');
+  settings['Aim FOV']=180;assert(choose(),'Aim FOV 180 (360 degrees) selects a target behind the camera');
 }
 console.log('Hitbox ranking, hitbox-all, multipoint percent and hit chance gating passed.');
