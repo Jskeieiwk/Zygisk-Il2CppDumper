@@ -41,12 +41,31 @@ private:
     Api *api;
     JNIEnv *env;
     bool enable_hack;
+    char target_package[256];
     char *game_data_dir;
     void *data;
     size_t length;
 
+    // Target package: first line of package.txt in the module directory (edit it on the device,
+    // no rebuild needed); falls back to the compile-time GamePackageName.
+    void loadTargetPackage() {
+        int dirfd = api->getModuleDir();
+        int fd = dirfd >= 0 ? openat(dirfd, "package.txt", O_RDONLY) : -1;
+        if (fd == -1) return;
+        char buf[256];
+        ssize_t n = read(fd, buf, sizeof(buf) - 1);
+        close(fd);
+        if (n <= 0) return;
+        buf[n] = 0;
+        size_t len = strcspn(buf, "\r\n \t");
+        buf[len] = 0;
+        if (len) strcpy(target_package, buf);
+    }
+
     void preSpecialize(const char *package_name, const char *app_data_dir) {
-        if (strcmp(package_name, GamePackageName) == 0) {
+        strcpy(target_package, GamePackageName);
+        loadTargetPackage();
+        if (strcmp(package_name, target_package) == 0) {
             LOGI("detect game: %s", package_name);
             enable_hack = true;
             game_data_dir = new char[strlen(app_data_dir) + 1];
