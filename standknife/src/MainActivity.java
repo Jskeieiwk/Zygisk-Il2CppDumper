@@ -10,7 +10,7 @@ public class MainActivity extends Activity {
   void showLog(){String text=LoaderService.readLog(this);status.setText(text.isEmpty()?"Журнал пока пуст.":text);}
   public void onCreate(Bundle b){
     super.onCreate(b);LinearLayout l=new LinearLayout(this);l.setOrientation(1);l.setPadding(32,48,32,32);ScrollView scroll=new ScrollView(this);scroll.addView(l);setContentView(scroll);
-    TextView title=new TextView(this);title.setText("Cloud • StandKnife\nRoot loader v0.38");title.setTextSize(24);l.addView(title);
+    TextView title=new TextView(this);title.setText("Cloud • StandKnife\nRoot loader v0.39");title.setTextSize(24);l.addView(title);
     TextView help=new TextView(this);help.setText("Игра 3.3 + root.\nНажатие на Cloud слева сверху открывает меню. ESP: сведения об игроках до 10 раз/сек; положение и проекция — по кадрам камеры. Для экономии ресурсов: Misc → Safe Mode. Новые функции проверяй по одной. Для Trigger/Silent/Force Shot подержи огонь из автомата без прицела: нужна калибровка. Hotkeys: уменьшение громкости открывает и закрывает меню. Если скрыть Cloud, Hotkeys включится автоматически. При следующем запуске Cloud снова появится. Настройки сохраняются. Серые пункты ещё не подключены.");l.addView(help);
     status=new TextView(this);status.setTextIsSelectable(true);
     Button start=new Button(this);start.setText("Запустить игру с модулем");l.addView(start);start.setOnClickListener(v->{Intent i=new Intent(this,LoaderService.class);if(Build.VERSION.SDK_INT>=26)startForegroundService(i);else startService(i);status.setText("Запускаю службу. Разреши root, если появится запрос.");});

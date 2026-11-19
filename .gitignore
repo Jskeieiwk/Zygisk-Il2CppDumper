@@ -25,3 +25,5 @@ standknife/script.json
 standknife/libil2cpp.so
 standknife/*.apk
 standknife/*.idsig
+standknife/assets/inject-arm
+standknife/assets/inject-arm64
