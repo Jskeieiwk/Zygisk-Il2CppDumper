@@ -15,6 +15,7 @@
 #include <jni.h>
 #include <thread>
 #include <sys/mman.h>
+#include <sys/stat.h>
 #include <linux/unistd.h>
 #include <array>
 
@@ -39,6 +40,23 @@ static void LogUnityLibraries() {
     fclose(f);
 }
 
+// Output base directory: the game's external files dir (<...>/Android/data/<pkg>/files, writable by the
+// game and visible to root and file managers); falls back to the internal data dir.
+static std::string PickOutputDir(const char *game_data_dir) {
+    std::string internal(game_data_dir);
+    size_t slash = internal.find_last_of('/');
+    std::string pkg = slash == std::string::npos ? internal : internal.substr(slash + 1);
+    std::string ext = "/storage/emulated/0/Android/data/" + pkg;
+    mkdir(ext.c_str(), 0771);
+    mkdir((ext + "/files").c_str(), 0771);
+    if (access((ext + "/files").c_str(), W_OK) == 0) {
+        LOGI("output dir: %s/files", ext.c_str());
+        return ext;
+    }
+    LOGW("external dir %s/files not writable, using %s/files", ext.c_str(), internal.c_str());
+    return internal;
+}
+
 void hack_start(const char *game_data_dir) {
     bool load = false;
     // The original module waited 10 s; this game loads libil2cpp.so later than that.
@@ -47,8 +65,9 @@ void hack_start(const char *game_data_dir) {
         if (handle) {
             load = true;
             il2cpp_api_init(handle);
-            dump_decrypted_metadata(game_data_dir);
-            il2cpp_dump(game_data_dir);
+            std::string out_dir = PickOutputDir(game_data_dir);
+            il2cpp_dump(out_dir.c_str());
+            dump_decrypted_metadata(out_dir.c_str());
             break;
         } else {
             sleep(1);
