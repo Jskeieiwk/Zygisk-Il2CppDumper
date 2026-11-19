@@ -15,6 +15,7 @@ namespace {
 
 struct Region {
     uint64_t start, end;
+    std::string path;
 };
 
 constexpr size_t kChunk = 4u << 20;
@@ -34,8 +35,22 @@ bool SafeRead(uint64_t from, void *to, size_t size) {
     return true;
 }
 
-// Readable regions that are not backed by a file: heap, malloc arenas, [anon:...].
-std::vector<Region> AnonymousReadableRegions() {
+// True for mappings that are static code/resources and cannot hold a freshly decrypted buffer.
+bool IsStaticFileMapping(const std::string &path) {
+    static const char *prefixes[] = {"/system", "/apex", "/vendor", "/product", "/odm", "/data/app",
+                                     "/data/dalvik-cache", "/dev/__properties__", "/proc"};
+    static const char *contains[] = {".so", ".apk", ".odex", ".vdex", ".oat", ".art", ".jar", ".dex",
+                                     ".ttf", ".otf", ".obb", ".pak"};
+    for (const char *p: prefixes)
+        if (path.rfind(p, 0) == 0) return true;
+    for (const char *c: contains)
+        if (path.find(c) != std::string::npos) return true;
+    return false;
+}
+
+// Readable regions that can hold runtime data: heap, malloc arenas, [anon:...], memfd, ashmem and
+// other mappings that are not static libraries or resources.
+std::vector<Region> ScannableRegions() {
     std::vector<Region> regions;
     FILE *f = fopen("/proc/self/maps", "r");
     if (!f) return regions;
@@ -45,12 +60,14 @@ std::vector<Region> AnonymousReadableRegions() {
         char perms[8];
         int consumed = 0;
         if (sscanf(line, "%llx-%llx %7s %*s %*s %*s %n", &start, &end, perms, &consumed) < 3) continue;
-        if (perms[0] != 'r') continue;
-        const char *path = line + consumed;
-        while (*path == ' ') path++;
-        if (*path == '/' || std::strncmp(path, "[stack", 6) == 0) continue;
-        if (end <= start) continue;
-        regions.push_back({start, end});
+        if (perms[0] != 'r' || end <= start) continue;
+        const char *p = line + consumed;
+        while (*p == ' ') p++;
+        std::string path(p);
+        while (!path.empty() && (path.back() == '\n' || path.back() == ' ')) path.pop_back();
+        if (path.rfind("[stack", 0) == 0 || path == "[vvar]" || path == "[vsyscall]") continue;
+        if (!path.empty() && path[0] == '/' && IsStaticFileMapping(path)) continue;
+        regions.push_back({start, end, path});
     }
     fclose(f);
     return regions;
@@ -60,10 +77,26 @@ std::vector<Region> AnonymousReadableRegions() {
 bool ReadCandidate(uint64_t addr, uint64_t limit, std::vector<uint8_t> &out) {
     uint8_t header[kMetadataProbeSize];
     size_t probe = (size_t) std::min<uint64_t>(sizeof(header), limit - addr);
-    if (!SafeRead(addr, header, probe) || !MetadataHeaderPlausible(header, probe)) return false;
+    if (!SafeRead(addr, header, probe)) return false;
+    if (!MetadataHeaderPlausible(header, probe)) {
+        static int rejected_logged = 0;
+        if (rejected_logged++ < 8) {
+            int32_t version;
+            uint32_t first;
+            std::memcpy(&version, header + 4, 4);
+            std::memcpy(&first, header + 8, 4);
+            LOGW("metadata: magic at %llx rejected: version=%d firstSection=0x%x",
+                 (unsigned long long) addr, version, first);
+        }
+        return false;
+    }
     size_t total = MetadataV31TotalSize(header, probe);
     if (total) {
-        if (addr + total > limit) return false;
+        if (addr + total > limit) {
+            LOGW("metadata: v31 header at %llx needs %zu bytes but its mapping has %llu",
+                 (unsigned long long) addr, total, (unsigned long long) (limit - addr));
+            return false;
+        }
         LOGI("metadata: v31 image at %llx, exact size %zu", (unsigned long long) addr, total);
     } else {
         // Other versions: layout not verified here, so bound by the mapping and say so.
@@ -100,7 +133,7 @@ int dump_decrypted_metadata(const char *outDir) {
     for (int round = 0; round < kScanRounds && found.empty(); round++) {
         if (round) sleep(3);
         std::vector<uint8_t> chunk(kChunk + 4);
-        for (const Region &r: AnonymousReadableRegions()) {
+        for (const Region &r: ScannableRegions()) {
             for (uint64_t pos = r.start; pos < r.end; pos += kChunk) {
                 size_t n = (size_t) std::min<uint64_t>(kChunk + 3, r.end - pos);
                 if (n < 4 || !SafeRead(pos, chunk.data(), n)) continue;
@@ -117,7 +150,16 @@ int dump_decrypted_metadata(const char *outDir) {
                 }
             }
         }
-        if (found.empty()) LOGW("metadata: no decrypted image in memory yet (round %d)", round + 1);
+        if (found.empty()) {
+            size_t regions = 0;
+            uint64_t bytes = 0;
+            for (const Region &r: ScannableRegions()) {
+                regions++;
+                bytes += r.end - r.start;
+            }
+            LOGW("metadata: no decrypted image in memory yet (round %d, scanned %zu regions, %llu MB)",
+                 round + 1, regions, (unsigned long long) (bytes >> 20));
+        }
     }
     int written = 0;
     for (size_t i = 0; i < found.size(); i++) {
