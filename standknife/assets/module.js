@@ -10,6 +10,7 @@ import {createSceneEffects} from '../assets/scene-effects.js';
 import {createWorldVisuals,worldFeatureNames} from '../assets/world-visuals.js';
 import {drawWorldOverlay} from '../assets/world-overlay.js';
 import {featureAvailable} from '../assets/capabilities.js';
+import {createAntiAim,createRotationProbe} from '../assets/anti-aim.js';
 import {createHookSet} from '../assets/hooks.js';
 import {createMatchSession} from '../assets/session.js';
 import {drawWatermark,watermarkLayout,createFrameMeter} from '../assets/watermark.js';
@@ -52,6 +53,7 @@ const settings = {
   'Back Camera':false,'Third Person':false,'Viewmodel':false,'Camera Distance':2,'Camera Height':.25,'Viewmodel X':.15,'Viewmodel Y':-.1,'Viewmodel Z':.2,
   'Safe Mode':false,'Raw Input':false,'Penetration':false,'Liquid Glass':false,'Watermark':true,'Hotkeys':false,'Notifications':false,'Accent Color':'#e9a8c5',
   'Fog':false,'Fog Distance':80,'Fog Color':'#78909c',
+  'Anti-Aim':false,'AA Probe':false,'AA Yaw Mode':0,'AA Yaw Offset':180,'AA Jitter Range':30,'AA Spin Speed':180,'AA Pitch Mode':0,
   'Wallshot':false,'Hitbox All':false,'Hitbox Head':true,'Hitbox Body':false,'Hitbox Legs':false,'Hitbox Priority':0,'Multipoint Scale':50,'Hitchance':false,'Hitchance Percent':60,'Auto Scope':false,
   'Hit Sound Type':0,'Kill Sound Type':2,'Hit Sound Volume':150,
   'Grenade Glow':false,'Item ESP':false,'Grenades':false,'Off-screen Nades':false,'Molotov Radius':false,'Smoke Radius':false,'Player Nades':false,'Bomb Timer':false,
@@ -91,14 +93,15 @@ const settings = {
   'Max Distance': 300, 'Line Width': 2, 'Enemy Color': '#efa8c5', 'Team Color': '#72baff'
 };
 const supported = new Set([...Object.keys(settings), 'No Recoil']);
-let localTeam = 0, localSeen = 0, preferences = null, localPlayer = null, extraVisuals = null, worldVisuals = null, cameraEffects = null, sceneEffects = null, rawInput = null;
+let localTeam = 0, localSeen = 0, preferences = null, localPlayer = null, extraVisuals = null, worldVisuals = null, cameraEffects = null, sceneEffects = null, rawInput = null, antiAim = null, rotationProbe = null;
 let aimEngine=null, menuOpen=false, menuWeb=null;
 let screenFrame = { events:[], traces:[] };
 const recoilValues = { vertical:0, horizontal:0, camera:0 };
 const worldRecords = new Map();
-const numericSettings = { 'Molotov Radius Scale':[25,400], 'Smoke Radius Scale':[25,400], 'ESP Sync Frames':[0,4], 'Max Distance':[10,500], 'Line Width':[1,4], 'Text Size':[9,20], 'Scope Radius':[30,200], 'Chams Opacity':[10,100], 'Aim FOV':[1,180],'Hitbox Priority':[0,2],'Multipoint Scale':[10,100],'Hitchance Percent':[1,100],'Hit Sound Type':[0,3],'Kill Sound Type':[0,3],'Hit Sound Volume':[50,200], 'Aim Smoothing':[0,500], 'Aim Range':[5,300], 'Aim Bone':[0,2], 'Aim Activation':[0,2], 'Aim Priority':[0,2], 'Trigger Delay':[1,1000], 'Jitter Strength':[0,.5], 'Camera Distance':[.5,5], 'Camera Height':[-1,2], 'Viewmodel X':[-1,1], 'Viewmodel Y':[-1,1], 'Viewmodel Z':[-1,1], 'Fog Distance':[5,300], 'Knife Range':[.5,3], 'Knife FOV':[5,90] };
+const numericSettings = { 'Molotov Radius Scale':[25,400], 'Smoke Radius Scale':[25,400], 'ESP Sync Frames':[0,4], 'Max Distance':[10,500], 'Line Width':[1,4], 'Text Size':[9,20], 'Scope Radius':[30,200], 'Chams Opacity':[10,100], 'Aim FOV':[1,180],'Hitbox Priority':[0,2],'AA Yaw Mode':[0,2],'AA Pitch Mode':[0,3],'AA Yaw Offset':[-180,180],'AA Jitter Range':[0,90],'AA Spin Speed':[30,720],'Multipoint Scale':[10,100],'Hitchance Percent':[1,100],'Hit Sound Type':[0,3],'Kill Sound Type':[0,3],'Hit Sound Volume':[50,200], 'Aim Smoothing':[0,500], 'Aim Range':[5,300], 'Aim Bone':[0,2], 'Aim Activation':[0,2], 'Aim Priority':[0,2], 'Trigger Delay':[1,1000], 'Jitter Strength':[0,.5], 'Camera Distance':[.5,5], 'Camera Height':[-1,2], 'Viewmodel X':[-1,1], 'Viewmodel Y':[-1,1], 'Viewmodel Z':[-1,1], 'Fog Distance':[5,300], 'Knife Range':[.5,3], 'Knife FOV':[5,90] };
 function espEnabled() {
-  if(worldFeatureNames.some(name=>settings[name])||['Back Camera','Third Person','Viewmodel','Fog','Raw Input'].some(name=>settings[name]))return true;
+  if(worldFeatureNames.some(name=>settings[name])||['Back Camera','Third Person','Viewmodel','Fog','Raw Input','Anti-Aim','AA Probe'].some(name=>settings[name]))return true;
+  if((antiAim&&antiAim.ready())||(rotationProbe&&rotationProbe.running()))return true;
   const players = settings['Player ESP'] && ['Boxes','Health','Armor','Nickname','Weapons',
     'Distance','Skeleton','Snaplines','OOF Arrows','Show Avatar','Money','Ping','Clan Tag',
     'Bomb Flag','Chams','3D Model','Ghost Chams','Shader Chams','Dormant'].some(key=>settings[key]);
@@ -165,7 +168,7 @@ function syncRecoilHooks(hooks){
   if(ready)updateMenuState();
 }
 function runtimeState(){
-  const hooks={...(runtimeHooks?runtimeHooks.states():{}),'world-visuals':!!worldVisuals,'camera-effects':!!cameraEffects,'scene-effects':!!sceneEffects,'raw-input':!!rawInput};
+  const hooks={...(runtimeHooks?runtimeHooks.states():{}),'world-visuals':!!worldVisuals,'camera-effects':!!cameraEffects,'scene-effects':!!sceneEffects,'raw-input':!!rawInput,'anti-aim-gated':!antiAim||antiAim.gated()};
   return {ready,settings:{...settings,'No Recoil':noRecoil},capabilities:Object.fromEntries(Array.from(supported,key=>[key,featureAvailable(key,ready,hooks)]))};
 }
 function updateMenuState(){
@@ -193,6 +196,8 @@ function install(){
     if(worldVisuals){worldVisuals.reset();worldVisuals=null;}
     if(cameraEffects){cameraEffects.dispose();cameraEffects=null;}
     if(rawInput){rawInput.reset();rawInput=null;}
+    if(antiAim){antiAim.reset();antiAim=null;}
+    if(rotationProbe){rotationProbe.reset();rotationProbe=null;}
     if(sceneEffects){sceneEffects.reset();sceneEffects=null;}
     trackedPlayers.clear();playerDetails.clear();worldRecords.clear();projected=new Map();
     localPlayer=null;localSeen=0;localTeam=0;screenFrame={events:[],traces:[]};
@@ -287,6 +292,8 @@ function installEsp(hooks=createHookSet(moduleBase,Interceptor)) {
     if(worldVisuals)worldVisuals.reset();
     if(cameraEffects)cameraEffects.reset();
     if(rawInput)rawInput.reset();
+    if(antiAim)antiAim.reset();
+    if(rotationProbe)rotationProbe.reset();
     if(sceneEffects)sceneEffects.reset();
     if(clearOverlayFrame)clearOverlayFrame();else if(overlay)overlay.postInvalidateOnAnimation();
     console.log('CLOUD:gameplay-reset generation='+matchSession.generation());
@@ -321,6 +328,12 @@ function installEsp(hooks=createHookSet(moduleBase,Interceptor)) {
     active:()=>!menuOpen&&!!gameplayPlayer()&&(settings['Aim Activation']===0 || (settings['Aim Activation']===1?getTouchCount(ptr(0))>0:screenFrame.scopeActive===true))});
   try{cameraEffects=createCameraEffects({native,settings,base:moduleBase,transform,position,getCamera:worldCamera,getLocalPlayer:gameplayPlayer,canRun:()=>!!gameplayPlayer()});console.log('CLOUD:camera-mode-ready');}
   catch(error){cameraEffects=null;console.log('CLOUD:camera-mode-install-error '+error);}
+  try{
+    const attachHook=(rva,callbacks,label)=>hooks.attach(rva,callbacks,label),removeHook=label=>hooks.remove(label);
+    antiAim=createAntiAim({native,settings,getLocalPlayer:gameplayPlayer,canRun:()=>!!gameplayPlayer()&&matchSession.ready(Date.now()),generation:()=>matchSession.generation(),attachHook,removeHook,log:message=>console.log(message)});
+    rotationProbe=createRotationProbe({base:moduleBase,attachHook,removeHook,getLocalPlayer:gameplayPlayer,canRun:()=>!!gameplayPlayer()&&matchSession.ready(Date.now()),log:message=>console.log(message)});
+    console.log('CLOUD:anti-aim-ready sender='+(antiAim.gated()?'unknown (gated)':'set'));
+  }catch(error){antiAim=null;rotationProbe=null;console.log('CLOUD:anti-aim-install-error '+error);}
   try{rawInput=createRawInput({native,settings,getLocalPlayer:gameplayPlayer,canRun:()=>!!gameplayPlayer()});}
   catch(error){rawInput=null;console.log('CLOUD:raw-input-install-error '+error);}
   try{sceneEffects=createSceneEffects({native,settings,canRun:()=>matchSession.ready(Date.now()),scene:()=>activeScene(ptr(0))});}
@@ -621,6 +634,8 @@ function installEsp(hooks=createHookSet(moduleBase,Interceptor)) {
         if(extraVisuals.syncHooks)extraVisuals.syncHooks();
         if(runtimeHooks)syncRecoilHooks(runtimeHooks);
         if(rawInput)try{rawInput.update();}catch(error){extraVisuals.report('raw-input-error',error);}
+        if(antiAim)try{antiAim.sync();}catch(error){extraVisuals.report('anti-aim-error',error);}
+        if(rotationProbe)try{rotationProbe.sync(!!settings['AA Probe']);}catch(error){extraVisuals.report('aa-probe-error',error);}
         if(sceneEffects)try{sceneEffects.update();}catch(error){extraVisuals.report('scene-effect-error',error);}
         const chamsActive=(settings['Player ESP']&&(settings.Chams||settings['3D Model']||
           settings['Shader Chams']||settings['Ghost Chams']))||settings['Grenade Glow'];

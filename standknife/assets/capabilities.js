@@ -3,6 +3,8 @@ export function featureAvailable(feature, ready, hooks) {
   if (!ready) return false;
   if(['Back Camera','Third Person','Viewmodel'].includes(feature))return hooks['camera-effects']===true;
   if(feature==='Raw Input')return hooks['raw-input']===true;
+  // Anti-aim needs the measured sender function (ANTI_AIM_CONFIG.senderRva); until it is set the switch stays unavailable.
+  if(feature==='Anti-Aim')return hooks['anti-aim-gated']===false;
   if(feature==='Fog')return hooks['scene-effects']===true;
   if(['Item ESP','Grenades','Off-screen Nades','Molotov Radius','Smoke Radius','Player Nades','Bomb Timer','Grenade Glow','Penetration'].includes(feature))return hooks['world-visuals']===true;
   if (feature === 'No Recoil' || feature === 'Check Recoil') {

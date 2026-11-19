@@ -1,5 +1,5 @@
 {
-  "version": "0.39",
+  "version": "0.40",
   "features": [
     {
       "section": "aim",
@@ -546,6 +546,18 @@
       "tab": "main",
       "feature": "Accent Color",
       "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "weapons",
+      "tab": "main",
+      "feature": "AA Probe",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "weapons",
+      "tab": "main",
+      "feature": "Anti-Aim",
+      "backend": "blocked_sender_function_not_measured"
     }
   ]
 }
