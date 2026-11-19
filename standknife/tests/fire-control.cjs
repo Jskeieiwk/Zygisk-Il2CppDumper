@@ -158,11 +158,20 @@ matchReady=true;controls.ensureInstalled();assert.equal(hooks.size,2);assert.equ
   scope.sniper=true;active=false;assert.equal(run(0,600),0n,'The menu pause blocks the click');active=true;
   // Our own opening teaches nothing, and an open scope is left alone.
   scope.active=true;assert.equal(run(0,600),0n);scope.active=false;
-  // Two clicks without the scope opening: back off instead of toggling it forever.
+  // A detector that lags: the scope shows 600 ms after the click. A second click would close it again, so there must be none.
+  run(0,3000);assert.equal(run(0),0x100n,'The click starts');
+  const lag=[];for(let ms=0;ms<600;ms+=10)lag.push(run(0,10)===0x100n?1:0);
+  assert.equal(lag.slice(10).some(Boolean),false,'No second click while the first one is awaited (900 ms): '+lag.join(''));
+  scope.active=true;run(0,10);
+  assert(logs.some(line=>/^CLOUD:auto-scope-result opened=true afterMs=\d+$/.test(line)),'The delay until the scope was seen open is logged: '+logs.join('|'));
+  scope.active=false;run(0,2000);
+  // Two clicks without the scope opening: back off instead of toggling it forever (clicks are 900 ms apart).
   run(0,3000);const presses=[];
-  for(let ms=0;ms<1400;ms+=10)presses.push(run(0,10)===0x100n?1:0);
+  for(let ms=0;ms<2800;ms+=10)presses.push(run(0,10)===0x100n?1:0);
   const clicks=presses.reduce((count,value,index)=>count+(value&&!presses[index-1]?1:0),0);
   assert.equal(clicks,2,'Exactly two attempts, then the module gives up: '+clicks);
+  assert(logs.some(line=>line.startsWith('CLOUD:auto-scope-result opened=false')),'A click that did not open the scope is logged as such');
+  assert(logs.some(line=>/^CLOUD:scope-sample n=1 bytes=010000 candidates=1$/.test(line)),'Each manual opening logs the bytes seen before it: '+logs.join('|'));
   assert(logs.some(line=>line.startsWith('CLOUD:auto-scope-gave-up')),'The back-off is logged');
   scoped.reset();console.log=originalLog;context.Date=Date;
 }

@@ -46,6 +46,9 @@ export function createClicker(pressMs=80){
 // before it are intersected with the earlier openings. After three openings with exactly one common byte (never the fire byte)
 // that byte is the scope button. The player scopes in by hand three times with a sniper rifle; nothing is assumed beyond that.
 export const SCOPE_WINDOW_MS=500;
+// After an automatic scope click the module waits this long for the scope to be seen open before it may click again. The click is a
+// toggle on the learned byte, so a second click while the detector still lags would close the scope the first one opened.
+export const SCOPE_CONFIRM_MS=900;
 export function createScopeCalibration(fireIndex=0){
   let common=null,samples=0;
   return {
@@ -53,9 +56,10 @@ export function createScopeCalibration(fireIndex=0){
     observe(history,opened){
       const seen=[0,0,0,0,0,0];
       for(const entry of history)if(opened-entry.t>=0&&opened-entry.t<=SCOPE_WINDOW_MS)entry.bytes.forEach((value,index)=>{if(value&&index!==fireIndex)seen[index]=1;});
-      if(!seen.some(Boolean))return;
+      if(!seen.some(Boolean))return {seen,samples,candidates:[],used:false};
       const next=common?common.map((value,index)=>value&&seen[index]?1:0):seen;
       if(!next.some(Boolean)){common=seen;samples=1;}else{common=next;samples++;}
+      return {seen,samples,candidates:common.flatMap((value,index)=>value?[index]:[]),used:true};
     },
     reset(){common=null;samples=0;},
     state(){
@@ -76,7 +80,7 @@ export function installFireControl(context) {
   const setRotation=native(0x54519e4,'void',['pointer',['float','float','float'],'pointer']);
   let warnings=0,lastTrigger=0,lastKnife=0,reported=false,hookKey='',shotLogs=0,lastShotLog=0,clickLogs=0;
   const clicker=createClicker(),scopeClicker=createClicker(),scopeCalibration=createScopeCalibration();
-  let commandHistory=[],scopeWasOpen=false,scopeAttempts=0,scopeBackoffUntil=0,scopeLogs=0,scopeReported=false,lastScopeWanted=0;
+  let commandHistory=[],scopeWasOpen=false,scopeAttempts=0,scopeBackoffUntil=0,scopeLogs=0,scopeReported=false,lastScopeWanted=0,awaitingOpen=0;
   const getScope=context.getScope||(()=>null);
   // One click is followed for 350 ms: how many shots the game counted for it, with which weapon, its penetration power
   // (WeaponParameters+0x1A4, the value Autowall scales) and the wall the shot was aimed through.
@@ -119,7 +123,7 @@ export function installFireControl(context) {
   function reset(clearCalibration=true){
     for(const listener of listeners)listener.detach();
     if(listeners.length)console.log('CLOUD:fire-hooks-suspended');
-    listeners=[];if(clearCalibration){calibration.reset();scopeCalibration.reset();scopeReported=false;}lastTrigger=0;lastKnife=0;reported=false;hookKey='';clicker.reset();scopeClicker.reset();commandHistory=[];scopeWasOpen=false;scopeAttempts=0;scopeBackoffUntil=0;pendingClick=null;
+    listeners=[];if(clearCalibration){calibration.reset();scopeCalibration.reset();scopeReported=false;}lastTrigger=0;lastKnife=0;reported=false;hookKey='';clicker.reset();scopeClicker.reset();commandHistory=[];scopeWasOpen=false;scopeAttempts=0;scopeBackoffUntil=0;awaitingOpen=0;pendingClick=null;
   }
   // Auto Scope: learn the scope byte from the player's own scope openings, then press it (as a click, not a held flag) when a
   // sniper rifle is in hand, the scope is closed and the aim has a fresh target. Two clicks without the scope opening mean the
@@ -131,14 +135,22 @@ export function installFireControl(context) {
     if(!scope)return false;
     if(scope.active&&!scopeWasOpen){
       // Openings caused by our own click do not teach anything.
-      if(!scopeClicker.pressing(now)&&now-lastScopeWanted>SCOPE_WINDOW_MS)scopeCalibration.observe(commandHistory,now);
+      if(!scopeClicker.pressing(now)&&now-lastScopeWanted>SCOPE_WINDOW_MS){
+        const sample=scopeCalibration.observe(commandHistory,now);
+        // What the commands before each manual opening contained, so a wrong learned byte can be told from a lagging detector in the log.
+        if(sample&&scopeLogs++<30)console.log('CLOUD:scope-sample n='+sample.samples+' bytes='+sample.seen.join('')+' candidates='+sample.candidates.join(',')+(sample.used?'':' (no byte set)'));
+      }
       scopeAttempts=0;
     }
     scopeWasOpen=!!scope.active;
     const learned=scopeCalibration.state();
     if(learned.ready&&!scopeReported){scopeReported=true;console.log('CLOUD:scope-calibrated mask='+learned.mask+' samples='+learned.samples);}
+    if(awaitingOpen){
+      if(scope.active){if(scopeLogs++<30)console.log('CLOUD:auto-scope-result opened=true afterMs='+(now-awaitingOpen));awaitingOpen=0;}
+      else if(now-awaitingOpen>=SCOPE_CONFIRM_MS){if(scopeLogs++<30)console.log('CLOUD:auto-scope-result opened=false afterMs='+(now-awaitingOpen));awaitingOpen=0;}
+    }
     const aim=getAim();
-    const wanted=learned.ready&&active()&&scope.sniper&&!scope.active&&!!aim&&!!aim.selected&&now-aim.t<=150&&now>=scopeBackoffUntil;
+    const wanted=learned.ready&&!awaitingOpen&&active()&&scope.sniper&&!scope.active&&!!aim&&!!aim.selected&&now-aim.t<=150&&now>=scopeBackoffUntil;
     if(wanted)lastScopeWanted=now;
     const pressing=scopeClicker.pressing(now);
     if(wanted&&!pressing&&scopeAttempts>=2){scopeBackoffUntil=now+1500;scopeAttempts=0;
@@ -146,7 +158,7 @@ export function installFireControl(context) {
     const starting=wanted&&!pressing;
     if(scopeClicker.update(wanted,now,500)){
       args[1]=args[1].or(ptr(learned.mask));
-      if(starting){scopeAttempts++;if(scopeLogs++<30)console.log('CLOUD:auto-scope click n='+scopeAttempts);}
+      if(starting){scopeAttempts++;awaitingOpen=now;if(scopeLogs++<30)console.log('CLOUD:auto-scope click n='+scopeAttempts+' mask='+learned.mask);}
       return true;
     }
     return false;
