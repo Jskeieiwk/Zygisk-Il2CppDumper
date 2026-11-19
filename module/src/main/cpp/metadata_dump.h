@@ -8,22 +8,38 @@
 // Pure helpers, no Android dependencies, so they can be checked on a host compiler.
 
 constexpr uint32_t kMetadataSanity = 0xFAB11BAF;
-constexpr size_t kMetadataHeaderSize = 0x100;
-// Unity 2022 (metadata version 31): sanity, version, then 31 (offset, size) pairs = 0x100 bytes.
-constexpr int32_t kMetadataVersion31 = 31;
-constexpr size_t kMetadataV31PairCount = 31;
+constexpr size_t kMetadataProbeSize = 0x200;
 constexpr size_t kMetadataMaxSize = 0x20000000;
 
-// Returns the total size of a plaintext v31 global-metadata.dat described by its 0x100-byte header
-// (largest offset+size over all sections), or 0 if the header is not a plausible v31 header.
-inline size_t MetadataTotalSize(const uint8_t *header, size_t available) {
-    if (available < kMetadataHeaderSize) return 0;
-    uint32_t sanity;
+// Metadata version 31 (Unity 2022.x): sanity, version, then 31 (offset, size) int pairs; the first
+// offset equals the header size 0x100. Layout confirmed by the loader check in a Unity 2022 libil2cpp.so
+// (header size 0x100, version compared against 0x1f).
+constexpr int32_t kMetadataVersion31 = 31;
+constexpr size_t kMetadataV31HeaderSize = 0x100;
+constexpr size_t kMetadataV31PairCount = 31;
+
+// True when the first bytes look like the header of a plaintext global-metadata.dat of any version
+// that starts with sanity, version, firstSectionOffset (versions 16..40, header size 0x80..0x400).
+inline bool MetadataHeaderPlausible(const uint8_t *p, size_t available) {
+    if (available < 12) return false;
+    uint32_t sanity, first;
     int32_t version;
-    std::memcpy(&sanity, header, 4);
+    std::memcpy(&sanity, p, 4);
+    std::memcpy(&version, p + 4, 4);
+    std::memcpy(&first, p + 8, 4);
+    return sanity == kMetadataSanity && version >= 16 && version <= 40 && first >= 0x80 && first <= 0x400;
+}
+
+// Exact total size of a v31 metadata image from its 0x100-byte header (largest offset+size over all
+// sections), or 0 when the header is not a consistent v31 header.
+inline size_t MetadataV31TotalSize(const uint8_t *header, size_t available) {
+    if (available < kMetadataV31HeaderSize || !MetadataHeaderPlausible(header, available)) return 0;
+    int32_t version;
+    uint32_t first;
     std::memcpy(&version, header + 4, 4);
-    if (sanity != kMetadataSanity || version != kMetadataVersion31) return 0;
-    uint64_t end = kMetadataHeaderSize;
+    std::memcpy(&first, header + 8, 4);
+    if (version != kMetadataVersion31 || first != kMetadataV31HeaderSize) return 0;
+    uint64_t end = kMetadataV31HeaderSize;
     for (size_t i = 0; i < kMetadataV31PairCount; i++) {
         int32_t offset, size;
         std::memcpy(&offset, header + 8 + i * 8, 4);
@@ -36,25 +52,9 @@ inline size_t MetadataTotalSize(const uint8_t *header, size_t available) {
     return (size_t) end;
 }
 
-// Per-build constants, measured from libil2cpp.so (aarch64) of the dumped game build.
-// Build ID e5f46eb0e88ed1bd53ba133780db868d3076f729 (NT_GNU_BUILD_ID of the analysed file).
-// kSlotRva is a module-relative virtual address (not a file offset): the .bss pointer that
-// il2cpp::vm::MetadataLoader keeps to the decrypted global-metadata buffer. Measured as the
-// store at 0x2b97ea8 (`str x0, [x23, #0x4b0]`, x23 = page 0x645e000) after the loader call at
-// 0x2b97ea0; the failure path reads it at 0x2b98144 and clears it at 0x2b9814c.
-struct MetadataBuildConfig {
-    const char *name;
-    uint8_t build_id[20];
-    uint64_t slot_rva;
-};
-
-constexpr MetadataBuildConfig kMetadataBuilds[] = {
-        {"libil2cpp.so dump3 release (Unity 2022.3.60f1, metadata v31)",
-         {0xe5, 0xf4, 0x6e, 0xb0, 0xe8, 0x8e, 0xd1, 0xbd, 0x53, 0xba,
-          0x13, 0x37, 0x80, 0xdb, 0x86, 0x8d, 0x30, 0x76, 0xf7, 0x29},
-         0x645e4b0},
-};
-
-bool dump_decrypted_metadata(void *il2cpp_handle, const char *outDir);
+// Scans this process's anonymous readable memory for a decrypted global-metadata image and writes
+// each distinct one (at most 4) to <outDir>/files/global-metadata.dec.dat, .dec2.dat, ...
+// Returns the number of files written. Needs no per-build offsets.
+int dump_decrypted_metadata(const char *outDir);
 
 #endif //ZYGISK_IL2CPPDUMPER_METADATA_DUMP_H
