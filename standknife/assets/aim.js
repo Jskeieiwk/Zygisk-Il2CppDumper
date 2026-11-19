@@ -40,6 +40,9 @@ export function createAim(context) {
   // wall rules classify as passable (breakable objects, see wall-rules.js). Nothing is measured in centimetres: an obstacle is
   // passable or it is not. An unknown obstacle counts as solid. MAX_OBSTACLES only bounds the loop.
   const MAX_OBSTACLES=4,PASS_EPSILON=.02;
+  // Wall Thickness (cm, 0-60, default 15 as in v0.37; 0 = only players and breakable objects): an obstacle that is neither of those counts as
+  // passable when its summed thickness stays within the budget. Not calibrated against the game's penetration; v0.36 fired into solid gates this way.
+  const wallBudget=()=>Math.max(0,Math.min(60,Number(settings['Wall Thickness'])||0))/100;
   const rules=context.wallRules||createWallRules({engine:createEngine(native),log:message=>console.log(message)});
   function ownCollider(collider_,player){
     const obstacleTransform=transform(collider_,ptr(0)),root=transform(player,ptr(0));
@@ -76,7 +79,7 @@ export function createAim(context) {
   }
   function reachesLine(origin,target,player,wall) {
     evidence={wall:!!wall,direct:false,walls:0,blocked:null};
-    let start=origin;
+    let start=origin,thickness=0;
     for(let step=0;step<=MAX_OBSTACLES;step++){
       cost.casts++;
       if(!linecast(start,target,hit,-1,1,ptr(0))){evidence.direct=evidence.walls===0;return true;}
@@ -85,12 +88,28 @@ export function createAim(context) {
       if(ownCollider(obstacle,player)){evidence.direct=evidence.walls===0;return true;}
       if(!wall){evidence.blocked='solid';return false;}
       const verdict=playerCollider(obstacle,player)?true:rules.classify(obstacle);
-      if(verdict!==true){evidence.blocked=verdict===false?'solid':'unknown';return false;}
+      const limit=wallBudget();
+      if(verdict!==true&&!(limit>0)){evidence.blocked=verdict===false?'solid':'unknown';return false;}
       const entry=pointOfHit(hit,ptr(0));
       const span=Math.hypot(...target.map((value,index)=>value-entry[index]));
       if(!(span>PASS_EPSILON))return false;
-      // The next cast starts just inside the passable obstacle: a ray that starts inside a collider does not report it again.
-      start=entry.map((value,index)=>value+(target[index]-entry[index])/span*PASS_EPSILON);
+      if(verdict===true){
+        // The next cast starts just inside the passable obstacle: a ray that starts inside a collider does not report it again.
+        start=entry.map((value,index)=>value+(target[index]-entry[index])/span*PASS_EPSILON);
+        evidence.walls++;continue;
+      }
+      // A thin wall: its exit is found by casting back towards the entry from the remaining budget. A start point still inside the
+      // wall finds nothing (too thick); the exit must belong to the same collider, otherwise the ray stopped on something behind it.
+      const budget=Math.min(limit-thickness,span);
+      if(!(budget>0)){evidence.blocked='thick';return false;}
+      const direction=target.map((value,index)=>(value-entry[index])/span);
+      const probe=entry.map((value,index)=>value+direction[index]*budget);
+      cost.casts++;
+      if(!linecast(probe,entry,reverseHit,-1,1,ptr(0))||!collider(reverseHit,ptr(0)).equals(obstacle)){evidence.blocked='thick';return false;}
+      const exit=pointOfHit(reverseHit,ptr(0));
+      thickness+=Math.hypot(...entry.map((value,index)=>value-exit[index]));
+      if(thickness>limit){evidence.blocked='thick';return false;}
+      start=exit.map((value,index)=>value+direction[index]*.01);
       evidence.walls++;
     }
     evidence.blocked='too many obstacles';

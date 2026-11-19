@@ -1,5 +1,5 @@
 {
-  "version": "0.46",
+  "version": "0.47",
   "features": [
     {
       "section": "aim",
@@ -545,6 +545,12 @@
       "section": "misc",
       "tab": "main",
       "feature": "Accent Color",
+      "backend": "implemented_requires_device_validation"
+    },
+    {
+      "section": "misc",
+      "tab": "main",
+      "feature": "TP Hide Arms",
       "backend": "implemented_requires_device_validation"
     }
   ]

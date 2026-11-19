@@ -30,27 +30,28 @@ export function createCameraEffects(context){
   const setArmsEnabled=native(0x4413668,'void',['pointer','bool','pointer']);
   const getMask=native(0xa725fb0,'int',['pointer','pointer']),setMask=native(0xa726124,'void',['pointer','int','pointer']);
   const hit=Memory.alloc(0x100),hooks=createHookSet(context.base,Interceptor);
-  let saved=null,failures=0,bodyLogs=0,lastBodyState='';
+  let saved=null,failures=0,bodyLogs=0;const lastBodyState=new Map();
   function report(error){if(failures++<3)console.log('CLOUD:camera-mode-error '+error);}
-  function noteBody(state){
-    if(state===lastBodyState||bodyLogs>=12)return;
-    lastBodyState=state;bodyLogs++;console.log('CLOUD:third-person-body '+state);
+  // One line per kind ('body', 'arms') and per change, so two kinds cannot push each other out of the 12-line limit.
+  function noteBody(kind,state){
+    if(lastBodyState.get(kind)===state||bodyLogs>=12)return;
+    lastBodyState.set(kind,state);bodyLogs++;console.log('CLOUD:third-person-'+kind+' '+state);
   }
   // Switches the body renderer on for this render and makes sure the camera's culling mask contains the body's layer. The original
   // renderer state and mask are kept in `record.body` before anything is changed, so restore() can always undo it.
   function hideArms(player,record){
     const group=player.add(0x48).readPointer();
-    if(group.isNull()||!engine.live(group)){noteBody('arms no-group');return;}
+    if(group.isNull()||!engine.live(group)){noteBody('arms','no-group');return;}
     const entry={group:engine.hold(group),wasEnabled:true};
     record.fpArms=entry;
     entry.wasEnabled=!!bodyEnabled(group,ptr(0));
     setArmsEnabled(group,0,ptr(0));
-    noteBody('arms wasEnabled='+entry.wasEnabled);
+    noteBody('arms','wasEnabled='+entry.wasEnabled);
   }
   function showBody(camera,player,record){
-    if(!player||player.isNull()){noteBody('no-local-player');return;}
+    if(!player||player.isNull()){noteBody('body','no-local-player');return;}
     const group=player.add(0x30).readPointer();
-    if(group.isNull()||!engine.live(group)){noteBody('no-body-group');return;}
+    if(group.isNull()||!engine.live(group)){noteBody('body','no-body-group');return;}
     const entry={group:engine.hold(group),wasEnabled:true};
     record.body=entry;
     entry.wasEnabled=!!bodyEnabled(group,ptr(0));
@@ -66,7 +67,7 @@ export function createCameraEffects(context){
       mask=getMask(camera,ptr(0));maskHasLayer=(mask&(1<<layer))!==0;
       if(!maskHasLayer){entry.camera=camera;entry.mask=mask;setMask(camera,mask|(1<<layer),ptr(0));}
     }
-    noteBody('wasEnabled='+entry.wasEnabled+' mesh='+(mesh.isNull()?'null':'set')+' meshEnabled='+meshOn+' active='+active+' layer='+layer+
+    noteBody('body','wasEnabled='+entry.wasEnabled+' mesh='+(mesh.isNull()?'null':'set')+' meshEnabled='+meshOn+' active='+active+' layer='+layer+
       ' cullingMask=0x'+(mask===null?'?':(mask>>>0).toString(16))+' cameraSawLayer='+maskHasLayer);
   }
   function restore(){
@@ -116,8 +117,8 @@ export function createCameraEffects(context){
           setPosition(current,destination,ptr(0));
         }
         const localPlayer=context.getLocalPlayer();
-        try{showBody(camera,localPlayer,saved);}catch(error){noteBody('error '+error);}
-        try{if(localPlayer&&!localPlayer.isNull())hideArms(localPlayer,saved);}catch(error){noteBody('arms error '+error);}
+        try{showBody(camera,localPlayer,saved);}catch(error){noteBody('body','error '+error);}
+        if(settings['TP Hide Arms'])try{if(localPlayer&&!localPlayer.isNull())hideArms(localPlayer,saved);}catch(error){noteBody('arms','error '+error);}
       }
       if(settings['Back Camera'])setEuler(current,[euler[0],euler[1]+180,euler[2]],ptr(0));
       if(settings.Viewmodel){

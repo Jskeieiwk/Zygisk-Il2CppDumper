@@ -70,6 +70,11 @@ ready=false;context.camera.reset();assert.deepEqual(positions.get(world.value),[
 {
   const group=allocate(),mesh=allocate();memory.set(player.value+0x30,group);memory.set(group.value+0x38,mesh);
   ready=true;blocked=false;bodyOn=false;bodyLayer=8;maskValue=-257;maskWrites=0;           // -257 = every layer except layer 8
+  // The first-person arms are hidden only on request ('TP Hide Arms'); the body switch alone is the state seen working on the device.
+  settings['TP Hide Arms']=false;callback(0xa72b848,world);
+  assert.equal(armsOn,true,'Without TP Hide Arms the arms renderer is left alone');assert.equal(bodyOn,true);
+  callback(0xa72b9f8,world);assert.equal(bodyOn,false);
+  settings['TP Hide Arms']=true;
   callback(0xa72b848,world);
   assert.equal(bodyOn,true,'The body renderer is on while the third-person camera renders');
   assert.equal(maskValue&(1<<8),1<<8,'The camera now sees the body layer');

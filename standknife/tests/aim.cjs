@@ -110,6 +110,18 @@ console.log('Aim/Auto Stop shutdown integration passed.');
   state=decision();assert.equal(state.clear,false,'The obstacle loop is bounded');
   slabs=[[4,4.2,'player']];state=decision();assert.equal(state.clear,true,'Another player is passable without asking the wall rules');
   slabs=[[4,4.1,'breakable'],[4.3,4.45,'breakable']];state=decision();assert.equal(state.clear,true,'Two separate breakable objects are fine');
+  // Wall Thickness (cm): any obstacle that is neither a player nor a known breakable counts as passable when it is thin enough.
+  forceSettings['Wall Thickness']=15;
+  slabs=[[4,4.1,'solid']];state=decision();assert.equal(state.clear,true,'A 10 cm wall is within a 15 cm Wall Thickness');assert.equal(state.selected.reach.walls,1);
+  slabs=[[4,4.3,'solid']];state=decision();assert.equal(state.clear,false,'A 30 cm wall is thicker than the budget');assert.equal(state.selected.reach.blocked,'thick');
+  slabs=[[4,4.1,'solid'],[6,6.1,'solid']];state=decision();assert.equal(state.clear,false,'Two 10 cm walls add up to more than 15 cm');
+  slabs=[[4,4.1,'mystery']];state=decision();assert.equal(state.clear,true,'An unclassified thin obstacle counts too');
+  slabs=[[4,4.1,'solid'],[4.12,4.14,'solid']];state=decision();assert.equal(state.clear,false,'The exit must belong to the same wall: a second wall right behind it is not part of its thickness');
+  slabs=[[4,4.1,'solid'],[6,6.05,'breakable']];state=decision();assert.equal(state.clear,true,'A breakable object does not use the thickness budget');
+  forceSettings['Wall Thickness']=0;
+  slabs=[[4,4.1,'solid']];state=decision();assert.equal(state.clear,false,'Thickness 0 means only players and breakable objects');
+  slabs=[[4,4.1,'breakable']];state=decision();assert.equal(state.clear,true,'and breakable objects still pass');
+  slabs=[];
   // Silent Aim is gated the same way.
   forceSettings['Force Shot']=false;forceSettings['Silent Aim']=true;forceSettings.Wallshot=false;slabs=[[4,4.2,'breakable']];
   state=decision();assert.equal(state.clear,false);

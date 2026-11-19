@@ -1,7 +1,7 @@
 export function featureAvailable(feature, ready, hooks) {
   if(['Safe Mode','Liquid Glass','Watermark','Hotkeys','Notifications','Accent Color'].includes(feature))return true;
   if (!ready) return false;
-  if(['Back Camera','Third Person','Viewmodel'].includes(feature))return hooks['camera-effects']===true;
+  if(['Back Camera','Third Person','Viewmodel','TP Hide Arms'].includes(feature))return hooks['camera-effects']===true;
   if(feature==='Raw Input')return hooks['raw-input']===true;
   if(feature==='Fog')return hooks['scene-effects']===true;
   if(['Item ESP','Grenades','Off-screen Nades','Molotov Radius','Smoke Radius','Player Nades','Bomb Timer','Grenade Glow','Penetration'].includes(feature))return hooks['world-visuals']===true;
