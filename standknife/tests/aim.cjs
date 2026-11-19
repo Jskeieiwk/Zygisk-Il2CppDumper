@@ -86,7 +86,9 @@ console.log('Aim/Auto Stop shutdown integration passed.');
   const tracked=new Map([['enemy',{player:new Pointer(2)}],['other',{player:bystander}]]);
   const engine=api.createAim({native:wallNative,wallRules,settings:forceSettings,records:enemy,tracked,
     transform:value=>value,position:()=>[0,0,0],getHealth:()=>100,active:()=>true});
-  const decision=()=>{enemy.get('enemy').t=Date.now();engine.step(new Pointer(1),new Pointer(3),1);return captured.getAim();};
+  // Each decision happens 150 ms later than the last one: a player found hidden is not re-checked for 100 ms (see HIDDEN_RECHECK_MS).
+  let clock=1e6;context.Date={now:()=>clock};
+  const decision=()=>{clock+=150;enemy.get('enemy').t=clock;engine.step(new Pointer(1),new Pointer(3),1);return captured.getAim();};
   slabs=[[4,4.2,'solid']];
   let state=decision();
   assert(state.selected,'Aim Visible Only=false still selects a target behind a wall');
@@ -138,6 +140,7 @@ console.log('Aim/Auto Stop shutdown integration passed.');
   const failing=api.createWallRules({engine:{type:()=>{throw Error('Missing managed type T');},method(){}},config:{build:'t',breakableType:'T',getComponentInParent:1},log:()=>{}});
   assert.equal(failing.classify(c7),null,'A missing type answers unknown');
 }
+context.Date=Date;
 console.log('Autowall without thickness, Wallshot gating and aim-assist wall rule passed.');
 
 // Hitboxes: which point of a player the aim picks, what Multipoints and Hit Chance add.
@@ -155,7 +158,9 @@ console.log('Autowall without thickness, Wallshot gating and aim-assist wall rul
   const records=new Map([['enemy',{t:Date.now(),team:2,health:100,bonePositions:bones}]]);
   const engine=api.createAim({native:hitNative,wallRules:{classify:()=>false,reset(){}},settings,records,tracked:new Map([['enemy',{player:new Pointer(2)}]]),
     transform:value=>value,position:()=>[0,0,0],getHealth:()=>100,active:()=>true});
-  const choose=()=>{records.get('enemy').t=Date.now();engine.step(new Pointer(1),new Pointer(3),1);return captured.getAim().selected;};
+  // Every choice is 150 ms after the previous one, so the 100 ms hidden-player memory never answers for a changed scene.
+  let tick=2e6;context.Date={now:()=>tick};
+  const choose=()=>{tick+=150;records.get('enemy').t=tick;engine.step(new Pointer(1),new Pointer(3),1);return captured.getAim().selected;};
   // The legs are the points closest to a crosshair at the horizon, which used to win whenever the whole body was ticked.
   settings['Hitbox Priority']=2;assert.equal(choose().part,'legs','Without a ranking the nearest point (the legs) wins');
   settings['Hitbox Priority']=0;assert.equal(choose().part,'head','Head first when it is in range');
@@ -190,4 +195,49 @@ console.log('Autowall without thickness, Wallshot gating and aim-assist wall rul
   settings['Aim FOV']=90;assert.equal(choose(),null,'A target behind the camera is outside a 90 degree half angle');
   settings['Aim FOV']=180;assert(choose(),'Aim FOV 180 (360 degrees) selects a target behind the camera');
 }
+context.Date=Date;
 console.log('Hitbox ranking, hitbox-all, multipoint percent and hit chance gating passed.');
+
+// Hidden-player memory: a player whose every point was blocked is skipped for 100 ms (cheap steps), re-checked afterwards, and
+// re-checked at once when the camera or the player moved half a metre. A visible player is checked on every step.
+{
+  let casts=0,blockedNow=true,time=3e6;context.Date={now:()=>time};
+  const nativeCount=rva=>rva===0xa8261c8?()=>{casts++;return blockedNow?1:0;}:rva===0xa82b000?()=>new Pointer(500):rva===0xa7a4150?()=>false:native(rva);
+  const bones=Array(16).fill(null);bones[0]=[0,1.7,10];bones[1]=[0,1.5,10];bones[2]=[0,1.2,10];bones[3]=[0,.9,10];
+  const memorySettings={'Aim assistance':true,'Aim FOV':180,'Aim Range':150,'Aim Smoothing':0,'Aim Team Filter':true,'Aim Visible Only':true,'Hitbox Head':true,'Hitbox Body':true,'Hitbox Legs':false,Multipoints:true,'Multipoint Scale':50};
+  const memoryRecords=new Map([['enemy',{t:time,team:2,health:100,bonePositions:bones}]]);
+  let cameraAt=[0,0,0];
+  const memoryEngine=api.createAim({native:nativeCount,wallRules:{classify:()=>false,reset(){}},settings:memorySettings,records:memoryRecords,tracked:new Map([['enemy',{player:new Pointer(2)}]]),
+    transform:value=>value,position:()=>cameraAt,getHealth:()=>100,active:()=>false});
+  const stepAt=ms=>{time+=ms;memoryRecords.get('enemy').t=time;const before=casts;memoryEngine.step(new Pointer(1),new Pointer(3),1);return casts-before;};
+  const first=stepAt(16);assert(first>=4,'A hidden player is checked point by point on the first step: '+first);
+  assert.equal(stepAt(16),0,'Next step (16 ms): remembered as hidden, no casts');assert.equal(stepAt(16),0);assert.equal(stepAt(16),0);
+  assert(stepAt(100)>0,'After 100 ms the player is checked again');
+  assert.equal(stepAt(16),0,'and remembered again');
+  cameraAt=[1,0,0];assert(stepAt(16)>0,'A camera that moved 1 m invalidates the memory');
+  memoryRecords.get('enemy').bonePositions=bones.map(point=>point&&[point[0]+1,point[1],point[2]]);
+  assert(stepAt(16)>0,'A player that moved 1 m invalidates the memory');
+  // A visible player is never skipped, and being visible removes the memory.
+  blockedNow=false;stepAt(200);let visible=stepAt(16);assert(visible>0,'A visible player is checked on every step');
+  blockedNow=true;stepAt(200);assert.equal(stepAt(16),0);blockedNow=false;
+  assert.equal(stepAt(110)>0,true,'A player who steps into view is found within the 100 ms memory');
+  memoryEngine.reset();blockedNow=true;assert(stepAt(16)>0,'reset() clears the memory');
+  // Candidates skipped because another player already scores better were never checked: they must not be remembered as hidden.
+  {
+    let nearBlocked=false;const pair=new Map(),paired=new Map();
+    const point=(x)=>{const b=Array(16).fill(null);b[0]=[x,1.7,10];b[1]=[x,1.5,10];b[2]=[x,1.2,10];b[3]=[x,.9,10];return b;};
+    pair.set('near',{t:time,team:2,health:100,bonePositions:point(0)});pair.set('far',{t:time,team:2,health:100,bonePositions:point(6)});
+    paired.set('near',{player:new Pointer(2)});paired.set('far',{player:new Pointer(3)});
+    const pairNative=rva=>rva===0xa8261c8?(from,to)=>(nearBlocked&&to[0]<3?1:0):rva===0xa82b000?()=>new Pointer(500):rva===0xa7a4150?()=>false:native(rva);
+    const pairSettings={...memorySettings,Multipoints:false,'Hitbox Body':false};
+    const pairEngine=api.createAim({native:pairNative,wallRules:{classify:()=>false,reset(){}},settings:pairSettings,records:pair,tracked:paired,
+      transform:value=>value,position:()=>[0,0,0],getHealth:()=>100,active:()=>false});
+    const pairStep=()=>{time+=16;for(const record of pair.values())record.t=time;pairEngine.step(new Pointer(1),new Pointer(3),1);};
+    const readTarget=()=>pairEngine.status().target;
+    pairStep();assert.equal(readTarget(),'near','The nearer visible player is chosen first');
+    nearBlocked=true;pairStep();
+    assert.equal(readTarget(),'far','When the first player is hidden the other one, skipped earlier by score, is checked at once');
+  }
+  context.Date=Date;
+}
+console.log('Hidden-player memory: skipped within 100 ms, re-checked after it, on camera/player movement and on reset passed.');

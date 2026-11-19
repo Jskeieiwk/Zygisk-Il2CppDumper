@@ -26,7 +26,7 @@ function native(rva){return (...args)=>{
  case 0xa82b12c:return [0,1,-.7];
  case 0xa78ebc4:return !args[0].isNull();
  case 0x3d53d04:if(bodyThrows)throw Error('body unavailable');return bodyOn;
- case 0x6812f1c:if(bodyThrows)throw Error('body unavailable');bodyOn=!!args[1];return;
+ case 0x6812f1c:if(bodyThrows)throw Error('body unavailable');if(typeof args[1]!=='number')throw Error('expected an integer');bodyOn=!!args[1];return;
  case 0xa744354:return true;
  case 0xa77dd70:return args[0];
  case 0xa7844f0:return bodyLayer;

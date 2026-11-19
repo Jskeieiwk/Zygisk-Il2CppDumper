@@ -22,6 +22,7 @@ export function createCameraEffects(context){
   // GameObject.get_layer 0xA7844F0 / get_activeInHierarchy 0xA784AC8, Camera.get_cullingMask 0xA725FB0 / set_cullingMask 0xA726124.
   // NOT verified on a device: that the game hides the local body through this renderer switch (it may use the layer or an inactive
   // object instead). The CLOUD:third-person-body line prints what was found so the next log shows which one it is.
+  // A native 'bool' argument is passed as 0 or 1: this Frida rejects a JS boolean with "expected an integer" (seen in the v0.41 device log).
   const bodyEnabled=native(0x3d53d04,'bool',['pointer','pointer']),setBodyEnabled=native(0x6812f1c,'void',['pointer','bool','pointer']);
   const meshEnabled=native(0xa744354,'bool',['pointer','pointer']),gameObjectOf=native(0xa77dd70,'pointer',['pointer','pointer']);
   const layerOf=native(0xa7844f0,'int',['pointer','pointer']),activeOf=native(0xa784ac8,'bool',['pointer','pointer']);
@@ -42,7 +43,7 @@ export function createCameraEffects(context){
     const entry={group:engine.hold(group),wasEnabled:true};
     record.body=entry;
     entry.wasEnabled=!!bodyEnabled(group,ptr(0));
-    setBodyEnabled(group,true,ptr(0));
+    setBodyEnabled(group,1,ptr(0));
     const mesh=group.add(0x38).readPointer();
     let layer=-1,active=null,meshOn=null,mask=null,maskHasLayer=null;
     if(!mesh.isNull()&&engine.live(mesh)){
@@ -67,7 +68,7 @@ export function createCameraEffects(context){
     try{
       const body=previous.body;
       if(body){
-        if(engine.live(body.group))setBodyEnabled(body.group,body.wasEnabled,ptr(0));
+        if(engine.live(body.group))setBodyEnabled(body.group,body.wasEnabled?1:0,ptr(0));
         if(body.camera&&engine.live(body.camera))setMask(body.camera,body.mask,ptr(0));
       }
     }catch(error){report(error);}

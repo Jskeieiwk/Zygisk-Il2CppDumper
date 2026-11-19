@@ -46,16 +46,25 @@ export function createAim(context) {
     return !obstacleTransform.isNull()&&!root.isNull()&&childOf(obstacleTransform,root,ptr(0));
   }
   // Another tracked player's collider: bullets pass through players (PlayerHitbox keeps the power loss, see wall-rules.js).
+  // The root transform of each player is read once per step, not once per obstacle.
+  const rootCache=new Map();
   function playerCollider(collider_,except){
     const obstacleTransform=transform(collider_,ptr(0));
     if(obstacleTransform.isNull())return false;
-    for(const entry of tracked.values()){
+    for(const [key,entry] of tracked){
       if(!entry||!entry.player||entry.player.equals(except))continue;
-      const root=transform(entry.player,ptr(0));
+      let root=rootCache.get(key);
+      if(root===undefined){root=transform(entry.player,ptr(0));rootCache.set(key,root);}
       if(!root.isNull()&&childOf(obstacleTransform,root,ptr(0)))return true;
     }
     return false;
   }
+  // A player whose every candidate point was blocked is not checked again for HIDDEN_RECHECK_MS, unless the camera or the player
+  // moved HIDDEN_MOVE metres. With a wide FOV, Multipoints and Autowall (Aim) a player behind a wall costs one cast (and, with
+  // Autowall, several classifications) per point per step, about 740 native calls per step for five hidden players (counted in a
+  // scratch profile, not timed). A player who steps into view is noticed within HIDDEN_RECHECK_MS; a visible one is checked every step.
+  const HIDDEN_RECHECK_MS=100,HIDDEN_MOVE=.5,hidden=new Map();
+  const apart=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1],a[2]-b[2]);
   function reaches(origin,target,player,wall) {
     evidence={wall:!!wall,direct:false,walls:0,blocked:null};
     let start=origin;
@@ -79,7 +88,7 @@ export function createAim(context) {
   let previous=0,locked=null,failed=0,lastReport=0,status={target:null,fov:60};
   function step(local,camera,team) {
     const now=Date.now(),elapsed=previous?Math.max(0,(now-previous)/1000):1/60;previous=now;
-    status.target=null;fireState={t:now,selected:null,crosshair:false,clear:false};
+    status.target=null;fireState={t:now,selected:null,crosshair:false,clear:false};rootCache.clear();
     if(context.canRun&&!context.canRun()){stop.update(local,false);motion.reset();return;}
     if(context.paused&&context.paused()){if(fire.suspend)fire.suspend();stop.update(local,false);motion.reset();return;}
     fire.ensureInstalled();
@@ -136,17 +145,29 @@ export function createAim(context) {
           candidates.push({...candidate,distance,angles,angle});
         }
         candidates.sort((a,b)=>a.rank-b.rank||a.angle-b.angle);
+        const needsLine=isKnife||settings['Aim Visible Only']||settings['Autowall (Aim)'],anchor=candidates.length?candidates[0].point:null;
+        if(needsLine&&anchor){
+          const memo=hidden.get(key);
+          if(memo&&now<memo.until&&apart(memo.origin,origin)<HIDDEN_MOVE&&apart(memo.anchor,anchor)<HIDDEN_MOVE)continue;
+        }
+        let tried=0,picked=false;
         for(const candidate of candidates){
           let value=settings['Aim Priority']===1?candidate.distance:settings['Aim Priority']===2?targetHealth:candidate.angle;
           if(settings['Sticky Aim']&&key===locked)value-=1000;
           if(value>=score)continue;
           let checked=null;
-          if(isKnife||settings['Aim Visible Only']||settings['Autowall (Aim)']){
+          if(needsLine){
+            tried++;
             if(!reaches(origin,candidate.point,player.player,wallAim))continue;
             checked=evidence;
           }
           score=value;selected={key,angles:candidate.angles,target:candidate.point,player:player.player,item,part:candidate.part,reach:checked};
+          picked=true;
           break;
+        }
+        if(needsLine&&anchor){
+          if(picked||tried<candidates.length)hidden.delete(key);
+          else{if(hidden.size>64)hidden.clear();hidden.set(key,{until:now+HIDDEN_RECHECK_MS,origin,anchor});}
         }
       }
       if(!selected) {locked=null;motion.reset();return;}
@@ -189,7 +210,7 @@ export function createAim(context) {
     }catch(error){locked=null;if(failed++<5)console.log('CLOUD:aim-error '+error);}
     finally{if(!keepStopped)try{stop.update(local,false);}catch(error){if(failed++<5)console.log('CLOUD:auto-stop-error '+error);}}
   }
-  function reset(){rules.reset();try{stop.reset();}catch(error){if(failed++<5)console.log('CLOUD:auto-stop-reset-error '+error);}motion.reset();previous=0;locked=null;status.target=null;fireState={t:0,selected:null,crosshair:false,clear:false};fire.reset();}
+  function reset(){hidden.clear();rules.reset();try{stop.reset();}catch(error){if(failed++<5)console.log('CLOUD:auto-stop-reset-error '+error);}motion.reset();previous=0;locked=null;status.target=null;fireState={t:0,selected:null,crosshair:false,clear:false};fire.reset();}
   return {step,reset,needsUpdate:()=>stop.active()||!!(fire.needsCleanup&&fire.needsCleanup()),status:(camera)=>{
     if(camera&&!camera.isNull())try{status.fov=getFov(camera,ptr(0));}catch(error){}
     return {...status,fire:fire.status()};

@@ -27,7 +27,7 @@ const renderDexData=__RENDER_DEX__;
 const gameFrameMeter=createFrameMeter();
 const matchSession=createMatchSession();
 const workBudget=createWorkBudget();
-const costPhases=['camera','draw','capture','reproject'];
+const costPhases=['camera','draw','capture','reproject','aim'];
 const frameCost={since:0};
 for(const phase of costPhases)frameCost[phase]={calls:0,ms:0,max:0};
 function phaseCost(phase){const stat=frameCost[phase];return (stat.ms/Math.max(1,stat.calls)).toFixed(1)+'/'+stat.max;}
@@ -40,7 +40,7 @@ function recordFrameCost(kind,elapsed){
     console.log('CLOUD:perf gameFps='+gameFrameMeter.value(now)+' cameraMs='+phaseCost('camera')+
       ' canvasMs='+phaseCost('draw')+
       ' frames='+frameCost.camera.calls+'/'+frameCost.draw.calls+' players='+projected.size+
-      ' captureMs='+phaseCost('capture')+' reprojectMs='+phaseCost('reproject'));
+      ' captureMs='+phaseCost('capture')+' reprojectMs='+phaseCost('reproject')+' aimMs='+phaseCost('aim')+' aimSteps='+frameCost.aim.calls);
     frameCost.since=now;
     for(const phase of costPhases){const stat=frameCost[phase];stat.calls=stat.ms=stat.max=0;}
   }
@@ -348,7 +348,7 @@ function installEsp(hooks=createHookSet(moduleBase,Interceptor)) {
         const team=player.add(0x133).readU8();
         if(local) { localPlayer=player; localTeam=team; localSeen=Date.now(); }
         trackedPlayers.set(player.toString(), { player, local, team, t:Date.now() });
-        if(local && matchSession.ready(Date.now()) && workBudget.due('aim-step',Date.now(),1000/60) && (settings['Knife Bot']||settings['Aim assistance']||settings['Silent Aim']||settings.Trigger||settings['Force Shot']||settings['Auto Scope']||settings['Auto Calibration']||settings.Autowall||settings['Autowall (Aim)']||aimEngine.needsUpdate()))aimEngine.step(player,worldCamera(),team);
+        if(local && matchSession.ready(Date.now()) && workBudget.due('aim-step',Date.now(),1000/60) && (settings['Knife Bot']||settings['Aim assistance']||settings['Silent Aim']||settings.Trigger||settings['Force Shot']||settings['Auto Scope']||settings['Auto Calibration']||settings.Autowall||settings['Autowall (Aim)']||aimEngine.needsUpdate())){const began=Date.now();try{aimEngine.step(player,worldCamera(),team);}finally{recordFrameCost('aim',Date.now()-began);}}
       } catch(error) { if(espFailures++<8)console.log('CLOUD:player-track-error '+error); }
     }
   },'player-update',true);

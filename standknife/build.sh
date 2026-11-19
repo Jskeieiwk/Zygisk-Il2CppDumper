@@ -24,5 +24,5 @@ import zipfile
 with zipfile.ZipFile('build/unsigned.apk','a',compression=zipfile.ZIP_DEFLATED) as z:z.write('build/classes.dex','classes.dex')
 PY
 tools/android-15/zipalign -f 4 build/unsigned.apk build/aligned.apk
-tools/android-15/apksigner sign --ks loader.p12 --ks-key-alias loader --ks-pass pass:cloud-magic-dev --out Cloud-StandKnife-root-v41-test.apk build/aligned.apk
-tools/android-15/apksigner verify --verbose Cloud-StandKnife-root-v41-test.apk
+tools/android-15/apksigner sign --ks loader.p12 --ks-key-alias loader --ks-pass pass:cloud-magic-dev --out Cloud-StandKnife-root-v42-test.apk build/aligned.apk
+tools/android-15/apksigner verify --verbose Cloud-StandKnife-root-v42-test.apk
