@@ -84,8 +84,9 @@ console.log('Aim/Auto Stop shutdown integration passed.');
   const enemy=new Map([['enemy',{t:Date.now(),team:2,health:100,bonePositions:[[0,0,10]]}]]);
   const bystander=new Pointer(9);
   const tracked=new Map([['enemy',{player:new Pointer(2)}],['other',{player:bystander}]]);
-  const engine=api.createAim({native:wallNative,wallRules,settings:forceSettings,records:enemy,tracked,
-    transform:value=>value,position:()=>[0,0,0],getHealth:()=>100,active:()=>true});
+  const wallContext={native:wallNative,wallRules,settings:forceSettings,records:enemy,tracked,
+    transform:value=>value,position:()=>[0,0,0],getHealth:()=>100,active:()=>true};
+  const engine=api.createAim(wallContext);
   // Each decision happens 150 ms later than the last one: a player found hidden is not re-checked for 100 ms (see HIDDEN_RECHECK_MS).
   let clock=1e6;context.Date={now:()=>clock};
   const decision=()=>{clock+=150;enemy.get('enemy').t=clock;engine.step(new Pointer(1),new Pointer(3),1);return captured.getAim();};
@@ -98,29 +99,33 @@ console.log('Aim/Auto Stop shutdown integration passed.');
   // Wallshot is a plain switch: it passes breakable obstacles and refuses solid or unknown ones, whatever their thickness.
   forceSettings.Wallshot=true;
   slabs=[[4,4.2,'solid']];state=decision();assert.equal(state.clear,false,'A solid wall stops the shot even with Wallshot');
-  assert.equal(state.selected.reach.blocked,'solid');
+  assert.equal(state.selected.reach.blocked,'thick','A 20 cm wall is over the built-in 15 cm budget');
   slabs=[[4,4.2,'breakable']];state=decision();
   assert.equal(state.clear,true,'A breakable obstacle can be shot through');assert.equal(state.selected.reach.walls,1);
   slabs=[[4,6,'breakable']];state=decision();assert.equal(state.clear,true,'Thickness plays no role: a 2 m breakable obstacle is passable too');
   slabs=[[4,4.2,'breakable'],[6,6.25,'breakable']];state=decision();assert.equal(state.clear,true);assert.equal(state.selected.reach.walls,2);
   slabs=[[4,4.2,'breakable'],[6,6.25,'solid']];state=decision();assert.equal(state.clear,false,'One solid obstacle on the way is enough to refuse');
   slabs=[[4,4.2,'mystery']];state=decision();assert.equal(state.clear,false,'An unclassified obstacle counts as solid');
-  assert.equal(state.selected.reach.blocked,'unknown');
+  assert.equal(state.selected.reach.blocked,'thick','An unclassified 20 cm obstacle is over the budget too');
   slabs=[[3,3.1,'breakable'],[4,4.1,'breakable'],[5,5.1,'breakable'],[6,6.1,'breakable'],[7,7.1,'breakable']];
   state=decision();assert.equal(state.clear,false,'The obstacle loop is bounded');
   slabs=[[4,4.2,'player']];state=decision();assert.equal(state.clear,true,'Another player is passable without asking the wall rules');
   slabs=[[4,4.1,'breakable'],[4.3,4.45,'breakable']];state=decision();assert.equal(state.clear,true,'Two separate breakable objects are fine');
-  // Wall Thickness (cm): any obstacle that is neither a player nor a known breakable counts as passable when it is thin enough.
-  forceSettings['Wall Thickness']=15;
-  slabs=[[4,4.1,'solid']];state=decision();assert.equal(state.clear,true,'A 10 cm wall is within a 15 cm Wall Thickness');assert.equal(state.selected.reach.walls,1);
+  // Autowall is one button; any obstacle that is neither a player nor a known breakable counts as passable when it is at most 15 cm thick (built in).
+  slabs=[[4,4.1,'solid']];state=decision();assert.equal(state.clear,true,'A 10 cm wall is within the built-in 15 cm');assert.equal(state.selected.reach.walls,1);
   slabs=[[4,4.3,'solid']];state=decision();assert.equal(state.clear,false,'A 30 cm wall is thicker than the budget');assert.equal(state.selected.reach.blocked,'thick');
   slabs=[[4,4.1,'solid'],[6,6.1,'solid']];state=decision();assert.equal(state.clear,false,'Two 10 cm walls add up to more than 15 cm');
   slabs=[[4,4.1,'mystery']];state=decision();assert.equal(state.clear,true,'An unclassified thin obstacle counts too');
   slabs=[[4,4.1,'solid'],[4.12,4.14,'solid']];state=decision();assert.equal(state.clear,false,'The exit must belong to the same wall: a second wall right behind it is not part of its thickness');
   slabs=[[4,4.1,'solid'],[6,6.05,'breakable']];state=decision();assert.equal(state.clear,true,'A breakable object does not use the thickness budget');
-  forceSettings['Wall Thickness']=0;
-  slabs=[[4,4.1,'solid']];state=decision();assert.equal(state.clear,false,'Thickness 0 means only players and breakable objects');
+  wallContext.thinWall=0;   // test switch: rules only
+  slabs=[[4,4.1,'solid']];state=decision();assert.equal(state.clear,false,'Without the thin-wall budget only players and breakable objects pass');
   slabs=[[4,4.1,'breakable']];state=decision();assert.equal(state.clear,true,'and breakable objects still pass');
+  // What autowall let through is counted for the perf line: players, known breakable objects and thin walls separately.
+  wallContext.thinWall=undefined;slabs=[[4,4.1,'solid']];decision();slabs=[[4,4.1,'breakable']];decision();slabs=[[4,4.2,'player']];decision();slabs=[[4,4.5,'solid']];decision();
+  {const taken=engine.takeCost();
+   assert(taken.passThin>=1&&taken.passBreakable>=1&&taken.passPlayer>=1&&taken.blockedThick>=1,'takeCost() separates thin walls, breakables, players and thick walls: '+JSON.stringify(taken));
+   assert.equal(engine.takeCost().passThin,0,'and zeroes them');}
   slabs=[];
   // Silent Aim is gated the same way.
   forceSettings['Force Shot']=false;forceSettings['Silent Aim']=true;forceSettings.Wallshot=false;slabs=[[4,4.2,'breakable']];

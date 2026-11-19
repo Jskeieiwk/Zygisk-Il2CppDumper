@@ -1,4 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="dev.cloud.standknife" android:versionCode="47" android:versionName="0.47-thin-walls">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="dev.cloud.standknife" android:versionCode="48" android:versionName="0.48-autowall-button">
   <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
   <uses-sdk android:minSdkVersion="24" android:targetSdkVersion="28"/>
   <queries><package android:name="com.neshurick.standknife"/></queries>

@@ -40,9 +40,11 @@ export function createAim(context) {
   // wall rules classify as passable (breakable objects, see wall-rules.js). Nothing is measured in centimetres: an obstacle is
   // passable or it is not. An unknown obstacle counts as solid. MAX_OBSTACLES only bounds the loop.
   const MAX_OBSTACLES=4,PASS_EPSILON=.02;
-  // Wall Thickness (cm, 0-60, default 15 as in v0.37; 0 = only players and breakable objects): an obstacle that is neither of those counts as
-  // passable when its summed thickness stays within the budget. Not calibrated against the game's penetration; v0.36 fired into solid gates this way.
-  const wallBudget=()=>Math.max(0,Math.min(60,Number(settings['Wall Thickness'])||0))/100;
+  // Autowall is one button. Besides players and known breakable objects, an obstacle counts as passable when its summed thickness stays within
+  // THIN_WALL_METERS (15 cm, the v0.37 default). Not a setting and not calibrated against the game's penetration: v0.36 fired into solid gates
+  // this way. `context.thinWall` exists only so a test can switch it off.
+  const THIN_WALL_METERS=.15;
+  const wallBudget=()=>context.thinWall!==undefined?context.thinWall:THIN_WALL_METERS;
   const rules=context.wallRules||createWallRules({engine:createEngine(native),log:message=>console.log(message)});
   function ownCollider(collider_,player){
     const obstacleTransform=transform(collider_,ptr(0)),root=transform(player,ptr(0));
@@ -71,7 +73,8 @@ export function createAim(context) {
   // 5.7-7.3 ms on average at 18-37 fps, so at that frame rate a 100 ms memory covered only about three steps.
   const HIDDEN_RECHECK_MS=100,HIDDEN_FULL_MS=400,PROBE_POINTS=2,HIDDEN_MOVE=.5,hidden=new Map();
   // Counters for the perf line (CLOUD:perf aimCasts/aimReachMs ...): what one step really does, read and zeroed by takeCost().
-  let cost={steps:0,casts:0,obstacles:0,skipped:0,probes:0,reachMs:0};
+  const newCost=()=>({steps:0,casts:0,obstacles:0,skipped:0,probes:0,reachMs:0,passPlayer:0,passBreakable:0,passThin:0,blockedSolid:0,blockedThick:0,blockedUnknown:0});
+  let cost=newCost();
   const apart=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1],a[2]-b[2]);
   function reaches(origin,target,player,wall) {
     const began=Date.now();
@@ -87,30 +90,30 @@ export function createAim(context) {
       const obstacle=collider(hit,ptr(0));if(obstacle.isNull())return false;
       if(ownCollider(obstacle,player)){evidence.direct=evidence.walls===0;return true;}
       if(!wall){evidence.blocked='solid';return false;}
-      const verdict=playerCollider(obstacle,player)?true:rules.classify(obstacle);
+      const isPlayer=playerCollider(obstacle,player),verdict=isPlayer?true:rules.classify(obstacle);
       const limit=wallBudget();
-      if(verdict!==true&&!(limit>0)){evidence.blocked=verdict===false?'solid':'unknown';return false;}
+      if(verdict!==true&&!(limit>0)){evidence.blocked=verdict===false?'solid':'unknown';if(verdict===false)cost.blockedSolid++;else cost.blockedUnknown++;return false;}
       const entry=pointOfHit(hit,ptr(0));
       const span=Math.hypot(...target.map((value,index)=>value-entry[index]));
       if(!(span>PASS_EPSILON))return false;
       if(verdict===true){
         // The next cast starts just inside the passable obstacle: a ray that starts inside a collider does not report it again.
         start=entry.map((value,index)=>value+(target[index]-entry[index])/span*PASS_EPSILON);
-        evidence.walls++;continue;
+        evidence.walls++;if(isPlayer)cost.passPlayer++;else cost.passBreakable++;continue;
       }
       // A thin wall: its exit is found by casting back towards the entry from the remaining budget. A start point still inside the
       // wall finds nothing (too thick); the exit must belong to the same collider, otherwise the ray stopped on something behind it.
       const budget=Math.min(limit-thickness,span);
-      if(!(budget>0)){evidence.blocked='thick';return false;}
+      if(!(budget>0)){evidence.blocked='thick';cost.blockedThick++;return false;}
       const direction=target.map((value,index)=>(value-entry[index])/span);
       const probe=entry.map((value,index)=>value+direction[index]*budget);
       cost.casts++;
-      if(!linecast(probe,entry,reverseHit,-1,1,ptr(0))||!collider(reverseHit,ptr(0)).equals(obstacle)){evidence.blocked='thick';return false;}
+      if(!linecast(probe,entry,reverseHit,-1,1,ptr(0))||!collider(reverseHit,ptr(0)).equals(obstacle)){evidence.blocked='thick';cost.blockedThick++;return false;}
       const exit=pointOfHit(reverseHit,ptr(0));
       thickness+=Math.hypot(...entry.map((value,index)=>value-exit[index]));
-      if(thickness>limit){evidence.blocked='thick';return false;}
+      if(thickness>limit){evidence.blocked='thick';cost.blockedThick++;return false;}
       start=exit.map((value,index)=>value+direction[index]*.01);
-      evidence.walls++;
+      evidence.walls++;cost.passThin++;
     }
     evidence.blocked='too many obstacles';
     return false;
@@ -249,8 +252,8 @@ export function createAim(context) {
     }catch(error){locked=null;if(failed++<5)console.log('CLOUD:aim-error '+error);}
     finally{if(!keepStopped)try{stop.update(local,false);}catch(error){if(failed++<5)console.log('CLOUD:auto-stop-error '+error);}}
   }
-  function reset(){hidden.clear();cost={steps:0,casts:0,obstacles:0,skipped:0,probes:0,reachMs:0};rules.reset();try{stop.reset();}catch(error){if(failed++<5)console.log('CLOUD:auto-stop-reset-error '+error);}motion.reset();previous=0;locked=null;status.target=null;fireState={t:0,selected:null,crosshair:false,clear:false};fire.reset();}
-  return {step,reset,takeCost(){const taken=cost;cost={steps:0,casts:0,obstacles:0,skipped:0,probes:0,reachMs:0};return taken;},needsUpdate:()=>stop.active()||!!(fire.needsCleanup&&fire.needsCleanup()),status:(camera)=>{
+  function reset(){hidden.clear();cost=newCost();rules.reset();try{stop.reset();}catch(error){if(failed++<5)console.log('CLOUD:auto-stop-reset-error '+error);}motion.reset();previous=0;locked=null;status.target=null;fireState={t:0,selected:null,crosshair:false,clear:false};fire.reset();}
+  return {step,reset,takeCost(){const taken=cost;cost=newCost();return taken;},needsUpdate:()=>stop.active()||!!(fire.needsCleanup&&fire.needsCleanup()),status:(camera)=>{
     if(camera&&!camera.isNull())try{status.fov=getFov(camera,ptr(0));}catch(error){}
     return {...status,fire:fire.status()};
   }};
