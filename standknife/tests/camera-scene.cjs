@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
 const hooks=new Map(),memory=new Map(),handles=new Set(),positions=new Map(),eulers=new Map(),locals=new Map();
-let bodyOn=false,bodyLayer=8,bodyActive=true,maskValue=-257,maskWrites=0,bodyThrows=false,next=0x10000,blocked=false,ready=true,scene=1,fog=false,fogEnd=200,fogColor=[1,1,1,1];
+let armsOn=true,bodyOn=false,bodyLayer=8,bodyActive=true,maskValue=-257,maskWrites=0,bodyThrows=false,next=0x10000,blocked=false,ready=true,scene=1,fog=false,fogEnd=200,fogColor=[1,1,1,1];
 class Pointer{
  constructor(value){this.value=value;}
  add(offset){return new Pointer(this.value+offset);}
@@ -25,7 +25,8 @@ function native(rva){return (...args)=>{
  case 0xa8261c8:return blocked;
  case 0xa82b12c:return [0,1,-.7];
  case 0xa78ebc4:return !args[0].isNull();
- case 0x3d53d04:if(bodyThrows)throw Error('body unavailable');return bodyOn;
+ case 0x3d53d04:if(bodyThrows)throw Error('body unavailable');return args[0].value===300?armsOn:bodyOn;
+ case 0x4413668:if(bodyThrows)throw Error('body unavailable');if(typeof args[1]!=='number')throw Error('expected an integer');armsOn=!!args[1];return;
  case 0x6812f1c:if(bodyThrows)throw Error('body unavailable');if(typeof args[1]!=='number')throw Error('expected an integer');bodyOn=!!args[1];return;
  case 0xa744354:return true;
  case 0xa77dd70:return args[0];
@@ -56,16 +57,12 @@ function callback(rva,camera){const handler=hooks.get(rva),call={};handler.onEnt
 callback(0xa72b848,world);
 assert.deepEqual(positions.get(world.value),[0,1.25,-2]);
 assert.deepEqual(eulers.get(world.value),[5,200,0]);
-assert.deepEqual(locals.get(arms.value),[.1,-49.8,.3],'Third Person moves the first-person arms out of the picture (Viewmodel offsets do not apply)');
+assert.deepEqual(locals.get(arms.value),[.25,.1,.5]);
 callback(0xa72b848,ui);callback(0xa72b9f8,ui);
 assert.deepEqual(positions.get(world.value),[0,1.25,-2],'An unrelated camera must not restore the active world camera');
 callback(0xa72b9f8,world);
 assert.deepEqual(positions.get(world.value),[0,1,0]);assert.deepEqual(eulers.get(world.value),[5,20,0]);
 assert.deepEqual(locals.get(arms.value),[.1,.2,.3]);assert.equal(handles.size,0);
-settings['Third Person']=false;settings['Back Camera']=false;callback(0xa72b848,world);
-assert.deepEqual(locals.get(arms.value),[.25,.1,.5],'Without Third Person the Viewmodel offsets apply');
-callback(0xa72b9f8,world);assert.deepEqual(locals.get(arms.value),[.1,.2,.3],'and are undone');assert.equal(handles.size,0);
-settings['Third Person']=true;settings['Back Camera']=true;
 blocked=true;callback(0xa72b848,world);
 assert(Math.abs(positions.get(world.value)[2]+.58)<1e-9,'Camera must stop before a wall');
 ready=false;context.camera.reset();assert.deepEqual(positions.get(world.value),[0,1,0]);assert.equal(handles.size,0);
@@ -76,7 +73,10 @@ ready=false;context.camera.reset();assert.deepEqual(positions.get(world.value),[
   callback(0xa72b848,world);
   assert.equal(bodyOn,true,'The body renderer is on while the third-person camera renders');
   assert.equal(maskValue&(1<<8),1<<8,'The camera now sees the body layer');
+  assert.equal(armsOn,false,'The first-person arms renderer is off while the third-person camera renders');
+  assert.deepEqual(locals.get(arms.value),[.25,.1,.5],'Nothing is moved to hide them: the Viewmodel offsets still apply');
   callback(0xa72b9f8,world);
+  assert.equal(armsOn,true,'and returns to the game state after rendering');
   assert.equal(bodyOn,false,'The renderer returns to the game state after rendering');
   assert.equal(maskValue,-257,'The culling mask returns to the original value');
   assert.equal(handles.size,0,'The body group is not left pinned');

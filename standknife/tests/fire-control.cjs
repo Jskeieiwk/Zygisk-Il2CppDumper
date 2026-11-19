@@ -21,7 +21,7 @@ const settings={Trigger:true,'Trigger Delay':30,'Silent Aim':false};
 let target={t:Date.now(),selected:{angles:[10,20,0]},crosshair:false,clear:true};
 const context=vm.createContext({console,ptr,Date,Interceptor:{attach:(address,hook)=>{hooks.set(address.toString(),hook);return {detach:()=>hooks.delete(address.toString())};}}});
 vm.runInContext(fs.readFileSync('assets/fire-control.js','utf8').replaceAll('export function','function').replaceAll('export const','const')+
- '\nglobalThis.api={decodeCommand,createFireCalibration,installFireControl,createClicker};',context);
+ '\nglobalThis.api={decodeCommand,createFireCalibration,installFireControl,createClicker,createScopeCalibration,MEASURED_SCOPE_BYTES};',context);
 const api=context.api;
 assert.equal(api.decodeCommand(ptr(0x1122)),null);
 const controls=api.installFireControl({base:ptr(0),settings,getLocalPlayer:()=>local,getAim:()=>target,active:()=>active,canRun:()=>matchReady,generation:()=>generation,
@@ -145,12 +145,17 @@ matchReady=true;controls.ensureInstalled();assert.equal(hooks.size,2);assert.equ
   const scopeHook=hooks.get(ptr(0x42e52cc).toString());
   const run=(raw,advance=10)=>{clock+=advance;target={...target,t:clock,selected:{angles:[10,20,0]},crosshair:false,clear:false};
     const args=[weapon,ptr(raw)];scopeHook.onEnter.call({},args);scopeHook.onLeave.call({});return args[1].value;};
-  assert.equal(run(0),0n,'An uncalibrated scope byte is never injected');
-  // Three manual openings: the player presses byte 1 (0x100) and the scope opens 200 ms later; the fire byte is ignored.
+  // The measured scope byte (byte 1) is the starting point: no manual scoping is needed before the first automatic click.
+  assert.equal(run(0),0x100n,'The measured scope byte is clicked without any manual scoping');
+  assert(logs.some(line=>line==='CLOUD:scope-calibrated mask=0x0000000000000100 samples=3'),'The seeded byte is reported: '+logs.join('|'));
+  run(0,40);run(0,100);run(0,2000);
+  // Manual openings (the player presses byte 1 and the scope opens 200 ms later) confirm it and are logged; the fire byte is ignored.
+  // The menu pause (active=false) keeps the module from clicking while the openings are simulated.
+  active=false;
   for(let opening=0;opening<3;opening++){
     run(0x101,10);scope.active=false;run(0x100,10);run(0,190);scope.active=true;run(0,10);scope.active=false;run(0,2000);
   }
-  assert(logs.some(line=>line==='CLOUD:scope-calibrated mask=0x0000000000000100 samples=3'),'Three openings calibrate byte 1, not the fire byte: '+logs.join('|'));
+  active=true;run(0,3000);
   assert.equal(run(0),0x100n,'A closed scope with a sniper and a fresh target gets the scope click');
   assert.equal(run(0,40),0x100n,'The click is held for the press window');
   assert.equal(run(0,100),0n,'then released');
@@ -171,8 +176,21 @@ matchReady=true;controls.ensureInstalled();assert.equal(hooks.size,2);assert.equ
   const clicks=presses.reduce((count,value,index)=>count+(value&&!presses[index-1]?1:0),0);
   assert.equal(clicks,2,'Exactly two attempts, then the module gives up: '+clicks);
   assert(logs.some(line=>line.startsWith('CLOUD:auto-scope-result opened=false')),'A click that did not open the scope is logged as such');
-  assert(logs.some(line=>/^CLOUD:scope-sample n=1 bytes=010000 candidates=1$/.test(line)),'Each manual opening logs the bytes seen before it: '+logs.join('|'));
+  assert(logs.some(line=>/^CLOUD:scope-sample n=4 bytes=010000 candidates=1$/.test(line)),'Each manual opening logs the bytes seen before it: '+logs.join('|'));
   assert(logs.some(line=>line.startsWith('CLOUD:auto-scope-gave-up')),'The back-off is logged');
   scoped.reset();console.log=originalLog;context.Date=Date;
+}
+// The seeded scope byte is checked by real openings: consistent ones keep it, an opening without it starts the learning from scratch.
+{
+  const calibration=api.createScopeCalibration(0,api.MEASURED_SCOPE_BYTES);
+  assert.equal(calibration.state().mask,'0x0000000000000100');assert.equal(calibration.state().ready,true);
+  calibration.observe([{t:0,bytes:[0,1,0,0,0,0]}],100);
+  assert.equal(calibration.state().mask,'0x0000000000000100','An opening with byte 1 keeps the seeded byte');
+  const other=api.createScopeCalibration(0,api.MEASURED_SCOPE_BYTES),history=[{t:0,bytes:[1,0,0,1,0,0]}];
+  other.observe(history,100);assert.equal(other.state().ready,false,'An opening without byte 1 drops the seed and starts learning');
+  other.observe(history,100);other.observe(history,100);
+  assert.equal(other.state().mask,'0x0000000001000000','Three such openings learn byte 3');
+  other.reset();assert.equal(other.state().mask,'0x0000000000000100','reset() returns to the measured byte');
+  assert.equal(api.createScopeCalibration().state().ready,false,'Without a seed nothing is assumed');
 }
 console.log('Lobby guards, scene reset, fire calibration, trigger, silent and penetration restoration checks passed.');

@@ -5,7 +5,6 @@ export function cameraOffset(origin,forward,distance,height){
   if(!origin.every(Number.isFinite)||!forward.every(Number.isFinite))return null;
   return origin.map((value,index)=>value-forward[index]*distance+(index===1?height:0));
 }
-const THIRD_PERSON_ARMS_SHIFT=50;
 export function createCameraEffects(context){
   const {native,settings,transform,position}=context,engine=createEngine(native);
   const vector=['float','float','float'];
@@ -27,6 +26,8 @@ export function createCameraEffects(context){
   const bodyEnabled=native(0x3d53d04,'bool',['pointer','pointer']),setBodyEnabled=native(0x6812f1c,'void',['pointer','bool','pointer']);
   const meshEnabled=native(0xa744354,'bool',['pointer','pointer']),gameObjectOf=native(0xa77dd70,'pointer',['pointer','pointer']);
   const layerOf=native(0xa7844f0,'int',['pointer','pointer']),activeOf=native(0xa784ac8,'bool',['pointer','pointer']);
+  // First-person arms: ArmsLodGroup.SetMeshRendererEnabled 0x4413668 on PlayerController+0x48 (the same renderer switch as the body, nothing is moved).
+  const setArmsEnabled=native(0x4413668,'void',['pointer','bool','pointer']);
   const getMask=native(0xa725fb0,'int',['pointer','pointer']),setMask=native(0xa726124,'void',['pointer','int','pointer']);
   const hit=Memory.alloc(0x100),hooks=createHookSet(context.base,Interceptor);
   let saved=null,failures=0,bodyLogs=0,lastBodyState='';
@@ -37,6 +38,15 @@ export function createCameraEffects(context){
   }
   // Switches the body renderer on for this render and makes sure the camera's culling mask contains the body's layer. The original
   // renderer state and mask are kept in `record.body` before anything is changed, so restore() can always undo it.
+  function hideArms(player,record){
+    const group=player.add(0x48).readPointer();
+    if(group.isNull()||!engine.live(group)){noteBody('arms no-group');return;}
+    const entry={group:engine.hold(group),wasEnabled:true};
+    record.fpArms=entry;
+    entry.wasEnabled=!!bodyEnabled(group,ptr(0));
+    setArmsEnabled(group,0,ptr(0));
+    noteBody('arms wasEnabled='+entry.wasEnabled);
+  }
   function showBody(camera,player,record){
     if(!player||player.isNull()){noteBody('no-local-player');return;}
     const group=player.add(0x30).readPointer();
@@ -67,6 +77,10 @@ export function createCameraEffects(context){
     try{if(previous.arms&&engine.live(previous.arms))setLocal(previous.arms,previous.armsPosition,ptr(0));}
     catch(error){report(error);}
     try{
+      const fpArms=previous.fpArms;
+      if(fpArms&&engine.live(fpArms.group))setArmsEnabled(fpArms.group,fpArms.wasEnabled?1:0,ptr(0));
+    }catch(error){report(error);}
+    try{
       const body=previous.body;
       if(body){
         if(engine.live(body.group))setBodyEnabled(body.group,body.wasEnabled?1:0,ptr(0));
@@ -76,6 +90,7 @@ export function createCameraEffects(context){
     finally{
       engine.release(previous.transform);if(previous.arms)engine.release(previous.arms);
       if(previous.body)engine.release(previous.body.group);
+      if(previous.fpArms)engine.release(previous.fpArms.group);
     }
   }
   function apply(camera){
@@ -100,13 +115,12 @@ export function createCameraEffects(context){
           }
           setPosition(current,destination,ptr(0));
         }
-        try{showBody(camera,context.getLocalPlayer(),saved);}catch(error){noteBody('error '+error);}
+        const localPlayer=context.getLocalPlayer();
+        try{showBody(camera,localPlayer,saved);}catch(error){noteBody('error '+error);}
+        try{if(localPlayer&&!localPlayer.isNull())hideArms(localPlayer,saved);}catch(error){noteBody('arms error '+error);}
       }
       if(settings['Back Camera'])setEuler(current,[euler[0],euler[1]+180,euler[2]],ptr(0));
-      // In third person the first-person arms and weapon would hang in front of the camera: the arms group (PlayerController+0x48) is moved
-      // THIRD_PERSON_ARMS_SHIFT metres down for the render and back afterwards, the same mechanism the Viewmodel offsets use.
-      // NOT verified on a device that the weapon model hangs under this transform; the next log/screenshot shows whether it vanished.
-      if(settings.Viewmodel||settings['Third Person']){
+      if(settings.Viewmodel){
         const player=context.getLocalPlayer();
         if(player){
           const group=player.add(0x48).readPointer();
@@ -116,8 +130,7 @@ export function createCameraEffects(context){
               const origin=getLocal(arms,ptr(0));
               if(origin.every(Number.isFinite)){
                 saved.arms=engine.hold(arms);saved.armsPosition=origin;
-                const shift=settings['Third Person']?[0,-THIRD_PERSON_ARMS_SHIFT,0]:['Viewmodel X','Viewmodel Y','Viewmodel Z'].map(key=>settings[key]);
-                setLocal(arms,origin.map((value,index)=>value+shift[index]),ptr(0));
+                setLocal(arms,origin.map((value,index)=>value+settings[['Viewmodel X','Viewmodel Y','Viewmodel Z'][index]]),ptr(0));
               }
             }
           }

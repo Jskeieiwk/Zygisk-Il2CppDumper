@@ -49,8 +49,12 @@ export const SCOPE_WINDOW_MS=500;
 // After an automatic scope click the module waits this long for the scope to be seen open before it may click again. The click is a
 // toggle on the learned byte, so a second click while the detector still lags would close the scope the first one opened.
 export const SCOPE_CONFIRM_MS=900;
-export function createScopeCalibration(fireIndex=0){
-  let common=null,samples=0;
+// The scope byte was learned from the player's own openings in three device sessions (v0.39, v0.42, v0.45 logs): every manual opening showed
+// exactly byte 1 (CLOUD:scope-sample ... bytes=010000 candidates=1), so it is the starting point, like the fire byte, and Auto Scope works
+// without the player scoping by hand first. Real openings still check it: an opening without that byte starts the learning from scratch.
+export const MEASURED_SCOPE_BYTES=[0,1,0,0,0,0];
+export function createScopeCalibration(fireIndex=0,seed=null){
+  let common=seed?seed.slice():null,samples=seed?3:0;
   return {
     // history: [{t,bytes}] of recent commands; opened: time the scope was seen opening.
     observe(history,opened){
@@ -61,7 +65,7 @@ export function createScopeCalibration(fireIndex=0){
       if(!next.some(Boolean)){common=seen;samples=1;}else{common=next;samples++;}
       return {seen,samples,candidates:common.flatMap((value,index)=>value?[index]:[]),used:true};
     },
-    reset(){common=null;samples=0;},
+    reset(){common=seed?seed.slice():null;samples=seed?3:0;},
     state(){
       const indices=common?common.flatMap((value,index)=>value?[index]:[]):[];
       const ready=samples>=3&&indices.length===1;
@@ -79,7 +83,7 @@ export function installFireControl(context) {
   const getRotation=native(0x5452708,['float','float','float'],['pointer','pointer']);
   const setRotation=native(0x54519e4,'void',['pointer',['float','float','float'],'pointer']);
   let warnings=0,lastTrigger=0,lastKnife=0,reported=false,hookKey='',shotLogs=0,lastShotLog=0,clickLogs=0;
-  const clicker=createClicker(),scopeClicker=createClicker(),scopeCalibration=createScopeCalibration();
+  const clicker=createClicker(),scopeClicker=createClicker(),scopeCalibration=createScopeCalibration(0,MEASURED_SCOPE_BYTES);
   let commandHistory=[],scopeWasOpen=false,scopeAttempts=0,scopeBackoffUntil=0,scopeLogs=0,scopeReported=false,lastScopeWanted=0,awaitingOpen=0;
   const getScope=context.getScope||(()=>null);
   // One click is followed for 350 ms: how many shots the game counted for it, with which weapon, its penetration power
