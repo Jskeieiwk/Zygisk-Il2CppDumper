@@ -345,9 +345,22 @@ void il2cpp_api_init(void *handle) {
 
 void il2cpp_dump(const char *outDir) {
     LOGI("dumping...");
-    size_t size;
+    size_t size = 0;
     auto domain = il2cpp_domain_get();
-    auto assemblies = il2cpp_domain_get_assemblies(domain, &size);
+    decltype(il2cpp_domain_get_assemblies(domain, &size)) assemblies = nullptr;
+    // Assemblies may not be registered yet right after il2cpp_init finished; wait for them.
+    for (int attempt = 0; attempt < 90; attempt++) {
+        size = 0;
+        assemblies = il2cpp_domain_get_assemblies(domain, &size);
+        if (assemblies && size) break;
+        LOGW("no assemblies yet (attempt %d)", attempt + 1);
+        sleep(2);
+    }
+    LOGI("assemblies: %zu", size);
+    if (!assemblies || !size) {
+        LOGE("il2cpp_domain_get_assemblies returned nothing, dump.cs not written");
+        return;
+    }
     std::stringstream imageOutput;
     for (int i = 0; i < size; ++i) {
         auto image = il2cpp_assembly_get_image(assemblies[i]);
@@ -416,6 +429,7 @@ void il2cpp_dump(const char *outDir) {
             }
         }
     }
+    LOGI("classes: %zu", outPuts.size());
     LOGI("write dump file");
     auto outPath = std::string(outDir).append("/files/dump.cs");
     std::ofstream outStream(outPath);
@@ -425,5 +439,5 @@ void il2cpp_dump(const char *outDir) {
         outStream << outPuts[i];
     }
     outStream.close();
-    LOGI("dump done!");
+    LOGI("dump done! (%s)", outStream.fail() ? "write FAILED" : "write ok");
 }
