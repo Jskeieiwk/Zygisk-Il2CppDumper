@@ -5,6 +5,7 @@ export function cameraOffset(origin,forward,distance,height){
   if(!origin.every(Number.isFinite)||!forward.every(Number.isFinite))return null;
   return origin.map((value,index)=>value-forward[index]*distance+(index===1?height:0));
 }
+const THIRD_PERSON_ARMS_SHIFT=50;
 export function createCameraEffects(context){
   const {native,settings,transform,position}=context,engine=createEngine(native);
   const vector=['float','float','float'];
@@ -102,7 +103,10 @@ export function createCameraEffects(context){
         try{showBody(camera,context.getLocalPlayer(),saved);}catch(error){noteBody('error '+error);}
       }
       if(settings['Back Camera'])setEuler(current,[euler[0],euler[1]+180,euler[2]],ptr(0));
-      if(settings.Viewmodel){
+      // In third person the first-person arms and weapon would hang in front of the camera: the arms group (PlayerController+0x48) is moved
+      // THIRD_PERSON_ARMS_SHIFT metres down for the render and back afterwards, the same mechanism the Viewmodel offsets use.
+      // NOT verified on a device that the weapon model hangs under this transform; the next log/screenshot shows whether it vanished.
+      if(settings.Viewmodel||settings['Third Person']){
         const player=context.getLocalPlayer();
         if(player){
           const group=player.add(0x48).readPointer();
@@ -112,7 +116,8 @@ export function createCameraEffects(context){
               const origin=getLocal(arms,ptr(0));
               if(origin.every(Number.isFinite)){
                 saved.arms=engine.hold(arms);saved.armsPosition=origin;
-                setLocal(arms,origin.map((value,index)=>value+settings[['Viewmodel X','Viewmodel Y','Viewmodel Z'][index]]),ptr(0));
+                const shift=settings['Third Person']?[0,-THIRD_PERSON_ARMS_SHIFT,0]:['Viewmodel X','Viewmodel Y','Viewmodel Z'].map(key=>settings[key]);
+                setLocal(arms,origin.map((value,index)=>value+shift[index]),ptr(0));
               }
             }
           }

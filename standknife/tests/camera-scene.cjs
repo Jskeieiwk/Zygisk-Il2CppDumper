@@ -56,12 +56,16 @@ function callback(rva,camera){const handler=hooks.get(rva),call={};handler.onEnt
 callback(0xa72b848,world);
 assert.deepEqual(positions.get(world.value),[0,1.25,-2]);
 assert.deepEqual(eulers.get(world.value),[5,200,0]);
-assert.deepEqual(locals.get(arms.value),[.25,.1,.5]);
+assert.deepEqual(locals.get(arms.value),[.1,-49.8,.3],'Third Person moves the first-person arms out of the picture (Viewmodel offsets do not apply)');
 callback(0xa72b848,ui);callback(0xa72b9f8,ui);
 assert.deepEqual(positions.get(world.value),[0,1.25,-2],'An unrelated camera must not restore the active world camera');
 callback(0xa72b9f8,world);
 assert.deepEqual(positions.get(world.value),[0,1,0]);assert.deepEqual(eulers.get(world.value),[5,20,0]);
 assert.deepEqual(locals.get(arms.value),[.1,.2,.3]);assert.equal(handles.size,0);
+settings['Third Person']=false;settings['Back Camera']=false;callback(0xa72b848,world);
+assert.deepEqual(locals.get(arms.value),[.25,.1,.5],'Without Third Person the Viewmodel offsets apply');
+callback(0xa72b9f8,world);assert.deepEqual(locals.get(arms.value),[.1,.2,.3],'and are undone');assert.equal(handles.size,0);
+settings['Third Person']=true;settings['Back Camera']=true;
 blocked=true;callback(0xa72b848,world);
 assert(Math.abs(positions.get(world.value)[2]+.58)<1e-9,'Camera must stop before a wall');
 ready=false;context.camera.reset();assert.deepEqual(positions.get(world.value),[0,1,0]);assert.equal(handles.size,0);
