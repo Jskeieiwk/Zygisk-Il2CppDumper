@@ -1,9 +1,9 @@
 ext {
     moduleLibraryName = "il2cppdumper"
     magiskModuleId = "zygisk_il2cppdumper"
-    moduleName = "Il2CppDumper"
+    moduleName = "Magic Survival Menu"
     moduleAuthor = "Perfare"
-    moduleDescription = "Il2CppDumper Zygisk version."
-    moduleVersion = "v1.2.0"
-    moduleVersionCode = 1
+    moduleDescription = "In-game menu for Magic Survival (com.vkslrzm.Zombie 0.9941). Double-tap to open."
+    moduleVersion = "v1.3.0-ms"
+    moduleVersionCode = 2
 }

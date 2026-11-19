@@ -1,0 +1,2 @@
+imgui: https://github.com/ocornut/imgui tag v1.91.9 (commit 97428e8ac99e339ce05eee531cf55b77b29ea709)
+And64InlineHook: https://github.com/Rprop/And64InlineHook commit 2787585191552b291c508e7ae639557164441a13

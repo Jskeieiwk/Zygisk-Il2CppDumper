@@ -29,16 +29,46 @@ set(CMAKE_MODULE_LINKER_FLAGS "${CMAKE_MODULE_LINKER_FLAGS} ${LINKER_FLAGS}")
 
 include_directories(
         xdl/include
+        third_party/imgui
+        third_party/and64inlinehook
 )
 
 aux_source_directory(xdl xdl-src)
+
+set(IMGUI_SRC
+        third_party/imgui/imgui.cpp
+        third_party/imgui/imgui_draw.cpp
+        third_party/imgui/imgui_tables.cpp
+        third_party/imgui/imgui_widgets.cpp)
+
+set(CHEAT_SRC
+        cheat/il2cpp_rt.cpp
+        cheat/hook.cpp
+        cheat/ms_game.cpp
+        cheat/features.cpp
+        cheat/gles3_renderer.cpp
+        cheat/overlay.cpp
+        cheat/ms_main.cpp)
+
+# The menu, hooks and il2cpp resolver exist only for arm64 (And64InlineHook is arm64-only).
+if (ANDROID_ABI STREQUAL "arm64-v8a")
+    set(ABI_SRC ${CHEAT_SRC} ${IMGUI_SRC} third_party/and64inlinehook/And64InlineHook.cpp)
+    set(ABI_LIBS EGL GLESv3)
+else ()
+    set(ABI_SRC "")
+    set(ABI_LIBS "")
+    add_definitions(-DMS_DUMP_ON_START)
+endif ()
 
 add_library(${MODULE_NAME} SHARED
         main.cpp
         hack.cpp
         il2cpp_dump.cpp
+        ${ABI_SRC}
         ${xdl-src})
-target_link_libraries(${MODULE_NAME} log)
+target_compile_definitions(${MODULE_NAME} PRIVATE IMGUI_DISABLE_OBSOLETE_FUNCTIONS IMGUI_DISABLE_DEMO_WINDOWS
+        IMGUI_DISABLE_DEBUG_TOOLS)
+target_link_libraries(${MODULE_NAME} log ${ABI_LIBS})
 
 if (NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
     add_custom_command(TARGET ${MODULE_NAME} POST_BUILD
