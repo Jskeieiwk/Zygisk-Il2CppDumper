@@ -65,8 +65,18 @@ void hack_start(const char *game_data_dir) {
         write_status(early_dir.c_str(), ("hack_start entered, data dir " + std::string(game_data_dir) + ", waiting for libil2cpp.so").c_str());
     }
     // The original module waited 10 s; this game loads libil2cpp.so later than that.
+    bool scanned = false;
     for (int i = 0; i < 300; i++) {
         void *handle = xdl_open("libil2cpp.so", 0);
+        if (!handle && i == 20) {
+            // The library may be renamed or mapped by a custom loader: show what is mapped, and scan memory
+            // for the decrypted metadata anyway, because that scan does not need the library handle.
+            std::string out_dir = PickOutputDir(game_data_dir);
+            write_status(out_dir.c_str(), "libil2cpp.so not visible to xdl_open after 20 s; Unity-related mappings follow, memory scan starts anyway");
+            LogUnityLibraries(out_dir.c_str());
+            scanned = dump_decrypted_metadata(out_dir.c_str()) > 0;
+            continue;
+        }
         if (handle) {
             load = true;
             std::string out_dir = PickOutputDir(game_data_dir);
@@ -74,7 +84,7 @@ void hack_start(const char *game_data_dir) {
             il2cpp_api_init(handle);
             write_status(out_dir.c_str(), il2cpp_api_ready() ? "il2cpp api ready" : "il2cpp api NOT resolved (exports renamed?): class dump skipped");
             // Independent of the il2cpp exports, so it runs first and cannot be blocked by a failed class dump.
-            dump_decrypted_metadata(out_dir.c_str());
+            if (!scanned) dump_decrypted_metadata(out_dir.c_str());
             if (il2cpp_api_ready()) {
                 il2cpp_dump(out_dir.c_str());
             } else {
