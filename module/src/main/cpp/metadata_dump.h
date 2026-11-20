@@ -53,7 +53,7 @@ inline size_t MetadataV31TotalSize(const uint8_t *header, size_t available) {
 }
 
 
-// Magic-independent detector for metadata versions 24..31, whose header is: magic, version,
+// Magic-independent detector for metadata versions 24..40, whose header is: magic, version,
 // then (offset, size) int pairs with the first offset equal to the header size (8 + 8 * pairs).
 // A protector may replace the magic word, so the first word is ignored here. Returns the total size
 // (largest offset+size) when the pairs are non-negative, offsets never decrease, every offset is
@@ -64,7 +64,7 @@ inline size_t MetadataStructureSize(const uint8_t *header, size_t available) {
     uint32_t first;
     std::memcpy(&version, header + 4, 4);
     std::memcpy(&first, header + 8, 4);
-    if (version < 24 || version > 31 || first < 0xC0 || first > 0x200 || (first & 7) != 0) return 0;
+    if (version < 24 || version > 40 || first < 0xC0 || first > 0x400 || (first & 7) != 0) return 0;
     if (available < first) return 0;
     size_t pairs = (first - 8) / 8;
     uint64_t end = first;

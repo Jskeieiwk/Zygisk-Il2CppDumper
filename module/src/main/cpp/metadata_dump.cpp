@@ -166,7 +166,7 @@ int dump_decrypted_metadata(const char *outDir) {
                     std::memcpy(&w1, &chunk[i + 4], 4);
                     std::memcpy(&w2, &chunk[i + 8], 4);
                     bool by_magic = std::memcmp(&chunk[i], magic, 4) == 0;
-                    bool by_structure = !by_magic && w1 >= 24 && w1 <= 31 && w2 >= 0xC0 && w2 <= 0x200 &&
+                    bool by_structure = !by_magic && w1 >= 24 && w1 <= 40 && w2 >= 0xC0 && w2 <= 0x400 &&
                                         (w2 & 7) == 0;
                     if (!by_magic && !by_structure) continue;
                     uint64_t hit = pos + i;
