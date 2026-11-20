@@ -10,6 +10,9 @@
 constexpr uint32_t kMetadataSanity = 0xFAB11BAF;
 constexpr size_t kMetadataProbeSize = 0x200;
 constexpr size_t kMetadataMaxSize = 0x20000000;
+// A real global-metadata.dat holds the string table and method/type tables of a whole game: far above 1 MiB.
+// Smaller "images" found by the structural detector are random memory that merely resembles a header.
+constexpr size_t kMetadataMinSize = 0x100000;
 
 // Metadata version 31 (Unity 2022.x): sanity, version, then 31 (offset, size) int pairs; the first
 // offset equals the header size 0x100. Layout confirmed by the loader check in a Unity 2022 libil2cpp.so
@@ -49,6 +52,7 @@ inline size_t MetadataV31TotalSize(const uint8_t *header, size_t available) {
         if (section_end > kMetadataMaxSize) return 0;
         if (section_end > end) end = section_end;
     }
+    if (end < kMetadataMinSize) return 0;
     return (size_t) end;
 }
 
@@ -82,6 +86,7 @@ inline size_t MetadataStructureSize(const uint8_t *header, size_t available) {
         if (size > 0) non_empty++;
     }
     if (non_empty * 3 < pairs * 2) return 0;
+    if (end < kMetadataMinSize) return 0;
     return (size_t) end;
 }
 
