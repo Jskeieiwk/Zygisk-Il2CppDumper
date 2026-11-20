@@ -20,7 +20,7 @@
 #include <array>
 
 // Logs the distinct mapped paths containing "il2cpp" or "unity" so a different library name is visible.
-static void LogUnityLibraries() {
+static void LogUnityLibraries(const char *out_dir) {
     FILE *f = fopen("/proc/self/maps", "r");
     if (!f) return;
     char line[512];
@@ -35,6 +35,7 @@ static void LogUnityLibraries() {
         if (p == last) continue;
         last = p;
         LOGI("mapped: %s", p.c_str());
+        write_status(out_dir, ("mapped: " + p).c_str());
         logged++;
     }
     fclose(f);
@@ -59,6 +60,10 @@ static std::string PickOutputDir(const char *game_data_dir) {
 
 void hack_start(const char *game_data_dir) {
     bool load = false;
+    {
+        std::string early_dir = PickOutputDir(game_data_dir);
+        write_status(early_dir.c_str(), ("hack_start entered, data dir " + std::string(game_data_dir) + ", waiting for libil2cpp.so").c_str());
+    }
     // The original module waited 10 s; this game loads libil2cpp.so later than that.
     for (int i = 0; i < 300; i++) {
         void *handle = xdl_open("libil2cpp.so", 0);
@@ -82,7 +87,9 @@ void hack_start(const char *game_data_dir) {
     }
     if (!load) {
         LOGI("libil2cpp.so not found in thread %d", gettid());
-        LogUnityLibraries();
+        std::string out_dir = PickOutputDir(game_data_dir);
+        write_status(out_dir.c_str(), "libil2cpp.so NOT found after 300 s; Unity-related mappings follow");
+        LogUnityLibraries(out_dir.c_str());
     }
 }
 
