@@ -20,7 +20,9 @@ struct Region {
 
 constexpr size_t kChunk = 4u << 20;
 constexpr int kMaxFiles = 4;
-constexpr int kScanRounds = 5;
+// The image only exists after the game has run il2cpp_init, so keep scanning for ~5 minutes.
+constexpr int kScanRounds = 60;
+constexpr unsigned kScanPauseSeconds = 5;
 
 // Copies memory of this process without risking SIGSEGV on an unreadable address.
 bool SafeRead(uint64_t from, void *to, size_t size) {
@@ -144,6 +146,14 @@ bool WriteFile(const std::string &path, const std::vector<uint8_t> &data) {
 
 }  // namespace
 
+void write_status(const char *outDir, const char *line) {
+    std::string path = std::string(outDir).append("/files/module_status.txt");
+    FILE *f = fopen(path.c_str(), "ab");
+    if (!f) return;
+    fprintf(f, "%s\n", line);
+    fclose(f);
+}
+
 int dump_decrypted_metadata(const char *outDir) {
     // <outDir>/files may not exist yet in the game's data directory; il2cpp_dump writes there too.
     std::string files_dir = std::string(outDir).append("/files");
@@ -155,7 +165,7 @@ int dump_decrypted_metadata(const char *outDir) {
     constexpr size_t kOverlap = 12;
     std::vector<std::vector<uint8_t>> found;
     for (int round = 0; round < kScanRounds && found.empty(); round++) {
-        if (round) sleep(3);
+        if (round) sleep(kScanPauseSeconds);
         std::vector<uint8_t> chunk(kChunk + kOverlap);
         for (const Region &r: ScannableRegions()) {
             for (uint64_t pos = r.start; pos < r.end; pos += kChunk) {
@@ -198,6 +208,9 @@ int dump_decrypted_metadata(const char *outDir) {
         path.append(".dat");
         if (WriteFile(path, found[i])) written++;
     }
+    char status[160];
+    snprintf(status, sizeof(status), "metadata scan finished: images found=%zu written=%d", found.size(), written);
+    write_status(outDir, status);
     if (!written) LOGE("metadata: nothing written");
     return written;
 }

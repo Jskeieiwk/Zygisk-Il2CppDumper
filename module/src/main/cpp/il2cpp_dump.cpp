@@ -24,6 +24,9 @@
 #undef DO_API
 
 static uint64_t il2cpp_base = 0;
+static bool g_api_ready = false;
+
+bool il2cpp_api_ready() { return g_api_ready; }
 
 void init_il2cpp_api(void *handle) {
 #define DO_API(r, n, p) {                      \
@@ -325,7 +328,7 @@ std::string dump_type(const Il2CppType *type) {
 void il2cpp_api_init(void *handle) {
     LOGI("il2cpp_handle: %p", handle);
     init_il2cpp_api(handle);
-    if (il2cpp_domain_get_assemblies) {
+    if (il2cpp_domain_get_assemblies && il2cpp_domain_get && il2cpp_is_vm_thread && il2cpp_thread_attach) {
         Dl_info dlInfo;
         if (dladdr((void *) il2cpp_domain_get_assemblies, &dlInfo)) {
             il2cpp_base = reinterpret_cast<uint64_t>(dlInfo.dli_fbase);
@@ -341,6 +344,7 @@ void il2cpp_api_init(void *handle) {
     }
     auto domain = il2cpp_domain_get();
     il2cpp_thread_attach(domain);
+    g_api_ready = true;
 }
 
 void il2cpp_dump(const char *outDir) {

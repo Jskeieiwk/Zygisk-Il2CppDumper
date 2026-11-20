@@ -64,10 +64,17 @@ void hack_start(const char *game_data_dir) {
         void *handle = xdl_open("libil2cpp.so", 0);
         if (handle) {
             load = true;
-            il2cpp_api_init(handle);
             std::string out_dir = PickOutputDir(game_data_dir);
-            il2cpp_dump(out_dir.c_str());
+            write_status(out_dir.c_str(), "libil2cpp.so found, module running");
+            il2cpp_api_init(handle);
+            write_status(out_dir.c_str(), il2cpp_api_ready() ? "il2cpp api ready" : "il2cpp api NOT resolved (exports renamed?): class dump skipped");
+            // Independent of the il2cpp exports, so it runs first and cannot be blocked by a failed class dump.
             dump_decrypted_metadata(out_dir.c_str());
+            if (il2cpp_api_ready()) {
+                il2cpp_dump(out_dir.c_str());
+            } else {
+                LOGE("il2cpp api unavailable, dump.cs skipped");
+            }
             break;
         } else {
             sleep(1);

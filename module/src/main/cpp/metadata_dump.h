@@ -90,4 +90,7 @@ inline size_t MetadataStructureSize(const uint8_t *header, size_t available) {
 // Returns the number of files written. Needs no per-build offsets.
 int dump_decrypted_metadata(const char *outDir);
 
+// Appends one line to <outDir>/files/module_status.txt so a run is visible without logcat.
+void write_status(const char *outDir, const char *line);
+
 #endif //ZYGISK_IL2CPPDUMPER_METADATA_DUMP_H
