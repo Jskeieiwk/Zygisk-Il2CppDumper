@@ -102,10 +102,44 @@ int main(int argc, char** argv) {
         fprintf(stderr, "usage: %s <pid> <abs_so_path> <entry_symbol>\n", argv[0]);
         return 2;
     }
-    pid_t pid = (pid_t)atoi(argv[1]);
+    pid_t pid_arg = (pid_t)atoi(argv[1]);
     const char* so = argv[2];
     const char* en = argv[3];
 
+    // ищем ноушающий поток (State: R) — ptrace на нём не висит в чужом syscall
+    pid_t pid = pid_arg;
+    {
+        char dir[64]; snprintf(dir, sizeof(dir), "/proc/%d/task", pid_arg);
+        DIR* d = opendir(dir);
+        if (d) {
+            dirent* e;
+            pid_t best = pid_arg;
+            while ((e = readdir(d))) {
+                if (e->d_name[0] < '0' || e->d_name[0] > '9') continue;
+                pid_t tid = (pid_t)atoi(e->d_name);
+                char status[128];
+                snprintf(status, sizeof(status), "/proc/%d/task/%d/status", pid_arg, tid);
+                FILE* f = fopen(status, "r");
+                if (!f) continue;
+                char line[256];
+                while (fgets(line, sizeof(line), f)) {
+                    if (strncmp(line, "State:", 6) == 0) {
+                        if (line[7] == 'R') { best = tid; }
+                        break;
+                    }
+                }
+                fclose(f);
+                if (best != pid_arg) break;
+            }
+            closedir(d);
+            if (best != pid_arg) {
+                fprintf(stderr, "[vanta] использую активный тред %d вместо %d\n", best, pid_arg);
+                pid = best;
+            }
+        }
+    }
+
+    fprintf(stderr, "[vanta] attach %d\n", pid);
     if (ptrace(PTRACE_ATTACH, pid, nullptr, nullptr) < 0) {
         fprintf(stderr, "[vanta] PTRACE_ATTACH %d: %s\n", pid, strerror(errno));
         return 3;
@@ -128,8 +162,10 @@ int main(int argc, char** argv) {
         return 5;
     }
 
-    const uintptr_t TRAP = 0;    // SIGSEGV → финиш каждого вызова
+    // LR = заведомо невалидный addr (kernel-space для userspace процесса) → гарантированный SIGSEGV
+    const uintptr_t TRAP = 0xDEADBEEFDEADBEEFULL;
 
+    fprintf(stderr, "[vanta] remote_mmap...\n");
     uintptr_t mm_args[6] = {
         0, 0x1000,
         (uintptr_t)(PROT_READ | PROT_WRITE),
@@ -150,6 +186,7 @@ int main(int argc, char** argv) {
         return 7;
     }
 
+    fprintf(stderr, "[vanta] remote_dlopen...\n");
     uintptr_t do_args[2] = { buf, (uintptr_t)(RTLD_NOW | RTLD_GLOBAL) };
     uintptr_t handle = remote_call(pid, r_dlopen, do_args, 2, TRAP);
     if (!handle) {
@@ -159,11 +196,13 @@ int main(int argc, char** argv) {
     }
     fprintf(stderr, "[vanta] dlopen → 0x%lx\n", (unsigned long)handle);
 
+    fprintf(stderr, "[vanta] remote_dlsym...\n");
     poke_mem(pid, buf, en, strlen(en) + 1);
     uintptr_t ds_args[2] = { handle, buf };
     uintptr_t sym = remote_call(pid, r_dlsym, ds_args, 2, TRAP);
     fprintf(stderr, "[vanta] dlsym %s → 0x%lx\n", en, (unsigned long)sym);
     if (sym) {
+        fprintf(stderr, "[vanta] remote_entry...\n");
         uintptr_t none[1] = {0};
         remote_call(pid, sym, none, 0, TRAP);
     }

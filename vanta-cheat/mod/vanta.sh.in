@@ -61,8 +61,11 @@ echo "[*] жду инициализацию игры 5с..."
 sleep 5
 
 echo "[*] инжектирую libvanta.so..."
-"$INJ" "$PID" "$SO" "vanta_start"
+timeout 30 "$INJ" "$PID" "$SO" "vanta_start"
 RC=$?
+if [ $RC -eq 124 ]; then
+    echo "[!] инжектор завис на 30с — убит по timeout"
+fi
 if [ $RC -eq 0 ]; then
     echo "[+] инжекция успешна — активирую игру"
     am start -n "$PKG/com.unity3d.player.UnityPlayerActivity" >/dev/null 2>&1 || \
