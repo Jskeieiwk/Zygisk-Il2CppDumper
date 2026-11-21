@@ -1,0 +1,10 @@
+overlay/.gradle/
+overlay/build/
+overlay/app/build/
+overlay/.idea/
+overlay/local.properties
+overlay/gradle/wrapper/gradle-wrapper.jar
+overlay/gradlew
+overlay/gradlew.bat
+*.apk
+out/
