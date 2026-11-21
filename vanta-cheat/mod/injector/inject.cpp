@@ -150,17 +150,22 @@ int main(int argc, char** argv) {
         return 4;
     }
 
-    uintptr_t r_mmap   = remote_sym(pid, "libc.so",  "mmap");
-    uintptr_t r_dlopen = remote_sym(pid, "libdl.so", "dlopen");
-    if (!r_dlopen) r_dlopen = remote_sym(pid, "libdl.so", "__loader_dlopen");
-    uintptr_t r_dlsym  = remote_sym(pid, "libdl.so", "dlsym");
-    if (!r_dlsym)  r_dlsym  = remote_sym(pid, "libdl.so", "__loader_dlsym");
+    uintptr_t r_mmap        = remote_sym(pid, "libc.so",  "mmap");
+    // __loader_dlopen / __loader_dlsym требуют caller_addr → надёжнее на Android 7+
+    uintptr_t r_ldr_dlopen  = remote_sym(pid, "libdl.so", "__loader_dlopen");
+    uintptr_t r_ldr_dlsym   = remote_sym(pid, "libdl.so", "__loader_dlsym");
+    uintptr_t r_pub_dlopen  = remote_sym(pid, "libdl.so", "dlopen");
+    uintptr_t r_pub_dlsym   = remote_sym(pid, "libdl.so", "dlsym");
+    bool loader = r_ldr_dlopen != 0 && r_ldr_dlsym != 0;
+    uintptr_t r_dlopen = loader ? r_ldr_dlopen : r_pub_dlopen;
+    uintptr_t r_dlsym  = loader ? r_ldr_dlsym  : r_pub_dlsym;
     if (!r_mmap || !r_dlopen || !r_dlsym) {
         fprintf(stderr, "[vanta] remote symbols not resolved (mmap=%p dlopen=%p dlsym=%p)\n",
                 (void*)r_mmap, (void*)r_dlopen, (void*)r_dlsym);
         ptrace(PTRACE_DETACH, pid, nullptr, nullptr);
         return 5;
     }
+    fprintf(stderr, "[vanta] dlopen variant: %s\n", loader ? "__loader_dlopen" : "dlopen");
 
     // LR = заведомо невалидный addr (kernel-space для userspace процесса) → гарантированный SIGSEGV
     const uintptr_t TRAP = 0xDEADBEEFDEADBEEFULL;
@@ -186,9 +191,12 @@ int main(int argc, char** argv) {
         return 7;
     }
 
-    fprintf(stderr, "[vanta] remote_dlopen...\n");
-    uintptr_t do_args[2] = { buf, (uintptr_t)(RTLD_NOW | RTLD_GLOBAL) };
-    uintptr_t handle = remote_call(pid, r_dlopen, do_args, 2, TRAP);
+    fprintf(stderr, "[vanta] remote_dlopen buf=0x%lx...\n", (unsigned long)buf);
+    // __loader_dlopen принимает (path, flags, caller_addr). caller_addr = r_dlopen —
+    // любой адрес в libdl.so игры, по которому резолвится дефолтный namespace.
+    uintptr_t do_args[3] = { buf, (uintptr_t)(RTLD_NOW | RTLD_GLOBAL), r_dlopen };
+    int nargs = loader ? 3 : 2;
+    uintptr_t handle = remote_call(pid, r_dlopen, do_args, nargs, TRAP);
     if (!handle) {
         fprintf(stderr, "[vanta] remote dlopen failed\n");
         ptrace(PTRACE_DETACH, pid, nullptr, nullptr);
@@ -198,8 +206,9 @@ int main(int argc, char** argv) {
 
     fprintf(stderr, "[vanta] remote_dlsym...\n");
     poke_mem(pid, buf, en, strlen(en) + 1);
-    uintptr_t ds_args[2] = { handle, buf };
-    uintptr_t sym = remote_call(pid, r_dlsym, ds_args, 2, TRAP);
+    uintptr_t ds_args[3] = { handle, buf, r_dlsym };
+    int ds_nargs = loader ? 3 : 2;
+    uintptr_t sym = remote_call(pid, r_dlsym, ds_args, ds_nargs, TRAP);
     fprintf(stderr, "[vanta] dlsym %s → 0x%lx\n", en, (unsigned long)sym);
     if (sym) {
         fprintf(stderr, "[vanta] remote_entry...\n");
