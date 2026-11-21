@@ -78,7 +78,7 @@ void draw_esp_overlay() {
             dl->AddRect(ImVec2(left, top), ImVec2(right, bottom), col, 2.f, 0, 1.5f);
         }
         if (g.esp_hp) {
-            float frac = p.max_hp > 0 ? ImClamp(p.hp / p.max_hp, 0.f, 1.f) : 0.f;
+            float frac = p.max_hp > 0 ? ImSaturate(p.hp / p.max_hp) : 0.f;
             ImU32 hpc = (frac > 0.6f) ? IM_COL32(0,230,118,255)
                      : (frac > 0.3f) ? IM_COL32(255,193,7,255)
                                       : IM_COL32(255,23,68,255);

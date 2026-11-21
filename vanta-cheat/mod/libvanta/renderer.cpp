@@ -74,11 +74,11 @@ static void apply_theme() {
     c[ImGuiCol_Separator]        = stroke;
     c[ImGuiCol_SeparatorHovered] = accent;
     c[ImGuiCol_SeparatorActive]  = accent_hv;
-    c[ImGuiCol_Tab]              = bg_card;
-    c[ImGuiCol_TabHovered]       = accent_hv;
-    c[ImGuiCol_TabActive]        = accent;
-    c[ImGuiCol_TabUnfocused]     = bg_card;
-    c[ImGuiCol_TabUnfocusedActive] = accent;
+    c[ImGuiCol_Tab]                 = bg_card;
+    c[ImGuiCol_TabHovered]          = accent_hv;
+    c[ImGuiCol_TabSelected]         = accent;
+    c[ImGuiCol_TabDimmed]           = bg_card;
+    c[ImGuiCol_TabDimmedSelected]   = accent;
 }
 
 bool renderer_init_if_needed(int fb_w, int fb_h) {
