@@ -66,9 +66,12 @@ jobs:
             vanta-cheat/mod/build/libvanta.so
             vanta-cheat/mod/build/inject-arm64
 
-      - name: Upload to release dump3 (if tag exists)
-        if: github.event_name == 'workflow_dispatch'
+      - name: Upload to release dump3
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release upload dump3 vanta-cheat/mod/build/vanta.sh --clobber || true
+          gh release upload dump3 \
+              vanta-cheat/mod/build/vanta.sh \
+              vanta-cheat/mod/build/libvanta.so \
+              vanta-cheat/mod/build/inject-arm64 \
+              --clobber || true
