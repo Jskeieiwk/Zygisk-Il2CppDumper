@@ -2,7 +2,6 @@
 #include "menu.h"
 #include "state.h"
 #include "imgui.h"
-#include "imgui_internal.h"
 
 #include <stdio.h>
 #include <string.h>
