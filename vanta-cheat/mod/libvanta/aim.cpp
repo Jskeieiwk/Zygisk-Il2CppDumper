@@ -4,6 +4,9 @@
 #include "game.h"
 #include "imgui.h"
 
+#include <vector>
+#include <errno.h>
+
 #include <fcntl.h>
 #include <linux/input.h>
 #include <linux/uinput.h>
@@ -91,7 +94,6 @@ static void touch_end() {
 void aim_tick_and_update() {
     if (!g.aim_enabled || g_fd < 0) { if (g_down) touch_end(); return; }
 
-    extern bool g_world_to_screen_available;  // не используется — считаем сами
     const CamSnap& cam = game_camera();
     std::vector<PlayerSnap> pls; game_copy_players(pls);
     ImGuiIO& io = ImGui::GetIO();

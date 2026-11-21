@@ -10,7 +10,6 @@
 #include <cstdio>
 #include <cstdint>
 #include <dlfcn.h>
-#include <sys/system_properties.h>
 #include <android/log.h>
 
 #define LOGP(fmt, ...) __android_log_print(ANDROID_LOG_INFO, "vanta-plt", fmt, ##__VA_ARGS__)
