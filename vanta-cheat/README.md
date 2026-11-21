@@ -1,43 +1,70 @@
-# VANTA — external чит для Oxide / HyperHug BR24
+# VANTA — чит для Oxide Survival Island (`com.catsbit.oxidesurvivalisland` 1.20.12034)
 
-External Android-чит на базе дампа dump3. Два компонента:
+Один self-extracting `vanta.sh`:
+- встроен standalone **ptrace-инжектор** и **libvanta.so**
+- скрипт спрашивает `Overlay 0/1`, стартует игру, инжектит
+- внутри игры — ImGui-меню (red-dark как на референс-видео), ESP, aim
 
-- **overlay app** (`overlay/`) — обычное Android-приложение с двумя ролями:
-  - Главный экран-инжектор: красивый дарк-UI, статус процесса, кнопка START/STOP, живая консоль.
-  - Фоновый оверлей поверх игры: ESP (рамки/ники/HP/дистанция/snap-линии), aim-FOV, плавающее меню с чекбоксами и слайдерами.
-- **helper .so** (`helper/`) — ptrace-инжектится в процесс игры **один раз** при старте. Внутри только читает структуры IL2CPP:
-  `PlayerManager.clientPlayerList`, `Transform.get_position`, `PlayerVitals` → пишет позиции и HP в shared memory `/data/local/tmp/vanta_oxide_shm`.
-  **Никаких записей в память игры, никаких хуков игровых функций** → серверные античит-детекторы (speedhack/flyhack violations, см. `PlayerManager.violationLevel`) слепы.
+## Использование
 
-## Требования
+```sh
+# положить vanta.sh в /data/local/tmp (или любое writable)
+chmod 777 vanta.sh
+su -c sh vanta.sh
+# ↳ Overlay 0/1: 1
+# ↳ скрипт сам запустит игру и инжектнет чит
+```
 
-- Root (Magisk ok), разрешён ptrace к соседним процессам (SELinux permissive или cheat-процесс с su).
-- Android 7+ (minSdk 24), только arm64-v8a.
+Watermark `@Cloud_Crack` плавает сверху экрана — тап откроет меню. Закрыть — зонтик слева-сверху меню.
+
+## Структура
+
+- `mod/injector/inject.cpp` — standalone ptrace-инжектор (aarch64)
+- `mod/libvanta/` — чит-либа, инжектимая в процесс игры:
+  - `entry.cpp` — точка входа `vanta_start()`
+  - `gl_hook.cpp` / `plt_hook.cpp` — хук `eglSwapBuffers` через GOT в `libil2cpp.so`/`libunity.so`
+  - `renderer.cpp` — ImGui + GL ES3 backend, red-dark тема
+  - `menu.cpp` — вкладки Combat/Visuals/Utility/Player/Skins/Misc, pill-тогглы, слайдеры
+  - `esp.cpp` — ESP через ImGui background draw list
+  - `input.cpp` — тач через `/dev/input/event*` → ImGui
+  - `aim.cpp` — aim через `/dev/uinput`
+  - `game.cpp` — il2cpp API ридер `PlayerManager.clientPlayerList`
+  - `state.cpp` — конфиг меню
+- `mod/vanta.sh.in` — шаблон launcher
+- `mod/pack.py` — сборка `vanta.sh` с base64-блобами
+- `helper/src/main/cpp/il2cpp_api.*`, `offsets.h` — общие с модом
 
 ## Сборка
 
+Через CI (`.github/workflows/build-vanta.yml`): пуш в бранч → собирает `vanta.sh` артефактом.
+
+Локально:
 ```
-cd vanta-cheat/overlay
-gradle wrapper --gradle-version 8.9
-./gradlew :app:assembleRelease
+cmake -S mod -B mod/build \
+    -DCMAKE_TOOLCHAIN_FILE=$NDK/build/cmake/android.toolchain.cmake \
+    -DANDROID_ABI=arm64-v8a -DANDROID_PLATFORM=android-24 \
+    -DCMAKE_BUILD_TYPE=Release -DANDROID_STL=c++_static
+cmake --build mod/build
+python3 mod/pack.py --template mod/vanta.sh.in \
+    --inj mod/build/inject-arm64 --so mod/build/libvanta.so \
+    --out mod/build/vanta.sh
 ```
 
-Либо запустить workflow `Build VANTA overlay` в Actions — он собирает APK автоматически.
+## Офсеты (dump.cs @ dump3 release)
 
-## Офсеты
+| поле | смещение | заметка |
+|---|---|---|
+| `PlayerManager.worldCameraRoot` | `0xA8` | Transform головы |
+| `PlayerManager.mouseLook` | `0xB0` | признак локалки |
+| `PlayerManager.vitals` | `0x108` | → EntityVitals |
+| `PlayerManager.lastTickPosition` | `0x228` | резервная позиция |
+| `PlayerManager.clientPlayerList` (static) | field name | main source |
+| `GenericVitals.m_MaxHealth` | `0x88` | |
+| `aoN.Health` (Observable float) | `0x98` → `0x18` | значение внутри обёртки |
+| `MouseLook.m_LookRoot` | `0x28` | камера первого лица |
 
-Из `dump.cs` версии dump3 (HyperHug BR24, пакет `Oxide`):
+## Что чит делает / не делает
 
-| поле | смещение |
-|---|---|
-| `PlayerManager.worldCameraRoot` | `0xA8` |
-| `PlayerManager.mouseLook` | `0xB0` (признак локалки) |
-| `PlayerManager.vitals` | `0x108` |
-| `PlayerManager.lastTickPosition` | `0x228` |
-| `PlayerManager.clientPlayerList` (static) | field name |
-| `GenericVitals.m_MaxHealth` | `0x88` |
-| `aoN.Health` (Observable float) | `0x98` |
-| `aoN.Velocity` | `0xB0` |
-| `MouseLook.m_LookRoot` | `0x28` |
-
-При обновлении игры сверять в `helper/src/main/cpp/offsets.h`.
+- **НЕ пишет** в память игры, **НЕ хукает** игровые методы. Только: read через il2cpp API + hook EGL swap + уинпут для aim.
+- Серверные детекторы speedhack/flyhack (`violationLevel`, `speedhackDistance`, `flyhackInAirSeconds`) ничего не считают — мы не меняем позицию.
+- `util_no_recoil`/`fast_loot`/`god_mode` в меню — заглушки, для них нужен внутриигровой hook (пока отключены как write-пути).

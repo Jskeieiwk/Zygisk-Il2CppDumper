@@ -1,0 +1,82 @@
+#!/system/bin/sh
+# vanta — self-extracting cheat loader
+# usage: su -c sh vanta.sh   (из /data/local/tmp или любого writable места)
+set -e
+
+PKG="com.catsbit.oxidesurvivalisland"
+WORK="/data/local/tmp"
+INJ="$WORK/vanta-inject"
+SO="$WORK/libvanta.so"
+FLAG="$WORK/vanta.flag"
+
+printf '\n'
+printf '  ██╗   ██╗ █████╗ ███╗   ██╗████████╗ █████╗\n'
+printf '  ██║   ██║██╔══██╗████╗  ██║╚══██╔══╝██╔══██╗\n'
+printf '  ██║   ██║███████║██╔██╗ ██║   ██║   ███████║\n'
+printf '  ╚██╗ ██╔╝██╔══██║██║╚██╗██║   ██║   ██╔══██║\n'
+printf '   ╚████╔╝ ██║  ██║██║ ╚████║   ██║   ██║  ██║\n'
+printf '    ╚═══╝  ╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝  ╚═╝  ╚═╝\n'
+printf '              @Cloud_Crack · OXIDE 1.20.12034\n\n'
+
+printf 'Overlay 0/1: '
+read OVERLAY
+case "$OVERLAY" in
+    0|нет|no|N|n) OVERLAY=0 ;;
+    *)            OVERLAY=1 ;;
+esac
+echo
+echo "выбран overlay=$OVERLAY"
+
+# --- извлекаем base64 блоки из самого скрипта ---
+echo "[*] распаковываю..."
+awk 'NR==1,/^__INJ_B64__$/{next} /^__INJ_END__$/{exit} {print}' "$0" | base64 -d > "$INJ"
+awk 'NR==1,/^__SO_B64__$/{next}  /^__SO_END__$/{exit}  {print}' "$0" | base64 -d > "$SO"
+chmod 755 "$INJ" || true
+chmod 644 "$SO"  || true
+echo "$OVERLAY" > "$FLAG"
+chmod 666 "$FLAG" || true
+
+# --- гарантируем что игра запущена ---
+PID=$(pidof "$PKG" 2>/dev/null || true)
+if [ -z "$PID" ]; then
+    echo "[*] запускаю $PKG..."
+    monkey -p "$PKG" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1 || \
+        am start -n "$PKG/com.unity3d.player.UnityPlayerActivity" >/dev/null 2>&1 || true
+    i=0
+    while [ $i -lt 15 ]; do
+        sleep 1
+        PID=$(pidof "$PKG" 2>/dev/null || true)
+        [ -n "$PID" ] && break
+        i=$((i + 1))
+    done
+fi
+if [ -z "$PID" ]; then
+    echo "[!] процесс $PKG не нашёл; выход"
+    exit 2
+fi
+echo "[+] pid=$PID"
+
+# даём il2cpp + libEGL прогрузиться
+echo "[*] жду инициализацию игры 5с..."
+sleep 5
+
+echo "[*] инжектирую libvanta.so..."
+"$INJ" "$PID" "$SO" "vanta_start"
+RC=$?
+if [ $RC -eq 0 ]; then
+    echo "[+] инжекция успешна — активирую игру"
+    am start -n "$PKG/com.unity3d.player.UnityPlayerActivity" >/dev/null 2>&1 || \
+        monkey -p "$PKG" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1 || true
+    echo "[+] готово — водяной знак @Cloud_Crack сверху игры"
+else
+    echo "[!] инжекция вернула код $RC — проверь root/SELinux (setenforce 0)"
+fi
+exit $RC
+
+# ===================== BINARY BLOBS ВНИЗУ =====================
+__INJ_B64__
+@@INJ_PAYLOAD@@
+__INJ_END__
+__SO_B64__
+@@SO_PAYLOAD@@
+__SO_END__

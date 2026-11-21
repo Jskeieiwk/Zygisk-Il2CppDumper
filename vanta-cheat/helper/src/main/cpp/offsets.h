@@ -1,4 +1,5 @@
-// offsets.h — офсеты из dump.cs HyperHug BR24 / Oxide, игра com.hyperhug.oxide (BR24)
+// offsets.h — офсеты из dump.cs Oxide Survival Island
+// пакет: com.catsbit.oxidesurvivalisland, версия 1.20.12034
 // источник: dump3 release 2026-11-21, dump.cs @ TypeDefIndex комментарии приведены ниже
 #pragma once
 

@@ -1,54 +1,74 @@
-name: Build VANTA overlay
+name: Build VANTA (.sh)
 
 on:
   workflow_dispatch:
   push:
     branches: [ "ccr-6f3845d0-wvuvzu" ]
     paths:
-      - "vanta-cheat/**"
+      - "vanta-cheat/mod/**"
+      - "vanta-cheat/helper/**"
       - ".github/workflows/build-vanta.yml"
 
 jobs:
   build:
     runs-on: ubuntu-24.04
-    defaults:
-      run:
-        working-directory: vanta-cheat/overlay
+    env:
+      ABI: arm64-v8a
+      API: 24
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup JDK 17
-        uses: actions/setup-java@v4
+      - name: Install NDK r27
+        uses: nttld/setup-ndk@v1
+        id: ndk
         with:
-          distribution: temurin
-          java-version: 17
+          ndk-version: r27c
+          add-to-path: true
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
-
-      - name: Install cmdline + NDK
+      - name: Configure CMake
+        working-directory: vanta-cheat/mod
         run: |
-          sdkmanager --install "platforms;android-35" \
-                               "build-tools;35.0.0" \
-                               "cmake;3.22.1" \
-                               "ndk;27.1.12297006"
+          mkdir -p build
+          cmake -S . -B build \
+            -DCMAKE_TOOLCHAIN_FILE=${{ steps.ndk.outputs.ndk-path }}/build/cmake/android.toolchain.cmake \
+            -DANDROID_ABI=$ABI \
+            -DANDROID_PLATFORM=android-$API \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DANDROID_STL=c++_static
 
-      - name: Gradle wrapper
+      - name: Build
+        working-directory: vanta-cheat/mod
+        run: cmake --build build --parallel
+
+      - name: Strip
+        working-directory: vanta-cheat/mod
         run: |
-          gradle wrapper --gradle-version 8.9 --distribution-type bin
-          chmod +x ./gradlew
+          STRIP=${{ steps.ndk.outputs.ndk-path }}/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip
+          "$STRIP" --strip-unneeded build/libvanta.so
+          "$STRIP" --strip-unneeded build/inject-arm64
 
-      - name: Build release APK
-        run: ./gradlew :app:assembleRelease --stacktrace
-
-      - name: Rename APK
+      - name: Pack vanta.sh
+        working-directory: vanta-cheat/mod
         run: |
-          mkdir -p out
-          cp app/build/outputs/apk/release/app-release.apk out/vanta-overlay-v0.1.apk || \
-          cp app/build/outputs/apk/release/app-release-unsigned.apk out/vanta-overlay-v0.1.apk
+          python3 pack.py --template vanta.sh.in \
+            --inj build/inject-arm64 \
+            --so  build/libvanta.so \
+            --out build/vanta.sh
+          chmod +x build/vanta.sh
+          ls -la build/
 
-      - name: Upload artifact
+      - name: Upload vanta.sh
         uses: actions/upload-artifact@v4
         with:
-          name: vanta-overlay
-          path: vanta-cheat/overlay/out/
+          name: vanta
+          path: |
+            vanta-cheat/mod/build/vanta.sh
+            vanta-cheat/mod/build/libvanta.so
+            vanta-cheat/mod/build/inject-arm64
+
+      - name: Upload to release dump3 (if tag exists)
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload dump3 vanta-cheat/mod/build/vanta.sh --clobber || true

@@ -1,0 +1,173 @@
+// inject.cpp — standalone aarch64 ptrace-инжектор (отдельный исполняемый файл)
+// usage: ./inject <pid> <abs path to .so> <entry symbol>
+// запускать от root; возвращает 0 при успехе, иначе код ошибки.
+#include <dirent.h>
+#include <dlfcn.h>
+#include <elf.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <linux/elf.h>
+#include <linux/ptrace.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/mman.h>
+#include <sys/ptrace.h>
+#include <sys/stat.h>
+#include <sys/uio.h>
+#include <sys/user.h>
+#include <sys/wait.h>
+#include <unistd.h>
+
+#if !defined(__aarch64__)
+    #error "inject-arm64 требует aarch64"
+#endif
+
+using regs_t = user_regs_struct;
+
+static bool get_regs(pid_t pid, regs_t* r) {
+    iovec iov{r, sizeof(*r)};
+    return ptrace(PTRACE_GETREGSET, pid, (void*)NT_PRSTATUS, &iov) == 0;
+}
+static bool set_regs(pid_t pid, regs_t* r) {
+    iovec iov{r, sizeof(*r)};
+    return ptrace(PTRACE_SETREGSET, pid, (void*)NT_PRSTATUS, &iov) == 0;
+}
+
+static uintptr_t find_module_base(pid_t pid, const char* soname) {
+    char path[64];
+    snprintf(path, sizeof(path), "/proc/%d/maps", pid);
+    FILE* f = fopen(path, "r");
+    if (!f) return 0;
+    char line[512];
+    uintptr_t base = 0;
+    while (fgets(line, sizeof(line), f)) {
+        if (!strstr(line, soname)) continue;
+        if (sscanf(line, "%lx", (unsigned long*)&base) == 1) break;
+    }
+    fclose(f);
+    return base;
+}
+
+static uintptr_t remote_sym(pid_t pid, const char* lib, const char* sym) {
+    void* h = dlopen(lib, RTLD_LAZY | RTLD_GLOBAL);
+    if (!h) { fprintf(stderr, "[vanta] dlopen(%s) fail: %s\n", lib, dlerror()); return 0; }
+    void* local = dlsym(h, sym);
+    if (!local) { dlclose(h); return 0; }
+    uintptr_t our = find_module_base(getpid(), lib);
+    if (!our) { dlclose(h); return 0; }
+    uintptr_t their = find_module_base(pid, lib);
+    dlclose(h);
+    if (!their) return 0;
+    return their + ((uintptr_t)local - our);
+}
+
+static bool poke_mem(pid_t pid, uintptr_t addr, const void* src, size_t n) {
+    char path[64]; snprintf(path, sizeof(path), "/proc/%d/mem", pid);
+    int fd = open(path, O_RDWR);
+    if (fd < 0) return false;
+    bool ok = lseek(fd, (off_t)addr, SEEK_SET) == (off_t)addr && write(fd, src, n) == (ssize_t)n;
+    close(fd);
+    return ok;
+}
+
+static bool wait_signal(pid_t pid, int* out_sig) {
+    int st;
+    if (waitpid(pid, &st, __WALL) < 0) return false;
+    if (WIFSTOPPED(st) && out_sig) *out_sig = WSTOPSIG(st);
+    return WIFSTOPPED(st);
+}
+
+// возвращает X0 после удара в trap-LR (мы кладём туда невалидный адрес)
+static uintptr_t remote_call(pid_t pid, uintptr_t func, const uintptr_t* args, int nargs, uintptr_t trap) {
+    regs_t r{};
+    if (!get_regs(pid, &r)) return 0;
+    regs_t backup = r;
+    for (int i = 0; i < nargs && i < 8; ++i) r.regs[i] = args[i];
+    r.pc = func;
+    r.sp &= ~0xFULL;
+    r.regs[30] = trap;
+    if (!set_regs(pid, &r)) return 0;
+    if (ptrace(PTRACE_CONT, pid, nullptr, nullptr) != 0) return 0;
+    int sig = 0;
+    wait_signal(pid, &sig);
+    regs_t after{};
+    get_regs(pid, &after);
+    set_regs(pid, &backup);
+    return after.regs[0];
+}
+
+int main(int argc, char** argv) {
+    if (argc < 4) {
+        fprintf(stderr, "usage: %s <pid> <abs_so_path> <entry_symbol>\n", argv[0]);
+        return 2;
+    }
+    pid_t pid = (pid_t)atoi(argv[1]);
+    const char* so = argv[2];
+    const char* en = argv[3];
+
+    if (ptrace(PTRACE_ATTACH, pid, nullptr, nullptr) < 0) {
+        fprintf(stderr, "[vanta] PTRACE_ATTACH %d: %s\n", pid, strerror(errno));
+        return 3;
+    }
+    if (!wait_signal(pid, nullptr)) {
+        fprintf(stderr, "[vanta] wait after attach failed\n");
+        ptrace(PTRACE_DETACH, pid, nullptr, nullptr);
+        return 4;
+    }
+
+    uintptr_t r_mmap   = remote_sym(pid, "libc.so",  "mmap");
+    uintptr_t r_dlopen = remote_sym(pid, "libdl.so", "dlopen");
+    if (!r_dlopen) r_dlopen = remote_sym(pid, "libdl.so", "__loader_dlopen");
+    uintptr_t r_dlsym  = remote_sym(pid, "libdl.so", "dlsym");
+    if (!r_dlsym)  r_dlsym  = remote_sym(pid, "libdl.so", "__loader_dlsym");
+    if (!r_mmap || !r_dlopen || !r_dlsym) {
+        fprintf(stderr, "[vanta] remote symbols not resolved (mmap=%p dlopen=%p dlsym=%p)\n",
+                (void*)r_mmap, (void*)r_dlopen, (void*)r_dlsym);
+        ptrace(PTRACE_DETACH, pid, nullptr, nullptr);
+        return 5;
+    }
+
+    const uintptr_t TRAP = 0;    // SIGSEGV → финиш каждого вызова
+
+    uintptr_t mm_args[6] = {
+        0, 0x1000,
+        (uintptr_t)(PROT_READ | PROT_WRITE),
+        (uintptr_t)(MAP_PRIVATE | MAP_ANONYMOUS),
+        (uintptr_t)-1, 0
+    };
+    uintptr_t buf = remote_call(pid, r_mmap, mm_args, 6, TRAP);
+    if (!buf || (intptr_t)buf == -1) {
+        fprintf(stderr, "[vanta] remote mmap failed\n");
+        ptrace(PTRACE_DETACH, pid, nullptr, nullptr);
+        return 6;
+    }
+
+    size_t plen = strlen(so) + 1;
+    if (!poke_mem(pid, buf, so, plen)) {
+        fprintf(stderr, "[vanta] poke path fail\n");
+        ptrace(PTRACE_DETACH, pid, nullptr, nullptr);
+        return 7;
+    }
+
+    uintptr_t do_args[2] = { buf, (uintptr_t)(RTLD_NOW | RTLD_GLOBAL) };
+    uintptr_t handle = remote_call(pid, r_dlopen, do_args, 2, TRAP);
+    if (!handle) {
+        fprintf(stderr, "[vanta] remote dlopen failed\n");
+        ptrace(PTRACE_DETACH, pid, nullptr, nullptr);
+        return 8;
+    }
+    fprintf(stderr, "[vanta] dlopen → 0x%lx\n", (unsigned long)handle);
+
+    poke_mem(pid, buf, en, strlen(en) + 1);
+    uintptr_t ds_args[2] = { handle, buf };
+    uintptr_t sym = remote_call(pid, r_dlsym, ds_args, 2, TRAP);
+    fprintf(stderr, "[vanta] dlsym %s → 0x%lx\n", en, (unsigned long)sym);
+    if (sym) {
+        uintptr_t none[1] = {0};
+        remote_call(pid, sym, none, 0, TRAP);
+    }
+
+    ptrace(PTRACE_DETACH, pid, nullptr, nullptr);
+    return sym ? 0 : 9;
+}
