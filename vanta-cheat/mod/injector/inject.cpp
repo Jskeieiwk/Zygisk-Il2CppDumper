@@ -222,10 +222,10 @@ int main(int argc, char** argv) {
     // LR = заведомо невалидный addr (kernel-space для userspace процесса) → гарантированный SIGSEGV
     const uintptr_t TRAP = 0xDEADBEEFDEADBEEFULL;
 
-    fprintf(stderr, "[vanta] remote_mmap...\n");
+    fprintf(stderr, "[vanta] remote_mmap RWX...\n");
     uintptr_t mm_args[6] = {
-        0, 0x1000,
-        (uintptr_t)(PROT_READ | PROT_WRITE),
+        0, 0x2000,
+        (uintptr_t)(PROT_READ | PROT_WRITE | PROT_EXEC),
         (uintptr_t)(MAP_PRIVATE | MAP_ANONYMOUS),
         (uintptr_t)-1, 0
     };
@@ -236,19 +236,57 @@ int main(int argc, char** argv) {
         return 6;
     }
 
+    // layout buf:
+    //   0x000..0x400 — путь к .so (и позже имя символа)
+    //   0x400..0x408 — шеллкод (blr x8; brk #0)
+    const uintptr_t str_addr   = buf;
+    const uintptr_t shell_addr = buf + 0x400;
+    uint32_t shellcode[2] = { 0xD63F0100u /* blr x8 */, 0xD4200000u /* brk #0 */ };
+    if (!poke_mem(pid, shell_addr, shellcode, sizeof(shellcode))) {
+        fprintf(stderr, "[vanta] poke shellcode fail\n");
+        ptrace(PTRACE_DETACH, pid, nullptr, nullptr);
+        return 7;
+    }
+
     size_t plen = strlen(so) + 1;
-    if (!poke_mem(pid, buf, so, plen)) {
+    if (!poke_mem(pid, str_addr, so, plen)) {
         fprintf(stderr, "[vanta] poke path fail\n");
         ptrace(PTRACE_DETACH, pid, nullptr, nullptr);
         return 7;
     }
 
-    fprintf(stderr, "[vanta] remote_dlopen buf=0x%lx...\n", (unsigned long)buf);
-    // __loader_dlopen принимает (path, flags, caller_addr). caller_addr = r_dlopen —
-    // любой адрес в libdl.so игры, по которому резолвится дефолтный namespace.
-    uintptr_t do_args[3] = { buf, (uintptr_t)(RTLD_NOW | RTLD_GLOBAL), r_dlopen };
+    // remote_call_sh: pc=shell_addr, x8=func, x0..=args; SIGTRAP от brk.
+    auto remote_call_sh = [&](uintptr_t func, const uintptr_t* a, int n) -> uintptr_t {
+        regs_t r{}; if (!get_regs(pid, &r)) return 0;
+        regs_t backup = r;
+        for (int i = 0; i < n && i < 8; ++i) r.regs[i] = a[i];
+        r.regs[8] = func;
+        r.pc = shell_addr;
+        r.sp &= ~0xFULL;
+        r.regs[30] = TRAP;
+        if (!set_regs(pid, &r)) return 0;
+        if (ptrace(PTRACE_CONT, pid, nullptr, nullptr) != 0) return 0;
+        int got = 0;
+        for (int i = 0; i < 1000; ++i) {
+            int st;
+            if (waitpid(pid, &st, __WALL) < 0) break;
+            if (!WIFSTOPPED(st)) break;
+            int sig = WSTOPSIG(st);
+            if (sig == SIGTRAP || sig == SIGSEGV || sig == SIGBUS || sig == SIGILL) { got = sig; break; }
+            ptrace(PTRACE_CONT, pid, nullptr, (void*)(long)sig);
+        }
+        regs_t af{}; get_regs(pid, &af);
+        fprintf(stderr, "[vanta] sh-call func=0x%lx pc_after=0x%lx x0=0x%lx sig=%d\n",
+                (unsigned long)func, (unsigned long)af.pc, (unsigned long)af.regs[0], got);
+        set_regs(pid, &backup);
+        return af.regs[0];
+    };
+
+    fprintf(stderr, "[vanta] remote_dlopen path=0x%lx shell=0x%lx\n",
+            (unsigned long)str_addr, (unsigned long)shell_addr);
+    uintptr_t do_args[3] = { str_addr, (uintptr_t)(RTLD_NOW | RTLD_GLOBAL), r_dlopen };
     int nargs = loader ? 3 : 2;
-    uintptr_t handle = remote_call(pid, r_dlopen, do_args, nargs, TRAP);
+    uintptr_t handle = remote_call_sh(r_dlopen, do_args, nargs);
     if (!handle) {
         fprintf(stderr, "[vanta] remote dlopen failed\n");
         ptrace(PTRACE_DETACH, pid, nullptr, nullptr);
@@ -257,15 +295,15 @@ int main(int argc, char** argv) {
     fprintf(stderr, "[vanta] dlopen → 0x%lx\n", (unsigned long)handle);
 
     fprintf(stderr, "[vanta] remote_dlsym...\n");
-    poke_mem(pid, buf, en, strlen(en) + 1);
-    uintptr_t ds_args[3] = { handle, buf, r_dlsym };
+    poke_mem(pid, str_addr, en, strlen(en) + 1);
+    uintptr_t ds_args[3] = { handle, str_addr, r_dlsym };
     int ds_nargs = loader ? 3 : 2;
-    uintptr_t sym = remote_call(pid, r_dlsym, ds_args, ds_nargs, TRAP);
+    uintptr_t sym = remote_call_sh(r_dlsym, ds_args, ds_nargs);
     fprintf(stderr, "[vanta] dlsym %s → 0x%lx\n", en, (unsigned long)sym);
     if (sym) {
         fprintf(stderr, "[vanta] remote_entry...\n");
         uintptr_t none[1] = {0};
-        remote_call(pid, sym, none, 0, TRAP);
+        remote_call_sh(sym, none, 0);
     }
 
     ptrace(PTRACE_DETACH, pid, nullptr, nullptr);
