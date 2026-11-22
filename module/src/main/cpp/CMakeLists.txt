@@ -33,6 +33,7 @@ set(CHEAT_SRC
         cheat/features.cpp
         cheat/overlay.cpp
         cheat/hook.cpp
+        cheat/antiguard.cpp
         cheat/il2cpp_api.cpp)
 
 # ─────────────────────────── payload library ──────────────────────────────

@@ -36,7 +36,7 @@ struct user_pt_regs_a64 {
 };
 
 static long rptrace(int req, pid_t pid, void *addr, void *data) {
-    return ptrace((__ptrace_request)req, pid, addr, data);
+    return ptrace(req, pid, addr, data);
 }
 
 static int get_regs(pid_t pid, user_pt_regs_a64 *r) {

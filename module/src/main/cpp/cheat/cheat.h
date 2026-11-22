@@ -16,6 +16,12 @@ struct CheatConfig {
     bool  enabled_speed        = false;
     float speed_multiplier     = 2.5f;
 
+    bool  enabled_god          = false;
+    bool  enabled_ghost        = false;
+    bool  enabled_laser        = false;
+    float laser_dps            = 9999.0f;
+    float laser_range          = 500.0f;
+
     bool  enabled_no_recoil    = false;
     bool  enabled_no_spread    = false;
 
@@ -30,9 +36,6 @@ struct CheatConfig {
     bool  aim_target_bone_head = true;
 
     bool  enabled_chams        = false;
-    bool  enabled_nameplate_rip = false;
-
-    bool  enabled_teleport_waypoint = false;
 
     bool  enabled_antiguard    = true;
 };

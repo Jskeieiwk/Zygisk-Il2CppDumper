@@ -2,6 +2,7 @@
 #include "il2cpp_api.h"
 #include "features.h"
 #include "overlay.h"
+#include "antiguard.h"
 #include "hook.h"
 #include "../log.h"
 #include "../game.h"
@@ -55,6 +56,11 @@ void cheat_config_load() {
         SET_B("fly",           enabled_fly);
         SET_B("speed",         enabled_speed);
         SET_F("speed_mult",    speed_multiplier);
+        SET_B("god",           enabled_god);
+        SET_B("ghost",         enabled_ghost);
+        SET_B("laser",         enabled_laser);
+        SET_F("laser_dps",     laser_dps);
+        SET_F("laser_range",   laser_range);
         SET_B("no_recoil",     enabled_no_recoil);
         SET_B("no_spread",     enabled_no_spread);
         SET_B("esp_box",       enabled_esp_box);
@@ -112,6 +118,10 @@ void cheat_start(const char *game_data_dir) {
 
     cheat_config_load();
     std::thread(cheat_config_watch_thread).detach();
+
+    if (g_cfg.enabled_antiguard) {
+        antiguard_install();
+    }
 
     if (g_cfg.enabled_overlay) {
         overlay_install();

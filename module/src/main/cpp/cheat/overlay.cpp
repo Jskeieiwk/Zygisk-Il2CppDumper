@@ -12,6 +12,8 @@
 #include <cstring>
 #include <cstdio>
 #include <cstdlib>
+#include <string>
+#include <vector>
 
 typedef EGLBoolean (*eglSwapBuffers_t)(EGLDisplay, EGLSurface);
 static eglSwapBuffers_t s_orig_swap = nullptr;
@@ -241,20 +243,56 @@ static EGLBoolean hk_swap(EGLDisplay dpy, EGLSurface surf) {
     return s_orig_swap(dpy, surf);
 }
 
+// Adreno's libEGL.so holds only stubs; the real eglSwapBuffers body lives in
+// libEGL_adreno.so (and similarly libEGL_mali.so on Mali, powervr on PowerVR).
+// Walk /proc/self/maps for every loaded libEGL*.so, dlsym each, and hook the
+// ones that aren't the public stub.  Also fall back to the plain libEGL.so
+// symbol if nothing else is loaded.
+
+#include <cstdio>
+
+static std::vector<void*> s_hooked;
+
+static bool hook_one_libEGL(const char *path) {
+    void *h = dlopen(path, RTLD_NOW | RTLD_NOLOAD);
+    if (!h) h = dlopen(path, RTLD_NOW);
+    if (!h) { LOGW("[Cloud] dlopen(%s) failed", path); return false; }
+    void *sym = dlsym(h, "eglSwapBuffers");
+    if (!sym) { LOGW("[Cloud] %s has no eglSwapBuffers", path); return false; }
+    for (auto *a : s_hooked) if (a == sym) return false;
+    s_hooked.push_back(sym);
+    void *tramp = nullptr;
+    if (!inline_hook(sym, (void*)hk_swap, &tramp)) {
+        LOGW("[Cloud] hook install failed on %s", path);
+        return false;
+    }
+    if (!s_orig_swap) s_orig_swap = (eglSwapBuffers_t)tramp;
+    LOGI("[Cloud] overlay hooked %s eglSwapBuffers=%p", path, sym);
+    return true;
+}
+
 void overlay_install() {
-    void *libegl = dlopen("libEGL.so", RTLD_NOW);
-    if (!libegl) {
-        LOGE("[Cloud] dlopen libEGL.so failed: %s", dlerror());
-        return;
+    // 1) Scan /proc/self/maps for every loaded libEGL* .so.
+    int hits = 0;
+    if (FILE *fp = fopen("/proc/self/maps", "re")) {
+        char line[512];
+        std::string last;
+        while (fgets(line, sizeof(line), fp)) {
+            const char *slash = strrchr(line, '/');
+            if (!slash) continue;
+            const char *name = slash + 1;
+            if (strncmp(name, "libEGL", 6) != 0 &&
+                strncmp(name, "libGLES", 7) != 0) continue;
+            char *nl = strchr((char*)name, '\n'); if (nl) *nl = 0;
+            if (last == name) continue;
+            last = name;
+            hook_one_libEGL(name);
+            ++hits;
+        }
+        fclose(fp);
     }
-    void *sym = dlsym(libegl, "eglSwapBuffers");
-    if (!sym) {
-        LOGE("[Cloud] dlsym eglSwapBuffers failed");
-        return;
-    }
-    if (!inline_hook(sym, (void*)hk_swap, (void**)&s_orig_swap)) {
-        LOGE("[Cloud] eglSwapBuffers hook install failed");
-        return;
-    }
-    LOGI("[Cloud] overlay installed on eglSwapBuffers (%p)", sym);
+    // 2) Fallback: the plain stub.
+    if (s_hooked.empty()) hook_one_libEGL("libEGL.so");
+    LOGI("[Cloud] overlay install done, %zu EGL modules hooked", s_hooked.size());
+    (void)hits;
 }
