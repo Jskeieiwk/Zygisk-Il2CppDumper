@@ -158,38 +158,10 @@ int main(int argc, char** argv) {
     const char* so = argv[2];
     const char* en = argv[3];
 
-    // ищем ноушающий поток (State: R) — ptrace на нём не висит в чужом syscall
+    // работаем через main pid — он обычно спит в стабильном syscall (epoll_wait),
+    // и в нём нет активного Unity рендер-кода с PAC/BTI защитой.
     pid_t pid = pid_arg;
-    {
-        char dir[64]; snprintf(dir, sizeof(dir), "/proc/%d/task", pid_arg);
-        DIR* d = opendir(dir);
-        if (d) {
-            dirent* e;
-            pid_t best = pid_arg;
-            while ((e = readdir(d))) {
-                if (e->d_name[0] < '0' || e->d_name[0] > '9') continue;
-                pid_t tid = (pid_t)atoi(e->d_name);
-                char status[128];
-                snprintf(status, sizeof(status), "/proc/%d/task/%d/status", pid_arg, tid);
-                FILE* f = fopen(status, "r");
-                if (!f) continue;
-                char line[256];
-                while (fgets(line, sizeof(line), f)) {
-                    if (strncmp(line, "State:", 6) == 0) {
-                        if (line[7] == 'R') { best = tid; }
-                        break;
-                    }
-                }
-                fclose(f);
-                if (best != pid_arg) break;
-            }
-            closedir(d);
-            if (best != pid_arg) {
-                fprintf(stderr, "[vanta] использую активный тред %d вместо %d\n", best, pid_arg);
-                pid = best;
-            }
-        }
-    }
+    fprintf(stderr, "[vanta] использую main pid %d\n", pid);
 
     fprintf(stderr, "[vanta] attach %d\n", pid);
     if (ptrace(PTRACE_ATTACH, pid, nullptr, nullptr) < 0) {
