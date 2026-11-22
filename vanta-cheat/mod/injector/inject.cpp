@@ -257,19 +257,23 @@ int main(int argc, char** argv) {
         return 7;
     }
 
-    // resolve cacheflush / __clear_cache заранее — пригодятся между sh-call для icache
-    uintptr_t r_clear_cache = remote_sym(pid, "libc.so", "__clear_cache");
-    fprintf(stderr, "[vanta] __clear_cache remote: 0x%lx\n", (unsigned long)r_clear_cache);
+    uintptr_t r_mprotect = remote_sym(pid, "libc.so", "mprotect");
+    fprintf(stderr, "[vanta] mprotect remote: 0x%lx\n", (unsigned long)r_mprotect);
+
+    auto flush_icache = [&]() {
+        if (!r_mprotect) return;
+        // mprotect RX, затем RWX — kernel при каждом mprotect на exec-страницы
+        // гарантированно синхронизирует icache aarch64.
+        uintptr_t a1[3] = { buf, 0x2000, (uintptr_t)(PROT_READ | PROT_EXEC) };
+        remote_call(pid, r_mprotect, a1, 3, TRAP);
+        uintptr_t a2[3] = { buf, 0x2000, (uintptr_t)(PROT_READ | PROT_WRITE | PROT_EXEC) };
+        remote_call(pid, r_mprotect, a2, 3, TRAP);
+    };
 
     // remote_call_sh: pc=shell_addr, x8=func, x0..=args; SIGTRAP от brk.
     auto remote_call_sh = [&](uintptr_t func, const uintptr_t* a, int n) -> uintptr_t {
-        // переписываем шеллкод перед каждым вызовом — на случай stale кэша / перезатёра
         poke_mem(pid, shell_addr, shellcode, sizeof(shellcode));
-        // и явно инвалидируем icache через __clear_cache(shell, shell+8) по trap-LR
-        if (r_clear_cache) {
-            uintptr_t cc_args[2] = { shell_addr, shell_addr + sizeof(shellcode) };
-            remote_call(pid, r_clear_cache, cc_args, 2, TRAP);
-        }
+        flush_icache();
         regs_t r{}; if (!get_regs(pid, &r)) return 0;
         regs_t backup = r;
         for (int i = 0; i < n && i < 8; ++i) r.regs[i] = a[i];
@@ -297,18 +301,19 @@ int main(int argc, char** argv) {
 
     fprintf(stderr, "[vanta] remote_dlopen path=0x%lx shell=0x%lx stack=0x%lx\n",
             (unsigned long)str_addr, (unsigned long)shell_addr, (unsigned long)stack_addr);
-    // сначала пробуем публичный dlopen(path, flags) — 2 аргумента, без caller.
-    // если не вернул handle — пробуем __loader_dlopen(path, flags, 0).
+    // caller_addr для __loader_dlopen: НУЖЕН адрес в валидной .so игры (не в RWX mmap),
+    // иначе linker не найдёт owning namespace и падает SIGSEGV.
+    // r_mmap = адрес в libc.so → linker резолвит namespace libc → default.
     uintptr_t handle = 0;
-    if (r_pub_dlopen) {
+    if (r_ldr_dlopen && r_mmap) {
+        uintptr_t a3[3] = { str_addr, (uintptr_t)(RTLD_NOW | RTLD_GLOBAL), r_mmap };
+        handle = remote_call_sh(r_ldr_dlopen, a3, 3);
+        if (handle) fprintf(stderr, "[vanta] __loader_dlopen(caller=libc): 0x%lx\n", (unsigned long)handle);
+    }
+    if (!handle && r_pub_dlopen) {
         uintptr_t a2[2] = { str_addr, (uintptr_t)(RTLD_NOW | RTLD_GLOBAL) };
         handle = remote_call_sh(r_pub_dlopen, a2, 2);
-        if (handle) fprintf(stderr, "[vanta] публичный dlopen: 0x%lx\n", (unsigned long)handle);
-    }
-    if (!handle && r_ldr_dlopen) {
-        uintptr_t a3[3] = { str_addr, (uintptr_t)(RTLD_NOW | RTLD_GLOBAL), 0 };
-        handle = remote_call_sh(r_ldr_dlopen, a3, 3);
-        if (handle) fprintf(stderr, "[vanta] __loader_dlopen(caller=0): 0x%lx\n", (unsigned long)handle);
+        if (handle) fprintf(stderr, "[vanta] fallback public dlopen: 0x%lx\n", (unsigned long)handle);
     }
     if (!handle) {
         fprintf(stderr, "[vanta] remote dlopen failed\n");
@@ -320,13 +325,13 @@ int main(int argc, char** argv) {
     fprintf(stderr, "[vanta] remote_dlsym...\n");
     poke_mem(pid, str_addr, en, strlen(en) + 1);
     uintptr_t sym = 0;
-    if (r_pub_dlsym) {
+    if (r_ldr_dlsym && r_mmap) {
+        uintptr_t a3[3] = { handle, str_addr, r_mmap };
+        sym = remote_call_sh(r_ldr_dlsym, a3, 3);
+    }
+    if (!sym && r_pub_dlsym) {
         uintptr_t a2[2] = { handle, str_addr };
         sym = remote_call_sh(r_pub_dlsym, a2, 2);
-    }
-    if (!sym && r_ldr_dlsym) {
-        uintptr_t a3[3] = { handle, str_addr, 0 };
-        sym = remote_call_sh(r_ldr_dlsym, a3, 3);
     }
     fprintf(stderr, "[vanta] dlsym %s → 0x%lx\n", en, (unsigned long)sym);
     if (sym) {
