@@ -6,7 +6,7 @@
 void cheat_start(const char *game_data_dir);
 
 struct CheatConfig {
-    bool  enabled_overlay      = true;
+    bool  enabled_overlay      = false;  // off by default — enable in cloud_cheat.ini
     bool  enabled_watermark    = true;
 
     bool  enabled_fov_lock     = false;
@@ -37,8 +37,10 @@ struct CheatConfig {
 
     bool  enabled_chams        = false;
 
-    bool  enabled_antiguard    = true;
+    bool  enabled_antiguard    = false;  // off by default
 };
+
+void cheat_log(const char *fmt, ...);
 
 extern CheatConfig g_cfg;
 

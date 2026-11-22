@@ -11,6 +11,7 @@
 #include "hack.h"
 #include "game.h"
 #include "log.h"
+#include "cheat/cheat.h"
 
 // Payload entry: fires when the injector dlopen()s this .so inside the game
 // process.  We read our own cmdline (= target app's) and start the hack
@@ -36,11 +37,14 @@ static std::string data_dir_for(const std::string &pkg) {
 
 __attribute__((constructor))
 static void cloud_cheat_init() {
+    // Fresh log per run — try both locations.
+    unlink("/data/data/" GamePackageName "/files/cloud_cheat.log");
+    unlink("/sdcard/cloud_cheat.log");
     auto pkg = my_cmdline();
-    LOGI("[Cloud] dlopen'd into pid=%d cmdline=%s", getpid(), pkg.c_str());
+    cheat_log("ctor: dlopen landed in pid=%d cmdline=%s", getpid(), pkg.c_str());
 
     if (pkg != GamePackageName) {
-        LOGW("[Cloud] not the target process (%s != %s) — bailing", pkg.c_str(), GamePackageName);
+        cheat_log("ctor: not the target (%s != %s) — bailing", pkg.c_str(), GamePackageName);
         return;
     }
 
@@ -48,7 +52,9 @@ static void cloud_cheat_init() {
     char *cd = new char[dd.size() + 1];
     strcpy(cd, dd.c_str());
 
+    cheat_log("ctor: spawning hack_start thread");
     std::thread(hack_start, cd).detach();
+    cheat_log("ctor: returning to loader");
 }
 
 extern "C" JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {

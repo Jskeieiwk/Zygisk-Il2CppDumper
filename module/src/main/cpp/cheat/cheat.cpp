@@ -11,10 +11,41 @@
 #include <atomic>
 #include <chrono>
 #include <cstdio>
+#include <cstdarg>
+#include <ctime>
+#include <mutex>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <fcntl.h>
 #include <unistd.h>
+
+// =========================================================================
+//   File logger — mirrors to /sdcard/cloud_cheat.log so dj can see how far
+//   we got even when the game crashes before he can grab logcat.
+// =========================================================================
+static std::mutex s_log_mu;
+void cheat_log(const char *fmt, ...) {
+    char buf[1024];
+    va_list ap;
+    va_start(ap, fmt);
+    int n = vsnprintf(buf, sizeof(buf), fmt, ap);
+    va_end(ap);
+    if (n < 0) return;
+
+    LOGI("%s", buf);
+
+    std::lock_guard<std::mutex> lk(s_log_mu);
+    // Try the game's private files dir first (always writable by this uid),
+    // fall back to /sdcard if that fails.
+    FILE *fp = fopen("/data/data/" GamePackageName "/files/cloud_cheat.log", "ae");
+    if (!fp) fp = fopen("/sdcard/cloud_cheat.log", "ae");
+    if (!fp) return;
+    time_t t = time(nullptr);
+    struct tm lt{};
+    localtime_r(&t, &lt);
+    fprintf(fp, "[%02d:%02d:%02d] %s\n", lt.tm_hour, lt.tm_min, lt.tm_sec, buf);
+    fclose(fp);
+}
 
 CheatConfig g_cfg;
 static std::atomic<bool> s_started{false};
@@ -111,36 +142,45 @@ void cheat_start(const char *game_data_dir) {
         return;
     }
 
-    LOGI("================================================================");
-    LOGI("  %s  — Berda Survival cheat %s", CheatWatermark, CheatVersion);
-    LOGI("  data dir: %s", game_data_dir ? game_data_dir : "(null)");
-    LOGI("================================================================");
+    cheat_log("=================================================");
+    cheat_log("  %s  — Berda %s (pid=%d)", CheatWatermark, CheatVersion, getpid());
+    cheat_log("  data dir: %s", game_data_dir ? game_data_dir : "(null)");
+    cheat_log("=================================================");
 
     cheat_config_load();
+    cheat_log("config: overlay=%d watermark=%d fov_lock=%d no_recoil=%d antiguard=%d",
+              g_cfg.enabled_overlay, g_cfg.enabled_watermark,
+              g_cfg.enabled_fov_lock, g_cfg.enabled_no_recoil, g_cfg.enabled_antiguard);
     std::thread(cheat_config_watch_thread).detach();
 
-    // Give Unity time to finish spinning up its own render thread and the
-    // first few frames before we start touching libEGL — rushing the inline
-    // hook on a half-initialised swap chain is what produced the first-shot
-    // crash on dj's device.
     std::thread([game_data_dir]() {
-        LOGI("[Cloud] warm-up: waiting 6s before installing hooks ...");
+        cheat_log("warm-up: sleeping 6s before any hook / patch ...");
         std::this_thread::sleep_for(std::chrono::seconds(6));
+        cheat_log("warm-up done");
 
         if (g_cfg.enabled_antiguard) {
-            LOGI("[Cloud] installing antiguard ...");
+            cheat_log("installing antiguard ...");
             antiguard_install();
+            cheat_log("antiguard done");
+        } else {
+            cheat_log("antiguard SKIPPED (config)");
         }
 
         if (g_cfg.enabled_overlay) {
-            LOGI("[Cloud] installing overlay ...");
+            cheat_log("installing overlay ...");
             overlay_install();
+            cheat_log("overlay done");
+        } else {
+            cheat_log("overlay SKIPPED (config)");
         }
 
-        LOGI("[Cloud] waiting for il2cpp runtime ...");
+        cheat_log("waiting for il2cpp runtime ...");
         wait_for_il2cpp_runtime();
+        cheat_log("il2cpp up — resolving types");
         features_resolve_types();
+        cheat_log("types resolved — installing feature hooks");
         features_install_hooks();
+        cheat_log("entering feature tick loop");
         features_tick_loop();
     }).detach();
 }

@@ -111,6 +111,20 @@ class MainActivity : AppCompatActivity() {
         val out = runRoot(script)
         if (out.second != 0) throw RuntimeException("su failed (exit=${out.second}):\n${out.first}")
         append(out.first)
+
+        // Pull the payload-side log so dj doesn't need adb.  Wait a moment
+        // for the payload to write the first entries.
+        Thread.sleep(2500)
+        val log = runRoot(
+            "sleep 0\n" +
+            "cat /data/data/$target/files/cloud_cheat.log 2>/dev/null " +
+            "|| cat /sdcard/cloud_cheat.log 2>/dev/null " +
+            "|| echo '(log file not found yet — payload may not have started writing)'\n"
+        )
+        append("---- cloud_cheat.log ----")
+        append(log.first.ifBlank { "(empty)" })
+        append("---- end ----")
+
         return "injected into $target"
     }
 
