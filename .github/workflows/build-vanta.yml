@@ -53,19 +53,21 @@ jobs:
       - name: Pack vanta.sh
         working-directory: vanta-cheat/mod
         run: |
+          NUM=${{ github.run_number }}
           python3 pack.py --template vanta.sh.in \
             --inj build/inject-arm64 \
             --so  build/libvanta.so \
-            --out build/vanta.sh
-          chmod +x build/vanta.sh
+            --out build/vanta-${NUM}.sh
+          cp build/vanta-${NUM}.sh build/vanta.sh
+          chmod +x build/vanta.sh build/vanta-${NUM}.sh
           ls -la build/
 
-      - name: Upload vanta.sh
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: vanta
+          name: vanta-${{ github.run_number }}
           path: |
-            vanta-cheat/mod/build/vanta.sh
+            vanta-cheat/mod/build/vanta-${{ github.run_number }}.sh
             vanta-cheat/mod/build/libvanta.so
             vanta-cheat/mod/build/inject-arm64
 
@@ -73,8 +75,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release upload dump3 \
-              vanta-cheat/mod/build/vanta.sh \
-              vanta-cheat/mod/build/libvanta.so \
-              vanta-cheat/mod/build/inject-arm64 \
-              --clobber || true
+          NUM=${{ github.run_number }}
+          # vanta-NN.sh без clobber — архив версий
+          gh release upload dump3 vanta-cheat/mod/build/vanta-${NUM}.sh || true
+          # vanta.sh — всегда последний
+          gh release upload dump3 vanta-cheat/mod/build/vanta.sh --clobber || true
