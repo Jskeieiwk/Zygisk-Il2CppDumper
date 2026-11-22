@@ -142,14 +142,6 @@ static void *invoke_static1ptr(const MethodInfo *m, void *arg) {
 }
 
 // Call UnityEngine.Object.FindObjectsOfType(typeof(T)) for a resolved class.
-struct Il2CppArray {
-    void   *klass;
-    void   *monitor;
-    void   *bounds;
-    size_t  max_length;
-    void   *vector[1];
-};
-
 static Il2CppArray *find_instances(Il2CppClass *klass) {
     if (!klass || !T.Object_FindObjectsOfType || !il2cpp_type_get_object || !il2cpp_class_get_type)
         return nullptr;
