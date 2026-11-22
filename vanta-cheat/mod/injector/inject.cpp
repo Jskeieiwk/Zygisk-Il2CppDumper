@@ -93,7 +93,8 @@ static bool wait_for_trap(pid_t pid) {
     return false;
 }
 
-// возвращает X0 после удара в trap-LR (мы кладём туда невалидный адрес)
+// возвращает X0 после удара в trap-LR. Пробрасываем сигналы Unity (SIGPROF и т.п.).
+// печатает диагностику чтобы понять что происходит.
 static uintptr_t remote_call(pid_t pid, uintptr_t func, const uintptr_t* args, int nargs, uintptr_t trap) {
     regs_t r{};
     if (!get_regs(pid, &r)) return 0;
@@ -103,16 +104,49 @@ static uintptr_t remote_call(pid_t pid, uintptr_t func, const uintptr_t* args, i
     r.sp &= ~0xFULL;
     r.regs[30] = trap;
     if (!set_regs(pid, &r)) return 0;
-    if (ptrace(PTRACE_CONT, pid, nullptr, nullptr) != 0) return 0;
-    if (!wait_for_trap(pid)) {
-        fprintf(stderr, "[vanta] wait_for_trap fail\n");
+
+    // verify set
+    regs_t check{};
+    get_regs(pid, &check);
+    if (check.pc != func) {
+        fprintf(stderr, "[vanta] set_regs: pc не записался (хотел 0x%lx, получил 0x%lx)\n",
+                (unsigned long)func, (unsigned long)check.pc);
+    }
+
+    if (ptrace(PTRACE_CONT, pid, nullptr, nullptr) != 0) {
+        fprintf(stderr, "[vanta] PTRACE_CONT: %s\n", strerror(errno));
         set_regs(pid, &backup);
         return 0;
     }
+
+    // ждём SIGSEGV/SIGBUS/SIGILL. остальные пробрасываем.
+    int got_sig = 0;
+    for (int i = 0; i < 1000; ++i) {
+        int st;
+        if (waitpid(pid, &st, __WALL) < 0) {
+            fprintf(stderr, "[vanta] waitpid err: %s\n", strerror(errno));
+            break;
+        }
+        if (!WIFSTOPPED(st)) {
+            fprintf(stderr, "[vanta] child not stopped st=0x%x\n", st);
+            break;
+        }
+        int sig = WSTOPSIG(st);
+        if (sig == SIGSEGV || sig == SIGBUS || sig == SIGILL || sig == SIGTRAP) {
+            got_sig = sig;
+            break;
+        }
+        // не наш сигнал — пробрасываем
+        ptrace(PTRACE_CONT, pid, nullptr, (void*)(long)sig);
+    }
+
     regs_t after{};
     get_regs(pid, &after);
+    fprintf(stderr, "[vanta] call: pc_before=0x%lx -> pc_after=0x%lx x0=0x%lx sig=%d\n",
+            (unsigned long)func, (unsigned long)after.pc, (unsigned long)after.regs[0], got_sig);
+    uintptr_t ret = after.regs[0];
     set_regs(pid, &backup);
-    return after.regs[0];
+    return ret;
 }
 
 int main(int argc, char** argv) {
