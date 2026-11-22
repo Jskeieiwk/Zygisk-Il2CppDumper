@@ -79,47 +79,82 @@ static int write_mem(pid_t pid, uint64_t addr, const void *buf, size_t len) {
     return 0;
 }
 
-// Return the base at which `module_substr` is first mapped in /proc/pid/maps,
-// as its lowest segment VM address (which equals the ELF load bias).
-static uint64_t remote_module_base(pid_t pid, const char *module_substr) {
-    char path[64];
-    snprintf(path, sizeof(path), "/proc/%d/maps", pid);
-    FILE *fp = fopen(path, "re");
-    if (!fp) return 0;
-    char line[512];
+// Walk /proc/<pid>/maps and either:
+//   - find the exact mapping path that contains `addr`     (containing_path_out)
+//   - compute the lowest mapped address for a given `path` (base_for_path)
+// Returns true on success.
+static bool scan_maps(pid_t pid, uint64_t addr, char *containing_path_out, size_t out_sz,
+                      const char *path_wanted, uint64_t *base_for_path) {
+    char mp[64];
+    snprintf(mp, sizeof(mp), "/proc/%d/maps", pid);
+    FILE *fp = fopen(mp, "re");
+    if (!fp) return false;
+    char line[1024];
+    bool found_container = false;
     uint64_t lo = 0;
     while (fgets(line, sizeof(line), fp)) {
-        if (!strstr(line, module_substr)) continue;
         uint64_t a = 0, b = 0;
-        if (sscanf(line, "%lx-%lx", &a, &b) == 2) {
+        unsigned off = 0, dev_major = 0, dev_minor = 0;
+        char perms[8] = {0};
+        unsigned long ino = 0;
+        int consumed = 0;
+        if (sscanf(line, "%lx-%lx %7s %x %x:%x %lu %n",
+                   &a, &b, perms, &off, &dev_major, &dev_minor, &ino, &consumed) < 7) continue;
+        const char *path = line + consumed;
+        // trim leading spaces and the trailing newline
+        while (*path == ' ') ++path;
+        char *nl = strpbrk((char*)path, "\r\n");
+        if (nl) *nl = 0;
+        if (*path == 0 || *path == '[') continue;  // skip anon / [heap] / [stack]
+        if (addr && addr >= a && addr < b && !found_container) {
+            if (containing_path_out && out_sz) {
+                strncpy(containing_path_out, path, out_sz - 1);
+                containing_path_out[out_sz - 1] = 0;
+            }
+            found_container = true;
+        }
+        if (path_wanted && strcmp(path, path_wanted) == 0) {
             if (lo == 0 || a < lo) lo = a;
-            // first hit is the lowest segment of the first mapping run
-            if (lo == a) break;
         }
     }
     fclose(fp);
-    return lo;
+    if (base_for_path) *base_for_path = lo;
+    return addr ? found_container : (lo != 0);
 }
 
-// Returns the base at which `module_substr` is mapped in THIS process.
-static uint64_t local_module_base(const char *module_substr) {
-    return remote_module_base(getpid(), module_substr);
-}
-
-// Resolve `sym` by loading the library locally via dlsym, then convert to
-// the remote address by: remote_base + (local_sym - local_base).
+// Resolve a symbol into the target process by:
+//   1) dlopen + dlsym locally to get the actual address of the function body
+//   2) look up which file-backed mapping that address lives in LOCALLY
+//   3) find that same file-backed mapping in the TARGET process
+//   4) return remote_base + (local_sym_addr - local_base_of_containing_module)
+//
+// This handles the common Android quirk where libdl.so symbols like
+// __loader_dlopen are actually trampolines whose bodies live in the
+// dynamic linker (linker64), not in libdl.so.
 static uint64_t remote_sym(pid_t pid, const char *lib, const char *sym) {
     void *h = dlopen(lib, RTLD_NOW | RTLD_NOLOAD);
     if (!h) h = dlopen(lib, RTLD_NOW);
     if (!h) { say("dlopen(%s) failed: %s", lib, dlerror()); return 0; }
     void *addr = dlsym(h, sym);
     if (!addr) { say("dlsym(%s) failed in %s: %s", sym, lib, dlerror()); return 0; }
-    uint64_t lb = local_module_base(lib);
-    uint64_t rb = remote_module_base(pid, lib);
-    if (!lb || !rb) { say("base lookup failed local=%lx remote=%lx for %s", lb, rb, lib); return 0; }
+
+    char container[256] = {0};
+    if (!scan_maps(getpid(), (uint64_t)addr, container, sizeof(container), nullptr, nullptr)
+        || !container[0]) {
+        say("could not find containing map for %s/%s @%p", lib, sym, addr);
+        return 0;
+    }
+    uint64_t lb = 0, rb = 0;
+    scan_maps(getpid(), 0, nullptr, 0, container, &lb);
+    scan_maps(pid,       0, nullptr, 0, container, &rb);
+    if (!lb || !rb) {
+        say("base lookup failed for %s (local=%lx remote=%lx)", container, lb, rb);
+        return 0;
+    }
     uint64_t off = (uint64_t)addr - lb;
     uint64_t ra = rb + off;
-    say("%s/%s local=%lx(base %lx) remote=%lx(base %lx)", lib, sym, (uint64_t)addr, lb, ra, rb);
+    say("%s/%s via %s local=%p(base %lx) remote=%lx(base %lx) off=%lx",
+        lib, sym, container, addr, lb, ra, rb, off);
     return ra;
 }
 
