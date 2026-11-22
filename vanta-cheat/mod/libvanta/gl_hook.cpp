@@ -21,19 +21,31 @@ static eglSwapBuffers_t orig_eglSwapBuffers = nullptr;
 static std::atomic<int> g_refresh_counter{0};
 
 static EGLBoolean my_eglSwapBuffers(EGLDisplay dpy, EGLSurface sfc) {
+    static std::atomic<int> once{0};
+    if (once.fetch_add(1) < 2) {
+        LOGK("my_eglSwapBuffers CALLED #%d dpy=%p sfc=%p", once.load(), dpy, sfc);
+    }
     EGLint w = 0, h = 0;
     eglQuerySurface(dpy, sfc, EGL_WIDTH, &w);
     eglQuerySurface(dpy, sfc, EGL_HEIGHT, &h);
+    if (w <= 0 || h <= 0) {
+        // fallback: через GL_VIEWPORT
+        GLint vp[4] = {0};
+        glGetIntegerv(GL_VIEWPORT, vp);
+        if (vp[2] > 0 && vp[3] > 0) { w = vp[2]; h = vp[3]; }
+    }
+    if (once.load() < 4) LOGK("swap wh=%dx%d", w, h);
 
     if (w > 0 && h > 0) {
         if (renderer_init_if_needed(w, h)) {
-            // раз в 2 кадра обновляем snapshot игроков — чтобы не кушать CPU каждым кадром
             if ((g_refresh_counter.fetch_add(1) & 1) == 0) {
                 game_refresh();
             }
             renderer_new_frame(w, h);
             aim_tick_and_update();
             renderer_draw();
+        } else {
+            if (once.load() < 10) LOGK("renderer_init_if_needed returned false");
         }
     }
     if (orig_eglSwapBuffers) return orig_eglSwapBuffers(dpy, sfc);
