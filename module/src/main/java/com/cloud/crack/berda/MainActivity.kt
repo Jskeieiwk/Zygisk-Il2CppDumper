@@ -80,9 +80,29 @@ class MainActivity : AppCompatActivity() {
             append("chmod 0755 /data/local/tmp/cloud_injector /data/local/tmp/libcloud_cheat.so\n")
             append("chcon u:object_r:system_file:s0 /data/local/tmp/cloud_injector 2>/dev/null || true\n")
             append("chcon u:object_r:system_file:s0 /data/local/tmp/libcloud_cheat.so 2>/dev/null || true\n")
-            // Resolve target PID.
-            append("PID=${d}(pidof $target | awk '{print ${d}1}')\n")
-            append("if [ -z \"${d}PID\" ]; then echo 'target_not_running'; exit 7; fi\n")
+            // Resolve target PID: walk /proc/*/cmdline since Android's toybox
+            // pidof mis-matches app packages on several ROMs.  We match the
+            // first NUL-terminated token exactly, also catching child
+            // processes like "com.heesoyam.berda:push".
+            append("PID=\"\"\n")
+            append("for p in /proc/[0-9]*; do\n")
+            append("  c=\"${d}p/cmdline\"\n")
+            append("  [ -r \"${d}c\" ] || continue\n")
+            append("  name=${d}(tr '\\0' ' ' < \"${d}c\" 2>/dev/null | awk '{print ${d}1}')\n")
+            append("  case \"${d}name\" in\n")
+            append("    $target|$target:*) PID=${d}{p##*/}; break;;\n")
+            append("  esac\n")
+            append("done\n")
+            append("if [ -z \"${d}PID\" ]; then\n")
+            append("  echo 'target_not_running — processes with \"berda\" in name:'\n")
+            append("  for p in /proc/[0-9]*; do\n")
+            append("    c=\"${d}p/cmdline\"\n")
+            append("    [ -r \"${d}c\" ] || continue\n")
+            append("    n=${d}(tr '\\0' ' ' < \"${d}c\" 2>/dev/null)\n")
+            append("    case \"${d}n\" in *berda*) echo \"  ${d}{p##*/}: ${d}n\";; esac\n")
+            append("  done\n")
+            append("  exit 7\n")
+            append("fi\n")
             append("echo \"pid=${d}PID\"\n")
             // Fire.
             append("/data/local/tmp/cloud_injector \"${d}PID\" /data/local/tmp/libcloud_cheat.so\n")
