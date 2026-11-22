@@ -3,8 +3,8 @@ ext {
     appId             = "com.cloud.crack.berda"
     appName           = "Cloud Crack 67"
     appAuthor         = "@Cloud_Crack 67"
-    moduleVersion     = "1.0.0"
-    moduleVersionCode = 100
+    moduleVersion     = "1.0.1"
+    moduleVersionCode = 101
 }
 
 afterEvaluate {

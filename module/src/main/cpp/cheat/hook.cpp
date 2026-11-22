@@ -20,11 +20,15 @@ void *resolve_rva(uint64_t rva) {
     return (void*)(base + rva);
 }
 
-static void unprotect(void *addr, size_t len) {
+static bool unprotect(void *addr, size_t len) {
     uintptr_t page = sysconf(_SC_PAGESIZE);
     uintptr_t start = (uintptr_t)addr & ~(page - 1);
     uintptr_t end   = ((uintptr_t)addr + len + page - 1) & ~(page - 1);
-    mprotect((void*)start, end - start, PROT_READ | PROT_WRITE | PROT_EXEC);
+    if (mprotect((void*)start, end - start, PROT_READ | PROT_WRITE | PROT_EXEC) == 0)
+        return true;
+    // W^X-strict devices may refuse RWX on file-backed .text; try RW then
+    // restore X in the caller's cache flush path.
+    return mprotect((void*)start, end - start, PROT_READ | PROT_WRITE) == 0;
 }
 
 static void flush_cache(void *addr, size_t len) {
@@ -33,8 +37,17 @@ static void flush_cache(void *addr, size_t len) {
 
 void patch_bytes(void *addr, const void *bytes, size_t len) {
     if (!addr) return;
-    unprotect(addr, len);
+    if (!unprotect(addr, len)) {
+        LOGE("[Cloud] mprotect failed for %p (SELinux may refuse RWX on this page)", addr);
+        return;
+    }
     memcpy(addr, bytes, len);
+    // Try to restore X+R so the patched code remains executable even on
+    // devices that refused the initial RWX.
+    uintptr_t page = sysconf(_SC_PAGESIZE);
+    uintptr_t s = (uintptr_t)addr & ~(page - 1);
+    uintptr_t e = ((uintptr_t)addr + len + page - 1) & ~(page - 1);
+    mprotect((void*)s, e - s, PROT_READ | PROT_EXEC);
     flush_cache(addr, len);
 }
 

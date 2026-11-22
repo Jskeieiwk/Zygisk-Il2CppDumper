@@ -17,15 +17,6 @@ jobs:
           java-version: 17
           cache: gradle
 
-      - name: Generate debug keystore
-        run: |
-          keytool -genkey -v \
-            -keystore debug.keystore \
-            -storepass android -keypass android \
-            -alias androiddebugkey \
-            -keyalg RSA -keysize 2048 -validity 10000 \
-            -dname "CN=Cloud Crack, OU=Dev, O=Cloud, L=NA, S=NA, C=NA"
-
       - name: Build release APK
         run: |
           chmod +x ./gradlew

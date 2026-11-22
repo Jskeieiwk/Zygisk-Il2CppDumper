@@ -119,15 +119,25 @@ void cheat_start(const char *game_data_dir) {
     cheat_config_load();
     std::thread(cheat_config_watch_thread).detach();
 
-    if (g_cfg.enabled_antiguard) {
-        antiguard_install();
-    }
-
-    if (g_cfg.enabled_overlay) {
-        overlay_install();
-    }
-
+    // Give Unity time to finish spinning up its own render thread and the
+    // first few frames before we start touching libEGL — rushing the inline
+    // hook on a half-initialised swap chain is what produced the first-shot
+    // crash on dj's device.
     std::thread([game_data_dir]() {
+        LOGI("[Cloud] warm-up: waiting 6s before installing hooks ...");
+        std::this_thread::sleep_for(std::chrono::seconds(6));
+
+        if (g_cfg.enabled_antiguard) {
+            LOGI("[Cloud] installing antiguard ...");
+            antiguard_install();
+        }
+
+        if (g_cfg.enabled_overlay) {
+            LOGI("[Cloud] installing overlay ...");
+            overlay_install();
+        }
+
+        LOGI("[Cloud] waiting for il2cpp runtime ...");
         wait_for_il2cpp_runtime();
         features_resolve_types();
         features_install_hooks();
