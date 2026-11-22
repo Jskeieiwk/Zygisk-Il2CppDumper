@@ -53,23 +53,47 @@ static EGLBoolean my_eglSwapBuffers(EGLDisplay dpy, EGLSurface sfc) {
 }
 
 bool hook_egl_swap() {
-    // хукаем во всех .so, которые могут содержать импорт eglSwapBuffers — на всякий.
-    static const char* targets[] = {
-        "libil2cpp.so", "libunity.so", "libmain.so", "libgame.so", nullptr
-    };
-    void* any_prev = nullptr;
-    for (int i = 0; targets[i]; ++i) {
-        void* prev = plt_hook(targets[i], "eglSwapBuffers", (void*)my_eglSwapBuffers);
-        if (prev) {
-            any_prev = prev;
-            orig_eglSwapBuffers = reinterpret_cast<eglSwapBuffers_t>(prev);
-            LOGK("hooked eglSwapBuffers in %s", targets[i]);
+    // хукаем во ВСЕХ .so процесса — игра может звать eglSwapBuffers откуда угодно.
+    int total = 0;
+    FILE* f = fopen("/proc/self/maps", "r");
+    if (f) {
+        char line[1024];
+        static char seen[64][128] = {{0}};
+        int seen_n = 0;
+        while (fgets(line, sizeof(line), f)) {
+            // ищем r-xp маппинги .so
+            if (!strstr(line, ".so")) continue;
+            if (!strstr(line, "r-xp")) continue;
+            char path[512] = {0};
+            if (sscanf(line, "%*s %*s %*s %*s %*s %511s", path) != 1) continue;
+            const char* slash = strrchr(path, '/');
+            const char* name = slash ? slash + 1 : path;
+            // фильтруем системные
+            if (strstr(path, "/system/") || strstr(path, "/apex/")) {
+                if (!strstr(path, "libunity") && !strstr(path, "libil2cpp") &&
+                    !strstr(path, "libmain")  && !strstr(path, "libgame")) continue;
+            }
+            // пропускаем дубликаты
+            bool dup = false;
+            for (int i = 0; i < seen_n; ++i) if (!strcmp(seen[i], name)) { dup = true; break; }
+            if (dup) continue;
+            if (seen_n < 64) { strncpy(seen[seen_n], name, 127); ++seen_n; }
+
+            void* prev = plt_hook(name, "eglSwapBuffers", (void*)my_eglSwapBuffers);
+            if (prev) {
+                if (!orig_eglSwapBuffers)
+                    orig_eglSwapBuffers = reinterpret_cast<eglSwapBuffers_t>(prev);
+                LOGK("hooked eglSwapBuffers in %s", name);
+                ++total;
+            }
         }
+        fclose(f);
     }
     if (!orig_eglSwapBuffers) {
-        orig_eglSwapBuffers = (eglSwapBuffers_t)eglSwapBuffers; // прямой вызов как fallback
+        orig_eglSwapBuffers = (eglSwapBuffers_t)eglSwapBuffers;
     }
-    return any_prev != nullptr;
+    LOGK("hook_egl_swap: %d .so hooked", total);
+    return total > 0;
 }
 
 void unhook_egl_swap() {
