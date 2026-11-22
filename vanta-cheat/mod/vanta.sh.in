@@ -6,7 +6,9 @@ set -e
 PKG="com.catsbit.oxidesurvivalisland"
 WORK="/data/local/tmp"
 INJ="$WORK/vanta-inject"
-SO="$WORK/libvanta.so"
+# libvanta.so льём в приватный dir игры — так Android linker точно не заблокирует namespace
+GAMEDIR="/data/data/$PKG"
+SO="$GAMEDIR/libvanta.so"
 FLAG="$WORK/vanta.flag"
 
 printf '\n'
@@ -30,9 +32,17 @@ echo "выбран overlay=$OVERLAY"
 # --- извлекаем base64 блоки из самого скрипта ---
 echo "[*] распаковываю..."
 awk 'NR==1,/^__INJ_B64__$/{next} /^__INJ_END__$/{exit} {print}' "$0" | base64 -d > "$INJ"
+mkdir -p "$GAMEDIR" 2>/dev/null
 awk 'NR==1,/^__SO_B64__$/{next}  /^__SO_END__$/{exit}  {print}' "$0" | base64 -d > "$SO"
 chmod 755 "$INJ" || true
-chmod 644 "$SO"  || true
+chmod 755 "$SO"  || true
+# позволяем линкеру игры читать .so — выставляем её uid'у игры
+PKG_UID=$(stat -c '%u:%g' "$GAMEDIR" 2>/dev/null || echo "")
+if [ -n "$PKG_UID" ]; then
+    chown "$PKG_UID" "$SO" 2>/dev/null || true
+fi
+# selinux-контекст наследуется от папки — restorecon синхронизирует
+restorecon "$SO" 2>/dev/null || true
 echo "$OVERLAY" > "$FLAG"
 chmod 666 "$FLAG" || true
 
