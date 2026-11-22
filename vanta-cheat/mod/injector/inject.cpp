@@ -236,11 +236,13 @@ int main(int argc, char** argv) {
         return 6;
     }
 
-    // layout buf:
-    //   0x000..0x400 — путь к .so (и позже имя символа)
-    //   0x400..0x408 — шеллкод (blr x8; brk #0)
+    // layout buf (2 страницы 0x2000):
+    //   0x0000..0x0400 — путь к .so (или имя символа)
+    //   0x0400..0x0408 — шеллкод (blr x8; brk #0)
+    //   0x1FF0         — свой выровненный стек (растёт вниз)
     const uintptr_t str_addr   = buf;
     const uintptr_t shell_addr = buf + 0x400;
+    const uintptr_t stack_addr = buf + 0x1FF0;   // свой стек, dlopen'у есть куда расти
     uint32_t shellcode[2] = { 0xD63F0100u /* blr x8 */, 0xD4200000u /* brk #0 */ };
     if (!poke_mem(pid, shell_addr, shellcode, sizeof(shellcode))) {
         fprintf(stderr, "[vanta] poke shellcode fail\n");
@@ -256,13 +258,14 @@ int main(int argc, char** argv) {
     }
 
     // remote_call_sh: pc=shell_addr, x8=func, x0..=args; SIGTRAP от brk.
+    // используем свой стек (stack_addr) — активный тред может иметь почти-полный стек
     auto remote_call_sh = [&](uintptr_t func, const uintptr_t* a, int n) -> uintptr_t {
         regs_t r{}; if (!get_regs(pid, &r)) return 0;
         regs_t backup = r;
         for (int i = 0; i < n && i < 8; ++i) r.regs[i] = a[i];
         r.regs[8] = func;
         r.pc = shell_addr;
-        r.sp &= ~0xFULL;
+        r.sp = stack_addr & ~0xFULL;
         r.regs[30] = TRAP;
         if (!set_regs(pid, &r)) return 0;
         if (ptrace(PTRACE_CONT, pid, nullptr, nullptr) != 0) return 0;
@@ -282,11 +285,21 @@ int main(int argc, char** argv) {
         return af.regs[0];
     };
 
-    fprintf(stderr, "[vanta] remote_dlopen path=0x%lx shell=0x%lx\n",
-            (unsigned long)str_addr, (unsigned long)shell_addr);
-    uintptr_t do_args[3] = { str_addr, (uintptr_t)(RTLD_NOW | RTLD_GLOBAL), r_dlopen };
-    int nargs = loader ? 3 : 2;
-    uintptr_t handle = remote_call_sh(r_dlopen, do_args, nargs);
+    fprintf(stderr, "[vanta] remote_dlopen path=0x%lx shell=0x%lx stack=0x%lx\n",
+            (unsigned long)str_addr, (unsigned long)shell_addr, (unsigned long)stack_addr);
+    // сначала пробуем публичный dlopen(path, flags) — 2 аргумента, без caller.
+    // если не вернул handle — пробуем __loader_dlopen(path, flags, 0).
+    uintptr_t handle = 0;
+    if (r_pub_dlopen) {
+        uintptr_t a2[2] = { str_addr, (uintptr_t)(RTLD_NOW | RTLD_GLOBAL) };
+        handle = remote_call_sh(r_pub_dlopen, a2, 2);
+        if (handle) fprintf(stderr, "[vanta] публичный dlopen: 0x%lx\n", (unsigned long)handle);
+    }
+    if (!handle && r_ldr_dlopen) {
+        uintptr_t a3[3] = { str_addr, (uintptr_t)(RTLD_NOW | RTLD_GLOBAL), 0 };
+        handle = remote_call_sh(r_ldr_dlopen, a3, 3);
+        if (handle) fprintf(stderr, "[vanta] __loader_dlopen(caller=0): 0x%lx\n", (unsigned long)handle);
+    }
     if (!handle) {
         fprintf(stderr, "[vanta] remote dlopen failed\n");
         ptrace(PTRACE_DETACH, pid, nullptr, nullptr);
@@ -296,9 +309,15 @@ int main(int argc, char** argv) {
 
     fprintf(stderr, "[vanta] remote_dlsym...\n");
     poke_mem(pid, str_addr, en, strlen(en) + 1);
-    uintptr_t ds_args[3] = { handle, str_addr, r_dlsym };
-    int ds_nargs = loader ? 3 : 2;
-    uintptr_t sym = remote_call_sh(r_dlsym, ds_args, ds_nargs);
+    uintptr_t sym = 0;
+    if (r_pub_dlsym) {
+        uintptr_t a2[2] = { handle, str_addr };
+        sym = remote_call_sh(r_pub_dlsym, a2, 2);
+    }
+    if (!sym && r_ldr_dlsym) {
+        uintptr_t a3[3] = { handle, str_addr, 0 };
+        sym = remote_call_sh(r_ldr_dlsym, a3, 3);
+    }
     fprintf(stderr, "[vanta] dlsym %s → 0x%lx\n", en, (unsigned long)sym);
     if (sym) {
         fprintf(stderr, "[vanta] remote_entry...\n");
