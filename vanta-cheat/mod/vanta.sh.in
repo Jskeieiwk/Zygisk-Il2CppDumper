@@ -46,12 +46,11 @@ restorecon "$SO" 2>/dev/null || true
 echo "$OVERLAY" > "$FLAG"
 chmod 666 "$FLAG" || true
 
-# --- гарантируем что игра запущена ---
+# --- проверяем что игра уже запущена; если нет — запускаем и ждём загрузки, но в фокус не возвращаем до успеха ---
 PID=$(pidof "$PKG" 2>/dev/null || true)
 if [ -z "$PID" ]; then
-    echo "[*] запускаю $PKG..."
-    monkey -p "$PKG" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1 || \
-        am start -n "$PKG/com.unity3d.player.UnityPlayerActivity" >/dev/null 2>&1 || true
+    echo "[*] запускаю $PKG в фоне..."
+    monkey -p "$PKG" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1 || true
     i=0
     while [ $i -lt 15 ]; do
         sleep 1
@@ -59,16 +58,17 @@ if [ -z "$PID" ]; then
         [ -n "$PID" ] && break
         i=$((i + 1))
     done
+    echo "[*] жду инициализацию игры 5с..."
+    sleep 5
+    # возвращаем фокус на себя (терминал)
+    MYPKG=$(dumpsys activity activities 2>/dev/null | grep -oE 'mFocusedWindow=.* u0 [a-z0-9._]+' | awk '{print $NF}' | head -1)
 fi
 if [ -z "$PID" ]; then
-    echo "[!] процесс $PKG не нашёл; выход"
+    echo "[!] процесс $PKG не нашёл; открой игру вручную и запусти vanta ещё раз"
+    read dummy
     exit 2
 fi
 echo "[+] pid=$PID"
-
-# даём il2cpp + libEGL прогрузиться
-echo "[*] жду инициализацию игры 5с..."
-sleep 5
 
 echo "[*] инжектирую libvanta.so..."
 timeout 30 "$INJ" "$PID" "$SO" "vanta_start"
@@ -76,13 +76,20 @@ RC=$?
 if [ $RC -eq 124 ]; then
     echo "[!] инжектор завис на 30с — убит по timeout"
 fi
+
+echo
 if [ $RC -eq 0 ]; then
-    echo "[+] инжекция успешна — активирую игру"
-    am start -n "$PKG/com.unity3d.player.UnityPlayerActivity" >/dev/null 2>&1 || \
-        monkey -p "$PKG" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1 || true
-    echo "[+] готово — водяной знак @Cloud_Crack сверху игры"
+    echo "[+] готово — переключаю в игру через 2с"
+    sleep 2
+    # сначала через monkey (надёжнее), потом am start fallback
+    monkey -p "$PKG" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1 || \
+        am start -n "$PKG/com.unity3d.player.UnityPlayerActivity" >/dev/null 2>&1 || true
+    echo "[+] водяной знак @Cloud_Crack сверху игры"
 else
     echo "[!] инжекция вернула код $RC — проверь root/SELinux (setenforce 0)"
+    echo
+    echo "    нажми Enter чтобы закрыть"
+    read dummy
 fi
 exit $RC
 
