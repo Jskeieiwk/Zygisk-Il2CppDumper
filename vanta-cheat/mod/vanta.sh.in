@@ -58,14 +58,18 @@ RC=${PIPESTATUS:-$?}
 echo
 
 if [ $RC -eq 0 ]; then
-    echo "[+] готово — переключаю в игру через 2с"
+    echo "[+] инжекция прошла, жду 3с для сбора логов libvanta..."
+    sleep 3
+    echo
+    echo "=========== LOGCAT vanta-* ==========="
+    logcat -d -s vanta-main,vanta-hook,vanta-plt,vanta-render,vanta-game,vanta-il2cpp,vanta-input,vanta-aim 2>&1 | tail -80
+    echo "======================================"
+    echo
+    echo "[+] переключаю в игру через 2с"
     sleep 2
     monkey -p "$PKG" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1 || true
-    echo "[+] водяной знак @Cloud_Crack сверху игры"
 else
     echo "[!] AndKittyInjector вернул код $RC"
-    echo "    Enter — выйти"
-    read dummy
 fi
 exit $RC
 
