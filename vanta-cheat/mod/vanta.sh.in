@@ -46,25 +46,15 @@ restorecon "$SO" 2>/dev/null || true
 echo "$OVERLAY" > "$FLAG"
 chmod 666 "$FLAG" || true
 
-# --- проверяем что игра уже запущена; если нет — запускаем и ждём загрузки, но в фокус не возвращаем до успеха ---
+# --- игра должна быть уже запущена ---
 PID=$(pidof "$PKG" 2>/dev/null || true)
 if [ -z "$PID" ]; then
-    echo "[*] запускаю $PKG в фоне..."
-    monkey -p "$PKG" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1 || true
-    i=0
-    while [ $i -lt 15 ]; do
-        sleep 1
-        PID=$(pidof "$PKG" 2>/dev/null || true)
-        [ -n "$PID" ] && break
-        i=$((i + 1))
-    done
-    echo "[*] жду инициализацию игры 5с..."
-    sleep 5
-    # возвращаем фокус на себя (терминал)
-    MYPKG=$(dumpsys activity activities 2>/dev/null | grep -oE 'mFocusedWindow=.* u0 [a-z0-9._]+' | awk '{print $NF}' | head -1)
-fi
-if [ -z "$PID" ]; then
-    echo "[!] процесс $PKG не нашёл; открой игру вручную и запусти vanta ещё раз"
+    echo
+    echo "    [!] Oxide не запущен. Запусти его вручную"
+    echo "    (на главный экран и открой $PKG),"
+    echo "    затем вернись в терминал и запусти vanta ещё раз."
+    echo
+    echo "    нажми Enter для выхода"
     read dummy
     exit 2
 fi

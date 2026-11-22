@@ -78,6 +78,21 @@ static bool wait_signal(pid_t pid, int* out_sig) {
     return WIFSTOPPED(st);
 }
 
+// ждём именно SIGSEGV/SIGBUS/SIGILL (от прыжка в trap-LR).
+// любой другой сигнал (SIGPROF/SIGCHLD/SIGALRM от Unity) пробрасываем обратно.
+static bool wait_for_trap(pid_t pid) {
+    for (int i = 0; i < 400; ++i) {
+        int st;
+        if (waitpid(pid, &st, __WALL) < 0) return false;
+        if (!WIFSTOPPED(st)) return false;
+        int sig = WSTOPSIG(st);
+        if (sig == SIGSEGV || sig == SIGBUS || sig == SIGILL) return true;
+        // пробрасываем сигнал обратно
+        if (ptrace(PTRACE_CONT, pid, nullptr, (void*)(long)sig) != 0) return false;
+    }
+    return false;
+}
+
 // возвращает X0 после удара в trap-LR (мы кладём туда невалидный адрес)
 static uintptr_t remote_call(pid_t pid, uintptr_t func, const uintptr_t* args, int nargs, uintptr_t trap) {
     regs_t r{};
@@ -89,8 +104,11 @@ static uintptr_t remote_call(pid_t pid, uintptr_t func, const uintptr_t* args, i
     r.regs[30] = trap;
     if (!set_regs(pid, &r)) return 0;
     if (ptrace(PTRACE_CONT, pid, nullptr, nullptr) != 0) return 0;
-    int sig = 0;
-    wait_signal(pid, &sig);
+    if (!wait_for_trap(pid)) {
+        fprintf(stderr, "[vanta] wait_for_trap fail\n");
+        set_regs(pid, &backup);
+        return 0;
+    }
     regs_t after{};
     get_regs(pid, &after);
     set_regs(pid, &backup);
