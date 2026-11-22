@@ -69,8 +69,32 @@ float unbox_f32(Il2CppObject* b) {
 
 bool game_init() {
     if (g_il2cpp.loaded && cls_pm) return true;
-    void* h = dlopen("libil2cpp.so", RTLD_NOW | RTLD_GLOBAL);
-    if (!h) { LOGE("libil2cpp.so dlopen fail"); return false; }
+    // il2cpp API может сидеть в разных .so: libil2cpp.so (стандарт),
+    // libunity.so (встроенный), libmain.so, или сам процесс.
+    static const char* candidates[] = {
+        "libil2cpp.so", "libunity.so", "libmain.so", "libil2cpp.dylib",
+        nullptr
+    };
+    void* h = nullptr;
+    for (int i = 0; candidates[i] && !h; ++i) {
+        h = dlopen(candidates[i], RTLD_NOW | RTLD_GLOBAL | RTLD_NOLOAD);
+        if (!h) h = dlopen(candidates[i], RTLD_NOW | RTLD_GLOBAL);
+        if (h) {
+            if (!dlsym(h, "il2cpp_domain_get")) {
+                dlclose(h); h = nullptr; continue;
+            }
+            LOGG("il2cpp найден в %s", candidates[i]);
+            break;
+        }
+    }
+    if (!h) {
+        // last resort: dlopen(NULL) — main ELF, иногда там всё
+        h = dlopen(nullptr, RTLD_NOW);
+        if (!h || !dlsym(h, "il2cpp_domain_get")) {
+            LOGE("il2cpp API ни в одной .so не найден"); return false;
+        }
+        LOGG("il2cpp найден в main executable");
+    }
     if (!il2cpp_api_load(h)) return false;
     auto dom = g_il2cpp.domain_get();
     if (!dom) return false;
