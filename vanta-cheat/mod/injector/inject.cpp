@@ -257,9 +257,19 @@ int main(int argc, char** argv) {
         return 7;
     }
 
+    // resolve cacheflush / __clear_cache заранее — пригодятся между sh-call для icache
+    uintptr_t r_clear_cache = remote_sym(pid, "libc.so", "__clear_cache");
+    fprintf(stderr, "[vanta] __clear_cache remote: 0x%lx\n", (unsigned long)r_clear_cache);
+
     // remote_call_sh: pc=shell_addr, x8=func, x0..=args; SIGTRAP от brk.
-    // используем свой стек (stack_addr) — активный тред может иметь почти-полный стек
     auto remote_call_sh = [&](uintptr_t func, const uintptr_t* a, int n) -> uintptr_t {
+        // переписываем шеллкод перед каждым вызовом — на случай stale кэша / перезатёра
+        poke_mem(pid, shell_addr, shellcode, sizeof(shellcode));
+        // и явно инвалидируем icache через __clear_cache(shell, shell+8) по trap-LR
+        if (r_clear_cache) {
+            uintptr_t cc_args[2] = { shell_addr, shell_addr + sizeof(shellcode) };
+            remote_call(pid, r_clear_cache, cc_args, 2, TRAP);
+        }
         regs_t r{}; if (!get_regs(pid, &r)) return 0;
         regs_t backup = r;
         for (int i = 0; i < n && i < 8; ++i) r.regs[i] = a[i];
