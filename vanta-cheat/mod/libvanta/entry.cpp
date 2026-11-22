@@ -61,6 +61,15 @@ int vanta_start() {
     return 0;
 }
 
+// AndKittyInjector вызывает JNI_OnLoad после инжекции с key=1337.
+// просто перенаправляем в vanta_start().
+extern "C" __attribute__((visibility("default")))
+int JNI_OnLoad(void* vm, void* reserved) {
+    (void)vm; (void)reserved;
+    vanta_start();
+    return 0x00010006;   // JNI_VERSION_1_6
+}
+
 extern "C" __attribute__((visibility("default")))
 int vanta_stop() {
     vanta::aim_stop();

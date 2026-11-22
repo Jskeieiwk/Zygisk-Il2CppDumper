@@ -39,16 +39,42 @@ jobs:
             -DCMAKE_BUILD_TYPE=Release \
             -DANDROID_STL=c++_static
 
-      - name: Build
+      - name: Build libvanta.so
         working-directory: vanta-cheat/mod
         run: cmake --build build --parallel
+
+      - name: Build AndKittyInjector
+        run: |
+          git clone --recursive https://github.com/MJx0/AndKittyInjector.git /tmp/akit
+          cd /tmp/akit/AndKittyInjector
+          ls -la
+          # ищем build script / CMakeLists
+          if [ -f build.sh ]; then
+              # пропатчим путь к NDK внутри build.sh если нужно
+              export NDK_HOME="${{ steps.ndk.outputs.ndk-path }}"
+              export ANDROID_NDK_HOME="$NDK_HOME"
+              bash build.sh || true
+          fi
+          if [ ! -f AndKittyInjector ] && [ -f CMakeLists.txt ]; then
+              cmake -S . -B build-cmake \
+                  -DCMAKE_TOOLCHAIN_FILE="${{ steps.ndk.outputs.ndk-path }}/build/cmake/android.toolchain.cmake" \
+                  -DANDROID_ABI=arm64-v8a \
+                  -DANDROID_PLATFORM=android-24 \
+                  -DCMAKE_BUILD_TYPE=Release \
+                  -DANDROID_STL=c++_static
+              cmake --build build-cmake --parallel
+              find build-cmake -maxdepth 3 -name 'AndKittyInjector*' -type f
+          fi
+          # копируем собранный бинарь к нам
+          find /tmp/akit -maxdepth 6 -name 'AndKittyInjector' -type f | head -1 | xargs -I {} cp {} ${{ github.workspace }}/vanta-cheat/mod/build/AndKittyInjector
+          ls -la ${{ github.workspace }}/vanta-cheat/mod/build/
 
       - name: Strip
         working-directory: vanta-cheat/mod
         run: |
           STRIP=${{ steps.ndk.outputs.ndk-path }}/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip
           "$STRIP" --strip-unneeded build/libvanta.so
-          "$STRIP" --strip-unneeded build/inject-arm64
+          "$STRIP" --strip-unneeded build/AndKittyInjector
 
       - name: Pack vanta.sh
         working-directory: vanta-cheat/mod
@@ -61,7 +87,7 @@ jobs:
           NUM=$(( ${EXISTING:-0} + 1 ))
           echo "next vanta build = $NUM"
           python3 pack.py --template vanta.sh.in \
-            --inj build/inject-arm64 \
+            --inj build/AndKittyInjector \
             --so  build/libvanta.so \
             --out build/vanta${NUM}.sh
           cp build/vanta${NUM}.sh build/vanta.sh
@@ -76,7 +102,7 @@ jobs:
           path: |
             vanta-cheat/mod/build/vanta${{ env.BUILD_NUM }}.sh
             vanta-cheat/mod/build/libvanta.so
-            vanta-cheat/mod/build/inject-arm64
+            vanta-cheat/mod/build/AndKittyInjector
 
       - name: Upload to release dump3
         env:

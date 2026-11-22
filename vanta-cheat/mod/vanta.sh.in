@@ -1,12 +1,10 @@
 #!/system/bin/sh
-# vanta — self-extracting cheat loader
-# usage: su -c sh vanta.sh   (из /data/local/tmp или любого writable места)
+# vanta — self-extracting cheat loader на базе AndKittyInjector
 set -e
 
 PKG="com.catsbit.oxidesurvivalisland"
 WORK="/data/local/tmp"
 INJ="$WORK/vanta-inject"
-# libvanta.so льём в приватный dir игры — так Android linker точно не заблокирует namespace
 GAMEDIR="/data/data/$PKG"
 SO="$GAMEDIR/libvanta.so"
 FLAG="$WORK/vanta.flag"
@@ -26,64 +24,52 @@ case "$OVERLAY" in
     0|нет|no|N|n) OVERLAY=0 ;;
     *)            OVERLAY=1 ;;
 esac
-echo
 echo "выбран overlay=$OVERLAY"
 
-# --- извлекаем base64 блоки из самого скрипта ---
 echo "[*] распаковываю..."
 awk 'NR==1,/^__INJ_B64__$/{next} /^__INJ_END__$/{exit} {print}' "$0" | base64 -d > "$INJ"
 mkdir -p "$GAMEDIR" 2>/dev/null
 awk 'NR==1,/^__SO_B64__$/{next}  /^__SO_END__$/{exit}  {print}' "$0" | base64 -d > "$SO"
-chmod 755 "$INJ" || true
-chmod 755 "$SO"  || true
-# позволяем линкеру игры читать .so — выставляем её uid'у игры
+chmod 755 "$INJ" "$SO" || true
 PKG_UID=$(stat -c '%u:%g' "$GAMEDIR" 2>/dev/null || echo "")
 if [ -n "$PKG_UID" ]; then
     chown "$PKG_UID" "$SO" 2>/dev/null || true
 fi
-# selinux-контекст наследуется от папки — restorecon синхронизирует
 restorecon "$SO" 2>/dev/null || true
 echo "$OVERLAY" > "$FLAG"
 chmod 666 "$FLAG" || true
 
-# --- игра должна быть уже запущена ---
+# игра должна быть уже запущена
 PID=$(pidof "$PKG" 2>/dev/null || true)
 if [ -z "$PID" ]; then
     echo
-    echo "    [!] Oxide не запущен. Запусти его вручную"
-    echo "    (на главный экран и открой $PKG),"
-    echo "    затем вернись в терминал и запусти vanta ещё раз."
+    echo "    [!] Oxide не запущен."
+    echo "    Открой игру вручную, сверни в терминал и запусти vanta ещё раз."
     echo
-    echo "    нажми Enter для выхода"
+    echo "    Enter — выйти"
     read dummy
     exit 2
 fi
 echo "[+] pid=$PID"
 
-echo "[*] инжектирую libvanta.so..."
-timeout 30 "$INJ" "$PID" "$SO" "vanta_start"
-RC=$?
-if [ $RC -eq 124 ]; then
-    echo "[!] инжектор завис на 30с — убит по timeout"
-fi
-
+echo "[*] инжектирую libvanta.so через AndKittyInjector..."
+"$INJ" --pid "$PID" --libs "$SO" --memfd 2>&1 | sed 's/^/    /'
+RC=${PIPESTATUS:-$?}
 echo
+
 if [ $RC -eq 0 ]; then
     echo "[+] готово — переключаю в игру через 2с"
     sleep 2
-    # сначала через monkey (надёжнее), потом am start fallback
-    monkey -p "$PKG" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1 || \
-        am start -n "$PKG/com.unity3d.player.UnityPlayerActivity" >/dev/null 2>&1 || true
+    monkey -p "$PKG" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1 || true
     echo "[+] водяной знак @Cloud_Crack сверху игры"
 else
-    echo "[!] инжекция вернула код $RC — проверь root/SELinux (setenforce 0)"
-    echo
-    echo "    нажми Enter чтобы закрыть"
+    echo "[!] AndKittyInjector вернул код $RC"
+    echo "    Enter — выйти"
     read dummy
 fi
 exit $RC
 
-# ===================== BINARY BLOBS ВНИЗУ =====================
+# ===================== BINARY BLOBS =====================
 __INJ_B64__
 @@INJ_PAYLOAD@@
 __INJ_END__

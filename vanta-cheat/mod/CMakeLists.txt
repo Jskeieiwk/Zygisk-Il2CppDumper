@@ -68,6 +68,4 @@ target_link_libraries(vanta
 )
 set_target_properties(vanta PROPERTIES OUTPUT_NAME "vanta")
 
-# ---- inject-arm64 standalone ----
-add_executable(inject-arm64 injector/inject.cpp)
-target_link_libraries(inject-arm64 log dl)
+# inject-arm64 standalone больше не собираем — используем AndKittyInjector из CI
