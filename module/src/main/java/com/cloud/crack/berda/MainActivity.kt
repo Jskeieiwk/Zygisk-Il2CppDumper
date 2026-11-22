@@ -71,6 +71,7 @@ class MainActivity : AppCompatActivity() {
         if (!File(payload).exists())  throw RuntimeException("payload missing: $payload")
         if (!File(injector).exists()) throw RuntimeException("injector missing: $injector")
 
+        val d = "\$"
         val script = buildString {
             append("set -e\n")
             // Stage files in /data/local/tmp (universally executable by root).
@@ -80,11 +81,11 @@ class MainActivity : AppCompatActivity() {
             append("chcon u:object_r:system_file:s0 /data/local/tmp/cloud_injector 2>/dev/null || true\n")
             append("chcon u:object_r:system_file:s0 /data/local/tmp/libcloud_cheat.so 2>/dev/null || true\n")
             // Resolve target PID.
-            append("PID=$(pidof $target | awk '{print \$1}')\n")
-            append("if [ -z \"$PID\" ]; then echo 'target_not_running'; exit 7; fi\n")
-            append("echo \"pid=$PID\"\n")
+            append("PID=${d}(pidof $target | awk '{print ${d}1}')\n")
+            append("if [ -z \"${d}PID\" ]; then echo 'target_not_running'; exit 7; fi\n")
+            append("echo \"pid=${d}PID\"\n")
             // Fire.
-            append("/data/local/tmp/cloud_injector \"$PID\" /data/local/tmp/libcloud_cheat.so\n")
+            append("/data/local/tmp/cloud_injector \"${d}PID\" /data/local/tmp/libcloud_cheat.so\n")
         }
 
         val out = runRoot(script)
@@ -98,7 +99,7 @@ class MainActivity : AppCompatActivity() {
         val proc = ProcessBuilder("su")
             .redirectErrorStream(true)
             .start()
-        DataOutputStream(proc.outputStream).use { it.writeBytes(script); it.writeBytes("\nexit $?\n"); it.flush() }
+        DataOutputStream(proc.outputStream).use { it.writeBytes(script); it.writeBytes("\nexit \$?\n"); it.flush() }
         val reader = BufferedReader(InputStreamReader(proc.inputStream))
         val sb = StringBuilder()
         var line = reader.readLine()
