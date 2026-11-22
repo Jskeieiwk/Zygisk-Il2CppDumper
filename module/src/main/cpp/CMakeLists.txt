@@ -21,7 +21,7 @@ else ()
     set(C_FLAGS "${C_FLAGS} -O0")
 endif ()
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${C_FLAGS}")
+set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   ${C_FLAGS}")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${C_FLAGS} ${CXX_FLAGS}")
 
 set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} ${LINKER_FLAGS}")
@@ -29,16 +29,28 @@ set(CMAKE_MODULE_LINKER_FLAGS "${CMAKE_MODULE_LINKER_FLAGS} ${LINKER_FLAGS}")
 
 include_directories(
         xdl/include
+        cheat
 )
 
 aux_source_directory(xdl xdl-src)
 
+set(CHEAT_SRC
+        cheat/cheat.cpp
+        cheat/features.cpp
+        cheat/overlay.cpp
+        cheat/hook.cpp
+        cheat/il2cpp_api.cpp)
+
 add_library(${MODULE_NAME} SHARED
         main.cpp
         hack.cpp
-        il2cpp_dump.cpp
+        ${CHEAT_SRC}
         ${xdl-src})
-target_link_libraries(${MODULE_NAME} log)
+
+target_link_libraries(${MODULE_NAME}
+        log
+        EGL
+        GLESv3)
 
 if (NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
     add_custom_command(TARGET ${MODULE_NAME} POST_BUILD

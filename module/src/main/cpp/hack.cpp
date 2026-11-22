@@ -3,7 +3,8 @@
 //
 
 #include "hack.h"
-#include "il2cpp_dump.h"
+#include "cheat/cheat.h"
+#include "cheat/il2cpp_api.h"
 #include "log.h"
 #include "xdl.h"
 #include <cstring>
@@ -24,7 +25,13 @@ void hack_start(const char *game_data_dir) {
         if (handle) {
             load = true;
             il2cpp_api_init(handle);
-            il2cpp_dump(game_data_dir);
+
+            xdl_info_t info{};
+            xdl_info(handle, XDL_DI_DLINFO, &info);
+            il2cpp_set_base((uintptr_t)info.dli_fbase);
+            LOGI("[Cloud] libil2cpp base=%p", info.dli_fbase);
+
+            cheat_start(game_data_dir);
             break;
         } else {
             sleep(1);

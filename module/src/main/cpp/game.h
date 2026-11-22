@@ -1,10 +1,10 @@
-//
-// Created by Perfare on 2020/7/4.
-//
+#ifndef CLOUD_CHEAT_GAME_H
+#define CLOUD_CHEAT_GAME_H
 
-#ifndef ZYGISK_IL2CPPDUMPER_GAME_H
-#define ZYGISK_IL2CPPDUMPER_GAME_H
+#define GamePackageName "com.heesoyam.berda"
 
-#define GamePackageName "com.game.packagename"
+#define CheatWatermark "@Cloud_Crack 67"
+#define CheatVersion   "1.0.0"
+#define CheatTag       "CloudCheat"
 
-#endif //ZYGISK_IL2CPPDUMPER_GAME_H
+#endif

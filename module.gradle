@@ -1,9 +1,9 @@
 ext {
-    moduleLibraryName = "il2cppdumper"
-    magiskModuleId = "zygisk_il2cppdumper"
-    moduleName = "Il2CppDumper"
-    moduleAuthor = "Perfare"
-    moduleDescription = "Il2CppDumper Zygisk version."
-    moduleVersion = "v1.2.0"
-    moduleVersionCode = 1
+    moduleLibraryName = "cloud_cheat"
+    magiskModuleId = "cloud_cheat_berda"
+    moduleName = "Cloud Cheat — Berda Survival"
+    moduleAuthor = "@Cloud_Crack 67"
+    moduleDescription = "Cloud Cheat for Berda Survival (com.heesoyam.berda) — ESP, aim assist, fly, speed, FOV, no-recoil, watermark overlay."
+    moduleVersion = "v1.0.0"
+    moduleVersionCode = 100
 }
