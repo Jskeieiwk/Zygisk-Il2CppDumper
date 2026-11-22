@@ -1,6 +1,7 @@
 // gl_hook.cpp — хук eglSwapBuffers у libil2cpp.so / libunity.so / libmain.so, и там рендерим.
 #include "gl_hook.h"
 #include "plt_hook.h"
+#include "inline_hook.h"
 #include "renderer.h"
 #include "game.h"
 #include "aim.h"
@@ -11,6 +12,9 @@
 #include <GLES3/gl3.h>
 #include <android/log.h>
 #include <atomic>
+#include <dlfcn.h>
+#include <stdio.h>
+#include <string.h>
 
 #define LOGK(fmt, ...) __android_log_print(ANDROID_LOG_INFO, "vanta-hook", fmt, ##__VA_ARGS__)
 
@@ -92,7 +96,25 @@ bool hook_egl_swap() {
     if (!orig_eglSwapBuffers) {
         orig_eglSwapBuffers = (eglSwapBuffers_t)eglSwapBuffers;
     }
-    LOGK("hook_egl_swap: %d .so hooked", total);
+    LOGK("hook_egl_swap PLT: %d .so hooked", total);
+
+    // главный фикс: inline-hook на сам eglSwapBuffers в libEGL.so
+    // Unity резолвит его через eglGetProcAddress — PLT не работает.
+    void* libegl = dlopen("libEGL.so", RTLD_NOW | RTLD_GLOBAL);
+    void* sym = libegl ? dlsym(libegl, "eglSwapBuffers") : nullptr;
+    if (sym) {
+        void* tramp = nullptr;
+        if (inline_hook(sym, (void*)my_eglSwapBuffers, &tramp)) {
+            orig_eglSwapBuffers = reinterpret_cast<eglSwapBuffers_t>(tramp);
+            LOGK("INLINE-hooked eglSwapBuffers @ %p (orig via %p)", sym, tramp);
+            ++total;
+        } else {
+            LOGK("inline_hook fail на %p", sym);
+        }
+    } else {
+        LOGK("не нашёл eglSwapBuffers в libEGL.so: %s", dlerror());
+    }
+
     return total > 0;
 }
 

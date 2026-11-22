@@ -43,6 +43,7 @@ add_library(vanta SHARED
     libvanta/state.cpp
     libvanta/gl_hook.cpp
     libvanta/plt_hook.cpp
+    libvanta/inline_hook.cpp
     libvanta/renderer.cpp
     libvanta/menu.cpp
     libvanta/esp.cpp
