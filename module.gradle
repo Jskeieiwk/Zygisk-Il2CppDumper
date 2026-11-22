@@ -1,9 +1,24 @@
 ext {
     moduleLibraryName = "cloud_cheat"
-    magiskModuleId = "cloud_cheat_berda"
-    moduleName = "Cloud Cheat — Berda Survival"
-    moduleAuthor = "@Cloud_Crack 67"
-    moduleDescription = "Cloud Cheat for Berda Survival (com.heesoyam.berda) — ESP, aim assist, fly, speed, FOV, no-recoil, watermark overlay."
-    moduleVersion = "v1.0.0"
+    appId             = "com.cloud.crack.berda"
+    appName           = "Cloud Crack 67"
+    appAuthor         = "@Cloud_Crack 67"
+    moduleVersion     = "1.0.0"
     moduleVersionCode = 100
+}
+
+afterEvaluate {
+    android.applicationVariants.forEach { variant ->
+        def variantCapped = variant.name.capitalize()
+        def variantLowered = variant.name.toLowerCase()
+
+        task("copy${variantCapped}Apk", type: Copy) {
+            dependsOn("assemble$variantCapped")
+            from(variant.outputs.first().outputFile)
+            into outDir
+            rename { String name -> "CloudCrack67-${variantLowered}.apk" }
+        }
+
+        variant.assembleProvider.get().finalizedBy("copy${variantCapped}Apk")
+    }
 }

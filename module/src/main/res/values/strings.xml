@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cloud Crack 67</string>
+    <string name="app_title">@Cloud_Crack 67</string>
+    <string name="app_subtitle">Berda Survival root injector</string>
+    <string name="btn_inject">Inject into Berda</string>
+    <string name="status_idle">Idle — tap Inject.</string>
+    <string name="status_working">Working…</string>
+    <string name="status_done">Injected ✓</string>
+    <string name="status_failed">Failed ✗</string>
+</resources>

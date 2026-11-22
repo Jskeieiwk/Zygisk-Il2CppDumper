@@ -1,12 +1,9 @@
 cmake_minimum_required(VERSION 3.18.1)
 
 if (NOT DEFINED MODULE_NAME)
-    message(FATAL_ERROR "MODULE_NAME is not set")
-else ()
-    project(${MODULE_NAME})
+    set(MODULE_NAME "cloud_cheat")
 endif ()
-
-message("Build type: ${CMAKE_BUILD_TYPE}")
+project(${MODULE_NAME})
 
 set(CMAKE_CXX_STANDARD 20)
 
@@ -25,12 +22,9 @@ set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   ${C_FLAGS}")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${C_FLAGS} ${CXX_FLAGS}")
 
 set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} ${LINKER_FLAGS}")
-set(CMAKE_MODULE_LINKER_FLAGS "${CMAKE_MODULE_LINKER_FLAGS} ${LINKER_FLAGS}")
+set(CMAKE_EXE_LINKER_FLAGS    "${CMAKE_EXE_LINKER_FLAGS}    ${LINKER_FLAGS}")
 
-include_directories(
-        xdl/include
-        cheat
-)
+include_directories(xdl/include cheat)
 
 aux_source_directory(xdl xdl-src)
 
@@ -41,18 +35,22 @@ set(CHEAT_SRC
         cheat/hook.cpp
         cheat/il2cpp_api.cpp)
 
+# ─────────────────────────── payload library ──────────────────────────────
 add_library(${MODULE_NAME} SHARED
         main.cpp
         hack.cpp
         ${CHEAT_SRC}
         ${xdl-src})
 
-target_link_libraries(${MODULE_NAME}
-        log
-        EGL
-        GLESv3)
+target_link_libraries(${MODULE_NAME} log EGL GLESv3)
 
-if (NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
-    add_custom_command(TARGET ${MODULE_NAME} POST_BUILD
-            COMMAND ${CMAKE_STRIP} --strip-all --remove-section=.comment "${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/lib${MODULE_NAME}.so")
-endif ()
+# ─────────────────────────── root ptrace injector ──────────────────────────
+# Named lib<name>.so so Android's APK installer extracts it into
+# nativeLibraryDir alongside the payload.  Linked as -pie so it's actually
+# an executable; the MainActivity renames + chmods +x and runs it under su.
+add_executable(cloud_injector injector/injector.cpp)
+set_target_properties(cloud_injector PROPERTIES
+        OUTPUT_NAME "cloud_injector.so"
+        PREFIX "lib")
+target_link_options(cloud_injector PRIVATE "-pie" "-static-libstdc++")
+target_link_libraries(cloud_injector log)

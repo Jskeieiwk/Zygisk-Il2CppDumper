@@ -1,80 +1,59 @@
 #include <cstring>
+#include <cstdio>
+#include <string>
 #include <thread>
 #include <fcntl.h>
-#include <sys/mman.h>
+#include <unistd.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-#include <unistd.h>
-#include <cinttypes>
+#include <jni.h>
+
 #include "hack.h"
-#include "zygisk.hpp"
 #include "game.h"
 #include "log.h"
 
-using zygisk::Api;
-using zygisk::AppSpecializeArgs;
-using zygisk::ServerSpecializeArgs;
+// Payload entry: fires when the injector dlopen()s this .so inside the game
+// process.  We read our own cmdline (= target app's) and start the hack
+// pipeline in a detached thread so the injector can resume its loader
+// stub without waiting on us.
 
-class MyModule : public zygisk::ModuleBase {
-public:
-    void onLoad(Api *api, JNIEnv *env) override {
-        this->api = api;
-        this->env = env;
+static std::string my_cmdline() {
+    char buf[256]{};
+    int fd = open("/proc/self/cmdline", O_RDONLY | O_CLOEXEC);
+    if (fd < 0) return {};
+    ssize_t n = read(fd, buf, sizeof(buf) - 1);
+    close(fd);
+    if (n <= 0) return {};
+    return std::string(buf);  // cmdline is NUL-separated; first token is enough
+}
+
+static std::string data_dir_for(const std::string &pkg) {
+    char path[256];
+    snprintf(path, sizeof(path), "/data/data/%s/files", pkg.c_str());
+    mkdir(path, 0755);
+    return path;
+}
+
+__attribute__((constructor))
+static void cloud_cheat_init() {
+    auto pkg = my_cmdline();
+    LOGI("[Cloud] dlopen'd into pid=%d cmdline=%s", getpid(), pkg.c_str());
+
+    if (pkg != GamePackageName) {
+        LOGW("[Cloud] not the target process (%s != %s) — bailing", pkg.c_str(), GamePackageName);
+        return;
     }
 
-    void preAppSpecialize(AppSpecializeArgs *args) override {
-        auto package_name = env->GetStringUTFChars(args->nice_name, nullptr);
-        auto app_data_dir = env->GetStringUTFChars(args->app_data_dir, nullptr);
-        preSpecialize(package_name, app_data_dir);
-        env->ReleaseStringUTFChars(args->nice_name, package_name);
-        env->ReleaseStringUTFChars(args->app_data_dir, app_data_dir);
-    }
+    std::string dd = data_dir_for(pkg);
+    char *cd = new char[dd.size() + 1];
+    strcpy(cd, dd.c_str());
 
-    void postAppSpecialize(const AppSpecializeArgs *) override {
-        if (enable_hack) {
-            std::thread hack_thread(hack_prepare, game_data_dir, data, length);
-            hack_thread.detach();
-        }
-    }
+    std::thread(hack_start, cd).detach();
+}
 
-private:
-    Api *api;
-    JNIEnv *env;
-    bool enable_hack;
-    char *game_data_dir;
-    void *data;
-    size_t length;
-
-    void preSpecialize(const char *package_name, const char *app_data_dir) {
-        if (strcmp(package_name, GamePackageName) == 0) {
-            LOGI("detect game: %s", package_name);
-            enable_hack = true;
-            game_data_dir = new char[strlen(app_data_dir) + 1];
-            strcpy(game_data_dir, app_data_dir);
-
-#if defined(__i386__)
-            auto path = "zygisk/armeabi-v7a.so";
-#endif
-#if defined(__x86_64__)
-            auto path = "zygisk/arm64-v8a.so";
-#endif
-#if defined(__i386__) || defined(__x86_64__)
-            int dirfd = api->getModuleDir();
-            int fd = openat(dirfd, path, O_RDONLY);
-            if (fd != -1) {
-                struct stat sb{};
-                fstat(fd, &sb);
-                length = sb.st_size;
-                data = mmap(nullptr, length, PROT_READ, MAP_PRIVATE, fd, 0);
-                close(fd);
-            } else {
-                LOGW("Unable to open arm file");
-            }
-#endif
-        } else {
-            api->setOption(zygisk::Option::DLCLOSE_MODULE_LIBRARY);
-        }
-    }
-};
-
-REGISTER_ZYGISK_MODULE(MyModule)
+extern "C" JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
+    (void)vm; (void)reserved;
+    // Second entry — for injectors that explicitly call JNI_OnLoad after dlopen.
+    // The constructor above has already fired; this is a safe no-op.
+    return JNI_VERSION_1_6;
+}
