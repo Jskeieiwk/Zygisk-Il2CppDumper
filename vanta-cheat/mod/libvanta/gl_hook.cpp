@@ -98,23 +98,72 @@ bool hook_egl_swap() {
     }
     LOGK("hook_egl_swap PLT: %d .so hooked", total);
 
-    // главный фикс: inline-hook на сам eglSwapBuffers в libEGL.so
-    // Unity резолвит его через eglGetProcAddress — PLT не работает.
+    // inline-hook на eglSwapBuffers во ВСЕХ libEGL*.so — Qualcomm/Mali/PowerVR
+    // грузят реальную implementation в libEGL_adreno.so / libEGL_mali.so,
+    // libEGL.so — только stub. хукаем все.
+    void* already_hooked_syms[16] = {0};
+    int ahs_n = 0;
+    FILE* mf = fopen("/proc/self/maps", "r");
+    if (mf) {
+        char line[1024];
+        char seen[64][128] = {{0}};
+        int seen_n = 0;
+        while (fgets(line, sizeof(line), mf)) {
+            if (!strstr(line, ".so")) continue;
+            if (!strstr(line, "r-xp")) continue;
+            char path[512] = {0};
+            if (sscanf(line, "%*s %*s %*s %*s %*s %511s", path) != 1) continue;
+            const char* slash = strrchr(path, '/');
+            const char* name = slash ? slash + 1 : path;
+            // только *EGL* или *GLES* .so
+            if (!strstr(name, "EGL") && !strstr(name, "GLES") && !strstr(name, "gpu")) continue;
+            bool dup = false;
+            for (int i = 0; i < seen_n; ++i) if (!strcmp(seen[i], name)) { dup = true; break; }
+            if (dup) continue;
+            if (seen_n < 64) { strncpy(seen[seen_n], name, 127); ++seen_n; }
+
+            void* h = dlopen(name, RTLD_NOW | RTLD_NOLOAD);
+            if (!h) h = dlopen(path, RTLD_NOW | RTLD_NOLOAD);
+            if (!h) continue;
+            void* sym = dlsym(h, "eglSwapBuffers");
+            if (!sym) continue;
+            // не хукаем дважды один символ
+            bool already = false;
+            for (int i = 0; i < ahs_n; ++i) if (already_hooked_syms[i] == sym) { already = true; break; }
+            if (already) continue;
+
+            void* tramp = nullptr;
+            if (inline_hook(sym, (void*)my_eglSwapBuffers, &tramp)) {
+                if (!orig_eglSwapBuffers)
+                    orig_eglSwapBuffers = reinterpret_cast<eglSwapBuffers_t>(tramp);
+                LOGK("INLINE-hooked eglSwapBuffers in %s @ %p (orig via %p)", name, sym, tramp);
+                if (ahs_n < 16) already_hooked_syms[ahs_n++] = sym;
+                ++total;
+            } else {
+                LOGK("inline_hook fail в %s @ %p", name, sym);
+            }
+        }
+        fclose(mf);
+    }
+
+    // плюс дефолтный libEGL.so на всякий
     void* libegl = dlopen("libEGL.so", RTLD_NOW | RTLD_GLOBAL);
     void* sym = libegl ? dlsym(libegl, "eglSwapBuffers") : nullptr;
     if (sym) {
-        void* tramp = nullptr;
-        if (inline_hook(sym, (void*)my_eglSwapBuffers, &tramp)) {
-            orig_eglSwapBuffers = reinterpret_cast<eglSwapBuffers_t>(tramp);
-            LOGK("INLINE-hooked eglSwapBuffers @ %p (orig via %p)", sym, tramp);
-            ++total;
-        } else {
-            LOGK("inline_hook fail на %p", sym);
+        bool already = false;
+        for (int i = 0; i < ahs_n; ++i) if (already_hooked_syms[i] == sym) { already = true; break; }
+        if (!already) {
+            void* tramp = nullptr;
+            if (inline_hook(sym, (void*)my_eglSwapBuffers, &tramp)) {
+                if (!orig_eglSwapBuffers)
+                    orig_eglSwapBuffers = reinterpret_cast<eglSwapBuffers_t>(tramp);
+                LOGK("INLINE-hooked eglSwapBuffers (libEGL.so) @ %p", sym);
+                ++total;
+            }
         }
-    } else {
-        LOGK("не нашёл eglSwapBuffers в libEGL.so: %s", dlerror());
     }
 
+    LOGK("hook_egl_swap: total inline+plt = %d", total);
     return total > 0;
 }
 
