@@ -62,7 +62,7 @@ struct Methods {
       *attackTool=nullptr,
       *getCameraFov=nullptr,*setCameraFov=nullptr,*getWeaponFov=nullptr,*setWeaponFov=nullptr;
     Object *playerType=nullptr,*botType=nullptr,*resourceType=nullptr,*lootType=nullptr;
-    Object *rendererType=nullptr,*hitMarkerType=nullptr;
+    Object *rendererType=nullptr,*hitMarkerType=nullptr,*crosshairType=nullptr;
     Class *toolClass=nullptr,*hitscanClass=nullptr;
     Method *getWeaponConfig=nullptr,*getBulletSpeed=nullptr,*getBallisticProfile=nullptr,
         *getProfileGravity=nullptr,*getProfileDrag=nullptr,
@@ -882,58 +882,92 @@ void initializeFromUpdate(){
         resolving.clear(std::memory_order_release);return;
     }
     stage("IL2CPP methods resolved on managed callback");
-    // This method reads the game's movement joystick. Returning zero keeps the player at rest.
-    // The class name is not reversed yet — keep Dobby for this one hook until we can swap it too.
-    if(m.setPosition&&m.getRight&&m.getForward&&DobbyHook(reinterpret_cast<void*>(base+0x769A984),
-            reinterpret_cast<dobby_dummy_func_t>(replacementMove),
-            reinterpret_cast<dobby_dummy_func_t*>(&originalMove))==0){
-        internal::state.freecamAvailableSet(true);
-        internal::state.autoFarmAvailableSet(m.attackTool&&m.toolClass&&m.resourceType&&m.lookAt&&m.raycast&&m.getRight&&m.getForward);
-    }
-    // Re-fetch images locally for the method_swap paths below.
-    Image* gameImg=image("Assembly-CSharp");
-    Image* coreImg=image("UnityEngine.CoreModule");
-    Image* audioImg=image("UnityEngine.AudioModule");
-    // AudioSource.PlayOneShot — method_swap via known class+method. No .text write.
-    {
-        Class* audioSource=(audioImg?api.class_from_name(audioImg,"UnityEngine","AudioSource"):nullptr);
-        if(!audioSource&&coreImg)audioSource=api.class_from_name(coreImg,"UnityEngine","AudioSource");
-        Method* playOneShot=audioSource?api.class_get_method_from_name(audioSource,"PlayOneShot",2):nullptr;
-        if(playOneShot) {
-            originalOneShot=method_swap::install_typed(playOneShot,
-                reinterpret_cast<void(*)(void*,void*,float,void*)>(replacementOneShot));
-        }
-        if(!originalOneShot && *reinterpret_cast<volatile uint32_t*>(base+kOneShot)==kOneShotWord) {
-            DobbyHook(reinterpret_cast<void*>(base+kOneShot),
-                reinterpret_cast<dobby_dummy_func_t>(replacementOneShot),
-                reinterpret_cast<dobby_dummy_func_t*>(&originalOneShot));
-        }
-    }
-    // CrosshairManager.Update — method_swap. Oxide class, resolve by name first; fall back to Dobby if resolve fails.
-    if(m.getActive&&m.setActive&&m.getGameObject) {
-        Class* crosshair=gameImg?api.class_from_name(gameImg,"Oxide","CrosshairManager"):nullptr;
-        Method* crosshairUp=crosshair?api.class_get_method_from_name(crosshair,"Update",0):nullptr;
-        if(crosshairUp) {
-            originalCrosshairUpdate=method_swap::install_typed(crosshairUp,
-                reinterpret_cast<void(*)(void*,void*)>(crosshairUpdate));
-            if(originalCrosshairUpdate) internal::state.crosshairAvailableSet(true);
-        }
-        if(!originalCrosshairUpdate &&
-           *reinterpret_cast<const volatile uint32_t*>(base+0x7a71074)==0xf81d0ffe &&
-           DobbyHook(reinterpret_cast<void*>(base+0x7a71074),reinterpret_cast<dobby_dummy_func_t>(crosshairUpdate),
-               reinterpret_cast<dobby_dummy_func_t*>(&originalCrosshairUpdate))==0)
-            internal::state.crosshairAvailableSet(true);
-    }
+    // Zero-hook mode: no Dobby, no MethodInfo.methodPointer swap for the three
+    // in-world hooks either. Features that previously needed interception are
+    // emulated by the poll thread:
+    //   - movement/freecam/autofarm → direct writes to Transform.position each tick
+    //   - AudioSource.PlayOneShot    → hitsoundPoll() watches the HitMarker list
+    //   - CrosshairManager.Update    → suppressCrosshairsPoll() hides crosshairs each tick
+    // Nothing touches libil2cpp .text and nothing writes to MethodInfo fields.
+    Class* crosshair=game?api.class_from_name(game,"Oxide","CrosshairManager"):nullptr;
+    m.crosshairType=crosshair?api.type_get_object(api.class_get_type(crosshair)):nullptr;
+    internal::state.freecamAvailableSet(m.setPosition&&m.getRight&&m.getForward);
+    internal::state.autoFarmAvailableSet(m.attackTool&&m.toolClass&&m.resourceType&&m.lookAt&&m.raycast&&m.getRight&&m.getForward);
+    internal::state.crosshairAvailableSet(m.crosshairType!=nullptr&&m.getActive&&m.setActive&&m.getGameObject);
     reportFeatureBindings();
     ready.store(true,std::memory_order_release);
     stage("runtime ready: waiting for local player sample");
     resolving.clear(std::memory_order_release);
 }
+// LateUpdate hook replacement is no longer installed in zero-hook mode;
+// keep the function as a dead fallback for environments where method_swap /
+// Dobby path is forced on by brand.h.
 void replacement(void* self,void* info){
-    if(!originalUpdate)return;
-    originalUpdate(self,info);
-    if(!ready.load(std::memory_order_acquire))initializeFromUpdate();
-    if(ready.load(std::memory_order_acquire)&&call(m.getLocal,nullptr)==self){updateFreecam();tick();}
+    if(originalUpdate) originalUpdate(self,info);
+}
+// Poll-based replacement for the CrosshairManager.Update hook. Runs every
+// tick. Walks every CrosshairManager instance and either hides or restores
+// its crosshair GameObjects according to the current config.
+void suppressCrosshairsPoll() {
+    if(!m.crosshairType || !m.find || !m.getActive || !m.setActive || !m.getGameObject) return;
+    if(!internal::state.read().customCrosshair){restoreCrosshairs();return;}
+    void* args[]={m.crosshairType};
+    Array* list=reinterpret_cast<Array*>(call(m.find,nullptr,args));
+    if(!list || list->length>32) return;
+    auto items=&list->items[0];
+    for(uintptr_t i=0;i<list->length;i++) {
+        Object* self=items[i];
+        if(!self) continue;
+        hideCrosshairData(*reinterpret_cast<Object**>(reinterpret_cast<uint8_t*>(self)+0x48));
+        hideCrosshairData(*reinterpret_cast<Object**>(reinterpret_cast<uint8_t*>(self)+0x80));
+        Array* all=*reinterpret_cast<Array**>(reinterpret_cast<uint8_t*>(self)+0x50);
+        if(all && all->length<=64)
+            for(uintptr_t j=0;j<all->length;j++) hideCrosshairData(all->items[j]);
+    }
+}
+// Poll-based headshot sound. Counts HitMarker objects each tick; when the
+// count grows (new hit) we trigger the Java SoundPool via state.onHeadshot().
+// Does NOT suppress the game's own hit sound — that would require intercepting
+// PlayOneShot, which we no longer do. Both sounds play together.
+void hitsoundPoll() {
+    if(!m.hitMarkerType || !m.find) return;
+    static uintptr_t lastCount=0;
+    void* args[]={m.hitMarkerType};
+    Array* list=reinterpret_cast<Array*>(call(m.find,nullptr,args));
+    uintptr_t current=list?list->length:0;
+    if(current>lastCount) internal::state.onHeadshot();
+    lastCount=current;
+}
+// Dedicated polling thread — attaches to IL2CPP as a managed thread and
+// drives the whole feature set at ~60 Hz. Replaces the LateUpdate hook.
+void* pollThread(void*){
+    // Wait for runtime to initialise before we try to attach.
+    void* managed=nullptr;
+    // initializeFromUpdate() normally runs from the hooked LateUpdate. Without
+    // the hook we call it ourselves once; it is idempotent via the resolving
+    // flag and the ready atomic.
+    for(int i=0;i<600 && !ready.load(std::memory_order_acquire);i++){
+        initializeFromUpdate();
+        usleep(100000);
+    }
+    if(!ready.load(std::memory_order_acquire)) {
+        __android_log_print(ANDROID_LOG_ERROR,BRAND_TAG,"poll: runtime never ready");
+        return nullptr;
+    }
+    // Attach our pthread as a managed IL2CPP thread so runtime_invoke calls
+    // from this thread do not trip the GC's "unknown thread" guard.
+    Domain* domain=api.domain_get?api.domain_get():nullptr;
+    if(api.thread_attach && domain) managed=api.thread_attach(domain);
+    __android_log_print(ANDROID_LOG_INFO,BRAND_TAG,"poll: attached, starting loop");
+    while(true) {
+        updateFreecam();
+        tick();
+        suppressCrosshairsPoll();
+        hitsoundPoll();
+        usleep(16000); // ~60 Hz; matches Unity LateUpdate cadence.
+    }
+    if(managed && api.thread_detach) api.thread_detach(managed);
+    return nullptr;
 }
 void* boot(void*){
     stage("thread started");
@@ -948,49 +982,15 @@ void* boot(void*){
     stage("game signature verified");
     stage("attaching menu before runtime initialization");
     if(!internal::installUi()){stage("FAILED: Android UI did not attach");return nullptr;}
-    // Install the LateUpdate hook via MethodInfo.methodPointer swap instead of
-    // Dobby inline patch. libng's crc32 of libil2cpp.so .text now passes — we
-    // never touch the game's code. Needs a minimal IL2CPP resolve from the
-    // JVM-attached boot thread.
-    bool primaryHookInstalled=false;
+    // Zero-hook: no LateUpdate interception. Features are driven by a managed
+    // polling thread started below. libil2cpp .text and MethodInfo tables stay
+    // bit-identical to game disk.
     {
-        void* h=gameLibraryPath.empty()?nullptr:dlopen(gameLibraryPath.c_str(),RTLD_NOW|RTLD_NOLOAD);
-        if(!h)h=dlopen("libil2cpp.so",RTLD_NOW|RTLD_NOLOAD);
-#define MSBIND(n) do{ api.n=h?sym<decltype(api.n)>(h,"il2cpp_" #n):nullptr; \
-            if(!api.n)api.n=reinterpret_cast<decltype(api.n)>(oxide12034::runtimeEntry(base,#n)); }while(0)
-        MSBIND(domain_get);MSBIND(domain_get_assemblies);MSBIND(assembly_get_image);
-        MSBIND(image_get_name);MSBIND(class_from_name);MSBIND(class_get_method_from_name);
-#undef MSBIND
-        if(api.domain_get&&api.domain_get_assemblies&&api.assembly_get_image&&api.image_get_name&&
-           api.class_from_name&&api.class_get_method_from_name) {
-            Domain* domain=api.domain_get();
-            size_t count=0;
-            const Assembly** all=domain?api.domain_get_assemblies(domain,&count):nullptr;
-            Image* game=nullptr;
-            if(all&&count<2000) for(size_t i=0;i<count;i++) {
-                Image* im=api.assembly_get_image(all[i]);
-                const char* nm=im?api.image_get_name(im):nullptr;
-                if(nm&&strstr(nm,"Assembly-CSharp")){game=im;break;}
-            }
-            Class* player=game?api.class_from_name(game,"Oxide","PlayerManager"):nullptr;
-            Method* lateUpdate=player?api.class_get_method_from_name(player,"LateUpdate",0):nullptr;
-            if(lateUpdate) {
-                // MethodInfo.methodPointer sits at offset 0 on this IL2CPP build.
-                originalUpdate=method_swap::install_typed(lateUpdate,
-                    reinterpret_cast<void(*)(void*,void*)>(replacement));
-                if(originalUpdate){primaryHookInstalled=true;
-                    stage("LateUpdate hooked via MethodInfo.methodPointer (no .text write)");}
-            }
-        }
-        if(h)dlclose(h);
+        pthread_t poll;
+        if(pthread_create(&poll,nullptr,pollThread,nullptr)==0) pthread_detach(poll);
+        else { stage("FAILED:poll"); return nullptr; }
     }
-    if(!primaryHookInstalled) {
-        stage("method_swap unavailable; falling back to Dobby");
-        if(DobbyHook(reinterpret_cast<void*>(base+kUpdate),reinterpret_cast<dobby_dummy_func_t>(replacement),
-               reinterpret_cast<dobby_dummy_func_t*>(&originalUpdate))!=0){
-            stage("FAILED:h");internal::state.rendererStatus("h");return nullptr;}
-    }
-    stage("update hook installed; runtime deferred until PlayerManager.LateUpdate");
+    stage("poll thread spawned; runtime init deferred to its first iterations");
     stage("attaching Android UI");
     bool ui=internal::installUi();
     if(!ui){stage("FAILED:ui");__android_log_print(ANDROID_LOG_ERROR,BRAND_TAG,"ui-attach");return nullptr;}
