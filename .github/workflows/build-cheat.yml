@@ -9,6 +9,9 @@ on:
       - 'cheat_rs/**'
       - '.github/workflows/build-cheat.yml'
 
+permissions:
+  contents: write
+
 jobs:
   cpp-undetect:
     name: Build C++ r16-undetect
