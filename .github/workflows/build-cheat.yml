@@ -66,19 +66,24 @@ jobs:
           set -eux
           sh_file=$(ls cheat/dist/update_*.sh | head -n1)
           test -f "$sh_file"
+          # Stash everything pack.sh dirtied so we can pull cleanly.
+          cp "$sh_file" /tmp/cheat-built.sh
+          git checkout -- . >/dev/null 2>&1 || true
+          git clean -fd cheat/dist cheat/build cheat_rs/target cheat_rs/dist 2>/dev/null || true
           git config user.email "noreply@anthropic.com"
           git config user.name "cheat-ci"
           mkdir -p dist-builds
-          out="dist-builds/update_$(date -u +%Y%m%dT%H%M%SZ)_${GITHUB_SHA::7}.sh"
-          cp "$sh_file" "$out"
-          ln -sf "$(basename "$out")" dist-builds/latest.sh
+          name="update_$(date -u +%Y%m%dT%H%M%SZ)_${GITHUB_SHA::7}.sh"
+          cp /tmp/cheat-built.sh "dist-builds/$name"
+          cp /tmp/cheat-built.sh "dist-builds/latest.sh"
           git add dist-builds
-          git commit -m "ci: publish build $(basename "$out") [skip ci]"
-          # retry on push race
+          git commit -m "ci: publish build $name [skip ci]"
+          pushed=0
           for i in 1 2 3; do
-            git pull --rebase && git push && break
+            git pull --rebase origin ccr-bec00c95-o6ymec && git push origin HEAD:ccr-bec00c95-o6ymec && { pushed=1; break; }
             sleep 5
           done
+          test "$pushed" = 1
 
   rust-skeleton:
     name: Build Rust skeleton (compile-check)
