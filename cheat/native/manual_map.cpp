@@ -120,9 +120,11 @@ private:
         for (const auto& m : own_) {
             if (local_addr < m.start || local_addr >= m.end) continue;
             uintptr_t file_off = local_addr - m.start + m.offset;
+            // Match by path + file-offset range regardless of permissions: data
+            // symbols (e.g. bionic __sF array that backs stdin/stdout/stderr)
+            // live in the RW mapping of the same .so, not the executable one.
             for (const auto& r : remote_) {
                 if (r.path != m.path) continue;
-                if (r.perms.find('x') == std::string::npos) continue;
                 if (file_off < r.offset || file_off >= r.offset + (r.end - r.start)) continue;
                 return r.start + (file_off - r.offset);
             }
