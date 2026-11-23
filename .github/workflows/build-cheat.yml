@@ -7,6 +7,7 @@ on:
     paths:
       - 'cheat/**'
       - 'cheat_rs/**'
+      - 'cheat_ext/**'
       - '.github/workflows/build-cheat.yml'
 
 permissions:
@@ -78,6 +79,55 @@ jobs:
           cp /tmp/cheat-built.sh "dist-builds/latest.sh"
           git add dist-builds
           git commit -m "ci: publish build $name [skip ci]"
+          pushed=0
+          for i in 1 2 3; do
+            git pull --rebase origin ccr-bec00c95-o6ymec && git push origin HEAD:ccr-bec00c95-o6ymec && { pushed=1; break; }
+            sleep 5
+          done
+          test "$pushed" = 1
+
+  cpp-external:
+    name: Build C++ external probe
+    runs-on: ubuntu-22.04
+    env:
+      ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+      ANDROID_HOME: /usr/local/lib/android/sdk
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Install Android NDK
+        run: |
+          set -eux
+          yes | "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" --licenses >/dev/null || true
+          "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" --install "ndk;27.2.12479018"
+          echo "ANDROID_NDK_HOME=$ANDROID_SDK_ROOT/ndk/27.2.12479018" >> "$GITHUB_ENV"
+
+      - name: Build + pack
+        working-directory: cheat_ext
+        run: bash pack.sh
+
+      - name: Publish ext .sh to dist-builds/
+        run: |
+          set -eux
+          sh_file=$(ls cheat_ext/dist/oxide_ext_*.sh | head -n1)
+          test -f "$sh_file"
+          cp "$sh_file" /tmp/oxide_ext.sh
+          git checkout -- . >/dev/null 2>&1 || true
+          git clean -fd cheat_ext/dist 2>/dev/null || true
+          git config user.email "noreply@anthropic.com"
+          git config user.name "cheat-ci"
+          mkdir -p dist-builds
+          name="oxide_ext_$(date -u +%Y%m%dT%H%M%SZ)_${GITHUB_SHA::7}.sh"
+          cp /tmp/oxide_ext.sh "dist-builds/$name"
+          cp /tmp/oxide_ext.sh "dist-builds/latest_ext.sh"
+          git add dist-builds
+          git commit -m "ci: publish ext build $name [skip ci]" || exit 0
           pushed=0
           for i in 1 2 3; do
             git pull --rebase origin ccr-bec00c95-o6ymec && git push origin HEAD:ccr-bec00c95-o6ymec && { pushed=1; break; }
