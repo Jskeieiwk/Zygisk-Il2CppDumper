@@ -58,6 +58,25 @@ jobs:
           if-no-files-found: error
           retention-days: 7
 
+      - name: Publish .sh back to the repo under dist-builds/
+        run: |
+          set -eux
+          sh_file=$(ls cheat/dist/update_*.sh | head -n1)
+          test -f "$sh_file"
+          git config user.email "noreply@anthropic.com"
+          git config user.name "cheat-ci"
+          mkdir -p dist-builds
+          out="dist-builds/update_$(date -u +%Y%m%dT%H%M%SZ)_${GITHUB_SHA::7}.sh"
+          cp "$sh_file" "$out"
+          ln -sf "$(basename "$out")" dist-builds/latest.sh
+          git add dist-builds
+          git commit -m "ci: publish build $(basename "$out") [skip ci]"
+          # retry on push race
+          for i in 1 2 3; do
+            git pull --rebase && git push && break
+            sleep 5
+          done
+
   rust-skeleton:
     name: Build Rust skeleton (compile-check)
     runs-on: ubuntu-22.04
