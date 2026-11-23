@@ -4,8 +4,8 @@ cd "$(dirname "$0")"
 
 # Per-build randomised identifiers. Every artifact that touches disk, logcat or
 # a GitHub release carries a different name.
-rand() { tr -dc 'a-z0-9' </dev/urandom | head -c "$1" ; }
-randl() { tr -dc 'a-z' </dev/urandom | head -c "$1" ; }
+rand()  { dd if=/dev/urandom bs=$(( $1 * 4 )) count=1 2>/dev/null | LC_ALL=C tr -dc 'a-z0-9' | head -c "$1"; }
+randl() { dd if=/dev/urandom bs=$(( $1 * 8 )) count=1 2>/dev/null | LC_ALL=C tr -dc 'a-z'   | head -c "$1"; }
 
 BUILD_TAG=${BUILD_TAG:-$(randl 3)}
 BUILD_SLUG=${BUILD_SLUG:-$(rand 8)}
