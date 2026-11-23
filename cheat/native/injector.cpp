@@ -86,7 +86,7 @@ static void writeMemory(pid_t pid,uintptr_t at,const void* data,size_t size) {
     }
 }
 struct Mapping { uintptr_t start,end,offset; std::string perms,path; };
-static std::vector<Mapping> maps(pid_t pid) {
+[[maybe_unused]] static std::vector<Mapping> maps(pid_t pid) {
     std::ifstream f("/proc/"+std::to_string(pid)+"/maps");
     if(!f) throw std::runtime_error("Cannot read process maps");
     std::vector<Mapping> out; std::string line;
