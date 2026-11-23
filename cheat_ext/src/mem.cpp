@@ -29,7 +29,7 @@ pid_t find_pid(const char* package) {
         std::snprintf(buf, sizeof(buf), "/proc/%ld/cmdline", n);
         int fd = open(buf, O_RDONLY | O_CLOEXEC);
         if (fd < 0) continue;
-        ssize_t r = read(fd, buf, sizeof(buf) - 1);
+        ssize_t r = ::read(fd, buf, sizeof(buf) - 1);
         close(fd);
         if (r <= 0) continue;
         buf[r] = 0;
