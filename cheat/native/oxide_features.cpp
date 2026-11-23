@@ -883,21 +883,47 @@ void initializeFromUpdate(){
     }
     stage("IL2CPP methods resolved on managed callback");
     // This method reads the game's movement joystick. Returning zero keeps the player at rest.
+    // The class name is not reversed yet — keep Dobby for this one hook until we can swap it too.
     if(m.setPosition&&m.getRight&&m.getForward&&DobbyHook(reinterpret_cast<void*>(base+0x769A984),
             reinterpret_cast<dobby_dummy_func_t>(replacementMove),
             reinterpret_cast<dobby_dummy_func_t*>(&originalMove))==0){
         internal::state.freecamAvailableSet(true);
         internal::state.autoFarmAvailableSet(m.attackTool&&m.toolClass&&m.resourceType&&m.lookAt&&m.raycast&&m.getRight&&m.getForward);
     }
-    if(*reinterpret_cast<volatile uint32_t*>(base+kOneShot)==kOneShotWord)
-        DobbyHook(reinterpret_cast<void*>(base+kOneShot),
-            reinterpret_cast<dobby_dummy_func_t>(replacementOneShot),
-            reinterpret_cast<dobby_dummy_func_t*>(&originalOneShot));
-    // CrosshairManager.Update, exact 12034 signature checked before installing.
-    if(m.getActive&&m.setActive&&m.getGameObject&&
-       *reinterpret_cast<const volatile uint32_t*>(base+0x7a71074)==0xf81d0ffe&&
-       DobbyHook(reinterpret_cast<void*>(base+0x7a71074),reinterpret_cast<dobby_dummy_func_t>(crosshairUpdate),
-           reinterpret_cast<dobby_dummy_func_t*>(&originalCrosshairUpdate))==0)internal::state.crosshairAvailableSet(true);
+    // Re-fetch images locally for the method_swap paths below.
+    Image* gameImg=image("Assembly-CSharp");
+    Image* coreImg=image("UnityEngine.CoreModule");
+    Image* audioImg=image("UnityEngine.AudioModule");
+    // AudioSource.PlayOneShot — method_swap via known class+method. No .text write.
+    {
+        Class* audioSource=(audioImg?api.class_from_name(audioImg,"UnityEngine","AudioSource"):nullptr);
+        if(!audioSource&&coreImg)audioSource=api.class_from_name(coreImg,"UnityEngine","AudioSource");
+        Method* playOneShot=audioSource?api.class_get_method_from_name(audioSource,"PlayOneShot",2):nullptr;
+        if(playOneShot) {
+            originalOneShot=method_swap::install_typed(playOneShot,
+                reinterpret_cast<void(*)(void*,void*,float,void*)>(replacementOneShot));
+        }
+        if(!originalOneShot && *reinterpret_cast<volatile uint32_t*>(base+kOneShot)==kOneShotWord) {
+            DobbyHook(reinterpret_cast<void*>(base+kOneShot),
+                reinterpret_cast<dobby_dummy_func_t>(replacementOneShot),
+                reinterpret_cast<dobby_dummy_func_t*>(&originalOneShot));
+        }
+    }
+    // CrosshairManager.Update — method_swap. Oxide class, resolve by name first; fall back to Dobby if resolve fails.
+    if(m.getActive&&m.setActive&&m.getGameObject) {
+        Class* crosshair=gameImg?api.class_from_name(gameImg,"Oxide","CrosshairManager"):nullptr;
+        Method* crosshairUp=crosshair?api.class_get_method_from_name(crosshair,"Update",0):nullptr;
+        if(crosshairUp) {
+            originalCrosshairUpdate=method_swap::install_typed(crosshairUp,
+                reinterpret_cast<void(*)(void*,void*)>(crosshairUpdate));
+            if(originalCrosshairUpdate) internal::state.crosshairAvailableSet(true);
+        }
+        if(!originalCrosshairUpdate &&
+           *reinterpret_cast<const volatile uint32_t*>(base+0x7a71074)==0xf81d0ffe &&
+           DobbyHook(reinterpret_cast<void*>(base+0x7a71074),reinterpret_cast<dobby_dummy_func_t>(crosshairUpdate),
+               reinterpret_cast<dobby_dummy_func_t*>(&originalCrosshairUpdate))==0)
+            internal::state.crosshairAvailableSet(true);
+    }
     reportFeatureBindings();
     ready.store(true,std::memory_order_release);
     stage("runtime ready: waiting for local player sample");

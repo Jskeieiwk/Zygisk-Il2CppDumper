@@ -183,6 +183,7 @@ uintptr_t load(pid_t pid, const RemoteCaller& caller, const std::string& so_path
     };
     uintptr_t mmap_fn = need("mmap");
     uintptr_t mprotect_fn = need("mprotect");
+    uintptr_t prctl_fn = resolver.resolve("prctl");
 
     // Remote-allocate the whole image as RW; we'll flip to the final PT_LOAD
     // permissions after relocations are applied.
@@ -191,6 +192,30 @@ uintptr_t load(pid_t pid, const RemoteCaller& caller, const std::string& so_path
          MAP_PRIVATE | MAP_ANONYMOUS, ~uintptr_t(0), 0});
     if (base == 0 || base == ~uintptr_t(0))
         throw std::runtime_error("mm:mmap failed");
+
+    // Rename the whole anonymous region so /proc/self/maps shows it as a
+    // benign Android allocation instead of an unknown executable VMA. Any
+    // scanner that iterates maps looking for suspicious anonymous RX regions
+    // now has to disambiguate against the thousands of libc_malloc regions a
+    // Unity game already has. PR_SET_VMA = 0x53564d41, name = PR_SET_VMA_ANON_NAME (0).
+    // Needs prctl() and Android kernel >= 5.17 OR Android 12+ userspace.
+    if (prctl_fn) {
+        static const char kFakeName[] = "libc_malloc";
+        // Place the name string in the loader's data segment; its address in
+        // the game process is irrelevant — the kernel reads from the current
+        // task's address space, and we're invoking from a remote PID that has
+        // this string mapped via our own loader binary (same libc). We place
+        // a copy at a known remote-writable address instead — easier: put it
+        // inside the mapped region itself (already RW now) and point there.
+        writeRemoteBulk(pid, base, kFakeName, sizeof(kFakeName));
+        caller(prctl_fn, {0x53564d41ULL /* PR_SET_VMA */, 0 /* PR_SET_VMA_ANON_NAME */,
+                          base, image_end, base});
+        // Zero the scratch bytes we wrote (segment contents will be overwritten
+        // in step 1 below for the PT_LOAD that covers base anyway, but be safe
+        // for images where the first PT_LOAD does not start at vaddr 0).
+        static const char kZero[sizeof(kFakeName)] = {0};
+        writeRemoteBulk(pid, base, kZero, sizeof(kZero));
+    }
 
     // 1. Write PT_LOAD contents.
     for (size_t i = 0; i < nph; i++) {
