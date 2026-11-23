@@ -1,5 +1,8 @@
-// Root-only, same-ABI ptrace/dlopen loader. Does not alter SELinux or anti-cheat.
+// Root-only, same-ABI ptrace reflective loader. The payload .so is never
+// handed to the Android linker: manual_map maps it directly, so shadowhook's
+// soinfo::call_constructors intercept (libng's dl_init detector) never fires.
 #include "brand.h"
+#include "manual_map.h"
 #include <sys/ptrace.h>
 #include <sys/uio.h>
 #include <sys/wait.h>
@@ -249,57 +252,27 @@ int main(int argc,char** argv) {
             throw std::runtime_error("Invalid package name");
         validateElf(argv[3]); pid_t pid=findProcess(package);
         validateElf("/proc/"+std::to_string(pid)+"/exe");
-        for(const auto& mapping:maps(pid))
-            if(mapping.path.find("/code_cache/" BRAND_LIB_PREFIX)!=std::string::npos)
-                throw std::runtime_error("already loaded; restart");
-        uintptr_t mmapFn=remoteSymbol(pid,"mmap"), dlopenFn=remoteSymbol(pid,"dlopen"), munmapFn=remoteSymbol(pid,"munmap"), errorFn=remoteSymbol(pid,"dlerror");
-        Staged staged,dex,audio;
+        // DEX and audio still stage to code_cache (consumed through DexClassLoader
+        // and SoundPool respectively — neither goes through the native linker).
+        Staged dex,audio;
         if(argc>=5) stageLibrary(pid,package,argv[4],dex,".dex");
         if(argc==6) stageLibrary(pid,package,argv[5],audio,".ogg");
-        stageLibrary(pid,package,argv[3],staged);
-        uintptr_t handle=0;
+        // Reflective load. Payload .so lives only in the loader's own filesystem
+        // (the self-extracting tar); never copied into the game's code_cache.
+        uintptr_t payload_base=0;
         {
             Trace trace(pid);
-            size_t len=staged.path.size()+1;
-            uintptr_t remote=trace.call(mmapFn,{0,len,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,~uintptr_t(0),0});
-            if(remote==~uintptr_t(0) || remote==0) throw std::runtime_error("rm");
-            writeMemory(pid,remote,staged.path.c_str(),len);
-            handle=trace.call(dlopenFn,{remote,RTLD_NOW|RTLD_LOCAL});
-            std::string error;
-            if(!handle) {
-                uintptr_t ptr=trace.call(errorFn,{});
-                if(ptr) { for(size_t i=0;i<2048;i++) { char ch=static_cast<char>(readMemory(pid,ptr+i,1)[0]); if(!ch) break; error+=ch; } }
-            }
-            trace.call(munmapFn,{remote,len});
-            if(!handle) throw std::runtime_error("dl:"+error);
+            auto caller=[&trace](uintptr_t fn,std::initializer_list<uintptr_t> args){
+                return trace.call(fn,args);
+            };
+            payload_base=manual_map::load(pid,caller,argv[3]);
         }
-        // Remove the on-disk file now that dlopen holds a mapping; keeps the name out of file scans.
-        unlink(staged.path.c_str());
-        // The game thread confirms that its Android view was attached.
-        if(argc>=5) {
-            const std::string marker=staged.path+".r";
-            const std::string progress=staged.path+".p";
-            bool ready=false;
-            std::string lastStage;
-            for(int attempt=0;attempt<1000;attempt++) {
-                std::ifstream file(marker);
-                std::string value;
-                if(file>>value && value=="ready") {ready=true;break;}
-                std::ifstream status(progress);
-                std::string current;
-                if(std::getline(status,current) && current!=lastStage) lastStage=current;
-                if(lastStage.rfind("FAILED:",0)==0)break;
-                if(kill(pid,0)!=0)break;
-                usleep(100000);
-            }
-            unlink(marker.c_str());
-            unlink(progress.c_str());
-            if(!ready)throw std::runtime_error("st:"+(lastStage.empty()?std::string("x"):lastStage));
-        }
-        // Keep DEX and audio on disk under randomised names for lazy classloading and SoundPool.
+        // No ready-marker handshake under reflective loading: dladdr inside the
+        // payload cannot resolve a file name (no soinfo entry). The loader exits
+        // as soon as init_array returns; UI-attach failures surface via logcat.
         if(!dex.path.empty()) dex.path.clear();
         if(!audio.path.empty()) audio.path.clear();
-        (void)handle;
+        (void)payload_base;
         return 0;
     } catch(const std::exception& e) { std::fprintf(stderr,"err:%s\n",e.what()); return 1; }
 }

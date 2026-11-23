@@ -79,11 +79,8 @@ std::atomic<float> farmX{0},farmY{0};
 Vec3 freecamPosition{};bool freecamWasActive=false;uint64_t freecamLastFrame=0;
 std::atomic<bool> ready{false};
 void stage(const char* message) {
-    Dl_info self{};
-    if(!dladdr(reinterpret_cast<void*>(&stage),&self)||!self.dli_fname)return;
-    std::string path=std::string(self.dli_fname)+".p";
-    int fd=open(path.c_str(),O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC,0600);
-    if(fd>=0){write(fd,message,strlen(message));close(fd);}
+    // Progress file under dladdr() is unavailable when the payload is reflectively
+    // mapped (no soinfo). Keep the logcat line so dj can tail progress.
     __android_log_print(ANDROID_LOG_INFO,BRAND_TAG,"%s",message);
 }
 uint64_t lastSample=0;
@@ -938,13 +935,7 @@ void* boot(void*){
         usleep(200000);
     }
     if(!graphicsReady){stage("FAILED:fr");__android_log_print(ANDROID_LOG_ERROR,BRAND_TAG,"fr");return nullptr;}
-    Dl_info self{};
-    if(!dladdr(reinterpret_cast<void*>(&boot),&self)||!self.dli_fname)return nullptr;
-    std::string marker=std::string(self.dli_fname)+".r";
-    int fd=open(marker.c_str(),O_WRONLY|O_CREAT|O_EXCL|O_CLOEXEC,0600);
-    if(fd<0)return nullptr;
-    const char markerValue[]="ready";bool written=write(fd,markerValue,sizeof(markerValue)-1)==sizeof(markerValue)-1;
-    close(fd);if(!written)return nullptr;
+    // Marker file skipped under reflective loading; loader does not wait for it.
     stage(ready.load(std::memory_order_acquire)?"ready":"ready:defer");
     __android_log_print(ANDROID_LOG_INFO,BRAND_TAG,"rdy=%d",ready.load(std::memory_order_acquire)?1:0);
     return nullptr;

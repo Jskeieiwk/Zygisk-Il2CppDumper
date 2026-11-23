@@ -35,7 +35,7 @@ hard_ld="-Wl,--gc-sections,-s,--build-id=none,-z,noexecstack,-z,relro,-z,now \
 
 "$llvm/aarch64-linux-android25-clang++" -std=c++17 -O2 -Wall -Wextra -Werror -fPIE -pie -static-libstdc++ \
     $hard_cc $hard_ld \
-    native/injector.cpp -ldl -o dist/oxide-loader
+    native/injector.cpp native/manual_map.cpp -ldl -o dist/oxide-loader
 "$llvm/aarch64-linux-android25-clang++" -std=c++17 -O2 -Wall -Wextra -Werror -shared -fPIC -static-libstdc++ \
     $hard_cc $hard_ld -Wl,--exclude-libs,ALL \
     native/oxide_features.cpp native/internal_ui.cpp \
