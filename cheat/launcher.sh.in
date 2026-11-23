@@ -1,0 +1,44 @@
+#!/system/bin/sh
+# Loader. Run with root or a temporary root shell.
+set -eu
+pkg=@PKG@
+mode=${1:-run}
+case "$mode" in run|--verify) ;; *) echo "usage: sh $0 [--verify]" >&2; exit 2;; esac
+if [ "$mode" = run ] && [ "$(id -u)" != 0 ]; then
+    command -v su >/dev/null 2>&1 || { echo "root required" >&2; exit 1; }
+    case "$0" in /*) sp=$0 ;; *) sp="$PWD/$0" ;; esac
+    exec su 0 /system/bin/sh "$sp" run
+fi
+if [ "$mode" = run ]; then base=/data/local/tmp; else base=${TMPDIR:-/tmp}; fi
+work="$base/.cache_@SLUG@.$$"
+(umask 077 && mkdir "$work") || { echo "mkdir" >&2; exit 1; }
+trap 'rm -rf "$work"' EXIT HUP INT TERM
+sed '1,/^__PAYLOAD__$/d' "$0" | base64 -d | tar -xz -C "$work" || { echo "x" >&2; exit 1; }
+if [ "$mode" = --verify ]; then
+    echo "ok:"
+    ls -l "$work/@LOADER@" "$work/@LIBNAME@.so" "$work/@LIBNAME@.dex" "$work/@LIBNAME@.ogg"
+    exit 0
+fi
+abi=$(getprop ro.product.cpu.abi 2>/dev/null || true)
+case "$abi" in arm64-v8a) ;; *) echo "abi" >&2; exit 1;; esac
+if ! pm path "$pkg" >/dev/null 2>&1; then echo "nopkg" >&2; exit 1; fi
+am force-stop "$pkg" >/dev/null 2>&1 || { echo "stop" >&2; exit 1; }
+t=0
+while pidof "$pkg" >/dev/null 2>&1; do
+    t=$((t+1)); [ "$t" -ge 10 ] && { echo "nodie" >&2; exit 1; }
+    sleep 1
+done
+monkey -p "$pkg" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1 || { echo "mk" >&2; exit 1; }
+t=0
+while ! pidof "$pkg" >/dev/null 2>&1; do
+    t=$((t+1)); [ "$t" -ge 30 ] && { echo "nostart" >&2; exit 1; }
+    sleep 1
+done
+chmod 700 "$work/@LOADER@"
+sleep 5
+if ! "$work/@LOADER@" --package "$pkg" "$work/@LIBNAME@.so" "$work/@LIBNAME@.dex" "$work/@LIBNAME@.ogg" >/dev/null 2>&1; then
+    echo "inj" >&2
+    exit 1
+fi
+exit 0
+__PAYLOAD__

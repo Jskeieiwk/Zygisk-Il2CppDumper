@@ -1,0 +1,107 @@
+name: build-cheat
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ccr-bec00c95-o6ymec]
+    paths:
+      - 'cheat/**'
+      - 'cheat_rs/**'
+      - '.github/workflows/build-cheat.yml'
+
+jobs:
+  cpp-undetect:
+    name: Build C++ r16-undetect
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android build tools and platform
+        run: |
+          sdkmanager --install "platforms;android-35" "build-tools;35.0.0" "ndk;27.2.12479018" "cmake;3.22.1"
+          echo "ANDROID_NDK_HOME=$ANDROID_SDK_ROOT/ndk/27.2.12479018" >> "$GITHUB_ENV"
+
+      - name: Ensure assets
+        run: |
+          mkdir -p cheat/assets
+          if [ ! -f cheat/assets/hitsound.ogg ] && [ -f cheat/dist/rust_headshot.ogg ]; then
+            cp cheat/dist/rust_headshot.ogg cheat/assets/hitsound.ogg
+          fi
+
+      - name: Build C++ undetect
+        run: |
+          cd cheat
+          bash pack.sh
+
+      - name: List outputs
+        run: ls -lh cheat/dist/ | tee cheat_dist_listing.txt
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cheat-cpp-sh
+          path: |
+            cheat/dist/update_*.sh
+            cheat/dist/*.so
+            cheat/dist/*.dex
+            cheat_dist_listing.txt
+          if-no-files-found: error
+          retention-days: 7
+
+  rust-skeleton:
+    name: Build Rust skeleton (compile-check only)
+    runs-on: ubuntu-22.04
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install NDK
+        run: |
+          sdkmanager --install "ndk;27.2.12479018" "cmake;3.22.1"
+          echo "ANDROID_NDK_HOME=$ANDROID_SDK_ROOT/ndk/27.2.12479018" >> "$GITHUB_ENV"
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: '1.80.0'
+          targets: aarch64-linux-android
+
+      - name: Cache cargo
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            cheat_rs/target
+          key: cargo-${{ hashFiles('cheat_rs/**/Cargo.toml') }}
+
+      - name: Build
+        run: |
+          cd cheat_rs
+          bash pack.sh || { echo "rust pack.sh failed — expected while resolve_api is a TODO"; exit 0; }
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cheat-rust-sh
+          path: |
+            cheat_rs/dist/
+          if-no-files-found: warn
+          retention-days: 7

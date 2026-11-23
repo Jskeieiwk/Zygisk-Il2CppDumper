@@ -1,0 +1,133 @@
+{
+  "required": {
+    "domain_get": {
+      "il2cpp_export": null,
+      "mono_name_candidate": 102697716
+    },
+    "thread_attach": {
+      "il2cpp_export": null,
+      "mono_name_candidate": 102698844
+    },
+    "thread_detach": {
+      "il2cpp_export": null,
+      "mono_name_candidate": 102698848
+    },
+    "domain_get_assemblies": {
+      "il2cpp_export": null,
+      "mono_name_candidate": null
+    },
+    "assembly_get_image": {
+      "il2cpp_export": null,
+      "mono_name_candidate": null
+    },
+    "image_get_name": {
+      "il2cpp_export": null,
+      "mono_name_candidate": 102697708
+    },
+    "class_from_name": {
+      "il2cpp_export": null,
+      "mono_name_candidate": null
+    },
+    "class_get_method_from_name": {
+      "il2cpp_export": null,
+      "mono_name_candidate": null
+    },
+    "class_get_methods": {
+      "il2cpp_export": null,
+      "mono_name_candidate": 102698300
+    },
+    "method_get_name": {
+      "il2cpp_export": null,
+      "mono_name_candidate": 102698680
+    },
+    "method_get_param_count": {
+      "il2cpp_export": null,
+      "mono_name_candidate": null
+    },
+    "method_get_param": {
+      "il2cpp_export": null,
+      "mono_name_candidate": null
+    },
+    "type_get_type": {
+      "il2cpp_export": null,
+      "mono_name_candidate": 102698192
+    },
+    "class_get_type": {
+      "il2cpp_export": null,
+      "mono_name_candidate": 102698364
+    },
+    "type_get_object": {
+      "il2cpp_export": null,
+      "mono_name_candidate": null
+    },
+    "runtime_invoke": {
+      "il2cpp_export": null,
+      "mono_name_candidate": null
+    },
+    "object_unbox": {
+      "il2cpp_export": null,
+      "mono_name_candidate": null
+    },
+    "string_chars": {
+      "il2cpp_export": null,
+      "mono_name_candidate": 102698796
+    },
+    "string_length": {
+      "il2cpp_export": null,
+      "mono_name_candidate": 102698804
+    },
+    "string_new": {
+      "il2cpp_export": null,
+      "mono_name_candidate": 102698812
+    },
+    "gchandle_new": {
+      "il2cpp_export": null,
+      "mono_name_candidate": null
+    },
+    "gchandle_get_target": {
+      "il2cpp_export": null,
+      "mono_name_candidate": null
+    },
+    "gchandle_free": {
+      "il2cpp_export": null,
+      "mono_name_candidate": null
+    },
+    "object_get_class": {
+      "il2cpp_export": null,
+      "mono_name_candidate": null
+    },
+    "class_is_assignable_from": {
+      "il2cpp_export": null,
+      "mono_name_candidate": null
+    }
+  },
+  "verified_wrappers": {
+    "thread_attach": {
+      "rva": "0x6238ae0",
+      "source": "mono_thread_attach branch"
+    },
+    "thread_detach": {
+      "rva": "0x6238b80",
+      "source": "mono_thread_detach branch"
+    },
+    "string_new": {
+      "rva": "0x6220584",
+      "source": "mono_string_new moves x1 to x0 before branch; signatures differ"
+    },
+    "object_unbox": {
+      "rva": "0x6223364",
+      "source": "mono_object_unbox_internal branch"
+    },
+    "class_get_methods": {
+      "rva": "0x62490b0",
+      "source": "mono_class_get_methods direct branch; runtime signature still requires validation"
+    }
+  },
+  "status": "Analysis only; candidates are not a complete validated runtime adapter.",
+  "remaining_blockers": [
+    "assembly and class lookup for this stripped runtime",
+    "runtime_invoke and managed exception ABI",
+    "type objects and GC handle lifetime",
+    "on-device validation of runtime adapters"
+  ]
+}

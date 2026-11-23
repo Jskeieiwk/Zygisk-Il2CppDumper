@@ -1,0 +1,13 @@
+[workspace]
+resolver = "2"
+members = ["shared", "payload"]
+
+[profile.release]
+opt-level = "z"
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = "symbols"
+overflow-checks = false
+debug = false
+incremental = false

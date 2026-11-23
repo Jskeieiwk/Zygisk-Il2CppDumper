@@ -1,0 +1,16 @@
+# build.sh exports AR / CC / linker for aarch64-linux-android before cargo runs.
+[build]
+target = "aarch64-linux-android"
+
+[target.aarch64-linux-android]
+# rustflags are additive on top of the build profile. --build-id=none and
+# gc-sections match the C++ hardening path.
+rustflags = [
+    "-C", "link-arg=-Wl,--build-id=none",
+    "-C", "link-arg=-Wl,--gc-sections",
+    "-C", "link-arg=-Wl,-z,noexecstack",
+    "-C", "link-arg=-Wl,-z,relro",
+    "-C", "link-arg=-Wl,-z,now",
+    "-C", "link-arg=-Wl,--exclude-libs,ALL",
+    "-C", "link-arg=-Wl,-z,max-page-size=16384",
+]
