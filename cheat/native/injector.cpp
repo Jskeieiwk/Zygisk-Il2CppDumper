@@ -98,20 +98,6 @@ static std::vector<Mapping> maps(pid_t pid) {
     }
     return out;
 }
-static uintptr_t remoteSymbol(pid_t pid,const char* name) {
-    void* sym=dlsym(RTLD_DEFAULT,name);
-    if(!sym) throw std::runtime_error(std::string("Missing local symbol: ")+name);
-    uintptr_t addr=reinterpret_cast<uintptr_t>(sym);
-    auto own=maps(getpid()); auto remote=maps(pid);
-    for(const auto& m:own) if(addr>=m.start && addr<m.end) {
-        uintptr_t fileOffset=addr-m.start+m.offset;
-        for(const auto& r:remote) if(r.path==m.path && r.perms.find('x')!=std::string::npos && fileOffset>=r.offset && fileOffset<r.offset+r.end-r.start)
-            return r.start+(fileOffset-r.offset);
-        throw std::runtime_error(std::string("Matching runtime mapping not found for ")+name+" (namespace/ABI mismatch)");
-    }
-    throw std::runtime_error(std::string("Cannot resolve mapping for ")+name);
-}
-
 class Trace {
     pid_t pid_; bool attached_=false, stopped_=false, safe_=true;
     Registers original_{};
