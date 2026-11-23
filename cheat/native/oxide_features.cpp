@@ -1,6 +1,7 @@
 #include "internal_state.h"
 #include "brand.h"
 #include "dobby.h"
+#include "method_swap.h"
 #include "runtime_12034.h"
 #include "ballistics.h"
 #include <unordered_map>
@@ -921,9 +922,48 @@ void* boot(void*){
     stage("game signature verified");
     stage("attaching menu before runtime initialization");
     if(!internal::installUi()){stage("FAILED: Android UI did not attach");return nullptr;}
-    if(DobbyHook(reinterpret_cast<void*>(base+kUpdate),reinterpret_cast<dobby_dummy_func_t>(replacement),
-           reinterpret_cast<dobby_dummy_func_t*>(&originalUpdate))!=0){
-        stage("FAILED:h");internal::state.rendererStatus("h");return nullptr;}
+    // Install the LateUpdate hook via MethodInfo.methodPointer swap instead of
+    // Dobby inline patch. libng's crc32 of libil2cpp.so .text now passes — we
+    // never touch the game's code. Needs a minimal IL2CPP resolve from the
+    // JVM-attached boot thread.
+    bool primaryHookInstalled=false;
+    {
+        void* h=gameLibraryPath.empty()?nullptr:dlopen(gameLibraryPath.c_str(),RTLD_NOW|RTLD_NOLOAD);
+        if(!h)h=dlopen("libil2cpp.so",RTLD_NOW|RTLD_NOLOAD);
+#define MSBIND(n) do{ api.n=h?sym<decltype(api.n)>(h,"il2cpp_" #n):nullptr; \
+            if(!api.n)api.n=reinterpret_cast<decltype(api.n)>(oxide12034::runtimeEntry(base,#n)); }while(0)
+        MSBIND(domain_get);MSBIND(domain_get_assemblies);MSBIND(assembly_get_image);
+        MSBIND(image_get_name);MSBIND(class_from_name);MSBIND(class_get_method_from_name);
+#undef MSBIND
+        if(api.domain_get&&api.domain_get_assemblies&&api.assembly_get_image&&api.image_get_name&&
+           api.class_from_name&&api.class_get_method_from_name) {
+            Domain* domain=api.domain_get();
+            size_t count=0;
+            const Assembly** all=domain?api.domain_get_assemblies(domain,&count):nullptr;
+            Image* game=nullptr;
+            if(all&&count<2000) for(size_t i=0;i<count;i++) {
+                Image* im=api.assembly_get_image(all[i]);
+                const char* nm=im?api.image_get_name(im):nullptr;
+                if(nm&&strstr(nm,"Assembly-CSharp")){game=im;break;}
+            }
+            Class* player=game?api.class_from_name(game,"Oxide","PlayerManager"):nullptr;
+            Method* lateUpdate=player?api.class_get_method_from_name(player,"LateUpdate",0):nullptr;
+            if(lateUpdate) {
+                // MethodInfo.methodPointer sits at offset 0 on this IL2CPP build.
+                originalUpdate=method_swap::install_typed(lateUpdate,
+                    reinterpret_cast<void(*)(void*,void*)>(replacement));
+                if(originalUpdate){primaryHookInstalled=true;
+                    stage("LateUpdate hooked via MethodInfo.methodPointer (no .text write)");}
+            }
+        }
+        if(h)dlclose(h);
+    }
+    if(!primaryHookInstalled) {
+        stage("method_swap unavailable; falling back to Dobby");
+        if(DobbyHook(reinterpret_cast<void*>(base+kUpdate),reinterpret_cast<dobby_dummy_func_t>(replacement),
+               reinterpret_cast<dobby_dummy_func_t*>(&originalUpdate))!=0){
+            stage("FAILED:h");internal::state.rendererStatus("h");return nullptr;}
+    }
     stage("update hook installed; runtime deferred until PlayerManager.LateUpdate");
     stage("attaching Android UI");
     bool ui=internal::installUi();

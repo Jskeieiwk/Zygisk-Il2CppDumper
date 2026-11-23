@@ -237,6 +237,7 @@ int main(int argc,char** argv) {
         if(package.empty() || package.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_.")!=std::string::npos || package.find("..")!=std::string::npos)
             throw std::runtime_error("Invalid package name");
         validateElf(argv[3]); pid_t pid=findProcess(package);
+        std::fprintf(stderr,"Target PID: %d\n",static_cast<int>(pid));
         validateElf("/proc/"+std::to_string(pid)+"/exe");
         // DEX and audio still stage to code_cache (consumed through DexClassLoader
         // and SoundPool respectively — neither goes through the native linker).
@@ -253,9 +254,20 @@ int main(int argc,char** argv) {
             };
             payload_base=manual_map::load(pid,caller,argv[3]);
         }
-        // No ready-marker handshake under reflective loading: dladdr inside the
-        // payload cannot resolve a file name (no soinfo entry). The loader exits
-        // as soon as init_array returns; UI-attach failures surface via logcat.
+        std::fprintf(stderr,"Payload mapped; waiting for Android UI\n");
+        // init_array only starts the boot thread. Wait for the Java overlay to
+        // attach before reporting success to the launcher.
+        if(!dex.path.empty()) {
+            const std::string marker=dex.path+".ui-ok";
+            bool uiReady=false;
+            for(int attempt=0;attempt<200;attempt++) {
+                if(access(marker.c_str(),F_OK)==0) {uiReady=true;break;}
+                if(kill(pid,0)!=0) throw std::runtime_error("Game exited before Android UI attached");
+                std::this_thread::sleep_for(std::chrono::milliseconds(200));
+            }
+            if(!uiReady) throw std::runtime_error("Android UI did not attach within 40 seconds; see module log below");
+            unlink(marker.c_str());
+        }
         if(!dex.path.empty()) dex.path.clear();
         if(!audio.path.empty()) audio.path.clear();
         (void)payload_base;

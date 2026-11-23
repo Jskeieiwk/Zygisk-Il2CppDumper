@@ -9,9 +9,46 @@
 #include <link.h>
 #include <fstream>
 #include <cstring>
+#include <dirent.h>
+#include <sys/stat.h>
 
 namespace internal {
 namespace {
+bool failed(JNIEnv* env,const char* step);
+std::string stagedSoundPath;
+std::string uiDexPath;
+std::string stagedDexPath(JNIEnv* env, jobject app) {
+    jclass context=env->FindClass("android/content/Context");
+    if(!context||failed(env,"Context")) return {};
+    jmethodID getCache=env->GetMethodID(context,"getCodeCacheDir","()Ljava/io/File;");
+    if(!getCache||failed(env,"getCodeCacheDir lookup")) return {};
+    jobject cache=env->CallObjectMethod(app,getCache);
+    if(!cache||failed(env,"getCodeCacheDir")) return {};
+    jclass fileClass=env->FindClass("java/io/File");
+    if(!fileClass||failed(env,"File")) return {};
+    jmethodID absolute=env->GetMethodID(fileClass,"getAbsolutePath","()Ljava/lang/String;");
+    if(!absolute||failed(env,"getAbsolutePath lookup")) return {};
+    jstring path=static_cast<jstring>(env->CallObjectMethod(cache,absolute));
+    if(!path||failed(env,"getAbsolutePath")) return {};
+    const char* chars=env->GetStringUTFChars(path,nullptr);
+    if(!chars||failed(env,"cache path")) return {};
+    std::string directory(chars);env->ReleaseStringUTFChars(path,chars);
+    DIR* entries=opendir(directory.c_str());
+    if(!entries) return {};
+    std::string best;time_t newest=0;
+    const std::string prefix=BRAND_LIB_PREFIX;
+    while(dirent* entry=readdir(entries)) {
+        std::string name(entry->d_name);
+        if(name.compare(0,prefix.size(),prefix)!=0||name.size()<=prefix.size()+4||
+           name.compare(name.size()-4,4,".dex")!=0) continue;
+        std::string candidate=directory+"/"+name;
+        struct stat info{};
+        if(stat(candidate.c_str(),&info)!=0||!S_ISREG(info.st_mode)) continue;
+        if(best.empty()||info.st_mtime>=newest){best=candidate;newest=info.st_mtime;}
+    }
+    closedir(entries);
+    return best;
+}
 // Resolve an exported function from the exact loaded ART image.
 void* artExport(const char* name) {
     struct Search {const char* name;void* result;}; Search search{name,nullptr};
@@ -115,10 +152,9 @@ jobjectArray frame(JNIEnv* env,jclass) {
 void menuOpen(JNIEnv*,jclass,jboolean value) {state.menuOpen(value);}
 void active(JNIEnv*,jclass,jboolean value) {state.active(value);}
 jboolean freecam(JNIEnv*,jclass,jboolean value,jint movement,jfloat yaw,jfloat pitch) {return state.freecam(value,movement,yaw,pitch);}
-jstring soundPath(JNIEnv* env,jclass){Dl_info self{};
-    if(!dladdr(reinterpret_cast<void*>(&soundPath),&self)||!self.dli_fname)return nullptr;
-    std::string path=self.dli_fname;auto dot=path.rfind(".so");
-    if(dot==std::string::npos)return nullptr;path.replace(dot,3,".ogg");return env->NewStringUTF(path.c_str());}
+jstring soundPath(JNIEnv* env,jclass){
+    if(stagedSoundPath.empty()||access(stagedSoundPath.c_str(),R_OK)!=0)return nullptr;
+    return env->NewStringUTF(stagedSoundPath.c_str());}
 void soundReady(JNIEnv*,jclass,jboolean value){state.soundAvailable(value);}
 jint consumeHits(JNIEnv*,jclass){return state.consumeHits();}
 jint hitVolume(JNIEnv*,jclass){return state.hitVolume();}
@@ -171,15 +207,15 @@ bool installUi() {
             if(failed(env,"currentActivity lookup")||!field) return false;
             jobject activity=env->GetStaticObjectField(unity,field);
             if(failed(env,"currentActivity")||!activity) return false;
-            // The injector stages a read-only DEX alongside this uniquely named SO.
-            Dl_info self{};
-            if(!dladdr(reinterpret_cast<void*>(&installUi),&self)||!self.dli_fname) return false;
-            std::string dex=self.dli_fname;
-            auto dot=dex.rfind(".so");if(dot==std::string::npos) return false;
-            dex.replace(dot,3,".dex");
+            // Manual mapping has no linker soinfo, so dladdr cannot locate the payload.
+            // Find the DEX that the injector staged in the application's code cache.
+            std::string dex=stagedDexPath(env,app);
             if(access(dex.c_str(),R_OK)!=0) {
                 __android_log_print(ANDROID_LOG_ERROR,BRAND_TAG,"dex");return false;
             }
+            uiDexPath=dex;
+            stagedSoundPath=dex;
+            stagedSoundPath.replace(stagedSoundPath.size()-4,4,".ogg");
             jclass dexClass=env->FindClass("dalvik/system/DexClassLoader");
             jmethodID ctor=env->GetMethodID(dexClass,"<init>","(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/ClassLoader;)V");
             if(failed(env,"DexClassLoader lookup")||!ctor) return false;
@@ -216,6 +252,21 @@ bool installUi() {
         if(!success) usleep(200000);
     }
     vm->DetachCurrentThread();
+    if(success) {
+        const std::string marker=uiDexPath+".ui-ok";
+        int fd=open(marker.c_str(),O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC,0600);
+        if(fd<0) {
+            __android_log_print(ANDROID_LOG_ERROR,BRAND_TAG,"UI marker: open failed");
+            return false;
+        }
+        const char message[]="ready\n";
+        const bool written=write(fd,message,sizeof(message)-1)==static_cast<ssize_t>(sizeof(message)-1);
+        close(fd);
+        if(!written) {
+            __android_log_print(ANDROID_LOG_ERROR,BRAND_TAG,"UI marker: write failed");
+            return false;
+        }
+    }
     return success;
 }
 }

@@ -78,6 +78,16 @@ void writeRemoteBulk(pid_t pid, uintptr_t dst, const void* src, size_t n) {
         left -= static_cast<size_t>(w);
     }
 }
+uint64_t readRemoteWord(pid_t pid, uintptr_t address) {
+    uint64_t value=0;
+    iovec local{&value,sizeof(value)};
+    iovec remote{reinterpret_cast<void*>(address),sizeof(value)};
+    ssize_t count;
+    do { count=process_vm_readv(pid,&local,1,&remote,1,0); }
+    while(count<0&&errno==EINTR);
+    if(count!=static_cast<ssize_t>(sizeof(value))) fail("read init_array");
+    return value;
+}
 
 // ---------- extern symbol resolver (loader-local dlsym translated to remote) ----------
 
@@ -160,6 +170,11 @@ uintptr_t load(pid_t pid, const RemoteCaller& caller, const std::string& so_path
     image_end = (image_end + page - 1) & ~(page - 1);
 
     // Resolve the remote libc helpers we need before any work.
+    // The payload imports Android logging, but the loader itself has no
+    // DT_NEEDED edge to liblog. Make its symbols visible to local dlsym so
+    // Resolver can translate them to the same library in the game process.
+    void* logLibrary=dlopen("liblog.so",RTLD_NOW|RTLD_GLOBAL);
+    if(!logLibrary) throw std::runtime_error("mm:liblog unavailable in loader");
     Resolver resolver(pid);
     auto need = [&](const char* n) {
         uintptr_t v = resolver.resolve(n);
@@ -272,17 +287,17 @@ uintptr_t load(pid_t pid, const RemoteCaller& caller, const std::string& so_path
         caller(mprotect_fn, {seg_base, seg_end - seg_base, static_cast<uintptr_t>(prot)});
     }
 
-    // 5. Call init_array entries. After RELATIVE relocations their remote values
-    // are already (base + original_rva), but we read the file-time values from
-    // our local copy and add base ourselves — the RELATIVE fix is a no-op for us.
+    // 5. Call the relocated init_array entries in target memory. In this ELF
+    // every on-disk slot is zero; R_AARCH64_RELATIVE addends supply the actual
+    // constructor addresses. Reading the file slots skipped all constructors.
     if (init_array && init_array_sz) {
         size_t n = init_array_sz / sizeof(uint64_t);
-        const uint64_t* arr = reinterpret_cast<const uint64_t*>(
-            bytes.data() + vaddrToOffset(ph, nph, init_array));
         for (size_t i = 0; i < n; i++) {
-            uint64_t v = arr[i];
+            uint64_t v = readRemoteWord(pid,base+init_array+i*sizeof(uint64_t));
             if (!v || v == ~uint64_t(0)) continue;
-            caller(base + v, {});
+            if(v<base||v>=base+image_end)
+                throw std::runtime_error("mm:init_array entry outside payload");
+            caller(v, {});
         }
     }
 
