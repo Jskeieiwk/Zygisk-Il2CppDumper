@@ -1,0 +1,62 @@
+name: build-ext-full
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ccr-bec00c95-o6ymec]
+    paths:
+      - 'cheat_ext_full/**'
+      - '.github/workflows/build-ext-full.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apk:
+    name: Build Oxide external APK
+    runs-on: ubuntu-22.04
+    env:
+      ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+      ANDROID_HOME: /usr/local/lib/android/sdk
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Install NDK + SDK pieces
+        run: |
+          set -eux
+          yes | "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" --licenses >/dev/null || true
+          "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" --install \
+              "platforms;android-35" "build-tools;35.0.0" "ndk;27.2.12479018"
+          echo "ANDROID_NDK_HOME=$ANDROID_SDK_ROOT/ndk/27.2.12479018" >> "$GITHUB_ENV"
+          echo "JAVA_HOME=$JAVA_HOME" >> "$GITHUB_ENV"
+
+      - name: Build APK
+        working-directory: cheat_ext_full
+        run: bash build.sh
+
+      - name: Publish APK to dist-builds/
+        run: |
+          set -eux
+          apk=$(ls cheat_ext_full/dist/*.apk | head -n1)
+          test -f "$apk"
+          cp "$apk" /tmp/ext.apk
+          git checkout -- . >/dev/null 2>&1 || true
+          git clean -fd cheat_ext_full/build cheat_ext_full/dist 2>/dev/null || true
+          git config user.email "noreply@anthropic.com"
+          git config user.name "cheat-ci"
+          mkdir -p dist-builds
+          name="Oxide_ext_$(date -u +%Y%m%dT%H%M%SZ)_${GITHUB_SHA::7}.apk"
+          cp /tmp/ext.apk "dist-builds/$name"
+          cp /tmp/ext.apk "dist-builds/latest_ext.apk"
+          git add dist-builds
+          git commit -m "ci: publish ext APK $name [skip ci]" || exit 0
+          for i in 1 2 3; do
+            git pull --rebase origin ccr-bec00c95-o6ymec && git push origin HEAD:ccr-bec00c95-o6ymec && exit 0
+            sleep 5
+          done
+          exit 1
