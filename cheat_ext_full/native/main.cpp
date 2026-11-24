@@ -562,10 +562,13 @@ int main(int argc,char** argv){
         if(lastDiagPid!=static_cast<uintptr_t>(pid)) {
             lastDiagPid=static_cast<uintptr_t>(pid);
             size_t libil=0, offzero=0;
+            std::string sampleLine;
             for(const auto& x:m) {
                 if(x.path.find("libil2cpp.so")!=std::string::npos) {
                     libil++;
                     if(x.offset==0) offzero++;
+                    if(sampleLine.empty())
+                        sampleLine=x.perms+" off=0x"+std::to_string(x.offset)+" path="+x.path;
                 }
             }
             // Probe process_vm_readv itself: read one byte from the first r-x
@@ -576,8 +579,22 @@ int main(int argc,char** argv){
                 probe_rc=pm.read(x.start,&probe,1)?1:0;
                 break;
             }
-            std::printf("STATUS DIAG_pid=%d_maps=%zu_libil2cpp=%zu_off0=%zu_probe_at=0x%lx_rc=%d_byte=0x%02x\n",
-                pid,m.size(),libil,offzero,static_cast<unsigned long>(probe_at),probe_rc,probe);
+            // Also dump to /sdcard/Download/oxide_diag.txt so dj can read it
+            // with any file manager — the Java log pipeline has been
+            // unreliable through the last three iterations.
+            FILE* f=std::fopen("/sdcard/Download/oxide_diag.txt","w");
+            if(f) {
+                std::fprintf(f,"pid=%d\n",pid);
+                std::fprintf(f,"maps_total=%zu\n",m.size());
+                std::fprintf(f,"libil2cpp_matches=%zu\n",libil);
+                std::fprintf(f,"with_offset0=%zu\n",offzero);
+                std::fprintf(f,"sample_libil_map=%s\n",sampleLine.c_str());
+                std::fprintf(f,"probe_addr=0x%lx\n",static_cast<unsigned long>(probe_at));
+                std::fprintf(f,"probe_rc=%d probe_byte=0x%02x\n",probe_rc,probe);
+                std::fclose(f);
+            }
+            std::printf("STATUS DIAG_pid=%d_maps=%zu_libil2cpp=%zu_off0=%zu_rc=%d\n",
+                pid,m.size(),libil,offzero,probe_rc);
         }
         // Build ID check is informational only: findClass is byte-pattern based
         // on name+namespace pointer pairs, so it works across minor game updates
