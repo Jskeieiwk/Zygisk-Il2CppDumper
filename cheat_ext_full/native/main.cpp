@@ -34,16 +34,42 @@ struct PlayerSample {uintptr_t object=0;Vec3 position,velocity;float hp=-1;bool 
 
 class ProcessMemory {
     pid_t pid_;
+    mutable int mem_fd_=-1;      // /proc/<pid>/mem on demand
+    mutable int mem_fd_pid_=0;   // pid the fd was opened for
+    mutable bool pvr_blocked_=false;
+
+    int memFd() const {
+        if(mem_fd_>=0 && mem_fd_pid_==pid_) return mem_fd_;
+        if(mem_fd_>=0) ::close(mem_fd_);
+        char path[64]; std::snprintf(path,sizeof(path),"/proc/%d/mem",pid_);
+        mem_fd_=::open(path,O_RDWR|O_CLOEXEC);
+        if(mem_fd_<0) mem_fd_=::open(path,O_RDONLY|O_CLOEXEC);
+        mem_fd_pid_=pid_;
+        return mem_fd_;
+    }
 public:
     explicit ProcessMemory(pid_t pid):pid_(pid){}
+    ~ProcessMemory(){ if(mem_fd_>=0) ::close(mem_fd_); }
     bool read(uintptr_t address,void* out,size_t size) const {
         if(!address||!out||!size)return false;
         auto* bytes=static_cast<uint8_t*>(out);size_t done=0;
+        if(!pvr_blocked_) {
+            while(done<size){
+                iovec local{bytes+done,size-done};
+                iovec remote{reinterpret_cast<void*>(address+done),size-done};
+                ssize_t n=process_vm_readv(pid_,&local,1,&remote,1,0);
+                if(n<=0){ pvr_blocked_=(done==0); break; }
+                done+=static_cast<size_t>(n);
+            }
+            if(done==size) return true;
+        }
+        // Fallback: /proc/<pid>/mem + pread. Works when process_vm_readv is
+        // denied by LSM/SELinux (common on hardened kernels).
+        int fd=memFd(); if(fd<0) return false;
+        done=0;
         while(done<size){
-            iovec local{bytes+done,size-done};
-            iovec remote{reinterpret_cast<void*>(address+done),size-done};
-            ssize_t n=process_vm_readv(pid_,&local,1,&remote,1,0);
-            if(n<=0)return false;
+            ssize_t n=::pread64(fd,bytes+done,size-done,static_cast<off_t>(address+done));
+            if(n<=0) return false;
             done+=static_cast<size_t>(n);
         }
         return true;
@@ -51,16 +77,28 @@ public:
     bool write(uintptr_t address,const void* data,size_t size) const {
         if(!address||!data||!size)return false;
         auto* bytes=static_cast<const uint8_t*>(data);size_t done=0;
+        if(!pvr_blocked_) {
+            while(done<size){
+                iovec local{const_cast<uint8_t*>(bytes+done),size-done};
+                iovec remote{reinterpret_cast<void*>(address+done),size-done};
+                ssize_t n=process_vm_writev(pid_,&local,1,&remote,1,0);
+                if(n<=0) break;
+                done+=static_cast<size_t>(n);
+            }
+            if(done==size) return true;
+        }
+        int fd=memFd(); if(fd<0) return false;
+        done=0;
         while(done<size){
-            iovec local{const_cast<uint8_t*>(bytes+done),size-done};
-            iovec remote{reinterpret_cast<void*>(address+done),size-done};
-            ssize_t n=process_vm_writev(pid_,&local,1,&remote,1,0);
-            if(n<=0)return false;
+            ssize_t n=::pwrite64(fd,bytes+done,size-done,static_cast<off_t>(address+done));
+            if(n<=0) return false;
             done+=static_cast<size_t>(n);
         }
         return true;
     }
     template<typename T> bool get(uintptr_t address,T& value) const {return read(address,&value,sizeof(value));}
+    bool pvr_blocked() const { return pvr_blocked_; }
+    int mem_fd_status() const { return memFd()<0 ? 0 : 1; }
 };
 
 std::vector<Map> maps(pid_t pid) {
@@ -594,6 +632,7 @@ int main(int argc,char** argv){
                 std::fprintf(f,"sample_libil_map=%s\n",sampleLine.c_str());
                 std::fprintf(f,"probe_addr=0x%lx\n",static_cast<unsigned long>(probe_at));
                 std::fprintf(f,"probe_rc=%d probe_byte=0x%02x\n",probe_rc,probe);
+                std::fprintf(f,"pvr_blocked=%d mem_fd=%d\n",pm.pvr_blocked()?1:0,pm.mem_fd_status());
                 std::fclose(f);
             }
             std::printf("STATUS DIAG_pid=%d_maps=%zu_libil2cpp=%zu_off0=%zu_rc=%d\n",
