@@ -560,13 +560,41 @@ int main(int argc,char** argv){
         ProcessMemory pm(pid);auto m=maps(pid);uintptr_t base=0;
         // Build ID check is informational only: findClass is byte-pattern based
         // on name+namespace pointer pairs, so it works across minor game updates
-        // without re-dumping. Emit BUILD_MISMATCH as a warning once per pid and
-        // keep going — if the Il2Cpp layout really changed, findClass will
-        // simply return 0 and STATUS SEARCHING_PLAYERS will remain.
+        // without re-dumping. Emit BUILD_MISMATCH once per pid along with the
+        // Build ID we actually saw, so dj can tell whether the live library
+        // changed or the on-disk one is just stale.
         static uintptr_t lastBuildWarnPid=0;
         if(!hasExpectedBuildId(pm,m,base)&&lastBuildWarnPid!=static_cast<uintptr_t>(pid)){
             lastBuildWarnPid=static_cast<uintptr_t>(pid);
-            std::puts("STATUS BUILD_MISMATCH (continuing with pattern-based resolve)");
+            // Try to read whatever Build ID is actually in the live module so
+            // we can compare against the hardcoded one.
+            std::string actual="unknown";
+            for(const auto& x:m) {
+                if(x.offset!=0||x.path.find("libil2cpp.so")==std::string::npos) continue;
+                Elf64_Ehdr eh{};
+                if(!pm.get(x.start,eh)||std::memcmp(eh.e_ident,ELFMAG,SELFMAG)) continue;
+                std::vector<Elf64_Phdr> ph(eh.e_phnum);
+                if(!pm.read(x.start+eh.e_phoff,ph.data(),ph.size()*sizeof(Elf64_Phdr))) continue;
+                for(const auto& p:ph) {
+                    if(p.p_type!=PT_NOTE||p.p_memsz>4096) continue;
+                    std::vector<uint8_t> note(p.p_memsz);
+                    if(!pm.read(x.start+p.p_vaddr,note.data(),note.size())) continue;
+                    for(size_t at=0;at+sizeof(Elf64_Nhdr)<=note.size();) {
+                        Elf64_Nhdr nh{}; std::memcpy(&nh,note.data()+at,sizeof(nh));
+                        size_t nps=(nh.n_namesz+3u)&~size_t(3), dps=(nh.n_descsz+3u)&~size_t(3);
+                        size_t next=at+sizeof(nh)+nps+dps;
+                        if(next>note.size()||next<=at) break;
+                        if(nh.n_type==NT_GNU_BUILD_ID&&nh.n_descsz==20) {
+                            char hex[41]={}; const uint8_t* d=note.data()+at+sizeof(nh)+nps;
+                            for(int i=0;i<20;i++) std::snprintf(hex+i*2,3,"%02x",d[i]);
+                            actual=hex;
+                        }
+                        at=next;
+                    }
+                }
+                break;
+            }
+            std::printf("STATUS BUILD_MISMATCH live=%s expected=76e47a1addbd7aee36595c8dc2bb2f7eac1ffc5e\n",actual.c_str());
         }
         if((!klass||!controller||!network)&&std::chrono::steady_clock::now()-lastScan>std::chrono::seconds(klass?30:5)){
             lastScan=std::chrono::steady_clock::now();
