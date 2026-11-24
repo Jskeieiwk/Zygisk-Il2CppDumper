@@ -576,7 +576,7 @@ int main(int argc,char** argv){
                 probe_rc=pm.read(x.start,&probe,1)?1:0;
                 break;
             }
-            std::printf("DIAG pid=%d maps=%zu libil2cpp_hits=%zu with_offset0=%zu probe_at=0x%lx probe_rc=%d probe_byte=0x%02x\n",
+            std::printf("STATUS DIAG_pid=%d_maps=%zu_libil2cpp=%zu_off0=%zu_probe_at=0x%lx_rc=%d_byte=0x%02x\n",
                 pid,m.size(),libil,offzero,static_cast<unsigned long>(probe_at),probe_rc,probe);
         }
         // Build ID check is informational only: findClass is byte-pattern based
