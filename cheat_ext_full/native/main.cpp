@@ -582,7 +582,10 @@ int main(int argc,char** argv){
             // Also dump to /sdcard/Download/oxide_diag.txt so dj can read it
             // with any file manager — the Java log pipeline has been
             // unreliable through the last three iterations.
-            FILE* f=std::fopen("/sdcard/Download/oxide_diag.txt","w");
+            // Try multiple paths: /sdcard needs MANAGE_EXTERNAL_STORAGE on A11+,
+            // /data/local/tmp always works for root.
+            FILE* f=std::fopen("/data/local/tmp/oxide_diag.txt","w");
+            if(!f) f=std::fopen("/sdcard/Download/oxide_diag.txt","w");
             if(f) {
                 std::fprintf(f,"pid=%d\n",pid);
                 std::fprintf(f,"maps_total=%zu\n",m.size());
