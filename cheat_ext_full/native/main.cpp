@@ -558,6 +558,27 @@ int main(int argc,char** argv){
         if(!pid){std::puts("STATUS WAITING_GAME");previous=0;klass=controller=network=0;world.clear();std::this_thread::sleep_for(std::chrono::seconds(1));continue;}
         if(pid!=previous){motion.clear();previous=pid;klass=controller=network=0;world.clear();lastScan={};}
         ProcessMemory pm(pid);auto m=maps(pid);uintptr_t base=0;
+        static uintptr_t lastDiagPid=0;
+        if(lastDiagPid!=static_cast<uintptr_t>(pid)) {
+            lastDiagPid=static_cast<uintptr_t>(pid);
+            size_t libil=0, offzero=0;
+            for(const auto& x:m) {
+                if(x.path.find("libil2cpp.so")!=std::string::npos) {
+                    libil++;
+                    if(x.offset==0) offzero++;
+                }
+            }
+            // Probe process_vm_readv itself: read one byte from the first r-x
+            // mapping of the game. If this fails we have no memory access at all.
+            uint8_t probe=0; int probe_rc=0; uintptr_t probe_at=0;
+            for(const auto& x:m) if(x.perms.find('x')!=std::string::npos) {
+                probe_at=x.start;
+                probe_rc=pm.read(x.start,&probe,1)?1:0;
+                break;
+            }
+            std::printf("DIAG pid=%d maps=%zu libil2cpp_hits=%zu with_offset0=%zu probe_at=0x%lx probe_rc=%d probe_byte=0x%02x\n",
+                pid,m.size(),libil,offzero,static_cast<unsigned long>(probe_at),probe_rc,probe);
+        }
         // Build ID check is informational only: findClass is byte-pattern based
         // on name+namespace pointer pairs, so it works across minor game updates
         // without re-dumping. Emit BUILD_MISMATCH once per pid along with the
